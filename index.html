@@ -800,8 +800,10 @@ footer p{font-size:.76rem;color:var(--gris);max-width:580px;margin:.35rem auto;l
 </footer>
 
 <script>
-if(history.scrollRestoration) history.scrollRestoration='manual';
+history.scrollRestoration='manual';
+document.documentElement.style.scrollBehavior='auto';
 window.scrollTo(0,0);
+setTimeout(function(){document.documentElement.style.scrollBehavior='';},50);
 const obs=new IntersectionObserver((entries)=>{
   entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*65);obs.unobserve(e.target);}});
 },{threshold:0.07});
