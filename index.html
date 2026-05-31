@@ -230,7 +230,7 @@ footer p{font-size:.76rem;color:var(--gris);max-width:580px;margin:.35rem auto;l
   .hero-kpis{display:none}h1{font-size:2.7rem}
 }
 </style>
-<script>history.scrollRestoration='manual';</script>
+<script>history.scrollRestoration='manual';if(location.hash)history.replaceState(null,'',location.pathname);</script>
 </head>
 <body>
 
@@ -535,17 +535,17 @@ footer p{font-size:.76rem;color:var(--gris);max-width:580px;margin:.35rem auto;l
       <div class="veh-card">
         <span class="veh-icon">✈️</span>
         <h3>Aviation Long-Courrier Bio-GNL</h3>
-        <div class="veh-spec"><span class="veh-spec-lbl">Rendement propulsif</span><span class="veh-spec-val highlight">+19 % vs kérosène (28–31 % vs 24–26 %)</span></div>
-        <div class="veh-spec"><span class="veh-spec-lbl">Masse carburant Paris–New York</span><span class="veh-spec-val highlight">227 t vs 316 t kérosène (−28 %)</span></div>
-        <div class="veh-spec"><span class="veh-spec-lbl">Froid cryogénique valorisé</span><span class="veh-spec-val highlight">400 kW gratuits — clim + avionique + compresseur</span></div>
-        <div class="veh-spec"><span class="veh-spec-lbl">Gain autonomie via froid</span><span class="veh-spec-val">+5 à 8 % — unique au GNL, impossible au kérosène</span></div>
-        <div class="veh-spec"><span class="veh-spec-lbl">Routes débloquées</span><span class="veh-spec-val highlight">Sydney–Londres direct — impossible au kérosène</span></div>
+        <div class="veh-spec"><span class="veh-spec-lbl">Rendement propulsif</span><span class="veh-spec-val highlight">+19 % estimé vs kérosène (28–31 % vs 24–26 %) [🔬 Calcul théorique, non démontré en vol]</span></div>
+        <div class="veh-spec"><span class="veh-spec-lbl">Masse carburant Paris–New York</span><span class="veh-spec-val highlight">227 t vs 316 t kérosène (−28 %) [🔬 Estimation calculée]</span></div>
+        <div class="veh-spec"><span class="veh-spec-lbl">Froid cryogénique</span><span class="veh-spec-val">Puits de chaleur passif via boil-off naturel — précooling échangeurs et avionique [🔬 COP réel cryogénique 0,1–0,4 — pas de réfrigération active embarquée]</span></div>
+        <div class="veh-spec"><span class="veh-spec-lbl">Gain autonomie via froid</span><span class="veh-spec-val">+5 à 8 % estimé [🔬 À valider en conditions réelles]</span></div>
+        <div class="veh-spec"><span class="veh-spec-lbl">Routes longue distance</span><span class="veh-spec-val">Portée théorique étendue — Sydney–Londres calculé possible [🔬 Non validé en conditions opérationnelles]</span></div>
         <div class="veh-spec"><span class="veh-spec-lbl">Émissions CO₂ par vol</span><span class="veh-spec-val highlight">0–15 t (bio-GNL) vs 995 t (kérosène)</span></div>
-        <div class="veh-spec"><span class="veh-spec-lbl">NOx / particules fines</span><span class="veh-spec-val">−40 % / −70 % vs kérosène</span></div>
-        <div class="veh-spec"><span class="veh-spec-lbl">Boil-off au sol valorisé</span><span class="veh-spec-val">Prolongateur Atkinson GNV → électricité + reliquéfaction · ROI 6 mois</span></div>
+        <div class="veh-spec"><span class="veh-spec-lbl">NOx / particules fines</span><span class="veh-spec-val">−40 % / −70 % vs kérosène [🔬]</span></div>
+        <div class="veh-spec"><span class="veh-spec-lbl">Boil-off au sol</span><span class="veh-spec-val">Valorisation en APU recommandée — plus simple et léger que reliquéfaction complète [🔬 ROI à étudier]</span></div>
         <div class="veh-spec"><span class="veh-spec-lbl">Souveraineté France</span><span class="veh-spec-val">95–110 TWh/an disponibles vs 35 TWh besoin aviation nationale</span></div>
-        <div class="veh-spec"><span class="veh-spec-lbl">Bilan carbone</span><span class="veh-spec-val highlight">Négatif — seul carburant aviation carbon-négatif avec biochar co-produit</span></div>
-        <p class="veh-note"><strong>Piste technologique en développement industriel (horizon 2030–2040).</strong> Le Bio-GNL n'est pas qu'un substitut du kérosène — c'est une architecture techniquement supérieure sur plusieurs points. Le froid cryogénique (−162°C) procure 400 kW de puissance gratuite inexistants avec le kérosène. La masse carburant réduite de 28 % ouvre des routes intercontinentales impossibles aujourd'hui. Le boil-off au sol, valorisé par un prolongateur Atkinson GNV couplé à un groupe froid Stirling, s'autofinance en 6 mois. Face à des SAF limités à 20 TWh/an et à un hydrogène liquide à −253°C encore plus complexe, le Bio-GNL est la seule voie aviation scalable, souveraine et à bilan carbone potentiellement négatif — sous réserve de validation par l'EASA et d'infrastructure aéroportuaire. <span class="badge b-pr">⚠ Certification et infrastructure à construire</span></p>
+        <div class="veh-spec"><span class="veh-spec-lbl">Bilan carbone</span><span class="veh-spec-val highlight">Potentiellement négatif avec biochar co-produit [🔬 À certifier via ACV indépendante]</span></div>
+        <p class="veh-note"><strong>Piste technologique en développement industriel (horizon 2030–2040).</strong> Le Bio-GNL présente des avantages théoriques significatifs sur le kérosène : masse carburant estimée réduite de 28 %, boil-off naturel utilisable comme puits de chaleur passif pour l'avionique et les échangeurs, bilan carbone potentiellement négatif avec biochar co-produit. Note technique : le COP réel des systèmes cryogéniques à −162°C est de 0,1–0,4 — la valorisation du froid doit s'entendre comme utilisation passive du boil-off naturel, non comme réfrigération active. Pour le boil-off au sol, la valorisation en APU est préférable à la reliquéfaction complète (masse et complexité rédhibitoires pour l'aviation). Ces avantages demandent des études de faisabilité complètes par Airbus, Safran ou Rolls-Royce avant toute affirmation définitive. <span class="badge b-pr">⚠ Piste sérieuse — chiffres à consolider par l'industrie aéronautique</span></p>
       </div>
     </div>
   </div>
