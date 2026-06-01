@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Annexe A5 — Émissions diffuses de biomasse non gérée · Programme Résilience V11</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --noir:#0a0f0d;--foret:#0d1f17;--vert-prof:#1a3a28;--vert-med:#2d6a4f;
+  --vert-vif:#52b788;--vert-clair:#95d5b2;--terre:#a0522d;--ambre:#e9c46a;
+  --rouge:#c0392b;--bleu:#2980b9;--blanc:#f0f4f1;--gris:#8a9e93;
+  --serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--noir);color:var(--blanc);font-family:var(--sans);font-weight:300;line-height:1.7;overflow-x:hidden}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:.9rem 2.5rem;background:rgba(10,15,13,.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(82,183,136,.12)}
+.nav-logo{font-family:var(--serif);font-size:1.15rem;font-weight:600;color:var(--vert-vif);text-decoration:none}
+.nav-back{color:var(--gris);text-decoration:none;font-size:.72rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;transition:color .3s;display:flex;align-items:center;gap:.5rem}
+.nav-back:hover{color:var(--vert-vif)}
+.nav-tag{font-size:.65rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--ambre);background:rgba(233,196,106,.12);border:1px solid rgba(233,196,106,.25);padding:.2rem .7rem}
+
+/* HERO */
+#hero{min-height:55vh;display:flex;align-items:center;padding:8rem 3rem 5rem;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 30% 50%,rgba(29,90,54,.3) 0%,transparent 70%),linear-gradient(135deg,#0a0f0d 0%,#0d1f17 50%,#060e09 100%)}
+.hero-grid{position:absolute;inset:0;opacity:.04;background-image:linear-gradient(var(--vert-vif) 1px,transparent 1px),linear-gradient(90deg,var(--vert-vif) 1px,transparent 1px);background-size:55px 55px}
+.hero-content{position:relative;z-index:1;max-width:820px}
+.hero-tag{display:inline-block;border:1px solid var(--ambre);color:var(--ambre);font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;padding:.3rem .85rem;margin-bottom:1.6rem}
+h1{font-family:var(--serif);font-size:clamp(2.2rem,5vw,4.2rem);font-weight:300;line-height:1.1;margin-bottom:1.3rem}
+h1 em{font-style:italic;color:var(--vert-vif)}
+.hero-phrase{font-family:var(--serif);font-size:clamp(1rem,1.8vw,1.3rem);font-style:italic;color:var(--ambre);border-left:3px solid var(--ambre);padding-left:1.1rem;margin:1.6rem 0 1.8rem;line-height:1.5}
+.hero-intro{font-size:.95rem;color:rgba(240,244,241,.7);max-width:600px;line-height:1.85}
+
+/* ALERTE */
+.alerte{background:rgba(192,57,43,.08);border:1px solid rgba(192,57,43,.3);border-left:4px solid var(--rouge);padding:1.3rem 1.8rem;margin:2rem 0}
+.alerte-hdr{font-size:.68rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--rouge);margin-bottom:.5rem}
+.alerte p{font-size:.86rem;color:rgba(240,244,241,.75);line-height:1.65}
+.alerte strong{color:rgba(240,244,241,.9)}
+
+/* NOTE MÉTHO */
+.note-metho{background:rgba(41,128,185,.08);border:1px solid rgba(41,128,185,.25);border-left:4px solid var(--bleu);padding:1.3rem 1.8rem;margin:2rem 0}
+.note-metho-hdr{font-size:.68rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#74b9e8;margin-bottom:.5rem}
+.note-metho p{font-size:.84rem;color:rgba(240,244,241,.68);line-height:1.65}
+
+/* SECTIONS */
+section{padding:5rem 3rem}
+.container{max-width:1100px;margin:0 auto}
+.stag{font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--vert-vif);margin-bottom:.7rem}
+h2{font-family:var(--serif);font-size:clamp(1.7rem,3vw,2.6rem);font-weight:300;line-height:1.15;margin-bottom:1.1rem}
+h2 em{font-style:italic;color:var(--vert-vif)}
+h3{font-family:var(--serif);font-size:1.25rem;font-weight:400;color:var(--vert-clair);margin-bottom:.6rem;margin-top:1.8rem}
+.lead{font-size:.97rem;color:rgba(240,244,241,.7);max-width:700px;line-height:1.85;margin-bottom:1.5rem}
+p.body{font-size:.9rem;color:rgba(240,244,241,.68);line-height:1.85;margin-bottom:.9rem;max-width:820px}
+.divider{border:none;border-top:1px solid rgba(82,183,136,.13);margin:2.5rem 0}
+blockquote{font-family:var(--serif);font-size:1.1rem;font-style:italic;color:var(--ambre);border-left:3px solid var(--ambre);padding-left:1.2rem;margin:1.8rem 0;line-height:1.6}
+
+/* BADGES */
+.badge{display:inline-block;font-size:.62rem;font-weight:600;letter-spacing:.1em;padding:.18rem .55rem;border-radius:2px;margin-left:.4rem;vertical-align:middle}
+.b-ok{background:rgba(82,183,136,.2);color:var(--vert-vif);border:1px solid rgba(82,183,136,.4)}
+.b-pl{background:rgba(41,128,185,.18);color:#74b9e8;border:1px solid rgba(41,128,185,.35)}
+.b-pr{background:rgba(233,196,106,.18);color:var(--ambre);border:1px solid rgba(233,196,106,.35)}
+
+/* ENCADRÉS */
+.box-vert{background:rgba(29,58,40,.35);border:1px solid rgba(82,183,136,.22);border-left:4px solid var(--vert-vif);padding:1.3rem 1.7rem;margin:1.8rem 0;font-size:.86rem;color:rgba(240,244,241,.75);line-height:1.7}
+.box-vert strong{color:var(--vert-vif)}
+.box-ambre{background:rgba(233,196,106,.07);border:1px solid rgba(233,196,106,.25);border-left:4px solid var(--ambre);padding:1.3rem 1.7rem;margin:1.8rem 0;font-size:.86rem;color:rgba(240,244,241,.72);line-height:1.7}
+.box-ambre strong{color:var(--ambre)}
+.box-rouge{background:rgba(192,57,43,.07);border:1px solid rgba(192,57,43,.22);border-left:4px solid var(--rouge);padding:1.3rem 1.7rem;margin:1.8rem 0;font-size:.86rem;color:rgba(240,244,241,.72);line-height:1.7}
+.conclusion-box{background:rgba(29,58,40,.4);border:1px solid var(--vert-vif);padding:2rem 2.5rem;margin:2.5rem 0}
+.conclusion-box h3{color:var(--vert-vif);font-size:1.5rem;margin-top:0;margin-bottom:1rem}
+.conclusion-box p{font-size:.91rem;color:rgba(240,244,241,.75);line-height:1.8}
+.conclusion-box strong{color:var(--ambre)}
+
+/* TABLEAUX */
+.tbl-wrap{overflow-x:auto;margin:2rem 0}
+table{width:100%;border-collapse:collapse;font-size:.8rem}
+thead tr{background:rgba(26,58,40,.95)}
+thead th{padding:.85rem 1rem;text-align:left;color:var(--vert-clair);font-weight:500;letter-spacing:.08em;font-size:.72rem;text-transform:uppercase;border-bottom:2px solid var(--vert-vif)}
+tbody tr{border-bottom:1px solid rgba(82,183,136,.09);transition:background .2s}
+tbody tr:hover{background:rgba(13,31,23,.55)}
+tbody td{padding:.72rem 1rem;color:rgba(240,244,241,.75);vertical-align:top;line-height:1.5}
+tbody td:first-child{color:var(--blanc);font-weight:400}
+.td-g{color:var(--vert-vif)!important;font-weight:500}
+.td-r{color:#e74c3c!important}
+.td-a{color:var(--ambre)!important;font-weight:500}
+.td-b{color:#74b9e8!important}
+.tr-subtotal td{background:rgba(29,58,40,.6)!important;color:var(--vert-clair)!important;font-weight:500}
+.tr-total td{background:rgba(26,58,40,.9)!important;color:var(--vert-vif)!important;font-weight:600}
+.tr-dark td{background:rgba(13,31,23,.7)!important;color:rgba(240,244,241,.5)!important;font-style:italic}
+.tr-best td{background:rgba(29,90,54,.35)!important}
+.tr-best td:first-child{color:var(--vert-vif)!important;font-weight:600}
+
+/* GRILLE 3 colonnes */
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.2rem;margin:2rem 0}
+.grid-card{padding:1.8rem;border:1px solid rgba(82,183,136,.12);background:rgba(10,15,13,.6);position:relative;overflow:hidden}
+.grid-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--vert-vif),var(--vert-clair))}
+.grid-card h3{font-size:1rem;color:var(--vert-clair);margin-top:0;margin-bottom:.6rem}
+.grid-card p{font-size:.83rem;color:rgba(240,244,241,.6);line-height:1.65}
+.grid-card .num{font-family:var(--serif);font-size:1.8rem;color:var(--ambre);font-weight:300;line-height:1;margin-bottom:.4rem}
+
+/* MÉCANISME VISUEL */
+.mecanisme{display:grid;grid-template-columns:1fr 40px 1fr 40px 1fr;gap:0;margin:2.5rem 0;align-items:center}
+.mec-step{padding:1.4rem;background:rgba(13,31,23,.7);border:1px solid rgba(82,183,136,.15);text-align:center}
+.mec-step .label{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gris);margin-bottom:.4rem}
+.mec-step .val{font-family:var(--serif);font-size:1.1rem;color:var(--vert-vif)}
+.mec-arrow{text-align:center;color:rgba(82,183,136,.5);font-size:1.4rem}
+
+/* ALTERNANCE SECTIONS */
+section.alt{background:var(--foret)}
+
+/* RETOUR */
+.btn{display:inline-block;padding:.72rem 1.6rem;font-family:var(--sans);font-size:.76rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:all .3s}
+.btn-outline{background:transparent;color:var(--blanc);border:1px solid rgba(240,244,241,.28)}
+.btn-outline:hover{border-color:var(--vert-vif);color:var(--vert-vif)}
+.btn-primary{background:var(--vert-vif);color:var(--noir)}
+.btn-primary:hover{background:var(--vert-clair)}
+
+/* ANIMATIONS */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease}
+.reveal.visible{opacity:1;transform:none}
+
+footer{background:#050a07;padding:2.5rem 3rem;text-align:center;border-top:1px solid rgba(82,183,136,.08)}
+.footer-logo{font-family:var(--serif);font-size:1.6rem;font-weight:300;color:var(--vert-vif);margin-bottom:.4rem}
+footer p{font-size:.76rem;color:var(--gris);max-width:620px;margin:.35rem auto;line-height:1.7}
+
+@media(max-width:700px){
+  nav{padding:.85rem 1.3rem}
+  section{padding:3.5rem 1.3rem}
+  h1{font-size:2rem}
+  .mecanisme{grid-template-columns:1fr;gap:.5rem}
+  .mec-arrow{transform:rotate(90deg)}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Programme Résilience V11</a>
+  <div style="display:flex;align-items:center;gap:1.5rem">
+    <span class="nav-tag">Annexe A5</span>
+    <a href="index.html#annexes" class="nav-back">← Retour aux annexes</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Annexe A5 · Angle mort climatique</div>
+    <h1>Émissions diffuses de biomasse<br><em>non gérée</em></h1>
+    <p class="hero-phrase">« Il ne s'agit pas de produire plus de biomasse,<br>mais de gérer celle qui existe déjà. »</p>
+    <p class="hero-intro">La France concentre des dizaines de millions de tonnes de biomasse organique qui se décomposent à l'air libre chaque année — résidus agricoles, biodéchets, fumiers, rémanents forestiers. Cette décomposition produit du méthane, un gaz 84× plus réchauffant que le CO₂ sur 20 ans. Ces émissions ne figurent pas dans les inventaires nationaux. Les 150 sites de pyrogazéification du Programme Résilience les éliminent à la source.</p>
+  </div>
+</section>
+
+<!-- NOTE MÉTHODOLOGIQUE -->
+<div style="background:rgba(5,10,7,.9);padding:0 3rem">
+  <div class="container">
+    <div class="note-metho">
+      <div class="note-metho-hdr">Note méthodologique — ordres de grandeur</div>
+      <p>Les estimations chiffrées de cette annexe sont des ordres de grandeur issus de la littérature scientifique publiée (ADEME, CITEPA, INRAE, IGN). Ils ne constituent pas des mesures directes des flux diffus, qui par nature ne font pas l'objet d'inventaires systématiques. La correction technique sur les biodéchets (distinction déchets verts secs / fractions humides) a été validée par analyse croisée avec les données CITEPA. Une ACV indépendante est recommandée pour quantifier précisément le double bénéfice climatique des sites de pyrogazéification.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PARTIE 1 — LE PHÉNOMÈNE -->
+<section id="phenomene">
+  <div class="container">
+    <div class="stag reveal">Partie 1 · Le phénomène</div>
+    <h2 class="reveal">Un flux invisible qui <em>réchauffe</em></h2>
+    <p class="lead reveal">Dès qu'un tas de matière organique dépasse 20–30 cm d'épaisseur, l'oxygène ne pénètre plus. La décomposition devient anaérobie et produit du méthane — un gaz dont le pouvoir réchauffant est 84× celui du CO₂ sur 20 ans.<span class="badge b-ok">✅ GIEC AR5/AR6</span></p>
+
+    <div class="grid3 reveal">
+      <div class="grid-card">
+        <div class="num">84×</div>
+        <h3>Pouvoir réchauffant du CH₄</h3>
+        <p>Sur 20 ans (GWP₂₀). C'est le levier climatique le plus immédiat disponible — bien avant la décarbonation du CO₂ sur la même échelle de temps.<span class="badge b-ok">✅ GIEC AR6</span></p>
+      </div>
+      <div class="grid-card">
+        <div class="num" style="color:var(--rouge)">0</div>
+        <h3>Flux comptabilisés dans les inventaires</h3>
+        <p>Ces émissions ne sortent pas d'une cheminée ni d'un pot d'échappement — elles sortent du sol. Elles sont structurellement absentes des modèles CITEPA et des scénarios de transition.</p>
+      </div>
+      <div class="grid-card">
+        <div class="num">×10</div>
+        <h3>Facteur fumier non couvert vs méthanisé</h3>
+        <p>Un fumier non couvert émet jusqu'à 10× plus de CH₄ qu'un fumier méthanisé ou composté en conditions contrôlées.<span class="badge b-ok">✅ INRAE</span></p>
+      </div>
+    </div>
+
+    <h3 class="reveal">Le mécanisme physique : l'anaérobiose forcée</h3>
+    <p class="body reveal">La distinction essentielle est entre décomposition naturelle et décomposition amplifiée par concentration anthropique. Une forêt non exploitée décompose sa litière dans un cycle naturel fermé. Un fumier entassé sur 2 mètres dans une exploitation porcine intensive produit du CH₄ que l'écosystème local ne peut pas absorber. C'est ce second cas qui constitue l'angle mort climatique.</p>
+
+    <blockquote class="reveal">« La question n'est pas de savoir si une biomasse est naturelle, mais si son flux d'émission dépasse la capacité d'absorption de l'écosystème. Dès qu'un tas de biomasse produit plus de méthane que la forêt ne peut en absorber, il devient un déchet climatique qui doit être géré. »</blockquote>
+
+    <div class="box-ambre reveal">
+      <strong>Implication Programme Résilience :</strong> les 150 sites de pyrogazéification ne décarbonent pas seulement en substituant du bio-CH₄ aux fossiles — ils réduisent les émissions diffuses de méthane à la source. Ce double bénéfice (substitution + réduction diffuse) n'est pas encore intégré dans les calculs officiels. Le Programme Résilience propose l'ouverture d'un groupe de travail conjoint avec l'ADEME pour quantifier et certifier ce bénéfice additionnel.
+    </div>
+  </div>
+</section>
+
+<!-- PARTIE 2 — INVENTAIRE -->
+<section id="inventaire" class="alt">
+  <div class="container">
+    <div class="stag reveal">Partie 2 · Inventaire corrigé</div>
+    <h2 class="reveal">Ordres de grandeur <em>par flux</em></h2>
+    <p class="lead reveal">Les chiffres ci-dessous intègrent la correction technique validée : les déchets verts secs (branches, tontes sèches) n'émettent que 2–4 kg CH₄/t. Les estimations hautes ne sont valides que pour les fractions humides — biodéchets alimentaires, boues de STEP, tontes humides.</p>
+
+    <div class="tbl-wrap reveal">
+      <table>
+        <thead>
+          <tr>
+            <th>Flux de biomasse</th>
+            <th>Volume brut/an</th>
+            <th>Émission CH₄ diffuse</th>
+            <th>Qualification</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background:rgba(26,58,40,.5)">
+            <td colspan="4" style="color:var(--vert-clair);font-weight:500;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase">Biodéchets &amp; fractions organiques municipales</td>
+          </tr>
+          <tr>
+            <td>Déchets verts secs collectés en déchèterie</td>
+            <td>~5–6 Mt/an</td>
+            <td>2–4 kg CH₄/t <span class="badge b-ok">✅ CITEPA</span></td>
+            <td>Flux peu méthanogène (lignocellulose). Argument principal : réduction CO₂ par séquestration biochar, pas CH₄.</td>
+          </tr>
+          <tr>
+            <td>Biodéchets ménagers (restes alimentaires, tontes humides)</td>
+            <td>~6–8 Mt/an</td>
+            <td class="td-a">15–25 kg CH₄/t <span class="badge b-pl">🔬 ADEME</span></td>
+            <td>Fraction humide à fort potentiel méthanogène. <strong>C'est cette fraction qui justifie les estimations hautes</strong>, non les déchets verts secs seuls.</td>
+          </tr>
+          <tr>
+            <td>Boues de stations d'épuration (STEP) stockées</td>
+            <td>~1,1 Mt MS/an</td>
+            <td class="td-a">30–70 kg CH₄/t <span class="badge b-pl">🔬</span></td>
+            <td>Fort potentiel méthanogène. Synergies directes avec la chaleur fatale des sites de pyrogazéification pour séchage thermique préalable.</td>
+          </tr>
+          <tr class="tr-subtotal">
+            <td><strong>Total biodéchets municipaux</strong></td>
+            <td><strong>~12–15 Mt/an</strong></td>
+            <td><strong>~150–300 kt CH₄/an</strong> <span class="badge b-pl">🔬</span></td>
+            <td>≈ 13–25 Mt CO₂e (GWP₁₀₀) / 13–25 Mt CO₂e. <strong>Valide uniquement si fractions humides incluses.</strong></td>
+          </tr>
+          <tr style="background:rgba(26,58,40,.5)">
+            <td colspan="4" style="color:var(--vert-clair);font-weight:500;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase">Résidus agricoles &amp; effluents</td>
+          </tr>
+          <tr>
+            <td>Résidus agricoles (paille, cannes maïs — fraction mobilisable)</td>
+            <td>90–100 Mt/an brut <span class="badge b-ok">✅ ADEME/INRAE</span></td>
+            <td class="td-b">Variable selon gestion</td>
+            <td>50–60 % doit rester au sol (fertilité, érosion). Seul le surplus certifié constitue le gisement mobilisable.</td>
+          </tr>
+          <tr>
+            <td>Fumiers et effluents d'élevage non couverts</td>
+            <td>~450 Mt équiv. brut</td>
+            <td class="td-a">Facteur ×10 vs méthanisé <span class="badge b-ok">✅ INRAE</span></td>
+            <td>La méthanisation rapide capture 85–90 % du potentiel méthanogène. Gisement prioritaire pour les sites proches des zones d'élevage.</td>
+          </tr>
+          <tr style="background:rgba(26,58,40,.5)">
+            <td colspan="4" style="color:var(--vert-clair);font-weight:500;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase">Résidus forestiers</td>
+          </tr>
+          <tr>
+            <td>Rémanents forestiers (branches, cimes — fraction mobilisable)</td>
+            <td>20–30 Mt/an <span class="badge b-ok">✅ IGN/ADEME</span></td>
+            <td class="td-b">CH₄ zones humides surtout. Décomposition lente 5–10 ans.</td>
+            <td>Contrainte écologique forte. Le Programme Résilience ne cible que la fraction certifiée FSC/PEFC (~30–40 % du total brut).</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="box-vert reveal">
+      <strong>Message clé sur les chiffres :</strong> l'argument n'est pas « 300 000 t CH₄/an avec précision » — c'est « même les hypothèses basses conduisent à des volumes significatifs ». L'hypothèse basse (150 kt CH₄/an) convertie avec GWP₂₀ = 84 représente <strong>12,6 Mt CO₂e/an — près du double des émissions du transport aérien intérieur français (~5–6 Mt CO₂e/an, DGAC 2023)</strong>. Dans l'hypothèse haute (300 kt CH₄/an), le levier atteint 25,2 Mt CO₂e/an, soit quatre fois le transport aérien intérieur.
+    </div>
+  </div>
+</section>
+
+<!-- PARTIE 3 — ANGLE MORT -->
+<section id="anglemort">
+  <div class="container">
+    <div class="stag reveal">Partie 3 · L'angle mort</div>
+    <h2 class="reveal">Pourquoi ces émissions <em>ne sont pas comptées</em></h2>
+
+    <div class="tbl-wrap reveal">
+      <table>
+        <thead>
+          <tr>
+            <th>Raison</th>
+            <th>Mécanisme</th>
+            <th>Conséquence pour le Programme Résilience</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Émissions diffuses, non ponctuelles</td>
+            <td>Ne sortent pas d'une cheminée ou d'un pot d'échappement. Émises par le sol, les tas, les andains — hors périmètre des systèmes de mesure conventionnels.</td>
+            <td class="td-g">Les inventaires CITEPA sous-comptabilisent ce flux. Le gisement biogaz des 150 sites est sous-estimé dans les scénarios officiels — le Programme Résilience est plus vertueux que ses propres chiffres ne le montrent encore.</td>
+          </tr>
+          <tr>
+            <td>Confusion naturel / anthropique amplifié</td>
+            <td>On assimile un processus naturel à un processus naturel amplifié par concentration anthropique (tas >30 cm, zones d'élevage intensif).</td>
+            <td class="td-g">Argument politique fort : la pyrogazéification corrige un déséquilibre anthropique — elle ne prélève pas sur un écosystème naturel. Retourne le cadrage des opposants : refuser le projet revient à acter le statu quo du méthane libre.</td>
+          </tr>
+          <tr>
+            <td>Fragmentation des responsabilités</td>
+            <td>Ce flux relève simultanément de l'agriculture, des déchets, de l'aménagement du territoire et du climat — aucun ministère n'en est le propriétaire clair.</td>
+            <td class="td-g">Justifie précisément la Note Interministérielle V11 : pilotage centralisé Matignon, pas sectoriel.</td>
+          </tr>
+          <tr>
+            <td>Sensibilité politique des inventaires</td>
+            <td>Reconnaître ces émissions exigerait de réviser les inventaires, d'admettre que la biomasse n'est pas neutre par défaut, et de remettre en cause certaines pratiques agricoles et municipales.</td>
+            <td class="td-a">Argument pour la coalition France-Italie-Pologne à Bruxelles : si la biomasse non gérée est comptabilisée dans les inventaires EU, l'avantage climatique du bio-CH₄ est encore plus favorable. Le Programme Résilience recommande un groupe de travail ADEME-CITEPA avant la révision RED III 2026.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="body reveal">La conséquence pratique : les scénarios de transition — SNBC, RTE, AIE, GIEC — sous-estiment le bénéfice climatique réel de la gestion active des flux organiques. Le scénario central (~55–80 Mt CO₂e/an) est <em>probablement conservateur</em> — le bénéfice réel inclut la réduction d'émissions diffuses qui ne figure dans aucun inventaire actuel.</p>
+  </div>
+</section>
+
+<!-- PARTIE 4 — BILAN COMPARÉ -->
+<section id="bilan" class="alt">
+  <div class="container">
+    <div class="stag reveal">Partie 4 · Bilan comparé</div>
+    <h2 class="reveal">Quatre scénarios, <em>un seul bilan négatif</em></h2>
+
+    <div class="tbl-wrap reveal">
+      <table>
+        <thead>
+          <tr>
+            <th>Scénario de gestion</th>
+            <th>Réduction CH₄</th>
+            <th>Bilan carbone</th>
+            <th>Commentaire</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="tr-dark">
+            <td>Biomasse abandonnée — décomposition non gérée</td>
+            <td class="td-r">Référence — 100 % émissions</td>
+            <td>Référence 0</td>
+            <td>Situation actuelle pour une fraction importante des flux. Base 100 de l'angle mort.</td>
+          </tr>
+          <tr>
+            <td>Compostage ouvert (andain non ventilé)</td>
+            <td class="td-a">−60 à −80 % vs abandon</td>
+            <td>Réduction modeste</td>
+            <td>Amélioration réelle mais insuffisante. Compost bien ventilé : −90 %. Compost compacté : quasi nul.</td>
+          </tr>
+          <tr>
+            <td>Méthanisation contrôlée seule</td>
+            <td class="td-g">−85 à −90 % vs abandon <span class="badge b-ok">✅ INRAE</span></td>
+            <td>Gain important</td>
+            <td>Capture le CH₄, produit biogaz et digestat. Technologie mature TRL 8. Mais pas de séquestration carbone permanente.</td>
+          </tr>
+          <tr class="tr-best">
+            <td><strong>Pyrogazéification + biochar CDC V3</strong> ★ Programme Résilience</td>
+            <td class="td-g">Quasi nulles en process <span class="badge b-pl">🔬</span></td>
+            <td class="td-g"><strong>NÉGATIF net</strong> grâce au biochar</td>
+            <td>Bilan négatif = séquestration nette. 20–23 Mt CO₂/an net CDC V3. <strong>Seul scénario transformant un flux d'émissions en puits carbone certifiable.</strong> ACV indépendante recommandée pour la certification officielle.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="box-vert reveal">
+      <strong>Le seul scénario à bilan négatif :</strong> la pyrogazéification séquestre une fraction du carbone de la biomasse dans le biochar pendant >1 000 ans (fraction stable ~75 %, norme EBC Premium). La méthanisation seule est excellente sur la réduction CH₄ mais ne séquestre pas de carbone à long terme. C'est la combinaison pyrogazéification + biochar certifié CDC V3 qui rend le bilan potentiellement négatif.
+    </div>
+  </div>
+</section>
+
+<!-- PARTIE 5 — INTÉGRATION 150 SITES -->
+<section id="integration">
+  <div class="container">
+    <div class="stag reveal">Partie 5 · Intégration territoriale</div>
+    <h2 class="reveal">La cartographie des flux diffus<br><em>est la carte des 150 sites</em></h2>
+    <p class="lead reveal">La localisation optimale des 150 sites de pyrogazéification suit exactement la répartition des flux organiques non gérés. Ce n'est pas une logique industrielle descendante — c'est la logique du flux local dans un rayon de 50–100 km.</p>
+
+    <div class="tbl-wrap reveal">
+      <table>
+        <thead>
+          <tr>
+            <th>Flux diffus capté</th>
+            <th>Localisation optimale des sites</th>
+            <th>Intégration Programme Résilience V11</th>
+            <th>Statut</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Biodéchets municipaux + boues STEP</td>
+            <td>Périmètres urbains et péri-urbains. Distance max. 50 km pour la logistique.</td>
+            <td>Couplage énergétique sur sites hybrides : méthanisation des fractions très humides (&gt;60 % humidité) + pyrogazéification de la fraction séchée. La chaleur fatale du process assure le séchage thermique des boues de STEP.</td>
+            <td class="td-g">Synergies documentées. Sites pilotes GAYA/Salamandre incluent fraction organique. <span class="badge b-ok">✅ TRL 8</span></td>
+          </tr>
+          <tr>
+            <td>Fumiers et effluents élevage</td>
+            <td>Bretagne (porcs, volailles), Normandie (bovins), Pays de la Loire, Grand Est.</td>
+            <td>Sites à vocation agro-industrielle. Chaleur fatale pour séchage des fumiers avant gazéification. Biochar enrichi minéraux retournant aux sols agricoles.</td>
+            <td class="td-g">Logique de proximité intégrée dans le zoning des 150 sites V11. Facteur ×10 CH₄ évité = bénéfice climatique immédiat. <span class="badge b-ok">✅</span></td>
+          </tr>
+          <tr>
+            <td>Résidus agricoles (fraction mobilisable)</td>
+            <td>Beauce, Champagne, Picardie, Aquitaine. Fraction mobilisable après retour sol obligatoire (~50 %).</td>
+            <td>Alimentation en biomasse sèche lignocellulosique = combustible primaire du process. Représente 130–160 TWh/an du scénario central V11.</td>
+            <td class="td-g">Conforme ADEME/INRAE. Contrainte retour au sol intégrée dans le calcul V11. <span class="badge b-ok">✅</span></td>
+          </tr>
+          <tr>
+            <td>Rémanents forestiers (fraction certifiée)</td>
+            <td>Landes, Vosges, Massif Central, Jura, Pyrénées. Proximité routes forestières.</td>
+            <td>Sites sylvo-industriels. Certification FSC/PEFC obligatoire. Biochar co-produit retourne en forêt = boucle carbone fermée.</td>
+            <td class="td-g">Contrainte certification intégrée dès V10. IGN confirme 30–40 % mobilisable sans impact sol. <span class="badge b-ok">✅</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="box-vert reveal">
+      <strong>Le principe de légitimité écologique :</strong> les 150 sites de pyrogazéification ne « prélèvent » pas sur la nature — ils gèrent des flux organiques qui se décomposeraient de toute façon en émettant du méthane. C'est la différence entre extraction et gestion. Cette formulation retourne l'argument des opposants : critiquer la pyrogazéification revient à préférer que la biomasse émette du méthane librement dans l'atmosphère.
+    </div>
+  </div>
+</section>
+
+<!-- PARTIE 6 — IMPLICATIONS -->
+<section id="implications" class="alt">
+  <div class="container">
+    <div class="stag reveal">Partie 6 · Implications corpus V11</div>
+    <h2 class="reveal">Ce que cela change<br><em>pour les arguments</em></h2>
+
+    <div class="grid3 reveal">
+      <div class="grid-card">
+        <h3>Argument de réduction carbone</h3>
+        <p>Le bénéfice net est sous-estimé si les émissions diffuses évitées ne sont pas comptabilisées. Le Programme Résilience propose l'ouverture d'un groupe de travail conjoint avec l'ADEME pour intégrer ce double bénéfice dans une ACV officielle.</p>
+      </div>
+      <div class="grid-card">
+        <h3>Argument de légitimité écologique</h3>
+        <p>La pyrogazéification corrige un déséquilibre anthropique, elle ne crée pas de ponction sur un écosystème naturel. Cet argument est inattaquable face aux critiques écologistes bien informées.</p>
+      </div>
+      <div class="grid-card">
+        <h3>Argument de politique industrielle</h3>
+        <p>La cartographie des flux diffus est la carte d'implantation optimale des 150 sites. Le déploiement territorial suit la logique des flux organiques locaux — pas une logique descendante.</p>
+      </div>
+    </div>
+
+    <h3 class="reveal">Un ordre de grandeur percutant pour les décideurs</h3>
+    <p class="body reveal">Même l'hypothèse basse du gisement — 150 kt CH₄/an — convertie avec le GWP₂₀ de 84, représente <strong>12,6 Mt CO₂e/an : près du double des émissions annuelles du transport aérien intérieur français (~5–6 Mt CO₂e/an, DGAC 2023).</strong> Dans l'hypothèse haute (300 kt CH₄/an), le levier atteint 25,2 Mt CO₂e/an, soit quatre fois le transport aérien intérieur.</p>
+    <p class="body reveal">La gestion active des flux organiques non gérés est un levier climatique de court terme que la décarbonation de l'aviation seule ne peut pas atteindre sur la même échelle de temps — avec des co-bénéfices (énergie, fertilité des sols, sécurité sanitaire) que l'aviation ne peut pas produire.</p>
+
+    <div class="box-ambre reveal">
+      <strong>Note pour la coalition Bruxelles :</strong> si la biomasse non gérée est comptabilisée dans les inventaires EU, l'avantage climatique du bio-CH₄ vs kérosène et H₂ est encore plus favorable. Le Programme Résilience recommande l'ouverture d'un groupe de travail ADEME-CITEPA sur ce sujet avant la révision RED III 2026. Cet argument renforce le principe de neutralité technologique défendu à Bruxelles.
+    </div>
+  </div>
+</section>
+
+<!-- CONCLUSION -->
+<section id="conclusion">
+  <div class="container">
+    <div class="stag reveal">Conclusion</div>
+    <h2 class="reveal">Un angle mort à transformer<br><em>en argument central</em></h2>
+
+    <div class="conclusion-box reveal">
+      <h3>Message aux décideurs</h3>
+      <p>La transition énergétique est souvent présentée comme un problème d'approvisionnement — comment produire plus d'énergie propre. Le Programme Résilience V11 propose une approche complémentaire : <strong>gérer activement les flux organiques existants</strong> pour éviter qu'ils émettent du méthane dans l'atmosphère.</p>
+      <p style="margin-top:.9rem">Ce n'est pas exploiter la nature — c'est corriger les conséquences d'une mauvaise gestion passée. Les émissions diffuses de biomasse non gérée représentent simultanément <strong>un gisement énergétique perdu, un levier climatique majeur sur 20 ans, un enjeu de souveraineté, un argument de légitimité écologique pour la pyrogazéification</strong> et un angle mort des inventaires officiels qui rend le Programme Résilience plus vertueux que ses propres chiffres ne le montrent encore.</p>
+    </div>
+
+    <div style="margin-top:3rem;display:flex;gap:1.2rem;flex-wrap:wrap" class="reveal">
+      <a href="index.html#annexes" class="btn btn-outline">← Retour aux annexes</a>
+      <a href="index.html#solutions" class="btn btn-primary">Voir les 150 sites →</a>
+    </div>
+  </div>
+</section>
+
+<!-- SOURCES -->
+<section style="padding:3rem;background:rgba(5,10,7,.8)">
+  <div class="container">
+    <p style="font-size:.75rem;color:var(--gris);line-height:1.85">
+      <strong style="color:rgba(240,244,241,.5)">Sources :</strong>
+      GIEC AR5/AR6 — GWP₂₀ CH₄ = 84 (AR5), 81–83 (AR6) ·
+      ADEME SINOE — Déchets verts collectés (~5–6 Mt/an) et biodéchets ménagers ·
+      CITEPA — Inventaires émissions diffuses biomasse, facteur 2–4 kg CH₄/t déchets verts secs ·
+      INRAE — Émissions effluents d'élevage, facteur ×10 fumier méthanisé vs non couvert ·
+      IGN IFN 2024 — Rémanents forestiers 20–30 Mt/an ·
+      ADEME/INRAE Biomasse 2030 — Résidus agricoles 90–100 Mt/an gisement brut ·
+      EBC v10.1 — Permanence biochar, fraction stable ~75 % sur >1 000 ans ·
+      DGAC 2023 — Émissions transport aérien intérieur ~5–6 Mt CO₂e/an ·
+      Programme Résilience V11 (mai 2026) — 150 sites, 262 TWh/an, 20–23 Mt CO₂/an biochar CDC V3
+    </p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Programme Résilience V11</div>
+  <p>Annexe A5 — Émissions diffuses de biomasse non gérée · Contribution citoyenne élaborée avec le soutien d'intelligences artificielles. Mai 2026. Diffusion libre.</p>
+  <p style="margin-top:.5rem;font-size:.7rem;color:#3a5044">Sources : GIEC AR6 · ADEME · CITEPA · INRAE · IGN IFN 2024 · EBC v10.1 · CDC Biochar V3 2026 · DGAC 2023</p>
+</footer>
+
+<script>
+document.documentElement.style.scrollBehavior='auto';
+window.scrollTo(0,0);
+window.addEventListener('load',function(){
+  window.scrollTo(0,0);
+  setTimeout(function(){document.documentElement.style.scrollBehavior='';},50);
+});
+const obs=new IntersectionObserver((entries)=>{
+  entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*65);obs.unobserve(e.target);}});
+},{threshold:0.07});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
