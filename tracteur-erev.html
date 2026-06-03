@@ -169,6 +169,53 @@ footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;li
   </div>
 </section>
 
+
+<!-- PARTIE 2 bis — BATTERIE -->
+<section>
+  <div class="container">
+    <div class="stag reveal">Architecture ÉREV — Batterie tampon</div>
+    <h2 class="reveal">La batterie :<br><em>gestionnaire de puissance, pas réservoir d'autonomie</em></h2>
+    <p class="lead reveal">Le tracteur ÉREV embarque une batterie LFP de 60–80 kWh. Son rôle n'est pas d'étendre l'autonomie — c'est de gérer les pics de puissance, d'assurer les trajets ferme ↔ champ sans Rex, et d'autoriser un fonctionnement silencieux en zones sensibles.</p>
+
+    <div class="tbl-wrap reveal">
+      <table>
+        <thead><tr><th>Composant</th><th>Valeur</th><th>Qualification</th></tr></thead>
+        <tbody>
+          <tr><td>Batterie LFP (LiFePO4)</td><td class="td-g">60–80 kWh net</td><td>Chimie phosphate de fer · Pas de risque thermique · 3 000 cycles · Robustesse prioritaire sur densité <span class="bq b-ok">✅ Standard industrie</span></td></tr>
+          <tr><td>Trajets ferme ↔ champ à vide</td><td class="td-g">Couverts par batterie seule</td><td>3–5 km aller-retour × 40 kW = 10–15 kWh max · Rex ne démarre pas · Zéro consommation bio-GNV pour les déplacements légers <span class="bq b-ok">✅ Calcul direct</span></td></tr>
+          <tr><td>Trajets chargés (remorque pleine)</td><td>Rex s'enclenche automatiquement</td><td>Demande > seuil batterie → Rex démarré automatiquement · Transparent pour le conducteur <span class="bq b-ok">✅</span></td></tr>
+          <tr><td>Pics de puissance <span class="bq b-ok">✅</span></td><td class="td-g">200–300 kW pendant 20–30 s</td><td>Entrée en terre dure · Montée en côte chargée · Engagement d'outil lourd · La batterie fournit instantanément ce que le Rex seul ne peut pas couvrir — sans la latence turbo du diesel (0,5–1 s)</td></tr>
+          <tr><td>Mode ZEV silencieux <span class="bq b-est">🔬</span></td><td>1–2 h</td><td>Travail en bâtiment · Stabulation · Maraîchage bio · Traitement nocturne · Rex éteint = zéro bruit, zéro émission · Batterie seule</td></tr>
+          <tr><td>Démarrage à froid −20°C</td><td>Résistance chauffante batterie</td><td>LFP préchauffée avant démarrage Rex · Élimine le problème du démarrage difficile en hiver <span class="bq b-ok">✅</span></td></tr>
+          <tr><td>Micro-générateur BOG (option LGN)</td><td>~58 W pendant stockage</td><td>Maintient la batterie chargée pendant les arrêts prolongés sans branchement réseau · Valorise le boil-off <span class="bq b-est">🔬</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="box box-vert reveal">
+      <strong>L'avantage décisif sur le diesel — les pics de puissance :</strong> un diesel en traction ne peut pas dépasser sa puissance nominale. La batterie de l'ÉREV fournit 200–300 kW pendant 20–30 secondes sur n'importe quel événement de charge, instantanément. En labour, la batterie absorbe les chocs de sol et les irrégularités de terrain sans que le conducteur ne le ressente. En montée, la batterie double la puissance disponible pendant les 20–30 secondes critiques. C'est l'équivalent d'un "turbo électrique" permanent. <span class="bq b-ok">✅ Physique moteur électrique</span>
+    </div>
+
+    <div class="grid3 reveal" style="margin-top:1.5rem">
+      <div class="card">
+        <div class="num">10–15 kWh</div>
+        <h3>Trajet ferme ↔ champ</h3>
+        <p>3–5 km aller-retour à 40 kW. Rex ne démarre pas. Zéro consommation bio-GNV pour les déplacements sans charge. <span class="bq b-ok">✅</span></p>
+      </div>
+      <div class="card">
+        <div class="num">200–300 kW</div>
+        <h3>Puissance pic instantanée</h3>
+        <p>Pendant 20–30 secondes sur événement difficile. Sans latence, sans à-coup. Impossible avec un diesel seul. <span class="bq b-ok">✅ Physique électrique</span></p>
+      </div>
+      <div class="card">
+        <div class="num">1–2 h</div>
+        <h3>Mode ZEV silencieux <span class="bq b-est">🔬</span></h3>
+        <p>Bâtiment, stabulation, maraîchage bio, traitement nocturne. Rex éteint. Zéro bruit, zéro émission locale.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- PARTIE 3 — 3 OPTIONS RÉSERVOIRS -->
 <section>
   <div class="container">
