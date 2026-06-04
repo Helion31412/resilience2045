@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gestion écologique active des forêts · Programme Résilience V11</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --noir:#0a0f0d;--foret:#0d1f17;--vert-prof:#1a3a28;--vert-med:#2d6a4f;
+  --vert-vif:#52b788;--vert-clair:#95d5b2;--terre:#a0522d;--ambre:#e9c46a;
+  --rouge:#c0392b;--bleu:#2980b9;--blanc:#f0f4f1;--gris:#8a9e93;
+  --serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--noir);color:var(--blanc);font-family:var(--sans);font-weight:300;line-height:1.7;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:.9rem 2.5rem;background:rgba(10,15,13,.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(82,183,136,.12)}
+.nav-logo{font-family:var(--serif);font-size:1.15rem;font-weight:600;color:var(--vert-vif);text-decoration:none}
+.nav-back{color:var(--gris);text-decoration:none;font-size:.72rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;transition:color .3s}
+.nav-back:hover{color:var(--vert-vif)}
+.nav-tag{font-size:.65rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--ambre);background:rgba(233,196,106,.12);border:1px solid rgba(233,196,106,.25);padding:.2rem .7rem}
+/* HERO */
+#hero{min-height:52vh;display:flex;align-items:center;padding:8rem 3rem 4rem;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 30% 50%,rgba(29,90,54,.25) 0%,transparent 70%),linear-gradient(135deg,#0a0f0d 0%,#0d1f17 50%,#060e09 100%)}
+.hero-grid{position:absolute;inset:0;opacity:.04;background-image:linear-gradient(var(--vert-vif) 1px,transparent 1px),linear-gradient(90deg,var(--vert-vif) 1px,transparent 1px);background-size:55px 55px}
+.hero-content{position:relative;z-index:1;max-width:780px}
+.hero-tag{display:inline-block;border:1px solid var(--ambre);color:var(--ambre);font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;padding:.3rem .85rem;margin-bottom:1.4rem}
+h1{font-family:var(--serif);font-size:clamp(2rem,4.5vw,3.8rem);font-weight:300;line-height:1.1;margin-bottom:1rem}
+h1 em{font-style:italic;color:var(--vert-vif)}
+.hero-sub{font-size:.95rem;color:rgba(240,244,241,.65);max-width:600px;line-height:1.85;margin-top:1rem}
+/* METHO */
+.metho-bar{background:rgba(82,183,136,.07);border:1px solid rgba(82,183,136,.2);border-left:4px solid var(--vert-vif);padding:1.2rem 2rem}
+.metho-bar p{font-size:.83rem;color:rgba(240,244,241,.72);line-height:1.7}
+.metho-bar strong{color:var(--vert-vif)}
+/* SECTIONS */
+section{padding:4.5rem 3rem}
+.container{max-width:1100px;margin:0 auto}
+.alt{background:var(--foret)}
+.stag{font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--vert-vif);margin-bottom:.6rem}
+h2{font-family:var(--serif);font-size:clamp(1.6rem,2.8vw,2.4rem);font-weight:300;line-height:1.15;margin-bottom:.9rem}
+h2 em{font-style:italic;color:var(--vert-vif)}
+h3{font-family:var(--serif);font-size:1.2rem;font-weight:400;color:var(--vert-clair);margin:1.6rem 0 .5rem}
+.lead{font-size:.95rem;color:rgba(240,244,241,.68);max-width:680px;line-height:1.85;margin-bottom:1.2rem}
+p.body{font-size:.88rem;color:rgba(240,244,241,.65);line-height:1.85;margin-bottom:.8rem;max-width:820px}
+/* GRILLE 3 COLONNES */
+.grille3{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0;margin:1.8rem 0;border:1px solid rgba(82,183,136,.15)}
+.grille-col{padding:1.6rem}
+.grille-col.vert{background:rgba(29,58,40,.35);border-right:1px solid rgba(82,183,136,.15)}
+.grille-col.ambre{background:rgba(233,196,106,.06);border-right:1px solid rgba(233,196,106,.15)}
+.grille-col.bleu{background:rgba(41,128,185,.06)}
+.grille-col h3{margin-top:0;margin-bottom:1rem;font-size:1.1rem}
+.grille-col.vert h3{color:var(--vert-vif)}
+.grille-col.ambre h3{color:var(--ambre)}
+.grille-col.bleu h3{color:#74b9e8}
+.grille-etiquette{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:.25rem .7rem;margin-bottom:.8rem}
+.et-vert{background:rgba(82,183,136,.2);color:var(--vert-vif);border:1px solid rgba(82,183,136,.35)}
+.et-ambre{background:rgba(233,196,106,.15);color:var(--ambre);border:1px solid rgba(233,196,106,.35)}
+.et-bleu{background:rgba(41,128,185,.15);color:#74b9e8;border:1px solid rgba(41,128,185,.35)}
+.grille-item{display:flex;gap:.7rem;margin-bottom:.7rem;font-size:.84rem;color:rgba(240,244,241,.72);line-height:1.55}
+.grille-item strong{color:var(--blanc);font-weight:500;min-width:0}
+.principe{font-size:.78rem;font-style:italic;margin-top:1rem;padding-top:.8rem;border-top:1px solid rgba(255,255,255,.08);color:rgba(240,244,241,.45)}
+/* TABLEAUX */
+.tbl-wrap{overflow-x:auto;margin:1.8rem 0}
+table{width:100%;border-collapse:collapse;font-size:.8rem}
+thead tr{background:rgba(26,58,40,.9)}
+thead th{padding:.8rem 1rem;text-align:left;color:var(--vert-clair);font-weight:500;letter-spacing:.07em;font-size:.72rem;text-transform:uppercase;border-bottom:2px solid var(--vert-vif)}
+tbody tr{border-bottom:1px solid rgba(82,183,136,.08);transition:background .2s}
+tbody tr:hover{background:rgba(13,31,23,.5)}
+tbody td{padding:.7rem 1rem;color:rgba(240,244,241,.72);vertical-align:top;line-height:1.5}
+tbody td:first-child{color:var(--blanc);font-weight:400}
+.td-g{color:var(--vert-vif)!important;font-weight:500}
+.td-r{color:#e74c3c!important;font-weight:500}
+.td-a{color:var(--ambre)!important;font-weight:500}
+.td-b{color:#74b9e8!important}
+.tr-ok td{background:rgba(29,58,40,.35)!important}
+.tr-warn td{background:rgba(233,196,106,.06)!important}
+.tr-danger td{background:rgba(192,57,43,.06)!important}
+/* ENCADRÉS */
+.box{padding:1.2rem 1.6rem;margin:1.5rem 0;font-size:.86rem;line-height:1.7}
+.box-vert{background:rgba(29,58,40,.35);border:1px solid rgba(82,183,136,.22);border-left:4px solid var(--vert-vif)}
+.box-vert strong{color:var(--vert-vif)}
+.box-ambre{background:rgba(233,196,106,.06);border:1px solid rgba(233,196,106,.22);border-left:4px solid var(--ambre)}
+.box-ambre strong{color:var(--ambre)}
+.box-rouge{background:rgba(192,57,43,.06);border:1px solid rgba(192,57,43,.18);border-left:4px solid var(--rouge);font-size:.82rem}
+.box-rouge strong{color:#e57368}
+.box-bleu{background:rgba(41,128,185,.07);border:1px solid rgba(41,128,185,.2);border-left:4px solid var(--bleu)}
+.box-bleu strong{color:#74b9e8}
+/* Q/R */
+.qr-item{border-bottom:1px solid rgba(82,183,136,.1);padding:1rem 0}
+.qr-q{font-size:.88rem;font-weight:500;color:var(--ambre);margin-bottom:.5rem;cursor:pointer;display:flex;align-items:center;gap:.6rem}
+.qr-q::before{content:'Q';font-size:.65rem;font-weight:700;background:rgba(233,196,106,.2);border:1px solid rgba(233,196,106,.35);padding:.15rem .45rem;letter-spacing:.08em;flex-shrink:0}
+.qr-r{font-size:.84rem;color:rgba(240,244,241,.65);line-height:1.75;padding-left:1.6rem;display:none}
+.qr-r.open{display:block}
+.qr-r::before{content:'R — ';color:var(--vert-vif);font-weight:500}
+/* RENVOIS */
+.renvoi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin:1.8rem 0}
+.renvoi-card{padding:1.2rem 1.4rem;border:1px solid rgba(82,183,136,.15);background:rgba(10,15,13,.5);text-decoration:none;transition:border-color .3s,background .3s;display:block}
+.renvoi-card:hover{border-color:var(--vert-vif);background:rgba(29,58,40,.25)}
+.renvoi-card .rc-tag{font-size:.62rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--vert-vif);margin-bottom:.4rem}
+.renvoi-card .rc-title{font-family:var(--serif);font-size:1rem;color:var(--blanc);margin-bottom:.3rem}
+.renvoi-card .rc-desc{font-size:.78rem;color:rgba(240,244,241,.5);line-height:1.5}
+/* BOUTONS */
+.btn{display:inline-block;padding:.7rem 1.5rem;font-family:var(--sans);font-size:.76rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:all .3s}
+.btn-outline{background:transparent;color:var(--blanc);border:1px solid rgba(240,244,241,.28)}
+.btn-outline:hover{border-color:var(--vert-vif);color:var(--vert-vif)}
+/* ANIM */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s ease}
+.reveal.visible{opacity:1;transform:none}
+footer{background:#050a07;padding:2.5rem 3rem;text-align:center;border-top:1px solid rgba(82,183,136,.08)}
+.footer-logo{font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--vert-vif);margin-bottom:.4rem}
+footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;line-height:1.7}
+@media(max-width:700px){nav{padding:.85rem 1.3rem}section{padding:3rem 1.3rem}h1{font-size:2rem}.grille3{grid-template-columns:1fr}.grille-col{border-right:none!important;border-bottom:1px solid rgba(82,183,136,.1)}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">Programme Résilience V11</a>
+  <div style="display:flex;align-items:center;gap:1.2rem">
+    <span class="nav-tag">Filière biomasse · Niveau 3</span>
+    <a href="index.html#biomasse" class="nav-back">← Retour</a>
+  </div>
+</nav>
+
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Forêts · Bocages · Biochar · BioGNV</div>
+    <h1>Gestion écologique<br><em>active des forêts</em></h1>
+    <p class="hero-sub">Sortir de l'opposition stérile entre exploitation industrielle et sanctuarisation totale. Ce cadre opérationnel définit ce que la biodiversité est réellement — un état fonctionnel mesurable — et en déduit une règle simple : on laisse ce qui structure, on gère ce qui bloque, on valorise ce qui se perd.</p>
+  </div>
+</section>
+
+<div class="metho-bar">
+  <div class="container">
+    <p><strong>Compatibilité V11 confirmée ✅</strong> — Total bio-CH₄ : <strong>262 TWh/an</strong> · Biochar séquestration : <strong>~23 Mt CO₂/an</strong> (fourchette V11 : 20–23 Mt). Les seuils écologiques sont des <strong>fourchettes indicatives</strong> issues de la littérature européenne (IFN 2024 · ONF · Forest Europe SFM Indicators 2020 · INRAE) — ils varient selon le type de forêt, le climat, l'altitude et l'essence dominante.</p>
+  </div>
+</div>
+
+<!-- PRINCIPE FONDATEUR -->
+<section>
+  <div class="container">
+    <div class="stag reveal">Principe fondateur</div>
+    <h2 class="reveal">La biodiversité :<br><em>un état fonctionnel, pas un désordre maximal</em></h2>
+    <p class="lead reveal">Une forêt non gérée n'est pas automatiquement plus biodiversifiée. Elle peut devenir écologiquement fragile, socialement dangereuse et climatiquement contre-productive.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin:1.8rem 0" class="reveal">
+      <div class="box box-rouge">
+        <strong>La biodiversité N'EST PAS :</strong><br>
+        une accumulation illimitée de biomasse morte ·
+        une interdiction d'intervention humaine ·
+        une photographie figée d'un instant écologique ·
+        une justification morale de l'inaction.<br><br>
+        Ces approches augmentent les incendies, les parasites, les zoonoses et les pertes de carbone à moyen terme.
+      </div>
+      <div class="box box-vert">
+        <strong>La biodiversité EST :</strong><br>
+        la capacité durable d'un écosystème à se régénérer ·
+        maintenir des habitats diversifiés ·
+        stocker du carbone dans le temps long ·
+        résister aux perturbations (climat, feu, maladies) ·
+        coexister avec les usages humains.<br><br>
+        <strong>C'est une propriété dynamique, pas un stock.</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GRILLE OPÉRATIONNELLE -->
+<section class="alt">
+  <div class="container">
+    <div class="stag reveal">Grille opérationnelle</div>
+    <h2 class="reveal">Quoi laisser ·<br><em>Quoi gérer · Quoi valoriser</em></h2>
+    <p class="lead reveal">Trois catégories distinctes, trois logiques d'action. Cette grille permet de répondre à n'importe quelle objection en moins de 30 secondes.</p>
+
+    <div class="grille3 reveal">
+      <div class="grille-col vert">
+        <div class="grille-etiquette et-vert">🟢 À laisser — sanctuariser</div>
+        <h3>Ce qui est structurant</h3>
+        <div class="grille-item"><strong>Gros bois morts > 30–40 cm</strong> — micro-habitats, cavités, insectes saproxyliques · Seuil garanti : 20–30 m³/ha</div>
+        <div class="grille-item"><strong>Arbres-habitats remarquables</strong> — jamais exploités, biodiversité irremplaçable</div>
+        <div class="grille-item"><strong>Litière de feuilles</strong> — vie du sol, humus, eau · aucun prélèvement</div>
+        <div class="grille-item"><strong>Bois mort ancien intégré au sol</strong> — cycle lent du carbone · non mobilisable</div>
+        <div class="grille-item"><strong>Zones humides, ripisylves</strong> — refuges climatiques · zéro intervention</div>
+        <div class="principe">Ce qui est lent, rare et structurant n'est jamais une ressource.</div>
+      </div>
+      <div class="grille-col ambre">
+        <div class="grille-etiquette et-ambre">🟡 À gérer — maîtriser</div>
+        <h3>Ce qui bloque si on l'abandonne</h3>
+        <div class="grille-item"><strong>Ronciers continus</strong> — blocage régénération, tiques · mosaïque + ouvertures</div>
+        <div class="grille-item"><strong>Fougères en nappe</strong> — sol stérilisé, succession bloquée · régression contrôlée</div>
+        <div class="grille-item"><strong>Bois mort fin excessif</strong> — incendies, pathogènes · réduction ciblée</div>
+        <div class="grille-item"><strong>Arbres dominés en excès</strong> — peuplements faibles · éclaircies sélectives</div>
+        <div class="grille-item"><strong>Biomasse fine accumulée</strong> — combustible · export partiel</div>
+        <div class="principe">Un excès de biomasse n'est pas de la biodiversité, c'est un risque.</div>
+      </div>
+      <div class="grille-col bleu">
+        <div class="grille-etiquette et-bleu">🔵 À valoriser — transformer</div>
+        <h3>Ce qui se perdrait sans filière</h3>
+        <div class="grille-item"><strong>Rémanents fins 5–20 cm</strong> — peu d'intérêt écologique long · pyrogazification</div>
+        <div class="grille-item"><strong>Bois morts récents diffus</strong> — flux carbone rapide · Bio-GNV + biochar</div>
+        <div class="grille-item"><strong>Chablis non structurants</strong> — risque sanitaire · traitement local</div>
+        <div class="grille-item"><strong>Résidus agricoles</strong> — déchets à forte valeur · méthanisation</div>
+        <div class="grille-item"><strong>Déchets forestiers pauvres</strong> — inutilisés aujourd'hui · gaz + carbone stable</div>
+        <div class="principe">Ce qui va se décomposer vite peut être stabilisé utilement.</div>
+      </div>
+    </div>
+
+    <div class="box box-vert reveal" style="margin-top:2rem">
+      <strong>Règle d'or :</strong> On laisse ce qui structure, on gère ce qui bloque, on valorise ce qui se perd. La biodiversité n'est pas maximisée par l'abandon, mais par une gestion fondée sur des seuils mesurables, des objectifs clairs et une fermeture réelle de la boucle carbone.
+    </div>
+  </div>
+</section>
+
+<!-- SEUILS ÉCOLOGIQUES -->
+<section>
+  <div class="container">
+    <div class="stag reveal">Seuils écologiques</div>
+    <h2 class="reveal">Des fourchettes indicatives,<br><em>pas des dogmes</em></h2>
+    <p class="lead reveal">Ces valeurs sont issues de la littérature forestière européenne (IFN, ONF, Forest Europe). Elles varient selon le type de forêt, le climat et l'essence dominante — une chênaie atlantique et une pinède méditerranéenne n'ont pas les mêmes profils de risque. Elles définissent une logique de gestion conditionnelle, pas des absolus réglementaires.</p>
+
+    <div class="tbl-wrap reveal">
+      <table>
+        <thead><tr><th>Volume bois mort (m³/ha)</th><th>Statut</th><th>Action</th><th>Qualification</th></tr></thead>
+        <tbody>
+          <tr class="tr-danger"><td>< 15 m³/ha</td><td class="td-r">Sous-optimal écologique</td><td>Interdiction d'exploiter davantage · Restauration nécessaire</td><td>Conservation prioritaire</td></tr>
+          <tr class="tr-ok"><td>15–40 m³/ha</td><td class="td-g">Zone fonctionnelle optimale</td><td>Prélèvements ciblés < 10–12 cm autorisés · Gros bois intouchables</td><td>Fourchette cible biodiversité / résilience</td></tr>
+          <tr class="tr-warn"><td>40–60 m³/ha</td><td class="td-a">Zone de vigilance</td><td>Suivi annuel · Réduction progressive recommandée</td><td>Risque incendie variable selon zone climatique</td></tr>
+          <tr class="tr-danger"><td>> 60 m³/ha</td><td class="td-r">Intervention justifiée</td><td>Dans les zones soumises à risque élevé d'incendie, de dépérissement ou d'échec de régénération, l'absence d'intervention peut devenir écologiquement contre-productive</td><td>Priorité zones méditerranéennes et exposées</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="box box-ambre reveal">
+      <strong>Diamètre cible pour la valorisation :</strong> la cible prioritaire pour le BioGNV et le biochar est la biomasse fine et étouffante <strong>&lt; 10–12 cm</strong> (rémanents de coupes, branches dépérissantes, bois mort récent diffus qui fait office de combustible). Les troncs et bois morts <strong>&gt; 20 cm sont conservés intégralement</strong> — c'est là que se concentrent 80 % des espèces saproxyliques patrimoniales. <span style="color:rgba(240,244,241,.55)">[Forest Europe SFM Indicators 2020 · IFN 2024]</span>
+    </div>
+
+    <h3 class="reveal">Seuils par milieu</h3>
+    <div class="tbl-wrap reveal">
+      <table>
+        <thead><tr><th>Milieu</th><th>Surface France</th><th>Vol. cible (m³/ha)</th><th>Exploitable GNV/Biochar</th><th>Conservation stricte</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Forêt domaniale feuillue</strong></td><td>1,3 M ha</td><td class="td-g">20–40</td><td>5–15 m³/ha (5–20 cm)</td><td>>25 cm diam.</td></tr>
+          <tr><td><strong>Forêts privées</strong></td><td>5,5 M ha</td><td class="td-g">15–30</td><td>3–10 m³/ha</td><td>>25 cm diam.</td></tr>
+          <tr><td><strong>Bocages / haies</strong></td><td>1,5 M ha</td><td class="td-g">2–5</td><td>1–2 m³/ha/an</td><td>Troncs, bosquets</td></tr>
+          <tr><td><strong>Friches / landes</strong></td><td>2 M ha</td><td class="td-g">10–30</td><td>5–15 m³/ha (<20 cm)</td><td>Bosquets isolés</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- INCENDIES / SANTÉ -->
+<section class="alt">
+  <div class="container">
+    <div class="stag reveal">Risques systémiques</div>
+    <h2 class="reveal">Incendies · Santé ·<br><em>Régénération</em></h2>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.2rem;margin:1.8rem 0" class="reveal">
+      <div class="box box-rouge">
+        <strong>Incendies — risque physique, pas idéologique</strong><br><br>
+        Continuité horizontale + verticale = allumage explosif · Bois mort fin sec < 10 cm = accélérateur thermique.<br><br>
+        Ce risque est prépondérant dans les zones méditerranéennes et en contexte de sécheresse prolongée (seuil critique ~40–50 m³/ha). Dans les forêts tempérées humides (Morvan, Vosges, Jura, forêts atlantiques), le seuil incendie est plus haut — mais le risque de dépérissement et d'échec de régénération demeure réel.<br><br>
+        Une forêt qui brûle perd 100 % du carbone stocké.
+      </div>
+      <div class="box box-ambre">
+        <strong>Santé publique — signaux d'alerte</strong><br><br>
+        <strong>Tiques :</strong> leur prolifération est multi-facteurs (fermeture des sous-bois, microclimat humide, cervidés, sangliers, climat). La fermeture des sous-bois est un facteur aggravant parmi d'autres — ne pas en faire l'argument central.<br><br>
+        <strong>Sangliers :</strong> la surdensité résulte principalement de l'absence de prédateurs, des pratiques de chasse et de l'agrainage. La fermeture des sous-bois est un facteur secondaire d'habitat. Conséquence réelle : destruction des semis et échec de régénération.
+      </div>
+      <div class="box box-vert">
+        <strong>Régénération — l'indicateur oublié</strong><br><br>
+        Taux de mortalité juvénile acceptable : <strong>&lt; 20–25 %</strong>.<br>
+        Souvent observé en forêts peu entretenues : ~50 % et plus.<br><br>
+        Causes combinées : concurrence biomasse morte, fermeture du sol, stress hydrique, pression animale.<br><br>
+        Une forêt qui ne se régénère pas n'est pas durable, même « naturelle ».
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FILIÈRE BILAN BIOMASSE -->
+<section>
+  <div class="container">
+    <div class="stag reveal">Bilan biomasse national</div>
+    <h2 class="reveal">262 TWh/an ·<br><em>aligné V11 central</em></h2>
+    <p class="lead reveal">Le tableau ci-dessous intègre l'ensemble des filières identifiées dans le Programme Résilience V11, incluant les deux sources récemment ajoutées (CIVE et pailles grandes cultures). La séquestration biochar est dans la fourchette V11 de 20–23 Mt CO₂/an.</p>
+
+    <div class="tbl-wrap reveal">
+      <table>
+        <thead><tr><th>Ressource</th><th>Voie</th><th>Gaz (TWh/an)</th><th>Biochar (Mt/an)</th><th>CO₂ séquestré (Mt/an)</th></tr></thead>
+        <tbody>
+          <tr><td>Effluents d'élevage</td><td>Méthanisation</td><td>60</td><td>—</td><td>~0,8</td></tr>
+          <tr><td>Résidus agricoles</td><td>Pyrolyse</td><td>40</td><td>~3,0</td><td>~9,0</td></tr>
+          <tr><td>Déchets agro-alimentaires</td><td>Méthanisation</td><td>20</td><td>—</td><td>~0,3</td></tr>
+          <tr><td>Biodéchets ménagers</td><td>Méthanisation</td><td>20</td><td>—</td><td>~0,3</td></tr>
+          <tr><td>Boues de STEP</td><td>Méthanisation</td><td>10</td><td>—</td><td>~0,15</td></tr>
+          <tr><td>Déchets verts</td><td>Pyrogazification</td><td>10</td><td>~0,75</td><td>~2,2</td></tr>
+          <tr><td>Bois & résidus forestiers</td><td>Pyrogazification</td><td>25</td><td>~1,9</td><td>~5,6</td></tr>
+          <tr><td>CIVE + cultures intermédiaires</td><td>Méthanisation</td><td>37</td><td>—</td><td>~0,4</td></tr>
+          <tr class="tr-ok"><td>Pailles & cannes grandes cultures</td><td>Pyrogazification</td><td>40</td><td>~1,5</td><td>~4,5</td></tr>
+          <tr style="background:rgba(26,58,40,.7)"><td style="color:var(--vert-vif);font-weight:600">TOTAL V11 Central ✅</td><td></td><td class="td-g" style="font-weight:700">262 TWh</td><td class="td-g">~7,15 Mt</td><td class="td-g" style="font-weight:700">~23,25 Mt CO₂</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="box box-bleu reveal">
+      <strong>Gestion active par engins décarbonés :</strong> la récolte de biomasse fine est opérée par des engins légers (tracteur ÉREV Bio-GNV, porteurs câbles, débusqueuses légères) évitant le tassement des sols par les gros engins forestiers classiques. Le carburant issu de la filière alimente les engins qui la récoltent — boucle fermée.
+    </div>
+  </div>
+</section>
+
+<!-- Q/R -->
+<section class="alt">
+  <div class="container">
+    <div class="stag reveal">Argumentaire</div>
+    <h2 class="reveal">Questions · Réponses<br><em>pour débat ONG / experts</em></h2>
+    <div class="reveal" id="qr-list">
+      <div class="qr-item">
+        <div class="qr-q" onclick="toggle(this)">Ramasser les bois morts détruit la biodiversité !</div>
+        <div class="qr-r">Nous préservons intégralement les troncs et bois morts > 20 cm. La cible prioritaire est la biomasse fine et étouffante < 10–12 cm : rémanents de coupes, branches dépérissantes, bois mort récent diffus qui fait office de combustible incendiaire et bloque la régénération. Les études Forest Europe montrent qu'un prélèvement ciblé sur ce seul compartiment n'affecte pas les espèces saproxyliques patrimoniales.</div>
+      </div>
+      <div class="qr-item">
+        <div class="qr-q" onclick="toggle(this)">Vos seuils sont arbitraires — ils ne s'appliquent pas partout.</div>
+        <div class="qr-r">C'est exactement pourquoi ce document les présente comme des fourchettes indicatives issues de la littérature européenne (IFN 2024, Forest Europe SFM Indicators 2020, INRAE), non comme des absolus réglementaires. Une chênaie atlantique et une pinède méditerranéenne n'ont pas les mêmes profils. Ces seuils définissent une logique de gestion conditionnelle que chaque gestionnaire adapte à son contexte.</div>
+      </div>
+      <div class="qr-item">
+        <div class="qr-q" onclick="toggle(this)">La forêt devient un ghetto industriel !</div>
+        <div class="qr-r">L'objectif n'est pas l'exploitation maximale mais la valorisation raisonnée des résidus et déchets forestiers. Les arbres de valeur sont conservés, les plantations trop denses éclaircies. Le cercle vertueux : valorisation → financement de l'entretien → biodiversité → régénération. Sans débouché économique, il n'y a pas de main-d'œuvre et pas de gestion fine possible.</div>
+      </div>
+      <div class="qr-item">
+        <div class="qr-q" onclick="toggle(this)">Et le CO₂ ? On brûle encore quelque chose !</div>
+        <div class="qr-r">Le Bio-GNV est neutre ou négatif en carbone lorsque le biochar est stabilisé. Facteur : 1 t de biochar stable ≈ 3 t CO₂ séquestré (standard EBC Premium, CDC V3). Bio-GNV seul réduit les émissions fossiles mais ne retire pas de CO₂ historique. Biochar + Bio-GNV = mobilité décarbonée + séquestration + fertilisation des sols. C'est le principe du monde réparateur.</div>
+      </div>
+      <div class="qr-item">
+        <div class="qr-q" onclick="toggle(this)">Ne rien faire est parfois la meilleure option écologique.</div>
+        <div class="qr-r">Dans les forêts en libre évolution sanctuarisées, oui. C'est précisément pourquoi ce cadre définit des zones intouchables (îlots de sénescence, arbres-habitats, gros bois). Dans les zones soumises à un risque élevé d'incendie, de dépérissement ou d'échec de régénération, l'absence d'intervention peut devenir écologiquement contre-productive — elle augmente les risques, dégrade la régénération et fragilise le stockage carbone à long terme.</div>
+      </div>
+      <div class="qr-item">
+        <div class="qr-q" onclick="toggle(this)">La quantité de biomasse disponible est-elle suffisante ?</div>
+        <div class="qr-r">Oui, selon le bilan France : 262 TWh/an mobilisable sur 9 filières, dont 25 TWh en bois et déchets forestiers — une fraction faible mais stratégique. C'est suffisant pour produire le Bio-GNV du Programme Résilience et du biochar, sans pression excessive sur les forêts. Le bois forestier n'est qu'une source parmi neuf.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RENVOIS -->
+<section>
+  <div class="container">
+    <div class="stag reveal">Documents liés</div>
+    <h2 class="reveal">Dans le même<br><em>programme</em></h2>
+    <div class="renvoi-grid reveal">
+      <a href="tracteur-erev.html" class="renvoi-card">
+        <div class="rc-tag">Tracteur ÉREV Rex</div>
+        <div class="rc-title">Tracteur agricole ÉREV</div>
+        <div class="rc-desc">Le tracteur qui valorise le biogaz de la ferme — et peut collecter la biomasse forestière avec les engins légers de la filière.</div>
+      </a>
+      <a href="cooperation-internationale.html" class="renvoi-card">
+        <div class="rc-tag">Coopération internationale</div>
+        <div class="rc-title">Biochar & diplomatie climatique</div>
+        <div class="rc-desc">Exporter le modèle pyrogazification + biochar vers les terres marginales africaines, indiennes et sud-américaines.</div>
+      </a>
+      <a href="aviation-bio-gnl.html" class="renvoi-card">
+        <div class="rc-tag">Aviation Bio-GNL</div>
+        <div class="rc-title">Bio-GNL aviation longue distance</div>
+        <div class="rc-desc">Le Bio-GNL issu de la pyrogazification produit simultanément du biométhane et du biochar certifié CDC V3.</div>
+      </a>
+    </div>
+    <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap" class="reveal">
+      <a href="index.html#biomasse" class="btn btn-outline">← Retour filière biomasse</a>
+      <a href="Cadre_Gestion_Ecologique_Forets_V11.pdf" class="btn btn-outline" download>Télécharger la note complète (PDF)</a>
+    </div>
+  </div>
+</section>
+
+<section style="padding:2rem 3rem;background:rgba(5,10,7,.8)">
+  <div class="container">
+    <p style="font-size:.75rem;color:var(--gris);line-height:1.85">
+      <strong style="color:rgba(240,244,241,.5)">Sources :</strong>
+      IFN — Inventaire Forestier National 2024 ·
+      ONF — Office National des Forêts ·
+      Forest Europe Sustainable Forest Management Indicators 2020 ·
+      INRAE Biodiversité forestière ·
+      EBC Premium Standard (European Biochar Certificate) ·
+      CDC V3 — Cahier des Charges Biochar ·
+      ADEME — Biométhane coûts et gisements 2024 ·
+      Programme Résilience V11 (mai 2026)
+    </p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Programme Résilience V11</div>
+  <p>Cadre de gestion écologique active · Filière BioGNV / Biochar · Mai 2026</p>
+  <p style="font-size:.7rem;color:#3a5044;margin-top:.4rem">Document de réflexion stratégique · Seuils indicatifs issus de la littérature forestière européenne · Diffusion libre</p>
+</footer>
+
+<script>
+function toggle(el){
+  const r=el.nextElementSibling;
+  r.classList.toggle('open');
+}
+const obs=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*60);obs.unobserve(e.target);}});},{threshold:0.06});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
