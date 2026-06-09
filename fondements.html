@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pourquoi Résilience · Quatre crises · Programme Résilience V11</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --noir:#0a0f0d;--foret:#0d1f17;--vert-prof:#1a3a28;--vert-med:#2d6a4f;
+  --vert-vif:#52b788;--vert-clair:#95d5b2;--ambre:#e9c46a;
+  --rouge:#c0392b;--bleu:#2980b9;--blanc:#f0f4f1;--gris:#8a9e93;
+  --ardoise:#4a5c6a;--violet:#7b2d8b;
+  --serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--noir);color:var(--blanc);font-family:var(--sans);font-weight:300;line-height:1.7;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:.9rem 2.5rem;background:rgba(10,15,13,.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(82,183,136,.12)}
+.nav-logo{font-family:var(--serif);font-size:1.15rem;font-weight:600;color:var(--vert-vif);text-decoration:none}
+.nav-back{color:var(--gris);text-decoration:none;font-size:.72rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;transition:color .3s}
+.nav-back:hover{color:var(--vert-vif)}
+.nav-tag{font-size:.65rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--ambre);background:rgba(233,196,106,.12);border:1px solid rgba(233,196,106,.25);padding:.2rem .7rem}
+
+/* HERO */
+#hero{min-height:60vh;display:flex;align-items:center;padding:8rem 3rem 4rem;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 70% at 20% 60%,rgba(123,45,139,.15) 0%,rgba(29,58,40,.2) 40%,transparent 70%),linear-gradient(135deg,#0a0f0d 0%,#0d1f17 55%,#060e09 100%)}
+.hero-grid{position:absolute;inset:0;opacity:.035;background-image:linear-gradient(var(--vert-vif) 1px,transparent 1px),linear-gradient(90deg,var(--vert-vif) 1px,transparent 1px);background-size:60px 60px}
+.hero-content{position:relative;z-index:1;max-width:860px}
+.hero-tag{display:inline-block;border:1px solid var(--ambre);color:var(--ambre);font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;padding:.3rem .85rem;margin-bottom:1.4rem}
+h1{font-family:var(--serif);font-size:clamp(2.2rem,5vw,4rem);font-weight:300;line-height:1.1;margin-bottom:1.2rem}
+h1 em{font-style:italic;color:var(--vert-vif)}
+h1 strong{font-weight:600;color:var(--ambre)}
+.hero-sub{font-size:.95rem;color:rgba(240,244,241,.6);max-width:680px;line-height:1.9;margin-top:.8rem}
+
+/* SECTIONS */
+section{padding:5rem 3rem}
+.container{max-width:1100px;margin:0 auto}
+.alt{background:var(--foret)}
+.alt2{background:rgba(123,45,139,.04);border-top:1px solid rgba(123,45,139,.1);border-bottom:1px solid rgba(123,45,139,.1)}
+.stag{font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--vert-vif);margin-bottom:.6rem}
+h2{font-family:var(--serif);font-size:clamp(1.7rem,3vw,2.6rem);font-weight:300;line-height:1.15;margin-bottom:1rem}
+h2 em{font-style:italic;color:var(--vert-vif)}
+h2 strong{font-weight:600}
+.lead{font-size:.96rem;color:rgba(240,244,241,.65);max-width:740px;line-height:1.9;margin-bottom:1.4rem}
+p.body{font-size:.88rem;color:rgba(240,244,241,.62);line-height:1.88;margin-bottom:.9rem;max-width:840px}
+
+/* PHRASE CENTRALE */
+.phrase-centrale{font-family:var(--serif);font-size:clamp(1.3rem,2.5vw,2rem);font-weight:300;line-height:1.4;color:var(--blanc);max-width:860px;border-left:4px solid var(--vert-vif);padding:1.2rem 0 1.2rem 2rem;margin:2rem 0}
+.phrase-centrale em{font-style:italic;color:var(--vert-vif)}
+
+/* 4 CRISES */
+.crises-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem;margin:2.5rem 0}
+.crise-card{padding:2rem;border:1px solid rgba(82,183,136,.1);background:rgba(10,15,13,.5);position:relative;overflow:hidden}
+.crise-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px}
+.c1::before{background:linear-gradient(90deg,var(--rouge),#e74c3c)}
+.c2::before{background:linear-gradient(90deg,#e67e22,var(--ambre))}
+.c3::before{background:linear-gradient(90deg,var(--vert-med),var(--vert-vif))}
+.c4::before{background:linear-gradient(90deg,var(--ardoise),#74a9c0)}
+.crise-n{font-family:var(--serif);font-size:3.5rem;font-weight:600;line-height:1;opacity:.12;position:absolute;top:.8rem;right:1.2rem}
+.c1 .crise-n{color:var(--rouge)}
+.c2 .crise-n{color:var(--ambre)}
+.c3 .crise-n{color:var(--vert-vif)}
+.c4 .crise-n{color:#74a9c0}
+.crise-tag{font-size:.62rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;margin-bottom:.7rem}
+.c1 .crise-tag{color:#e57368}
+.c2 .crise-tag{color:var(--ambre)}
+.c3 .crise-tag{color:var(--vert-vif)}
+.c4 .crise-tag{color:#74a9c0}
+.crise-card h3{font-family:var(--serif);font-size:1.2rem;font-weight:400;color:var(--blanc);margin-bottom:.7rem;line-height:1.3}
+.crise-card p{font-size:.83rem;color:rgba(240,244,241,.6);line-height:1.65;margin-bottom:.8rem}
+.crise-chiffre{font-size:.78rem;font-weight:500;padding:.35rem .7rem;border-radius:0;display:inline-block;margin-top:.3rem}
+.c1 .crise-chiffre{background:rgba(192,57,43,.12);color:#e57368;border:1px solid rgba(192,57,43,.2)}
+.c2 .crise-chiffre{background:rgba(233,196,106,.1);color:var(--ambre);border:1px solid rgba(233,196,106,.2)}
+.c3 .crise-chiffre{background:rgba(45,106,79,.2);color:var(--vert-vif);border:1px solid rgba(82,183,136,.2)}
+.c4 .crise-chiffre{background:rgba(74,92,106,.15);color:#74a9c0;border:1px solid rgba(74,92,106,.25)}
+.crise-insuffisant{font-size:.75rem;color:rgba(240,244,241,.35);font-style:italic;margin-top:.5rem;padding-top:.5rem;border-top:1px solid rgba(255,255,255,.06)}
+
+/* SCHÉMA TONNE DE BIOMASSE */
+.flux-central{display:flex;flex-direction:column;align-items:center;margin:2.5rem 0}
+.flux-source{background:rgba(29,58,40,.4);border:2px solid var(--vert-vif);padding:1.2rem 2.5rem;text-align:center;font-family:var(--serif);font-size:1.15rem;font-weight:400;color:var(--vert-clair);margin-bottom:1.5rem;position:relative}
+.flux-source::after{content:'';position:absolute;bottom:-1.5rem;left:50%;transform:translateX(-50%);width:2px;height:1.5rem;background:var(--vert-vif)}
+.flux-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;width:100%;max-width:960px}
+.flux-item{padding:1.2rem;border:1px solid;text-align:center;position:relative}
+.fi-energie{border-color:rgba(41,128,185,.3);background:rgba(41,128,185,.07)}
+.fi-biochar{border-color:rgba(45,106,79,.4);background:rgba(29,58,40,.25)}
+.fi-digestat{border-color:rgba(233,196,106,.25);background:rgba(233,196,106,.06)}
+.fi-co2{border-color:rgba(123,45,139,.3);background:rgba(123,45,139,.07)}
+.fi-revenus{border-color:rgba(82,183,136,.3);background:rgba(82,183,136,.07)}
+.flux-icon{font-size:1.6rem;margin-bottom:.5rem;display:block}
+.flux-titre{font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4rem}
+.fi-energie .flux-titre{color:#74b9e8}
+.fi-biochar .flux-titre{color:var(--vert-vif)}
+.fi-digestat .flux-titre{color:var(--ambre)}
+.fi-co2 .flux-titre{color:#c084fc}
+.fi-revenus .flux-titre{color:var(--vert-clair)}
+.flux-detail{font-size:.77rem;color:rgba(240,244,241,.55);line-height:1.55}
+.flux-valeur{font-family:var(--serif);font-size:1.1rem;font-weight:600;margin-top:.4rem}
+.fi-energie .flux-valeur{color:#74b9e8}
+.fi-biochar .flux-valeur{color:var(--vert-vif)}
+.fi-digestat .flux-valeur{color:var(--ambre)}
+.fi-co2 .flux-valeur{color:#c084fc}
+.fi-revenus .flux-valeur{color:var(--vert-clair)}
+
+/* DISTINCTION */
+.distinction{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:2rem 0}
+.dist-card{padding:2rem;border:1px solid}
+.dist-non{border-color:rgba(192,57,43,.2);background:rgba(192,57,43,.04)}
+.dist-oui{border-color:rgba(82,183,136,.25);background:rgba(29,58,40,.2)}
+.dist-label{font-size:.65rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;margin-bottom:.8rem}
+.dist-non .dist-label{color:#e57368}
+.dist-oui .dist-label{color:var(--vert-vif)}
+.dist-card h3{font-family:var(--serif);font-size:1.15rem;font-weight:400;margin-bottom:.7rem;line-height:1.3}
+.dist-non h3{color:rgba(240,244,241,.55)}
+.dist-oui h3{color:var(--blanc)}
+.dist-card p{font-size:.84rem;color:rgba(240,244,241,.58);line-height:1.7}
+.dist-oui p{color:rgba(240,244,241,.72)}
+
+/* ENCADRÉS */
+.box{padding:1.3rem 1.8rem;margin:1.8rem 0;font-size:.88rem;line-height:1.75;border-left:4px solid}
+.box-vert{background:rgba(29,58,40,.3);border-color:var(--vert-vif);color:rgba(240,244,241,.78)}
+.box-vert strong{color:var(--vert-vif)}
+.box-violet{background:rgba(123,45,139,.08);border-color:var(--violet);color:rgba(240,244,241,.78)}
+.box-violet strong{color:#c084fc}
+.box-bleu{background:rgba(41,128,185,.07);border-color:var(--bleu);color:rgba(240,244,241,.78)}
+.box-bleu strong{color:#74b9e8}
+.box-ambre{background:rgba(233,196,106,.06);border-color:var(--ambre);color:rgba(240,244,241,.78)}
+.box-ambre strong{color:var(--ambre)}
+
+/* RENVOIS */
+.renvoi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin:2rem 0}
+.renvoi-card{padding:1.2rem 1.5rem;border:1px solid rgba(82,183,136,.15);background:rgba(10,15,13,.5);text-decoration:none;transition:border-color .3s,background .3s;display:block}
+.renvoi-card:hover{border-color:var(--vert-vif);background:rgba(29,58,40,.25)}
+.rc-tag{font-size:.62rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--vert-vif);margin-bottom:.4rem}
+.rc-title{font-family:var(--serif);font-size:1rem;color:var(--blanc);margin-bottom:.3rem}
+.rc-desc{font-size:.78rem;color:rgba(240,244,241,.5);line-height:1.5}
+
+.btn{display:inline-block;padding:.75rem 1.8rem;font-family:var(--sans);font-size:.76rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:all .3s}
+.btn-primary{background:var(--vert-vif);color:var(--noir)}
+.btn-primary:hover{background:var(--vert-clair)}
+.btn-outline{background:transparent;color:var(--blanc);border:1px solid rgba(240,244,241,.25)}
+.btn-outline:hover{border-color:var(--vert-vif);color:var(--vert-vif)}
+
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .55s ease,transform .55s ease}
+.reveal.visible{opacity:1;transform:none}
+
+footer{background:#050a07;padding:2.5rem 3rem;text-align:center;border-top:1px solid rgba(82,183,136,.08)}
+.footer-logo{font-family:var(--serif);font-size:1.4rem;font-weight:300;color:var(--vert-vif);margin-bottom:.4rem}
+footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;line-height:1.7}
+
+@media(max-width:700px){
+  nav{padding:.8rem 1.2rem}
+  section{padding:3rem 1.3rem}
+  h1{font-size:2rem}
+  .distinction{grid-template-columns:1fr}
+  .phrase-centrale{padding:1rem 0 1rem 1.2rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Programme Résilience V11</a>
+  <div style="display:flex;align-items:center;gap:1.2rem">
+    <span class="nav-tag">Fondements · Pourquoi Résilience</span>
+    <a href="index.html" class="nav-back">← Retour</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Pourquoi Résilience existe · Le constat fondateur</div>
+    <h1>Quatre crises simultanées.<br><em>Une même</em> <strong>source.</strong></h1>
+    <p class="hero-sub">L'objectif de Résilience n'est pas de fossiliser du carbone, ni de s'opposer à l'électrification. C'est de répondre simultanément à quatre crises que nous traitons généralement séparément — et qui ont en réalité la même origine : une économie encore construite sur des flux carbones fossiles que nous avons appris à extraire mais jamais à gérer.</p>
+  </div>
+</section>
+
+<!-- PHRASE CENTRALE -->
+<div style="background:rgba(29,58,40,.15);border-top:1px solid rgba(82,183,136,.1);border-bottom:1px solid rgba(82,183,136,.1);padding:3rem">
+  <div class="container">
+    <p class="phrase-centrale reveal">Résilience ne propose pas une <em>filière biomasse-énergie.</em><br>Il propose une <em>économie circulaire du carbone biogénique</em> — où chaque flux de carbone issu de la biomasse est orienté vers son usage le plus utile : énergie, sol, atmosphère ou territoire.</p>
+  </div>
+</div>
+
+<!-- LES 4 CRISES -->
+<section>
+  <div class="container">
+    <div class="stag reveal">Le constat fondateur</div>
+    <h2 class="reveal">Quatre crises liées.<br><em>Aucune ne se résout seule.</em></h2>
+    <p class="lead reveal">Ces quatre problèmes partagent une origine commune : des siècles de dépendance aux énergies fossiles ont atrophié notre capacité à valoriser les flux biologiques locaux. Les traiter séparément — comme nous le faisons aujourd'hui — produit des politiques incohérentes. Les traiter ensemble, c'est ce que propose Résilience.</p>
+
+    <div class="crises-grid reveal">
+
+      <div class="crise-card c1">
+        <div class="crise-n">1</div>
+        <div class="crise-tag">Énergie &amp; réseau électrique</div>
+        <h3>L'électrification seule se heurte à un mur de puissance</h3>
+        <p>Le tout-électrique déplace le risque de la disponibilité annuelle (TWh) vers la gestion des pointes instantanées (GW). Lors des grands départs d'été, 37,5 GW supplémentaires doivent être disponibles simultanément — l'équivalent de 23 réacteurs EPR — que ni les batteries ni le V2G ne peuvent absorber.</p>
+        <div class="crise-chiffre">+37,5 GW lors des chassés-croisés estivaux</div><br>
+        <div class="crise-chiffre">130 TWh stockage saisonnier non résolu en BEV pur</div>
+        <p class="crise-insuffisant">Ce que l'électrification seule ne résout pas : le stockage saisonnier, la pilotabilité hivernale par temps froid sans vent, la mobilité longue distance en période de pointe.</p>
+      </div>
+
+      <div class="crise-card c2">
+        <div class="crise-n">2</div>
+        <div class="crise-tag">Atmosphère &amp; climat</div>
+        <h3>La neutralité carbone n'est plus suffisante</h3>
+        <p>L'atmosphère est déjà dérèglée. Atteindre zéro émission nette ne réduit pas les concentrations actuelles de CO₂ — cela arrête seulement d'en ajouter. Pour un retour à des conditions climatiques habitables à long terme, il faut des émissions <em>nettes négatives</em> : retirer du carbone atmosphérique, pas seulement cesser d'en émettre.</p>
+        <div class="crise-chiffre">421 ppm CO₂ atmosphérique — record depuis 3 millions d'ans</div><br>
+        <div class="crise-chiffre">Objectif Résilience : −23 Mt CO₂/an net (biochar seul)</div>
+        <p class="crise-insuffisant">Ce que la neutralité carbone ne résout pas : les concentrations déjà accumulées. Un système "zéro émission" maintient le problème actuel indéfiniment.</p>
+      </div>
+
+      <div class="crise-card c3">
+        <div class="crise-n">3</div>
+        <div class="crise-tag">Sols &amp; sécurité alimentaire</div>
+        <h3>Des sols européens appauvris depuis plusieurs siècles</h3>
+        <p>Les sols agricoles européens ont perdu 30 à 50 % de leur matière organique depuis le début de l'agriculture intensive. Ce n'est pas qu'un problème environnemental — c'est une menace directe sur la sécurité alimentaire à horizon 2040–2060 face aux sécheresses croissantes. Réduire les intrants ne suffit pas : il faut reconstruire activement le capital organique des sols.</p>
+        <div class="crise-chiffre">−30 à −50 % matière organique des sols européens (INRAE)</div><br>
+        <div class="crise-chiffre">Biochar : +10 à +30 % rétention eau · amélioration CEC</div>
+        <p class="crise-insuffisant">Ce que les politiques énergétiques classiques n'adressent pas : la fertilité des sols. Aucun scénario RTE, ADEME ou Négawatt n'inclut la restauration des sols comme variable.</p>
+      </div>
+
+      <div class="crise-card c4">
+        <div class="crise-n">4</div>
+        <div class="crise-tag">Économie rurale &amp; territoires</div>
+        <h3>Une économie rurale sans modèle économique durable</h3>
+        <p>Les territoires ruraux gèrent les ressources naturelles les plus stratégiques du pays — forêts, sols, eau, biomasse — sans en tirer de valeur économique directe. L'agriculture dépend d'engrais importés (4 Md€/an), les forêts sont sous-gérées faute de débouchés. La transition énergétique classique n'y crée pas d'emplois — elle y déplace la dépendance.</p>
+        <div class="crise-chiffre">4 Md€/an d'engrais synthétiques importés substituables</div><br>
+        <div class="crise-chiffre">200 000+ emplois non délocalisables créés par Résilience</div>
+        <p class="crise-insuffisant">Ce que l'électrification seule ne crée pas : une chaîne de valeur territoriale locale. Les batteries sont fabriquées en Asie. Le biométhane est produit à la ferme.</p>
+      </div>
+
+    </div>
+
+    <div class="box box-violet reveal">
+      <strong>La source commune :</strong> ces quatre crises sont des symptômes du même problème — une économie qui a appris à extraire de l'énergie fossile mais n'a jamais développé la capacité à valoriser les flux biologiques locaux. Charbon, pétrole et gaz ont rendu inutile pendant 150 ans ce que savaient faire les sociétés agraires : transformer des résidus en énergie, en fertilité, en territoire. Résilience repose sur la même logique, mais avec les rendements et les certifications du XXIe siècle.
+    </div>
+  </div>
+</section>
+
+<!-- CE QUE RÉSILIENCE PROPOSE -->
+<section class="alt">
+  <div class="container">
+    <div class="stag reveal">La réponse</div>
+    <h2 class="reveal">Une tonne de biomasse résiduelle.<br><em>Cinq utilités simultanées.</em></h2>
+    <p class="lead reveal">La même tonne de résidus agricoles ou forestiers — qui se décomposerait autrement en libérant son CO₂ dans l'atmosphère — peut produire simultanément :</p>
+
+    <div class="flux-central reveal">
+      <div class="flux-source">1 tonne de biomasse résiduelle (branche, résidu agricole, CIVE, déchet organique)</div>
+      <div class="flux-grid">
+        <div class="flux-item fi-energie">
+          <span class="flux-icon">⚡</span>
+          <div class="flux-titre">Énergie</div>
+          <div class="flux-detail">Bio-CH₄ injectable réseau GRDF · Rex ÉREV · carburant camion et tracteur</div>
+          <div class="flux-valeur">2,7–3,0 MWh</div>
+        </div>
+        <div class="flux-item fi-biochar">
+          <span class="flux-icon">🌱</span>
+          <div class="flux-titre">Biochar</div>
+          <div class="flux-detail">Retourne dans le sol · améliore la rétention d'eau · séquestre le carbone > 100 ans</div>
+          <div class="flux-valeur">~0,27 t · ~0,8 t CO₂ séquestré</div>
+        </div>
+        <div class="flux-item fi-digestat">
+          <span class="flux-icon">🌾</span>
+          <div class="flux-titre">Digestat</div>
+          <div class="flux-detail">Engrais organique de proximité · substitue partiellement les engrais synthétiques importés</div>
+          <div class="flux-valeur">−4 Md€/an importations</div>
+        </div>
+        <div class="flux-item fi-co2">
+          <span class="flux-icon">♻️</span>
+          <div class="flux-titre">CO₂ biogénique</div>
+          <div class="flux-detail">Enrichissement serres · Sabatier (e-méthane) · minéralisation · stockage géologique</div>
+          <div class="flux-valeur">~37 Mt/an disponibles V11</div>
+        </div>
+        <div class="flux-item fi-revenus">
+          <span class="flux-icon">💶</span>
+          <div class="flux-titre">Revenus territoriaux</div>
+          <div class="flux-detail">GRDF 29 700 €/an/exploitation · biochar CRCF 20–50 €/t CO₂ · emplois locaux</div>
+          <div class="flux-valeur">~150 M€/an/site à plein régime</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="box box-vert reveal">
+      <strong>Ce n'est pas de la fossilisation du carbone.</strong> C'est une gestion active des flux carbone biologiques pour maximiser leur utilité simultanée. Le carbone instable des branches fines (qui se décomposerait en 3 à 5 ans en libérant son CO₂) est converti en carbone stable (biochar) qui retourne dans le sol avec une capacité d'échange cationique améliorée — pendant qu'une énergie propre est produite au passage.
+    </div>
+  </div>
+</section>
+
+<!-- LA DISTINCTION CENTRALE -->
+<section>
+  <div class="container">
+    <div class="stag reveal">La distinction essentielle</div>
+    <h2 class="reveal">Pas contre le BEV.<br><em>Pour le sécuriser.</em></h2>
+    <p class="lead reveal">Le malentendu le plus fréquent est de percevoir Résilience comme une alternative au tout-électrique. Ce n'est pas la bonne lecture. Voici la distinction.</p>
+
+    <div class="distinction reveal">
+      <div class="dist-card dist-non">
+        <div class="dist-label">Ce que Résilience n'est pas</div>
+        <h3>Une filière biomasse-énergie concurrente de l'électricité</h3>
+        <p>Résilience ne cherche pas à remplacer les 400–500 TWh de gaz fossile consommés historiquement. Les 262 TWh de bio-CH₄ V11 ne sont pas une substitution volumétrique au gaz naturel. Ce n'est pas non plus un frein à l'installation de panneaux solaires, d'éoliennes ou de réacteurs nucléaires.</p>
+      </div>
+      <div class="dist-card dist-oui">
+        <div class="dist-label">Ce que Résilience est</div>
+        <h3>Un complément qui rend l'électrification réaliste et réparatrice</h3>
+        <p>Les 262 TWh de bio-CH₄ résolvent ce que le tout-électrique ne peut pas résoudre seul : les 37,5 GW de pics instantanés, le stockage saisonnier de 130 TWh, la mobilité longue distance décarbonée. En parallèle, le biochar co-produit restaure les sols et séquestre 23 Mt CO₂/an. Ce n'est pas un concurrent de l'électricité — c'est sa condition de viabilité.</p>
+      </div>
+    </div>
+
+    <div class="box box-bleu reveal">
+      <strong>Le bio-CH₄ et le gaz fossile :</strong> ils partagent la même molécule (CH₄) mais n'ont rien d'autre en commun. L'un est extrait du sous-sol depuis 300 millions d'années ; l'autre est produit par nos déchets agricoles cette année. Le CO₂ libéré lors de la combustion du bio-CH₄ est du carbone biogénique — il avait été capturé par la photosynthèse quelques mois auparavant. Le bilan net, quand on intègre le biochar co-produit, est négatif.
+    </div>
+  </div>
+</section>
+
+<!-- LE CHANGEMENT DE PARADIGME -->
+<section class="alt2">
+  <div class="container">
+    <div class="stag reveal">Le changement de paradigme</div>
+    <h2 class="reveal"><em>Filière biomasse-énergie</em><br>ou économie circulaire du carbone ?</h2>
+    <p class="lead reveal">Ce n'est pas qu'une question de sémantique. Le cadrage change tout à la façon dont on évalue le programme.</p>
+
+    <div class="distinction reveal">
+      <div class="dist-card dist-non">
+        <div class="dist-label">Ancien cadre — filière biomasse-énergie</div>
+        <h3>Objectif : produire de l'énergie avec de la biomasse</h3>
+        <p>Dans ce cadre, la question principale est : "Y a-t-il assez de biomasse ?" Et la réponse du Shift Project et de l'ADEME est souvent : "Non, pas assez pour remplacer 500 TWh de gaz." C'est une critique pertinente — mais elle répond à la mauvaise question.</p>
+      </div>
+      <div class="dist-card dist-oui">
+        <div class="dist-label">Nouveau cadre — économie circulaire du carbone</div>
+        <h3>Objectif : orienter chaque flux carbone vers son usage optimal</h3>
+        <p>Dans ce cadre, la question est : "Quelle est la valeur maximale que peut créer une tonne de résidu biologique ?" Énergie pour stabiliser le réseau électrique, biochar pour restaurer les sols, CO₂ biogénique pour les serres ou la méthanation, revenus pour les territoires ruraux. Plusieurs utilités simultanées sur la même ressource.</p>
+      </div>
+    </div>
+
+    <div class="box box-violet reveal">
+      <strong>L'implication politique :</strong> dans le cadre "filière biomasse-énergie", la biomasse entre en concurrence avec d'autres usages (industrie lourde, chaleur). Dans le cadre "économie circulaire du carbone biogénique", cette concurrence s'efface largement — car chaque co-produit (énergie, biochar, digestat, CO₂) répond à un besoin différent, souvent dans des secteurs différents, souvent sur le même territoire. C'est une stratégie systémique, pas sectorielle.
+    </div>
+  </div>
+</section>
+
+<!-- RENVOIS -->
+<section>
+  <div class="container">
+    <div class="stag reveal">Approfondissements</div>
+    <h2 class="reveal">Aller plus loin</h2>
+    <div class="renvoi-grid reveal">
+      <a href="systeme-energetique.html" class="renvoi-card">
+        <div class="rc-tag">Analyse technique</div>
+        <div class="rc-title">Pourquoi l'électrification seule ne suffit pas</div>
+        <div class="rc-desc">Les 5 jours critiques, le problème GW vs TWh, la comparaison des vecteurs, la timeline 2025–2045.</div>
+      </a>
+      <a href="gestion-forets.html" class="renvoi-card">
+        <div class="rc-tag">Gisement biomasse</div>
+        <div class="rc-title">Cadre de gestion écologique des forêts</div>
+        <div class="rc-desc">262 TWh/an · 23 Mt CO₂ biochar · seuils IFN · grille LAISSER/GÉRER/VALORISER.</div>
+      </a>
+      <a href="voiture-erev.html" class="renvoi-card">
+        <div class="rc-tag">Mobilité</div>
+        <div class="rc-title">L'ÉREV — pivot du système</div>
+        <div class="rc-desc">80 % électrique · 40 GW effacés passivement · rendement réel identique au BEV.</div>
+      </a>
+      <a href="Programme_Resilience_V11_Complet.pdf" class="renvoi-card" target="_blank">
+        <div class="rc-tag">Document complet</div>
+        <div class="rc-title">Programme Résilience V11 enrichi</div>
+        <div class="rc-desc">Décomposition CAPEX complète · 8 parties · toutes qualifications · sources.</div>
+      </a>
+      <a href="Note_Positionnement_Resilience_vs_Shift_V11.pdf" class="renvoi-card" target="_blank">
+        <div class="rc-tag">Positionnement politique</div>
+        <div class="rc-title">Résilience et le Shift Project</div>
+        <div class="rc-desc">Convergences, divergences fondamentales, plan d'action 2026–2030.</div>
+      </a>
+    </div>
+
+    <div style="text-align:center;margin-top:3rem">
+      <a href="index.html" class="btn btn-outline">← Retour au programme complet</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Programme Résilience V11</div>
+  <p>Pourquoi Résilience · Quatre crises simultanées · Économie circulaire du carbone biogénique · Mai 2026</p>
+  <p style="font-size:.7rem;color:#3a5044;margin-top:.4rem">Les chiffres sont des ordres de grandeur · Hypothèses détaillées dans le Programme V11 enrichi · Diffusion libre</p>
+</footer>
+
+<script>
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{
+    if(e.isIntersecting){
+      setTimeout(()=>e.target.classList.add('visible'),i*80);
+      obs.unobserve(e.target);
+    }
+  });
+},{threshold:0.05});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
