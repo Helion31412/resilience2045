@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finances publiques · Optimisation des dépenses · Programme Résilience V11</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --noir:#0a0f0d;--foret:#0d1f17;--vert-med:#2d6a4f;--vert-vif:#52b788;
+  --vert-clair:#95d5b2;--ambre:#e9c46a;--rouge:#c0392b;--bleu:#2980b9;
+  --blanc:#f0f4f1;--gris:#8a9e93;--ardoise:#4a5c6a;--or:#b8962e;
+  --or-clair:#f0d580;--or-bg:rgba(184,150,46,.06);
+  --serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--noir);color:var(--blanc);font-family:var(--sans);font-weight:300;line-height:1.7;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:.9rem 2.5rem;background:rgba(10,15,13,.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(82,183,136,.12)}
+.nav-logo{font-family:var(--serif);font-size:1.15rem;font-weight:600;color:var(--vert-vif);text-decoration:none}
+.nav-back{color:var(--gris);text-decoration:none;font-size:.72rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;transition:color .3s}
+.nav-back:hover{color:var(--vert-vif)}
+.nav-tag{font-size:.65rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--ambre);background:rgba(233,196,106,.12);border:1px solid rgba(233,196,106,.25);padding:.2rem .7rem}
+
+/* HERO */
+#hero{min-height:52vh;display:flex;align-items:center;padding:8rem 3rem 4rem;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 30% 50%,rgba(184,150,46,.1) 0%,rgba(29,58,40,.12) 50%,transparent 75%),linear-gradient(135deg,#0a0f0d 0%,#0d1f17 60%,#080e0a 100%)}
+.hero-grid{position:absolute;inset:0;opacity:.03;background-image:linear-gradient(var(--or) 1px,transparent 1px),linear-gradient(90deg,var(--or) 1px,transparent 1px);background-size:60px 60px}
+.hero-content{position:relative;z-index:1;max-width:840px}
+.hero-tag{display:inline-block;border:1px solid var(--or);color:var(--or-clair);font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;padding:.3rem .85rem;margin-bottom:1.4rem}
+h1{font-family:var(--serif);font-size:clamp(1.9rem,4vw,3.4rem);font-weight:300;line-height:1.15;margin-bottom:1rem}
+h1 em{font-style:italic;color:var(--vert-vif)}
+h1 strong{font-weight:600;color:var(--or-clair)}
+.hero-sub{font-size:.93rem;color:rgba(240,244,241,.6);max-width:680px;line-height:1.9}
+
+/* BANDEAU AVERTISSEMENT */
+.avert{background:rgba(184,150,46,.08);border:1px solid rgba(184,150,46,.2);border-left:5px solid var(--or);padding:1.3rem 2rem;margin:0}
+.avert p{font-size:.86rem;color:rgba(240,244,241,.75);line-height:1.75}
+.avert strong{color:var(--or-clair)}
+
+/* SECTIONS */
+section{padding:4.5rem 3rem}
+.container{max-width:1100px;margin:0 auto}
+.alt{background:var(--foret)}
+.stag{font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--vert-vif);margin-bottom:.6rem}
+.stag-or{font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--or-clair);margin-bottom:.6rem}
+h2{font-family:var(--serif);font-size:clamp(1.6rem,2.8vw,2.4rem);font-weight:300;line-height:1.15;margin-bottom:.9rem}
+h2 em{font-style:italic;color:var(--vert-vif)}
+h2 strong{font-weight:600;color:var(--or-clair)}
+h3{font-family:var(--serif);font-size:1.15rem;font-weight:400;color:var(--vert-clair);margin:1.6rem 0 .6rem}
+.lead{font-size:.95rem;color:rgba(240,244,241,.65);max-width:740px;line-height:1.9;margin-bottom:1.4rem}
+p.body{font-size:.88rem;color:rgba(240,244,241,.62);line-height:1.88;margin-bottom:.9rem;max-width:840px}
+
+/* ARGUMENTS FINANCIERS */
+.args-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.2rem;margin:2rem 0}
+.arg-card{padding:1.8rem;border:1px solid rgba(184,150,46,.15);background:var(--or-bg);position:relative}
+.arg-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--or),var(--or-clair))}
+.arg-n{font-family:var(--serif);font-size:3rem;font-weight:600;line-height:1;color:rgba(184,150,46,.15);position:absolute;top:.6rem;right:1rem}
+.arg-montant{font-family:var(--serif);font-size:2.2rem;font-weight:600;color:var(--or-clair);line-height:1;margin-bottom:.3rem}
+.arg-unite{font-size:.68rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--or);margin-bottom:.8rem}
+.arg-card h3{margin:.8rem 0 .5rem;font-size:1rem;color:var(--blanc)}
+.arg-card p{font-size:.82rem;color:rgba(240,244,241,.58);line-height:1.6}
+.arg-qualif{font-size:.72rem;color:var(--or);padding:.2rem .5rem;background:rgba(184,150,46,.1);border:1px solid rgba(184,150,46,.2);display:inline-block;margin-top:.6rem}
+
+/* TABLEAU COMPARATIF */
+.tbl-wrap{overflow-x:auto;margin:1.8rem 0}
+table{width:100%;border-collapse:collapse;font-size:.82rem}
+thead tr{background:rgba(26,58,40,.8)}
+thead th{padding:.75rem 1rem;text-align:left;font-weight:500;letter-spacing:.06em;font-size:.72rem;text-transform:uppercase;border-bottom:2px solid var(--or)}
+th.th-or{color:var(--or-clair)}
+th.th-rouge{color:#e57368}
+th.th-vert{color:var(--vert-vif)}
+tbody tr{border-bottom:1px solid rgba(82,183,136,.07)}
+tbody tr:hover{background:rgba(13,31,23,.5)}
+tbody td{padding:.7rem 1rem;color:rgba(240,244,241,.7);vertical-align:top;line-height:1.5}
+tbody td:first-child{color:var(--blanc);font-weight:400}
+.td-r{color:#e74c3c!important;font-weight:500}
+.td-g{color:var(--vert-vif)!important;font-weight:500}
+.td-or{color:var(--or-clair)!important;font-weight:500}
+.tr-total td{background:rgba(29,58,40,.4)!important;font-weight:600}
+
+/* COÛT ÉTAT */
+.cout-etat{background:rgba(29,58,40,.25);border:1px solid rgba(82,183,136,.2);padding:2rem;margin:1.8rem 0}
+.cout-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1.2rem}
+.cout-item{padding:1.2rem;border:1px solid rgba(82,183,136,.12)}
+.cout-label{font-size:.65rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--vert-vif);margin-bottom:.4rem}
+.cout-valeur{font-family:var(--serif);font-size:1.4rem;font-weight:300;color:var(--vert-clair);margin-bottom:.3rem}
+.cout-detail{font-size:.78rem;color:rgba(240,244,241,.5);line-height:1.5}
+
+/* ENCADRÉS */
+.box{padding:1.3rem 1.8rem;margin:1.8rem 0;font-size:.88rem;line-height:1.75;border-left:4px solid}
+.box-or{background:var(--or-bg);border-color:var(--or);color:rgba(240,244,241,.8)}
+.box-or strong{color:var(--or-clair)}
+.box-vert{background:rgba(29,58,40,.3);border-color:var(--vert-vif);color:rgba(240,244,241,.78)}
+.box-vert strong{color:var(--vert-vif)}
+.box-bleu{background:rgba(41,128,185,.07);border-color:var(--bleu);color:rgba(240,244,241,.78)}
+.box-bleu strong{color:#74b9e8}
+
+/* RENVOIS */
+.renvoi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1rem;margin:2rem 0}
+.renvoi-card{padding:1.2rem 1.4rem;border:1px solid rgba(82,183,136,.15);background:rgba(10,15,13,.5);text-decoration:none;transition:border-color .3s,background .3s;display:block}
+.renvoi-card:hover{border-color:var(--vert-vif);background:rgba(29,58,40,.25)}
+.rc-tag{font-size:.62rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--vert-vif);margin-bottom:.4rem}
+.rc-title{font-family:var(--serif);font-size:1rem;color:var(--blanc);margin-bottom:.3rem}
+.rc-desc{font-size:.78rem;color:rgba(240,244,241,.5);line-height:1.5}
+
+.btn{display:inline-block;padding:.75rem 1.8rem;font-family:var(--sans);font-size:.76rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:all .3s}
+.btn-outline{background:transparent;color:var(--blanc);border:1px solid rgba(240,244,241,.25)}
+.btn-outline:hover{border-color:var(--vert-vif);color:var(--vert-vif)}
+
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+.reveal.visible{opacity:1;transform:none}
+
+footer{background:#050a07;padding:2.5rem 3rem;text-align:center;border-top:1px solid rgba(82,183,136,.08)}
+.footer-logo{font-family:var(--serif);font-size:1.4rem;font-weight:300;color:var(--vert-vif);margin-bottom:.4rem}
+footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;line-height:1.7}
+
+@media(max-width:700px){
+  nav{padding:.8rem 1.2rem}
+  section{padding:3rem 1.3rem}
+  h1{font-size:1.9rem}
+  .cout-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Programme Résilience V11</a>
+  <div style="display:flex;align-items:center;gap:1.2rem">
+    <span class="nav-tag">Finances publiques · Optimisation</span>
+    <a href="fondements.html" class="nav-back">← Fondements</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Budget · Dépenses publiques · Finances nationales</div>
+    <h1>Transition énergétique :<br><em>optimiser</em> les dépenses publiques<br>grâce à la <strong>filière carbone biogénique</strong></h1>
+    <p class="hero-sub">Le Programme Résilience vise à minimiser la dépense publique supplémentaire nécessaire à la transition énergétique. Il repose principalement sur la valorisation d’actifs et ressources nationaux déjà disponibles — biomasse, réseau GRDF, stockages souterrains, coopératives — plutôt que sur la construction d’un système entièrement nouveau.</p>
+  </div>
+</section>
+
+<!-- BANDEAU MÉTHODOLOGIQUE -->
+<div class="avert">
+  <div class="container">
+    <p><strong>Note méthodologique :</strong> les chiffres présentés dans cette page sont des ordres de grandeur issus du Programme Résilience V11 (mai 2026). La décomposition CAPEX complète est disponible dans le <a href="Programme_Resilience_V11_Complet.pdf" target="_blank" style="color:var(--or-clair)">Programme V11 enrichi — section 3.2</a>. Ces estimations n'ont pas encore été validées par un audit indépendant (RTE, ADEME, Cour des Comptes). Ils constituent une base de travail pour orienter des études sectorielles approfondies.</p>
+  </div>
+</div>
+
+<!-- LES 4 ARGUMENTS FINANCIERS -->
+<section>
+  <div class="container">
+    <div class="stag-or reveal">Les quatre leviers d'optimisation</div>
+    <h2 class="reveal">Ce que la filière carbone biogénique<br><em>évite de dépenser</em> — et ce qu'elle <strong>génère.</strong></h2>
+    <p class="lead reveal">La comparaison financière entre le scénario tout-électrique et le scénario Résilience porte sur quatre dimensions distinctes. Elles ne mesurent pas la même chose et ne doivent pas être additionnées brutes — mais chacune représente un levier réel d'optimisation des finances publiques.</p>
+
+    <div class="args-grid reveal">
+
+      <div class="arg-card">
+        <div class="arg-n">1</div>
+        <div class="arg-montant"><span style="font-size:1.3rem">Potentiel de plusieurs<br>centaines de Md€</span></div>
+        <div class="arg-unite">Détail documenté dans Programme V11 — section 3.2</div>
+        <h3>Infrastructure évitée ou préservée</h3>
+        <p>CAPEX total BEV estimé 794–1 096 Md€ vs Résilience 540–690 Md€. Inclut : 7 EPR non nécessaires (84–105 Md€), réseau HTB allégé (20–35 Md€), bornes DC évitées (40–60 Md€), dépréciation actifs GRDF évitée (100–200 Md€), véhicules moins chers (60–80 Md€).</p>
+        <div class="arg-qualif">⚠ Ordre de grandeur — à affiner · Décomposition section 3.2 V11</div>
+      </div>
+
+      <div class="arg-card">
+        <div class="arg-n">2</div>
+        <div class="arg-montant">~35 Md€/an</div>
+        <div class="arg-unite">Revenus générés par les investissements Résilience</div>
+        <h3>Actifs productifs autofinancés</h3>
+        <p>Les 139–147 Md€ d'investissements spécifiques Résilience (pyrogazification, méthanisation, Sabatier, stations Bio-GNV) génèrent des revenus multiples : biométhane GRDF, biochar certifié CRCF, chaleur fatale, CO₂ biogénique valorisé. Payback 5–8 ans. Ces investissements ne nécessitent pas de subvention directe — seulement des signaux réglementaires et des garanties de prêts.</p>
+        <div class="arg-qualif">✅ Mécanisme documenté · IRR 8–15 %</div>
+      </div>
+
+      <div class="arg-card">
+        <div class="arg-n">3</div>
+        <div class="arg-montant">200–400 €/an</div>
+        <div class="arg-unite">Par foyer · hausse TURPE évitée sur 30 M de ménages</div>
+        <h3>Bouclier tarifaire structurel</h3>
+        <p>En évitant 20–35 Md€ de renforcement réseau RTE/Enedis sur 2026–2035, le scénario Résilience évite une hausse mécanique du TURPE (tarif d'utilisation du réseau) répercutée sur toutes les factures d'électricité. Ce bouclier bénéficie à l'ensemble des foyers français, qu'ils possèdent ou non un véhicule électrique.</p>
+        <div class="arg-qualif">✅ Mécanisme TURPE documenté · Cour des Comptes 2024</div>
+      </div>
+
+      <div class="arg-card">
+        <div class="arg-n">4</div>
+        <div class="arg-montant">~70 Md€/an</div>
+        <div class="arg-unite">Importations fossiles substituables à terme</div>
+        <h3>Balance commerciale et recettes fiscales</h3>
+        <p>La France importe aujourd'hui environ 70 Md€/an d'énergies fossiles. Chaque TWh de bio-CH₄ produit nationalement réduit ces importations et génère de la valeur ajoutée nationale (emplois, taxes locales, cotisations). L'impact sur la balance commerciale et les recettes fiscales est progressif mais structurel.</p>
+        <div class="arg-qualif">✅ Données douanes 2023 · montée en charge progressive</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TABLEAU COMPARATIF FINANCIER -->
+<section class="alt">
+  <div class="container">
+    <div class="stag reveal">Comparaison financière détaillée</div>
+    <h2 class="reveal">Deux trajectoires.<br><em>Deux profils de dépenses</em> radicalement différents.</h2>
+    <p class="lead reveal">Le tableau suivant compare les postes financiers des deux trajectoires du point de vue des finances publiques et nationales. Les deux colonnes ne représentent pas uniquement des CAPEX — elles intègrent aussi les coûts d'exploitation, les revenus générés et les impacts sur la balance des paiements.</p>
+
+    <div class="tbl-wrap reveal">
+      <table>
+        <thead>
+          <tr>
+            <th class="th-or" style="width:30%">Poste</th>
+            <th class="th-rouge">Tout-électrique (BEV)</th>
+            <th class="th-vert">Résilience hybride V11</th>
+            <th class="th-or">Nature de l'écart</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>CAPEX production électrique</td>
+            <td class="td-r">424–466 Md€</td>
+            <td class="td-g">283–324 Md€</td>
+            <td>−140 Md€ central · FC nucléaire amélioré via Sabatier</td>
+          </tr>
+          <tr>
+            <td>Renforcement réseau RTE/Enedis</td>
+            <td class="td-r">80–120 Md€</td>
+            <td class="td-g">50–70 Md€</td>
+            <td>−40 à −50 Md€ · moins de puissance à transporter</td>
+          </tr>
+          <tr>
+            <td>Infrastructure recharge / stations carburant</td>
+            <td class="td-r">40–60 Md€ (bornes DC)</td>
+            <td class="td-g">4,5–11 Md€ (Bio-GNV)</td>
+            <td>−30 à −55 Md€ · réseau GRDF existant valorisé</td>
+          </tr>
+          <tr>
+            <td>Véhicules — surcoût transition 33 M</td>
+            <td class="td-r">150–250 Md€</td>
+            <td class="td-g">80–140 Md€</td>
+            <td>−70 à −110 Md€ · ÉREV moins coûteux que BEV</td>
+          </tr>
+          <tr>
+            <td>Actifs gaziers (GRDF, stockages)</td>
+            <td class="td-r">100–200 Md€ d’actifs mis hors service</td>
+            <td class="td-g">0 — préservés et valorisés</td>
+            <td>−100 à −200 Md€ · 200 000 km de réseau préservés</td>
+          </tr>
+          <tr>
+            <td>Investissements filière bio-CH₄</td>
+            <td>0</td>
+            <td>139–147 Md€ (autofinancés 5–8 ans)</td>
+            <td>+139–147 Md€ MAIS génèrent ~35 Md€/an de revenus</td>
+          </tr>
+          <tr class="tr-total">
+            <td>TOTAL CAPEX TRANSITION</td>
+            <td class="td-r">794–1 096 Md€</td>
+            <td class="td-g">~540–690 Md€</td>
+            <td class="td-or">Économie ~250–350 Md€ · ordre de grandeur</td>
+          </tr>
+          <tr>
+            <td>Revenus générés (20 ans)</td>
+            <td class="td-r">~0 direct</td>
+            <td class="td-g">Flux économiques de plusieurs centaines de Md€ sur 20 ans (chiffre d’affaires, avant charges d’exploitation)</td>
+            <td>Actifs productifs vs coûts secs</td>
+          </tr>
+          <tr>
+            <td>Impact balance commerciale/an</td>
+            <td>Neutre</td>
+            <td class="td-g">+5 à +20 Md€/an progressif</td>
+            <td>Substitution imports fossiles + engrais</td>
+          </tr>
+          <tr>
+            <td>Hausse TURPE par foyer/an</td>
+            <td class="td-r">+200 à +400 €</td>
+            <td class="td-g">+50 à +120 €</td>
+            <td>Bouclier tarifaire structurel sur 30 M foyers</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="box box-or reveal">
+      <strong>Lecture financière :</strong> la comparaison CAPEX (250–350 Md€ d'économie) est conservatrice. Elle compare des montants bruts sans tenir compte du fait que les 139–147 Md€ investis côté Résilience sont des actifs productifs générant des flux économiques élevés sur leur durée de vie, là où les dépenses BEV sont des coûts secs sans retour. L'avantage économique réel sur 20 ans, en levier est potentiellement très élevé — sa quantification précise nécessite une étude actuarielle indépendante distinguant chiffre d’affaires, EBITDA et valeur nette actualisée.
+    </div>
+  </div>
+</section>
+
+<!-- CE QUE L'ÉTAT DOIT INVESTIR DIRECTEMENT -->
+<section>
+  <div class="container">
+    <div class="stag reveal">Ce que l'État investit directement</div>
+    <h2 class="reveal">Un plan à <em>coût public minimal</em><br>et retour économique <strong>maximal.</strong></h2>
+    <p class="lead reveal">La question pour les finances publiques n'est pas seulement "combien coûte Résilience ?" mais "que doit financer l'État directement, et qu'est-ce qui s'autofinance ?" La réponse est structurellement favorable.</p>
+
+    <div class="cout-etat reveal">
+      <h3 style="margin:0 0 .5rem;color:var(--or-clair)">Ce que l'État finance directement (hors marché)</h3>
+      <p class="body" style="margin-bottom:1rem">Les 139–147 Md€ d'investissements spécifiques Résilience sont à 80–90 % privés ou coopératifs (financement BEI, CDC, BPI + revenus GRDF). La contribution publique directe se limite à :</p>
+      <div class="cout-grid">
+        <div class="cout-item">
+          <div class="cout-label">Signaux réglementaires</div>
+          <div class="cout-valeur">Coût quasi-nul</div>
+          <div class="cout-detail">Bonus ÉREV Bio-GNV · cadre CIVE · classification CDC V3 dans les ICPE · mandat étude RTE/GRDF · révision ZEV 2026</div>
+        </div>
+        <div class="cout-item">
+          <div class="cout-label">Phase pilote (2027–2029)</div>
+          <div class="cout-valeur">2,5–3 Md€</div>
+          <div class="cout-detail">5 sites pilotes · validation rendements et certification CDC V3 · Condition sine qua non avant déploiement · Comparable au budget annuel d'un grand programme de R&D</div>
+        </div>
+        <div class="cout-item">
+          <div class="cout-label">Garanties souveraines (20 premiers sites)</div>
+          <div class="cout-valeur">~8–12 Md€</div>
+          <div class="cout-detail">Garanties de prêts sur les 20 premiers sites industriels · Libèrent le financement bancaire pour les 130 suivants · Retour probable via redevances et taxes locales</div>
+        </div>
+        <div class="cout-item">
+          <div class="cout-label">Formation professionnelle</div>
+          <div class="cout-valeur">~0,3–0,5 Md€/an</div>
+          <div class="cout-detail">BTS + CQP opérateurs pyrogazification · Flux continu 2027–2042 · Emplois non délocalisables créés en contrepartie</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="box box-vert reveal">
+      <strong>Synthèse pour les finances publiques :</strong> le Programme Résilience demande à l'État un engagement direct de l'ordre de <strong>10–15 Md€</strong> sur la période 2027–2033 (pilotes + garanties + formation) — soit moins de 0,5 % du PIB annuel. En contrepartie, il préserve ou évite un potentiel de plusieurs centaines de milliards d’euros d’infrastructure, génère 200 000 emplois fiscalisés, réduit les importations fossiles et protège les factures de 30 millions de ménages. Le ratio coût public / bénéfice collectif est potentiellement très élevé — sa quantification précise est l’objet des études sectorielles à engager.
+    </div>
+
+    <div class="box box-vert reveal">
+      <strong>Pourquoi ce n’est pas une subvention supplémentaire :</strong> La biomasse existe déjà. Le réseau GRDF de 200 000 km existe déjà. Les stockages souterrains de 130 TWh existent déjà. Les coopératives agricoles et CUMA existent déjà. Résilience cherche principalement à valoriser des actifs et ressources existants plutôt qu’à construire un système entièrement nouveau — c’est un avantage spécifique de l’approche Résilience, qui valorise simultanément plusieurs infrastructures et ressources déjà présentes sur le territoire.
+    </div>
+
+    <div class="box box-bleu reveal">
+      <strong>Ce que ce programme n'est pas :</strong> Résilience n'est pas un plan de subvention à la biomasse. Il ne demande pas de maintenir les tarifs CRE à perpétuité ni de financer des installations non rentables. Il demande un signal de départ (Phase 0 pilote), une garantie temporaire (20 premiers sites), et un cadre réglementaire stable (15 ans). Le reste se finance par les marchés dès que le track record de Phase 0 est établi.
+    </div>
+  </div>
+</section>
+
+<!-- RENVOIS -->
+<section class="alt">
+  <div class="container">
+    <div class="stag reveal">Documents de référence</div>
+    <h2 class="reveal">Sources et <em>approfondissements</em></h2>
+    <div class="renvoi-grid reveal">
+      <a href="Programme_Resilience_V11_Complet.pdf" target="_blank" class="renvoi-card">
+        <div class="rc-tag">Référence principale</div>
+        <div class="rc-title">Programme V11 enrichi — Section 3.2</div>
+        <div class="rc-desc">Décomposition CAPEX complète BEV vs Résilience, poste par poste. Source de tous les chiffres de cette page.</div>
+      </a>
+      <a href="Note_Cadrage_Systeme_Energetique_V11.pdf" target="_blank" class="renvoi-card">
+        <div class="rc-tag">Analyse technique</div>
+        <div class="rc-title">Note de cadrage système énergétique</div>
+        <div class="rc-desc">Les 5 jours critiques · TURPE · −7 EPR · 36,9 GW évités · Comparaison trajectoires 2025–2045.</div>
+      </a>
+      <a href="Note_Positionnement_Resilience_vs_Shift_V11.pdf" target="_blank" class="renvoi-card">
+        <div class="rc-tag">Positionnement politique</div>
+        <div class="rc-title">Note Résilience vs Shift Project</div>
+        <div class="rc-desc">Plan d'action 2026–2030 · 8 mesures · Coût État · Argumentaire pour les cabinets ministériels.</div>
+      </a>
+      <a href="fondements.html" class="renvoi-card">
+        <div class="rc-tag">Contexte systémique</div>
+        <div class="rc-title">Pourquoi Résilience — les 5 crises</div>
+        <div class="rc-desc">Le constat fondateur · économie circulaire du carbone biogénique · comparaison des approches.</div>
+      </a>
+      <a href="systeme-energetique.html" class="renvoi-card">
+        <div class="rc-tag">Analyse physique</div>
+        <div class="rc-title">Système énergétique France 2045</div>
+        <div class="rc-desc">Pourquoi l'électrification seule ne suffit pas · contraintes de puissance · stockage saisonnier.</div>
+      </a>
+    </div>
+    <div style="text-align:center;margin-top:2rem">
+      <a href="index.html" class="btn btn-outline">← Retour au programme complet</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Programme Résilience V11</div>
+  <p>Finances publiques · Optimisation des dépenses · Transition énergétique · Mai 2026</p>
+  <p style="font-size:.7rem;color:#3a5044;margin-top:.4rem">Les chiffres sont des ordres de grandeur indicatifs non encore validés par audit indépendant · Sources détaillées dans le Programme V11 enrichi section 3.2 · Diffusion libre</p>
+</footer>
+
+<script>
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{
+    if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*70);obs.unobserve(e.target);}
+  });
+},{threshold:0.06});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
