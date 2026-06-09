@@ -74,6 +74,10 @@ p.body{font-size:.88rem;color:rgba(240,244,241,.62);line-height:1.88;margin-bott
 .c2 .crise-chiffre{background:rgba(233,196,106,.1);color:var(--ambre);border:1px solid rgba(233,196,106,.2)}
 .c3 .crise-chiffre{background:rgba(45,106,79,.2);color:var(--vert-vif);border:1px solid rgba(82,183,136,.2)}
 .c4 .crise-chiffre{background:rgba(74,92,106,.15);color:#74a9c0;border:1px solid rgba(74,92,106,.25)}
+.c5::before{background:linear-gradient(90deg,#7b4a1a,#c47a2a)}
+.c5 .crise-n{color:#c47a2a}
+.c5 .crise-tag{color:#c47a2a}
+.c5 .crise-chiffre{background:rgba(196,122,42,.1);color:#c47a2a;border:1px solid rgba(196,122,42,.2)}
 .crise-insuffisant{font-size:.75rem;color:rgba(240,244,241,.35);font-style:italic;margin-top:.5rem;padding-top:.5rem;border-top:1px solid rgba(255,255,255,.06)}
 
 /* SCHÉMA TONNE DE BIOMASSE */
@@ -230,10 +234,20 @@ footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;li
         <h3>Une économie rurale sans modèle économique durable</h3>
         <p>Les territoires ruraux gèrent les ressources naturelles les plus stratégiques du pays — forêts, sols, eau, biomasse — sans en tirer de valeur économique directe. L'agriculture dépend d'engrais importés (4 Md€/an), les forêts sont sous-gérées faute de débouchés. La transition énergétique classique n'y crée pas d'emplois — elle y déplace la dépendance.</p>
         <div class="crise-chiffre">4 Md€/an d'engrais synthétiques importés substituables</div><br>
-        <div class="crise-chiffre">200 000+ emplois non délocalisables créés par Résilience</div>
+        <div class="crise-chiffre">200 000+ emplois non délocalisables <a href="Programme_Resilience_V11_Complet.pdf" target="_blank" style="color:var(--vert-vif);font-size:.7rem">[méthodologie V11 →]</a></div>
         <p class="crise-insuffisant">Ce que l'électrification seule ne crée pas : une chaîne de valeur territoriale locale. Les batteries sont fabriquées en Asie. Le biométhane est produit à la ferme.</p>
       </div>
 
+      <div class="crise-card c5">
+        <div class="crise-n">5</div>
+        <div class="crise-tag">Matières premières &amp; souveraineté</div>
+        <h3>La transition électrique crée de nouvelles dépendances</h3>
+        <p>Remplacer les fossiles par le tout-électrique réduit la dépendance au pétrole et au gaz — mais crée une dépendance accrue au lithium, cobalt, nickel et terres rares, extraits à 80 % hors d'Europe. Les engrais synthétiques dépendent de l'ammoniac, lui-même dépendant du gaz naturel importé. Remplacer une dépendance par une autre n'est pas une stratégie de souveraineté.</p>
+        <div class="crise-chiffre">France : 100 % de son lithium importé · 100 % de son cobalt</div><br>
+        <div class="crise-chiffre">4 Md€/an d'engrais synthétiques importés · dépendance ammoniac</div>
+        <p style="font-size:.82rem;color:rgba(240,244,241,.7);margin-top:.8rem">Ce que Résilience propose : l'ÉREV utilise 75 % moins de batterie (20  kWh vs 80–150  kWh BEV) — lithium et cobalt divisés par 4 à 5. Le digestat de méthanisation substitue partiellement les engrais importés. Le biochar améliore la rétention des nutriments et réduit les besoins en intrants. L'infrastructure bio-CH₄ mobilise des matériaux européens et de la main-d'œuvre locale.</p>
+        <p class="crise-insuffisant">Ce que les autres approches n'adressent pas : le BEV pur aggrave la dépendance aux matières rares. Le naturalisme passif ignore complètement la question des intrants agricoles.</p>
+      </div>
     </div>
 
     <div class="box box-violet reveal">
@@ -307,7 +321,7 @@ footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;li
       <div class="dist-card dist-oui">
         <div class="dist-label">Ce que Résilience est</div>
         <h3>Un complément qui rend l'électrification réaliste et réparatrice</h3>
-        <p>Les 262 TWh de bio-CH₄ résolvent ce que le tout-électrique ne peut pas résoudre seul : les 37,5 GW de pics instantanés, le stockage saisonnier de 130 TWh, la mobilité longue distance décarbonée. En parallèle, le biochar co-produit restaure les sols et séquestre 23 Mt CO₂/an. Ce n'est pas un concurrent de l'électricité — c'est sa condition de viabilité.</p>
+        <p>Les 262 TWh de bio-CH₄ résolvent ce que le tout-électrique ne peut pas résoudre seul : les 37,5 GW de pics instantanés, le stockage saisonnier de 130 TWh, la mobilité longue distance décarbonée. En parallèle, le biochar co-produit restaure les sols et séquestre 23 Mt CO₂/an. Ce n'est pas un concurrent de l'électricité — c'est un complément majeur à sa viabilité, l'une des solutions permettant de traiter ses limites structurelles.</p>
       </div>
     </div>
 
@@ -348,7 +362,7 @@ footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;li
   <div class="container">
     <div class="stag reveal">Analyse comparative · Troisième approche</div>
     <h2 class="reveal">Et si on laissait simplement<br><em>la nature se réparer ?</em></h2>
-    <p class="lead reveal">Il existe une troisième vision, souvent implicite dans le débat public : arrêter les fossiles suffirait à restaurer l'atmosphère, et il faudrait laisser les écosystèmes évoluer sans intervention humaine. Cette vision est séduisante. Elle est aussi, dans ses formes extrêmes, une erreur scientifique et une impasse politique.</p>
+    <p class="lead reveal">Il existe une troisième vision, souvent implicite dans le débat public : arrêter les fossiles suffirait à restaurer l'atmosphère, et il faudrait laisser les écosystèmes évoluer sans intervention humaine. Cette vision est séduisante. Elle est aussi, dans ses formes extrêmes, une erreur scientifique lorsqu’elle est généralisée, et une impasse politique pour les pays qui ont besoin de continuer à se développer.</p>
 
     <div class="box box-ambre reveal">
       <strong>Ce que l'on observe sur le terrain :</strong> une forêt non gérée depuis 20 ans n'est pas une forêt plus riche — c'est une forêt impénétrable, homogène en âge, vulnérable aux tempêtes et aux incendies. Les parterres verts urbains sans entretien deviennent des friches à plantes envahissantes. Et le bois coupé pour le chauffage domestique remplace effectivement une partie du fioul ou du gaz — cela, personne ne le conteste. Mais la combustion directe dans une cheminée à 50 % de rendement produit des particules fines, zéro biochar, zéro séquestration nette. La même tonne de bois traitée par pyrogazification produit 2,9 MWh de bio-CH₄ injectable au réseau GRDF — plus proprement, plus efficacement — et génère 0,27 t de biochar qui séquestre 0,8 t CO₂ pendant un siècle. Le principe de substituer les fossiles est juste. La méthode est perfectible.
@@ -375,19 +389,19 @@ footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;li
           <tr style="border-bottom:1px solid rgba(82,183,136,.08);background:rgba(13,31,23,.3)">
             <td style="padding:.7rem 1rem;color:var(--blanc);font-weight:400">Gestion forestière</td>
             <td style="padding:.7rem 1rem;color:rgba(240,244,241,.6)">Aucune politique spécifique</td>
-            <td style="padding:.7rem 1rem;color:rgba(240,244,241,.6)">Non-intervention. Accumulation de bois mort. Forêts impénétrables, homogènes en âge, vulnérables aux incendies catastrophiques</td>
+            <td style="padding:.7rem 1rem;color:rgba(240,244,241,.6)">Non-intervention. Dans certains écosystèmes c’est adapté (vieilles forêts, réserves intégrales). Dans d’autres, accumulation de combustible et vulnérabilité aux incendies peuvent poser problème</td>
             <td style="padding:.7rem 1rem;color:var(--vert-vif);font-weight:500">Prélèvement des fins bois (&lt; 12 cm) qui se décomposeraient de toute façon. Gros bois intact. Forêt plus résiliente, plus diverse, moins inflammable</td>
           </tr>
           <tr style="border-bottom:1px solid rgba(82,183,136,.08)">
             <td style="padding:.7rem 1rem;color:var(--blanc);font-weight:400">Risque incendie</td>
             <td style="padding:.7rem 1rem;color:rgba(240,244,241,.6)">Non adressé</td>
-            <td style="padding:.7rem 1rem;color:#e57368;font-weight:500">Aggravé — accumulation de combustible. Un incendie libère des décennies de carbone en quelques jours. Gironde 2022 : 60 000 ha → ~10 Mt CO₂ libérés</td>
+            <td style="padding:.7rem 1rem;color:#e57368;font-weight:500">Aggravé dans les zones à risque sec. Gironde 2022 : 60 000 ha → ~10 Mt CO₂ libérés en quelques semaines. Une gestion du risque incendie reste nécessaire même dans une approche de libre évolution</td>
             <td style="padding:.7rem 1rem;color:var(--vert-vif);font-weight:500">Réduit — gestion active des houppiers et rémanents fins. Moins de combustible disponible au sol</td>
           </tr>
           <tr style="border-bottom:1px solid rgba(82,183,136,.08);background:rgba(13,31,23,.3)">
             <td style="padding:.7rem 1rem;color:var(--blanc);font-weight:400">Biodiversité forestière</td>
             <td style="padding:.7rem 1rem;color:rgba(240,244,241,.6)">Non adressée</td>
-            <td style="padding:.7rem 1rem;color:rgba(240,244,241,.6)">Favorable à court terme pour certaines espèces, mais homogénéisation à long terme — espèces pionnières dominent, diversité des strates se réduit</td>
+            <td style="padding:.7rem 1rem;color:rgba(240,244,241,.6)">Variable selon les écosystèmes — favorable à court terme pour certaines espèces, possible homogénéisation à long terme dans les forêts fermées. Débat scientifique ouvert entre écologues</td>
             <td style="padding:.7rem 1rem;color:var(--vert-vif);font-weight:500">Maintien des strates (bois mort > 20 cm intouché, arbres-habitats, litière). Éclaircie → lumière au sol → regénération diversifiée</td>
           </tr>
           <tr style="border-bottom:1px solid rgba(82,183,136,.08)">
@@ -399,7 +413,7 @@ footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;li
           <tr style="border-bottom:1px solid rgba(82,183,136,.08);background:rgba(13,31,23,.3)">
             <td style="padding:.7rem 1rem;color:var(--blanc);font-weight:400">Urbanisme · espaces verts</td>
             <td style="padding:.7rem 1rem;color:rgba(240,244,241,.6)">Renaturation sans budget d'entretien</td>
-            <td style="padding:.7rem 1rem;color:rgba(240,244,241,.6)">Parterres verts non entretenus → plantes envahissantes → biodiversité nulle → nuisances. Apparence écologique, réalité contraire</td>
+            <td style="padding:.7rem 1rem;color:rgba(240,244,241,.6)">Variable — parfois intéressant pour certaines espèces, souvent envahi par des plantes non natives en milieu urbain dégradé. Résultat très dépendant du contexte local</td>
             <td style="padding:.7rem 1rem;color:var(--vert-vif);font-weight:500">Arbres urbains avec biochar en fosse de plantation → séquestration longue durée + îlots de fraîcheur + biodiversité soutenue</td>
           </tr>
           <tr style="border-bottom:1px solid rgba(82,183,136,.08)">
@@ -408,7 +422,13 @@ footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;li
             <td style="padding:.7rem 1rem;color:#e57368;font-weight:500">Impossible — dire à des pays en développement "n'utilisez pas vos ressources" est perçu comme injuste et inapplicable</td>
             <td style="padding:.7rem 1rem;color:var(--vert-vif);font-weight:500">Exportable positivement — valorisez vos terres marginales, produisez votre énergie, séquestrez du carbone certifié CRCF. Modèle gagnant-gagnant</td>
           </tr>
-          <tr style="border-bottom:1px solid rgba(82,183,136,.08);background:rgba(13,31,23,.3)">
+          <tr style="border-bottom:1px solid rgba(82,183,136,.08);<tr style="border-bottom:1px solid rgba(82,183,136,.08)">
+            <td style="padding:.7rem 1rem;color:var(--blanc);font-weight:400">Dépendance matières premières</td>
+            <td style="padding:.7rem 1rem;color:rgba(240,244,241,.6)">Accélère : plus de réseau = cuivre massif, BEV = lithium/cobalt massifs</td>
+            <td style="padding:.7rem 1rem;color:rgba(240,244,241,.6)">Non adressée — ignore la dépendance aux engrais et intrants agricoles</td>
+            <td style="padding:.7rem 1rem;color:var(--vert-vif);font-weight:500">ÉREV : −75 % batterie vs BEV. Digestat substitue engrais importés. Biochar réduit les intrants. Infrastructure bio-CH₄ = matériaux européens</td>
+          </tr>
+          background:rgba(13,31,23,.3)">
             <td style="padding:.7rem 1rem;color:var(--blanc);font-weight:400">Emplois ruraux</td>
             <td style="padding:.7rem 1rem;color:rgba(240,244,241,.6)">Limités — l'électricité se produit sans main d'œuvre rurale</td>
             <td style="padding:.7rem 1rem;color:rgba(240,244,241,.6)">Inexistants — la non-intervention ne crée pas d'emplois</td>
