@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biochar EBC/CDC V3 — Puits de carbone · Programme Résilience V11</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--noir:#0a0f0d;--foret:#0d1f17;--vert-vif:#52b788;--vert-clair:#95d5b2;--ambre:#e9c46a;--rouge:#c0392b;--blanc:#f0f4f1;--gris:#8a9e93;--serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',sans-serif;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--noir);color:var(--blanc);font-family:var(--sans);font-weight:300;line-height:1.7;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:.9rem 2.5rem;background:rgba(10,15,13,.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(82,183,136,.12)}
+.nav-logo{font-family:var(--serif);font-size:1.15rem;font-weight:600;color:var(--vert-vif);text-decoration:none}
+.nav-back{font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gris);text-decoration:none;transition:color .3s}.nav-back:hover{color:var(--vert-vif)}
+.nav-tag{font-size:.66rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--gris);border:1px solid rgba(82,183,136,.2);padding:.25rem .75rem}
+section{padding:5.5rem 3rem}
+.container{max-width:1100px;margin:0 auto}
+.stag{font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--vert-vif);margin-bottom:.7rem}
+h1{font-family:var(--serif);font-size:clamp(2.4rem,5vw,4rem);font-weight:300;line-height:1.08;margin-bottom:1.2rem}
+h1 em{font-style:italic;color:var(--vert-vif)}
+h2{font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.4rem);font-weight:300;line-height:1.15;margin-bottom:1rem}
+h2 em{font-style:italic;color:var(--vert-vif)}
+.lead{font-size:.97rem;color:rgba(240,244,241,.7);max-width:700px;line-height:1.85;margin-bottom:1.8rem}
+.btn{display:inline-block;padding:.72rem 1.6rem;font-family:var(--sans);font-size:.76rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:all .3s}
+.btn-primary{background:var(--vert-vif);color:var(--noir)}.btn-primary:hover{background:var(--vert-clair);transform:translateY(-2px)}
+.btn-outline{background:transparent;color:var(--blanc);border:1px solid rgba(240,244,241,.28)}.btn-outline:hover{border-color:var(--vert-vif);color:var(--vert-vif);transform:translateY(-2px)}
+.bc-layout{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-top:2rem}
+.bc-text p{font-size:.91rem;color:rgba(240,244,241,.68);line-height:1.85;margin-bottom:.9rem}
+.bc-text p strong{color:var(--vert-vif);font-weight:500}
+.bc-compare{display:flex;flex-direction:column;gap:1px;border:1px solid rgba(82,183,136,.1);background:rgba(82,183,136,.1)}
+.bc-row{display:grid;grid-template-columns:1.4fr 1fr 1fr;background:var(--foret);padding:.7rem 1rem;gap:.5rem;border-bottom:1px solid rgba(82,183,136,.08)}
+.bc-row.hdr{background:rgba(26,58,40,.9);font-size:.7rem;font-weight:600;color:var(--vert-clair);text-transform:uppercase;letter-spacing:.08em}
+.bc-row span{font-size:.8rem;color:rgba(240,244,241,.7);line-height:1.5}
+.bc-row span:first-child{color:var(--blanc);font-weight:400}
+.ebc-box{margin-top:2rem;padding:1.5rem 2rem;border-left:4px solid var(--ambre);background:rgba(233,196,106,.07)}
+.ebc-box h3{color:var(--ambre);font-size:1rem;font-family:var(--serif);margin-bottom:.5rem}
+.ebc-box p{font-size:.83rem;color:rgba(240,244,241,.65);line-height:1.65}
+.warn-box{background:rgba(233,196,106,.06);border:1px solid rgba(233,196,106,.22);border-left:4px solid var(--ambre);padding:1.3rem 1.7rem;margin-top:1.5rem;font-size:.84rem;color:rgba(240,244,241,.7);line-height:1.65}
+.warn-box strong{color:var(--ambre)}
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+.reveal.visible{opacity:1;transform:none}
+footer{background:#050a07;padding:2rem 3rem;text-align:center;border-top:1px solid rgba(82,183,136,.08)}
+.footer-logo{font-family:var(--serif);font-size:1.4rem;font-weight:300;color:var(--vert-vif);margin-bottom:.3rem}
+footer p{font-size:.75rem;color:var(--gris);max-width:600px;margin:.3rem auto}
+@media(max-width:700px){nav{padding:.85rem 1.3rem}section{padding:3.5rem 1.4rem}.bc-layout{grid-template-columns:1fr;gap:2rem}.bc-row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">Programme Résilience V11</a>
+  <div style="display:flex;align-items:center;gap:1.2rem">
+    <span class="nav-tag">Stratégie carbone · Biochar EBC/CDC V3</span>
+    <a href="carbone-resilience.html" class="nav-back">← Stratégie carbone</a>
+  </div>
+</nav>
+
+<section style="min-height:60vh;display:flex;align-items:center;padding-top:8rem;position:relative;overflow:hidden;background:linear-gradient(135deg,#0a0f0d 0%,#0d1f17 50%,#060e09 100%)">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 40% 50%,rgba(29,90,54,.28) 0%,transparent 70%)"></div>
+  <div class="container" style="position:relative;z-index:1">
+    <div style="display:inline-block;border:1px solid #e76f51;color:#e76f51;font-size:.67rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:.3rem .85rem;margin-bottom:1.5rem">Puits de carbone · Rigueur scientifique</div>
+    <h1>Ne pas dire « biochar ».<br>Dire <em>« Biochar certifié EBC / CDC V3 ».</em></h1>
+    <p class="lead">L'amalgame entre torréfaction basse température et pyrogazification haute température est le principal risque de greenwashing et d'effondrement de crédibilité de toute la filière. La distinction est non négociable.</p>
+    <div style="display:flex;gap:.9rem;flex-wrap:wrap">
+      <a href="#comparaison" class="btn btn-primary">Voir la comparaison →</a>
+      <a href="carbone-resilience.html" class="btn btn-outline">← Stratégie carbone</a>
+    </div>
+    <div style="display:flex;gap:2.5rem;margin-top:2.5rem;flex-wrap:wrap">
+      <div style="border-left:2px solid #e76f51;padding-left:1rem"><div style="font-family:var(--serif);font-size:1.9rem;color:#e76f51">H/C ≤ 0,4</div><div style="font-size:.68rem;color:var(--gris);text-transform:uppercase;letter-spacing:.1em">Critère EBC/CDC V3</div></div>
+      <div style="border-left:2px solid #e76f51;padding-left:1rem"><div style="font-family:var(--serif);font-size:1.9rem;color:#e76f51">&gt; 1 000 ans</div><div style="font-size:.68rem;color:var(--gris);text-transform:uppercase;letter-spacing:.1em">Stabilité dans les sols</div></div>
+      <div style="border-left:2px solid var(--vert-vif);padding-left:1rem"><div style="font-family:var(--serif);font-size:1.9rem;color:var(--vert-vif)">20–23 Mt</div><div style="font-size:.68rem;color:var(--gris);text-transform:uppercase;letter-spacing:.1em">CO₂/an séquestrés V11</div></div>
+      <div style="border-left:2px solid var(--ambre);padding-left:1rem"><div style="font-family:var(--serif);font-size:1.9rem;color:var(--ambre)">~70 €/t</div><div style="font-size:.68rem;color:var(--gris);text-transform:uppercase;letter-spacing:.1em">Crédit carbone EU-ETS</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="comparaison" style="background:var(--foret)">
+  <div class="container">
+    <div class="stag reveal">Rigueur scientifique</div>
+    <h2 class="reveal">Torréfaction vs Pyrogazification —<br><em>deux produits radicalement différents</em></h2>
+    <div class="bc-layout reveal">
+      <div class="bc-text">
+        <p>Le mot <strong>biochar</strong> utilisé seul ne signifie rien de précis. Un produit de torréfaction à 300°C et un produit de pyrogazification à 750°C portent le même nom — mais leurs propriétés sont radicalement différentes. C'est la norme <strong>EBC (European Biochar Certificate)</strong> qui établit la distinction certifiable.</p>
+        <p>Le critère clé est le <strong>ratio H/C organique</strong>. Si H/C &gt; 0,7 (torréfaction basse température), le produit est déclassé : il n'est pas un puits de carbone au sens des normes GIEC. Si <strong>H/C ≤ 0,4 à T° ≥ 700°C</strong> (pyrogazification), on obtient un biochar certifié EBC-Agro : fraction stable &gt; 1 000 ans estimée à ~75 %, sans HAP toxiques, améliorant la rétention d'eau et la vie microbienne des sols.</p>
+        <p>Pour le Programme Résilience, la certification <strong>CDC Biochar V3</strong> (H/C ≤ 0,4, carbone ≥ 50 % MS, matières volatiles &lt; 20 % MS) est une <strong>exigence contractuelle pour tous les 150 sites</strong>. Sans elle, aucun crédit carbone EU-ETS n'est défendable, et la séquestration revendiquée devient un passif juridique.</p>
+        <div class="ebc-box">
+          <h3>L'argument pour décideurs publics</h3>
+          <p>Si l'État subventionne des projets de stockage carbone dans les sols, il doit s'assurer que ce carbone n'y retournera pas dans 30 ans. Seul le biochar haute température (pyrogazification ≥ 700°C) offre cette garantie. C'est la condition d'éligibilité aux crédits carbone permanents — et la condition de crédibilité du programme face aux experts ADEME, INRAE et Shift Project.</p>
+        </div>
+      </div>
+      <div>
+        <div class="bc-compare">
+          <div class="bc-row hdr"><span>Critère</span><span>Torréfaction &lt;400°C</span><span>Pyrogazification ≥700°C</span></div>
+          <div class="bc-row"><span>Ratio H/C organique</span><span style="color:var(--rouge)">0,7 à 1,2 — déclassé</span><span style="color:var(--vert-vif)">≤ 0,4 — certifié EBC</span></div>
+          <div class="bc-row"><span>Stabilité carbone sols</span><span style="color:var(--rouge)">10 à 100 ans max</span><span style="color:var(--vert-vif)">&gt; 500 à 1 000 ans</span></div>
+          <div class="bc-row"><span>Séquestration certifiable</span><span style="color:var(--rouge)">Non — GIEC rejette</span><span style="color:var(--vert-vif)">Oui — CDC V3 / EU-ETS</span></div>
+          <div class="bc-row"><span>HAP toxiques (sols)</span><span style="color:var(--rouge)">Risque élevé — interdit agri.</span><span style="color:var(--vert-vif)">Absent — EBC-Agro validé</span></div>
+          <div class="bc-row"><span>Rétention eau +30 %</span><span style="color:var(--rouge)">Faible — structure pauvre</span><span style="color:var(--vert-vif)">Forte — structure graphitée</span></div>
+          <div class="bc-row"><span>Rendement énergétique</span><span style="color:var(--rouge)">Faible — gaz pauvre</span><span style="color:var(--vert-vif)">Élevé — syngas 2,9 MWh/t</span></div>
+          <div class="bc-row"><span>Double dividende</span><span style="color:var(--rouge)">Non — un seul produit médiocre</span><span style="color:var(--vert-vif)">Oui — énergie + puits carbone</span></div>
+          <div class="bc-row"><span>Crédit carbone EU-ETS</span><span style="color:var(--rouge)">Non défendable</span><span style="color:var(--vert-vif)">20–23 Mt CO₂/an × 70 €/t</span></div>
+        </div>
+        <div class="warn-box">
+          <strong>⚠ Rendements &gt; 3,5 MWh CH₄/t MS :</strong> hors plage industriellement validée. Toute installation déclarant de tels rendements nécessite un audit indépendant avant comptabilisation. Référence validée : GoBiGas 2017–2018 = 2,85–3,0 MWh/t MS.
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:2.5rem;display:flex;gap:1rem;flex-wrap:wrap" class="reveal">
+      <a href="carbone-resilience.html" class="btn btn-outline">← Stratégie carbone</a>
+      <a href="sequestration.html" class="btn btn-outline">Forêt libre vs Biochar →</a>
+      <a href="biomasse.html" class="btn btn-outline">Gisement biomasse →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Programme Résilience V11</div>
+  <p>Biochar certifié EBC/CDC V3 · Puits de carbone · Juin 2026 · Diffusion libre</p>
+</footer>
+<script>
+const obs=new IntersectionObserver((e)=>{e.forEach((el,i)=>{if(el.isIntersecting){setTimeout(()=>el.target.classList.add('visible'),i*65);obs.unobserve(el.target)}})},{threshold:0.07});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
