@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matériaux critiques & Souveraineté — Programme Résilience V11</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --noir:#0a0f0d;--foret:#0d1f17;--vert-vif:#52b788;--vert-clair:#95d5b2;
+  --ambre:#e9c46a;--rouge:#c0392b;--rouge-light:#fadbd8;--bleu:#2980b9;
+  --blanc:#f0f4f1;--gris:#8a9e93;--orange:#e76f51;
+  --serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--noir);color:var(--blanc);font-family:var(--sans);font-weight:300;line-height:1.7;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:.9rem 2.5rem;background:rgba(10,15,13,.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(82,183,136,.12)}
+.nav-logo{font-family:var(--serif);font-size:1.15rem;font-weight:600;color:var(--vert-vif);text-decoration:none}
+.nav-back{font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gris);text-decoration:none;transition:color .3s}.nav-back:hover{color:var(--vert-vif)}
+.nav-tag{font-size:.66rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--gris);border:1px solid rgba(82,183,136,.2);padding:.25rem .75rem}
+section{padding:5.5rem 3rem}
+.container{max-width:1100px;margin:0 auto}
+.stag{font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--vert-vif);margin-bottom:.7rem}
+h1{font-family:var(--serif);font-size:clamp(2.4rem,5vw,4rem);font-weight:300;line-height:1.08;margin-bottom:1.2rem}
+h1 em{font-style:italic;color:var(--vert-vif)}
+h2{font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.4rem);font-weight:300;line-height:1.15;margin-bottom:1rem}
+h2 em{font-style:italic;color:var(--vert-vif)}
+.lead{font-size:.97rem;color:rgba(240,244,241,.7);max-width:700px;line-height:1.85;margin-bottom:1.8rem}
+.btn{display:inline-block;padding:.72rem 1.6rem;font-family:var(--sans);font-size:.76rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:all .3s}
+.btn-primary{background:var(--vert-vif);color:var(--noir)}.btn-primary:hover{background:var(--vert-clair);transform:translateY(-2px)}
+.btn-outline{background:transparent;color:var(--blanc);border:1px solid rgba(240,244,241,.28)}.btn-outline:hover{border-color:var(--vert-vif);color:var(--vert-vif);transform:translateY(-2px)}
+
+/* HERO */
+#hero{min-height:72vh;display:flex;align-items:center;padding:8rem 3rem 5rem;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 35% 50%,rgba(192,57,43,.18) 0%,transparent 60%),linear-gradient(135deg,#0a0f0d 0%,#0d1f17 50%,#060e09 100%)}
+.hero-grid{position:absolute;inset:0;opacity:.04;background-image:linear-gradient(var(--vert-vif) 1px,transparent 1px),linear-gradient(90deg,var(--vert-vif) 1px,transparent 1px);background-size:55px 55px}
+.kpi-row{display:flex;gap:2.5rem;margin-top:2.5rem;flex-wrap:wrap}
+.kpi{border-left:2px solid var(--rouge);padding-left:1rem}
+.kpi.v{border-color:var(--vert-vif)}
+.kpi.a{border-color:var(--ambre)}
+.kpi-num{font-family:var(--serif);font-size:1.9rem;color:var(--rouge);line-height:1}
+.kpi.v .kpi-num{color:var(--vert-vif)}
+.kpi.a .kpi-num{color:var(--ambre)}
+.kpi-lbl{font-size:.68rem;color:var(--gris);text-transform:uppercase;letter-spacing:.1em;margin-top:.2rem}
+
+/* PARADOXE */
+.paradox-box{border:1px solid var(--rouge);background:rgba(192,57,43,.08);padding:1.8rem 2.2rem;margin:2rem 0}
+.paradox-box h3{font-family:var(--serif);font-size:1.3rem;color:var(--rouge);margin-bottom:.7rem}
+.paradox-box p{font-size:.9rem;color:rgba(240,244,241,.75);line-height:1.85}
+.paradox-box p strong{color:var(--ambre)}
+
+/* MATÉRIAUX GRID */
+.mat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.2rem;margin-top:2rem}
+.mat-card{padding:1.6rem;border:1px solid rgba(82,183,136,.14);background:rgba(13,31,23,.6)}
+.mat-card.rouge{border-color:rgba(192,57,43,.35);background:rgba(192,57,43,.07)}
+.mat-card.ambre{border-color:rgba(233,196,106,.3);background:rgba(233,196,106,.05)}
+.mat-card h3{font-family:var(--serif);font-size:1.05rem;color:var(--vert-clair);margin-bottom:.4rem}
+.mat-card.rouge h3{color:#f1948a}
+.mat-card.ambre h3{color:var(--ambre)}
+.mat-num{font-family:var(--serif);font-size:1.8rem;font-weight:300;line-height:1;margin-bottom:.4rem}
+.mat-card.rouge .mat-num{color:var(--rouge)}
+.mat-card.ambre .mat-num{color:var(--ambre)}
+.mat-card .mat-num{color:var(--vert-vif)}
+.mat-card p{font-size:.8rem;color:rgba(240,244,241,.6);line-height:1.65}
+.mat-tag{margin-top:.8rem;font-size:.7rem;padding:.3rem .8rem;border-radius:20px;display:inline-block;font-weight:500}
+.rouge-tag{background:rgba(192,57,43,.18);color:#f1948a;border:1px solid rgba(192,57,43,.35)}
+.ambre-tag{background:rgba(233,196,106,.12);color:var(--ambre);border:1px solid rgba(233,196,106,.3)}
+.vert-tag{background:rgba(82,183,136,.12);color:var(--vert-vif);border:1px solid rgba(82,183,136,.3)}
+
+/* CHINE */
+.chine-layout{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2rem}
+.chine-col{padding:1.8rem 2rem;border:1px solid rgba(192,57,43,.25);background:rgba(192,57,43,.06)}
+.chine-col h3{font-family:var(--serif);font-size:1.1rem;color:#f1948a;margin-bottom:1rem;padding-bottom:.6rem;border-bottom:1px solid rgba(192,57,43,.2)}
+.chine-item{display:flex;justify-content:space-between;align-items:center;margin-bottom:.7rem;font-size:.83rem}
+.chine-item .lbl{color:rgba(240,244,241,.65)}
+.chine-item .pct{font-family:var(--serif);font-size:1.2rem;color:var(--rouge);font-weight:300}
+.timeline{margin-top:1.5rem}
+.tl-item{display:flex;gap:1rem;margin-bottom:.8rem;align-items:flex-start}
+.tl-date{font-size:.72rem;font-weight:600;color:var(--rouge);min-width:75px;padding-top:.15rem}
+.tl-text{font-size:.8rem;color:rgba(240,244,241,.65);line-height:1.6}
+
+/* COMPARATIF PAR TWh */
+.twh-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;border:1px solid rgba(82,183,136,.1);background:rgba(82,183,136,.1);margin-top:2rem}
+.twh-col{padding:1.4rem 1.2rem;background:var(--noir)}
+.twh-col.hdr{background:rgba(26,58,40,.9)}
+.twh-tech{font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--vert-clair);margin-bottom:.7rem}
+.twh-col.hdr .twh-tech{color:var(--vert-vif)}
+.twh-row{margin-bottom:.6rem}
+.twh-row .label{font-size:.72rem;color:var(--gris)}
+.twh-row .val{font-family:var(--serif);font-size:1.1rem;font-weight:300;line-height:1.2}
+.rouge-val{color:var(--rouge)}
+.ambre-val{color:var(--ambre)}
+.vert-val{color:var(--vert-vif)}
+.gris-val{color:var(--gris)}
+
+/* RESILIENCE */
+.res-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.2rem;margin-top:2rem}
+.res-card{padding:1.6rem;border:1px solid rgba(82,183,136,.2);background:rgba(29,58,40,.25)}
+.res-card h3{font-family:var(--serif);font-size:1rem;color:var(--vert-clair);margin-bottom:.6rem}
+.res-card p{font-size:.82rem;color:rgba(240,244,241,.65);line-height:1.65}
+.res-badge{display:inline-block;margin-top:.7rem;font-size:.68rem;font-weight:600;letter-spacing:.1em;padding:.25rem .7rem;border-radius:20px;background:rgba(82,183,136,.15);color:var(--vert-vif);border:1px solid rgba(82,183,136,.3)}
+
+/* NUCLÉAIRE */
+.nuc-layout{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2rem}
+.nuc-good{padding:1.8rem;border:1px solid rgba(82,183,136,.25);background:rgba(29,58,40,.2)}
+.nuc-limit{padding:1.8rem;border:1px solid rgba(233,196,106,.25);background:rgba(233,196,106,.05)}
+.nuc-good h3{font-family:var(--serif);font-size:1rem;color:var(--vert-vif);margin-bottom:.8rem}
+.nuc-limit h3{font-family:var(--serif);font-size:1rem;color:var(--ambre);margin-bottom:.8rem}
+.nuc-item{font-size:.82rem;color:rgba(240,244,241,.65);line-height:1.6;padding-left:.9rem;position:relative;margin-bottom:.5rem}
+.nuc-item::before{position:absolute;left:0;font-size:.72rem}
+.nuc-good .nuc-item::before{content:'✓';color:var(--vert-vif)}
+.nuc-limit .nuc-item::before{content:'⚠';color:var(--ambre)}
+
+/* DOC */
+.doc-box{display:grid;grid-template-columns:1fr 2fr;gap:2.5rem;align-items:center;margin-top:2rem;padding:2rem;border:1px solid rgba(82,183,136,.2);background:rgba(13,31,23,.5)}
+.doc-cover{background:rgba(10,15,13,.7);border:1px solid rgba(82,183,136,.25);padding:2rem 1.5rem;text-align:center}
+.doc-cover-title{font-family:var(--serif);font-size:1.1rem;font-weight:300;color:var(--blanc);line-height:1.3;margin-bottom:.5rem}
+.doc-sub{font-size:.76rem;color:var(--gris);margin-bottom:1.5rem;line-height:1.5}
+
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+.reveal.visible{opacity:1;transform:none}
+footer{background:#050a07;padding:2rem 3rem;text-align:center;border-top:1px solid rgba(82,183,136,.08)}
+.footer-logo{font-family:var(--serif);font-size:1.4rem;font-weight:300;color:var(--vert-vif);margin-bottom:.3rem}
+footer p{font-size:.75rem;color:var(--gris);max-width:600px;margin:.3rem auto}
+@media(max-width:700px){
+  nav{padding:.85rem 1.3rem}section{padding:3.5rem 1.4rem}
+  .chine-layout,.nuc-layout,.doc-box{grid-template-columns:1fr}
+  .twh-grid{grid-template-columns:1fr 1fr}
+  .res-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">Programme Résilience V11</a>
+  <div style="display:flex;align-items:center;gap:1.2rem">
+    <span class="nav-tag">Souveraineté · Matériaux critiques</span>
+    <a href="carbone-resilience.html" class="nav-back">← Stratégie carbone</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div><div class="hero-grid"></div>
+  <div class="container" style="position:relative;z-index:1">
+    <div style="display:inline-block;border:1px solid var(--rouge);color:var(--rouge);font-size:.67rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:.3rem .85rem;margin-bottom:1.5rem">Enjeu de souveraineté · Juin 2026</div>
+    <h1>La transition énergétique<br>mondiale crée une nouvelle<br><em>dépendance stratégique</em></h1>
+    <p class="lead">Remplacer le pétrole et le gaz par des renouvelables et des batteries, c'est substituer une dépendance à une autre. Le lithium, le cobalt, les terres rares et le cuivre sont désormais les nouveaux combustibles fossiles — avec une concentration géopolitique encore plus dangereuse.</p>
+    <div style="display:flex;gap:.9rem;flex-wrap:wrap">
+      <a href="#materiaux" class="btn btn-primary">Voir l'analyse →</a>
+      <a href="Materiaux_Critiques_Transition_Energetique.pdf" class="btn btn-outline" target="_blank" download>⬇ Rapport complet PDF</a>
+    </div>
+    <div class="kpi-row">
+      <div class="kpi"><div class="kpi-num">90 %</div><div class="kpi-lbl">du raffinage terres rares<br>contrôlé par la Chine</div></div>
+      <div class="kpi"><div class="kpi-num">6,5 Mt</div><div class="kpi-lbl">déficit cuivre prévu en 2035<br>(AIE 2025)</div></div>
+      <div class="kpi"><div class="kpi-num">15 ans</div><div class="kpi-lbl">délai moyen pour ouvrir<br>une mine</div></div>
+      <div class="kpi v"><div class="kpi-num">0</div><div class="kpi-lbl">matériau critique rare<br>dans le biométhane Résilience</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- LE PARADOXE -->
+<section id="materiaux" style="background:var(--foret)">
+  <div class="container">
+    <div class="stag reveal">Le paradoxe fondamental</div>
+    <h2 class="reveal">Décarboner avec des matériaux<br><em>que personne ne peut fournir à temps</em></h2>
+    <p class="lead reveal">Tous les pays décarbonent simultanément, avec les mêmes matériaux, provenant des mêmes mines, raffinés dans les mêmes usines chinoises. La compétition est mondiale et simultanée. La France raisonne comme si elle était seule.</p>
+
+    <div class="paradox-box reveal">
+      <h3>Ce que dit l'AIE (Global Critical Minerals Outlook 2025)</h3>
+      <p>Les projets actuels et annoncés ne permettront pas de répondre à la demande de cuivre, de nickel, de cobalt et de lithium nécessaire d'ici 2035 pour atteindre les objectifs climatiques. <strong>800 milliards de dollars d'investissements miniers supplémentaires</strong> sont nécessaires d'ici 2040 — un niveau jamais atteint historiquement. En 2040, la demande de lithium sera <strong>2,9 fois supérieure à l'offre</strong> selon le scénario intermédiaire de l'AIE.</p>
+    </div>
+
+    <div class="mat-grid reveal">
+      <div class="mat-card rouge">
+        <div class="mat-num">× 75</div>
+        <h3>Lithium · Cobalt · Nickel</h3>
+        <p>La demande mondiale pourrait être multipliée par 75 d'ici 2050 par rapport aux niveaux de 2020 (DMCC, fév. 2025). En 2024, la croissance de la demande en lithium a été de 30 %/an — 3× les projections.</p>
+        <span class="mat-tag rouge-tag">Déficit structurel dès 2027-2030</span>
+      </div>
+      <div class="mat-card rouge">
+        <div class="mat-num">42 Mt</div>
+        <h3>Cuivre — le plus immédiat</h3>
+        <p>Demande projetée en 2040 : 42 Mt. Offre minière : elle culmine à ~24 Mt fin des années 2020 puis DÉCLINE sous 19 Mt en 2035 (baisse des teneurs). Déficit : 6,5 Mt dès 2035 (AIE 2025).</p>
+        <span class="mat-tag rouge-tag">Pénurie dès 2026-2028 possible</span>
+      </div>
+      <div class="mat-card ambre">
+        <div class="mat-num">394 kg</div>
+        <h3>Par véhicule électrique BEV</h3>
+        <p>Matériaux critiques par VE : 394 kg (aluminium, cobalt, cuivre, graphite, lithium, manganèse, nickel) contre 176 kg pour un thermique. Facteur 2,2× (WWF / Institut Mobilités en Transition, 2023).</p>
+        <span class="mat-tag ambre-tag">2,2× plus qu'un thermique</span>
+      </div>
+      <div class="mat-card ambre">
+        <div class="mat-num">10×</div>
+        <h3>Solaire vs nucléaire en acier</h3>
+        <p>1 MW de solaire PV mobilise 10× plus d'acier et 12× plus de cuivre que 1 MW nucléaire — lequel produit 3 à 5× plus d'énergie par MW installé (Source : US Dept of Energy / Connaissance des énergies).</p>
+        <span class="mat-tag ambre-tag">Par TWh produit</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LA CHINE -->
+<section id="chine" style="background:var(--noir)">
+  <div class="container">
+    <div class="stag reveal">Concentration géopolitique</div>
+    <h2 class="reveal">La Chine — un contrôle<br><em>déjà utilisé comme arme</em></h2>
+    <p class="lead reveal">La dépendance aux matériaux critiques n'est pas seulement quantitative. Elle est géopolitique. Et contrairement à la dépendance au gaz russe, elle a déjà été utilisée comme levier de pression — et le sera davantage.</p>
+
+    <div class="chine-layout reveal">
+      <div class="chine-col">
+        <h3>Contrôle chinois sur le raffinage (2025)</h3>
+        <div class="chine-item"><span class="lbl">Terres rares (raffinage)</span><span class="pct">90 %</span></div>
+        <div class="chine-item"><span class="lbl">Graphite batteries</span><span class="pct">> 80 %</span></div>
+        <div class="chine-item"><span class="lbl">Cobalt raffiné</span><span class="pct">> 70 %</span></div>
+        <div class="chine-item"><span class="lbl">Lithium raffiné</span><span class="pct">~50 % → 60 %+ en 2035</span></div>
+        <div class="chine-item"><span class="lbl">Manganèse</span><span class="pct">~70 %</span></div>
+        <div class="chine-item"><span class="lbl">Gallium + Germanium</span><span class="pct">~100 % (déjà restreint)</span></div>
+        <div class="chine-item"><span class="lbl">Aimants permanents (NdFeB)</span><span class="pct">87 %</span></div>
+      </div>
+      <div class="chine-col">
+        <h3>Restrictions d'exportation chinoises — chronologie</h3>
+        <div class="timeline">
+          <div class="tl-item"><div class="tl-date">Juil. 2023</div><div class="tl-text">Germanium et gallium restreints — semi-conducteurs et électronique de défense.</div></div>
+          <div class="tl-item"><div class="tl-date">Août 2024</div><div class="tl-text">Antimoine ajouté — applications militaires et énergie solaire.</div></div>
+          <div class="tl-item"><div class="tl-date">Janv. 2025</div><div class="tl-text">Tungstène, molybdène, indium, tellure, bismuth — électronique et défense.</div></div>
+          <div class="tl-item"><div class="tl-date">Avr. 2025</div><div class="tl-text">7 terres rares lourdes + aimants permanents — arrêts de production dans l'industrie auto européenne.</div></div>
+          <div class="tl-item"><div class="tl-date">Été 2025</div><div class="tl-text">Graphite naturel, matériaux LFP, technologies de raffinage du lithium ajoutés.</div></div>
+          <div class="tl-item"><div class="tl-date">Plan 2035</div><div class="tl-text">La Chine prévoit 60 %+ du lithium/cobalt raffinés, 80 % du graphite batteries, 70 % du manganèse.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:2rem;padding:1.5rem 2rem;border-left:4px solid var(--rouge);background:rgba(192,57,43,.07);border:1px solid rgba(192,57,43,.2);border-left:4px solid var(--rouge)" class="reveal">
+      <p style="font-size:.88rem;color:rgba(240,244,241,.75);line-height:1.85"><strong style="color:#f1948a">Le parallèle avec le gaz russe :</strong> en 2021, l'Europe s'était convaincue que la dépendance au gaz russe était gérable car "les marchés fonctionnent". Elle a découvert en 2022 que la dépendance à un fournisseur unique d'un bien stratégique crée une vulnérabilité existentielle. La dépendance aux matériaux critiques chinois reproduit ce schéma — avec des substituts encore plus difficiles à trouver, et des délais de diversification de 15 à 20 ans au lieu de 2 à 3 ans. La Chine a déjà commencé à utiliser cet outil.</p>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARATIF PAR TWh -->
+<section id="comparatif" style="background:var(--foret)">
+  <div class="container">
+    <div class="stag reveal">Matériaux par TWh produit</div>
+    <h2 class="reveal">Comparer les technologies<br><em>sur ce qui compte vraiment</em></h2>
+    <p class="lead reveal">Rapporté à l'énergie effectivement produite sur toute la durée de vie, le profil de matériaux des différentes technologies révèle des différences structurelles que les débats habituels ignorent.</p>
+
+    <div class="twh-grid reveal">
+      <div class="twh-col hdr">
+        <div class="twh-tech">Indicateur</div>
+        <div class="twh-row"><div class="label">Béton (t/TWh)</div></div>
+        <div class="twh-row"><div class="label">Acier (t/TWh)</div></div>
+        <div class="twh-row"><div class="label">Cuivre (kg/TWh)</div></div>
+        <div class="twh-row"><div class="label">Matériaux critiques rares</div></div>
+        <div class="twh-row"><div class="label">Dépendance géopolitique</div></div>
+      </div>
+      <div class="twh-col">
+        <div class="twh-tech">Nucléaire EPR (60 ans · FC 80 %)</div>
+        <div class="twh-row"><div class="val vert-val">~1 300 t</div></div>
+        <div class="twh-row"><div class="val vert-val">~60 t</div></div>
+        <div class="twh-row"><div class="val vert-val">Faible</div></div>
+        <div class="twh-row"><div class="val vert-val">Zéro Li/Co/TR</div></div>
+        <div class="twh-row"><div class="val vert-val">Uranium — Orano FR</div></div>
+      </div>
+      <div class="twh-col">
+        <div class="twh-tech">Éolien terrestre (25 ans · FC 23 %)</div>
+        <div class="twh-row"><div class="val rouge-val">~11 000 t (×8,5)</div></div>
+        <div class="twh-row"><div class="val rouge-val">~1 800 t (×30)</div></div>
+        <div class="twh-row"><div class="val ambre-val">~250 kg/TWh</div></div>
+        <div class="twh-row"><div class="val rouge-val">Terres rares aimants</div></div>
+        <div class="twh-row"><div class="val rouge-val">Chine 90 % raffinage</div></div>
+      </div>
+      <div class="twh-col">
+        <div class="twh-tech">Solaire PV (25 ans · FC 14 %)</div>
+        <div class="twh-row"><div class="val ambre-val">~3 000 t (×2,3)</div></div>
+        <div class="twh-row"><div class="val ambre-val">~400 t (×6,5)</div></div>
+        <div class="twh-row"><div class="val rouge-val">~600 kg/TWh (×12)</div></div>
+        <div class="twh-row"><div class="val ambre-val">Silicium, argent</div></div>
+        <div class="twh-row"><div class="val ambre-val">Chine 80 % panneaux</div></div>
+      </div>
+    </div>
+    <p style="font-size:.76rem;color:var(--gris);margin-top:.8rem">Sources : US Department of Energy · Connaissance des énergies · Wikipedia EPR Flamanville · ADEME</p>
+  </div>
+</section>
+
+<!-- RÉSILIENCE -->
+<section id="resilience" style="background:var(--noir)">
+  <div class="container">
+    <div class="stag reveal">La réponse Résilience</div>
+    <h2 class="reveal">Une stratégie souveraine —<br><em>zéro matériau critique rare</em></h2>
+    <p class="lead reveal">Le Programme Résilience n'est pas seulement une réponse climatique et énergétique. C'est une stratégie de souveraineté matérielle. Chaque filière du programme a été conçue pour minimiser la dépendance aux matériaux sous contrôle géopolitique étranger.</p>
+
+    <div class="res-grid reveal">
+      <div class="res-card">
+        <h3>🌾 Biométhane (méthanisation + pyrogazification)</h3>
+        <p>Acier, béton, électronique courante — aucun matériau critique rare. Ressource première : biomasse nationale non délocalisable. Stockage dans le réseau GRDF existant : 130 TWh sans nouveau matériau.</p>
+        <span class="res-badge">Souveraineté totale</span>
+      </div>
+      <div class="res-card">
+        <h3>🚛 ÉREV Bio-GNV</h3>
+        <p>Batterie 20-25 kWh vs 75 kWh pour un BEV pur : 2 à 3× moins de lithium, cobalt et nickel par véhicule. À 15 millions de véhicules : économie de 60 000 à 100 000 t de lithium et 100 000 à 200 000 t de cobalt.</p>
+        <span class="res-badge">Dépendance divisée par 2 à 3</span>
+      </div>
+      <div class="res-card">
+        <h3>⚛ Nucléaire existant</h3>
+        <p>Zéro lithium, cobalt, terres rares. Uranium via Orano (chaîne nationale). Chaque GW maintenu évite 4 à 5 GW d'éolien ou 5 à 6 GW de solaire et tout le cuivre et acier associés.</p>
+        <span class="res-badge">Armature sans matériaux rares</span>
+      </div>
+      <div class="res-card">
+        <h3>☀ Solaire (surfaces artificialisées)</h3>
+        <p>Priorité aux toitures et parkings existants — pas de nouveau foncier. Cuivre et aluminium nécessaires, mais pas de lithium ni cobalt. Gisement : 40 à 60 GW sur surfaces déjà artificialisées.</p>
+        <span class="res-badge">Sans lithium ni cobalt</span>
+      </div>
+      <div class="res-card">
+        <h3>🌿 Digestat — Substitution engrais</h3>
+        <p>Réduit la dépendance aux engrais minéraux importés (Maroc pour le phosphore, Russie pour la potasse) : ISE annuel de 90 000 à 250 000 €/unité. Double souveraineté : énergie ET agronomie.</p>
+        <span class="res-badge">Souveraineté agronomique</span>
+      </div>
+      <div class="res-card">
+        <h3>⬛ Biochar EBC/CDC V3</h3>
+        <p>Séquestration carbone sans aucun matériau critique. Acier et béton pour les installations, biomasse nationale pour la ressource. 20 à 23 Mt CO₂/an séquestrés sans dépendance étrangère.</p>
+        <span class="res-badge">Puits carbone souverain</span>
+      </div>
+    </div>
+
+    <!-- NUCLÉAIRE SECTION -->
+    <div style="margin-top:3rem" class="reveal">
+      <h2>Le nucléaire <em>— ses atouts et ses limites honnêtes</em></h2>
+      <p class="lead" style="margin-top:1rem">Le nucléaire est la technologie la moins gourmande en matériaux critiques rares par TWh produit. Mais il consomme lui aussi des matériaux — en abondance, mais différents.</p>
+      <div class="nuc-layout">
+        <div class="nuc-good">
+          <h3>Ce que le nucléaire n'utilise pas</h3>
+          <div class="nuc-item">Zéro lithium (aucune batterie de stockage massive)</div>
+          <div class="nuc-item">Zéro cobalt (aucune dépendance RDC/Chine)</div>
+          <div class="nuc-item">Zéro terres rares (aucun aimant permanent sur les REP)</div>
+          <div class="nuc-item">Zéro graphite de qualité batterie</div>
+          <div class="nuc-item">Uranium : chaîne nationale via Orano, stocks stratégiques plusieurs années, moins risqué géopolitiquement que le cobalt congolais</div>
+          <div class="nuc-item">Chaque GW maintenu évite 4 à 5 GW d'éolien + tout le cuivre et acier associés</div>
+        </div>
+        <div class="nuc-limit">
+          <h3>Ce qu'il faut dire honnêtement</h3>
+          <div class="nuc-item">300 000 m³ de béton et 42 000 t d'acier par EPR — matériaux abondants mais volumes considérables</div>
+          <div class="nuc-item">Aciers spéciaux (16MND5, 18MND5) exigeants — maîtrise industrielle à reconstituer après années de désinvestissement</div>
+          <div class="nuc-item">Zirconium pour les gaines combustible — ressource mondiale disponible mais limitée</div>
+          <div class="nuc-item">Gestion des déchets (Cigéo) : béton et acier supplémentaires sur très long terme</div>
+          <div class="nuc-item">Délais de construction : 17 ans pour Flamanville 3 — risque de non-disponibilité à temps</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOCUMENT -->
+<section id="document" style="background:var(--foret)">
+  <div class="container">
+    <div class="stag reveal">Rapport complet</div>
+    <h2 class="reveal">L'analyse complète —<br><em>8 chapitres, chiffres officiels</em></h2>
+    <div class="doc-box reveal">
+      <div class="doc-cover">
+        <div style="font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gris);margin-bottom:.6rem">Programme Résilience V11</div>
+        <div class="doc-cover-title">Matériaux critiques : la contrainte physique que le scénario tout-électrique ignore</div>
+        <div class="doc-sub">Cuivre · Lithium · Cobalt · Terres rares · Nucléaire · Souveraineté · Juin 2026</div>
+        <a href="Materiaux_Critiques_Transition_Energetique.pdf" class="btn btn-primary" target="_blank" download style="width:100%;text-align:center;font-size:.7rem">⬇ Télécharger le PDF</a>
+      </div>
+      <div>
+        <p style="font-size:.88rem;color:rgba(240,244,241,.68);line-height:1.85;margin-bottom:1rem">8 chapitres appuyés sur l'AIE, l'IRENA, l'ADEME, La Fabrique de l'industrie, WWF/IMT, la Commission européenne, le US Department of Energy.</p>
+        <ul style="list-style:none">
+          <li style="font-size:.83rem;color:rgba(240,244,241,.65);padding-left:1.1rem;position:relative;margin-bottom:.4rem"><span style="position:absolute;left:0;color:var(--vert-vif)">→</span>Le paradoxe : une transition très intensive en matériaux</li>
+          <li style="font-size:.83rem;color:rgba(240,244,241,.65);padding-left:1.1rem;position:relative;margin-bottom:.4rem"><span style="position:absolute;left:0;color:var(--vert-vif)">→</span>Le cuivre : déficit le plus immédiat et le plus certain</li>
+          <li style="font-size:.83rem;color:rgba(240,244,241,.65);padding-left:1.1rem;position:relative;margin-bottom:.4rem"><span style="position:absolute;left:0;color:var(--vert-vif)">→</span>La concentration géopolitique chinoise</li>
+          <li style="font-size:.83rem;color:rgba(240,244,241,.65);padding-left:1.1rem;position:relative;margin-bottom:.4rem"><span style="position:absolute;left:0;color:var(--vert-vif)">→</span>Contenu en matériaux par technologie</li>
+          <li style="font-size:.83rem;color:rgba(240,244,241,.65);padding-left:1.1rem;position:relative;margin-bottom:.4rem"><span style="position:absolute;left:0;color:var(--vert-vif)">→</span>La stratégie Résilience : substitution progressive</li>
+          <li style="font-size:.83rem;color:rgba(240,244,241,.65);padding-left:1.1rem;position:relative;margin-bottom:.4rem"><span style="position:absolute;left:0;color:var(--vert-vif)">→</span>Les atouts spécifiques de la France</li>
+          <li style="font-size:.83rem;color:rgba(240,244,241,.65);padding-left:1.1rem;position:relative;margin-bottom:.4rem"><span style="position:absolute;left:0;color:var(--vert-vif)">→</span>Le nucléaire : atouts et limites honnêtes</li>
+          <li style="font-size:.83rem;color:rgba(240,244,241,.65);padding-left:1.1rem;position:relative;margin-bottom:.4rem"><span style="position:absolute;left:0;color:var(--vert-vif)">→</span>Tableau comparatif final : tout-électrique vs Résilience</li>
+        </ul>
+        <div style="display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.2rem">
+          <a href="carbone-resilience.html" class="btn btn-outline" style="font-size:.72rem">← Stratégie carbone</a>
+          <a href="biodiversite.html" class="btn btn-outline" style="font-size:.72rem">Biodiversité & Climat →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Programme Résilience V11</div>
+  <p>Matériaux critiques · Souveraineté matérielle · Juin 2026 · Diffusion libre</p>
+  <p style="font-size:.7rem;color:#3a5044;margin-top:.3rem">Sources : AIE Global Critical Minerals Outlook 2025 · IRENA · ADEME · La Fabrique de l'industrie · US Dept of Energy · DMCC</p>
+</footer>
+
+<script>
+const obs=new IntersectionObserver((e)=>{e.forEach((el,i)=>{if(el.isIntersecting){setTimeout(()=>el.target.classList.add('visible'),i*65);obs.unobserve(el.target)}})},{threshold:0.07});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
