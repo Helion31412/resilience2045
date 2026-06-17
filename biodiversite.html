@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biodiversité & Climat — Analyse · Programme Résilience V11</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--noir:#0a0f0d;--foret:#0d1f17;--vert-vif:#52b788;--vert-clair:#95d5b2;--ambre:#e9c46a;--rouge:#c0392b;--rouge-light:#fadbd8;--bleu:#2980b9;--blanc:#f0f4f1;--gris:#8a9e93;--serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',sans-serif;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--noir);color:var(--blanc);font-family:var(--sans);font-weight:300;line-height:1.7;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:.9rem 2.5rem;background:rgba(10,15,13,.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(82,183,136,.12)}
+.nav-logo{font-family:var(--serif);font-size:1.15rem;font-weight:600;color:var(--vert-vif);text-decoration:none}
+.nav-back{font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gris);text-decoration:none;transition:color .3s}.nav-back:hover{color:var(--vert-vif)}
+.nav-tag{font-size:.66rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--gris);border:1px solid rgba(82,183,136,.2);padding:.25rem .75rem}
+section{padding:5.5rem 3rem}
+.container{max-width:1100px;margin:0 auto}
+.stag{font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--vert-vif);margin-bottom:.7rem}
+h1{font-family:var(--serif);font-size:clamp(2.4rem,5vw,4rem);font-weight:300;line-height:1.08;margin-bottom:1.2rem}
+h1 em{font-style:italic;color:var(--vert-vif)}
+h2{font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.4rem);font-weight:300;line-height:1.15;margin-bottom:1rem}
+h2 em{font-style:italic;color:var(--vert-vif)}
+.lead{font-size:.97rem;color:rgba(240,244,241,.7);max-width:700px;line-height:1.85;margin-bottom:1.8rem}
+.btn{display:inline-block;padding:.72rem 1.6rem;font-family:var(--sans);font-size:.76rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:all .3s}
+.btn-primary{background:var(--vert-vif);color:var(--noir)}.btn-primary:hover{background:var(--vert-clair);transform:translateY(-2px)}
+.btn-outline{background:transparent;color:var(--blanc);border:1px solid rgba(240,244,241,.28)}.btn-outline:hover{border-color:var(--vert-vif);color:var(--vert-vif);transform:translateY(-2px)}
+
+/* HERO */
+#hero{min-height:72vh;display:flex;align-items:center;padding:8rem 3rem 5rem;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 35% 50%,rgba(29,90,54,.3) 0%,transparent 70%),linear-gradient(135deg,#0a0f0d 0%,#0d1f17 50%,#060e09 100%)}
+.hero-grid{position:absolute;inset:0;opacity:.04;background-image:linear-gradient(var(--vert-vif) 1px,transparent 1px),linear-gradient(90deg,var(--vert-vif) 1px,transparent 1px);background-size:55px 55px}
+.kpi-row{display:flex;gap:2.5rem;margin-top:2.5rem;flex-wrap:wrap}
+.kpi{border-left:2px solid var(--rouge);padding-left:1rem}
+.kpi.g{border-color:var(--vert-vif)}
+.kpi-num{font-family:var(--serif);font-size:1.9rem;color:var(--rouge);line-height:1}
+.kpi.g .kpi-num{color:var(--vert-vif)}
+.kpi-lbl{font-size:.68rem;color:var(--gris);text-transform:uppercase;letter-spacing:.1em;margin-top:.2rem}
+
+/* PARADOXE */
+.paradox-box{border:1px solid var(--rouge);background:rgba(192,57,43,.08);padding:1.8rem 2.2rem;margin:2rem 0}
+.paradox-box h3{font-family:var(--serif);font-size:1.3rem;color:var(--rouge);margin-bottom:.7rem}
+.paradox-box p{font-size:.9rem;color:rgba(240,244,241,.75);line-height:1.85}
+.paradox-box p strong{color:var(--ambre)}
+
+/* GRILLE 4 MILIEUX */
+.milieux-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:2rem}
+.milieu-card{padding:1.8rem;border:1px solid rgba(82,183,136,.14);background:rgba(13,31,23,.6);position:relative}
+.milieu-card.rouge{border-color:rgba(192,57,43,.3);background:rgba(192,57,43,.06)}
+.milieu-card.ambre{border-color:rgba(233,196,106,.3);background:rgba(233,196,106,.05)}
+.milieu-card.vert{border-color:rgba(82,183,136,.3);background:rgba(29,58,40,.25)}
+.milieu-icon{font-size:2rem;margin-bottom:.7rem}
+.milieu-card h3{font-family:var(--serif);font-size:1.1rem;margin-bottom:.5rem;color:var(--vert-clair)}
+.milieu-card.rouge h3{color:#f1948a}
+.milieu-card.ambre h3{color:var(--ambre)}
+.milieu-stat{font-family:var(--serif);font-size:1.6rem;font-weight:300;line-height:1;margin:-.2rem 0 .5rem}
+.milieu-card.rouge .milieu-stat{color:var(--rouge)}
+.milieu-card.ambre .milieu-stat{color:var(--ambre)}
+.milieu-card .milieu-stat{color:var(--vert-vif)}
+.milieu-card p{font-size:.8rem;color:rgba(240,244,241,.6);line-height:1.65}
+.milieu-cause{margin-top:.8rem;font-size:.73rem;padding:.3rem .8rem;border-radius:20px;display:inline-block;font-weight:500}
+.milieu-card.rouge .milieu-cause{background:rgba(192,57,43,.2);color:#f1948a;border:1px solid rgba(192,57,43,.4)}
+.milieu-card.ambre .milieu-cause{background:rgba(233,196,106,.15);color:var(--ambre);border:1px solid rgba(233,196,106,.35)}
+.milieu-card.vert .milieu-cause{background:rgba(82,183,136,.15);color:var(--vert-vif);border:1px solid rgba(82,183,136,.35)}
+
+/* CAUSES */
+.causes-layout{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:2rem;align-items:start}
+.cause-col h3{font-family:var(--serif);font-size:1.1rem;margin-bottom:1rem;padding-bottom:.5rem;border-bottom:2px solid}
+.cause-col.rouge h3{color:var(--rouge);border-color:var(--rouge)}
+.cause-col.vert h3{color:var(--vert-vif);border-color:var(--vert-vif)}
+.cause-item{display:flex;gap:.8rem;margin-bottom:.8rem;align-items:flex-start}
+.cause-dot{width:6px;height:6px;border-radius:50%;margin-top:.55rem;flex-shrink:0}
+.rouge .cause-dot{background:var(--rouge)}
+.vert .cause-dot{background:var(--vert-vif)}
+.cause-item p{font-size:.83rem;color:rgba(240,244,241,.65);line-height:1.6}
+.cause-item p strong{color:var(--blanc);font-weight:500}
+
+/* SOLUTIONS */
+.sol-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem;margin-top:2rem}
+.sol-card{padding:1.6rem;border:1px solid rgba(82,183,136,.14);background:rgba(10,15,13,.55)}
+.sol-card h3{font-family:var(--serif);font-size:1rem;color:var(--vert-clair);margin-bottom:.5rem}
+.sol-card ul{list-style:none;margin-top:.5rem}
+.sol-card ul li{font-size:.8rem;color:rgba(240,244,241,.6);line-height:1.65;padding-left:.9rem;position:relative;margin-bottom:.35rem}
+.sol-card ul li::before{content:'→';position:absolute;left:0;color:var(--vert-vif);font-size:.72rem}
+
+/* CONCLUSION */
+.concl-box{margin-top:2rem;padding:1.8rem 2.2rem;border-left:4px solid var(--vert-vif);background:rgba(29,58,40,.22);border:1px solid rgba(82,183,136,.2);border-left:4px solid var(--vert-vif)}
+.concl-box h3{font-family:var(--serif);font-size:1.2rem;color:var(--vert-vif);margin-bottom:.7rem}
+.concl-box p{font-size:.88rem;color:rgba(240,244,241,.72);line-height:1.85}
+.concl-box p strong{color:var(--ambre)}
+
+/* DOC */
+.doc-box{display:grid;grid-template-columns:1fr 2fr;gap:2.5rem;align-items:center;margin-top:2rem;padding:2rem;border:1px solid rgba(82,183,136,.2);background:rgba(13,31,23,.5)}
+.doc-cover{background:rgba(10,15,13,.7);border:1px solid rgba(82,183,136,.25);padding:2rem 1.5rem;text-align:center}
+.doc-title{font-family:var(--serif);font-size:1.2rem;font-weight:300;color:var(--blanc);line-height:1.3;margin-bottom:.5rem}
+.doc-sub{font-size:.76rem;color:var(--gris);margin-bottom:1.5rem;line-height:1.5}
+.doc-info h3{font-family:var(--serif);font-size:1.3rem;color:var(--vert-clair);margin-bottom:.8rem}
+.doc-info p{font-size:.88rem;color:rgba(240,244,241,.65);line-height:1.8;margin-bottom:.8rem}
+.doc-meta{font-size:.76rem;color:var(--gris);margin-bottom:1.2rem}
+
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+.reveal.visible{opacity:1;transform:none}
+
+footer{background:#050a07;padding:2rem 3rem;text-align:center;border-top:1px solid rgba(82,183,136,.08)}
+.footer-logo{font-family:var(--serif);font-size:1.4rem;font-weight:300;color:var(--vert-vif);margin-bottom:.3rem}
+footer p{font-size:.75rem;color:var(--gris);max-width:600px;margin:.3rem auto}
+
+@media(max-width:700px){nav{padding:.85rem 1.3rem}section{padding:3.5rem 1.4rem}.milieux-grid{grid-template-columns:1fr}.causes-layout{grid-template-columns:1fr}.doc-box{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">Programme Résilience V11</a>
+  <div style="display:flex;align-items:center;gap:1.2rem">
+    <span class="nav-tag">Biodiversité & Climat</span>
+    <a href="carbone-resilience.html" class="nav-back">← Stratégie carbone</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div><div class="hero-grid"></div>
+  <div class="container" style="position:relative;z-index:1">
+    <div style="display:inline-block;border:1px solid var(--rouge);color:var(--rouge);font-size:.67rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:.3rem .85rem;margin-bottom:1.5rem">Synthèse scientifique · Juin 2026</div>
+    <h1>Biodiversité en crise :<br><em>le climat, principal coupable</em><br>désormais démontré</h1>
+    <p class="lead">La disparition des espèces est réelle et documentée. Mais sa cause principale n'est plus l'exploitation humaine directe — c'est le dérèglement climatique. Cette confusion de causalité oriente les politiques publiques dans la mauvaise direction.</p>
+    <div style="display:flex;gap:.9rem;flex-wrap:wrap">
+      <a href="#paradoxe" class="btn btn-primary">Lire l'analyse →</a>
+      <a href="Biodiversite_Climat_Analyse_V1.pdf" class="btn btn-outline" target="_blank" download>⬇ Télécharger le rapport PDF</a>
+    </div>
+    <div class="kpi-row">
+      <div class="kpi"><div class="kpi-num">62,1 %</div><div class="kpi-lbl">extinctions vertébrés d'ici 2100<br>causées par le seul climat</div></div>
+      <div class="kpi"><div class="kpi-num">83,7 %</div><div class="kpi-lbl">récifs coralliens blanchis<br>en 2 ans (2023-2025)</div></div>
+      <div class="kpi"><div class="kpi-num">87 %</div><div class="kpi-lbl">zones humides mondiales<br>disparues depuis le XVIIIᵉ s.</div></div>
+      <div class="kpi g"><div class="kpi-num">La décarbonation</div><div class="kpi-lbl">est la meilleure politique<br>de biodiversité possible</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PARADOXE -->
+<section id="paradoxe" style="background:var(--foret)">
+  <div class="container">
+    <div class="stag reveal">Le renversement de lecture</div>
+    <h2 class="reveal">La confusion de causalité —<br><em>soigner les symptômes, ignorer la maladie</em></h2>
+    <p class="lead reveal">Depuis des décennies, le discours sur la biodiversité désigne l'exploitation humaine directe comme cause principale des extinctions : la coupe forestière, la pêche, le drainage. Les données récentes imposent une relecture.</p>
+
+    <div class="paradox-box reveal">
+      <h3>Le chiffre qui change tout</h3>
+      <p>D'ici 2100, le changement climatique sera directement responsable à <strong>62,1 % de la disparition des espèces de vertébrés</strong> (Science Advances, 2023). Cela signifie que même si l'on arrêtait toute exploitation humaine des écosystèmes dès demain, plus de 60 % des extinctions prévues auraient lieu quand même. Protéger les forêts de la coupe sans réduire le réchauffement revient à soigner les symptômes sans traiter la maladie.</p>
+    </div>
+
+    <div class="milieux-grid reveal" style="margin-top:2.5rem">
+      <div class="milieu-card rouge">
+        <div class="milieu-icon">🪸</div>
+        <h3>Récifs coralliens</h3>
+        <div class="milieu-stat">83,7 %</div>
+        <p>des récifs mondiaux touchés par blanchissement entre janv. 2023 et avril 2025. Plus de 40 % des espèces de coraux tropicaux menacées d'extinction (UICN, nov. 2024).</p>
+        <span class="milieu-cause">Cause quasi exclusive : réchauffement océanique</span>
+      </div>
+      <div class="milieu-card rouge">
+        <div class="milieu-icon">🌊</div>
+        <h3>Zones humides</h3>
+        <div class="milieu-stat">87 % disparus</div>
+        <p>à l'échelle mondiale depuis le XVIIIᵉ siècle. En France : 67 % depuis 1900. 3× plus vite que la déforestation. 100 % des amphibiens en dépendent directement.</p>
+        <span class="milieu-cause">Cause directe : drainage, artificialisation humaine</span>
+      </div>
+      <div class="milieu-card ambre">
+        <div class="milieu-icon">🌲</div>
+        <h3>Forêts tempérées</h3>
+        <div class="milieu-stat">+17 % dommages</div>
+        <p>de perturbations naturelles en Europe entre 1950-2000 et 2001-2019. Surface en hausse mais croissance des arbres en ralentissement (stress climatique). 1 million d'ha brûlés en Europe en 2025.</p>
+        <span class="milieu-cause">Cause principale : sécheresses, ravageurs, feux</span>
+      </div>
+      <div class="milieu-card vert">
+        <div class="milieu-icon">🐸</div>
+        <h3>Espèces d'eau douce</h3>
+        <div class="milieu-stat">−80 % en 40 ans</div>
+        <p>pour les grandes espèces d'eau douce mondiales. 23 % des amphibiens menacés en France, 32 % des oiseaux nicheurs. Causes croisées : habitat + pollution + climat.</p>
+        <span class="milieu-cause">Causes combinées : habitat + climat + pollutions</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAUSES -->
+<section id="causes" style="background:var(--noir)">
+  <div class="container">
+    <div class="stag reveal">Analyse des causes</div>
+    <h2 class="reveal">Ce que dit vraiment la science —<br><em>ni simplisme ni déni</em></h2>
+    <p class="lead reveal">La lecture rigoureuse de la littérature scientifique récente invalide les deux discours extrêmes : ni la non-intervention totale ni l'exploitation intensive ne sont des réponses adaptées dans un contexte de dérèglement climatique rapide.</p>
+
+    <div class="causes-layout reveal">
+      <div class="cause-col rouge">
+        <h3>Ce qui aggrave la crise</h3>
+        <div class="cause-item"><div class="cause-dot"></div><p><strong>Le réchauffement climatique</strong> — cause de 62 % des extinctions prévues, responsable du blanchissement corallien, des sécheresses forestières, de l'assèchement des zones humides temporaires.</p></div>
+        <div class="cause-item"><div class="cause-dot"></div><p><strong>Le drainage agricole</strong> — cause historiquement dominante de la disparition des zones humides, toujours active. 2,5 millions d'hectares perdus en France depuis 1900.</p></div>
+        <div class="cause-item"><div class="cause-dot"></div><p><strong>L'artificialisation des sols</strong> — 60 000 ha de prairies et pelouses perdus en France entre 1990 et 2018. Fragmentation des habitats et corridors écologiques coupés.</p></div>
+        <div class="cause-item"><div class="cause-dot"></div><p><strong>La non-gestion en zones chaudes</strong> — accumulation de biomasse combustible qui amplifie les incendies, détruisant d'un coup les habitats de toutes les espèces présentes.</p></div>
+        <div class="cause-item"><div class="cause-dot"></div><p><strong>Les monocultures inadaptées</strong> — épicéas en zone trop chaude, résineux en zone calcaire. Vulnérabilité maximale aux ravageurs et sécheresses, biodiversité minimale.</p></div>
+        <div class="cause-item"><div class="cause-dot"></div><p><strong>Les espèces invasives</strong> — ragondin, jussie, grenouille taureau, favorisées par le réchauffement et les perturbations d'habitat, colonisent les zones humides fragilisées.</p></div>
+      </div>
+      <div class="cause-col vert">
+        <h3>Ce qui protège réellement</h3>
+        <div class="cause-item"><div class="cause-dot"></div><p><strong>La décarbonation de l'économie</strong> — seule action qui s'attaque à la cause de 60 %+ des extinctions. Sans réduction du réchauffement, toutes les mesures locales ne peuvent que ralentir le déclin.</p></div>
+        <div class="cause-item"><div class="cause-dot"></div><p><strong>La biodiversité elle-même</strong> (CNRS, 2024) — les forêts diversifiées résistent mieux aux sécheresses et maintiennent mieux le cycle du carbone. La diversité est un facteur de résilience.</p></div>
+        <div class="cause-item"><div class="cause-dot"></div><p><strong>La gestion écologique différenciée</strong> — ni non-intervention généralisée ni exploitation intensive. Des zones en libre évolution + des zones de gestion active selon les types de milieux.</p></div>
+        <div class="cause-item"><div class="cause-dot"></div><p><strong>La restauration des zones humides</strong> — reméandrement des cours d'eau, reconnexion des plaines d'inondation, maintien du pâturage extensif. Des résultats documentés en 5-10 ans.</p></div>
+        <div class="cause-item"><div class="cause-dot"></div><p><strong>L'hétérogénéité paysagère</strong> — alternance forêts/prairies/haies/lisières/zones humides. C'est la mosaïque qui génère la biodiversité, plus que la surface forestière seule.</p></div>
+        <div class="cause-item"><div class="cause-dot"></div><p><strong>La gestion forestière adaptée au climat</strong> — diversification des essences, vieux bois maintenus, sylviculture à couvert continu. Résilience accrue aux stress climatiques.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTIONS -->
+<section id="solutions" style="background:var(--foret)">
+  <div class="container">
+    <div class="stag reveal">Solutions raisonnables</div>
+    <h2 class="reveal">Ce qui fonctionne —<br><em>par milieu et par priorité</em></h2>
+
+    <div class="sol-grid reveal">
+      <div class="sol-card">
+        <div style="font-size:1.5rem;margin-bottom:.5rem">🌲</div>
+        <h3>Forêts — gestion écologique</h3>
+        <ul>
+          <li>Diversifier les essences — mélanger feuillus résilients à la sécheresse</li>
+          <li>Maintenir 10 % de vieux bois et bois mort debout</li>
+          <li>Sylviculture à couvert continu — pas de coupes rases</li>
+          <li>Valoriser la biomasse fine des éclaircies (pyrogazification) sans toucher aux vieux bois</li>
+          <li>Restaurer les lisières et corridors écologiques</li>
+        </ul>
+      </div>
+      <div class="sol-card">
+        <div style="font-size:1.5rem;margin-bottom:.5rem">🌊</div>
+        <h3>Zones humides — priorité absolue</h3>
+        <ul>
+          <li>Interdiction inconditionnelle d'artificialisation des zones humides identifiées</li>
+          <li>Reméandrement des cours d'eau rectifiés — retour rapide des espèces</li>
+          <li>Maintien de l'élevage extensif sur prairies humides (pâturage = gestion)</li>
+          <li>Lutte coordonnée contre les espèces invasives à l'échelle des bassins versants</li>
+          <li>Valorisation économique des services : épuration eau, régulation crues, carbone</li>
+        </ul>
+      </div>
+      <div class="sol-card">
+        <div style="font-size:1.5rem;margin-bottom:.5rem">🪸</div>
+        <h3>Milieu marin — décarbonation d'abord</h3>
+        <ul>
+          <li>Protéger les refuges thermiques (zones d'upwelling) pour la recolonisation future</li>
+          <li>Réduire les stress locaux cumulatifs (pollutions, sédimentation)</li>
+          <li>Expérimentation de « super coraux » tolérants à la chaleur</li>
+          <li>Aires marines protégées réelles dans les zones à faible stress thermique</li>
+          <li>Réduction des émissions CO₂ : seule solution à l'échelle des récifs</li>
+        </ul>
+      </div>
+      <div class="sol-card" style="border-color:rgba(82,183,136,.3);background:rgba(29,58,40,.25)">
+        <div style="font-size:1.5rem;margin-bottom:.5rem">🔥</div>
+        <h3>Solution transversale — décarboner</h3>
+        <ul>
+          <li>Priorité absolue : réduire le réchauffement — cause de 62 % des extinctions</li>
+          <li>La gestion de la biomasse lignocellulosique réduit le risque incendie ET produit de l'énergie décarbonée</li>
+          <li>Le biochar EBC/CDC V3 séquestre du carbone ET améliore les sols agricoles</li>
+          <li>La méthanisation réduit les émissions diffuses de méthane (CH₄ = 84× CO₂ sur 20 ans)</li>
+          <li>Décarbonation et biodiversité sont complémentaires, pas contradictoires</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONCLUSION -->
+<section id="conclusion" style="background:var(--noir)">
+  <div class="container">
+    <div class="stag reveal">Conclusion</div>
+    <h2 class="reveal">Décarboner <em>c'est aussi</em><br>protéger la biodiversité</h2>
+    <p class="lead reveal">Le Programme Résilience n'est pas seulement une stratégie énergétique. C'est aussi, par ses mécanismes même, une stratégie de préservation de la biodiversité — en attaquant sa cause primaire.</p>
+
+    <div class="concl-box reveal">
+      <h3>Le lien entre Résilience et biodiversité</h3>
+      <p>La valorisation de la <strong>biomasse fine des éclaircies forestières</strong> réduit le risque incendie et protège les habitats. Le <strong>biochar EBC/CDC V3</strong> séquestre du carbone et améliore la fertilité des sols agricoles, réduisant la pression sur les zones naturelles. La <strong>méthanisation des effluents d'élevage</strong> réduit les émissions diffuses de méthane (84× CO₂ sur 20 ans) et produit des engrais qui substituent les intrants chimiques responsables de la dégradation des zones humides. En s'attaquant à la cause primaire des extinctions — le dérèglement climatique — le Programme Résilience est aussi, structurellement, un programme de préservation de la biodiversité.</p>
+    </div>
+
+    <div class="doc-box reveal">
+      <div class="doc-cover">
+        <div style="font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gris);margin-bottom:.6rem">Rapport complet</div>
+        <div class="doc-title">Biodiversité en crise : le climat, principal coupable désormais démontré</div>
+        <div class="doc-sub">Synthèse scientifique · Analyse des causes · Solutions raisonnables · Juin 2026</div>
+        <a href="Biodiversite_Climat_Analyse_V1.pdf" class="btn btn-primary" target="_blank" download style="width:100%;text-align:center;font-size:.7rem">⬇ Télécharger le PDF</a>
+      </div>
+      <div class="doc-info">
+        <h3>Le rapport en 7 chapitres</h3>
+        <p class="doc-meta">Sources : IGN 2024 · OFB · UICN · CNRS Global Change Biology 2024 · NOAA 2025 · IPBES 2019 · Science Advances 2023 · Biological Conservation 2023</p>
+        <p>Diagnostic global avec 10 indicateurs chiffrés · La question forestière (gestion vs non-intervention) · Les zones humides, catastrophe silencieuse · Le milieu marin dominé par le réchauffement · Analyse hiérarchique des causes par milieu · Solutions différenciées · Tableau de synthèse des 5 affirmations courantes vs réalité scientifique.</p>
+        <div style="display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.2rem">
+          <a href="carbone-resilience.html" class="btn btn-outline" style="font-size:.72rem">← Stratégie carbone</a>
+          <a href="sequestration.html" class="btn btn-outline" style="font-size:.72rem">Séquestration carbone →</a>
+          <a href="gestion-forets.html" class="btn btn-outline" style="font-size:.72rem">Gestion des forêts →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Programme Résilience V11</div>
+  <p>Biodiversité & Climat · Synthèse scientifique · Juin 2026 · Diffusion libre</p>
+</footer>
+
+<script>
+const obs=new IntersectionObserver((e)=>{e.forEach((el,i)=>{if(el.isIntersecting){setTimeout(()=>el.target.classList.add('visible'),i*65);obs.unobserve(el.target)}})},{threshold:0.07});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
