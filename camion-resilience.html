@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Camion Résilience 44t — Analyse technique · Programme Résilience V11</title>
+<title>Stratégie Carbone — Programme Résilience V11</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -14,306 +14,664 @@
   --serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',sans-serif;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
 body{background:var(--noir);color:var(--blanc);font-family:var(--sans);font-weight:300;line-height:1.7;overflow-x:hidden}
+
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:.9rem 2.5rem;background:rgba(10,15,13,.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(82,183,136,.12)}
 .nav-logo{font-family:var(--serif);font-size:1.15rem;font-weight:600;color:var(--vert-vif);text-decoration:none}
-.nav-back{color:var(--gris);text-decoration:none;font-size:.72rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;transition:color .3s}
+.nav-tag{font-size:.66rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--gris);border:1px solid rgba(82,183,136,.2);padding:.25rem .75rem}
+.nav-back{font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gris);text-decoration:none;transition:color .3s}
 .nav-back:hover{color:var(--vert-vif)}
-.nav-tag{font-size:.65rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--ambre);background:rgba(233,196,106,.12);border:1px solid rgba(233,196,106,.25);padding:.2rem .7rem}
-/* HERO */
-#hero{min-height:52vh;display:flex;align-items:center;padding:8rem 3rem 4rem;position:relative;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 30% 50%,rgba(29,90,54,.25) 0%,transparent 70%),linear-gradient(135deg,#0a0f0d 0%,#0d1f17 50%,#060e09 100%)}
-.hero-grid{position:absolute;inset:0;opacity:.04;background-image:linear-gradient(var(--vert-vif) 1px,transparent 1px),linear-gradient(90deg,var(--vert-vif) 1px,transparent 1px);background-size:55px 55px}
-.hero-content{position:relative;z-index:1;max-width:780px}
-.hero-tag{display:inline-block;border:1px solid var(--ambre);color:var(--ambre);font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;padding:.3rem .85rem;margin-bottom:1.4rem}
-h1{font-family:var(--serif);font-size:clamp(2rem,4.5vw,3.8rem);font-weight:300;line-height:1.1;margin-bottom:1rem}
-h1 em{font-style:italic;color:var(--vert-vif)}
-.hero-sub{font-size:.95rem;color:rgba(240,244,241,.65);max-width:600px;line-height:1.85;margin-top:1rem}
-/* METHODO NOTE */
-.metho-bar{background:rgba(41,128,185,.07);border:1px solid rgba(41,128,185,.2);border-left:4px solid var(--bleu);padding:1.2rem 2rem;margin:0}
-.metho-bar p{font-size:.83rem;color:rgba(240,244,241,.65);line-height:1.7}
-.metho-bar strong{color:#74b9e8}
-/* BADGES */
-.bq{display:inline-flex;align-items:center;gap:.3rem;font-size:.62rem;font-weight:600;letter-spacing:.08em;padding:.18rem .55rem;border-radius:2px;margin-left:.35rem;vertical-align:middle;white-space:nowrap}
-.b-ok{background:rgba(82,183,136,.18);color:var(--vert-vif);border:1px solid rgba(82,183,136,.35)}
-.b-tg{background:rgba(233,196,106,.15);color:var(--ambre);border:1px solid rgba(233,196,106,.3)}
-.b-est{background:rgba(41,128,185,.15);color:#74b9e8;border:1px solid rgba(41,128,185,.3)}
-.b-hyp{background:rgba(192,57,43,.12);color:#e57368;border:1px solid rgba(192,57,43,.25)}
-/* SECTIONS */
-section{padding:4.5rem 3rem}
+
+section{padding:5.5rem 3rem}
 .container{max-width:1100px;margin:0 auto}
-.alt{background:var(--foret)}
-.stag{font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--vert-vif);margin-bottom:.6rem}
-h2{font-family:var(--serif);font-size:clamp(1.6rem,2.8vw,2.4rem);font-weight:300;line-height:1.15;margin-bottom:.9rem}
+.stag{font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--vert-vif);margin-bottom:.7rem}
+h1{font-family:var(--serif);font-size:clamp(2.6rem,5vw,4.5rem);font-weight:300;line-height:1.06;margin-bottom:1.2rem}
+h1 em{font-style:italic;color:var(--vert-vif)}
+h2{font-family:var(--serif);font-size:clamp(1.7rem,3vw,2.6rem);font-weight:300;line-height:1.15;margin-bottom:1rem}
 h2 em{font-style:italic;color:var(--vert-vif)}
-h3{font-family:var(--serif);font-size:1.2rem;font-weight:400;color:var(--vert-clair);margin:1.6rem 0 .5rem}
-.lead{font-size:.95rem;color:rgba(240,244,241,.68);max-width:680px;line-height:1.85;margin-bottom:1.2rem}
-p.body{font-size:.88rem;color:rgba(240,244,241,.65);line-height:1.85;margin-bottom:.8rem;max-width:820px}
-/* CARDS GRILLE */
-.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.2rem;margin:1.8rem 0}
-.card{padding:1.6rem;border:1px solid rgba(82,183,136,.12);background:rgba(10,15,13,.5);position:relative}
-.card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--vert-vif),var(--vert-clair))}
-.card h3{margin-top:0;margin-bottom:.7rem;font-size:1rem;color:var(--vert-clair)}
-.card p{font-size:.83rem;color:rgba(240,244,241,.6);line-height:1.65}
-.card .num{font-family:var(--serif);font-size:2rem;color:var(--ambre);font-weight:300;line-height:1;margin-bottom:.35rem}
-/* TABLEAUX */
-.tbl-wrap{overflow-x:auto;margin:1.8rem 0}
-table{width:100%;border-collapse:collapse;font-size:.8rem}
-thead tr{background:rgba(26,58,40,.9)}
-thead th{padding:.8rem 1rem;text-align:left;color:var(--vert-clair);font-weight:500;letter-spacing:.07em;font-size:.72rem;text-transform:uppercase;border-bottom:2px solid var(--vert-vif)}
-tbody tr{border-bottom:1px solid rgba(82,183,136,.08);transition:background .2s}
-tbody tr:hover{background:rgba(13,31,23,.5)}
-tbody td{padding:.7rem 1rem;color:rgba(240,244,241,.72);vertical-align:top;line-height:1.5}
-tbody td:first-child{color:var(--blanc);font-weight:400}
-.td-g{color:var(--vert-vif)!important;font-weight:500}
-.td-r{color:#e74c3c!important}
-.td-a{color:var(--ambre)!important;font-weight:500}
-.td-b{color:#74b9e8!important}
-.tr-best td{background:rgba(29,58,40,.35)!important}
-.tr-ref td{background:rgba(13,31,23,.6)!important;color:rgba(240,244,241,.45)!important;font-style:italic}
-/* ENCADRÉS */
-.box{padding:1.2rem 1.6rem;margin:1.5rem 0;font-size:.86rem;line-height:1.7}
-.box-vert{background:rgba(29,58,40,.35);border:1px solid rgba(82,183,136,.22);border-left:4px solid var(--vert-vif)}
-.box-vert strong{color:var(--vert-vif)}
-.box-ambre{background:rgba(233,196,106,.06);border:1px solid rgba(233,196,106,.22);border-left:4px solid var(--ambre)}
-.box-ambre strong{color:var(--ambre)}
-.box-rouge{background:rgba(192,57,43,.06);border:1px solid rgba(192,57,43,.18);border-left:4px solid var(--rouge);font-size:.82rem}
-.box-rouge strong{color:#e57368}
-.conclusion-box{background:rgba(29,58,40,.4);border:1px solid var(--vert-vif);padding:2rem 2.5rem;margin:2rem 0}
-.conclusion-box h3{color:var(--vert-vif);font-size:1.4rem;margin-top:0;margin-bottom:.8rem}
-/* LEGENDE BADGES */
-.legend{display:flex;flex-wrap:wrap;gap:.8rem;margin:1.5rem 0;padding:1rem 1.5rem;border:1px solid rgba(82,183,136,.1);background:rgba(10,15,13,.4)}
-.legend-item{display:flex;align-items:center;gap:.5rem;font-size:.75rem;color:rgba(240,244,241,.6)}
-/* BUTTONS */
-.btn{display:inline-block;padding:.7rem 1.5rem;font-family:var(--sans);font-size:.76rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:all .3s}
+h3{font-family:var(--serif);font-size:1.2rem;font-weight:400;margin-bottom:.5rem}
+.lead{font-size:.97rem;color:rgba(240,244,241,.7);max-width:700px;line-height:1.85;margin-bottom:1.8rem}
+.btn{display:inline-block;padding:.72rem 1.6rem;font-family:var(--sans);font-size:.76rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:all .3s}
+.btn-primary{background:var(--vert-vif);color:var(--noir)}
+.btn-primary:hover{background:var(--vert-clair);transform:translateY(-2px)}
 .btn-outline{background:transparent;color:var(--blanc);border:1px solid rgba(240,244,241,.28)}
-.btn-outline:hover{border-color:var(--vert-vif);color:var(--vert-vif)}
-/* ANIM */
-.reveal{opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s ease}
+.btn-outline:hover{border-color:var(--vert-vif);color:var(--vert-vif);transform:translateY(-2px)}
+
+/* HERO */
+#hero{min-height:78vh;display:flex;align-items:center;padding:8rem 3rem 5rem;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 60% 40%,rgba(29,90,54,.35) 0%,transparent 70%),linear-gradient(135deg,#0a0f0d 0%,#0d1f17 50%,#060e09 100%)}
+.hero-grid{position:absolute;inset:0;opacity:.04;background-image:linear-gradient(var(--vert-vif) 1px,transparent 1px),linear-gradient(90deg,var(--vert-vif) 1px,transparent 1px);background-size:55px 55px}
+.hero-content{position:relative;z-index:1;max-width:820px}
+.hero-tag{display:inline-block;border:1px solid var(--vert-vif);color:var(--vert-vif);font-size:.67rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:.3rem .85rem;margin-bottom:1.5rem}
+.hero-phrase{font-family:var(--serif);font-size:clamp(1rem,2vw,1.35rem);font-style:italic;color:var(--ambre);border-left:3px solid var(--ambre);padding-left:1.1rem;margin:1.4rem 0 1.8rem;line-height:1.5;max-width:640px}
+.hero-sub{font-size:.95rem;color:rgba(240,244,241,.65);max-width:620px;line-height:1.85;margin-bottom:2rem}
+
+/* PRINCIPE */
+#principe{background:var(--foret)}
+.principe-box{border:1px solid var(--vert-vif);background:rgba(29,58,40,.22);padding:2rem 2.5rem;margin-top:2rem;margin-bottom:2.5rem}
+.principe-box h3{font-family:var(--serif);font-size:1.5rem;color:var(--vert-vif);margin-bottom:.85rem}
+.principe-box p{font-size:.91rem;color:rgba(240,244,241,.75);line-height:1.85}
+.principe-box p strong{color:var(--ambre)}
+
+.valeurs-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;border:1px solid rgba(82,183,136,.1);background:rgba(82,183,136,.1);margin-top:2rem}
+.val-card{padding:1.6rem 1.4rem;background:var(--foret)}
+.val-n{font-family:var(--serif);font-size:2.2rem;font-weight:300;color:rgba(82,183,136,.2);line-height:1;margin-bottom:.3rem}
+.val-card h3{font-size:.88rem;color:var(--vert-clair);margin-bottom:.4rem}
+.val-card p{font-size:.78rem;color:rgba(240,244,241,.55);line-height:1.6}
+.val-tag{display:inline-block;margin-top:.6rem;font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ambre)}
+
+/* BOUCLAGE */
+#bouclage{background:var(--noir);position:relative;overflow:hidden}
+.bouclage-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 80% 50%,rgba(29,90,54,.15) 0%,transparent 60%)}
+.cycle-wrap{position:relative;z-index:1;margin-top:2.5rem}
+.cycle-arrow{display:grid;grid-template-columns:1fr 40px 1fr 40px 1fr;gap:0;align-items:center;margin-bottom:1.2rem}
+.cycle-node{padding:1.4rem 1.2rem;border:1px solid rgba(82,183,136,.18);background:rgba(13,31,23,.7)}
+.cycle-node-title{font-family:var(--serif);font-size:1rem;color:var(--vert-clair);margin-bottom:.3rem}
+.cycle-node p{font-size:.76rem;color:rgba(240,244,241,.55);line-height:1.55}
+.cycle-arrow-icon{text-align:center;font-size:1.3rem;color:var(--vert-vif)}
+.icb-recap{margin-top:2rem;padding:1.5rem 2rem;border-left:4px solid var(--vert-vif);background:rgba(29,58,40,.2);border:1px solid rgba(82,183,136,.2);border-left:4px solid var(--vert-vif)}
+.icb-recap h3{color:var(--vert-vif);font-family:var(--serif);font-size:1.1rem;margin-bottom:.6rem}
+.icb-fractions{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:.6rem}
+.icb-f{font-size:.82rem}
+.icb-f span{font-family:var(--serif);font-size:1.1rem;font-weight:300;color:var(--vert-vif)}
+.icb-f.lost span{color:var(--rouge)}
+.icb-f p{color:rgba(240,244,241,.6);font-size:.75rem}
+
+/* PORTES */
+#portes{background:var(--foret)}
+.portes-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.3rem;margin-top:2.5rem}
+.porte-card{padding:2rem;border:1px solid rgba(82,183,136,.14);background:rgba(10,15,13,.6);position:relative;overflow:hidden;transition:border-color .35s,transform .35s;display:flex;flex-direction:column}
+.porte-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;transform:scaleX(0);transform-origin:left;transition:transform .4s}
+.porte-card:hover{border-color:rgba(82,183,136,.4);transform:translateY(-4px)}
+.porte-card:hover::before{transform:scaleX(1)}
+.pc-bioch4::before{background:linear-gradient(90deg,var(--vert-vif),var(--vert-clair))}
+.pc-biomasse::before{background:linear-gradient(90deg,var(--ambre),#f9c74f)}
+.pc-biochar::before{background:linear-gradient(90deg,#e76f51,var(--ambre))}
+.pc-sequestration::before{background:linear-gradient(90deg,var(--bleu),#74b9e8)}
+.pc-methanisation::before{background:linear-gradient(90deg,#a8dadc,var(--vert-vif))}
+.pc-biodiv::before{background:linear-gradient(90deg,#f1948a,var(--ambre))}
+.pc-mat::before{background:linear-gradient(90deg,var(--rouge),#e76f51)}
+.pc-mondial::before{background:linear-gradient(90deg,var(--vert-vif),var(--bleu))}
+.porte-icon{font-size:2rem;margin-bottom:.9rem}
+.porte-card h3{font-family:var(--serif);font-size:1.15rem;color:var(--vert-clair);margin-bottom:.5rem}
+.porte-card h3 em{color:var(--ambre);font-style:normal}
+.porte-desc{font-size:.82rem;color:rgba(240,244,241,.6);line-height:1.65;flex:1;margin-bottom:1.2rem}
+.porte-kpis{display:flex;flex-direction:column;gap:.3rem;margin-bottom:1.2rem}
+.porte-kpi{font-size:.76rem;color:rgba(240,244,241,.45);padding-left:.9rem;position:relative}
+.porte-kpi::before{content:'→';position:absolute;left:0;color:var(--vert-vif);font-size:.7rem}
+.porte-btn{margin-top:auto}
+.porte-card.pc-bioch4 .porte-kpi::before{color:var(--vert-vif)}
+.porte-card.pc-biomasse .porte-kpi::before{color:var(--ambre)}
+.porte-card.pc-biochar .porte-kpi::before{color:#e76f51}
+.porte-card.pc-sequestration .porte-kpi::before{color:var(--bleu)}
+.porte-card.pc-methanisation .porte-kpi::before{color:#a8dadc}
+.porte-card.pc-biodiv .porte-kpi::before{color:#f1948a}
+.porte-card.pc-mat .porte-kpi::before{color:var(--rouge)}
+.porte-card.pc-mondial .porte-kpi::before{color:var(--vert-vif)}
+
+/* ICBGLOBAL */
+#indicateurs{background:var(--noir)}
+.indic-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;border:1px solid rgba(82,183,136,.1);background:rgba(82,183,136,.1);margin-top:2rem}
+.indic-col{padding:2rem 1.8rem;background:var(--noir)}
+.indic-nom{font-size:.65rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gris);margin-bottom:.6rem}
+.indic-val{font-family:var(--serif);font-size:2.2rem;font-weight:300;color:var(--vert-vif);line-height:1;margin-bottom:.4rem}
+.indic-lbl{font-size:.82rem;color:var(--blanc);margin-bottom:.3rem}
+.indic-sub{font-size:.76rem;color:rgba(240,244,241,.5);line-height:1.6}
+.note-modele{margin-top:2rem;padding:1.4rem 1.8rem;border-left:4px solid var(--ambre);background:rgba(233,196,106,.06);border:1px solid rgba(233,196,106,.18);border-left:4px solid var(--ambre)}
+.note-modele p{font-size:.84rem;color:rgba(240,244,241,.7);line-height:1.7}
+.note-modele strong{color:var(--ambre)}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
 .reveal.visible{opacity:1;transform:none}
+
 footer{background:#050a07;padding:2.5rem 3rem;text-align:center;border-top:1px solid rgba(82,183,136,.08)}
 .footer-logo{font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--vert-vif);margin-bottom:.4rem}
 footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;line-height:1.7}
-@media(max-width:700px){nav{padding:.85rem 1.3rem}section{padding:3rem 1.3rem}h1{font-size:2rem}}
+
+@media(max-width:700px){
+  nav{padding:.85rem 1.3rem}
+  section{padding:3.5rem 1.4rem}
+  h1{font-size:2.1rem}
+  .valeurs-grid{grid-template-columns:1fr 1fr}
+  .cycle-arrow{grid-template-columns:1fr;gap:.4rem}
+  .cycle-arrow-icon{transform:rotate(90deg)}
+  .indic-grid{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
+
 <nav>
   <a href="index.html" class="nav-logo">Programme Résilience V11</a>
   <div style="display:flex;align-items:center;gap:1.2rem">
-    <span class="nav-tag">Analyse technique · Niveau 3</span>
-    <a href="index.html#vehicules" class="nav-back">← Retour</a>
+    <span class="nav-tag">Stratégie carbone</span>
+    <a href="index.html" class="nav-back">← Accueil</a>
   </div>
 </nav>
 
+<!-- ── HERO ──────────────────────────────────────────────────────────────── -->
 <section id="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
+  <div class="hero-bg"></div><div class="hero-grid"></div>
   <div class="hero-content">
-    <div class="hero-tag">Poids lourd · Architecture EREV · Bio-LCH4</div>
-    <h1>Camion Résilience<br><em>44 tonnes</em></h1>
-    <p class="hero-sub">Comment décarboner un 44 tonnes qui doit parcourir 1 000 à 1 200 km sans immobilisation, avec charge utile préservée et coût kilométrique compétitif ? Cette analyse technique documente l'architecture EREV Rex unique Bio-LCH4 — ses calculs, ses qualifications et ses limites honnêtes.</p>
+    <div class="hero-tag">Stratégie carbone · Programme Résilience</div>
+    <h1>Le carbone biogénique<br>n'est pas un déchet —<br><em>c'est une ressource.</em></h1>
+    <p class="hero-phrase">Chaque tonne de carbone organique capturée peut être restituée au sol, valorisée en énergie, séquestrée durablement, ou perdue. Seule la première option est acceptable.</p>
+    <p class="hero-sub">Le Programme Résilience repose sur une philosophie carbone unifiée : aucun flux organique ne doit être gaspillé. Cette page en expose les fondements et donne accès à chacune des filières qui la mettent en œuvre.</p>
+    <div style="display:flex;gap:.9rem;flex-wrap:wrap">
+      <a href="#portes" class="btn btn-primary">Accéder aux filières →</a>
+      <a href="index.html#solutions" class="btn btn-outline">Voir l'architecture complète</a>
+    </div>
   </div>
 </section>
 
-<div class="metho-bar">
+<!-- ── PRINCIPE ───────────────────────────────────────────────────────────── -->
+<section id="principe">
   <div class="container">
-    <p><strong>Note méthodologique — niveaux de certitude :</strong>
-    <span class="bq b-ok">✅ Données industrielles</span> = données publiées par les constructeurs ou mesurées ·
-    <span class="bq b-tg">🎯 Objectif industriel</span> = cible réaliste, non encore démontrée sur prototype ·
-    <span class="bq b-est">🔬 Estimation technique</span> = calcul d'ingénierie cohérent, à confirmer par essais ·
-    <span class="bq b-hyp">⚠ Hypothèse</span> = valeur plausible mais sensible aux paramètres opérationnels réels</p>
-  </div>
-</div>
+    <div class="stag reveal">Le principe fondateur</div>
+    <h2 class="reveal">Gérer le carbone organique<br><em>comme un capital, pas comme un déchet</em></h2>
+    <p class="lead reveal">La transition énergétique classique pose la question de l'énergie. Le Programme Résilience pose la même question — et y ajoute trois dimensions que l'approche classique néglige : la <strong>robustesse</strong> du système énergétique (stockage saisonnier, résilience réseau), l'<strong>économie publique</strong> (infrastructure existante valorisée, coût État réduit), et la <strong>gestion du carbone biogénique</strong> capturé par la biomasse. La décarbonation est traitée sur ces quatre axes simultanément.</p>
 
-<!-- PARTIE 1 — POURQUOI -->
-<section>
-  <div class="container">
-    <div class="stag reveal">Contexte</div>
-    <h2 class="reveal">Un besoin réel,<br>pas une <em>technologie en quête d'usage</em></h2>
-    <p class="lead reveal">Un camion articulé 44 tonnes roulant à 85–90 km/h pleine charge consomme 125–140 kWh/100 km en traction électrique. L'objectif 1 000–1 200 km d'autonomie totale est un impératif opérationnel — pas un argument commercial.</p>
+    <div class="principe-box reveal">
+      <h3>Le paradigme Résilience</h3>
+      <p>La biomasse n'est pas un combustible à brûler. C'est un flux de <strong>carbone, d'azote, de phosphore et de potassium</strong> capturé par la photosynthèse. Chaque tonne de matière organique traitée doit restituer ses nutriments aux sols, conserver son carbone sous forme stable aussi longtemps que possible, et ne libérer de l'énergie que comme <strong>co-produit de ce service agronomique et environnemental</strong>. Ce renversement de priorité change tout : les indicateurs de performance, les obligations des opérateurs, la légitimité du soutien public — et la robustesse du système énergétique qui en résulte.</p>
+    </div>
 
-    <div class="grid2 reveal">
-      <div class="card">
-        <h3>Pourquoi pas le tout-électrique BEV ?</h3>
-        <p>Pour 1 200 km d'autonomie à 130 kWh/100 km : 1 560 kWh de batterie nécessaires. À 2,5 kg/kWh (LFP) : <strong>3 900 kg</strong> — soit −3,9 t de charge utile. Incompatible avec le transport de marchandises réel. Recharge 45–90 min, réseau haute puissance absent sur axes ruraux. <span class="bq b-ok">✅ Physique</span></p>
+    <div class="valeurs-grid reveal">
+      <div class="val-card">
+        <div class="val-n">01</div>
+        <h3>Valeur primaire</h3>
+        <p>Restitution des nutriments (N, P, K) aux sols agricoles. Substitution aux engrais minéraux importés de zones géopolitiquement instables.</p>
+        <span class="val-tag">Souveraineté agronomique</span>
       </div>
-      <div class="card">
-        <h3>Pourquoi pas l'hydrogène ?</h3>
-        <p>Densité volumique H₂ comprimé 700 bar : <strong>1,3 kWh/L</strong> (diesel : 10 kWh/L, soit ×7,7 moins dense). H₂ liquide à −253°C : 2,3 kWh/L mais liquéfaction = 15 kWh/kg consommés, soit 45 % de l'énergie du H₂ lui-même — un gouffre énergétique. Coût FCH actuel : 400–600 k€/unité. Infrastructure absente. <span class="bq b-ok">✅ Physique + IEA 2023</span></p>
+      <div class="val-card">
+        <div class="val-n">02</div>
+        <h3>Valeur secondaire</h3>
+        <p>Réduction des émissions diffuses de CH₄ et N₂O depuis les lisiers, fumiers et déchets organiques non traités. GWP CH₄ = 84× CO₂ sur 20 ans.</p>
+        <span class="val-tag">Évitement climatique immédiat</span>
       </div>
-      <div class="card">
-        <h3>Pourquoi le Bio-LCH4 et non le GNV ou l'hydrogène ?</h3>
-        <p>GNV comprimé 250 bar pour 1 200 km Rex : <strong>2 700 L de réservoirs nécessaires</strong> — physiquement impossible sous châssis 44t. H₂ comprimé 700 bar : densité 1,3 kWh/L → <strong>4 600 L nécessaires</strong>. H₂ liquide −253°C : 2,3 kWh/L → 2 600 L, mais liquéfaction consume 45 % de l'énergie du H₂. LCH4 à −162°C : même autonomie dans 900 L · densité 5,86 kWh/L · liquéfaction = 1,8 % seulement de l'énergie. <span class="bq b-ok">✅ Physique — Volvo/Scania ont fait ce choix</span></p>
+      <div class="val-card">
+        <div class="val-n">03</div>
+        <h3>Valeur tertiaire</h3>
+        <p>Production d'énergie renouvelable sous forme de biométhane et de chaleur. Stockage saisonnier dans le réseau GRDF existant (130 TWh).</p>
+        <span class="val-tag">Énergie co-produite</span>
       </div>
-      <div class="card">
-        <h3>Rex unique — le bon choix pour ce véhicule</h3>
-        <p>Un moteur à régime fixe 1 800 tr/min sans boîte de vitesses, sans cycles thermiques variables, est objectivement moins stressé qu'un diesel variable. Durée de vie estimée > 2 M km. <span class="bq b-est">🔬 Estimation régime fixe</span> La batterie 200 kWh assure 110–130 km de dégagement en cas de panne. Un deuxième Rex ajouterait 18 000 € de surcoût et une complexité thermique non justifiée — un camion n'est pas une moissonneuse en pleine récolte. Un seul Rex = moins de points de défaillance, maintenance plus simple, homologation standard.</p>
+      <div class="val-card">
+        <div class="val-n">04</div>
+        <h3>Valeur quaternaire</h3>
+        <p>Puits de carbone permanent par deux voies : biochar certifié EBC/CDC V3 (séquestration solide &gt; 1 000 ans dans les sols) et CO₂ biogénique minéralisé (carbonatation, béton, séquestration géologique). C'est la dimension carbon-négative — absente de tout scénario tout-électrique.</p>
+        <span class="val-tag">Puits carbone physique double</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PARTIE 2 — SPECS -->
-<section class="alt">
+<!-- ── BOUCLAGE ───────────────────────────────────────────────────────────── -->
+<section id="bouclage">
+  <div class="bouclage-bg"></div>
   <div class="container">
-    <div class="stag reveal">Spécifications techniques</div>
-    <h2 class="reveal">Architecture <em>et qualifications</em></h2>
-    <div class="tbl-wrap reveal">
-      <table>
-        <thead><tr><th>Composant</th><th>Valeur</th><th>Référence / Qualification</th></tr></thead>
-        <tbody>
-          <tr style="background:rgba(26,58,40,.7)"><td colspan="3" style="color:var(--vert-clair);font-weight:500;font-size:.72rem;text-transform:uppercase;letter-spacing:.08em">Groupe électrique</td></tr>
-          <tr><td>2 moteurs traction SPMSM</td><td class="td-g">2 × 250 kW = 500 kW pic</td><td>280 kW continu en croisière · Grade 5 % à 80 km/h confirmé <span class="bq b-ok">✅</span></td></tr>
-          <tr><td>Batterie LFP sous châssis</td><td class="td-g">200 kWh net</td><td>3 000 cycles · >80 % à 800 000 km · Garantie constructeur standard <span class="bq b-ok">✅ LFP industrie</span></td></tr>
-          <tr><td>Autonomie ZEV <span class="bq b-hyp">⚠</span></td><td class="td-a">110–130 km réels</td><td>Théorique : 130–145 km (200 kWh / 1,40 kWh/km) · Avec marges opération. 10–15 % : 110–130 km · <strong>Chiffre à valider sur essais réels</strong></td></tr>
-          <tr style="background:rgba(26,58,40,.7)"><td colspan="3" style="color:var(--vert-clair);font-weight:500;font-size:.72rem;text-transform:uppercase;letter-spacing:.08em">Rex unique — moteur thermique</td></tr>
-          <tr><td>Architecture</td><td>15 L · 6 cyl. · Miller-Atkinson · EGR 15 %</td><td>Régime fixe 1 800 tr/min · Sans boîte de vitesses · Technologie maîtrisée <span class="bq b-ok">✅ Cummins ISX15N / Volvo D16 / MAN D3876</span></td></tr>
-          <tr><td>Rendement thermique <span class="bq b-tg">🎯</span></td><td class="td-a">48–52 % (objectif industriel visé)</td><td>48 % : déjà atteint sur moteurs GNV industriels stationnaires régime fixe · 52 % : cible haute cycle Atkinson optimisé · <strong>Non démontré sur prototype routier</strong></td></tr>
-          <tr><td>Puissance continue</td><td class="td-g">400 kWe</td><td>Couvre croisière + col alpin + dépassement sans activation d'unité secondaire <span class="bq b-est">🔬</span></td></tr>
-          <tr><td>NOx</td><td>≤ 0,06 g/km Euro VII</td><td>EGR + refroidissement admission · Sans SCR/AdBlue · Combustion CH4 propre <span class="bq b-tg">🎯 Objectif réglementaire</span></td></tr>
-          <tr><td>Démarrages à froid/an</td><td class="td-g">~200 (vs ~2 500 diesel)</td><td>÷ 12,5 · 80 % de l'usure moteur lors des démarrages froids éliminée <span class="bq b-ok">✅ Mécanique connue</span></td></tr>
-          <tr><td>Durée de vie moteur <span class="bq b-est">🔬</span></td><td class="td-g">> 2 M km estimés</td><td>Estimation par analogie groupes électrogènes industriels · MTBF moteur stationnaire > 50 000 h · <strong>Non validé sur application routière spécifique</strong></td></tr>
-          <tr style="background:rgba(26,58,40,.7)"><td colspan="3" style="color:var(--vert-clair);font-weight:500;font-size:.72rem;text-transform:uppercase;letter-spacing:.08em">Réservoirs Bio-LCH4</td></tr>
-          <tr><td>Capacité</td><td>2 × 450 L = 900 L</td><td>~378 kg Bio-CH4 embarqués · Sous châssis standard · Position Volvo FH LNG identique <span class="bq b-ok">✅</span></td></tr>
-          <tr><td>Pression</td><td class="td-g">3–5 bar (basse pression)</td><td>Sécurité intrinsèquement supérieure au GNV 250 bar · CH4 plus léger que l'air : fuite = dispersion vers le haut <span class="bq b-ok">✅</span></td></tr>
-          <tr><td>Boil-off management</td><td>BOG → Rex automatique</td><td>Standard Volvo/Scania LNG · Micro-brûleur catalytique pour arrêts · Vidange cuve dépôt si > 5 jours <span class="bq b-ok">✅ Industrie LNG PL</span></td></tr>
-        </tbody>
-      </table>
+    <div class="stag reveal">Le cycle complet</div>
+    <h2 class="reveal">Aucun flux n'est perdu —<br><em>chaque sortie est l'intrant d'une autre filière</em></h2>
+    <p class="lead reveal">Les deux filières biomasse du Programme Résilience — méthanisation (biomasse humide) et pyrogazification (biomasse sèche) — ne sont pas concurrentes. Elles forment un cycle territorial fermé où les flux de sortie de l'une deviennent les intrants de l'autre.</p>
+
+    <div class="cycle-wrap reveal">
+      <div style="background:rgba(13,31,23,.5);border:1px solid rgba(82,183,136,.15);padding:1.5rem;margin-bottom:0">
+
+        <!-- widget interactif inline -->
+        <style>
+        .wi-canvas{position:relative;width:100%;height:500px;margin-bottom:1rem}
+        .wi-node{position:absolute;border-radius:6px;border:1.5px solid;padding:9px 12px;cursor:pointer;transition:all .22s;text-align:center;user-select:none}
+        .wi-node .wnt{font-size:12px;font-weight:500;line-height:1.3;font-family:var(--sans)}
+        .wi-node .wns{font-size:10px;margin-top:3px;line-height:1.3;opacity:.72;font-family:var(--sans)}
+        .wi-node.wdim{opacity:.18}
+        .wi-node.wactive{transform:scale(1.05);box-shadow:0 0 0 2px currentColor}
+        .wi-node.wn-teal{background:rgba(29,90,54,.55);border-color:#52b788;color:#95d5b2}
+        .wi-node.wn-teal .wnt{color:#95d5b2}.wi-node.wn-teal .wns{color:#52b788}
+        .wi-node.wn-amber{background:rgba(92,60,10,.45);border-color:#e9c46a;color:#f4d58d}
+        .wi-node.wn-amber .wnt{color:#f4d58d}.wi-node.wn-amber .wns{color:#e9c46a}
+        .wi-node.wn-blue{background:rgba(10,40,80,.5);border-color:#2980b9;color:#74b9e8}
+        .wi-node.wn-blue .wnt{color:#74b9e8}.wi-node.wn-blue .wns{color:#2980b9}
+        .wi-node.wn-green{background:rgba(20,50,15,.5);border-color:#52b788;color:#95d5b2}
+        .wi-node.wn-green .wnt{color:#95d5b2}.wi-node.wn-green .wns{color:#52b788}
+        .wi-node.wn-coral{background:rgba(90,20,10,.5);border-color:#e76f51;color:#f4a261}
+        .wi-node.wn-coral .wnt{color:#f4a261}.wi-node.wn-coral .wns{color:#e76f51}
+        .wi-node.wn-gray{background:rgba(30,40,35,.6);border-color:rgba(149,213,178,.35);color:rgba(240,244,241,.8)}
+        .wi-node.wn-gray .wnt{color:rgba(240,244,241,.8)}.wi-node.wn-gray .wns{color:rgba(149,213,178,.5)}
+        svg.wi-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+        svg.wi-svg path{transition:all .22s;fill:none;stroke-width:1.5;marker-end:url(#wah)}
+        svg.wi-svg path.wdim{opacity:.22}
+        svg.wi-svg path.wactive{stroke-width:2.8;opacity:1}
+        svg.wi-svg path.widle{opacity:.25}
+        .wi-panel{background:rgba(13,31,23,.7);border:1px solid rgba(82,183,136,.18);border-radius:6px;padding:.9rem 1.1rem;min-height:76px;margin-top:.2rem}
+        .wi-panel .wpt{font-size:13px;font-weight:500;color:var(--vert-clair);margin-bottom:.35rem;font-family:var(--sans)}
+        .wi-panel .wpf{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:.5rem}
+        .wi-badge{font-size:10px;padding:2px 8px;border-radius:20px;font-weight:500;font-family:var(--sans)}
+        .wi-panel .wpd{font-size:12px;color:rgba(240,244,241,.6);line-height:1.65;font-family:var(--sans)}
+        .wi-hint{font-size:11px;color:rgba(149,213,178,.5);text-align:center;margin-top:.6rem;font-family:var(--sans)}
+        .wi-reset{display:block;margin:.4rem auto 0;font-size:11px;padding:3px 12px;cursor:pointer;background:transparent;border:1px solid rgba(82,183,136,.3);color:var(--vert-vif);border-radius:4px;font-family:var(--sans)}
+        .wi-reset:hover{border-color:var(--vert-vif)}
+        </style>
+
+        <div class="wi-canvas" id="wcanvas">
+          <svg class="wi-svg" id="wsvg">
+            <defs>
+              <marker id="wah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+                <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </marker>
+            </defs>
+          </svg>
+          <div id="wn-metha"   class="wi-node wn-teal"  style="left:2%;top:6%;width:23%"  onclick="wsel('metha')"><div class="wnt">Méthanisation</div><div class="wns">Biomasse humide</div></div>
+          <div id="wn-erev"    class="wi-node wn-gray"  style="left:38%;top:2%;width:23%" onclick="wsel('erev')"><div class="wnt">ÉREV Bio-GNV</div><div class="wns">Transport décarboné</div></div>
+          <div id="wn-co2"     class="wi-node wn-blue"  style="left:75%;top:6%;width:23%" onclick="wsel('co2')"><div class="wnt">CO₂ biogénique [C₂]</div><div class="wns">Serres · industrie · P2G</div></div>
+          <div id="wn-digestat" class="wi-node wn-teal" style="left:2%;top:44%;width:23%" onclick="wsel('digestat')"><div class="wnt">Digestat traité [C₃]</div><div class="wns">Engrais N·P·K · ISE</div></div>
+          <div id="wn-cultures" class="wi-node wn-green" style="left:38%;top:40%;width:23%" onclick="wsel('cultures')"><div class="wnt">Cultures agricoles</div><div class="wns">Sols enrichis</div></div>
+          <div id="wn-biomasse" class="wi-node wn-amber" style="left:38%;top:74%;width:23%" onclick="wsel('biomasse')"><div class="wnt">Biomasse sèche</div><div class="wns">Bois · pailles · résidus</div></div>
+          <div id="wn-pyro"    class="wi-node wn-amber" style="left:75%;top:53%;width:23%" onclick="wsel('pyro')"><div class="wnt">Pyrogazification ≥ 700°C</div><div class="wns">150 sites · 144–172 TWh</div></div>
+          <div id="wn-biochar" class="wi-node wn-coral" style="left:75%;top:80%;width:23%" onclick="wsel('biochar')"><div class="wnt">Biochar EBC/CDC V3 [C₄]</div><div class="wns">Puits &gt; 1 000 ans · H/C ≤ 0,4</div></div>
+        </div>
+
+        <div class="wi-panel">
+          <div class="wpt" id="wpt">Cliquer sur une filière pour voir ses flux</div>
+          <div class="wpf" id="wpf"></div>
+          <div class="wpd" id="wpd">Méthanisation et pyrogazification produisent toutes deux du CO₂ biogénique valorisable. Aucun flux organique ne doit être perdu — chaque sortie devient l'intrant d'une autre filière.</div>
+        </div>
+        <p class="wi-hint">ICB = (C₁ + C₂ + C₃ + C₄) / carbone entrant · objectif ≥ 0,85 · C₅ (pertes) → 0</p>
+        <button class="wi-reset" onclick="wrst()">Réinitialiser</button>
+
+        <script>
+        (function(){
+        var wnodes=['metha','erev','co2','digestat','cultures','biomasse','pyro','biochar'];
+        var wdata={
+          metha:{t:'Méthanisation — 4 flux de sortie',
+            f:[{l:'Biométhane [C₁] → ÉREV',c:'#52b788'},{l:'CO₂ biogénique [C₂] → valorisation',c:'#2980b9'},{l:'Digestat [C₃] → engrais N·P·K',c:'#52b788'},{l:'Chaleur → séchage / serres',c:'#e9c46a'}],
+            d:'Produit simultanément biométhane, CO₂ biogénique (30–45 % du biogaz brut — aujourd\'hui rejeté), digestat riche en N·P·K, et chaleur pour synergie territoriale.',
+            a:['meth-erev','meth-co2','meth-dig']},
+          erev:{t:'ÉREV Bio-GNV — débouché commun des deux filières',
+            f:[{l:'[C₁] depuis méthanisation',c:'#52b788'},{l:'[C₁] depuis pyrogazification',c:'#e9c46a'}],
+            d:'Absorbe le biométhane des deux filières. Transport lourd décarboné. Réseau GRDF 130 TWh existants — 0 € de CAPEX infrastructure nouvelle.',
+            a:['meth-erev','pyro-erev']},
+          co2:{t:'CO₂ biogénique [C₂] — flux énergétique ou puits',
+            f:[{l:'CO₂ → serres / industrie / P2G [C₂]',c:'#2980b9'},{l:'CO₂ → minéralisation permanente [C₄]',c:'#e76f51'},{l:'Deux sources : métha ET pyrogazification',c:'#2980b9'}],
+            d:'Le CO₂ biogénique peut rester C₂ (réutilisé en énergie ou procédé) ou basculer vers C₄ (séquestré) lorsqu\'il est minéralisé dans du béton, injecté en aquifère ou fixé en carbonates permanents. Dans ce cas il contribue directement au puits de carbone du système.',
+            a:['meth-co2','pyro-co2']},
+          digestat:{t:'Digestat traité [C₃] — la valeur agronomique',
+            f:[{l:'N·P·K → cultures agricoles',c:'#52b788'},{l:'ISE publié annuellement',c:'#52b788'}],
+            d:'Séparation de phase obligatoire. Substitution d\'engrais minéraux importés (Maroc, Russie, Biélorussie) : 90 000 à 250 000 €/unité/an. Indicateur ISE agrégé nationalement par l\'ADEME.',
+            a:['meth-dig','dig-cult']},
+          cultures:{t:'Cultures agricoles — le maillon central',
+            f:[{l:'Digestat [C₃] entrant → sols enrichis',c:'#52b788'},{l:'Biochar [C₄] entrant → amendement',c:'#e76f51'},{l:'Résidus → biomasse sèche sortante',c:'#e9c46a'}],
+            d:'Sols enrichis par digestat et biochar produisent des cultures dont les résidus lignocellulosiques alimentent la pyrogazification. Le cycle est fermé — les nutriments circulent sans importation.',
+            a:['dig-cult','bioch-cult','cult-bio']},
+          biomasse:{t:'Biomasse sèche — gisement non concurrent',
+            f:[{l:'Résidus cultures → pyrogazification',c:'#e9c46a'},{l:'Bois forestier → pyrogazification',c:'#e9c46a'},{l:'Pailles → pyrogazification',c:'#e9c46a'}],
+            d:'Non concurrent avec la méthanisation — deux gisements distincts. Bois mort, rémanents forestiers, pailles. Gisement V11 : 50–60 Mt/an. Chaleur de la méthanisation peut faciliter le séchage préalable.',
+            a:['cult-bio','bio-pyro']},
+          pyro:{t:'Pyrogazification ≥ 700°C — triple flux de sortie',
+            f:[{l:'Biométhane [C₁] → ÉREV',c:'#52b788'},{l:'CO₂ biogénique [C₂] → valorisation',c:'#2980b9'},{l:'Biochar [C₄] → puits carbone',c:'#e76f51'},{l:'Chaleur → séchage local',c:'#e9c46a'}],
+            d:'Produit simultanément énergie (2,85–3,0 MWh/t MS, réf. GoBiGas), CO₂ biogénique lors de l\'épuration du syngas — même obligation de valorisation que la méthanisation — et biochar puits permanent. Seule filière qui séquestre du carbone en produisant de l\'énergie.',
+            a:['bio-pyro','pyro-erev','pyro-co2','pyro-bioch']},
+          biochar:{t:'Biochar EBC/CDC V3 [C₄] — bras 1 du puits carbone',
+            f:[{l:'C₄ → amendement sols · puits > 1 000 ans',c:'#e76f51'},{l:'20–23 Mt CO₂/an séquestrés · EU-ETS',c:'#e76f51'},{l:'Bras 2 : CO₂ biogénique minéralisé [C₄]',c:'#2980b9'}],
+            d:'Ne pas dire "biochar" seul. Dire "Biochar certifié EBC/CDC V3". Stabilité > 1 000 ans. Améliore rétention eau +30 %, vie microbienne. Éligible EU-ETS ~70 €/t. Exigence contractuelle non négociable pour les 150 sites.',
+            a:['pyro-bioch','bioch-cult']}
+        };
+        var warcs={
+          'meth-erev': {f:'wn-metha',   t:'wn-erev',    c:'#52b788',d:''},
+          'meth-co2':  {f:'wn-metha',   t:'wn-co2',     c:'#2980b9',d:'5,3'},
+          'meth-dig':  {f:'wn-metha',   t:'wn-digestat',c:'#52b788',d:''},
+          'dig-cult':  {f:'wn-digestat',t:'wn-cultures', c:'#52b788',d:''},
+          'cult-bio':  {f:'wn-cultures',t:'wn-biomasse', c:'#e9c46a',d:''},
+          'bio-pyro':  {f:'wn-biomasse',t:'wn-pyro',     c:'#e9c46a',d:''},
+          'pyro-erev': {f:'wn-pyro',    t:'wn-erev',     c:'#52b788',d:'5,3'},
+          'pyro-co2':  {f:'wn-pyro',    t:'wn-co2',      c:'#2980b9',d:'5,3'},
+          'pyro-bioch':{f:'wn-pyro',    t:'wn-biochar',  c:'#e76f51',d:''},
+          'bioch-cult':{f:'wn-biochar', t:'wn-cultures', c:'#e76f51',d:'4,3'}
+        };
+        var wcur=null;
+        function wcx(e){return e.offsetLeft+e.offsetWidth/2}
+        function wcy(e){return e.offsetTop+e.offsetHeight/2}
+        function wbuild(){
+          var svg=document.getElementById('wsvg');
+          svg.querySelectorAll('path').forEach(function(p){p.remove()});
+          Object.keys(warcs).forEach(function(id){
+            var a=warcs[id];
+            var f=document.getElementById(a.f),t=document.getElementById(a.t);
+            if(!f||!t) return;
+            var x1=wcx(f),y1=wcy(f),x2=wcx(t),y2=wcy(t);
+            var dx=(x2-x1)*0.42,dy=(y2-y1)*0.42;
+            var p=document.createElementNS('http://www.w3.org/2000/svg','path');
+            p.setAttribute('d','M'+x1+','+y1+' C'+(x1+dx)+','+(y1+dy*0.2)+' '+(x2-dx)+','+(y2-dy*0.2)+' '+x2+','+y2);
+            p.setAttribute('stroke',a.c);
+            if(a.d) p.setAttribute('stroke-dasharray',a.d);
+            p.setAttribute('marker-end','url(#wah)');
+            p.setAttribute('data-id',id);
+            p.classList.add('widle');
+            svg.appendChild(p);
+          });
+        }
+        window.wsel=function(id){
+          if(wcur===id){wrst();return}
+          wcur=id;
+          var d=wdata[id];
+          wnodes.forEach(function(n){
+            var el=document.getElementById('wn-'+n);
+            el.classList.toggle('wactive',n===id);
+            el.classList.remove('wdim');
+          });
+          document.querySelectorAll('#wsvg path').forEach(function(p){
+            var on=d.a.indexOf(p.getAttribute('data-id'))>=0;
+            p.classList.toggle('wactive',on);
+            p.classList.toggle('wdim',!on);
+            p.classList.remove('widle');
+          });
+          document.getElementById('wpt').textContent=d.t;
+          document.getElementById('wpd').textContent=d.d;
+          var fb=document.getElementById('wpf');
+          fb.innerHTML='';
+          d.f.forEach(function(f){
+            var b=document.createElement('span');
+            b.className='wi-badge';
+            b.style.cssText='background:'+f.c+'25;color:'+f.c+';border:1px solid '+f.c+'50';
+            b.textContent=f.l;
+            fb.appendChild(b);
+          });
+        };
+        window.wrst=function(){
+          wcur=null;
+          wnodes.forEach(function(n){
+            var el=document.getElementById('wn-'+n);
+            el.classList.remove('wactive','wdim');
+          });
+          document.querySelectorAll('#wsvg path').forEach(function(p){
+            p.classList.remove('wactive','wdim');
+            p.classList.add('widle');
+          });
+          document.getElementById('wpt').textContent='Cliquer sur une filière pour voir ses flux';
+          document.getElementById('wpf').innerHTML='';
+          document.getElementById('wpd').textContent='Méthanisation et pyrogazification produisent toutes deux du CO₂ biogénique valorisable. Aucun flux organique ne doit être perdu — chaque sortie devient l\'intrant d\'une autre filière.';
+        };
+        setTimeout(wbuild,80);
+        window.addEventListener('resize',function(){setTimeout(wbuild,80)});
+        })();
+        </script>
+      </div>
     </div>
 
-    <div class="box box-rouge reveal">
-      <strong>Point d'attention critique — fréquence 60 Hz :</strong> le Rex à 1 800 tr/min avec générateur 4 pôles produit 60 Hz natif (standard nord-américain). En Europe, le standard bâtiment est 50 Hz (1 500 tr/min). Le 60 Hz est directement compatible avec les remorques frigorifiques Carrier/Thermo King et les équipements de chantier export. Pour alimenter un bâtiment EU : convertisseur DC/AC 50 Hz nécessaire (ou variante Rex à 1 500 tr/min en option catalogue).
+    <div class="icb-recap reveal">
+      <h3>L'ICB — Indice de Conservation du Carbone Biogénique — l'indicateur unificateur</h3>
+      <p style="font-size:.83rem;color:rgba(240,244,241,.65);margin-bottom:.9rem">Pour chaque tonne de carbone organique entrant dans le système, l'ICB trace la destination de chaque fraction. Tout carbone non tracé est présumé perdu. Objectif filière : ICB ≥ 0,85 à horizon 5 ans.</p>
+      <div class="icb-fractions">
+        <div class="icb-f"><span>C₁</span><p>Carbone énergétique<br>CH₄ valorisé</p></div>
+        <div class="icb-f"><span>C₂</span><p>CO₂ biogénique<br>réutilisé ou séquestré</p></div>
+        <div class="icb-f"><span>C₃</span><p>Carbone agronomique<br>restitué au sol</p></div>
+        <div class="icb-f"><span>C₄</span><p>Carbone séquestré<br>biochar &gt; 1 000 ans</p></div>
+        <div class="icb-f lost"><span>C₅</span><p>Carbone perdu —<br>doit tendre vers 0</p></div>
+      </div>
+      <p style="font-size:.78rem;color:rgba(240,244,241,.45);margin-top:.9rem;line-height:1.65">Note : le CO₂ biogénique (C₂) peut basculer vers C₄ lorsqu'il est valorisé par minéralisation permanente (carbonatation de matériaux de construction, séquestration géologique). Dans ce cas il cesse d'être un flux énergétique pour devenir un puits — augmentant directement l'ICB et la capacité carbon-négative du système.</p>
     </div>
   </div>
 </section>
 
-<!-- PARTIE 3 — AUTONOMIE -->
-<section>
+<!-- ── PUITS DE CARBONE ───────────────────────────────────────────────────── -->
+<section id="puits" style="background:linear-gradient(180deg,var(--foret) 0%,var(--noir) 100%)">
   <div class="container">
-    <div class="stag reveal">Calcul d'autonomie</div>
-    <h2 class="reveal">Comment on arrive à<br><em>1 150–1 300 km</em></h2>
-    <p class="lead reveal">La consommation de référence — 32 kg Bio-CH4/100 km — est tirée des données réelles constructeurs, pas d'un modèle théorique.</p>
+    <div class="stag reveal">La dimension carbon-négative</div>
+    <h2 class="reveal">Le puits de carbone —<br><em>ce qu'aucun scénario tout-électrique<br>ne peut revendiquer</em></h2>
+    <p class="lead reveal">Décarboner signifie cesser d'émettre. Carbon-négatif signifie retirer du CO₂ déjà présent dans l'atmosphère. Le Programme Résilience est le seul scénario de mobilité qui produit de l'énergie ET séquestre du carbone en permanence — par deux voies complémentaires.</p>
 
-    <div class="box box-vert reveal">
-      <strong>Référence industrielle confirmée :</strong> Volvo FH LNG et Scania Super LNG consomment 28–36 kg/100 km selon charge et relief sur axes autoroutiers. Le chiffre retenu de 32 kg/100 km est la valeur médiane à 85 km/h pleine charge. <span class="bq b-ok">✅ Données constructeurs publiées</span>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:2rem;border:1px solid rgba(82,183,136,.1);background:rgba(82,183,136,.1)" class="reveal">
+
+      <div style="padding:2rem 2rem;background:rgba(13,31,23,.7)">
+        <div style="font-size:.66rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#e76f51;margin-bottom:1.1rem;padding-bottom:.7rem;border-bottom:1px solid rgba(231,111,81,.2)">Bras 1 — Séquestration solide</div>
+        <h3 style="font-family:var(--serif);font-size:1.3rem;color:#f4a261;margin-bottom:.8rem">Biochar certifié EBC/CDC V3</h3>
+        <p style="font-size:.85rem;color:rgba(240,244,241,.68);line-height:1.8;margin-bottom:.9rem">La pyrogazification à ≥ 700°C produit un biochar dont la structure graphitée est chimiquement stable pendant plus de 1 000 ans dans les sols. Le carbone biogénique capturé par la biomasse de l'atmosphère y reste immobilisé durablement — c'est une extraction nette de CO₂ atmosphérique, pas une compensation.</p>
+        <div style="display:flex;flex-direction:column;gap:.5rem">
+          <div style="font-size:.79rem;color:rgba(240,244,241,.5);padding-left:.9rem;position:relative"><span style="position:absolute;left:0;color:#e76f51">→</span>H/C ≤ 0,4 · carbone ≥ 50 % MS · matières volatiles &lt; 20 % MS</div>
+          <div style="font-size:.79rem;color:rgba(240,244,241,.5);padding-left:.9rem;position:relative"><span style="position:absolute;left:0;color:#e76f51">→</span>Stabilité estimée ~75 % sur &gt; 1 000 ans (fraction recalcitrante)</div>
+          <div style="font-size:.79rem;color:rgba(240,244,241,.5);padding-left:.9rem;position:relative"><span style="position:absolute;left:0;color:#e76f51">→</span>20–23 Mt CO₂/an séquestrés · éligibles EU-ETS ~70 €/t</div>
+          <div style="font-size:.79rem;color:rgba(240,244,241,.5);padding-left:.9rem;position:relative"><span style="position:absolute;left:0;color:#e76f51">→</span>Améliore fertilité, rétention eau +30 %, vie microbienne des sols</div>
+          <div style="font-size:.79rem;color:rgba(240,244,241,.5);padding-left:.9rem;position:relative"><span style="position:absolute;left:0;color:#e76f51">→</span>Exigence contractuelle non négociable pour les 150 sites V11</div>
+        </div>
+        <div style="margin-top:1.2rem;padding:.9rem 1.1rem;border-left:3px solid #e76f51;background:rgba(231,111,81,.07);font-size:.8rem;color:rgba(240,244,241,.6);line-height:1.65">
+          <strong style="color:#f4a261">Forêt libre vs Biochar :</strong> une forêt non gérée est neutre en carbone sur le cycle long — elle capte autant qu'elle libère à sa décomposition. Le biochar extrait le carbone du cycle et l'immobilise structurellement. Ce n'est pas la même chose.
+        </div>
+        <div style="margin-top:.8rem;font-size:.79rem;color:rgba(240,244,241,.5);line-height:1.6">
+          Une fois épandu, comment ce biochar agit-il concrètement sur les sols ? <a href="Biochar_Sols_Synthese_Resilience_V2.pdf" target="_blank" style="color:#f4a261;text-decoration:underline">La synthèse agronomique complète →</a> détaille l'action selon le type de sol, la gestion de la sécheresse et l'association avec le digestat.
+        </div>
+      </div>
+
+      <div style="padding:2rem 2rem;background:rgba(10,25,50,.5)">
+        <div style="font-size:.66rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#2980b9;margin-bottom:1.1rem;padding-bottom:.7rem;border-bottom:1px solid rgba(41,128,185,.2)">Bras 2 — Séquestration du CO₂ biogénique</div>
+        <h3 style="font-family:var(--serif);font-size:1.3rem;color:#74b9e8;margin-bottom:.8rem">CO₂ biogénique minéralisé ou fixé</h3>
+        <p style="font-size:.85rem;color:rgba(240,244,241,.68);line-height:1.8;margin-bottom:.9rem">Le CO₂ biogénique capté lors de l'épuration du biogaz ou du syngas n'est pas seulement un flux à valoriser énergétiquement. Lorsqu'il est orienté vers des voies de séquestration permanente, il quitte la catégorie C₂ (réutilisé) pour rejoindre C₄ (séquestré) — augmentant directement la capacité carbon-négative du système.</p>
+        <div style="display:flex;flex-direction:column;gap:.5rem">
+          <div style="font-size:.79rem;color:rgba(240,244,241,.5);padding-left:.9rem;position:relative"><span style="position:absolute;left:0;color:#2980b9">→</span><strong style="color:rgba(240,244,241,.7)">Minéralisation / carbonatation :</strong> injection dans béton ou granulats — CO₂ fixé en CaCO₃, permanent</div>
+          <div style="font-size:.79rem;color:rgba(240,244,241,.5);padding-left:.9rem;position:relative"><span style="position:absolute;left:0;color:#2980b9">→</span><strong style="color:rgba(240,244,241,.7)">Séquestration géologique :</strong> injection en aquifères salins ou anciennes formations — voie BECCS biogénique</div>
+          <div style="font-size:.79rem;color:rgba(240,244,241,.5);padding-left:.9rem;position:relative"><span style="position:absolute;left:0;color:#2980b9">→</span><strong style="color:rgba(240,244,241,.7)">Power-to-Gas :</strong> CO₂ + H₂ → méthane de synthèse — carbone immobilisé temporairement avant usage</div>
+          <div style="font-size:.79rem;color:rgba(240,244,241,.5);padding-left:.9rem;position:relative"><span style="position:absolute;left:0;color:#2980b9">→</span>Sources : méthanisation (30–45 % du biogaz brut) ET pyrogazification (épuration du syngas)</div>
+        </div>
+        <div style="margin-top:1.2rem;padding:.9rem 1.1rem;border-left:3px solid #2980b9;background:rgba(41,128,185,.07);font-size:.8rem;color:rgba(240,244,241,.6);line-height:1.65">
+          <strong style="color:#74b9e8">Potentiel à quantifier :</strong> la fraction de CO₂ biogénique orientée vers la minéralisation permanente n'est pas encore intégrée dans les 20–23 Mt CO₂/an du scénario V11 — c'est un gisement de séquestration additionnelle à documenter dans une version future.
+        </div>
+      </div>
+
     </div>
-    <div class="tbl-wrap reveal">
-      <table>
-        <thead><tr><th>Phase</th><th>Source énergie</th><th>Distance</th><th>Consommation</th><th>Qualification</th></tr></thead>
-        <tbody>
-          <tr><td>Phase 1 — ZEV zones sensibles</td><td style="color:#74b9e8">Batterie 200 kWh</td><td class="td-a">110–130 km réels</td><td>~130 kWh/100 km</td><td>Théorique 143 km · Marges opération. 10–15 % → 110–130 km <span class="bq b-hyp">⚠ Valider essais</span></td></tr>
-          <tr><td>Phase 2 — Rex croisière autoroute</td><td class="td-g">Bio-LCH4 Rex 400 kWe</td><td class="td-g">~950 km</td><td>32 kg/100 km</td><td>Conforme Volvo FH / Scania LNG réels <span class="bq b-ok">✅</span></td></tr>
-          <tr><td>Phase 3 — Batterie rechargée Rex surplus</td><td>Rex → batterie en plat/descente</td><td class="td-g">~100–130 km</td><td>Énergie récupérée</td><td>KERS partiel en descente · estimation conservative <span class="bq b-est">🔬</span></td></tr>
-          <tr class="tr-best"><td><strong>Autonomie totale</strong></td><td><strong>LCH4 + Batterie</strong></td><td class="td-g"><strong>1 150–1 300 km</strong></td><td>—</td><td>Objectif 1 000–1 200 km atteint avec marges · Scénario conservateur <span class="bq b-est">🔬</span></td></tr>
-        </tbody>
-      </table>
+
+    <div style="margin-top:2rem;padding:1.5rem 2rem;border:1px solid rgba(82,183,136,.2);background:rgba(29,58,40,.2);border-left:4px solid var(--vert-vif)" class="reveal">
+      <h3 style="font-family:var(--serif);font-size:1.2rem;color:var(--vert-vif);margin-bottom:.7rem">Le puits Résilience en chiffres V11</h3>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-top:.5rem">
+        <div><div style="font-family:var(--serif);font-size:2rem;font-weight:300;color:var(--vert-vif);line-height:1">20–23 Mt</div><div style="font-size:.75rem;color:var(--gris);text-transform:uppercase;letter-spacing:.1em;margin-top:.2rem">CO₂/an séquestrés via biochar</div></div>
+        <div><div style="font-family:var(--serif);font-size:2rem;font-weight:300;color:#74b9e8;line-height:1">+ X Mt</div><div style="font-size:.75rem;color:var(--gris);text-transform:uppercase;letter-spacing:.1em;margin-top:.2rem">CO₂ biogénique minéralisable — à quantifier</div></div>
+        <div><div style="font-family:var(--serif);font-size:2rem;font-weight:300;color:var(--ambre);line-height:1">&gt; 1 000 ans</div><div style="font-size:.75rem;color:var(--gris);text-transform:uppercase;letter-spacing:.1em;margin-top:.2rem">Stabilité du biochar EBC/CDC V3</div></div>
+        <div><div style="font-family:var(--serif);font-size:2rem;font-weight:300;color:#e76f51;line-height:1">~70 €/t</div><div style="font-size:.75rem;color:var(--gris);text-transform:uppercase;letter-spacing:.1em;margin-top:.2rem">Valeur crédit carbone EU-ETS</div></div>
+      </div>
     </div>
-    <div class="box box-ambre reveal">
-      <strong>Honnêteté sur l'autonomie ZEV :</strong> la valeur initiale de 150 km ZEV a été recalculée. À 130 kWh/100 km, 200 kWh donnent 154 km théoriques mais 110–130 km en conditions réelles avec dégradation batterie et marges de sécurité. Ce chiffre reste suffisant pour les zones à faibles émissions portuaires et urbaines — c'est son usage prioritaire.
+
+    <div style="margin-top:1.5rem;text-align:center" class="reveal">
+      <a href="sequestration.html" class="btn btn-outline" style="font-size:.76rem">Forêt libre vs Biochar — analyse comparative →</a>
     </div>
   </div>
 </section>
 
-<!-- PARTIE 4 — PRIX CARBURANT -->
-<section class="alt">
+<!-- ── PORTES D'ENTRÉE ────────────────────────────────────────────────────── -->
+<section id="portes">
   <div class="container">
-    <div class="stag reveal">Prix du Bio-CH4</div>
-    <h2 class="reveal">Trois scénarios,<br>pas <em>un chiffre unique</em></h2>
-    <p class="lead reveal">L'avantage économique dépend fortement de l'organisation de l'approvisionnement. Un transporteur demandera « quel prix réel à la pompe ? » — voici la réponse honnête en 3 niveaux.</p>
-    <div class="tbl-wrap reveal">
-      <table>
-        <thead><tr><th>Scénario</th><th>Prix/kg <span class="bq b-est">🔬</span></th><th>Coût/100 km</th><th>vs Diesel 43 €/100 km</th><th>Conditions</th></tr></thead>
-        <tbody>
-          <tr class="tr-best"><td><strong>Auto-produit (coopérative transport)</strong></td><td class="td-g">0,35–0,50 €/kg</td><td class="td-g">11–16 €/100 km</td><td class="td-g">−62 à −72 %</td><td>Méthaniseur mutualisé entre transporteurs · Modèle Programme Résilience V11 <span class="bq b-est">🔬</span></td></tr>
-          <tr><td>Coopératif (dépôt régional biomethane)</td><td>0,60–0,85 €/kg</td><td>19–27 €/100 km</td><td class="td-a">−37 à −56 %</td><td>Réseau coopératif régional · Prix intermédiaire réaliste <span class="bq b-est">🔬</span></td></tr>
-          <tr><td>Marché (station bio-GNL publique)</td><td>1,00–1,40 €/kg</td><td>32–45 €/100 km</td><td class="td-a">−5 % à +5 %</td><td>Stations GNL publiques actuelles · Avantage fiscal bio RED III possible <span class="bq b-ok">✅ Prix marché 2024</span></td></tr>
-          <tr class="tr-ref"><td>Diesel référence</td><td>~1,35 €/L · ~3 €/kg équiv.</td><td>~43 €/100 km</td><td>—</td><td>Gasoil professionnel hors TVA récupérable <span class="bq b-ok">✅</span></td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="box box-ambre reveal">
-      <strong>Lecture pour un décideur :</strong> l'avantage économique est certain en scénario auto-produit ou coopératif. En scénario marché pur, il s'atténue. Le modèle est le plus rentable quand il est couplé à une filière biométhane intégrée — exactement la logique du Programme Résilience V11. Un transporteur qui attend une station publique prend un risque de délai ; un transporteur qui investit dans une coopérative sécurise son approvisionnement ET son coût.
+    <div class="stag reveal">Les cinq filières</div>
+    <h2 class="reveal">Chaque composante<br><em>de la stratégie carbone</em></h2>
+    <p class="lead reveal">Cinq filières complémentaires, aucune concurrente. Chacune mobilise un gisement de biomasse distinct et contribue à un ou plusieurs flux du bouclage carbone territorial.</p>
+
+    <div class="portes-grid">
+
+      <!-- BIO-CH4 -->
+      <div class="porte-card pc-bioch4 reveal">
+        <div class="porte-icon">⚗️</div>
+        <h3>Bio-CH₄ — <em>le vecteur</em></h3>
+        <p class="porte-desc">Le biométhane n'est pas un substitut du gaz fossile dans les chaudières. C'est un vecteur de stockage d'énergie renouvelable (130 TWh réseau GRDF), un carburant pour les usages difficiles à électrifier, et le précurseur du biochar via la pyrogazification. La ressource limitée doit être sanctuarisée pour ces trois usages.</p>
+        <div class="porte-kpis">
+          <div class="porte-kpi">262 TWh/an de gisement national V11 (9 filières)</div>
+          <div class="porte-kpi">130 TWh de stockage saisonnier réseau GRDF — 0 € d'infrastructure nouvelle</div>
+          <div class="porte-kpi">40 GW effacés passivement aux pics via ÉREV bio-GNV</div>
+          <div class="porte-kpi">100 % national — non délocalisable, non embargable</div>
+        </div>
+        <div class="porte-btn" style="display:flex;gap:.6rem;flex-wrap:wrap">
+          <a href="bio-ch4.html" class="btn btn-outline" style="font-size:.72rem">Repositionnement Bio-CH₄ →</a>
+          <a href="pyrogazeification-resilience.html" class="btn btn-outline" style="font-size:.72rem">Filière complète →</a>
+        </div>
+      </div>
+
+      <!-- BIOMASSE -->
+      <div class="porte-card pc-biomasse reveal">
+        <div class="porte-icon">🌲</div>
+        <h3>Biomasse nationale — <em>le gisement</em></h3>
+        <p class="porte-desc">262 TWh/an mobilisables sans concurrence alimentaire ni destruction des écosystèmes. La règle opérationnelle : on laisse ce qui structure l'écosystème, on gère ce qui le bloque, on valorise ce qui se perd de toute façon. Biomasse fine &lt; 10–12 cm uniquement. Seuils écologiques issus de la littérature forestière européenne.</p>
+        <div class="porte-kpis">
+          <div class="porte-kpi">50–60 Mt/an de biomasse lignocellulosique pour pyrogazification</div>
+          <div class="porte-kpi">32–46 Mt/an de biomasse humide pour méthanisation</div>
+          <div class="porte-kpi">1,5–3,6 Mha de terres marginales sans concurrence alimentaire</div>
+          <div class="porte-kpi">9 filières identifiées avec qualifications IGN/FCBA/ONF</div>
+        </div>
+        <div class="porte-btn">
+          <a href="biomasse.html" class="btn btn-outline" style="font-size:.72rem">Gisement national →</a>
+          <a href="gestion-forets.html" class="btn btn-outline" style="font-size:.72rem;margin-top:.5rem">Gestion forêts →</a>
+        </div>
+      </div>
+
+      <!-- BIOCHAR -->
+      <div class="porte-card pc-biochar reveal">
+        <div class="porte-icon">⬛</div>
+        <h3>Biochar EBC/CDC V3 — <em>le puits</em></h3>
+        <p class="porte-desc">Ne pas dire « biochar ». Dire « Biochar certifié EBC/CDC V3 ». L'amalgame entre torréfaction basse température et pyrogazification haute température est le principal risque de greenwashing. Seul le biochar H/C ≤ 0,4 à T° ≥ 700°C offre une stabilité &gt; 1 000 ans certifiable au sens GIEC. C'est une exigence contractuelle non négociable pour les 150 sites du Programme Résilience.</p>
+        <div class="porte-kpis">
+          <div class="porte-kpi">H/C ≤ 0,4 · T° ≥ 700°C · Carbone ≥ 50 % MS — exigence CDC V3</div>
+          <div class="porte-kpi">11–13 Mt biochar/an · stabilité estimée ~75 % sur &gt; 1 000 ans</div>
+          <div class="porte-kpi">20–23 Mt CO₂/an séquestrés · éligibles EU-ETS à 70 €/t</div>
+          <div class="porte-kpi">Sans HAP toxiques · amélioration rétention eau +30 %</div>
+        </div>
+        <div class="porte-btn" style="display:flex;gap:.6rem;flex-wrap:wrap">
+          <a href="biochar.html" class="btn btn-outline" style="font-size:.72rem">Rigueur EBC/CDC V3 →</a>
+          <a href="Biochar_Sols_Synthese_Resilience_V2.pdf" target="_blank" class="btn btn-outline" style="font-size:.72rem" download>Synthèse agronomique PDF →</a>
+        </div>
+      </div>
+
+      <!-- SÉQUESTRATION -->
+      <div class="porte-card pc-sequestration reveal">
+        <div class="porte-icon">🌿</div>
+        <h3>Séquestration permanente — <em>la comparaison</em></h3>
+        <p class="porte-desc">Pourquoi « laisser pousser les forêts » ne suffit pas comme stratégie de séquestration. La forêt naturelle libre est neutre en carbone sur le cycle long — elle n'est pas un puits. Le biochar certifié EBC/CDC V3 est le seul outil de séquestration physique permanente accessible à grande échelle en France, sans DAC ni BECCS. La comparaison quantitative sur 5 scénarios et 50 ans en démontre la supériorité.</p>
+        <div class="porte-kpis">
+          <div class="porte-kpi">Forêt libre = cycle neutre, pas puits permanent</div>
+          <div class="porte-kpi">Biochar = séquestration additionelle et permanente certifiable</div>
+          <div class="porte-kpi">Comparaison DAC / BECCS / Biochar / Reforestation sur 5 scénarios</div>
+          <div class="porte-kpi">Simulation 50 ans avec fourchettes d'incertitude</div>
+        </div>
+        <div class="porte-btn">
+          <a href="sequestration.html" class="btn btn-outline" style="font-size:.72rem">Forêt libre vs Biochar →</a>
+          <a href="sequestration_CO2_foret_vs_biochar_v4.pdf" target="_blank" class="btn btn-outline" style="font-size:.72rem;margin-top:.5rem" download>Télécharger PDF →</a>
+        </div>
+      </div>
+
+      <!-- MÉTHANISATION -->
+      <div class="porte-card pc-methanisation reveal">
+        <div class="porte-icon">🌾</div>
+        <h3>Réforme méthanisation — <em>la filière humide</em></h3>
+        <p class="porte-desc">La méthanisation n'est pas une filière de production d'énergie — c'est un outil de gestion des flux organiques humides. Cahier des charges complet pour une réforme sans subventions directes : ICB, ISE, État assureur non subventionneur, bouclage territorial. Économie estimée 18 à 24 Md€ sur 20 ans par rapport au système actuel. Modélisation externe demandée à France Stratégie / ADEME / CRE.</p>
+        <div class="porte-kpis">
+          <div class="porte-kpi">ICB ≥ 0,85 · ISE annuel obligatoire · fuites CH₄ &lt; 2 %</div>
+          <div class="porte-kpi">Garantie prix plancher 70–85 €/MWh · prêt bonifié BPI</div>
+          <div class="porte-kpi">Contrôle automatisé · inspection sur signal · OGI trimestriel</div>
+          <div class="porte-kpi">Synergie territoriale chaleur · CO₂ liquéfié pour hub régional</div>
+        </div>
+        <div class="porte-btn" style="display:flex;gap:.6rem;flex-wrap:wrap">
+          <a href="methanisation-reforme.html" class="btn btn-outline" style="font-size:.72rem">Lire la page →</a>
+          <a href="Methanisation_Cahier_des_Charges_V2.2.pdf" target="_blank" class="btn btn-outline" style="font-size:.72rem" download>PDF →</a>
+        </div>
+      </div>
+
+      <!-- MATÉRIAUX CRITIQUES -->
+      <div class="porte-card pc-mat reveal">
+        <div class="porte-icon">⛏️</div>
+        <h3>Matériaux critiques — <em>la contrainte ignorée</em></h3>
+        <p class="porte-desc">Le scénario tout-électrique substitue la dépendance au gaz fossile par une dépendance au lithium, cobalt et terres rares — à 80-90 % sous contrôle chinois du raffinage, avec un déficit d'offre mondial documenté par l'AIE dès 2027-2035. Le Programme Résilience minimise structurellement cette dépendance : zéro matériau critique rare pour le biométhane, 2 à 3× moins pour l'ÉREV vs BEV.</p>
+        <div class="porte-kpis">
+          <div class="porte-kpi">90 % du raffinage terres rares contrôlé par la Chine — déjà utilisé comme arme (2023-2025)</div>
+          <div class="porte-kpi">Déficit cuivre de 6,5 Mt prévu en 2035 (AIE 2025) — délai mine : 15 ans</div>
+          <div class="porte-kpi">1 MW solaire : 10× plus d'acier et 12× plus de cuivre que 1 MW nucléaire par TWh</div>
+          <div class="porte-kpi">Biométhane Résilience : zéro lithium, cobalt, terres rares — biomasse nationale</div>
+        </div>
+        <div class="porte-btn" style="display:flex;gap:.6rem;flex-wrap:wrap">
+          <a href="materiaux-critiques.html" class="btn btn-outline" style="font-size:.72rem">Lire l'analyse →</a>
+          <a href="Materiaux_Critiques_Transition_Energetique.pdf" target="_blank" class="btn btn-outline" style="font-size:.72rem" download>PDF →</a>
+        </div>
+      </div>
+
+      <!-- BIODIVERSITÉ -->
+      <div class="porte-card pc-biodiv reveal">
+        <div class="porte-icon">🦋</div>
+        <h3>Biodiversité & Climat — <em>la cause primaire</em></h3>
+        <p class="porte-desc">La disparition des espèces est réelle — mais sa cause principale n'est plus l'exploitation directe : c'est le dérèglement climatique (62,1 % des extinctions de vertébrés d'ici 2100). Cette confusion de causalité oriente les politiques dans la mauvaise direction. Décarboner est la meilleure stratégie de biodiversité possible.</p>
+        <div class="porte-kpis">
+          <div class="porte-kpi">83,7 % des récifs coralliens blanchis en 2023-2025 · cause : réchauffement</div>
+          <div class="porte-kpi">87 % des zones humides mondiales disparues · cause : drainage humain direct</div>
+          <div class="porte-kpi">La gestion forestière écologique réduit le risque incendie ET préserve la biodiversité</div>
+          <div class="porte-kpi">Résilience : décarbonation + biochar + méthanisation = stratégie biodiversité intégrée</div>
+        </div>
+        <div class="porte-btn" style="display:flex;gap:.6rem;flex-wrap:wrap">
+          <a href="biodiversite.html" class="btn btn-outline" style="font-size:.72rem">Lire l'analyse →</a>
+          <a href="Biodiversite_Climat_Analyse_V1.pdf" target="_blank" class="btn btn-outline" style="font-size:.72rem" download>PDF →</a>
+        </div>
+      </div>
+
+      <!-- CARBONE MONDIAL -->
+      <div class="porte-card pc-mondial reveal">
+        <div class="porte-icon">🌍</div>
+        <h3>Résilience Monde — <em>la seule stratégie carbon-négatif</em></h3>
+        <p class="porte-desc">Toutes les autres solutions décarbonent — elles arrêtent d'aggraver le problème. Le scénario bio-GNV + pyrogazification + biochar, généralisé à l'échelle planétaire, va plus loin : il retire physiquement du CO₂ déjà accumulé dans l'atmosphère tout en produisant de l'énergie. Ce n'est pas une compensation — c'est un nettoyage actif.</p>
+        <div class="porte-kpis">
+          <div class="porte-kpi">~46 000 TWh/an de bio-GNV · ~49 % de la consommation mondiale d'énergie finale</div>
+          <div class="porte-kpi">~5 940 Mt CO₂/an extraits de l'atmosphère · retour à 280 ppm vers 2170</div>
+          <div class="porte-kpi">800 Mha de terres marginales valorisées · zéro conflit d'usage alimentaire</div>
+          <div class="porte-kpi">Auto-financement sur 5 flux · sans subvention structurelle</div>
+        </div>
+        <div class="porte-btn" style="display:flex;gap:.6rem;flex-wrap:wrap">
+          <a href="carbone-mondial.html" class="btn btn-outline" style="font-size:.72rem">Lire l'analyse →</a>
+          <a href="Carbone_Resilience_Mobilite_Mondiale.pdf" target="_blank" class="btn btn-outline" style="font-size:.72rem" download>PDF →</a>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
-<!-- PARTIE 5 — COMPARATIF -->
-<section>
+<!-- ── INDICATEURS ────────────────────────────────────────────────────────── -->
+<section id="indicateurs">
   <div class="container">
-    <div class="stag reveal">Tableau comparatif décideurs</div>
-    <h2 class="reveal">Où se situe<br><em>cette solution ?</em></h2>
-    <div class="tbl-wrap reveal">
-      <table>
-        <thead><tr><th>Solution</th><th>Autonomie</th><th>Remplissage</th><th>Charge utile</th><th>Maturité / Risque</th><th>CO₂</th></tr></thead>
-        <tbody>
-          <tr><td><strong>Diesel 44t</strong></td><td class="td-g">> 1 200 km</td><td class="td-g">3–5 min</td><td class="td-g">~26 t</td><td>Mature · Fossile · CO₂ élevé <span class="bq b-ok">✅</span></td><td class="td-r">~700 g/km</td></tr>
-          <tr><td><strong>BEV 44t</strong></td><td class="td-r">300–500 km</td><td class="td-r">45–90 min</td><td class="td-a">~23 t (−3 t batterie)</td><td>Développement · Stress réseau <span class="bq b-tg">🎯</span></td><td class="td-g">0 (local)</td></tr>
-          <tr><td><strong>Hydrogène 44t</strong></td><td>600–800 km</td><td class="td-g">5–10 min</td><td>~25 t</td><td>Démonstrateurs · Infra absente · Coût élevé <span class="bq b-hyp">⚠</span></td><td class="td-g">0 (si H2 vert)</td></tr>
-          <tr class="tr-best"><td><strong>Camion Résilience EREV</strong></td><td class="td-g">1 150–1 300 km <span class="bq b-est">🔬</span></td><td class="td-g">5–10 min (LCH4)</td><td class="td-g">~25 t</td><td>Développement industriel réaliste · Technos existantes <span class="bq b-tg">🎯</span></td><td class="td-g">0 g/km (bio-CH4)</td></tr>
-        </tbody>
-      </table>
+    <div class="stag reveal">Les trois indicateurs unificateurs</div>
+    <h2 class="reveal">Mesurer ce qui compte<br><em>vraiment</em></h2>
+    <p class="lead reveal">Trois indicateurs transversaux permettent d'évaluer la performance réelle de chaque filière de la stratégie carbone, au-delà du seul volume d'énergie produite.</p>
+
+    <div class="indic-grid reveal">
+      <div class="indic-col">
+        <div class="indic-nom">Indicateur 1</div>
+        <div class="indic-val">ICB</div>
+        <div class="indic-lbl">Indice de Conservation du Carbone Biogénique</div>
+        <div class="indic-sub">Fraction du carbone organique entrant effectivement conservée (C₁+C₂+C₃+C₄). Cible : ≥ 0,85. Tout carbone non tracé est présumé C₅ — perdu. Applicable à toutes les filières biomasse.</div>
+      </div>
+      <div class="indic-col">
+        <div class="indic-nom">Indicateur 2</div>
+        <div class="indic-val">ISE</div>
+        <div class="indic-lbl">Indice de Souveraineté Engrais</div>
+        <div class="indic-sub">Tonnes d'équivalent engrais minéraux substituées par an (azote + phosphore + potassium valorisés). Exprimé en tonnes et en valeur économique. Agrégé nationalement par l'ADEME. Indicateur de sécurité nationale lisible par tout décideur.</div>
+      </div>
+      <div class="indic-col">
+        <div class="indic-nom">Indicateur 3</div>
+        <div class="indic-val">&lt; 2 %</div>
+        <div class="indic-lbl">Taux de fuite CH₄ atmosphérique</div>
+        <div class="indic-sub">CH₄ : PRG 84× CO₂ sur 20 ans. 3 % de fuite annule l'intégralité du bénéfice climatique. Contrôle continu par bilan massique automatisé + OGI trimestriel. Seuil contractuel non négociable pour toutes les installations.</div>
+      </div>
     </div>
 
-    <h3 class="reveal">Coût total de possession 15 ans / 800 000 km</h3>
-    <div class="tbl-wrap reveal">
-      <table>
-        <thead><tr><th>Poste</th><th>Diesel</th><th>BEV</th><th>Camion Résilience</th></tr></thead>
-        <tbody>
-          <tr><td>Prix achat <span class="bq b-tg">🎯</span></td><td>120 000 €</td><td class="td-r">280 000 €</td><td class="td-a">155–175 000 € (cible volume) · Prototype : significativement plus élevé</td></tr>
-          <tr><td>Carburant 15 ans <span class="bq b-est">🔬</span></td><td class="td-r">156 000 €</td><td>72 000 €</td><td class="td-g">35–72 000 € (auto-produit à marché)</td></tr>
-          <tr><td>Maintenance 15 ans <span class="bq b-est">🔬</span></td><td class="td-r">63 000 €</td><td>42 000 €</td><td class="td-g">42 000 € (Rex fixe · pas FAP · pas AdBlue)</td></tr>
-          <tr><td>Remplacement batterie</td><td>0 €</td><td class="td-r">80 000 €</td><td>28 000 € (LFP 3 000 cycles)</td></tr>
-          <tr style="background:rgba(26,58,40,.5)"><td><strong>Total net</strong></td><td class="td-r"><strong>331 000 €</strong></td><td class="td-r"><strong>459 000 €</strong></td><td class="td-g"><strong>260–317 000 € selon approv.</strong></td></tr>
-          <tr><td>Économie vs diesel</td><td>Référence</td><td class="td-r">−128 000 €</td><td class="td-g">+14 000 à +71 000 € <span class="bq b-est">🔬</span></td></tr>
-        </tbody>
-      </table>
+    <div class="note-modele reveal">
+      <p><strong>Demande de modélisation externe :</strong> Les estimations économiques du Programme Résilience constituent des ordres de grandeur fondés sur des analyses de sensibilité. Les auteurs invitent <strong>France Stratégie, l'ADEME ou la Commission de Régulation de l'Énergie</strong> à produire des modélisations économétriques officielles. Le programme pose les cadres méthodologiques ; des institutions indépendantes valident les chiffres.</p>
     </div>
-    <div class="box box-ambre reveal">
-      <strong>Sur le prix d'achat :</strong> le chiffre de 155–175 k€ est une cible industrielle après montée en volume (500+ unités/an). Un Volvo FH LNG actuel dépasse 175–200 k€. La batterie 200 kWh ajoute 40–60 k€. La simplification Rex unique et la suppression de la boîte de vitesses sont les principaux leviers de réduction. <strong>Ne pas présenter ce prix comme acquis aujourd'hui.</strong>
-    </div>
-  </div>
-</section>
 
-<!-- CONCLUSION -->
-<section class="alt">
-  <div class="container">
-    <div class="stag reveal">Conclusion</div>
-    <h2 class="reveal">Ce document ne vend<br><em>pas une technologie miracle</em></h2>
-    <div class="conclusion-box reveal">
-      <h3>Ce que cette analyse démontre</h3>
-      <p style="font-size:.9rem;color:rgba(240,244,241,.75);line-height:1.85">Le Camion Résilience n'invente rien : Rex 15 L GNV (Cummins, Volvo, MAN), réservoirs LCH4 (Volvo/Scania en série), moteurs 250 kW (Siemens, Bosch, ZF), batteries LFP 200 kWh (CATL/BYD). Sa singularité est d'assembler ces briques selon la philosophie EREV à régime fixe — un principe industriel éprouvé depuis 100 ans dans les locomotives et les engins miniers.</p>
-      <p style="font-size:.9rem;color:rgba(240,244,241,.75);line-height:1.85;margin-top:.8rem">Ce qu'il ne démontre pas encore : les chiffres de rendement 48–52 % et d'autonomie sur prototype réel. Ces points nécessitent un programme d'essais. C'est précisément pourquoi la certification est projetée en 2028, pas en 2024.</p>
+    <div style="margin-top:2.5rem;display:flex;gap:1rem;flex-wrap:wrap" class="reveal">
+      <a href="index.html" class="btn btn-outline">← Retour à l'architecture complète</a>
+      <a href="index.html#documents" class="btn btn-outline">Tous les documents →</a>
     </div>
-    <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap" class="reveal">
-      <a href="index.html#vehicules" class="btn btn-outline">← Retour aux véhicules</a>
-      <a href="Camion_EREV_Rex_V11.pdf" class="btn btn-outline" download>Télécharger l'analyse complète (PDF)</a>
-    </div>
-  </div>
-</section>
-
-<section style="padding:2.5rem 3rem;background:rgba(5,10,7,.8)">
-  <div class="container">
-    <p style="font-size:.75rem;color:var(--gris);line-height:1.85">
-      <strong style="color:rgba(240,244,241,.5)">Sources :</strong>
-      Volvo FH LNG / Scania Super LNG — données consommation constructeur ·
-      Cummins ISX15N GNV · MAN D3876 · Volvo D16 GNV — moteurs gaz industriels ·
-      CATL/BYD — packs LFP 200 kWh · Siemens/Bosch/ZF — moteurs électriques 250 kW ·
-      Directive RED III (UE) 2023/2413 · ADEME — biométhane coûts production ·
-      IRU (International Road Transport Union) — décarbonation PL 2024 ·
-      Programme Résilience V11 (mai 2026)
-    </p>
   </div>
 </section>
 
 <footer>
   <div class="footer-logo">Programme Résilience V11</div>
-  <p>Analyse technique niveau 3 · Camion Résilience 44t EREV Rex unique · Mai 2026</p>
-  <p style="font-size:.7rem;color:#3a5044;margin-top:.4rem">Document de réflexion stratégique · Certains chiffres sont des objectifs industriels, non des valeurs mesurées · Diffusion libre</p>
+  <p>Stratégie carbone · Gestion territoriale des flux organiques · Juin 2026</p>
+  <p style="font-size:.7rem;color:#3a5044;margin-top:.4rem">Bio-CH₄ · Biomasse · Biochar EBC/CDC V3 · Séquestration permanente · Réforme méthanisation · Biodiversité & Climat · Diffusion libre</p>
 </footer>
 
 <script>
-const obs=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*60);obs.unobserve(e.target);}});},{threshold:0.06});
+const obs=new IntersectionObserver((entries)=>{
+  entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*65);obs.unobserve(e.target);}});
+},{threshold:0.06});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 </script>
 </body>
