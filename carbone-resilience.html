@@ -23,6 +23,32 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .nav-back{font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gris);text-decoration:none;transition:color .3s}
 .nav-back:hover{color:var(--vert-vif)}
 
+/* BARRE DE NAVIGATION SECONDAIRE FIXE */
+.subnav{
+  position:fixed;bottom:0;left:0;right:0;z-index:99;
+  display:flex;align-items:center;justify-content:center;gap:0;
+  background:rgba(10,15,13,.97);backdrop-filter:blur(12px);
+  border-top:1px solid rgba(82,183,136,.15);
+  transform:translateY(100%);transition:transform .4s ease;
+  padding:0;
+}
+.subnav.visible{transform:translateY(0)}
+.subnav-link{
+  display:flex;align-items:center;gap:.5rem;
+  padding:.65rem 1.4rem;text-decoration:none;
+  font-family:var(--sans);font-size:.72rem;font-weight:500;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(240,244,241,.6);transition:color .25s,background .25s;
+  border-right:1px solid rgba(82,183,136,.1);
+}
+.subnav-link:last-child{border-right:none}
+.subnav-link:hover{color:var(--blanc);background:rgba(82,183,136,.07)}
+.subnav-link.accent{color:var(--vert-vif)}
+.subnav-link.accent:hover{color:var(--vert-clair);background:rgba(82,183,136,.1)}
+.subnav-link.fire{color:#C45A1A}
+.subnav-link.fire:hover{color:#f4a261;background:rgba(132,60,12,.08)}
+.subnav-icon{font-size:.9rem}
+
 section{padding:5.5rem 3rem}
 .container{max-width:1100px;margin:0 auto}
 .stag{font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--vert-vif);margin-bottom:.7rem}
@@ -150,6 +176,25 @@ footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;li
     <a href="index.html" class="nav-back">← Accueil</a>
   </div>
 </nav>
+
+<!-- BARRE DE NAVIGATION SECONDAIRE (apparaît après scroll) -->
+<div class="subnav" id="subnav">
+  <a href="index.html" class="subnav-link">
+    <span class="subnav-icon">◈</span> Accueil
+  </a>
+  <a href="pyrogazeification-resilience.html" class="subnav-link accent">
+    <span class="subnav-icon">⚙</span> Hub Pyrogazéification
+  </a>
+  <a href="sequestration.html" class="subnav-link">
+    <span class="subnav-icon">🌿</span> Séquestration · Forêt vs Biochar
+  </a>
+  <a href="zone-c-incendie.html" class="subnav-link fire">
+    <span class="subnav-icon">🔥</span> Zone C · Incendie DFCI
+  </a>
+  <a href="finances-publiques.html" class="subnav-link">
+    <span class="subnav-icon">€</span> Finances publiques
+  </a>
+</div>
 
 <!-- ── HERO ──────────────────────────────────────────────────────────────── -->
 <section id="hero">
@@ -410,6 +455,19 @@ footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;li
       </div>
       <p style="font-size:.78rem;color:rgba(240,244,241,.45);margin-top:.9rem;line-height:1.65">Note : le CO₂ biogénique (C₂) peut basculer vers C₄ lorsqu'il est valorisé par minéralisation permanente (carbonatation de matériaux de construction, séquestration géologique). Dans ce cas il cesse d'être un flux énergétique pour devenir un puits — augmentant directement l'ICB et la capacité carbon-négative du système.</p>
     </div>
+
+    <!-- ENCADRÉ DE CONVERGENCE vers la hub pyrogazéification -->
+    <div style="margin-top:2.5rem;border:1px solid rgba(82,183,136,.25);background:rgba(13,31,23,.5);padding:1.8rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.2rem" class="reveal">
+      <div>
+        <div style="font-size:.65rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--vert-vif);margin-bottom:.5rem">Tout ce cycle repose sur un seul procédé industriel</div>
+        <div style="font-family:var(--serif);font-size:1.25rem;font-weight:300;color:var(--blanc);line-height:1.3;margin-bottom:.4rem">La pyrogazéification — économie, verrou technique,<br>logistique, positionnement territorial, Zone C incendie</div>
+        <div style="font-size:.8rem;color:rgba(240,244,241,.5);line-height:1.6">Les 5 flux C₁→C₅ décrits dans ce widget sont produits par la pyrogazéification à ≥ 700°C. La page hub rassemble l'économie du site type, les 150 sites, la logistique d'approvisionnement, le verrou des goudrons et le démonstrateur Zone C.</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:.6rem;flex-shrink:0">
+        <a href="pyrogazeification-resilience.html" style="display:inline-block;padding:.7rem 1.5rem;background:var(--vert-vif);color:var(--noir);font-family:var(--sans);font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;white-space:nowrap">Hub Pyrogazéification →</a>
+        <a href="zone-c-incendie.html" style="display:inline-block;padding:.7rem 1.5rem;border:1px solid rgba(132,60,12,.5);color:#C45A1A;font-family:var(--sans);font-size:.75rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;white-space:nowrap;background:rgba(132,60,12,.06)">🔥 Zone C · Incendie DFCI →</a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -435,6 +493,9 @@ footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;li
         </div>
         <div style="margin-top:1.2rem;padding:.9rem 1.1rem;border-left:3px solid #e76f51;background:rgba(231,111,81,.07);font-size:.8rem;color:rgba(240,244,241,.6);line-height:1.65">
           <strong style="color:#f4a261">Forêt libre vs Biochar :</strong> une forêt non gérée est neutre en carbone sur le cycle long — elle capte autant qu'elle libère à sa décomposition. Le biochar extrait le carbone du cycle et l'immobilise structurellement. Ce n'est pas la même chose.
+        </div>
+        <div style="margin-top:.8rem;font-size:.79rem;color:rgba(240,244,241,.5);line-height:1.6">
+          Une fois épandu, comment ce biochar agit-il concrètement sur les sols ? <a href="Biochar_Sols_Synthese_Resilience_V2.pdf" target="_blank" style="color:#f4a261;text-decoration:underline">La synthèse agronomique complète →</a> détaille l'action selon le type de sol, la gestion de la sécheresse et l'association avec le digestat.
         </div>
       </div>
 
@@ -491,8 +552,9 @@ footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;li
           <div class="porte-kpi">40 GW effacés passivement aux pics via ÉREV bio-GNV</div>
           <div class="porte-kpi">100 % national — non délocalisable, non embargable</div>
         </div>
-        <div class="porte-btn">
+        <div class="porte-btn" style="display:flex;gap:.6rem;flex-wrap:wrap">
           <a href="bio-ch4.html" class="btn btn-outline" style="font-size:.72rem">Repositionnement Bio-CH₄ →</a>
+          <a href="pyrogazeification-resilience.html" class="btn btn-outline" style="font-size:.72rem">Filière complète →</a>
         </div>
       </div>
 
@@ -524,8 +586,9 @@ footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;li
           <div class="porte-kpi">20–23 Mt CO₂/an séquestrés · éligibles EU-ETS à 70 €/t</div>
           <div class="porte-kpi">Sans HAP toxiques · amélioration rétention eau +30 %</div>
         </div>
-        <div class="porte-btn">
+        <div class="porte-btn" style="display:flex;gap:.6rem;flex-wrap:wrap">
           <a href="biochar.html" class="btn btn-outline" style="font-size:.72rem">Rigueur EBC/CDC V3 →</a>
+          <a href="Biochar_Sols_Synthese_Resilience_V2.pdf" target="_blank" class="btn btn-outline" style="font-size:.72rem" download>Synthèse agronomique PDF →</a>
         </div>
       </div>
 
@@ -668,6 +731,19 @@ const obs=new IntersectionObserver((entries)=>{
   entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*65);obs.unobserve(e.target);}});
 },{threshold:0.06});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// Barre de navigation secondaire — apparaît après 400px de scroll
+const subnav = document.getElementById('subnav');
+let subnavShown = false;
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 400 && !subnavShown) {
+    subnav.classList.add('visible');
+    subnavShown = true;
+  } else if (window.scrollY <= 400 && subnavShown) {
+    subnav.classList.remove('visible');
+    subnavShown = false;
+  }
+}, { passive: true });
 </script>
 </body>
 </html>
