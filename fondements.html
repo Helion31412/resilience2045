@@ -120,7 +120,31 @@ p.body{font-size:.88rem;color:rgba(240,244,241,.62);line-height:1.88;margin-bott
 .dist-card p{font-size:.84rem;color:rgba(240,244,241,.58);line-height:1.7}
 .dist-oui p{color:rgba(240,244,241,.72)}
 
-/* ENCADRÉS */
+/* COMPLEMENTAIRE */
+.compl-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin:2rem 0}
+.compl-card{padding:1.5rem 1.7rem;font-size:.85rem;line-height:1.72}
+.compl-non{background:rgba(192,57,43,.05);border:1px solid rgba(192,57,43,.18);border-left:4px solid var(--rouge)}
+.compl-oui{background:rgba(29,58,40,.3);border:1px solid rgba(82,183,136,.22);border-left:4px solid var(--vert-vif)}
+.compl-label{font-size:.63rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;margin-bottom:.85rem}
+.compl-non .compl-label{color:#e57368}
+.compl-oui .compl-label{color:var(--vert-vif)}
+.compl-card ul{list-style:none;padding:0;margin:0}
+.compl-card li{padding:.3rem 0;color:rgba(240,244,241,.7);padding-left:.2rem}
+.compl-card li::before{content:"— ";color:rgba(240,244,241,.28)}
+/* CERISE */
+.cerise-block{background:rgba(233,196,106,.05);border:1px solid rgba(233,196,106,.2);border-left:4px solid var(--ambre);padding:1.4rem 1.8rem;margin:1.8rem 0;font-size:.87rem;line-height:1.78}
+.cerise-block strong{color:var(--ambre)}
+/* PÉTROLE */
+.petrole-note{background:rgba(74,92,106,.08);border:1px solid rgba(74,92,106,.2);border-left:4px solid var(--ardoise);padding:1.2rem 1.6rem;margin:1.5rem 0;font-size:.83rem;line-height:1.72;color:rgba(240,244,241,.65)}
+.petrole-note strong{color:#74a9c0}
+/* CO2 ACTIF */
+.co2-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.9rem;margin:1.5rem 0}
+.co2-item{padding:1.1rem 1.2rem;border:1px solid rgba(192,132,252,.2);background:rgba(123,45,139,.06);text-align:center}
+.co2-item .co2-icon{font-size:1.5rem;display:block;margin-bottom:.4rem}
+.co2-item .co2-titre{font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#c084fc;margin-bottom:.35rem}
+.co2-item .co2-detail{font-size:.78rem;color:rgba(240,244,241,.55);line-height:1.5}
+@media(max-width:700px){.compl-grid{grid-template-columns:1fr}}
+
 .box{padding:1.3rem 1.8rem;margin:1.8rem 0;font-size:.88rem;line-height:1.75;border-left:4px solid}
 .box-vert{background:rgba(29,58,40,.3);border-color:var(--vert-vif);color:rgba(240,244,241,.78)}
 .box-vert strong{color:var(--vert-vif)}
@@ -188,6 +212,73 @@ footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;li
     <p class="phrase-centrale reveal">Résilience ne propose pas une <em>filière biomasse-énergie.</em><br>Il propose une <em>économie circulaire du carbone biogénique</em> — où chaque flux de carbone issu de la biomasse est orienté vers son usage le plus utile : énergie, sol, atmosphère ou territoire.</p>
   </div>
 </div>
+
+<!-- CE QUE RÉSILIENCE EST — ET N'EST PAS -->
+<section style="padding:3.5rem 3rem;background:rgba(5,10,7,.7)">
+  <div class="container">
+    <div class="stag reveal">Cadrage fondamental</div>
+    <h2 class="reveal">Un système <em>complémentaire</em>,<br>pas alternatif</h2>
+    <p class="lead reveal">Résilience ne remplace pas l'électrification — il comble précisément ce qu'elle ne peut pas faire par la physique : le stockage saisonnier à grande échelle, la mobilité lourde et longue distance, l'aviation, l'agriculture mécanisée dans les zones sans réseau. C'est pour ces besoins que le gisement de biomasse est dimensionné — pas pour la séquestration carbone, qui en est le coproduit.</p>
+
+    <div class="compl-grid reveal">
+      <div class="compl-card compl-non">
+        <div class="compl-label">❌ Ce que Résilience n'est pas</div>
+        <ul>
+          <li>Un système énergétique alternatif global remplaçant l'électrification</li>
+          <li>Un programme dont la séquestration CO₂ est l'objectif premier dimensionnant la biomasse</li>
+          <li>Un concurrent des matériaux biosourcés ou de la production alimentaire</li>
+          <li>Une opposition à l'éolien, au solaire ou au nucléaire</li>
+        </ul>
+      </div>
+      <div class="compl-card compl-oui">
+        <div class="compl-label">✅ Ce que Résilience est</div>
+        <ul>
+          <li>Un stabilisateur de l'électrification couvrant ses lacunes physiques incompressibles</li>
+          <li>Un programme de valorisation de biomasses résiduelles aujourd'hui négligées ou perdues</li>
+          <li>Un producteur de bio-GNV pour les usages que l'électrique ne peut pas atteindre</li>
+          <li>Un générateur de coproduits structurels (biochar, CO₂ biogénique concentré) qui résolvent des problèmes qu'aucun autre système ne traite</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cerise-block reveal">
+      <strong>Le coproduit extraordinaire : la séquestration durable du carbone</strong><br><br>
+      La pyrogazéification produit <em>inévitablement</em> du biochar. La méthanisation concentre <em>inévitablement</em> du CO₂ biogénique. Ce ne sont pas des objectifs — ce sont des <strong>coproduits thermodynamiques</strong> de la filière, aussi inévitables que la chaleur fatale. Or ils résolvent un problème que personne d'autre ne traite : le stock de CO₂ atmosphérique existant ne descendra pas en arrêtant les émissions — il persistera 300 à 1 000 ans. Seule une extraction nette peut le faire baisser. C'est la cerise sur le gâteau. Mais quelle cerise.
+    </div>
+
+    <h3 style="font-family:var(--serif);font-size:1.25rem;color:var(--vert-clair);margin:2rem 0 .8rem">Le CO₂ biogénique concentré : un actif, pas un déchet</h3>
+    <p class="body reveal">La méthanisation et la pyrogazéification concentrent mécaniquement le CO₂ biogénique — environ 40 % du biogaz brut. Aujourd'hui rejeté ou torché dans la quasi-totalité des installations. Dans le système Résilience, il devient un nœud de distribution à quatre destinations :</p>
+
+    <div class="co2-grid reveal">
+      <div class="co2-item">
+        <span class="co2-icon">🌿</span>
+        <div class="co2-titre">Serres agricoles</div>
+        <div class="co2-detail">Injection à 800–1 200 ppm · rendements +20 à +30 % · chaleur fatale couplée · <strong style="color:rgba(240,244,241,.8)">renforce l'alimentation</strong></div>
+      </div>
+      <div class="co2-item">
+        <span class="co2-icon">⚗️</span>
+        <div class="co2-titre">Sabatier</div>
+        <div class="co2-detail">CO₂ + H₂ ENR surplus → CH₄ · biométhane additionnel · <strong style="color:rgba(240,244,241,.8)">stockage saisonnier réseau gaz</strong></div>
+      </div>
+      <div class="co2-item">
+        <span class="co2-icon">🪨</span>
+        <div class="co2-titre">Carbonatation</div>
+        <div class="co2-detail">CO₂ + Ca(OH)₂ → CaCO₃ · matériaux bas-carbone · <strong style="color:rgba(240,244,241,.8)">séquestration minérale siècles–millénaires</strong></div>
+      </div>
+      <div class="co2-item">
+        <span class="co2-icon">🌑</span>
+        <div class="co2-titre">Biochar (voie solide)</div>
+        <div class="co2-detail">Carbone aromatique stable · EBC Premium · <strong style="color:rgba(240,244,241,.8)">500–5 000 ans hors cycle atmosphérique</strong></div>
+      </div>
+    </div>
+
+    <div class="petrole-note reveal">
+      <strong>Note sur les usages résiduels du pétrole :</strong> le pétrole ne disparaîtra pas totalement — bitume des routes, lubrifiants haute performance, plastiques techniques (PEEK, fibres de carbone), cires pharmaceutiques n'ont pas de substituts à moyen terme. Résilience intègre cette réalité : ces usages résiduels incompressibles continueront d'émettre du CO₂ fossile — précisément ce que la séquestration par biochar et carbonatation compense. C'est une position plus honnête et plus robuste que les scénarios officiels qui supposent une disparition totale jamais atteinte.
+      <br><br>
+      <strong>→ Document complet :</strong> <a href="Cadrage_Arret_Fossiles_Insuffisant_V2.pdf" target="_blank" style="color:#74b9e8">Pourquoi l'arrêt des fossiles ne suffit pas — Note de cadrage stratégique V2 (PDF)</a>
+    </div>
+  </div>
+</section>
 
 <!-- LES 4 CRISES -->
 <section>
@@ -468,6 +559,16 @@ footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;li
     <div class="stag reveal">Approfondissements</div>
     <h2 class="reveal">Aller plus loin</h2>
     <div class="renvoi-grid reveal">
+      <a href="Cadrage_Arret_Fossiles_Insuffisant_V2.pdf" class="renvoi-card" target="_blank">
+        <div class="rc-tag">Note de cadrage · PDF</div>
+        <div class="rc-title">Pourquoi l'arrêt des fossiles ne suffit pas</div>
+        <div class="rc-desc">CO₂ atmosphérique excédentaire · usages résiduels du pétrole · CO₂ biogénique comme actif · extraction nette · V2 juin 2026</div>
+      </a>
+      <a href="Gisement_national_net_V3.pdf" class="renvoi-card" target="_blank">
+        <div class="rc-tag">Gisement biomasse · PDF</div>
+        <div class="rc-title">Gisement national net V3</div>
+        <div class="rc-desc">262 TWh/an · 23 Mt CO₂/an · annexe agricole 3 niveaux de confiance · forêt naturelle vs pyrogazéification · juin 2026</div>
+      </a>
       <a href="systeme-energetique.html" class="renvoi-card">
         <div class="rc-tag">Analyse technique</div>
         <div class="rc-title">Pourquoi l'électrification seule ne suffit pas</div>
@@ -503,7 +604,7 @@ footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;li
 
 <footer>
   <div class="footer-logo">Programme Résilience V11</div>
-  <p>Pourquoi Résilience · Quatre crises simultanées · Économie circulaire du carbone biogénique · Mai 2026</p>
+  <p>Pourquoi Résilience · Quatre crises simultanées · Économie circulaire du carbone biogénique · Juin 2026</p>
   <p style="font-size:.7rem;color:#3a5044;margin-top:.4rem">Les chiffres sont des ordres de grandeur · Hypothèses détaillées dans le Programme V11 enrichi · Diffusion libre</p>
 </footer>
 
