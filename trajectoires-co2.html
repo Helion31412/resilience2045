@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trajectoires CO₂ 2026–2200 — Programme Résilience</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+  :root {
+    --bleu:    #1F4E79;
+    --bleu2:   #2E75B6;
+    --bleu-cl: #E6F1FB;
+    --vert:    #0F6E56;
+    --vert-cl: #E8F5EE;
+    --rouge:   #C0392B;
+    --orange:  #D68910;
+    --bordeaux:#7B1F1F;
+    --gris:    #4A4A4A;
+    --gris-cl: #F5F5F5;
+    --border:  #DDE3EA;
+    --blanc:   #FFFFFF;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Georgia', serif;
+    background: #F8FAFB;
+    color: var(--gris);
+    line-height: 1.7;
+  }
+
+  /* HEADER */
+  header {
+    background: var(--bleu);
+    color: white;
+    padding: 3rem 2rem 2.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent, transparent 40px,
+      rgba(255,255,255,0.03) 40px, rgba(255,255,255,0.03) 80px
+    );
+  }
+  .header-label {
+    font-family: 'Arial', sans-serif;
+    font-size: .75rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: .75rem;
+  }
+  header h1 {
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    font-weight: normal;
+    line-height: 1.25;
+    margin-bottom: .75rem;
+    position: relative;
+  }
+  header h1 sup { font-size: .6em; vertical-align: super; }
+  .header-sub {
+    font-family: 'Arial', sans-serif;
+    font-size: .95rem;
+    color: rgba(255,255,255,0.75);
+    max-width: 600px;
+    margin: 0 auto 1.5rem;
+  }
+  .header-ppm {
+    display: inline-block;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 4px;
+    padding: .4rem 1.2rem;
+    font-family: 'Arial', sans-serif;
+    font-size: .85rem;
+    color: rgba(255,255,255,0.85);
+  }
+  nav.breadcrumb {
+    background: white;
+    border-bottom: 1px solid var(--border);
+    padding: .6rem 2rem;
+    font-family: 'Arial', sans-serif;
+    font-size: .8rem;
+    color: #888;
+  }
+  nav.breadcrumb a { color: var(--bleu2); text-decoration: none; }
+  nav.breadcrumb a:hover { text-decoration: underline; }
+
+  /* LAYOUT */
+  .container { max-width: 1000px; margin: 0 auto; padding: 0 1.5rem; }
+
+  /* MESSAGE CENTRAL */
+  .message-central {
+    background: var(--bleu-cl);
+    border-left: 5px solid var(--bleu2);
+    border-radius: 0 6px 6px 0;
+    padding: 1.5rem 1.75rem;
+    margin: 2.5rem 0 2rem;
+  }
+  .message-central h2 {
+    font-family: 'Arial', sans-serif;
+    font-size: .7rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--bleu2);
+    margin-bottom: .75rem;
+  }
+  .message-central p {
+    font-size: .95rem;
+    color: var(--bleu);
+    margin-bottom: .5rem;
+  }
+  .message-central p:last-child { margin-bottom: 0; }
+  .message-central strong { color: var(--bleu); }
+
+  /* SECTION TITLES */
+  .section { padding: 2rem 0; border-top: 1px solid var(--border); }
+  .section:first-of-type { border-top: none; }
+  .section-label {
+    font-family: 'Arial', sans-serif;
+    font-size: .7rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--bleu2);
+    margin-bottom: .5rem;
+  }
+  .section h2 {
+    font-size: 1.35rem;
+    font-weight: normal;
+    color: var(--bleu);
+    margin-bottom: 1rem;
+  }
+  .section p { font-size: .93rem; margin-bottom: .85rem; }
+
+  /* GRAPHIQUE */
+  .chart-wrap {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,.04);
+  }
+  .chart-title {
+    font-family: 'Arial', sans-serif;
+    font-size: .85rem;
+    font-weight: bold;
+    color: var(--bleu);
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  .chart-canvas { position: relative; height: 420px; }
+  .chart-legend {
+    display: flex; flex-wrap: wrap; gap: .5rem 1.2rem;
+    margin-top: 1rem;
+    font-family: 'Arial', sans-serif;
+    font-size: .78rem;
+    color: var(--gris);
+  }
+  .legend-item { display: flex; align-items: center; gap: .4rem; }
+  .legend-line { width: 24px; height: 3px; border-radius: 2px; flex-shrink: 0; }
+  .legend-dashed { border-top: 2px dashed; background: none !important; height: 0; }
+
+  /* CARTES VALEURS */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  .card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    border-top: 3px solid var(--bleu2);
+  }
+  .card.rouge  { border-top-color: var(--rouge); }
+  .card.orange { border-top-color: var(--orange); }
+  .card.vert   { border-top-color: var(--vert); }
+  .card.bordeaux { border-top-color: var(--bordeaux); }
+  .card-label {
+    font-family: 'Arial', sans-serif;
+    font-size: .72rem;
+    color: #888;
+    margin-bottom: .3rem;
+  }
+  .card-val {
+    font-family: 'Arial', sans-serif;
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: var(--bleu);
+    line-height: 1.1;
+  }
+  .card.rouge  .card-val { color: var(--rouge); }
+  .card.orange .card-val { color: var(--orange); }
+  .card.vert   .card-val { color: var(--vert); }
+  .card.bordeaux .card-val { color: var(--bordeaux); }
+  .card-unit { font-size: .75rem; color: #888; margin-top: .2rem; font-family: 'Arial', sans-serif; }
+
+  /* ENCADRES */
+  .encadre {
+    border-radius: 6px;
+    padding: 1.25rem 1.5rem;
+    margin: 1.25rem 0;
+    font-size: .9rem;
+  }
+  .encadre-warning {
+    background: #FEF3F3;
+    border-left: 4px solid #C0392B;
+  }
+  .encadre-success {
+    background: var(--vert-cl);
+    border-left: 4px solid var(--vert);
+  }
+  .encadre-info {
+    background: #F5F0FF;
+    border-left: 4px solid #7B4DB7;
+  }
+  .encadre h3 {
+    font-family: 'Arial', sans-serif;
+    font-size: .8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    margin-bottom: .6rem;
+  }
+  .encadre ul { padding-left: 1.2rem; }
+  .encadre li { margin-bottom: .35rem; }
+
+  /* TABLE CO2/TEMP */
+  .temp-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Arial', sans-serif;
+    font-size: .85rem;
+    margin: 1rem 0;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .temp-table th {
+    background: var(--bleu);
+    color: white;
+    padding: .6rem 1rem;
+    text-align: left;
+    font-weight: normal;
+    font-size: .78rem;
+    letter-spacing: .05em;
+  }
+  .temp-table td {
+    padding: .55rem 1rem;
+    border-bottom: 1px solid var(--border);
+    font-size: .83rem;
+  }
+  .temp-table tr:last-child td { border-bottom: none; }
+  .temp-table tr:nth-child(even) td { background: var(--gris-cl); }
+  .temp-table .actuel td { background: #FFF8E6; font-weight: bold; }
+
+  /* TÉLÉCHARGEMENT */
+  .download-box {
+    background: var(--bleu);
+    color: white;
+    border-radius: 8px;
+    padding: 1.5rem 2rem;
+    margin: 2rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .download-box h3 {
+    font-family: 'Arial', sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: .3rem;
+  }
+  .download-box p { font-size: .85rem; color: rgba(255,255,255,.75); }
+  .btn-download {
+    background: white;
+    color: var(--bleu);
+    padding: .65rem 1.5rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    font-size: .85rem;
+    white-space: nowrap;
+    transition: opacity .2s;
+  }
+  .btn-download:hover { opacity: .85; }
+
+  /* SOURCES */
+  .sources {
+    background: var(--gris-cl);
+    border-top: 1px solid var(--border);
+    padding: 1.5rem 0;
+    font-family: 'Arial', sans-serif;
+    font-size: .75rem;
+    color: #888;
+    margin-top: 2rem;
+  }
+  .sources strong { color: var(--gris); }
+
+  /* FOOTER */
+  footer {
+    background: var(--bleu);
+    color: rgba(255,255,255,.7);
+    text-align: center;
+    padding: 1.5rem;
+    font-family: 'Arial', sans-serif;
+    font-size: .78rem;
+  }
+  footer a { color: rgba(255,255,255,.85); }
+
+  @media (max-width: 600px) {
+    header { padding: 2rem 1rem 1.5rem; }
+    .container { padding: 0 1rem; }
+    .chart-canvas { height: 280px; }
+    .download-box { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="breadcrumb" style="background:#1F4E79;border-bottom:2px solid #2E75B6;padding:.9rem 2rem;display:flex;align-items:center;gap:.75rem;"><a href="index.html" style="font-size:.78rem;font-weight:600;color:rgba(46,117,182,.8);text-decoration:none;padding:.15rem .5rem;border:1px solid rgba(46,117,182,.3);border-radius:2px;" onmouseover="this.style.color='#2E75B6'" onmouseout="this.style.color='rgba(46,117,182,.8)'">⌂ Accueil</a>
+  <a href="index.html" style="display:inline-flex;align-items:center;gap:.4rem;background:white;color:#1F4E79;padding:.4rem 1rem;border-radius:4px;font-family:'Arial',sans-serif;font-size:.82rem;font-weight:bold;text-decoration:none;white-space:nowrap;">← Programme Résilience V11</a>
+  <span style="color:rgba(255,255,255,.5);font-size:.8rem;">›</span>
+  <span style="color:rgba(255,255,255,.85);font-family:'Arial',sans-serif;font-size:.8rem;">Trajectoires CO₂ et températures 2026–2200</span>
+</nav>
+
+<header>
+  <div class="header-label">Programme Résilience — Analyse climatique</div>
+  <h1>CO<sub>2</sub> atmosphérique et températures<br>Trajectoires 2026–2200</h1>
+  <p class="header-sub">Cinq scénarios comparés — de la dérive climatique au retour préindustriel</p>
+  <span class="header-ppm">Niveau actuel : 420 ppm — +1,25°C vs préindustriel</span>
+</header>
+
+<main>
+<div class="container">
+
+  <div class="message-central">
+    <h2>Message central</h2>
+    <p><strong>Sans extraction nette du CO₂ atmosphérique, même une forte décarbonation laisse le système climatique sur un plateau élevé pendant plusieurs siècles.</strong> Tant que les sorties de CO₂ de l'atmosphère restent inférieures aux entrées, le stock ne peut pas diminuer.</p>
+    <p>Programme Résilience augmente les sorties nettes en combinant production d'énergie, séquestration par biochar, et valorisation d'un flux de CO₂ biogénique déjà concentré. C'est la seule filière industriellement documentée capable d'agir sur le stock atmosphérique déjà accumulé.</p>
+  </div>
+
+  <!-- SECTION 1 : GRAPHIQUE IDEAL -->
+  <div class="section">
+    <div class="section-label">Scénario 1 sur 2</div>
+    <h2>Base idéale — Électrification totale mondiale vs Programme Résilience</h2>
+    <p>Ce graphique illustre le meilleur scénario possible selon le GIEC (SSP1-2.6 : coopération mondiale totale, zéro fossile vers 2070, permafrost modéré) confronté au statu quo et à Programme Résilience. Il montre la limite structurelle de l'électrification seule même dans ses hypothèses les plus optimistes.</p>
+
+    <div class="encadre" style="background:#F0F4FF;border-left:4px solid #4a4a8a;margin-bottom:1.5rem;">
+      <h3 style="color:#4a4a8a;">🌊 Lire correctement les courbes : l'inertie thermique océanique</h3>
+      <p style="margin-top:.6rem">Les océans absorbent et redistribuent la chaleur très lentement — comme une casserole d'eau épaisse qui met du temps à chauffer même quand le feu est fort. La température ressentie aujourd'hui est la conséquence des émissions d'il y a 20 à 40 ans. C'est ce qu'on appelle l'<strong>inertie thermique océanique</strong>.</p>
+      <p style="margin-top:.6rem">Dans ces graphiques, l'axe de température de droite intègre un décalage de <strong>30 ans</strong> : la température affichée en 2100 correspond au CO₂ de 2070. Deux conséquences directes pour la lecture des courbes :</p>
+      <ul style="margin-top:.5rem;padding-left:1.2rem">
+        <li style="margin-bottom:.35rem">Le réchauffement actuel (+1,25°C) est la conséquence des émissions des années 1980–1990 — pas des émissions d'aujourd'hui.</li>
+        <li style="margin-bottom:.35rem">Même dans le meilleur scénario de décarbonation, la température continuera de monter pendant 20 à 30 ans supplémentaires avant de se stabiliser — l'inertie du système climatique est incompressible.</li>
+      </ul>
+      <p style="margin-top:.75rem;padding:.75rem 1rem;background:rgba(15,110,86,.08);border-left:3px solid #0F6E56;border-radius:0 4px 4px 0;">
+        <strong style="color:#0F6E56">Ce que cela implique pour l'action :</strong> réduire les émissions est nécessaire mais ne produit aucun effet visible sur la température à l'échelle d'une vie humaine. <strong>La séquestration active via le biochar est la seule action climatique dont les effets commencent immédiatement</strong> — retirer du CO₂ du stock atmosphérique aujourd'hui réduit dès maintenant la pression thermique future, sans attendre 30 ans. C'est l'argument décisif pour les décideurs : Résilience est la seule stratégie qui produit des résultats mesurables dans un mandat politique.
+      </p>
+      <p style="margin-top:.6rem;font-size:.78rem;color:#888">Note : le tableau de correspondances CO₂/température ci-dessous indique les valeurs d'équilibre à long terme (sans décalage). Les températures affichées dans les graphiques sont inférieures car elles reflètent l'état transitoire avec inertie océanique.</p>
+    </div>
+
+    <div class="chart-wrap">
+      <div class="chart-title">Scénario idéal — Électrification totale vs Programme Résilience (2026–2200)</div>
+      <div class="chart-canvas"><canvas id="chart1"></canvas></div>
+      <div class="chart-legend">
+        <span class="legend-item"><span class="legend-line" style="background:#C0392B"></span>SSP3-7.0 — statu quo</span>
+        <span class="legend-item"><span class="legend-line legend-dashed" style="border-color:#D68910"></span>SSP1-2.6 — électrification idéale GIEC</span>
+        <span class="legend-item"><span class="legend-line" style="background:#0F6E56"></span>SSP1-2.6 + Programme Résilience (base idéale)</span>
+      </div>
+    </div>
+
+    <div class="cards">
+      <div class="card rouge">
+        <div class="card-label">Statu quo en 2100</div>
+        <div class="card-val">578 ppm</div>
+        <div class="card-unit">+2,6°C ressentis en 2100 (correspond au CO₂ de 2070, décalage −30 ans)</div>
+      </div>
+      <div class="card orange">
+        <div class="card-label">Électrification idéale en 2100</div>
+        <div class="card-val">422 ppm</div>
+        <div class="card-unit">+2,0°C ressentis en 2100 (CO₂ de 2070 ~447 ppm, décalage −30 ans)</div>
+      </div>
+      <div class="card vert">
+        <div class="card-label">Résilience (base idéale) en 2100</div>
+        <div class="card-val">387 ppm</div>
+        <div class="card-unit">+1,8°C ressentis en 2100 — retour 280 ppm vers 2145–2170</div>
+      </div>
+    </div>
+
+    <div class="encadre encadre-warning">
+      <h3>⚠ Limite fondamentale de l'électrification seule</h3>
+      <p>Même dans le meilleur scénario GIEC (SSP1-2.6 idéal), le CO₂ reste supérieur au niveau actuel de 420 ppm pendant 50 à 80 ans. Le seuil de 350 ppm (objectif climatique sûr) n'est franchi qu'après 2150. Ce scénario suppose une coopération mondiale parfaite — hypothèse géopolitiquement irréaliste.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 2 : GRAPHIQUE REALISTE -->
+  <div class="section">
+    <div class="section-label">Scénario 2 sur 2</div>
+    <h2>Base réaliste — Fossiles résiduels, permafrost, puits dégradés</h2>
+    <p>Ce graphique intègre trois corrections physiques que le GIEC reconnaît mais n'intègre pas dans ses scénarios normatifs. Il montre l'éventail réaliste des trajectoires et le rôle de stabilisation de Programme Résilience dans un monde imparfait.</p>
+
+    <div class="chart-wrap">
+      <div class="chart-title">Scénario réaliste — Dérèglement, fossiles résiduels, permafrost vs Programme Résilience (2026–2200)</div>
+      <div class="chart-canvas"><canvas id="chart2"></canvas></div>
+      <div class="chart-legend">
+        <span class="legend-item"><span class="legend-line" style="background:#7B1F1F"></span>SSP5-8.5 — dérèglement complet</span>
+        <span class="legend-item"><span class="legend-line legend-dashed" style="border-color:#D85A30"></span>SSP1-2.6 réaliste (fossiles résiduels + permafrost + puits −30%)</span>
+        <span class="legend-item"><span class="legend-line" style="background:#0F6E56"></span>SSP1-2.6 réaliste + Programme Résilience</span>
+      </div>
+    </div>
+
+    <div class="cards">
+      <div class="card bordeaux">
+        <div class="card-label">Dérèglement complet en 2100</div>
+        <div class="card-val">788 ppm</div>
+        <div class="card-unit">+3,2°C ressentis en 2100 (CO₂ de 2070, décalage −30 ans)</div>
+      </div>
+      <div class="card orange">
+        <div class="card-label">SSP1-2.6 réaliste en 2100</div>
+        <div class="card-val">471 ppm</div>
+        <div class="card-unit">+2,1°C ressentis en 2100 — montée vers 561 ppm en 2200</div>
+      </div>
+      <div class="card vert">
+        <div class="card-label">Résilience (base réaliste) en 2100</div>
+        <div class="card-val">429 ppm</div>
+        <div class="card-unit">+1,9°C ressentis en 2100 — stabilisé à ~442 ppm en 2200</div>
+      </div>
+    </div>
+
+    <div class="encadre encadre-success">
+      <h3>✅ Ce que montre le scénario réaliste</h3>
+      <ul>
+        <li><strong>Fossiles résiduels incompressibles</strong> (6 Gt CO₂/an après 2070) : aviation longue distance, bitume, pays non-coopérants.</li>
+        <li><strong>Dégradation des puits naturels</strong> (−30% après 2080) : forêts tropicales saturées, océans moins absorbants.</li>
+        <li><strong>Relargage permafrost</strong> (1 à 3,5 Gt/an d'ici 2100) : feedback non contrôlable par les politiques humaines.</li>
+      </ul>
+      <p style="margin-top:.75rem"><strong>Gain Résilience sur base réaliste : 130 ppm évités.</strong> Sans Résilience, aucun scénario réaliste ne stabilise le CO₂ avant la fin du siècle.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 3 : TABLE CO2/TEMP -->
+  <div class="section">
+    <div class="section-label">Architecture du programme</div>
+    <h2>Résilience : un plancher, pas un plafond</h2>
+    <p>Programme Résilience est calibré sur une exploitation équilibrée de la biomasse — on ne prélève que ce que les forêts et terres marginales produisent naturellement, sans les appauvrir. Ce calibrage de base est dimensionné pour compléter l'électrification et assurer les mobilités non électrifiables. C'est le plancher du programme, pas son plafond.</p>
+
+    <div class="encadre encadre-success" style="margin:1.5rem 0;">
+      <h3 style="color:#0F6E56;">📈 Un programme ouvert dont le potentiel peut croître</h3>
+      <p style="margin-top:.5rem">Le ratio séquestration / CO₂ résiduel peut s'améliorer à mesure que de nouvelles sources de séquestration deviennent disponibles, sans remettre en cause l'équilibre biomasse de base :</p>
+      <ul style="margin-top:.75rem;padding-left:1.2rem">
+        <li style="margin-bottom:.45rem"><strong>Algues marines à haut rendement</strong> — cultures offshore sur zones non compétitives avec l'agriculture terrestre, potentiel de biochar marin encore peu exploré.</li>
+        <li style="margin-bottom:.45rem"><strong>Cultures énergétiques sur sols dégradés ou désertiques</strong> — miscanthus, sorgho, agave sur terres non cultivables, sans concurrence alimentaire.</li>
+        <li style="margin-bottom:.45rem"><strong>Résidus agricoles aujourd'hui perdus</strong> — pailles brûlées, déchets de récolte laissés à se décomposer dans les pays du Sud, actuellement source nette de CO₂ et de méthane.</li>
+        <li style="margin-bottom:.45rem"><strong>Déchets urbains et industriels non valorisés</strong> — fraction non recyclable des déchets solides, boues de stations d'épuration, co-produits industriels lignocellulosiques.</li>
+        <li style="margin-bottom:.45rem"><strong>Carbonatation minérale amplifiée</strong> — couplage du CO₂ biogénique concentré avec des formations basaltiques ou des résidus miniers — séquestration permanente sans stockage géologique profond.</li>
+      </ul>
+      <p style="margin-top:.85rem;padding:.75rem 1rem;background:rgba(15,110,86,.1);border-left:3px solid #0F6E56;border-radius:0 4px 4px 0;">
+        <strong style="color:#0F6E56">Ce que cela change concrètement sur les courbes :</strong> dans le scénario réaliste, les émissions résiduelles incompressibles (fossiles + permafrost) totalisent ~9,4 Gt/an, contre 5,94 Gt/an extraits par Résilience de base. C'est ce déséquilibre résiduel de ~3,5 Gt/an qui maintient le CO₂ à ~429 ppm en 2100 au lieu de le faire descendre.
+      </p>
+      <div style="margin-top:.85rem;padding:.75rem 1rem;background:#FFF8E6;border-left:3px solid #BA7517;border-radius:0 4px 4px 0;">
+        <strong style="color:#BA7517">Un exemple parmi d'autres — et les limites sont sans doute encore plus loin</strong>
+        <p style="margin-top:.5rem">Les 800 Mha du programme de base sont calculés sur des terres marginales et forêts gérées existantes, sans investissement hydraulique majeur. Mais la Terre dispose de surfaces bien supérieures quasi-inutilisées qui n'entrent en concurrence avec aucune agriculture alimentaire ni aucune forêt à protéger : zones arides et semi-arides (Sahel, Thar, Australie intérieure, Atacama, Anatolie), terres dégradées par la surexploitation passée, zones côtières désertiques.</p>
+        <p style="margin-top:.5rem">Le verrou de ces surfaces n'est pas l'espace — c'est l'eau. Ce verrou est levable par la <strong>dessalinisation solaire</strong> : des panneaux photovoltaïques à fort ensoleillement alimentent des unités de dessalinisation qui permettent d'établir des cultures de biomasse énergétique adaptées (agave, halophytes, miscanthus résistant à la sécheresse, jatropha). C'est le modèle que nous avons étudié pour le Maroc — applicable à des dizaines de pays côtiers arides.</p>
+        <p style="margin-top:.5rem">Avec cette extension, le potentiel mondial de séquestration pourrait atteindre <strong>15 à 25 Gt CO₂/an</strong> à terme — suffisant pour faire descendre le CO₂ même sur base réaliste avec émissions résiduelles. Ce n'est qu'un exemple de ce que la combinaison ressources + innovation peut apporter. <em>Les limites réelles du programme sont sans doute encore bien au-delà de ce que nous pouvons aujourd'hui quantifier.</em></p>
+      </div>
+
+      <p style="margin-top:.75rem;padding:.75rem 1rem;background:rgba(15,110,86,.08);border-left:3px solid #0F6E56;border-radius:0 4px 4px 0;">
+        <strong style="color:#0F6E56">Chaque Gt de séquestration supplémentaire réduit directement ce 429 ppm :</strong>
+        <br><br>
+        — +2 Gt/an de séquestration supplémentaire (algues, terres dégradées, résidus du Sud) → déséquilibre résiduel passe de 3,5 à 1,5 Gt/an → <strong>le CO₂ commence à descendre lentement sous 420 ppm</strong><br><br>
+        — +3,5 Gt/an supplémentaires → déséquilibre résiduel = 0 → <strong>le CO₂ se stabilise puis descend</strong>, la courbe réaliste rejoint la courbe idéale<br><br>
+        — +5 Gt/an supplémentaires → extraction nette positive même sur base réaliste → <strong>retour progressif vers 280 ppm</strong> à l'horizon 2150–2180
+        <br><br>
+        <em>Autrement dit : le 429 ppm affiché dans le graphique n'est pas une fatalité — c'est le résultat du programme dans sa version de base, calibrée uniquement sur la biomasse forestière et agricole française et mondiale actuellement mobilisable. Tout progrès dans la séquestration fait descendre ce chiffre.</em>
+      </p>
+    </div>
+
+    <div class="section-label" style="margin-top:2rem;">Référence</div>
+    <h2>Correspondances CO₂ / température</h2>
+    <p>Relation logarithmique : chaque doublement de CO₂ par rapport au niveau préindustriel (280 ppm) entraîne +3°C (ECS médiane GIEC AR6, fourchette 2,5–4,0°C). La température affichée intègre un décalage de 30 ans dû à l'inertie thermique des océans.</p>
+
+    <table class="temp-table">
+      <thead>
+        <tr><th>CO₂ (ppm)</th><th>Anomalie température (équilibre)</th><th>Situation / Seuil</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>280 ppm</td><td>0°C</td><td>Niveau préindustriel — objectif Résilience base idéale</td></tr>
+        <tr><td>350 ppm</td><td>+0,65°C</td><td>Objectif climatique sûr (Hansen/NASA)</td></tr>
+        <tr class="actuel"><td>420 ppm</td><td>+1,25°C</td><td>⬅ Niveau actuel 2026 — canicules actuelles</td></tr>
+        <tr><td>450 ppm</td><td>+1,68°C</td><td>Seuil correspondant à +2°C à l'équilibre</td></tr>
+        <tr><td>560 ppm</td><td>+3,0°C</td><td>Doublement préindustriel — seuil critique</td></tr>
+        <tr><td>720 ppm</td><td>+3,4°C</td><td>Statu quo en 2200 (SSP3-7.0)</td></tr>
+        <tr><td>840 ppm</td><td>+4,0°C</td><td>Seuil catastrophique — dérèglement avancé</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:.8rem;color:#888;font-family:'Arial',sans-serif;margin-top:.5rem;">Note : les températures ci-dessus sont des correspondances physiques directes CO₂/température à l'équilibre thermique (ECS = 3,0°C/doublement, médiane AR6). Les températures affichées dans les graphiques intègrent un décalage de 30 ans dû à l'inertie thermique des océans — elles sont donc inférieures aux valeurs d'équilibre pour une année donnée.</p>
+
+    <div class="encadre encadre-info">
+      <h3>⚠ Incertitudes de la modélisation</h3>
+      <ul>
+        <li><strong>ECS (sensibilité climatique)</strong> : fourchette AR6 = 2,5–4,0°C/doublement. Ce document utilise 3,0°C (médiane). Un ECS à 4°C aggraverait toutes les trajectoires de ~33%.</li>
+        <li><strong>Permafrost</strong> : estimations AR6 = 50 à 200 Gt CO₂eq d'ici 2100. Ce document utilise la médiane (~100 Gt).</li>
+        <li><strong>Potentiel Résilience</strong> : 800 Mha est une estimation haute. À 400 Mha, l'extraction nette serait ~3 Gt/an.</li>
+        <li>Ces trajectoires sont des projections paramétriques cohérentes avec AR6, non des modèles de circulation générale.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- TÉLÉCHARGEMENT -->
+  <div class="download-box">
+    <div>
+      <h3>Note de synthèse complète — CO₂ atmosphérique et températures V4</h3>
+      <p>6 sections · Cinq scénarios détaillés · Deux figures commentées · Synthèse pour décideurs<br>Validée par cross-validation entre cinq systèmes d'IA indépendants</p>
+    </div>
+    <a href="Note_CO2_Temperatures_V4.pdf" class="btn-download" download>Télécharger le PDF</a>
+  </div>
+
+  <!-- SOURCES -->
+  <div class="sources">
+    <div class="container">
+      <strong>Sources :</strong> GIEC AR6 WG1 (2021) · SSP3-7.0, SSP1-2.6, SSP5-8.5 · ECS = 3,0°C/doublement CO₂ (médiane AR6, fourchette 2,5–4,0°C) · Inertie thermique océanique : décalage de 30 ans · Programme Résilience : extraction nette 5,94 Gt CO₂/an à plein déploiement (2060) · 1 ppm = 7,8 Gt CO₂ · CarbFix (Islande) · Note OPECST n°48 (Piednoir, oct. 2025) · LSCE (Philippe Ciais) · Forest Europe · Directive RED III · Règlement CRCF UE (acte délégué biochar, 3 févr. 2026)
+    </div>
+  </div>
+
+</div>
+</main>
+
+<footer>
+  <div style="margin-bottom:1.5rem;">
+    <a href="index.html" style="display:inline-block;padding:.65rem 1.8rem;background:#1F4E79;color:white;border-radius:5px;text-decoration:none;font-family:'Arial',sans-serif;font-size:.85rem;font-weight:bold;border:1px solid rgba(255,255,255,.2);">← Retour au Programme Résilience V11</a>
+  </div>
+  <a href="index.html">Programme Résilience V11</a> · <a href="https://helion31412.github.io/resilience2045">helion31412.github.io/resilience2045</a>
+</footer>
+
+<script>
+const PPM_GT = 1/7.8;
+const DELAY = 30;
+const ECS = 3.0;
+
+function co2ToTemp(ppm) {
+  if (ppm <= 280) return 0;
+  return ECS * Math.log2(Math.max(ppm,281)/280);
+}
+
+const anchors1 = {2026:420,2030:425,2040:445,2050:468,2060:492,2070:515,2080:535,2090:558,2100:578,2120:618,2150:668,2200:720};
+const anchors2 = {2026:420,2030:428,2040:447,2050:455,2060:452,2070:447,2080:440,2090:432,2100:422,2120:410,2150:395,2200:378};
+
+function interp(anchors, y) {
+  const keys = Object.keys(anchors).map(Number).sort((a,b)=>a-b);
+  for (let i=0;i<keys.length-1;i++) {
+    const y0=keys[i],y1=keys[i+1];
+    if(y>=y0&&y<=y1){const t=(y-y0)/(y1-y0);return anchors[y0]*(1-t)+anchors[y1]*t;}
+  }
+  return y<keys[0]?anchors[keys[0]]:anchors[keys[keys.length-1]];
+}
+
+function resilienceSink(y) {
+  if(y<2030)return 0;
+  if(y<=2060)return 5.94*((y-2030)/30);
+  return 5.94;
+}
+function permafrost(y,scale=1){
+  if(y<2040)return 0;
+  return Math.min((1+Math.min(y-2040,60)*0.04)*scale,3.5*scale);
+}
+function sinkDeg(y,scale=1){
+  if(y<2050)return 1;
+  const d=0.30*scale;
+  if(y<2080)return 1-d*((y-2050)/30);
+  return 1-d;
+}
+
+const years=[];
+const s1=[],s2=[],s3=[],s4ideal=[],s4real=[],s5=[];
+let p3=420,p4i=420,p4r=420,p5=420,p2prev=420;
+
+for(let y=2026;y<=2200;y++){
+  years.push(y);
+  s1.push(interp(anchors1,y));
+  const p2=interp(anchors2,y);
+  s2.push(p2);
+  const dp2=p2-p2prev;
+
+  const dp3=dp2*sinkDeg(y)+permafrost(y)*PPM_GT+(y>=2070?6*PPM_GT:0);
+  p3=Math.max(p3+dp3,280); s3.push(p3);
+
+  const dp4i=dp2+permafrost(y,0.05)*PPM_GT+(y>=2070?1.5*PPM_GT:0)-resilienceSink(y)*PPM_GT;
+  p4i=Math.max(p4i+dp4i,278); s4ideal.push(p4i);
+
+  p4r=Math.max(p4r+dp3-resilienceSink(y)*PPM_GT,278); s4real.push(p4r);
+
+  const e5=37*Math.pow(1.007,y-2026);
+  p5+=(e5-18*sinkDeg(y,1.5)+permafrost(y,2)+(y>2040?Math.max(0,(y-2040)*0.015):0))*PPM_GT;
+  s5.push(p5);
+  p2prev=p2;
+}
+
+function delayedTemp(series){
+  const buf=[...Array(DELAY).fill(series[0]),...series];
+  return series.map((_,i)=>co2ToTemp(buf[i]));
+}
+
+const gridColor='rgba(0,0,0,0.06)';
+const textColor='#888';
+
+const THRESH=[
+  {v:280,c:'#1baf7a',l:'280 ppm — préindustriel'},
+  {v:350,c:'#2a78d6',l:'350 ppm — objectif sûr'},
+  {v:420,c:'#888780',l:'420 ppm — niveau actuel'},
+  {v:450,c:'#D68910',l:'450 ppm — seuil +2°C'},
+  {v:560,c:'#C0392B',l:'560 ppm — seuil +4°C'},
+];
+const THRESH_T=[
+  {t:1.5,l:'+1.5°C — Paris'},{t:2.0,l:'+2.0°C — limite'},
+  {t:3.0,l:'+3.0°C — critique'},{t:4.0,l:'+4.0°C — catastrophique'}
+];
+
+function thresholdPlugin(ymax){
+  return {
+    id:'thresh',
+    afterDraw(chart){
+      const {ctx,scales:{x,y}}=chart;
+      THRESH.forEach(({v,c,l})=>{
+        if(v>ymax)return;
+        const yp=y.getPixelForValue(v);
+        ctx.save();
+        ctx.strokeStyle=c;ctx.lineWidth=0.8;ctx.setLineDash([3,6]);ctx.globalAlpha=0.5;
+        ctx.beginPath();ctx.moveTo(x.left,yp);ctx.lineTo(x.right,yp);ctx.stroke();
+        ctx.setLineDash([]);ctx.globalAlpha=0.8;
+        ctx.fillStyle=c;ctx.font='11px Arial';ctx.textAlign='right';
+        ctx.fillText(l,x.right-4,yp-4);
+        ctx.restore();
+      });
+      THRESH_T.forEach(({t,l})=>{
+        const ppmEq=280*Math.pow(2,t/ECS);
+        if(ppmEq>ymax||ppmEq<270)return;
+        const yp=y.getPixelForValue(ppmEq);
+        ctx.save();
+        ctx.strokeStyle='#4a4a8a';ctx.lineWidth=0.5;ctx.setLineDash([2,6]);ctx.globalAlpha=0.25;
+        ctx.beginPath();ctx.moveTo(x.left,yp);ctx.lineTo(x.right,yp);ctx.stroke();
+        ctx.setLineDash([]);ctx.globalAlpha=0.6;
+        ctx.fillStyle='#4a4a8a';ctx.font='11px Arial';ctx.textAlign='left';
+        ctx.fillText(l,x.left+4,yp-4);
+        ctx.restore();
+      });
+    }
+  };
+}
+
+function makeChart(id,datasets,ymax){
+  const ctx=document.getElementById(id).getContext('2d');
+  const t2=delayedTemp([...Array(years.length).fill(0)].map((_,i)=>{
+    const idx=['s1','s2','s3','s4i','s4r','s5'].indexOf(id);
+    return 0;
+  }));
+
+  new Chart(ctx,{
+    type:'line',
+    data:{labels:years,datasets},
+    options:{
+      responsive:true,maintainAspectRatio:false,
+      interaction:{mode:'index',intersect:false},
+      plugins:{
+        legend:{display:false},
+        tooltip:{callbacks:{
+          label:c=>`${c.dataset.label}: ${Math.round(c.parsed.y)} ppm / ${co2ToTemp(c.parsed.y).toFixed(1).replace('.',',')}°C`
+        }}
+      },
+      scales:{
+        x:{ticks:{color:textColor,maxTicksLimit:10,autoSkip:true,font:{size:11}},grid:{color:gridColor}},
+        y:{min:270,max:ymax,
+          ticks:{color:textColor,font:{size:11},callback:v=>v+' ppm'},
+          grid:{color:gridColor}
+        }
+      }
+    },
+    plugins:[thresholdPlugin(ymax)]
+  });
+}
+
+// CHART 1 : idéal
+makeChart('chart1',[
+  {label:'SSP3-7.0 statu quo',data:s1,borderColor:'#C0392B',borderWidth:2,pointRadius:0,tension:0.3},
+  {label:'SSP1-2.6 électrification idéale',data:s2,borderColor:'#D68910',borderWidth:2,borderDash:[8,4],pointRadius:0,tension:0.3},
+  {label:'Résilience base idéale',data:s4ideal,borderColor:'#0F6E56',borderWidth:2.5,pointRadius:0,tension:0.3},
+],740);
+
+// CHART 2 : réaliste
+makeChart('chart2',[
+  {label:'SSP5-8.5 dérèglement complet',data:s5,borderColor:'#7B1F1F',borderWidth:2,borderDash:[6,2,1,2],pointRadius:0,tension:0.3},
+  {label:'SSP1-2.6 réaliste',data:s3,borderColor:'#D85A30',borderWidth:2,borderDash:[4,4],pointRadius:0,tension:0.3},
+  {label:'Résilience base réaliste',data:s4real,borderColor:'#0F6E56',borderWidth:2.5,pointRadius:0,tension:0.3},
+],900);
+</script>
+</body>
+</html>

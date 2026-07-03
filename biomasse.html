@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biomasse nationale — Gisement · Programme Résilience V11</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--noir:#0a0f0d;--foret:#0d1f17;--vert-prof:#1a3a28;--vert-med:#2d6a4f;--vert-vif:#52b788;--vert-clair:#95d5b2;--ambre:#e9c46a;--rouge:#c0392b;--blanc:#f0f4f1;--gris:#8a9e93;--serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',sans-serif;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--noir);color:var(--blanc);font-family:var(--sans);font-weight:300;line-height:1.7;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:.9rem 2.5rem;background:rgba(10,15,13,.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(82,183,136,.12)}
+.nav-logo{font-family:var(--serif);font-size:1.15rem;font-weight:600;color:var(--vert-vif);text-decoration:none}
+.nav-back{font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gris);text-decoration:none;transition:color .3s}.nav-back:hover{color:var(--vert-vif)}
+.nav-tag{font-size:.66rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--gris);border:1px solid rgba(82,183,136,.2);padding:.25rem .75rem}
+section{padding:5.5rem 3rem}
+.container{max-width:1100px;margin:0 auto}
+.stag{font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--vert-vif);margin-bottom:.7rem}
+h1{font-family:var(--serif);font-size:clamp(2.4rem,5vw,4rem);font-weight:300;line-height:1.08;margin-bottom:1.2rem}
+h1 em{font-style:italic;color:var(--vert-vif)}
+h2{font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.4rem);font-weight:300;line-height:1.15;margin-bottom:1rem}
+h2 em{font-style:italic;color:var(--vert-vif)}
+.lead{font-size:.97rem;color:rgba(240,244,241,.7);max-width:700px;line-height:1.85;margin-bottom:1.8rem}
+.btn{display:inline-block;padding:.72rem 1.6rem;font-family:var(--sans);font-size:.76rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:all .3s}
+.btn-primary{background:var(--vert-vif);color:var(--noir)}.btn-primary:hover{background:var(--vert-clair);transform:translateY(-2px)}
+.btn-outline{background:transparent;color:var(--blanc);border:1px solid rgba(240,244,241,.28)}.btn-outline:hover{border-color:var(--vert-vif);color:var(--vert-vif);transform:translateY(-2px)}
+.badge{display:inline-block;font-size:.62rem;font-weight:600;letter-spacing:.1em;padding:.18rem .55rem;border-radius:2px;margin-left:.4rem;vertical-align:middle}
+.b-ok{background:rgba(82,183,136,.2);color:var(--vert-vif);border:1px solid rgba(82,183,136,.4)}
+.b-pl{background:rgba(41,128,185,.18);color:#74b9e8;border:1px solid rgba(41,128,185,.35)}
+.b-pr{background:rgba(233,196,106,.18);color:var(--ambre);border:1px solid rgba(233,196,106,.35)}
+.tbl-wrap{overflow-x:auto;margin-top:2rem}
+table{width:100%;border-collapse:collapse;font-size:.8rem}
+thead tr{background:rgba(26,58,40,.9)}
+thead th{padding:.85rem 1rem;text-align:left;color:var(--vert-clair);font-weight:500;letter-spacing:.08em;font-size:.72rem;text-transform:uppercase;border-bottom:2px solid var(--vert-vif)}
+tbody tr{border-bottom:1px solid rgba(82,183,136,.09);transition:background .2s}
+tbody tr:hover{background:rgba(13,31,23,.55)}
+tbody td{padding:.72rem 1rem;color:rgba(240,244,241,.75);vertical-align:top;line-height:1.5}
+tbody td:first-child{color:var(--blanc);font-weight:400}
+.td-g{color:var(--vert-vif)!important;font-weight:500}
+.td-a{color:var(--ambre)!important;font-weight:500}
+tfoot tr{background:rgba(26,58,40,.5)}
+tfoot td{padding:.72rem 1rem;color:var(--vert-clair);font-weight:500;border-top:2px solid var(--vert-vif)}
+.principe-box{border-left:4px solid var(--ambre);background:rgba(233,196,106,.06);border:1px solid rgba(233,196,106,.18);border-left:4px solid var(--ambre);padding:1.6rem 2rem;margin-top:2rem}
+.principe-box h3{font-family:var(--serif);font-size:1.1rem;color:var(--ambre);margin-bottom:.7rem}
+.principe-box p{font-size:.88rem;color:rgba(240,244,241,.72);line-height:1.8}
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+.reveal.visible{opacity:1;transform:none}
+footer{background:#050a07;padding:2rem 3rem;text-align:center;border-top:1px solid rgba(82,183,136,.08)}
+.footer-logo{font-family:var(--serif);font-size:1.4rem;font-weight:300;color:var(--vert-vif);margin-bottom:.3rem}
+footer p{font-size:.75rem;color:var(--gris);max-width:600px;margin:.3rem auto}
+@media(max-width:700px){nav{padding:.85rem 1.3rem}section{padding:3.5rem 1.4rem}}
+</style>
+<script src="https://cdn.counter.dev/script.js" data-id="7e06e873-296f-4ef5-856b-537fc7ceb0db" data-utcoffset="2"></script>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">Programme Résilience V11</a>
+  <div style="display:flex;align-items:center;gap:1.2rem"><a href="index.html" style="font-size:.68rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(82,183,136,.6);text-decoration:none;border:1px solid rgba(82,183,136,.2);padding:.2rem .6rem;transition:color .3s" onmouseover="this.style.color='#52b788'" onmouseout="this.style.color='rgba(82,183,136,.6)'">⌂ Accueil</a>
+    <span class="nav-tag">Stratégie carbone · Biomasse</span>
+    <a href="carbone-resilience.html" class="nav-back">← Stratégie carbone</a>
+  </div>
+</nav>
+
+<section style="min-height:60vh;display:flex;align-items:center;padding-top:8rem;position:relative;overflow:hidden;background:linear-gradient(135deg,#0a0f0d 0%,#0d1f17 50%,#060e09 100%)">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 40% 50%,rgba(29,90,54,.28) 0%,transparent 70%)"></div>
+  <div class="container" style="position:relative;z-index:1">
+    <div style="display:inline-block;border:1px solid var(--ambre);color:var(--ambre);font-size:.67rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:.3rem .85rem;margin-bottom:1.5rem">Gisement national · Programme Résilience V11</div>
+    <h1>Le gisement qui<br><em>alimente tout le système</em></h1>
+    <p class="lead">262 TWh/an mobilisables sans concurrence alimentaire ni destruction des écosystèmes. La règle opérationnelle : on laisse ce qui structure, on gère ce qui bloque, on valorise ce qui se perd de toute façon.</p>
+    <div style="display:flex;gap:.9rem;flex-wrap:wrap">
+      <a href="#bilan" class="btn btn-primary">Voir le bilan V11 →</a>
+      <a href="carbone-resilience.html" class="btn btn-outline">← Stratégie carbone</a>
+    </div>
+    <div style="display:flex;gap:2.5rem;margin-top:2.5rem;flex-wrap:wrap">
+      <div style="border-left:2px solid var(--vert-vif);padding-left:1rem"><div style="font-family:var(--serif);font-size:1.9rem;color:var(--vert-vif)">262 TWh</div><div style="font-size:.68rem;color:var(--gris);text-transform:uppercase;letter-spacing:.1em">Gisement central V11</div></div>
+      <div style="border-left:2px solid var(--vert-vif);padding-left:1rem"><div style="font-family:var(--serif);font-size:1.9rem;color:var(--vert-vif)">9 filières</div><div style="font-size:.68rem;color:var(--gris);text-transform:uppercase;letter-spacing:.1em">Sources identifiées</div></div>
+      <div style="border-left:2px solid var(--ambre);padding-left:1rem"><div style="font-family:var(--serif);font-size:1.9rem;color:var(--ambre)">150 sites</div><div style="font-size:.68rem;color:var(--gris);text-transform:uppercase;letter-spacing:.1em">Pyrogazification prévus</div></div>
+      <div style="border-left:2px solid var(--vert-vif);padding-left:1rem"><div style="font-family:var(--serif);font-size:1.9rem;color:var(--vert-vif)">~23 Mt</div><div style="font-size:.68rem;color:var(--gris);text-transform:uppercase;letter-spacing:.1em">CO₂ séquestré/an</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="bilan" style="background:var(--foret)">
+  <div class="container">
+    <div class="stag reveal">Bilan biomasse V11</div>
+    <h2 class="reveal">Sources et <em>qualifications</em></h2>
+    <div class="tbl-wrap reveal">
+      <table>
+        <thead><tr><th>Source</th><th>Mt/an</th><th>CH₄ TWh/an</th><th>Biochar Mt/an</th><th>Qualification</th></tr></thead>
+        <tbody>
+          <tr><td>Bois mort + rémanents forestiers</td><td>13–15</td><td class="td-g">38–44</td><td>3,1</td><td><span class="badge b-ok">✅</span> IGN/FCBA — gisement robuste</td></tr>
+          <tr><td>Éclaircies non commerciales</td><td>7–10</td><td>20–28</td><td>1,6</td><td><span class="badge b-pl">🔬</span> SRB régionaux — plausible</td></tr>
+          <tr><td>Houppiers + branches</td><td>8–10</td><td>22–27</td><td>1,8</td><td><span class="badge b-pl">🔬</span> Mobilisable progressivement</td></tr>
+          <tr><td>Bois chauffage substitué</td><td>16</td><td>~48</td><td>3,6</td><td><span class="badge b-pr">⚠</span> Conditionnel adoption PAC</td></tr>
+          <tr><td>Ripisylves + bois rivières</td><td>3–4</td><td>8–11</td><td>0,7</td><td><span class="badge b-ok">✅</span> ONF — mobilisation réglementaire</td></tr>
+          <tr><td><strong>Sous-total pyrogazification</strong></td><td><strong>50–60 Mt</strong></td><td class="td-a"><strong>144–172 TWh</strong></td><td><strong>11,5–13,5 Mt</strong></td><td><span class="badge b-pl">🔬</span> Plausible si adoption PAC</td></tr>
+          <tr><td>Méthanisation (pailles + CIVE + biodéchets)</td><td>32–46</td><td class="td-g">~70 TWh</td><td>—</td><td><span class="badge b-ok">✅</span> Valeur prudente ADEME 2025</td></tr>
+          <tr><td>Sabatier (surplus ENR curtailés)</td><td>—</td><td class="td-g">~40 TWh</td><td>—</td><td><span class="badge b-pl">🔬</span> TRL 7–8 — 67 TWh × 56 %</td></tr>
+        </tbody>
+        <tfoot><tr><td><strong>TOTAL V11</strong></td><td>—</td><td><strong>254–282 TWh/an (~262 central)</strong></td><td>—</td><td><span class="badge b-pl">🔬</span> Scénario central plausible</td></tr></tfoot>
+      </table>
+    </div>
+    <div class="principe-box reveal">
+      <h3>La règle opérationnelle de gestion écologique</h3>
+      <p>On laisse ce qui structure l'écosystème (arbres matures, bois gros, arbres à cavités). On gère ce qui le bloque (accumulation de bois mort dense créant risques incendie, ripisylves envahissantes). On valorise ce qui se perd de toute façon (rémanents d'exploitation, bois chauffage substitué par PAC, biodéchets fermentescibles). Seuil écologique : biomasse fine &lt; 10–12 cm uniquement. Aucun prélèvement sur les vieux bois ni les forêts primaires.</p>
+    </div>
+    <div style="margin-top:2.5rem;display:flex;gap:1rem;flex-wrap:wrap" class="reveal">
+      <a href="carbone-resilience.html" class="btn btn-outline">← Stratégie carbone</a>
+      <a href="gestion-forets.html" class="btn btn-outline">Gestion des forêts →</a>
+      <a href="biochar.html" class="btn btn-outline">Biochar EBC/CDC V3 →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Programme Résilience V11</div>
+  <p>Biomasse nationale · Gisement 262 TWh/an · Juin 2026 · Diffusion libre</p>
+</footer>
+<script>
+const obs=new IntersectionObserver((e)=>{e.forEach((el,i)=>{if(el.isIntersecting){setTimeout(()=>el.target.classList.add('visible'),i*65);obs.unobserve(el.target)}})},{threshold:0.07});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
