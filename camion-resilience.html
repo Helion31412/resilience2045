@@ -3,147 +3,74 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Zone C Incendie · Pyrogazéification et prévention DFCI · Programme Résilience V11</title>
+<title>Camion Résilience 44t — ÉREV Rex unique Bio-LCH4 · Programme Résilience V11</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
   --noir:#0a0f0d;--foret:#0d1f17;--vert-vif:#52b788;--vert-clair:#95d5b2;
-  --ambre:#e9c46a;--rouge:#c0392b;--bleu:#2980b9;--blanc:#f0f4f1;--gris:#8a9e93;
-  --feu:#843C0C;--feu-clair:#FBE4D5;--feu-mid:#C45A1A;
-  --or:#b8962e;--or-clair:#f0d580;--or-bg:rgba(184,150,46,.06);
-  --serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',sans-serif;
+  --ambre:#e9c46a;--rouge:#c0392b;--acier:#2d4a6a;--acier-clair:#4a7aaa;
+  --blanc:#f0f4f1;--gris:#8a9e93;--serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',sans-serif;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:var(--noir);color:var(--blanc);font-family:var(--sans);font-weight:300;line-height:1.7;overflow-x:hidden}
-
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:.9rem 2.5rem;background:rgba(10,15,13,.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(132,60,12,.25)}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:.9rem 2.5rem;background:rgba(10,15,13,.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(82,183,136,.12)}
 .nav-logo{font-family:var(--serif);font-size:1.15rem;font-weight:600;color:var(--vert-vif);text-decoration:none}
-.nav-tag{font-size:.66rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--gris);border:1px solid rgba(132,60,12,.35);padding:.25rem .75rem;color:var(--feu-mid)}
-.nav-back{font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gris);text-decoration:none;transition:color .3s}
-.nav-back:hover{color:var(--feu-mid)}
-
-section{padding:5rem 3rem}
+.nav-back{font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gris);text-decoration:none;transition:color .3s}.nav-back:hover{color:var(--vert-vif)}
+.nav-tag{font-size:.66rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--gris);border:1px solid rgba(82,183,136,.2);padding:.25rem .75rem}
+section{padding:5.5rem 3rem}
 .container{max-width:1100px;margin:0 auto}
-.stag{font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--feu-mid);margin-bottom:.7rem}
-.stag-vert{font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--vert-vif);margin-bottom:.7rem}
-h1{font-family:var(--serif);font-size:clamp(2.2rem,4.5vw,3.8rem);font-weight:300;line-height:1.1;margin-bottom:1.2rem}
-h1 em{font-style:italic;color:var(--feu-mid)}
-h1 strong{font-weight:600;color:var(--feu-mid)}
-h2{font-family:var(--serif);font-size:clamp(1.6rem,2.8vw,2.4rem);font-weight:300;line-height:1.15;margin-bottom:1rem}
-h2 em{font-style:italic;color:var(--feu-mid)}
-h2 strong{font-weight:600;color:var(--or-clair)}
-h3{font-family:var(--serif);font-size:1.2rem;font-weight:400;margin-bottom:.5rem;color:var(--vert-clair)}
+.stag{font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--vert-vif);margin-bottom:.7rem}
+h1{font-family:var(--serif);font-size:clamp(2.4rem,5vw,4rem);font-weight:300;line-height:1.08;margin-bottom:1.2rem}
+h1 em{font-style:italic;color:var(--vert-vif)}
+h2{font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.4rem);font-weight:300;line-height:1.15;margin-bottom:1rem}
+h2 em{font-style:italic;color:var(--vert-vif)}
 .lead{font-size:.97rem;color:rgba(240,244,241,.7);max-width:700px;line-height:1.85;margin-bottom:1.8rem}
-p.body{font-size:.88rem;color:rgba(240,244,241,.62);line-height:1.88;margin-bottom:.9rem;max-width:840px}
 .btn{display:inline-block;padding:.72rem 1.6rem;font-family:var(--sans);font-size:.76rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:all .3s}
-.btn-feu{background:var(--feu);color:var(--blanc)}
-.btn-feu:hover{background:var(--feu-mid);transform:translateY(-2px)}
-.btn-outline{background:transparent;color:var(--blanc);border:1px solid rgba(240,244,241,.25)}
-.btn-outline:hover{border-color:var(--feu-mid);color:var(--feu-mid)}
-
-/* HERO */
-#hero{min-height:72vh;display:flex;align-items:center;padding:8rem 3rem 5rem;position:relative;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 60% 40%,rgba(132,60,12,.25) 0%,transparent 65%),linear-gradient(135deg,#0a0f0d 0%,#1a0a05 50%,#080e0a 100%)}
-.hero-grid{position:absolute;inset:0;opacity:.03;background-image:linear-gradient(var(--feu-mid) 1px,transparent 1px),linear-gradient(90deg,var(--feu-mid) 1px,transparent 1px);background-size:55px 55px}
-.hero-content{position:relative;z-index:1;max-width:820px}
-.hero-tag{display:inline-block;border:1px solid var(--feu-mid);color:var(--feu-mid);font-size:.67rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:.3rem .85rem;margin-bottom:1.5rem}
-.hero-phrase{font-family:var(--serif);font-size:clamp(1rem,2vw,1.3rem);font-style:italic;color:var(--ambre);border-left:3px solid var(--ambre);padding-left:1.1rem;margin:1.4rem 0 1.8rem;line-height:1.5;max-width:640px}
-
-/* PARADOXE */
-.paradoxe-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin:2rem 0;border:1px solid rgba(132,60,12,.2);background:rgba(132,60,12,.1)}
-.p-col{padding:2rem;display:flex;flex-direction:column;gap:.8rem}
-.p-col.ancien{background:rgba(20,20,20,.8)}
-.p-col.nouveau{background:rgba(50,15,3,.6)}
-.p-col-tag{font-size:.65rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:.25rem .7rem;border-radius:2px;display:inline-block;margin-bottom:.4rem}
-.tag-rouge{background:rgba(192,57,43,.15);color:#e74c3c;border:1px solid rgba(192,57,43,.3)}
-.tag-vert{background:rgba(82,183,136,.1);color:var(--vert-vif);border:1px solid rgba(82,183,136,.25)}
-.p-col p{font-size:.86rem;color:rgba(240,244,241,.65);line-height:1.7}
-.p-col strong{color:var(--blanc)}
-
-/* CHIFFRES CLÉS */
-.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin:2rem 0}
-.kpi-card{padding:1.4rem 1.2rem;border:1px solid rgba(132,60,12,.2);background:rgba(132,60,12,.05);text-align:center}
-.kpi-val{font-family:var(--serif);font-size:2.2rem;font-weight:300;color:var(--feu-mid);line-height:1;margin-bottom:.3rem}
-.kpi-unit{font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gris);margin-bottom:.4rem}
-.kpi-lbl{font-size:.78rem;color:rgba(240,244,241,.55);line-height:1.4}
-
-/* RENVERSEMENT */
-.renversement{margin:2rem 0;overflow:hidden;border:1px solid rgba(132,60,12,.2)}
-.ren-head{display:grid;grid-template-columns:1fr 1fr;background:rgba(132,60,12,.15)}
-.ren-head-cell{padding:.8rem 1.4rem;font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;text-align:center}
-.ren-head-cell.rouge{color:#e74c3c;border-bottom:2px solid #e74c3c}
-.ren-head-cell.vert{color:var(--vert-vif);border-bottom:2px solid var(--vert-vif)}
-.ren-row{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid rgba(255,255,255,.05)}
-.ren-row:nth-child(even){background:rgba(255,255,255,.02)}
-.ren-cell{padding:.85rem 1.4rem;font-size:.83rem;color:rgba(240,244,241,.65);line-height:1.6}
-.ren-cell.cell-r{color:#e57368}
-.ren-cell.cell-g{color:var(--vert-vif)}
-.ren-cell strong{color:var(--blanc)}
-.ren-note{padding:.8rem 1.4rem;font-size:.78rem;color:rgba(240,244,241,.45);font-style:italic;border-top:1px solid rgba(255,255,255,.06)}
-
-/* 5 FLUX */
-.flux-grid{display:flex;flex-direction:column;gap:.8rem;margin:2rem 0}
-.flux-card{display:grid;grid-template-columns:52px 1fr 1fr;gap:0;border:1px solid rgba(255,255,255,.07);background:rgba(13,15,12,.6);overflow:hidden;transition:border-color .3s}
-.flux-card:hover{border-color:rgba(132,60,12,.4)}
-.flux-n{background:var(--feu);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--blanc);padding:1rem}
-.flux-body{padding:1rem 1.4rem;border-right:1px solid rgba(255,255,255,.06)}
-.flux-title{font-family:var(--serif);font-size:1rem;color:var(--blanc);margin-bottom:.3rem}
-.flux-desc{font-size:.8rem;color:rgba(240,244,241,.55);line-height:1.6}
-.flux-benef{padding:1rem 1.4rem;background:rgba(13,31,23,.4)}
-.flux-benef-tag{font-size:.62rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--vert-vif);margin-bottom:.4rem}
-.flux-benef p{font-size:.78rem;color:rgba(240,244,241,.5);line-height:1.55}
-
-/* GARD */
-.gard-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin:2rem 0;border:1px solid rgba(132,60,12,.15);background:rgba(132,60,12,.08)}
-.gard-card{padding:1.8rem 1.4rem;background:rgba(10,8,6,.8)}
-.gc-n{font-family:var(--serif);font-size:2.8rem;font-weight:300;color:rgba(132,60,12,.25);line-height:1;margin-bottom:.2rem}
-.gc-title{font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--feu-mid);margin-bottom:.6rem}
-.gc-val{font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--blanc);margin-bottom:.3rem}
-.gc-desc{font-size:.78rem;color:rgba(240,244,241,.5);line-height:1.55}
-
-/* COÛTS ÉVITÉS */
-.cout-table{width:100%;border-collapse:collapse;font-size:.83rem;margin:1.5rem 0}
-.cout-table thead th{background:rgba(132,60,12,.5);padding:.65rem 1rem;text-align:left;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;font-weight:500}
-.cout-table tbody tr:nth-child(even){background:rgba(132,60,12,.04)}
-.cout-table tbody td{padding:.65rem 1rem;border-bottom:1px solid rgba(255,255,255,.04);color:rgba(240,244,241,.65);vertical-align:top}
-.cout-table tbody td:first-child{color:var(--blanc)}
-.cout-table .td-val{color:var(--feu-mid)!important;font-weight:500;white-space:nowrap}
-
-/* BOX */
-.box{padding:1.2rem 1.6rem;margin:1.6rem 0;font-size:.87rem;line-height:1.75;border-left:4px solid}
-.box strong{font-weight:500}
-.box-feu{background:rgba(132,60,12,.08);border-color:var(--feu);color:rgba(240,244,241,.78)}
-.box-feu strong{color:var(--feu-mid)}
-.box-vert{background:rgba(29,58,40,.3);border-color:var(--vert-vif);color:rgba(240,244,241,.78)}
-.box-vert strong{color:var(--vert-vif)}
-.box-bleu{background:rgba(41,128,185,.07);border-color:var(--bleu);color:rgba(240,244,241,.78)}
-.box-bleu strong{color:#74b9e8}
-
-/* RENVOIS */
-.renvoi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin:2rem 0}
-.renvoi-card{padding:1.2rem 1.4rem;border:1px solid rgba(132,60,12,.2);background:rgba(10,15,13,.5);text-decoration:none;transition:border-color .3s,background .3s;display:block}
-.renvoi-card:hover{border-color:var(--feu-mid);background:rgba(50,15,3,.2)}
-.rc-tag{font-size:.62rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--feu-mid);margin-bottom:.4rem}
-.rc-title{font-family:var(--serif);font-size:1rem;color:var(--blanc);margin-bottom:.3rem}
-.rc-desc{font-size:.78rem;color:rgba(240,244,241,.5);line-height:1.5}
-
+.btn-primary{background:var(--vert-vif);color:var(--noir)}.btn-primary:hover{background:var(--vert-clair);transform:translateY(-2px)}
+.btn-outline{background:transparent;color:var(--blanc);border:1px solid rgba(240,244,241,.28)}.btn-outline:hover{border-color:var(--vert-vif);color:var(--vert-vif);transform:translateY(-2px)}
+.kpi-strip{display:flex;gap:2.5rem;margin-top:2.5rem;flex-wrap:wrap}
+.kpi{border-left:2px solid var(--vert-vif);padding-left:1rem}
+.kpi.am{border-left-color:var(--ambre)}
+.kpi.ac{border-left-color:var(--acier-clair)}
+.kpi-val{font-family:var(--serif);font-size:1.9rem;color:var(--vert-vif);line-height:1}
+.kpi.am .kpi-val{color:var(--ambre)}
+.kpi.ac .kpi-val{color:var(--acier-clair)}
+.kpi-lbl{font-size:.68rem;color:var(--gris);text-transform:uppercase;letter-spacing:.1em;margin-top:.2rem}
+.tbl{width:100%;border-collapse:collapse;font-size:.8rem;margin-top:1.5rem}
+.tbl thead tr{background:rgba(26,58,40,.9)}
+.tbl thead th{padding:.75rem 1rem;text-align:left;color:var(--vert-clair);font-weight:500;font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;border-bottom:2px solid var(--vert-vif)}
+.tbl tbody tr{border-bottom:1px solid rgba(82,183,136,.09);transition:background .2s}
+.tbl tbody tr:hover{background:rgba(13,31,23,.55)}
+.tbl tbody td{padding:.7rem 1rem;color:rgba(240,244,241,.75);vertical-align:top;line-height:1.5}
+.tbl tbody td:first-child{color:var(--blanc);font-weight:400}
+.tbl tfoot tr{background:rgba(26,58,40,.7)}
+.tbl tfoot td{padding:.7rem 1rem;font-weight:600;border-top:2px solid var(--vert-vif)}
+.tbl tr.hl td{background:rgba(26,58,40,.5);color:var(--blanc)}
+.tbl tr.hl td:first-child{color:var(--vert-vif);font-weight:600}
+.tbl .sec td{background:rgba(26,58,40,.4);color:var(--vert-clair);font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.5rem 1rem}
+.td-g{color:var(--vert-vif)!important;font-weight:500}
+.td-a{color:var(--ambre)!important;font-weight:500}
+.td-r{color:#e07070!important}
+.warn{font-size:.74rem;color:rgba(233,196,106,.65);font-style:italic}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(82,183,136,.1);border:1px solid rgba(82,183,136,.1);margin-top:1.5rem}
+.grid3-cell{background:rgba(13,31,23,.8);padding:1.4rem 1.2rem}
+.cell-tag{font-size:.65rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;margin-bottom:.5rem}
+.cell-val{font-family:var(--serif);font-size:2rem;color:var(--blanc);line-height:1;margin-bottom:.3rem}
+.cell-sub{font-size:.75rem;color:var(--gris);line-height:1.4}
+.cell-total{background:rgba(26,58,40,.9);padding:1.4rem 1.2rem;border-top:1px solid rgba(82,183,136,.2)}
+.encadre{margin-top:1.5rem;padding:1.4rem 1.8rem;border-left:4px solid var(--ambre);background:rgba(233,196,106,.06)}
+.encadre p{font-size:.87rem;color:rgba(240,244,241,.7);line-height:1.7}
+.encadre p strong{color:var(--blanc);font-weight:500}
+.note{margin-top:1rem;padding:1rem 1.3rem;border-left:3px solid rgba(82,183,136,.35);background:rgba(10,15,13,.4);font-size:.78rem;color:rgba(240,244,241,.55);line-height:1.6}
+.note strong{color:rgba(233,196,106,.8)}
 .reveal{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
 .reveal.visible{opacity:1;transform:none}
-.alt{background:var(--foret)}
-
-footer{background:#050a07;padding:2.5rem 3rem;text-align:center;border-top:1px solid rgba(132,60,12,.15)}
-.footer-logo{font-family:var(--serif);font-size:1.4rem;font-weight:300;color:var(--feu-mid);margin-bottom:.4rem}
-footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;line-height:1.7}
-
-@media(max-width:700px){
-  nav{padding:.85rem 1.3rem}
-  section{padding:3.5rem 1.4rem}
-  h1{font-size:2rem}
-  .paradoxe-grid,.gard-grid,.flux-card{grid-template-columns:1fr}
-  .ren-head,.ren-row{grid-template-columns:1fr}
-}
+footer{background:#050a07;padding:2rem 3rem;text-align:center;border-top:1px solid rgba(82,183,136,.08)}
+.footer-logo{font-family:var(--serif);font-size:1.4rem;font-weight:300;color:var(--vert-vif);margin-bottom:.3rem}
+footer p{font-size:.75rem;color:var(--gris);max-width:600px;margin:.3rem auto}
+@media(max-width:800px){nav{padding:.85rem 1.3rem}section{padding:3.5rem 1.4rem}.grid3{grid-template-columns:1fr}.kpi-strip{gap:1.5rem}}
 </style>
 <script src="https://cdn.counter.dev/script.js" data-id="7e06e873-296f-4ef5-856b-537fc7ceb0db" data-utcoffset="2"></script>
 </head>
@@ -151,346 +78,225 @@ footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;li
 
 <nav>
   <a href="index.html" class="nav-logo">Programme Résilience V11</a>
-  <div style="display:flex;align-items:center;gap:1.2rem"><a href="index.html" style="font-size:.68rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(82,183,136,.6);text-decoration:none;border:1px solid rgba(82,183,136,.2);padding:.2rem .6rem;transition:color .3s" onmouseover="this.style.color='#52b788'" onmouseout="this.style.color='rgba(82,183,136,.6)'">⌂ Accueil</a>
-    <span class="nav-tag">🔥 Zone C · Incendie · DFCI</span>
-    <a href="pyrogazeification-resilience.html" class="nav-back">← Pyrogazéification</a>
+  <div style="display:flex;align-items:center;gap:1.2rem">
+    <a href="index.html" style="font-size:.68rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(82,183,136,.6);text-decoration:none;border:1px solid rgba(82,183,136,.2);padding:.2rem .6rem;transition:color .3s" onmouseover="this.style.color='#52b788'" onmouseout="this.style.color='rgba(82,183,136,.6)'">⌂ Accueil</a>
+    <span class="nav-tag">Mobilité · Poids Lourd 44t</span>
+    <a href="voiture-erev.html" class="nav-back">← ÉREV Voiture</a>
   </div>
 </nav>
 
 <!-- HERO -->
-<section id="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
-  <div class="hero-content">
-    <div class="hero-tag">Zone C · Sites à double mission · Programme Résilience V11</div>
-    <h1>La forêt méditerranéenne :<br><em>pas une contrainte</em> à éviter —<br><strong>une ressource</strong> à organiser</h1>
-    <p class="hero-phrase">Le raisonnement classique exclut les zones à risque incendie. Le Programme Résilience les transforme en territoire prioritaire — parce que ce qui nourrit les grands feux est précisément ce que la pyrogazéification peut valoriser.</p>
-    <p class="lead">Un site de pyrogazéification en périphérie d'un massif méditerranéen ne produit pas seulement du biométhane. Il rend économiquement rationnelle la sylviculture préventive que ni les obligations légales ni les subventions DFCI ne parviennent à imposer à grande échelle.</p>
+<section style="min-height:70vh;display:flex;align-items:center;padding-top:8rem;position:relative;overflow:hidden;background:linear-gradient(135deg,#0a0f0d 0%,#0d1f17 50%,#060e09 100%)">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 30% 50%,rgba(20,50,80,.3) 0%,transparent 70%)"></div>
+  <div class="container" style="position:relative;z-index:1">
+    <div style="display:inline-block;border:1px solid var(--acier-clair);color:var(--acier-clair);font-size:.67rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:.3rem .85rem;margin-bottom:1.5rem">Architecture ÉREV Rex unique · Bio-LCH4 · 44 tonnes</div>
+    <h1>Le transport lourd.<br><em>Décarbonation sans compromis.</em></h1>
+    <p class="lead">1 150 à 1 300 km d'autonomie. Rex unique 400 kWe. Bio-LCH4 à −162°C. Là où le tout-électrique perd 3 tonnes de charge utile et où l'hydrogène manque d'infrastructure — le Camion Résilience combine chaque vecteur là où il est le meilleur.</p>
     <div style="display:flex;gap:.9rem;flex-wrap:wrap">
-      <a href="#renversement" class="btn btn-feu">Le renversement économique →</a>
-      <a href="Demonstrateur_Zone_C_Gard_Pyrogazeification_DFCI_V2.pdf" class="btn btn-outline" target="_blank" download>↓ Démonstrateur Gard PDF</a>
+      <a href="#specs" class="btn btn-primary">Spécifications techniques →</a>
+      <a href="Camion_EREV_Rex_V11.pdf" class="btn btn-outline" target="_blank" download>↓ Note PDF complète</a>
+    </div>
+    <div class="kpi-strip">
+      <div class="kpi"><div class="kpi-val">1 150–1 300 km</div><div class="kpi-lbl">Autonomie totale</div></div>
+      <div class="kpi"><div class="kpi-val">400 kWe</div><div class="kpi-lbl">Rex unique continu</div></div>
+      <div class="kpi am"><div class="kpi-val">~25 t</div><div class="kpi-lbl">Charge utile préservée</div></div>
+      <div class="kpi am"><div class="kpi-val">11–45 €/100 km</div><div class="kpi-lbl">Coût énergie selon approv.</div></div>
+      <div class="kpi ac"><div class="kpi-val">+36–73 k€</div><div class="kpi-lbl">Économie vs diesel 15 ans</div></div>
     </div>
   </div>
 </section>
 
-<!-- §1 — LE PARADOXE -->
-<section>
+<!-- POURQUOI LCH4 -->
+<section style="background:linear-gradient(180deg,var(--noir) 0%,#070e0a 100%)">
   <div class="container">
-    <div class="stag reveal">Le changement de paradigme</div>
-    <h2 class="reveal">Ce que le raisonnement classique<br><em>ne voit pas</em></h2>
-
-    <div class="paradoxe-grid reveal">
-      <div class="p-col ancien">
-        <span class="p-col-tag tag-rouge">Raisonnement classique</span>
-        <p><strong>Forêt méditerranéenne = risque incendie</strong><br>Un incendie détruira le gisement → la zone est trop risquée → on exclut ces territoires.</p>
-        <p>La pyrogazéification est traitée comme <strong>consommateur passif</strong> d'un gisement menacé.</p>
-        <p>Résultat : <strong>0 site</strong> dans les zones les plus exposées au risque incendie de France.</p>
+    <div class="stag reveal">Le choix de l'architecture</div>
+    <h2 class="reveal">Pourquoi le Bio-LCH4 — <em>et non le GNV ni le tout-électrique</em></h2>
+    <div class="grid3 reveal">
+      <div class="grid3-cell" style="background:rgba(30,10,10,.7);border-top:2px solid #c0392b">
+        <div class="cell-tag" style="color:#e07070">✗ Tout-électrique</div>
+        <div style="font-size:.85rem;color:rgba(240,244,241,.68);line-height:1.65">Batterie pour 500 km : <strong style="color:var(--blanc)">−3 t de charge utile</strong>. Recharge 45–90 min. Appels de puissance massifs réseau. Infrastructure lourde.</div>
       </div>
-      <div class="p-col nouveau">
-        <span class="p-col-tag tag-vert">Raisonnement Zone C — Résilience</span>
-        <p><strong>Forêt méditerranéenne = biomasse combustible excédentaire</strong><br>L'absence de débouché économique est précisément ce qui l'accumule et alimente les grands feux.</p>
-        <p>La pyrogazéification est <strong>l'outil qui crée le débouché manquant</strong> — rendant la sylviculture préventive économiquement rationnelle sans subvention.</p>
-        <p>Résultat : <strong>~10 sites à double mission</strong> dans les zones les plus critiques.</p>
+      <div class="grid3-cell" style="background:rgba(20,15,5,.7);border-top:2px solid rgba(233,196,106,.5)">
+        <div class="cell-tag" style="color:var(--ambre)">⚠ GNV comprimé 250 bar</div>
+        <div style="font-size:.85rem;color:rgba(240,244,241,.68);line-height:1.65">Densité 2,64 kWh/L. Pour 1 000 km : <strong style="color:var(--blanc)">2 700 L de réservoirs</strong> — physiquement impossible sous châssis 44t.</div>
+      </div>
+      <div class="grid3-cell" style="background:rgba(13,31,23,.7);border-top:2px solid var(--vert-vif)">
+        <div class="cell-tag" style="color:var(--vert-vif)">✓ Bio-LCH4 −162°C</div>
+        <div style="font-size:.85rem;color:rgba(240,244,241,.68);line-height:1.65">Densité <strong style="color:var(--blanc)">5,86 kWh/L</strong>. 900 L suffisent. Standard Volvo FH LNG / Scania Super — technologie de série.</div>
       </div>
     </div>
+    <div class="note reveal"><strong>Rex unique vs double :</strong> moteur 15 L à régime fixe 1 800 tr/min, sans boîte de vitesses, sans cycles thermiques variables = durée de vie estimée >2 millions de km. La batterie 200 kWh fournit 110–130 km en cas de panne. La redondance double Rex ajoute 18 000 € pour une complexité non justifiée dans 90 % des usages.</div>
+  </div>
+</section>
 
-    <div class="box box-feu reveal">
-      <strong>Le problème structurel :</strong> les propriétaires forestiers méditerranéens n'entretiennent pas leurs parcelles parce qu'il n'y a rien à vendre. Le bois de chêne vert de petite dimension, les taillis de garrigues — sans marché. La biomasse combustible s'accumule chaque année. L'État finance la DFCI à 60–80 % mais les surfaces à risque traitées restent insuffisantes faute d'incitation économique directe sur les propriétaires. Le site Zone C crée cette incitation.
+<!-- SPÉCIFICATIONS -->
+<section id="specs" style="background:var(--foret)">
+  <div class="container">
+    <div class="stag reveal">Spécifications techniques</div>
+    <h2 class="reveal">Architecture complète — <em>composant par composant</em></h2>
+    <div style="overflow-x:auto" class="reveal">
+      <table class="tbl">
+        <thead><tr><th>Composant</th><th>Spécification</th><th>Valeur</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr class="sec"><td colspan="4">Groupe électrique</td></tr>
+          <tr><td>Moteurs traction</td><td>2 × SPMSM 250 kW</td><td class="td-g">500 kW pic / 280 kW continu</td><td>Grade 5 % à 80 km/h · Palier 90 km/h pleine charge</td></tr>
+          <tr class="sec"><td colspan="4">Batterie tampon</td></tr>
+          <tr><td>Pack LFP</td><td>200 kWh net · 3 000 cycles</td><td class="td-g">~110–130 km ZEV réel</td><td>Zones portuaires ZEV + sécurité panne Rex · LFP >80 % à 800 000 km</td></tr>
+          <tr class="sec"><td colspan="4">Range Extender (Rex unique)</td></tr>
+          <tr><td>Moteur Rex</td><td>15 L GNV · 6 cyl. Miller-Atkinson · EGR 15 % · 1 800 tr/min fixe</td><td class="td-g">400 kWe continu</td><td>Réf. Cummins ISX15N / Volvo D16 / MAN D3876 · >2 M km estimé</td></tr>
+          <tr><td>Rendement Rex</td><td>Cycle Atkinson régime fixe</td><td class="td-a">48–52 %</td><td class="warn">Objectif industriel — non acquis sur prototype · À confirmer sur banc d'essai</td></tr>
+          <tr><td>Fréquence générateur</td><td>1 800 tr/min × 4 pôles</td><td class="td-g">60 Hz natif</td><td>Compatible remorques frigo Carrier/Thermo King · Variante 1 500 tr/min (50 Hz EU) disponible</td></tr>
+          <tr><td>Émissions NOx</td><td>Euro VII</td><td class="td-g">≤0,06 g/km</td><td>EGR + refroidissement · Sans SCR/AdBlue · Sans suies · Sans FAP</td></tr>
+          <tr class="sec"><td colspan="4">Réservoirs Bio-LCH4</td></tr>
+          <tr><td>Réservoirs cryogéniques</td><td>2 × 450 L · −162°C · 3–5 bar</td><td class="td-g">~378 kg bio-CH₄ embarqués</td><td>5,86 kWh/L vs 2,64 kWh/L GNV · GNV nécessiterait 2 700 L</td></tr>
+          <tr><td>Gestion boil-off (BOG)</td><td>0,1–0,3 %/jour</td><td>0,38–1,13 kg/j</td><td>BOG vers Rex en marche · Micro-brûleur catalytique à l'arrêt · Vidange si arrêt >5 jours</td></tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </section>
 
-<!-- §2 — CHIFFRES GARD -->
-<section class="alt">
+<!-- AUTONOMIE -->
+<section style="background:var(--noir)">
   <div class="container">
-    <div class="stag reveal">Le cas concret — Gard (30)</div>
-    <h2 class="reveal">Pourquoi le Gard comme<br><em>premier démonstrateur ?</em></h2>
-    <p class="lead reveal">Le Gard cumule trois facteurs uniques en France métropolitaine qui justifient son choix comme territoire démonstrateur Zone C.</p>
-
-    <div class="gard-grid reveal">
-      <div class="gard-card">
-        <div class="gc-n">01</div>
-        <div class="gc-title">Département forestier majeur à risque reconnu</div>
-        <div class="gc-val">&gt; 52 % boisé</div>
-        <div class="gc-desc">290 000 ha de forêts · doublement en 60 ans par abandon pastoral · PDPFCI 2024-2034 en vigueur · 4 zones météo DFCI · ~1 500 départs de feux par an · sylviculture préventive reconnue comme insuffisante (action n°14 PDPFCI)</div>
+    <div class="stag reveal">Calcul d'autonomie</div>
+    <h2 class="reveal">1 150–1 300 km — <em>trois phases complémentaires</em></h2>
+    <div class="grid3 reveal">
+      <div class="grid3-cell">
+        <div class="cell-tag" style="color:var(--vert-vif)">Phase 1 — ZEV urbaine</div>
+        <div class="cell-val">110–130 km</div>
+        <div class="cell-sub">Batterie 200 kWh · ~130 kWh/100 km<br>Marge opérationnelle 10–15 % intégrée</div>
       </div>
-      <div class="gard-card">
-        <div class="gc-n">02</div>
-        <div class="gc-title">Risque croissant sans solution économique actuelle</div>
-        <div class="gc-val">+80 % d'ici 2050</div>
-        <div class="gc-desc">Augmentation des surfaces brûlées en région méditerranéenne selon le Sénat 2022 · forêt non rentable = non gérée = accumulation de combustible · obligations légales de débroussaillement insuffisamment respectées</div>
+      <div class="grid3-cell">
+        <div class="cell-tag" style="color:var(--vert-vif)">Phase 2 — Rex croisière</div>
+        <div class="cell-val">~950 km</div>
+        <div class="cell-sub">Bio-LCH4 Rex 400 kWe · 32 kg/100 km<br>Conforme Volvo FH / Scania Super GNL</div>
       </div>
-      <div class="gard-card">
-        <div class="gc-n">03</div>
-        <div class="gc-title">Géographie unique — mix à 4 sources impossible ailleurs</div>
-        <div class="gc-val">4 sources dans 40 km</div>
-        <div class="gc-desc">Garrigues à chênes (biomasse DFCI) + 55 000 ha de vignobles (sarments non valorisés) + agriculture de plaine camarguaise (résidus riz et maïs) + agglomérations (déchets verts Nîmes, Alès, Beaucaire). Ce cumul est unique en France méditerranéenne.</div>
+      <div class="grid3-cell">
+        <div class="cell-tag" style="color:var(--ambre)">Phase 3 — Réserve batterie</div>
+        <div class="cell-val">100–150 km</div>
+        <div class="cell-sub">Rex surplus → batterie<br>Énergie récupérée en descente</div>
       </div>
     </div>
-
-    <div class="kpi-grid reveal">
-      <div class="kpi-card">
-        <div class="kpi-val">140 000</div>
-        <div class="kpi-unit">hectares</div>
-        <div class="kpi-lbl">Taillis de chênes verts et pubescents mobilisables</div>
-      </div>
-      <div class="kpi-card">
-        <div class="kpi-val">15–25</div>
-        <div class="kpi-unit">t MS / ha</div>
-        <div class="kpi-lbl">Biomasse disponible par hectare sur cycle de 10 ans</div>
-      </div>
-      <div class="kpi-card">
-        <div class="kpi-val">278 000–362 000</div>
-        <div class="kpi-unit">t / an</div>
-        <div class="kpi-lbl">Gisement total estimé mix 4 sources — 84 à 110 % du besoin</div>
-      </div>
-      <div class="kpi-card">
-        <div class="kpi-val">63 000–87 000</div>
-        <div class="kpi-unit">hectares</div>
-        <div class="kpi-lbl">Sous gestion forestière active annuelle avec un site</div>
-      </div>
-      <div class="kpi-card">
-        <div class="kpi-val">2–3 ans</div>
-        <div class="kpi-unit">fréquence</div>
-        <div class="kpi-lbl">Entretien des coupures DFCI prioritaires (vs 8–10 ans actuellement)</div>
-      </div>
-      <div class="kpi-card">
-        <div class="kpi-val">3–5×</div>
-        <div class="kpi-unit">réduction</div>
-        <div class="kpi-lbl">D'intensité de feu par réduction de la charge combustible de >20 à &lt;8 t MS/ha</div>
-      </div>
+    <div class="cell-total reveal">
+      <div class="cell-tag" style="color:var(--vert-vif)">Autonomie totale</div>
+      <div class="cell-val" style="font-size:2.4rem;color:var(--vert-vif)">1 150–1 300 km</div>
+      <div class="cell-sub" style="margin-top:.3rem">Objectif 1 000–1 200 km atteint avec marges · Cohérent données constructeurs Volvo FH / Scania Super</div>
     </div>
   </div>
 </section>
 
-<!-- §3 — RENVERSEMENT ÉCONOMIQUE -->
-<section id="renversement">
+<!-- PRIX -->
+<section style="background:var(--foret)">
   <div class="container">
-    <div class="stag reveal">Le renversement économique</div>
-    <h2 class="reveal">De la dépense contrainte<br>au <em>revenu valorisé</em></h2>
-    <p class="lead reveal">Le changement fondamental apporté par un site Zone C n'est pas technique — il est économique. Par hectare de taillis traité, la structure des flux s'inverse complètement.</p>
-
-    <div class="renversement reveal">
-      <div class="ren-head">
-        <div class="ren-head-cell rouge">Sans site Résilience — modèle actuel</div>
-        <div class="ren-head-cell vert">Avec site Résilience Zone C</div>
+    <div class="stag reveal">Économie d'exploitation</div>
+    <h2 class="reveal">Trois scénarios d'approvisionnement — <em>une variable décisive</em></h2>
+    <div class="grid3 reveal">
+      <div class="grid3-cell" style="border-top:2px solid var(--vert-vif)">
+        <div class="cell-tag" style="color:var(--vert-vif)">Auto-produit</div>
+        <div class="cell-val" style="color:var(--vert-vif)">11–16 €/100 km</div>
+        <div class="cell-sub">0,35–0,50 €/kg · Coopérative de transporteurs avec méthaniseur mutualisé · Modèle agri-transport Programme Résilience</div>
       </div>
-      <div class="ren-row">
-        <div class="ren-cell"><strong>Coût travaux</strong> (débroussaillage + éclaircie)<br><span class="cell-r">600–1 200 €/ha — charge du propriétaire ou de la collectivité</span></div>
-        <div class="ren-cell"><strong>Coût travaux</strong> — identique<br>600–1 200 €/ha — <em>inchangé</em></div>
+      <div class="grid3-cell" style="border-top:2px solid var(--ambre)">
+        <div class="cell-tag" style="color:var(--ambre)">Coopératif régional</div>
+        <div class="cell-val" style="color:var(--ambre)">19–27 €/100 km</div>
+        <div class="cell-sub">0,60–0,85 €/kg · Dépôts régionaux biométhane mutualisés</div>
       </div>
-      <div class="ren-row">
-        <div class="ren-cell"><strong>Valeur de la biomasse produite</strong><br><span class="cell-r">0 — abandonnée sur place ou brûlée en andains</span></div>
-        <div class="ren-cell"><strong>Valeur de la biomasse</strong> (15–25 t MS/ha × 30 €/t)<br><span class="cell-g">+450 à +750 €/ha → revenu pour le propriétaire</span></div>
+      <div class="grid3-cell" style="border-top:2px solid rgba(192,57,43,.6)">
+        <div class="cell-tag" style="color:#e07070">Marché — station publique</div>
+        <div class="cell-val" style="color:#e07070">32–45 €/100 km</div>
+        <div class="cell-sub">1,00–1,40 €/kg · Stations GNL publiques · Avantage fiscal bio certifié RED III</div>
       </div>
-      <div class="ren-row">
-        <div class="ren-cell"><strong>Subvention DFCI</strong> applicable (zones prioritaires PDPFCI)<br>60–80 % → coût résiduel 120–480 €/ha</div>
-        <div class="ren-cell"><strong>Subvention DFCI</strong> maintenue<br>60–80 % maintenus → coût résiduel 120–480 €/ha <em>mais</em> revenu biomasse compense</div>
-      </div>
-      <div class="ren-row">
-        <div class="ren-cell"><strong>Bilan net propriétaire / opérateur DFCI</strong><br><span class="cell-r" style="font-size:.9rem;font-weight:500">−120 à −480 €/ha (coût net même après subvention)</span></div>
-        <div class="ren-cell"><strong>Bilan net propriétaire / opérateur DFCI</strong><br><span class="cell-g" style="font-size:.9rem;font-weight:500">0 à +630 €/ha selon prix biomasse et subvention DFCI</span></div>
-      </div>
-      <div class="ren-row">
-        <div class="ren-cell"><strong>Incitation du propriétaire</strong><br><span class="cell-r">Faible — OLD non respectées par 40–60 % des propriétaires</span></div>
-        <div class="ren-cell"><strong>Incitation du propriétaire</strong><br><span class="cell-g">Forte — la biomasse valorisée finance partiellement ou totalement le travail</span></div>
-      </div>
-      <div class="ren-note">Lecture : le site ne réduit pas le coût du débroussaillage — il crée un revenu compensateur qui rend l'acte économiquement rationnel sans attendre la contrainte légale.</div>
     </div>
-
-    <div class="box box-feu reveal">
-      <strong>Le principe :</strong> l'État payait pour que quelqu'un enlève de la biomasse combustible. Le site Résilience paie le propriétaire pour qu'il lui apporte cette biomasse. La coupure de combustible DFCI devient un gisement rémunéré. Ce renversement ne nécessite pas de budget public supplémentaire — il réoriente une ressource déjà présente dans le circuit DFCI.
+    <div class="encadre reveal">
+      <p><strong>Référence diesel : 43 €/100 km</strong> (1,35 €/L hors TVA récup.). L'avantage Camion Résilience est certain en scénario auto-produit ou coopératif (11–27 €/100 km vs 43 €). En scénario marché, l'avantage s'atténue mais reste positif avec la détaxe partielle RED III. Le véhicule est le plus intéressant couplé à une filière biméthane intégrée — c'est la même logique que pour le tracteur ÉREV.</p>
     </div>
   </div>
 </section>
 
-<!-- §4 — 5 FLUX DE VALEUR -->
-<section class="alt">
+<!-- COMPARATIF & TCO -->
+<section style="background:var(--noir)">
   <div class="container">
-    <div class="stag-vert reveal">Le multi-capitalisme Zone C</div>
-    <h2 class="reveal">Cinq flux de valeur simultanés —<br><em>aucune autre filière ne les aligne</em></h2>
-    <p class="lead reveal">Une chaufferie bois classique produit de la chaleur — un seul flux, et restitution immédiate du CO₂ dans l'atmosphère. La pyrogazéification Zone C organise la même biomasse en cinq flux distincts.</p>
+    <div class="stag reveal">Comparatif & TCO 15 ans / 800 000 km</div>
+    <h2 class="reveal">+36 000 à +73 000 € économisés vs diesel</h2>
+    <div style="overflow-x:auto" class="reveal">
+      <table class="tbl">
+        <thead><tr><th>Poste</th><th>Diesel 44t</th><th>BEV 44t</th><th>PHEV 44t</th><th>Camion Résilience</th></tr></thead>
+        <tbody>
+          <tr><td>Prix achat</td><td>120 000 €</td><td>280 000 €</td><td>200 000 €</td><td class="td-a">~155–175 000 € <span class="warn">(cible volume)</span></td></tr>
+          <tr><td>Carburant / énergie 15 ans</td><td>156 000 €</td><td>72 000 €</td><td>110 000 €</td><td class="td-g">35–72 000 €</td></tr>
+          <tr><td>Maintenance 15 ans</td><td>63 000 €</td><td>42 000 €</td><td>82 000 €</td><td class="td-g">42 000 € <span style="color:var(--gris);font-size:.75rem">(Rex fixe, pas boîte, pas FAP)</span></td></tr>
+          <tr><td>Remplacement batterie</td><td>0 €</td><td>80 000 €</td><td>35 000 €</td><td>28 000 € <span style="color:var(--gris);font-size:.75rem">(LFP 3 000 cycles)</span></td></tr>
+          <tr><td>Valeur résiduelle</td><td>−8 000 €</td><td>−15 000 €</td><td>−10 000 €</td><td class="td-g">−22 000 € <span style="color:var(--gris);font-size:.75rem">(Rex faible usure)</span></td></tr>
+        </tbody>
+        <tfoot>
+          <tr><td>Coût total net</td><td>331 000 €</td><td>459 000 €</td><td>417 000 €</td><td class="td-g">258–295 000 €</td></tr>
+          <tr><td>Économie vs diesel</td><td>—</td><td class="td-r">−128 000 €</td><td class="td-r">−86 000 €</td><td class="td-g">+36 à +73 000 €</td></tr>
+        </tfoot>
+      </table>
+    </div>
 
-    <div class="flux-grid reveal">
-      <div class="flux-card">
-        <div class="flux-n">①</div>
-        <div class="flux-body">
-          <div class="flux-title">Biométhane → carburant ÉREV et Bio-GNV</div>
-          <div class="flux-desc">Le biométhane produit ne sert pas à chauffer des maisons — la PAC fait mieux pour cet usage. Il décarbone les transports lourds non électrifiables à court terme (poids lourds, autocars, véhicules à prolongateur d'autonomie ÉREV). Injection réseau GRDF Nîmes-Alès.</div>
-        </div>
-        <div class="flux-benef">
-          <div class="flux-benef-tag">Bénéficiaires Gard</div>
-          <p>Transporteurs gardois et languedociens · Stations Bio-GNV · Réseau GRDF · Mobilité décarbonée longue distance</p>
-        </div>
+    <div class="stag reveal" style="margin-top:3rem">Tableau de synthèse décideurs</div>
+    <div style="overflow-x:auto" class="reveal">
+      <table class="tbl">
+        <thead><tr><th>Solution</th><th>Autonomie</th><th>Remplissage</th><th>Charge utile</th><th>CO₂ usage</th><th>Robustesse</th></tr></thead>
+        <tbody>
+          <tr><td>Diesel 44t</td><td>&gt;1 200 km</td><td>3–5 min</td><td>~26 t</td><td class="td-r">~700 g/km</td><td>7/10</td></tr>
+          <tr><td>BEV 44t</td><td>~300–500 km</td><td>45–90 min</td><td class="td-r">~23 t (−3 t)</td><td class="td-g">0 g/km local</td><td>6,5/10</td></tr>
+          <tr><td>Hydrogène 44t</td><td>~600–800 km</td><td>5–10 min</td><td>~25 t</td><td class="td-g">0 g/km</td><td>5/10 · Infra absente</td></tr>
+          <tr class="hl"><td>Camion Résilience</td><td class="td-g">1 150–1 300 km</td><td>5–10 min (LCH4)</td><td class="td-g">~25 t</td><td class="td-g">0 g/km · Négatif avec biochar</td><td class="td-g">8/10</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note reveal">Le Camion Résilience n'est pas la solution la plus simple (diesel) ni la plus ambitieuse (hydrogène). C'est la solution au <strong>meilleur rapport autonomie / remplissage / charge utile / décarbonation</strong>. Une coopérative de transporteurs avec méthaniseur partagé peut démarrer indépendamment de toute infrastructure nationale.</div>
+  </div>
+</section>
+
+<!-- GESTION BOG -->
+<section style="background:var(--foret)">
+  <div class="container">
+    <div class="stag reveal">Gestion du boil-off (BOG)</div>
+    <h2 class="reveal">LCH4 à −162°C — <em>zéro émission parasite</em></h2>
+    <div class="grid3 reveal">
+      <div class="grid3-cell">
+        <div class="cell-tag" style="color:var(--vert-vif)">En route (Rex en marche)</div>
+        <div style="font-size:.9rem;font-weight:500;color:var(--blanc);margin:.3rem 0">BOG vers Rex automatiquement</div>
+        <div class="cell-sub">0 € · Phase vapeur consommée en priorité · Standard Volvo FH LNG · Zéro perte</div>
       </div>
-      <div class="flux-card">
-        <div class="flux-n" style="background:var(--feu-mid)">②</div>
-        <div class="flux-body">
-          <div class="flux-title">Biochar certifié EBC → séquestration + crédits CRCF</div>
-          <div class="flux-desc">Contrairement à la combustion directe, la pyrogazéification produit du biochar stable pendant des siècles (H/C &lt; 0,4). Crédits carbone certifiés CRCF (EU-ETS ~70 €/t). Ce carbone ne retourne pas dans l'atmosphère.</div>
-        </div>
-        <div class="flux-benef">
-          <div class="flux-benef-tag">Bénéficiaires Gard</div>
-          <p>Vignerons et agriculteurs · Propriétaires forestiers · Crédits EU-ETS · Bilan carbone territorial du Gard</p>
-        </div>
+      <div class="grid3-cell">
+        <div class="cell-tag" style="color:var(--ambre)">Arrêts courts (nuit, week-end)</div>
+        <div style="font-size:.9rem;font-weight:500;color:var(--blanc);margin:.3rem 0">Micro-brûleur catalytique sans flamme</div>
+        <div class="cell-sub">200–400 € · CH₄ brûlé en CO₂ + H₂O · Zéro émission méthane · Aucune pièce mobile</div>
       </div>
-      <div class="flux-card">
-        <div class="flux-n">③</div>
-        <div class="flux-body">
-          <div class="flux-title">Biochar épandu → régénération des sols gardois</div>
-          <div class="flux-desc">Dans les sols de garrigue calcaire naturellement pauvres et secs, le biochar améliore la rétention d'eau (+15–30 %), réduit le stress hydrique des cultures (vignes, oliviers) et recrée de la vie microbienne — rendant la végétation plus résiliente à la sécheresse.</div>
-        </div>
-        <div class="flux-benef">
-          <div class="flux-benef-tag">Bénéficiaires Gard</div>
-          <p>Viticulture gardoise (55 000 ha AOC Costières) · Maraîchage Petite Camargue · Agrosylviculture cévenole</p>
-        </div>
-      </div>
-      <div class="flux-card">
-        <div class="flux-n" style="background:#2980b9">④</div>
-        <div class="flux-body">
-          <div class="flux-title">CO₂ biogénique capté → ressource industrielle propre</div>
-          <div class="flux-desc">Le CO₂ pur issu de l'épuration du syngas est une ressource propre — contrairement au CO₂ fossile. Il peut alimenter des serres agricoles, contribuer à la minéralisation de matériaux de construction ou servir de base à des e-carburants. Il ne retourne pas dans l'atmosphère.</div>
-        </div>
-        <div class="flux-benef">
-          <div class="flux-benef-tag">Bénéficiaires Gard</div>
-          <p>Industrie agroalimentaire gardoise · Serres maraîchères · Filière construction décarbonée</p>
-        </div>
-      </div>
-      <div class="flux-card">
-        <div class="flux-n" style="background:#843C0C">⑤</div>
-        <div class="flux-body">
-          <div class="flux-title">Collecte DFCI → bouclier incendie + forêt résiliente</div>
-          <div class="flux-desc">La boucle fermée spécifique à la Zone C : on nettoie la forêt pour nourrir le site, on réduit la charge combustible de &gt;20 à &lt;8 t MS/ha (intensité de feu réduite 3–5×), et le biochar épandu rend la végétation structurellement plus résistante à la sécheresse future.</div>
-        </div>
-        <div class="flux-benef">
-          <div class="flux-benef-tag">Bénéficiaires Gard</div>
-          <p>SDIS 30 · Propriétaires forestiers · Collectivités · Tourisme gardois (10 M nuitées/an) · Assureurs</p>
-        </div>
+      <div class="grid3-cell">
+        <div class="cell-tag" style="color:var(--acier-clair)">Arrêts longs (&gt;5 jours)</div>
+        <div style="font-size:.9rem;font-weight:500;color:var(--blanc);margin:.3rem 0">Vidange vers cuve dépôt LCH4</div>
+        <div class="cell-sub">0 € (procédure opérationnelle) · Standard LNG poids lourd · Cuve dépôt mutualisable</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- §5 — COÛTS ÉVITÉS -->
-<section>
+<!-- NAVIGATION -->
+<section style="background:var(--noir);padding:3.5rem 3rem">
   <div class="container">
-    <div class="stag reveal">L'argument pour les collectivités</div>
-    <h2 class="reveal">Les coûts publics <em>évités</em> —<br>ce que coûte <strong>l'inaction</strong></h2>
-    <p class="lead reveal">La rentabilité directe du site est l'argument pour les investisseurs. Les coûts évités sont l'argument pour le Conseil Départemental, le préfet et le SDIS.</p>
-
-    <table class="cout-table reveal">
-      <thead>
-        <tr>
-          <th>Poste de coût incendie</th>
-          <th>Ordre de grandeur</th>
-          <th>Référence</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Intervention SDIS sur un grand feu (plusieurs jours)</td>
-          <td class="td-val">0,5–1 M€/jour</td>
-          <td>FranceInfo 2025 · référence Narbonne — 270 véhicules engagés</td>
-        </tr>
-        <tr>
-          <td>Heure de vol canadair (Sécurité Civile)</td>
-          <td class="td-val">~16 000 €/h</td>
-          <td>Rapport Sénat 2022 · maintenance annuelle flotte : 34 M€</td>
-        </tr>
-        <tr>
-          <td>Reconstitution forestière après incendie</td>
-          <td class="td-val">2 000–4 000 €/ha</td>
-          <td>DGPE via Sénat 2022 · plants + travaux entretien · Gironde 2022 : ~50 M€ publics</td>
-        </tr>
-        <tr>
-          <td>Coût SDIS Gironde — saison 2022 (28 000 ha)</td>
-          <td class="td-val">10,8 M€</td>
-          <td>SDIS 33 — estimation officielle · hors État préfecture (+4,5 M€)</td>
-        </tr>
-        <tr>
-          <td>Indemnisations assureurs — Gascogne 2022</td>
-          <td class="td-val">4,5 Md€</td>
-          <td>FranceInfo 2025 · biens immobiliers + actifs forestiers + pertes d'exploitation</td>
-        </tr>
-        <tr>
-          <td>Budget national DFCI annuel (État + collectivités + SDIS)</td>
-          <td class="td-val">~537 M€/an</td>
-          <td>Rapport Sénat 2019 · dont 172 M€ prévention seule</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div class="box box-feu reveal">
-      <strong>L'ordre de grandeur pour le Gard :</strong> un grand feu gardois (2 000–4 000 ha, type feu de Portes 1985) représente un coût public estimé à 15–40 M€ (SDIS 15–20 jours, aérien, reconstitution). Le soutien DFCI annuel au site (subventions 60–80 % sur les travaux de débroussaillage) représente ~2–5 M€/an. <strong>Si le site permet d'éviter un seul grand feu sur 20 ans, l'investissement public DFCI est rentabilisé dès la première décennie</strong> — à valider avec le SDIS du Gard dans le cadre de l'étude Phase 0.
-    </div>
-
-    <div class="box box-bleu reveal">
-      <strong>Hypothèse de travail — non garantie :</strong> l'impact sur les surfaces brûlées dépend de facteurs non maîtrisables (conditions météo extrêmes, direction du vent). La réduction d'intensité du feu (3–5×) par abaissement de la charge combustible est fondée sur le différentiel documenté dans la littérature (équations de Byram). La modélisation de l'impact sur les surfaces brûlées dans le Gard est un livrable de l'étude Phase 0, à conduire avec le SDIS 30 et l'INRAE.
-    </div>
-  </div>
-</section>
-
-<!-- §6 — DOCUMENT PDF + RENVOIS -->
-<section class="alt">
-  <div class="container">
-    <div class="stag-vert reveal">Documentation et étapes suivantes</div>
-    <h2 class="reveal">Démonstrateur complet<br>et <em>gouvernance proposée</em></h2>
-    <p class="lead reveal">Le document de pré-faisabilité complet sur le Gard est disponible pour transmission aux services DFCI, DDTM et DRAAF. Il détaille le gisement, l'analyse économique, les coûts évités et la gouvernance proposée pour l'étude Phase 0.</p>
-
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0" class="reveal">
-      <a href="Demonstrateur_Zone_C_Gard_Pyrogazeification_DFCI_V2.pdf" target="_blank" download
-         style="display:block;padding:1.8rem;border:1px solid rgba(132,60,12,.3);background:rgba(132,60,12,.06);text-decoration:none;transition:border-color .3s"
-         onmouseover="this.style.borderColor='#C45A1A'" onmouseout="this.style.borderColor='rgba(132,60,12,.3)'">
-        <div style="font-size:.65rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--feu-mid);margin-bottom:.6rem">PDF · Démonstrateur complet · V2</div>
-        <div style="font-family:var(--serif);font-size:1.05rem;color:var(--blanc);margin-bottom:.4rem">Gard (30) — Site Zone C à double mission · DFCI + Biométhane</div>
-        <div style="font-size:.8rem;color:rgba(240,244,241,.55);line-height:1.55">Gisement · Mix 4 sources · Renversement DFCI · 5 flux de valeur · Coûts évités · Gouvernance Phase 0 · 13 tableaux · À transmettre DDTM/DRAAF/SDIS</div>
-        <div style="margin-top:.8rem;font-size:.75rem;color:var(--feu-mid)">Juin 2026 · V2 · Document de pré-faisabilité</div>
-      </a>
-      <a href="Positionnement_150_Sites_Pyrogazeification_V1.pdf" target="_blank" download
-         style="display:block;padding:1.8rem;border:1px solid rgba(82,183,136,.15);background:rgba(29,58,40,.15);text-decoration:none;transition:border-color .3s"
-         onmouseover="this.style.borderColor='#52b788'" onmouseout="this.style.borderColor='rgba(82,183,136,.15)'">
-        <div style="font-size:.65rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--vert-vif);margin-bottom:.6rem">PDF · Analyse territoriale nationale</div>
-        <div style="font-family:var(--serif);font-size:1.05rem;color:var(--blanc);margin-bottom:.4rem">Positionnement des 150 sites — Zones A, B, C, D</div>
-        <div style="font-size:.8rem;color:rgba(240,244,241,.55);line-height:1.55">Critères de sélection · Répartition nationale · Calendrier déploiement · Zone C dans le contexte national des 150 sites</div>
-        <div style="margin-top:.8rem;font-size:.75rem;color:var(--vert-vif)">Juin 2026 · V1 · Note de positionnement stratégique</div>
-      </a>
-    </div>
-
-    <div class="renvoi-grid reveal">
-      <a href="pyrogazeification-resilience.html" class="renvoi-card">
-        <div class="rc-tag">Hub technique</div>
-        <div class="rc-title">Pyrogazéification — la filière</div>
-        <div class="rc-desc">L'architecture complète : économie, verrou goudrons, acteurs Phase 0→1, biochar certifié, tous les documents.</div>
-      </a>
-      <a href="sequestration.html" class="renvoi-card">
-        <div class="rc-tag">Séquestration</div>
-        <div class="rc-title">Forêt libre vs biochar</div>
-        <div class="rc-desc">Pourquoi gérer la forêt et produire du biochar séquestre plus de carbone que la laisser se décomposer.</div>
-      </a>
-      <a href="carbone-resilience.html" class="renvoi-card">
-        <div class="rc-tag">Cycle carbone</div>
-        <div class="rc-title">Les 5 flux biogéniques</div>
-        <div class="rc-desc">Widget interactif : C₁ biométhane · C₂ CO₂ · C₃ digestat · C₄ biochar · C₅ pertes. ICB ≥ 0,85.</div>
-      </a>
-      <a href="index.html" class="renvoi-card">
-        <div class="rc-tag">Vue d'ensemble</div>
-        <div class="rc-title">Programme Résilience V11</div>
-        <div class="rc-desc">L'architecture complète : électricité + gaz + biochar + ÉREV + aviation. Le système dans sa globalité.</div>
-      </a>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap" class="reveal">
+      <a href="voiture-erev.html" class="btn btn-outline">← Voiture ÉREV</a>
+      <a href="tracteur-erev.html" class="btn btn-outline">Tracteur ÉREV →</a>
+      <a href="aviation-bio-gnl.html" class="btn btn-outline">Aviation bio-GNL →</a>
+      <a href="pyrogazeification-resilience.html" class="btn btn-outline">Pyrogazéification →</a>
+      <a href="index.html" class="btn btn-outline">⌂ Accueil</a>
     </div>
   </div>
 </section>
 
 <footer>
-  <div class="footer-logo">Programme Résilience V11 · Zone C Incendie</div>
-  <p>Pyrogazéification et prévention DFCI · Démonstrateur Gard · Juin 2026</p>
-  <p style="font-size:.7rem;color:#5a3a2a;margin-top:.4rem">Document de pré-faisabilité — Estimations à valider en co-pilotage DDTM/DRAAF/SDIS — Diffusion restreinte aux services concernés</p>
+  <div class="footer-logo">Programme Résilience V11</div>
+  <p>Camion Résilience 44t · ÉREV Rex unique Bio-LCH4 · Mai 2026 · Diffusion libre</p>
+  <p style="margin-top:.4rem">Sources : Volvo FH LNG · Scania Super LNG · Cummins ISX15N · Directive RED III · ADEME · IRU 2024</p>
 </footer>
-
 <script>
-const obs=new IntersectionObserver(entries=>{
-  entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*65);obs.unobserve(e.target);}});
-},{threshold:0.06});
+const obs=new IntersectionObserver((e)=>{e.forEach((el,i)=>{if(el.isIntersecting){setTimeout(()=>el.target.classList.add('visible'),i*65);obs.unobserve(el.target)}})},{threshold:0.07});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 </script>
 </body>
