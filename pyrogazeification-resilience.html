@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pyrogazéification · Infrastructure centrale · Programme Résilience V11</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --noir:#0a0f0d;--foret:#0d1f17;--vert-med:#2d6a4f;--vert-vif:#52b788;
+  --vert-clair:#95d5b2;--ambre:#e9c46a;--rouge:#c0392b;--bleu:#2980b9;
+  --blanc:#f0f4f1;--gris:#8a9e93;--ardoise:#4a5c6a;--or:#b8962e;
+  --or-clair:#f0d580;--or-bg:rgba(184,150,46,.06);
+  --serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--noir);color:var(--blanc);font-family:var(--sans);font-weight:300;line-height:1.7;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:.9rem 2.5rem;background:rgba(10,15,13,.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(82,183,136,.12)}
+.nav-logo{font-family:var(--serif);font-size:1.15rem;font-weight:600;color:var(--vert-vif);text-decoration:none}
+.nav-back{color:var(--gris);text-decoration:none;font-size:.72rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;transition:color .3s}
+.nav-back:hover{color:var(--vert-vif)}
+.nav-tag{font-size:.65rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--ambre);background:rgba(233,196,106,.12);border:1px solid rgba(233,196,106,.25);padding:.2rem .7rem}
+
+/* HERO */
+#hero{min-height:60vh;display:flex;align-items:center;padding:8rem 3rem 4rem;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:
+  radial-gradient(ellipse 70% 60% at 20% 50%,rgba(45,106,79,.18) 0%,rgba(13,31,23,.15) 55%,transparent 80%),
+  radial-gradient(ellipse 40% 40% at 80% 30%,rgba(82,183,136,.06) 0%,transparent 60%),
+  linear-gradient(135deg,#0a0f0d 0%,#0a1a10 60%,#080e0a 100%)}
+.hero-grid{position:absolute;inset:0;opacity:.025;background-image:linear-gradient(var(--vert-vif) 1px,transparent 1px),linear-gradient(90deg,var(--vert-vif) 1px,transparent 1px);background-size:50px 50px}
+.hero-flame{position:absolute;right:8%;top:50%;transform:translateY(-50%);font-size:8rem;opacity:.06;pointer-events:none;user-select:none}
+.hero-content{position:relative;z-index:1;max-width:860px}
+.hero-tag{display:inline-block;border:1px solid var(--vert-vif);color:var(--vert-clair);font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;padding:.3rem .85rem;margin-bottom:1.4rem}
+h1{font-family:var(--serif);font-size:clamp(2rem,4.5vw,3.8rem);font-weight:300;line-height:1.1;margin-bottom:1.1rem}
+h1 em{font-style:italic;color:var(--vert-vif)}
+h1 strong{font-weight:600;color:var(--vert-clair)}
+.hero-sub{font-size:.95rem;color:rgba(240,244,241,.62);max-width:700px;line-height:1.9;margin-bottom:1.8rem}
+.hero-verdict{display:inline-block;background:rgba(82,183,136,.08);border:1px solid rgba(82,183,136,.3);border-left:4px solid var(--vert-vif);padding:.9rem 1.4rem;font-size:.88rem;color:rgba(240,244,241,.82);line-height:1.7;max-width:680px}
+.hero-verdict strong{color:var(--vert-vif)}
+
+/* BANDEAU AVERT */
+.avert{background:rgba(184,150,46,.07);border:1px solid rgba(184,150,46,.2);border-left:5px solid var(--or);padding:1.2rem 2rem}
+.avert p{font-size:.85rem;color:rgba(240,244,241,.72);line-height:1.75}
+.avert strong{color:var(--or-clair)}
+
+/* SECTIONS */
+section{padding:4.5rem 3rem}
+.container{max-width:1100px;margin:0 auto}
+.alt{background:var(--foret)}
+.stag{font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--vert-vif);margin-bottom:.6rem}
+.stag-rouge{font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#e57368;margin-bottom:.6rem}
+h2{font-family:var(--serif);font-size:clamp(1.6rem,2.8vw,2.4rem);font-weight:300;line-height:1.15;margin-bottom:.9rem}
+h2 em{font-style:italic;color:var(--vert-vif)}
+h2 strong{font-weight:600;color:var(--or-clair)}
+h3{font-family:var(--serif);font-size:1.1rem;font-weight:400;color:var(--vert-clair);margin:1.4rem 0 .5rem}
+.lead{font-size:.93rem;color:rgba(240,244,241,.65);max-width:760px;line-height:1.9;margin-bottom:1.4rem}
+p.body{font-size:.88rem;color:rgba(240,244,241,.62);line-height:1.88;margin-bottom:.9rem;max-width:860px}
+
+/* ENCADRÉS */
+.box{padding:1.2rem 1.7rem;margin:1.6rem 0;font-size:.87rem;line-height:1.78;border-left:4px solid}
+.box-vert{background:rgba(29,58,40,.3);border-color:var(--vert-vif);color:rgba(240,244,241,.8)}
+.box-vert strong{color:var(--vert-vif)}
+.box-or{background:var(--or-bg);border-color:var(--or);color:rgba(240,244,241,.8)}
+.box-or strong{color:var(--or-clair)}
+.box-rouge{background:rgba(192,57,43,.07);border-color:#e57368;color:rgba(240,244,241,.8)}
+.box-rouge strong{color:#e57368}
+.box-bleu{background:rgba(41,128,185,.07);border-color:var(--bleu);color:rgba(240,244,241,.78)}
+.box-bleu strong{color:#74b9e8}
+
+/* TABLEAUX */
+.tbl-wrap{overflow-x:auto;margin:1.6rem 0}
+table{width:100%;border-collapse:collapse;font-size:.82rem}
+thead tr{background:rgba(26,58,40,.85)}
+thead th{padding:.75rem 1rem;text-align:left;font-weight:500;letter-spacing:.06em;font-size:.72rem;text-transform:uppercase;border-bottom:2px solid var(--vert-med)}
+th.th-vert{color:var(--vert-vif)}
+th.th-rouge{color:#e57368}
+th.th-or{color:var(--or-clair)}
+tbody tr{border-bottom:1px solid rgba(82,183,136,.07)}
+tbody tr:hover{background:rgba(13,31,23,.5)}
+tbody td{padding:.7rem 1rem;color:rgba(240,244,241,.7);vertical-align:top;line-height:1.5}
+tbody td:first-child{color:var(--blanc)}
+.td-g{color:var(--vert-vif)!important;font-weight:500}
+.td-r{color:#e57368!important;font-weight:500}
+.td-or{color:var(--or-clair)!important;font-weight:500}
+.td-gris{color:var(--gris)!important}
+.tr-total td{background:rgba(29,58,40,.45)!important;font-weight:600}
+.tr-warning td{background:rgba(184,150,46,.06)!important}
+
+/* FONCTIONS — 4 CARTES */
+.fonctions-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.2rem;margin:2rem 0}
+.fct-card{padding:1.8rem 1.6rem;border:1px solid rgba(82,183,136,.15);background:rgba(13,31,23,.4);position:relative;transition:border-color .3s,background .3s}
+.fct-card:hover{border-color:var(--vert-vif);background:rgba(29,58,40,.35)}
+.fct-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--vert-med),var(--vert-vif))}
+.fct-num{font-family:var(--serif);font-size:3.2rem;font-weight:600;line-height:1;color:rgba(82,183,136,.12);position:absolute;top:.5rem;right:1rem}
+.fct-icon{font-size:1.8rem;margin-bottom:.8rem}
+.fct-card h3{margin:.4rem 0 .5rem;font-size:1rem;color:var(--blanc);font-family:var(--sans);font-weight:500}
+.fct-card p{font-size:.82rem;color:rgba(240,244,241,.55);line-height:1.65}
+.fct-sans{font-size:.76rem;color:#e57368;margin-top:.8rem;padding:.4rem .7rem;background:rgba(192,57,43,.08);border:1px solid rgba(192,57,43,.2);line-height:1.5}
+.fct-sans::before{content:'✗ Sans elle : ';font-weight:600}
+
+/* ACTEURS */
+.acteurs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem;margin:1.8rem 0}
+.acteur-card{padding:1.6rem;border:1px solid rgba(82,183,136,.12);background:rgba(10,15,13,.5)}
+.acteur-tag{font-size:.62rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;margin-bottom:.5rem}
+.acteur-tag.phase0{color:var(--vert-vif)}
+.acteur-tag.phase1{color:var(--or-clair)}
+.acteur-tag.phase-verrou{color:#e57368}
+.acteur-card h3{font-family:var(--sans);font-size:.96rem;font-weight:500;color:var(--blanc);margin:.2rem 0 .5rem}
+.acteur-card p{font-size:.81rem;color:rgba(240,244,241,.52);line-height:1.6}
+.acteur-capa{font-size:.75rem;color:var(--ambre);margin-top:.6rem;font-weight:500}
+
+/* DOCS TÉLÉCHARGEABLES */
+.docs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin:2rem 0}
+.doc-card{padding:1.4rem 1.6rem;border:1px solid rgba(82,183,136,.18);background:rgba(13,31,23,.35);text-decoration:none;display:block;transition:border-color .3s,background .3s;position:relative}
+.doc-card:hover{border-color:var(--vert-vif);background:rgba(29,58,40,.3)}
+.doc-card::after{content:'↓';position:absolute;top:1rem;right:1.2rem;color:var(--vert-vif);font-size:1.1rem;opacity:.6}
+.doc-type{font-size:.61rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;margin-bottom:.4rem}
+.doc-type.pdf{color:var(--rouge)}
+.doc-type.web{color:var(--vert-vif)}
+.doc-title{font-family:var(--serif);font-size:1.05rem;color:var(--blanc);margin-bottom:.35rem;line-height:1.3}
+.doc-desc{font-size:.79rem;color:rgba(240,244,241,.48);line-height:1.55}
+.doc-pages{font-size:.71rem;color:var(--gris);margin-top:.5rem}
+
+/* RENVOIS */
+.renvoi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin:2rem 0}
+.renvoi-card{padding:1.2rem 1.4rem;border:1px solid rgba(82,183,136,.13);background:rgba(10,15,13,.5);text-decoration:none;transition:border-color .3s,background .3s;display:block}
+.renvoi-card:hover{border-color:var(--vert-vif);background:rgba(29,58,40,.22)}
+.rc-tag{font-size:.61rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--vert-vif);margin-bottom:.4rem}
+.rc-title{font-family:var(--serif);font-size:.98rem;color:var(--blanc);margin-bottom:.28rem}
+.rc-desc{font-size:.77rem;color:rgba(240,244,241,.48);line-height:1.5}
+
+/* VERDICT FINAL */
+.verdict{background:rgba(29,58,40,.4);border:1px solid rgba(82,183,136,.3);padding:2.5rem;margin:2rem 0;text-align:center}
+.verdict-phrase{font-family:var(--serif);font-size:clamp(1.3rem,2.5vw,1.9rem);font-weight:300;line-height:1.35;color:var(--blanc);margin-bottom:.8rem}
+.verdict-phrase em{color:var(--vert-vif);font-style:italic}
+.verdict-sub{font-size:.86rem;color:rgba(240,244,241,.55);max-width:680px;margin:0 auto}
+
+.btn{display:inline-block;padding:.75rem 1.8rem;font-family:var(--sans);font-size:.76rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:all .3s}
+.btn-vert{background:var(--vert-med);color:var(--blanc);border:1px solid var(--vert-med)}
+.btn-vert:hover{background:var(--vert-vif);border-color:var(--vert-vif)}
+.btn-outline{background:transparent;color:var(--blanc);border:1px solid rgba(240,244,241,.25)}
+.btn-outline:hover{border-color:var(--vert-vif);color:var(--vert-vif)}
+
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+.reveal.visible{opacity:1;transform:none}
+
+footer{background:#050a07;padding:2.5rem 3rem;text-align:center;border-top:1px solid rgba(82,183,136,.08)}
+.footer-logo{font-family:var(--serif);font-size:1.4rem;font-weight:300;color:var(--vert-vif);margin-bottom:.4rem}
+footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;line-height:1.7}
+
+@media(max-width:700px){
+  nav{padding:.8rem 1.2rem}
+  section{padding:3rem 1.3rem}
+  h1{font-size:2rem}
+  .fonctions-grid,.acteurs-grid,.docs-grid{grid-template-columns:1fr}
+}
+</style>
+<script src="https://cdn.counter.dev/script.js" data-id="7e06e873-296f-4ef5-856b-537fc7ceb0db" data-utcoffset="2"></script>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Programme Résilience V11</a>
+  <div style="display:flex;align-items:center;gap:1.2rem"><a href="index.html" style="font-size:.68rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(82,183,136,.6);text-decoration:none;border:1px solid rgba(82,183,136,.2);padding:.2rem .6rem;transition:color .3s" onmouseover="this.style.color='#52b788'" onmouseout="this.style.color='rgba(82,183,136,.6)'">⌂ Accueil</a>
+    <span class="nav-tag">Pyrogazéification · Infrastructure centrale</span>
+    <a href="index.html" class="nav-back">← Accueil</a>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══════════════════════════════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-flame">🔥</div>
+  <div class="hero-content">
+    <div class="hero-tag">Technologie · Économie · Stratégie industrielle</div>
+    <h1>La pyrogazéification :<br><em>infrastructure centrale</em><br>du système <strong>Résilience</strong></h1>
+    <p class="hero-sub">Transformer la biomasse lignocellulosique — bois mort, rémanents forestiers, pailles — en biométhane, chaleur, biochar et crédits carbone. Non pas pour chauffer des maisons — la pompe à chaleur fait bien mieux pour cet usage. Pour alimenter les ÉREV, séquestrer le CO₂, décarboner l'aviation et rendre le réseau électrique résilient face aux crises hivernales.</p>
+    <div class="hero-verdict">
+      <strong>L'objection légitime :</strong> « Une pompe à chaleur a un COP de 3 à 4 — elle fait bien mieux qu'une chaudière biométhane pour chauffer un logement. Pourquoi mobiliser une ressource aussi complexe à produire pour un usage où elle n'est pas la meilleure option ? » — Cette objection est exacte. Et elle définit précisément ce que ce programme n'est <em>pas</em>.
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BANDEAU AVERT ═══════════════════════════════════════════════════════ -->
+<div class="avert">
+  <div class="container">
+    <p><strong>Note méthodologique :</strong> les chiffres présentés sont des ordres de grandeur issus du Programme Résilience V11 (mai 2026) et des analyses complémentaires (juin 2026). Ils n'ont pas encore été validés par audit indépendant (RTE, ADEME, Cour des Comptes). Les documents techniques téléchargeables en bas de page détaillent les sources et qualifications de chaque donnée.</p>
+  </div>
+</div>
+
+<!-- ═══ §1 — CE QUE N'EST PAS RÉSILIENCE ════════════════════════════════════ -->
+<section>
+  <div class="container">
+    <div class="stag reveal">Cadrage</div>
+    <h2 class="reveal">Pourquoi la pyrogazéification<br><em>n'a de sens que dans</em> le système <strong>complet</strong></h2>
+    <p class="lead reveal">La pyrogazéification isolée — produisant du biométhane affecté au chauffage résidentiel — n'a effectivement aucun intérêt stratégique particulier. Même neutre en carbone, ce biométhane brûlé dans une chaudière reste thermodynamiquement inférieur à une pompe à chaleur (COP 3 à 4, contre un rendement thermique direct pour le gaz). Ce qui justifie la complexité et les 460 M€ par site, c'est la combinaison simultanée de quatre fonctions irremplaçables — toutes situées sur des usages où l'électrification directe ne fonctionne pas.</p>
+
+    <div class="tbl-wrap reveal">
+      <table>
+        <thead><tr>
+          <th>Un projet biogaz classique serait…</th>
+          <th class="th-vert">Le Programme Résilience est…</th>
+        </tr></thead>
+        <tbody>
+          <tr><td>Affecter le biométhane au chauffage résidentiel — alors qu'une PAC fait 3 à 4 fois mieux par kWh électrique</td><td class="td-g">Produire le carburant des véhicules ÉREV qui soulagent le réseau électrique de 40 GW</td></tr>
+          <tr><td>Gaspiller une ressource rare et neutre en carbone sur un usage où l'électricité est thermodynamiquement supérieure</td><td class="td-g">Créer la flexibilité passive qui rend le réseau électrique résilient face aux 5 crises hivernales</td></tr>
+          <tr><td>Technologie disponible, peu risquée, peu différenciante</td><td class="td-g">Seule technologie assurant simultanément énergie + séquestration + stockage saisonnier + mobilité</td></tr>
+          <tr><td>Projet agricole local — intérêt sectoriel limité</td><td class="td-g">Programme national — évite 250–350 Md€ d'infrastructure électrique et 7 EPR2</td></tr>
+          <tr><td>Rentable à 200 t/j avec des technologies maîtrisées</td><td class="td-g">Requiert 1 000 t/j et une compétence de niveau raffinerie — parce que l'enjeu systémique le justifie</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="box box-rouge reveal">
+      <strong>Supprimer la pyrogazéification du scénario Résilience, c'est supprimer le scénario Résilience lui-même.</strong> Les quatre fonctions ci-dessous ne peuvent être assurées par aucune combinaison d'autres technologies.
+    </div>
+  </div>
+</section>
+
+<!-- ═══ §2 — LES 4 FONCTIONS IRREMPLAÇABLES ════════════════════════════════ -->
+<section class="alt">
+  <div class="container">
+    <div class="stag reveal">Les quatre fonctions</div>
+    <h2 class="reveal">Ce qu'<em>aucune autre technologie</em><br>ne peut assurer <strong>simultanément</strong></h2>
+    <p class="lead reveal">Chaque fonction est irremplaçable. Leur couplage justifie la complexité et le coût. La colonne rouge indique ce qui disparaît du scénario si la pyrogazéification n'est pas déployée.</p>
+
+    <div class="fonctions-grid reveal">
+
+      <div class="fct-card">
+        <div class="fct-num">①</div>
+        <div class="fct-icon">⚡</div>
+        <h3>Carburant ÉREV — Bio-GNV</h3>
+        <p>L'ÉREV bascule <em>automatiquement</em> sur Bio-GNV lors des pointes électriques — sans décision conducteur, sans smart grid. Il retire passivement 40 GW de demande réseau lors du grand froid hivernal.</p>
+        <div class="fct-sans">déficit électrique de janvier passe de −10 GW gérable à −65 GW ingérable. 5 crises sur 5 non résolues.</div>
+      </div>
+
+      <div class="fct-card">
+        <div class="fct-num">②</div>
+        <div class="fct-icon">🌱</div>
+        <h3>Séquestration carbone — Biochar</h3>
+        <p>La pyrogazéification à ≥ 550 °C produit un biochar de haute stabilité (H/Corg &lt; 0,4, durée de vie &gt; 500 ans), certifiable CRCF depuis le 3 février 2026. 20–23 Mt CO₂/an séquestrés.</p>
+        <div class="fct-sans">0 tonne de séquestration permanente dans Résilience. La France n'a plus de levier de neutralité carbone propre au-delà de 2040.</div>
+      </div>
+
+      <div class="fct-card">
+        <div class="fct-num">③</div>
+        <div class="fct-icon">🏔</div>
+        <h3>Stockage saisonnier — Réseau GRDF</h3>
+        <p>Le biométhane injecté dans les 130 TWh de stockages souterrains GRDF constitue le seul stockage saisonnier opérationnel en France — 87× le stockage électrique national. Météo-indépendant.</p>
+        <div class="fct-sans">Le stockage saisonnier reste non résolu. Les batteries couvrent 4 à 8 heures — pas 3 à 5 jours d'anticyclone hivernal sans vent.</div>
+      </div>
+
+      <div class="fct-card">
+        <div class="fct-num">④</div>
+        <div class="fct-icon">✈</div>
+        <h3>Aviation &amp; poids lourds — Bio-GNL</h3>
+        <p>L'aviation long-courrier et les poids lourds longue distance ne seront pas électrifiés à horizon 2045. Le bio-GNL (liquéfaction du biométhane) est la seule alternative au kérosène fossile.</p>
+        <div class="fct-sans">La France importe du GNL fossile pour son aviation et ses poids lourds à l'horizon 2045 — dépendance maintenue.</div>
+      </div>
+
+    </div>
+
+    <div class="box box-vert reveal">
+      <strong>Et la méthanisation classique ?</strong> Elle assure ~70 TWh/an sur biomasse humide (effluents, CIVE, biodéchets) — c'est la deuxième jambe de Résilience. Mais elle ne produit pas de biochar, ne valorise pas la biomasse sèche lignocellulosique (50–60 Mt/an de gisement disponible), et ne peut pas atteindre les volumes nécessaires pour l'aviation et les poids lourds. Les deux filières sont complémentaires, pas substituables.
+    </div>
+  </div>
+</section>
+
+<!-- ═══ §3 — ÉCONOMIE D'UN SITE TYPE ════════════════════════════════════════ -->
+<section>
+  <div class="container">
+    <div class="stag-rouge reveal">Le jeu en vaut-il la chandelle ?</div>
+    <h2 class="reveal">Économie d'un site type —<br><em>1 000 t/j · 460 M€ CAPEX</em></h2>
+    <p class="lead reveal">La question décisive pour tout investisseur institutionnel. Voici les chiffres consolidés V11 pour un site type — en distinguant ce qui est validé de ce qui est estimé.</p>
+
+    <div class="tbl-wrap reveal">
+      <table>
+        <thead><tr>
+          <th>Indicateur économique</th>
+          <th class="th-vert">Valeur centrale</th>
+          <th>Qualification</th>
+        </tr></thead>
+        <tbody>
+          <tr><td>Revenus annuels (biométhane + biochar + chaleur + CO₂)</td><td class="td-g">143–194 M€/an</td><td>✅ V11 §4.2 confirmé</td></tr>
+          <tr><td>dont Biométhane (~958 GWh/an)</td><td class="td-or">115–144 M€/an</td><td>✅ Phase 2, prix marché sans CRE</td></tr>
+          <tr><td>dont Biochar + crédit carbone CRCF</td><td class="td-or">10–18 M€/an</td><td>✅ Marché en croissance — CRCF 2026</td></tr>
+          <tr><td>EBITDA annuel par site</td><td class="td-g">115–163 M€/an</td><td>✅ V11 §4.2 — attractif si &gt; 100 M€</td></tr>
+          <tr><td>Charges opératoires (OPEX)</td><td>25–29 M€/an</td><td>✅ V11 §4.2 — verrou goudrons intégré</td></tr>
+          <tr><td>CAPEX par site</td><td>460 M€</td><td>⚠ Ordre de grandeur — à affiner Phase 0</td></tr>
+          <tr><td>Payback CAPEX</td><td>5–8 ans prudent / 2,4–3 ans (soutien CRE)</td><td>✅ V11 §4.2</td></tr>
+          <tr><td>IRR projet sur 20 ans</td><td class="td-g">8–15 %</td><td>✅ Attractif — seuil BEI/CDC ~8 %</td></tr>
+          <tr><td>Valeur nette créée sur 20 ans / site</td><td class="td-g">~+1 750 M€</td><td>⚡ Multiplicateur ×3,8 sur 460 M€</td></tr>
+          <tr><td>Coût de revient du biochar (méthode co-produit)</td><td class="td-g">~174 €/t</td><td>⚡ vs 300–600 €/t en filière isolée</td></tr>
+          <tr class="tr-total"><td>PROGRAMME COMPLET — 150 sites</td><td></td><td></td></tr>
+          <tr><td>Revenus totaux à plein régime</td><td class="td-g">~21–29 Md€/an</td><td>✅ V11 §4.2 extrapolé</td></tr>
+          <tr><td>CO₂ séquestré (biochar)</td><td class="td-g">20–23 Mt CO₂/an</td><td>✅ V11 §2.2</td></tr>
+          <tr><td>Emplois non délocalisables</td><td class="td-g">200 000+</td><td>✅ V11 — directs + indirects</td></tr>
+          <tr><td>Économie vs scénario BEV (CAPEX)</td><td class="td-g">~250–350 Md€</td><td>⚠ Ordre de grandeur — à affiner</td></tr>
+          <tr class="tr-warning"><td>Engagement public direct État</td><td class="td-or">10–15 Md€</td><td>Phase 0 pilotes + garanties souveraines ✅</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="box box-vert reveal">
+      <strong>Ratio coût public / valeur générée : 1 pour 18 à 1 pour 26.</strong> Pour un engagement public de 10–15 Md€ (Phase 0 + garanties souveraines sur 20 premiers sites), le programme génère ~262 Md€ de valeur nette cumulée sur 20 ans, 200 000 emplois, 20–23 Mt CO₂/an de séquestration permanente et 144 TWh/an de biométhane substituant les importations fossiles.
+    </div>
+  </div>
+</section>
+
+<!-- ═══ §4 — LE VERROU ET LES ACTEURS ═══════════════════════════════════════ -->
+<section class="alt">
+  <div class="container">
+    <div class="stag reveal">Verrou industriel &amp; acteurs</div>
+    <h2 class="reveal">Du démonstrateur à l'unité 24/7 :<br>le <em>fossé critique</em> — et qui peut le franchir</h2>
+    <p class="lead reveal">La pyrogazéification a un verrou technique identifié — la désactivation du catalyseur de nickel en fonctionnement continu — et un verrou industriel rarement nommé : le saut d'échelle ×15 par rapport à la plus grande installation mondiale de référence (GoBiGas, 32 MW, arrêtée en 2018). Les acteurs requis pour ces deux niveaux sont différents.</p>
+
+    <div class="acteurs-grid reveal">
+
+      <div class="acteur-card">
+        <div class="acteur-tag phase0">Phase 0 · 2027–2029</div>
+        <h3>Charwood Innovation (Morbihan)</h3>
+        <p>Premier centre français de R&amp;D dédié à la pyrogazéification. Filiale de Charwood Energy (cotée Euronext Growth). Démonstrateur présenté avril 2026. Lauréat GRDF janvier 2026 · 400 k€.</p>
+        <div class="acteur-capa">Capacité actuelle : ~22 t/j (contrat Verallia) · Rôle : validation chaîne complète</div>
+      </div>
+
+      <div class="acteur-card">
+        <div class="acteur-tag phase0">Phase 0 · 2027–2029</div>
+        <h3>NOVEA (Gironde)</h3>
+        <p>Startup spécialisée pyrogazéification. Démonstrateur opérationnel. Procédé innovant combinant pyrogazéification et brique de méthanation pour injection en « gaz porté ». Lauréat GRDF.</p>
+        <div class="acteur-capa">Premier démonstrateur opérationnel en France · Rôle : validation brique méthanation + injection</div>
+      </div>
+
+      <div class="acteur-card">
+        <div class="acteur-tag phase0">Phase 0 · 2027–2029</div>
+        <h3>Elvéa Energy / LERMAB (Vosges)</h3>
+        <p>Fort ancrage académique — Université de Lorraine, laboratoire LERMAB. Procédé optimisé avec purificateur et poste d'injection dédié. Lauréat GRDF. Le plus pertinent sur le verrou chimique.</p>
+        <div class="acteur-capa">Ancrage académique fort · Rôle : tests endurance catalyseur Ni, protocole régénération</div>
+      </div>
+
+      <div class="acteur-card" style="border-color:rgba(184,150,46,.3)">
+        <div class="acteur-tag phase1">Phase 1 · 2029–2040 · Acteur manquant</div>
+        <h3>TotalEnergies + Technip Energies</h3>
+        <p>Seul binôme français maîtrisant la gestion industrielle du catalyseur Ni en cycle continu (analogie SMR raffineries) et capable de livrer des sites de 460 M€ en série (EPC Technip Energies · 100+ unités SMR livrées).</p>
+        <div class="acteur-capa" style="color:var(--or-clair)">Capacité cible : 1 000 t/j · CAPEX 460 M€ · Acteur requis pour la Phase 1 industrielle</div>
+      </div>
+
+    </div>
+
+    <div class="box box-or reveal">
+      <strong>Le chaînon manquant :</strong> les trois lauréats GRDF sont les bons acteurs pour la Phase 0 (qualification du procédé, données catalyseur, protocoles GRDF). Ils ne peuvent pas être les opérateurs industriels des 150 sites. Le saut ×15 par rapport à GoBiGas requiert une compétence de niveau raffinerie pétrolière — maîtrisée en France par TotalEnergies sur ses sites de Gonfreville, Donges et Feyzin. L'engagement de TotalEnergies est la condition du passage Phase 0 → Phase 1.
+    </div>
+  </div>
+</section>
+
+<!-- ═══ §5 — BIOCHAR — VALEUR AGRONOMIQUE ET CARBONE ════════════════════════ -->
+<section>
+  <div class="container">
+    <div class="stag reveal">Le co-produit stratégique</div>
+    <h2 class="reveal">Le biochar :<br>de l'<em>amendement agricole</em> au <strong>puits de carbone certifié</strong></h2>
+    <p class="lead reveal">Le biochar produit par pyrogazéification est un co-produit à double valeur — agronomique et climatique. Dans le système Résilience, sa valeur économique ne repose pas sur la rentabilité du seul biochar : le site est déjà rentable grâce au biométhane. Le biochar est un stabilisateur économique à valeur croissante avec le marché carbone.</p>
+
+    <div class="tbl-wrap reveal">
+      <table>
+        <thead><tr>
+          <th>Dimension</th>
+          <th class="th-vert">Biochar Résilience (pyrogazéification ≥ 550 °C)</th>
+          <th>Référence marché (filière isolée)</th>
+        </tr></thead>
+        <tbody>
+          <tr><td>Stabilité carbone (ratio H/Corg)</td><td class="td-g">&lt; 0,2 — très stable · durée &gt; 500 ans</td><td>Variable selon procédé · 0,4–0,7</td></tr>
+          <tr><td>Séquestration certifiable CRCF</td><td class="td-g">✅ Oui — 3 tCO₂/t biochar · 74 % sur 100 ans</td><td>⚠ Selon procédé et certification</td></tr>
+          <tr><td>Coût de revient (méthode co-produit)</td><td class="td-g">~174 €/t</td><td>300–600 €/t (filière isolée)</td></tr>
+          <tr><td>Prix de livraison agriculteur (CRCF central 100 €/tCO₂)</td><td class="td-g">Gratuit + prime opérateur 76 €/t</td><td>300–500 €/t</td></tr>
+          <tr><td>Effet sol (CEC, rétention eau, pH)</td><td class="td-g">Fort et durable — siècles</td><td>Variable selon température</td></tr>
+          <tr><td>Activation avant épandage</td><td class="td-g">Co-imprégné digestat — nutriments + structure</td><td>Épandage brut souvent</td></tr>
+          <tr><td>Quantité produite (150 sites)</td><td class="td-g">11–13 Mt/an → 20–23 Mt CO₂/an séquestrés</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="box box-vert reveal">
+      <strong>Le changement de paradigme CRCF :</strong> avec le CRCF actif (100 €/tCO₂), la valeur carbone du biochar (~300 €/t) dépasse son coût de revient alloué (~174 €/t). L'opérateur du site peut livrer le biochar gratuitement à l'agriculteur et conserver une marge nette de 76 €/t. Ce n'est plus un intrant vendu à l'agriculteur — c'est un service rendu à l'agriculteur, financé par la valeur carbone.
+    </div>
+  </div>
+</section>
+
+<!-- ═══ §6 — DOCUMENTS TÉLÉCHARGEABLES ═════════════════════════════════════ -->
+<section class="alt">
+  <div class="container">
+    <div class="stag reveal">Documentation technique complète</div>
+    <h2 class="reveal">Tous les documents<br><em>accessibles depuis cette page</em></h2>
+    <p class="lead reveal">Ces documents constituent le corpus technique complet sur la pyrogazéification, le biochar et l'analyse économique dans le cadre du Programme Résilience V11. Chacun peut être téléchargé et transmis indépendamment.</p>
+
+    <div class="docs-grid reveal">
+
+      <a href="Note_Cadrage_Pyrogazeification_Systeme_Resilience_V1.pdf" class="doc-card" target="_blank">
+        <div class="doc-type pdf">PDF · Note de cadrage</div>
+        <div class="doc-title">Pourquoi la pyrogazéification n'a de sens que dans le système Résilience complet</div>
+        <div class="doc-desc">La note de synthèse pour décideurs. Les 4 fonctions irremplaçables, le tableau coût de l'inaction vs coût de l'action. Format 2–3 pages, lisible en 10 minutes.</div>
+        <div class="doc-pages">Juin 2026 · Document de cadrage stratégique</div>
+      </a>
+
+      <a href="Annexe_Goudrons_V11.pdf" class="doc-card" target="_blank">
+        <div class="doc-type pdf">PDF · Annexe technique V11</div>
+        <div class="doc-title">Verrou des goudrons — Technologies de craquage · TRL · CAPEX · Phase 0</div>
+        <div class="doc-desc">L'analyse complète du verrou technique principal. 6 technologies comparées, enseignements de GoBiGas, architecture cascadée retenue, jalons de validation Phase 0 (2027–2029).</div>
+        <div class="doc-pages">Mai 2026 · Document technique confidentiel</div>
+      </a>
+
+      <a href="Goudrons_Addendum_Note_Piednoir_TotalEnergies_V1.pdf" class="doc-card" target="_blank">
+        <div class="doc-type pdf">PDF · Addendum + Notes stratégiques</div>
+        <div class="doc-title">Du démonstrateur à l'unité 24/7 · Note Stéphane Piednoir · Approche TotalEnergies</div>
+        <div class="doc-desc">Trois documents en un : l'analyse du fossé industriel Phase 0→Phase 1, la note stratégique à l'OPECST (Sénateur Stéphane Piednoir), et l'approche de sensibilisation TotalEnergies/Technip.</div>
+        <div class="doc-pages">Juin 2026 · Usage stratégique confidentiel</div>
+      </a>
+
+      <a href="Biochar_Sols_Synthese_Resilience_V2.pdf" class="doc-card" target="_blank">
+        <div class="doc-type pdf">PDF · Synthèse agronomique</div>
+        <div class="doc-title">Le biochar dans les sols — Action, qualité, recommandations, exemples reconnus</div>
+        <div class="doc-desc">Synthèse complète : action par type de sol, effets sur les rendements, gestion de la sécheresse, association biochar+digestat, recommandations par situation, analyse économique.</div>
+        <div class="doc-pages">Juin 2026 · V2 — inclus chapitre allocation des coûts</div>
+      </a>
+
+      <a href="Fiche_Eco_Site_Pyrogazeification_Resilience_V2.pdf" class="doc-card" target="_blank">
+        <div class="doc-type pdf">PDF · Analyse économique</div>
+        <div class="doc-title">Fiche économique — Site type de pyrogazéification (1 000 t/j)</div>
+        <div class="doc-desc">Analyse complète en deux parties : A) CAPEX, OPEX, compte d'exploitation, financement, bilan 20 ans · B) Coût réel du biochar par allocation, paradigme CRCF, prix agriculteur.</div>
+        <div class="doc-pages">Juin 2026 · V2 — Parties A et B · 15 tableaux</div>
+      </a>
+
+      <a href="Programme_Resilience_V11_Complet.pdf" class="doc-card" target="_blank">
+        <div class="doc-type pdf">PDF · Document de référence V11</div>
+        <div class="doc-title">Programme Résilience 2045 — Architecture énergétique France</div>
+        <div class="doc-desc">Le document consolidé complet V11 : bilan énergétique, biomasse, comparaison BEV vs Résilience, modèle économique, 5 situations critiques, plan industriel 2027–2045.</div>
+        <div class="doc-pages">Mai 2026 · Version enrichie — CAPEX comparatif complet</div>
+      </a>
+
+    </div>
+
+    <!-- Sous-section territoire et déploiement -->
+    <div class="stag reveal" style="margin-top:2.5rem">Territoire et déploiement</div>
+    <p class="lead reveal" style="margin-bottom:1.2rem">Ces trois documents apportent la dimension territoriale : où implanter les sites, comment les alimenter en biomasse, et comment la Zone C (incendie) crée une double valeur énergie + DFCI.</p>
+
+    <div class="docs-grid reveal">
+
+      <a href="Positionnement_150_Sites_Pyrogazeification_V1.pdf" class="doc-card" target="_blank" download>
+        <div class="doc-type pdf">PDF · Analyse territoriale nationale</div>
+        <div class="doc-title">Positionnement des 150 sites — Zones A, B, C, D</div>
+        <div class="doc-desc">Analyse multi-critères des territoires français : gisement biomasse, réseau GRDF, tensions d'usage. Répartition des 150 sites par zone prioritaire, calendrier de déploiement Phase 1 / Phase 2.</div>
+        <div class="doc-pages">Juin 2026 · V1 · Note de positionnement stratégique national</div>
+      </a>
+
+      <a href="Logistique_Approvisionnement_Biomasse_Normandie_V2.pdf" class="doc-card" target="_blank" download>
+        <div class="doc-type pdf">PDF · Étude logistique de référence</div>
+        <div class="doc-title">Logistique biomasse — Site type normand · Gisement, collecte, stockage, organisation</div>
+        <div class="doc-desc">Comment alimenter un site de 1 000 t/j en continu. Gisement net mobilisable (taux réalistes), mix à 3 sources, plateformes de regroupement, organisation contractuelle CUMA. Analyse de sensibilité disponibilité et prix.</div>
+        <div class="doc-pages">Juin 2026 · V2 — avec analyse de sensibilité et taux de mobilisation réalistes</div>
+      </a>
+
+      <a href="Demonstrateur_Zone_C_Gard_Pyrogazeification_DFCI_V2.pdf" class="doc-card" target="_blank" download>
+        <div class="doc-type pdf" style="background:rgba(132,60,12,.25);color:#f4a261;border-color:rgba(132,60,12,.4)">PDF · Démonstrateur Zone C · Usage institutionnel</div>
+        <div class="doc-title">🔥 Gard (30) — Site à double mission · Biométhane + Prévention incendie DFCI</div>
+        <div class="doc-desc">Le renversement économique DFCI : comment un site Zone C rend économiquement rationnelle la sylviculture préventive. Gisement · mix 4 sources · coûts évités · 5 flux de valeur · gouvernance Phase 0. À transmettre DDTM/DRAAF/SDIS.</div>
+        <div class="doc-pages">Juin 2026 · V2 — Document de pré-faisabilité · Diffusion restreinte</div>
+      </a>
+
+    </div>
+
+    <div class="box box-bleu reveal">
+      <strong>Usage de cette page :</strong> elle peut être transmise directement à des interlocuteurs institutionnels (OPECST, cabinets ministériels) ou industriels (TotalEnergies, Technip, coopératives agricoles) comme point d'entrée unique vers l'ensemble du corpus documentaire. Les PDF sont accessibles sans connexion ni compte.
+    </div>
+  </div>
+</section>
+
+<!-- ═══ §7 — VERDICT ════════════════════════════════════════════════════════ -->
+<section>
+  <div class="container">
+    <div class="verdict reveal">
+      <div class="verdict-phrase">La pyrogazéification Résilience n'est pas un projet de <em>biogaz</em>.<br>C'est une infrastructure de <em>souveraineté énergétique nationale</em>.</div>
+      <p class="verdict-sub">Résilience électrique face aux crises hivernales · Neutralité carbone par séquestration permanente · Mobilité décarbonée pour les secteurs non électrifiables · Stockage saisonnier sans CAPEX additionnel. Ces quatre fonctions font de la pyrogazéification le maillon sans lequel le système Résilience n'existe pas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ RENVOIS VERS LE RESTE DU SITE ═══════════════════════════════════════ -->
+<section class="alt">
+  <div class="container">
+    <div class="stag reveal">Aller plus loin</div>
+    <h2 class="reveal">Le Programme Résilience —<br><em>toutes les dimensions</em></h2>
+    <div class="renvoi-grid reveal">
+      <a href="zone-c-incendie.html" class="renvoi-card" style="border-color:rgba(132,60,12,.3);background:rgba(50,15,3,.15)">
+        <div class="rc-tag" style="color:#C45A1A">🔥 Zone C spéciale</div>
+        <div class="rc-title">Incendie · Forêt méditerranéenne</div>
+        <div class="rc-desc">Comment la pyrogazéification transforme le risque incendie en ressource. Le renversement économique DFCI et le démonstrateur Gard.</div>
+      </a>
+      <a href="index.html" class="renvoi-card">
+        <div class="rc-tag">Vue d'ensemble</div>
+        <div class="rc-title">Programme Résilience V11</div>
+        <div class="rc-desc">L'architecture complète : électricité + gaz + biochar + ÉREV + aviation. Le système dans sa globalité.</div>
+      </a>
+      <a href="finances-publiques.html" class="renvoi-card">
+        <div class="rc-tag">Finances publiques</div>
+        <div class="rc-title">Optimisation des dépenses</div>
+        <div class="rc-desc">Ce que Résilience évite de dépenser, ce qu'il génère. Les 4 leviers d'optimisation budgétaire.</div>
+      </a>
+      <a href="carbone-resilience.html" class="renvoi-card">
+        <div class="rc-tag">Carbone ↗</div>
+        <div class="rc-title">Cycle carbone biogénique</div>
+        <div class="rc-desc">Widget interactif : la boucle méthanisation → pyrogazéification → biochar → sols → cultures.</div>
+      </a>
+      <a href="sequestration.html" class="renvoi-card">
+        <div class="rc-tag">Séquestration</div>
+        <div class="rc-title">Forêt libre vs biochar</div>
+        <div class="rc-desc">Pourquoi « laisser pousser et pourrir » n'est pas équivalent à séquestrer par le biochar.</div>
+      </a>
+      <a href="systeme-energetique.html" class="renvoi-card">
+        <div class="rc-tag">Analyse physique</div>
+        <div class="rc-title">Système énergétique 2045</div>
+        <div class="rc-desc">Les 5 crises hivernales que le réseau électrique seul ne peut pas gérer.</div>
+      </a>
+      <a href="camion-resilience.html" class="renvoi-card">
+        <div class="rc-tag">Mobilité</div>
+        <div class="rc-title">ÉREV poids lourds</div>
+        <div class="rc-desc">Le véhicule à énergie étendue : architecture, TCO, comparatif BEV / H₂ / GNL.</div>
+      </a>
+    </div>
+    <div style="text-align:center;margin-top:2rem">
+      <a href="index.html" class="btn btn-outline">← Retour au programme complet</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Programme Résilience V11</div>
+  <p>Pyrogazéification · Infrastructure centrale · Analyse technique et économique · Juin 2026</p>
+  <p style="font-size:.7rem;color:#3a5044;margin-top:.4rem">Ordres de grandeur non encore validés par audit indépendant · Sources détaillées dans les documents techniques · Diffusion libre</p>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 60);
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.06 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

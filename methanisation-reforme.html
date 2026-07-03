@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Réforme de la méthanisation — Gestion territoriale des flux organiques · Programme Résilience</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --noir:#0a0f0d;--foret:#0d1f17;--vert-prof:#1a3a28;--vert-med:#2d6a4f;
+  --vert-vif:#52b788;--vert-clair:#95d5b2;--terre:#a0522d;--ambre:#e9c46a;
+  --rouge:#c0392b;--bleu:#2980b9;--blanc:#f0f4f1;--gris:#8a9e93;
+  --serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--noir);color:var(--blanc);font-family:var(--sans);font-weight:300;line-height:1.7;overflow-x:hidden}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:.9rem 2.5rem;background:rgba(10,15,13,.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(82,183,136,.12)}
+.nav-logo{font-family:var(--serif);font-size:1.15rem;font-weight:600;color:var(--vert-vif);text-decoration:none}
+.nav-tag{font-size:.66rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--gris);border:1px solid rgba(82,183,136,.2);padding:.25rem .75rem}
+.nav-back{font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gris);text-decoration:none;transition:color .3s}
+.nav-back:hover{color:var(--vert-vif)}
+
+section{padding:5.5rem 3rem}
+.container{max-width:1100px;margin:0 auto}
+.stag{font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--vert-vif);margin-bottom:.7rem}
+h1{font-family:var(--serif);font-size:clamp(2.4rem,5vw,4.2rem);font-weight:300;line-height:1.08;margin-bottom:1.2rem}
+h1 em{font-style:italic;color:var(--vert-vif)}
+h2{font-family:var(--serif);font-size:clamp(1.7rem,3vw,2.5rem);font-weight:300;line-height:1.15;margin-bottom:1rem}
+h2 em{font-style:italic;color:var(--vert-vif)}
+h3{font-family:var(--serif);font-size:1.2rem;font-weight:400;margin-bottom:.5rem}
+.lead{font-size:.97rem;color:rgba(240,244,241,.7);max-width:680px;line-height:1.85;margin-bottom:1.8rem}
+.body-text{font-size:.9rem;color:rgba(240,244,241,.7);line-height:1.85;margin-bottom:1rem}
+
+/* HERO */
+#hero{min-height:80vh;display:flex;align-items:center;padding:8rem 3rem 5rem;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 30% 50%,rgba(29,90,54,.32) 0%,transparent 70%),linear-gradient(135deg,#0a0f0d 0%,#0d1f17 50%,#060e09 100%)}
+.hero-grid{position:absolute;inset:0;opacity:.04;background-image:linear-gradient(var(--vert-vif) 1px,transparent 1px),linear-gradient(90deg,var(--vert-vif) 1px,transparent 1px);background-size:55px 55px}
+.hero-content{position:relative;z-index:1;max-width:820px}
+.hero-tag{display:inline-block;border:1px solid var(--ambre);color:var(--ambre);font-size:.67rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:.3rem .85rem;margin-bottom:1.5rem}
+.hero-sub{font-size:.97rem;color:rgba(240,244,241,.65);max-width:620px;line-height:1.85;margin-bottom:2rem}
+.btn{display:inline-block;padding:.72rem 1.6rem;font-family:var(--sans);font-size:.76rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:all .3s}
+.btn-primary{background:var(--vert-vif);color:var(--noir)}
+.btn-primary:hover{background:var(--vert-clair);transform:translateY(-2px)}
+.btn-outline{background:transparent;color:var(--blanc);border:1px solid rgba(240,244,241,.28)}
+.btn-outline:hover{border-color:var(--vert-vif);color:var(--vert-vif);transform:translateY(-2px)}
+.hero-cta{display:flex;gap:.9rem;flex-wrap:wrap}
+
+/* KPIs HERO */
+.kpi-row{display:flex;gap:3rem;margin-top:3rem;flex-wrap:wrap}
+.kpi{border-left:2px solid var(--vert-vif);padding-left:1.1rem}
+.kpi-num{font-family:var(--serif);font-size:2rem;font-weight:300;color:var(--vert-vif);line-height:1}
+.kpi-lbl{font-size:.68rem;color:var(--gris);letter-spacing:.1em;text-transform:uppercase;margin-top:.2rem}
+
+/* PARADIGME */
+#paradigme{background:var(--foret)}
+.paradigme-box{border:1px solid var(--vert-vif);background:rgba(29,58,40,.25);padding:2rem 2.5rem;margin-top:2rem}
+.paradigme-box h3{font-family:var(--serif);font-size:1.5rem;color:var(--vert-vif);margin-bottom:.9rem}
+.paradigme-box p{font-size:.9rem;color:rgba(240,244,241,.75);line-height:1.85}
+.paradigme-box p strong{color:var(--ambre)}
+
+.vs-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:2.5rem;border:1px solid rgba(82,183,136,.1);background:rgba(82,183,136,.1)}
+.vs-col{padding:2rem 2rem}
+.vs-col.ancien{background:rgba(20,10,10,.65)}
+.vs-col.nouveau{background:rgba(10,30,18,.55)}
+.vs-hdr{font-size:.67rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;margin-bottom:1.2rem;padding-bottom:.7rem;border-bottom:1px solid rgba(82,183,136,.18)}
+.ancien .vs-hdr{color:var(--rouge)}
+.nouveau .vs-hdr{color:var(--vert-vif)}
+.vs-item{display:flex;gap:.8rem;margin-bottom:.85rem;align-items:flex-start}
+.vs-dot{width:5px;height:5px;border-radius:50%;margin-top:.58rem;flex-shrink:0}
+.ancien .vs-dot{background:var(--rouge)}
+.nouveau .vs-dot{background:var(--vert-vif)}
+.vs-item p{font-size:.84rem;color:rgba(240,244,241,.67);line-height:1.6}
+.vs-item p strong{color:var(--blanc);font-weight:500}
+
+/* BOUCLAGE */
+#bouclage{background:var(--noir)}
+.cycle-flow{display:flex;flex-direction:column;gap:0;margin-top:2.5rem;border:1px solid rgba(82,183,136,.15)}
+.cycle-step{display:grid;grid-template-columns:2fr 3fr 2fr;gap:0;border-bottom:1px solid rgba(82,183,136,.1)}
+.cycle-step:last-child{border-bottom:none}
+.cs-flux{padding:1rem 1.4rem;background:rgba(29,58,40,.25);display:flex;align-items:center}
+.cs-flux span{font-family:var(--serif);font-size:1rem;color:var(--vert-clair)}
+.cs-detail{padding:1rem 1.4rem;background:rgba(10,15,13,.55);border-left:1px solid rgba(82,183,136,.1);border-right:1px solid rgba(82,183,136,.1)}
+.cs-detail p{font-size:.8rem;color:rgba(240,244,241,.65);line-height:1.6}
+.cs-dest{padding:1rem 1.4rem;background:rgba(10,15,13,.4);display:flex;align-items:center}
+.cs-dest span{font-size:.78rem;color:var(--ambre);font-style:italic}
+.cycle-hdr .cs-flux,.cycle-hdr .cs-detail,.cycle-hdr .cs-dest{background:rgba(26,58,40,.9);padding:.6rem 1.4rem}
+.cycle-hdr span{font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--vert-clair)}
+
+/* ICB */
+#icb{background:var(--foret)}
+.icb-title-row{display:flex;align-items:baseline;gap:1.5rem;margin-bottom:2rem}
+.icb-badge{display:inline-block;background:rgba(82,183,136,.15);border:1px solid var(--vert-vif);color:var(--vert-vif);font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:.35rem .9rem}
+.icb-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.2rem;margin-top:2rem}
+.icb-card{padding:1.6rem 1.4rem;border:1px solid rgba(82,183,136,.12);background:rgba(10,15,13,.55);position:relative}
+.icb-card.lost{border-color:rgba(192,57,43,.3);background:rgba(192,57,43,.06)}
+.icb-fraction{font-family:var(--serif);font-size:1.8rem;font-weight:300;color:var(--vert-vif);line-height:1;margin-bottom:.4rem}
+.icb-card.lost .icb-fraction{color:var(--rouge)}
+.icb-card h3{font-size:.88rem;color:var(--blanc);margin-bottom:.4rem}
+.icb-card p{font-size:.78rem;color:rgba(240,244,241,.55);line-height:1.6}
+.icb-now{margin-top:.6rem;font-size:.73rem;color:var(--gris)}
+.icb-now span{color:var(--ambre)}
+.icb-target{font-size:.73rem;color:var(--vert-vif)}
+
+.icb-meter{margin-top:2.5rem;background:rgba(10,15,13,.6);border:1px solid rgba(82,183,136,.15);padding:1.8rem 2rem}
+.meter-row{display:flex;align-items:center;gap:1.5rem;margin-bottom:1.2rem}
+.meter-lbl{font-size:.75rem;color:var(--gris);letter-spacing:.1em;text-transform:uppercase;min-width:140px}
+.meter-bar-wrap{flex:1;height:10px;background:rgba(82,183,136,.1);border-radius:2px;overflow:hidden}
+.meter-bar{height:100%;border-radius:2px;transition:width 1s ease}
+.bar-now{background:var(--ambre)}
+.bar-target{background:var(--vert-vif)}
+.meter-val{font-family:var(--serif);font-size:1.1rem;font-weight:300;min-width:60px;text-align:right}
+.bar-now+.meter-val{color:var(--ambre)}
+.bar-target+.meter-val{color:var(--vert-vif)}
+.meter-note{font-size:.78rem;color:rgba(240,244,241,.5);line-height:1.6;margin-top:.5rem}
+
+/* SOUVERAINETÉ */
+#souverainete{background:var(--noir)}
+.ise-box{margin-top:2rem;padding:1.8rem 2rem;border-left:4px solid var(--ambre);background:rgba(233,196,106,.06);border:1px solid rgba(233,196,106,.2);border-left:4px solid var(--ambre)}
+.ise-box h3{color:var(--ambre);font-size:1rem;font-family:var(--serif);margin-bottom:.7rem}
+.ise-box p{font-size:.85rem;color:rgba(240,244,241,.7);line-height:1.75}
+.engrais-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;margin-top:2rem;border:1px solid rgba(82,183,136,.1);background:rgba(82,183,136,.1)}
+.eng-card{padding:1.4rem 1.4rem;background:var(--noir)}
+.eng-num{font-family:var(--serif);font-size:1.7rem;font-weight:300;color:var(--rouge);line-height:1;margin-bottom:.35rem}
+.eng-lbl{font-size:.78rem;color:var(--blanc);margin-bottom:.25rem}
+.eng-sub{font-size:.72rem;color:rgba(240,244,241,.45);line-height:1.5}
+
+/* MODÈLE ÉCO */
+#economie{background:var(--foret)}
+.eco-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:2.5rem;border:1px solid rgba(82,183,136,.1);background:rgba(82,183,136,.1)}
+.eco-col{padding:2rem 1.8rem;background:var(--foret)}
+.eco-col.central{background:rgba(29,58,40,.5)}
+.eco-num{font-family:var(--serif);font-size:2.4rem;font-weight:300;line-height:1;margin-bottom:.4rem}
+.eco-col:nth-child(1) .eco-num{color:var(--vert-vif)}
+.eco-col:nth-child(2) .eco-num{color:var(--ambre)}
+.eco-col:nth-child(3) .eco-num{color:var(--rouge)}
+.eco-scenario{font-size:.67rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--gris);margin-bottom:.7rem}
+.eco-detail{font-size:.8rem;color:rgba(240,244,241,.6);line-height:1.6}
+.eco-saving{font-size:.78rem;color:var(--vert-vif);margin-top:.6rem;font-style:italic}
+
+.warn-box{background:rgba(233,196,106,.06);border:1px solid rgba(233,196,106,.22);border-left:4px solid var(--ambre);padding:1.3rem 1.7rem;margin-top:1.8rem;font-size:.84rem;color:rgba(240,244,241,.7);line-height:1.65}
+.warn-box strong{color:var(--ambre)}
+
+/* CONTRÔLE */
+#controle{background:var(--noir)}
+.ctrl-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.2rem;margin-top:2rem}
+.ctrl-card{padding:1.6rem;border:1px solid rgba(82,183,136,.12);background:rgba(10,15,13,.55)}
+.ctrl-icon{font-size:1.6rem;margin-bottom:.7rem}
+.ctrl-card h3{font-size:.92rem;color:var(--vert-clair);margin-bottom:.5rem}
+.ctrl-card p{font-size:.8rem;color:rgba(240,244,241,.58);line-height:1.6}
+
+/* DOCUMENT */
+#document{background:var(--foret)}
+.doc-hero{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;margin-top:2rem}
+.doc-cover{background:rgba(10,15,13,.7);border:1px solid rgba(82,183,136,.2);padding:3rem 2.5rem;text-align:center}
+.doc-cover-title{font-family:var(--serif);font-size:1.6rem;font-weight:300;color:var(--blanc);line-height:1.2;margin-bottom:.5rem}
+.doc-cover-sub{font-size:.8rem;color:var(--gris);margin-bottom:2rem;line-height:1.6}
+.doc-meta{display:flex;flex-direction:column;gap:.5rem;margin-bottom:2rem;text-align:left}
+.doc-meta-row{display:flex;gap:1rem;font-size:.78rem}
+.doc-meta-lbl{color:var(--gris);min-width:90px}
+.doc-meta-val{color:var(--blanc)}
+.doc-info p{font-size:.88rem;color:rgba(240,244,241,.68);line-height:1.85;margin-bottom:1rem}
+.doc-info ul{list-style:none;margin-bottom:1.5rem}
+.doc-info ul li{font-size:.84rem;color:rgba(240,244,241,.65);line-height:1.7;padding-left:1.2rem;position:relative}
+.doc-info ul li::before{content:'→';position:absolute;left:0;color:var(--vert-vif);font-size:.75rem}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+.reveal.visible{opacity:1;transform:none}
+
+footer{background:#050a07;padding:2.5rem 3rem;text-align:center;border-top:1px solid rgba(82,183,136,.08)}
+.footer-logo{font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--vert-vif);margin-bottom:.4rem}
+footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;line-height:1.7}
+@media(max-width:700px){
+  nav{padding:.85rem 1.3rem}
+  section{padding:3.5rem 1.4rem}
+  h1{font-size:2.1rem}
+  .vs-grid,.doc-hero,.eco-grid{grid-template-columns:1fr}
+  .cycle-step{grid-template-columns:1fr}
+}
+</style>
+<script src="https://cdn.counter.dev/script.js" data-id="7e06e873-296f-4ef5-856b-537fc7ceb0db" data-utcoffset="2"></script>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Programme Résilience V11</a>
+  <div style="display:flex;align-items:center;gap:1.2rem"><a href="index.html" style="font-size:.68rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(82,183,136,.6);text-decoration:none;border:1px solid rgba(82,183,136,.2);padding:.2rem .6rem;transition:color .3s" onmouseover="this.style.color='#52b788'" onmouseout="this.style.color='rgba(82,183,136,.6)'">⌂ Accueil</a>
+    <span class="nav-tag">Filière biomasse humide · Réforme</span>
+    <a href="documentation.html#documents" class="nav-back">← Retour</a>
+  </div>
+</nav>
+
+<!-- ── HERO ──────────────────────────────────────────────────────────────── -->
+<section id="hero">
+  <div class="hero-bg"></div><div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Politique publique · Juin 2026</div>
+    <h1>Gestion territoriale<br>des flux organiques<br><em>La méthanisation comme outil</em></h1>
+    <p class="hero-sub">Un cadre de réforme sans subventions directes, fondé sur la valorisation complète de tous les flux produits, la traçabilité du carbone biogénique, et la souveraineté agronomique nationale.</p>
+    <div class="hero-cta">
+      <a href="Methanisation_Cahier_des_Charges_V2.2.pdf" class="btn btn-primary" download>⬇ Télécharger le cahier des charges V2.2</a>
+      <a href="#paradigme" class="btn btn-outline">Lire l'analyse →</a>
+    </div>
+    <div class="kpi-row">
+      <div class="kpi">
+        <div class="kpi-num">> 25 Md€</div>
+        <div class="kpi-lbl">Coût actuel filière / 20 ans</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-num">1 à 7 Md€</div>
+        <div class="kpi-lbl">Coût cible avec garantie seule</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-num">ICB ≥ 0,85</div>
+        <div class="kpi-lbl">Objectif conservation carbone</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-num">< 2 %</div>
+        <div class="kpi-lbl">Taux de fuite CH₄ cible</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PARADIGME ─────────────────────────────────────────────────────────── -->
+<section id="paradigme">
+  <div class="container">
+    <div class="stag reveal">Changement de paradigme</div>
+    <h2 class="reveal">Ce n'est pas une réforme<br>de la méthanisation —<br><em>c'est une réforme du regard</em></h2>
+    <p class="lead reveal">Le débat actuel sur la méthanisation pose la mauvaise question : comment remplacer le gaz fossile par du gaz vert ? La question juste est : comment gérer les flux organiques du territoire en conservant leurs nutriments, leur carbone et leur énergie ?</p>
+
+    <div class="paradigme-box reveal">
+      <h3>Le paradigme Résilience</h3>
+      <p>La méthanisation n'est pas une filière de production d'énergie. C'est un outil de <strong>gestion des flux organiques humides</strong> qui restitue les nutriments au sol, réduit les émissions diffuses de méthane depuis les lisiers et déchets non traités, séquestre du carbone soluble, et produit accessoirement de l'énergie. Le biométhane est un co-produit valorisable — <strong>non la finalité</strong>.</p>
+    </div>
+
+    <div class="vs-grid reveal">
+      <div class="vs-col ancien">
+        <div class="vs-hdr">Modèle actuel — ce qui ne fonctionne pas</div>
+        <div class="vs-item"><div class="vs-dot"></div><p><strong>Objectif unique :</strong> production de biométhane pour substituer le gaz fossile.</p></div>
+        <div class="vs-item"><div class="vs-dot"></div><p><strong>Chaleur :</strong> 50 % de l'énergie en cogénération dissipée faute de débouché programmé.</p></div>
+        <div class="vs-item"><div class="vs-dot"></div><p><strong>CO₂ biogénique :</strong> 30 à 45 % du biogaz brut rejeté à l'atmosphère systématiquement.</p></div>
+        <div class="vs-item"><div class="vs-dot"></div><p><strong>Digestat :</strong> plus de la moitié des installations épandent brut, sans valorisation des nutriments.</p></div>
+        <div class="vs-item"><div class="vs-dot"></div><p><strong>Fuites CH₄ :</strong> non contrôlées, peuvent annuler l'intégralité du bénéfice climatique.</p></div>
+        <div class="vs-item"><div class="vs-dot"></div><p><strong>Coût État :</strong> > 25 Md€ engagés sur 20 ans, rentabilités excessives sur certains projets.</p></div>
+      </div>
+      <div class="vs-col nouveau">
+        <div class="vs-hdr">Modèle Résilience — gestion territoriale complète</div>
+        <div class="vs-item"><div class="vs-dot"></div><p><strong>Objectif primaire :</strong> restitution des nutriments (N, P, K) au sol · souveraineté agronomique.</p></div>
+        <div class="vs-item"><div class="vs-dot"></div><p><strong>Chaleur :</strong> valorisée via synergie territoriale — séchage bois pyrogazification, serres, fourrage.</p></div>
+        <div class="vs-item"><div class="vs-dot"></div><p><strong>CO₂ biogénique :</strong> valorisé localement ou liquéfié pour hub régional · tracé dans l'ICB.</p></div>
+        <div class="vs-item"><div class="vs-dot"></div><p><strong>Digestat :</strong> séparation de phase obligatoire · fertilisant certifié · ISE publié annuellement.</p></div>
+        <div class="vs-item"><div class="vs-dot"></div><p><strong>Fuites CH₄ :</strong> bilan massique mensuel automatisé · OGI trimestriel · plateforme temps réel.</p></div>
+        <div class="vs-item"><div class="vs-dot"></div><p><strong>Coût État :</strong> 1 à 7 Md€ · État assureur de dernier recours, non subventionneur.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── BOUCLAGE ───────────────────────────────────────────────────────────── -->
+<section id="bouclage">
+  <div class="container">
+    <div class="stag reveal">Bouclage carbone territorial</div>
+    <h2 class="reveal">Aucun flux n'est perdu —<br><em>chaque sortie est l'intrant d'une autre filière</em></h2>
+    <p class="lead reveal">La méthanisation s'inscrit dans un cycle territorial où la biomasse humide et la biomasse sèche sont traitées par des filières complémentaires, sans concurrence. Le carbone fait un cycle complet sur le territoire.</p>
+
+    <div class="cycle-flow reveal">
+      <div class="cycle-step cycle-hdr">
+        <div class="cs-flux"><span>Entrée</span></div>
+        <div class="cs-detail"><span>Traitement / Produits</span></div>
+        <div class="cs-dest"><span>Destination</span></div>
+      </div>
+      <div class="cycle-step">
+        <div class="cs-flux"><span>🌾 Biomasse humide<br>Effluents · Biodéchets</span></div>
+        <div class="cs-detail"><p><strong style="color:var(--vert-clair)">Méthanisation</strong> · Digestion anaérobie · 4 flux simultanés</p></div>
+        <div class="cs-dest"><span>Biométhane + Chaleur + CO₂ + Digestat</span></div>
+      </div>
+      <div class="cycle-step">
+        <div class="cs-flux"><span>🔥 Biométhane [C₁]</span></div>
+        <div class="cs-detail"><p>Injection réseau ou carburant véhicules lourds Bio-GNV</p></div>
+        <div class="cs-dest"><span>ÉREV Résilience · Transport lourd décarboné</span></div>
+      </div>
+      <div class="cycle-step">
+        <div class="cs-flux"><span>♨ Chaleur</span></div>
+        <div class="cs-detail"><p>Synergie territoriale : séchage bois local, fourrage, serres maraîchères, élevage</p></div>
+        <div class="cs-dest"><span>Pyrogazification (bois sec) · Agriculture locale</span></div>
+      </div>
+      <div class="cycle-step">
+        <div class="cs-flux"><span>💨 CO₂ biogénique [C₂]</span></div>
+        <div class="cs-detail"><p>Valorisation locale ou liquéfaction pour hub régional · Power-to-Gas · Minéralisation</p></div>
+        <div class="cs-dest"><span>Serres · Industrie alimentaire · e-méthane</span></div>
+      </div>
+      <div class="cycle-step">
+        <div class="cs-flux"><span>🌱 Digestat traité [C₃]</span></div>
+        <div class="cs-detail"><p>Séparation de phase · Concentration azote · Fertilisant certifié · ISE calculé</p></div>
+        <div class="cs-dest"><span>Cultures agricoles → résidus → Pyrogazification</span></div>
+      </div>
+      <div class="cycle-step">
+        <div class="cs-flux"><span>🌲 Résidus lignocellulosiques</span></div>
+        <div class="cs-detail"><p><strong style="color:var(--vert-clair)">Pyrogazification Résilience</strong> · 750°C · Co-production</p></div>
+        <div class="cs-dest"><span>Biométhane + Biochar [C₄] + Chaleur</span></div>
+      </div>
+      <div class="cycle-step">
+        <div class="cs-flux"><span>⬛ Biochar [C₄]</span></div>
+        <div class="cs-detail"><p>Puits de carbone durable > 100 ans · Amendement sols · EBC Premium</p></div>
+        <div class="cs-dest"><span>Sols agricoles → fertilité → cultures → retour filière</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ICB ────────────────────────────────────────────────────────────────── -->
+<section id="icb">
+  <div class="container">
+    <div class="stag reveal">Nouvel indicateur central</div>
+    <h2 class="reveal">L'ICB — Indice de Conservation<br><em>du Carbone Biogénique</em></h2>
+    <p class="lead reveal">Pour chaque tonne de carbone organique entrant dans le digesteur, l'ICB trace la destination de chaque fraction. Tout carbone non tracé est présumé perdu. C'est l'indicateur qui ferme la faille principale du modèle actuel.</p>
+
+    <div class="icb-grid reveal">
+      <div class="icb-card">
+        <div class="icb-fraction">C₁</div>
+        <h3>Carbone énergétique circulant</h3>
+        <p>CH₄ injecté ou valorisé en carburant.</p>
+        <div class="icb-now">Actuel : <span>45–55 %</span></div>
+        <div class="icb-target">Objectif : maintenu</div>
+      </div>
+      <div class="icb-card">
+        <div class="icb-fraction">C₂</div>
+        <h3>CO₂ biogénique réutilisé</h3>
+        <p>CO₂ valorisé (serre, industrie, P2G, minéralisation).</p>
+        <div class="icb-now">Actuel : <span>< 2 %</span></div>
+        <div class="icb-target">Objectif : > 15 %</div>
+      </div>
+      <div class="icb-card">
+        <div class="icb-fraction">C₃</div>
+        <h3>Carbone agronomique restitué</h3>
+        <p>Matière organique stabilisée retournant au sol via digestat traité.</p>
+        <div class="icb-now">Actuel : <span>15–25 %</span></div>
+        <div class="icb-target">Objectif : 25–35 %</div>
+      </div>
+      <div class="icb-card">
+        <div class="icb-fraction">C₄</div>
+        <h3>Carbone séquestré durablement</h3>
+        <p>Biochar ou minéralisation permanente. Bonus ICB si activé.</p>
+        <div class="icb-now">Actuel : <span>< 0,5 %</span></div>
+        <div class="icb-target">Objectif : encouragé</div>
+      </div>
+      <div class="icb-card lost">
+        <div class="icb-fraction">C₅</div>
+        <h3>Carbone perdu</h3>
+        <p>CO₂ rejeté à l'atmosphère + fuites CH₄. Calculé par différence. Doit diminuer chaque année.</p>
+        <div class="icb-now">Actuel : <span>25–35 % estimés</span></div>
+        <div class="icb-target" style="color:var(--rouge)">Objectif : < 15 %</div>
+      </div>
+    </div>
+
+    <div class="icb-meter reveal">
+      <p style="font-size:.82rem;color:var(--gris);letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.4rem">ICB global = (C₁ + C₂ + C₃ + C₄) / Carbone organique total entrant</p>
+      <div class="meter-row">
+        <div class="meter-lbl">Filière actuelle (estimé)</div>
+        <div class="meter-bar-wrap"><div class="meter-bar bar-now" style="width:70%"></div></div>
+        <div class="meter-val">0,70</div>
+      </div>
+      <div class="meter-row">
+        <div class="meter-lbl">Objectif à 5 ans</div>
+        <div class="meter-bar-wrap"><div class="meter-bar bar-target" style="width:85%"></div></div>
+        <div class="meter-val">0,85</div>
+      </div>
+      <div class="meter-row">
+        <div class="meter-lbl">Bonus ICB ≥ 0,90</div>
+        <div class="meter-bar-wrap"><div class="meter-bar bar-target" style="width:90%;opacity:.6"></div></div>
+        <div class="meter-val" style="color:var(--vert-clair)">+5 %</div>
+      </div>
+      <div class="meter-note">L'ICB est calculé annuellement par l'exploitant à partir des données de la plateforme numérique et des analyses de digestat. Il est transmis à l'autorité de contrôle et publié. L'ADEME agrège les ICB de toutes les installations pour produire un bilan national annuel du carbone biogénique géré par la filière.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SOUVERAINETÉ ───────────────────────────────────────────────────────── -->
+<section id="souverainete">
+  <div class="container">
+    <div class="stag reveal">Sécurité nationale</div>
+    <h2 class="reveal">La dépendance aux engrais —<br><em>un risque aussi réel que le gaz fossile</em></h2>
+    <p class="lead reveal">Le digestat traité est la réponse partielle et immédiatement disponible à la dépendance française aux engrais minéraux importés de zones géopolitiquement instables.</p>
+
+    <div class="engrais-grid reveal">
+      <div class="eng-card">
+        <div class="eng-num">70 %</div>
+        <div class="eng-lbl">Phosphore importé du Maroc</div>
+        <div class="eng-sub">Russie et Chine fournissent l'essentiel du reste. Aucune mine européenne significative.</div>
+      </div>
+      <div class="eng-card">
+        <div class="eng-num">~60 %</div>
+        <div class="eng-lbl">Potasse issue de Russie / Biélorussie</div>
+        <div class="eng-sub">Dependance structurelle depuis la fermeture des mines alsaciennes.</div>
+      </div>
+      <div class="eng-card">
+        <div class="eng-num">~40 %</div>
+        <div class="eng-lbl">Azote lié au gaz naturel</div>
+        <div class="eng-sub">Procédé Haber-Bosch : 1 t d'ammoniac = 1 800 Nm³ de gaz naturel. Double dépendance.</div>
+      </div>
+      <div class="eng-card">
+        <div class="eng-num">250 k€</div>
+        <div class="eng-lbl">Valeur ISE / unité / an</div>
+        <div class="eng-sub">Pour une unité traitant 10 000 t/an bien conduite. Revenu sans subvention supplémentaire.</div>
+      </div>
+    </div>
+
+    <div class="ise-box reveal">
+      <h3>Indicateur Souveraineté Engrais (ISE) — rapport annuel obligatoire</h3>
+      <p>Tonnes d'équivalent engrais minéraux substituées par an = azote ammoniacal valorisé (équivalent urée) + phosphore valorisé (équivalent superphosphate) + potassium valorisé (équivalent chlorure de potassium). Exprimé en tonnes et en valeur économique aux prix moyens annuels. Agrégé nationalement par l'ADEME — un indicateur de sécurité nationale lisible par tout décideur politique.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── ÉCONOMIE ───────────────────────────────────────────────────────────── -->
+<section id="economie">
+  <div class="container">
+    <div class="stag reveal">Modèle économique</div>
+    <h2 class="reveal">L'État assureur —<br><em>non subventionneur</em></h2>
+    <p class="lead reveal">La réforme remplace les tarifs garantis et subventions d'investissement par deux instruments conditionnels : une garantie de prix plancher activée uniquement si le marché s'effondre, et un prêt bonifié BPI réservé aux projets conformes.</p>
+
+    <div class="eco-grid reveal">
+      <div class="eco-col">
+        <div class="eco-scenario">Scénario favorable</div>
+        <div class="eco-num">< 1 Md€</div>
+        <div class="eco-detail">Prix gaz > 80 €/MWh en moyenne. Garantie rarement ou jamais activée.</div>
+        <div class="eco-saving">~24 Md€ économisés vs système actuel</div>
+      </div>
+      <div class="eco-col central">
+        <div class="eco-scenario">Scénario central</div>
+        <div class="eco-num">3–4 Md€</div>
+        <div class="eco-detail">Prix gaz 50–70 €/MWh en moyenne. Garantie partiellement activée.</div>
+        <div class="eco-saving">~21 Md€ économisés vs système actuel</div>
+      </div>
+      <div class="eco-col">
+        <div class="eco-scenario">Scénario défavorable</div>
+        <div class="eco-num">5–7 Md€</div>
+        <div class="eco-detail">Prix gaz < 50 €/MWh durablement. Garantie largement activée.</div>
+        <div class="eco-saving">~18 Md€ économisés vs système actuel</div>
+      </div>
+    </div>
+
+    <div class="warn-box reveal">
+      <strong>Demande de modélisation externe :</strong> Ces estimations constituent un ordre de grandeur fondé sur une analyse de sensibilité aux scénarios de prix du gaz naturel. Les auteurs invitent <strong>France Stratégie, l'ADEME ou la Commission de Régulation de l'Énergie</strong> à produire une modélisation économétrique officielle sur la base du cadre méthodologique du cahier des charges. Le document pose le cadre ; une institution indépendante valide les chiffres.
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTRÔLE ───────────────────────────────────────────────────────────── -->
+<section id="controle">
+  <div class="container">
+    <div class="stag reveal">Architecture de contrôle</div>
+    <h2 class="reveal">Le prestataire certifie —<br><em>la plateforme détecte — l'État intervient sur signal</em></h2>
+    <p class="lead reveal">Le modèle s'inspire de la certification aéronautique. Compatible avec les effectifs réels des DREAL : 10 % des sites inspectés physiquement par tirage aléatoire, le reste piloté par la plateforme numérique.</p>
+
+    <div class="ctrl-grid reveal">
+      <div class="ctrl-card">
+        <div class="ctrl-icon">📡</div>
+        <h3>Temps réel — plateforme nationale</h3>
+        <p>Compteurs biogaz certifiés transmettant en continu. Bilan massique CH₄ et ICB préliminaire calculés automatiquement chaque mois.</p>
+      </div>
+      <div class="ctrl-card">
+        <div class="ctrl-icon">🔍</div>
+        <h3>Trimestriel — tierce partie agréée</h3>
+        <p>Caméra infrarouge OGI, analyse digestat, bilan énergétique, ISE, ICB définitif. Financé par l'exploitant. Résultats directs à la plateforme.</p>
+      </div>
+      <div class="ctrl-card">
+        <div class="ctrl-icon">⚠️</div>
+        <h3>Sur signal — DREAL</h3>
+        <p>Inspection physique déclenchée par anomalie bilan massique > 3 % non résolue sous 72 h, plainte motivée, ou tirage aléatoire annuel (10 % des sites).</p>
+      </div>
+      <div class="ctrl-card">
+        <div class="ctrl-icon">📊</div>
+        <h3>Annuel — audit BPI / garant</h3>
+        <p>Score pondéré, TRI constaté, ICB, ISE, conformité cahier des charges. Détermine le coefficient de soutien de l'année suivante.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── DOCUMENT ───────────────────────────────────────────────────────────── -->
+<section id="document">
+  <div class="container">
+    <div class="stag reveal">Cahier des charges complet</div>
+    <h2 class="reveal">Le document — <em>10 chapitres,<br>3 indicateurs, 1 modèle cohérent</em></h2>
+
+    <div class="doc-hero reveal">
+      <div class="doc-cover">
+        <div style="font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gris);margin-bottom:.8rem">Programme Résilience V11</div>
+        <div class="doc-cover-title">Gestion territoriale des flux organiques</div>
+        <div class="doc-cover-sub">Cahier des charges pour une réforme sans subventions directes<br>La méthanisation comme outil · Version 2.2 · Juin 2026</div>
+        <div class="doc-meta">
+          <div class="doc-meta-row"><span class="doc-meta-lbl">Pages</span><span class="doc-meta-val">~35 pages</span></div>
+          <div class="doc-meta-row"><span class="doc-meta-lbl">Chapitres</span><span class="doc-meta-val">10 + tableaux comparatifs</span></div>
+          <div class="doc-meta-row"><span class="doc-meta-lbl">Indicateurs</span><span class="doc-meta-val">ICB · ISE · Taux fuite CH₄</span></div>
+          <div class="doc-meta-row"><span class="doc-meta-lbl">Format</span><span class="doc-meta-val">PDF · Word 2013 compatible</span></div>
+        </div>
+        <a href="Methanisation_Cahier_des_Charges_V2.2.pdf" class="btn btn-primary" download style="width:100%;text-align:center">⬇ Télécharger le PDF</a>
+      </div>
+      <div class="doc-info">
+        <p>Le cahier des charges couvre l'intégralité du cadre de réforme en 10 chapitres :</p>
+        <ul>
+          <li>Changement de paradigme et bouclage carbone territorial</li>
+          <li>L'ICB — définition, fractions, valeurs de référence, trajectoire à 5 ans</li>
+          <li>Diagnostic de la filière et coût actuel pour les finances publiques</li>
+          <li>La méthanisation comme outil de souveraineté agronomique (ISE)</li>
+          <li>Conditions d'éligibilité (intrants, chaleur, digestat, CO₂)</li>
+          <li>Réalisation, exploitation et sécurité (émissions CH₄, protocole OGI)</li>
+          <li>Modèle économique réformé (garantie plancher, prêt BPI, claw-back OAT)</li>
+          <li>Architecture de contrôle automatisée</li>
+          <li>Calendrier de transition sur 5 ans</li>
+          <li>Tableau de bord comparatif situation actuelle / objectifs V2.2</li>
+        </ul>
+        <div style="display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.5rem">
+          <a href="documentation.html#vehicules" class="btn btn-outline" style="font-size:.72rem">← Véhicules ÉREV</a>
+          <a href="cooperation-internationale.html" class="btn btn-outline" style="font-size:.72rem">Coopération internationale →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Programme Résilience V11</div>
+  <p>Gestion territoriale des flux organiques · La méthanisation comme outil · Juin 2026</p>
+  <p style="font-size:.7rem;color:#3a5044;margin-top:.4rem">Cahier des charges V2.2 · ICB · ISE · Contrôle automatisé · Sans subventions directes · Diffusion libre</p>
+</footer>
+
+<script>
+const obs=new IntersectionObserver((entries)=>{
+  entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*60);obs.unobserve(e.target);}});
+},{threshold:0.06});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// Animate meter bars on scroll
+const meterObs=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.querySelectorAll('.meter-bar').forEach(b=>{ b.style.width=b.style.width; });
+      meterObs.unobserve(e.target);
+    }
+  });
+},{threshold:0.3});
+document.querySelectorAll('.icb-meter').forEach(el=>meterObs.observe(el));
+</script>
+</body>
+</html>

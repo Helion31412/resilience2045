@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carbone, Résilience et Mobilité — Échelle mondiale · Programme Résilience V11</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --noir:#0a0f0d;--foret:#0d1f17;--vert-vif:#52b788;--vert-clair:#95d5b2;
+  --ambre:#e9c46a;--rouge:#c0392b;--rouge-l:#fadbd8;--bleu:#2980b9;
+  --blanc:#f0f4f1;--gris:#8a9e93;--orange:#e76f51;
+  --serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--noir);color:var(--blanc);font-family:var(--sans);font-weight:300;line-height:1.7;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:.9rem 2.5rem;background:rgba(10,15,13,.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(82,183,136,.12)}
+.nav-logo{font-family:var(--serif);font-size:1.15rem;font-weight:600;color:var(--vert-vif);text-decoration:none}
+.nav-back{font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gris);text-decoration:none;transition:color .3s}.nav-back:hover{color:var(--vert-vif)}
+.nav-tag{font-size:.66rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--gris);border:1px solid rgba(82,183,136,.2);padding:.25rem .75rem}
+section{padding:5.5rem 3rem}
+.container{max-width:1100px;margin:0 auto}
+.stag{font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--vert-vif);margin-bottom:.7rem}
+h1{font-family:var(--serif);font-size:clamp(2.2rem,5vw,3.8rem);font-weight:300;line-height:1.08;margin-bottom:1.2rem}
+h1 em{font-style:italic;color:var(--vert-vif)}
+h2{font-family:var(--serif);font-size:clamp(1.5rem,3vw,2.2rem);font-weight:300;line-height:1.15;margin-bottom:1rem}
+h2 em{font-style:italic;color:var(--vert-vif)}
+.lead{font-size:.97rem;color:rgba(240,244,241,.7);max-width:700px;line-height:1.85;margin-bottom:1.8rem}
+.btn{display:inline-block;padding:.72rem 1.6rem;font-family:var(--sans);font-size:.76rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:all .3s}
+.btn-primary{background:var(--vert-vif);color:var(--noir)}.btn-primary:hover{background:var(--vert-clair);transform:translateY(-2px)}
+.btn-outline{background:transparent;color:var(--blanc);border:1px solid rgba(240,244,241,.28)}.btn-outline:hover{border-color:var(--vert-vif);color:var(--vert-vif);transform:translateY(-2px)}
+
+/* HERO */
+#hero{min-height:78vh;display:flex;align-items:center;padding:8rem 3rem 5rem;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 35% 50%,rgba(29,90,54,.28) 0%,transparent 65%),linear-gradient(135deg,#0a0f0d 0%,#0d1f17 50%,#060e09 100%)}
+.hero-grid{position:absolute;inset:0;opacity:.04;background-image:linear-gradient(var(--vert-vif) 1px,transparent 1px),linear-gradient(90deg,var(--vert-vif) 1px,transparent 1px);background-size:55px 55px}
+.kpi-row{display:flex;gap:2rem;margin-top:2.5rem;flex-wrap:wrap}
+.kpi{border-left:2px solid var(--vert-vif);padding-left:1rem}
+.kpi.r{border-color:var(--rouge)}
+.kpi.a{border-color:var(--ambre)}
+.kpi-num{font-family:var(--serif);font-size:1.8rem;color:var(--vert-vif);line-height:1}
+.kpi.r .kpi-num{color:var(--rouge)}
+.kpi.a .kpi-num{color:var(--ambre)}
+.kpi-lbl{font-size:.68rem;color:var(--gris);text-transform:uppercase;letter-spacing:.1em;margin-top:.2rem}
+
+/* PARADIGME */
+.paradox{border:1px solid var(--rouge);background:rgba(192,57,43,.08);padding:1.8rem 2.2rem;margin:2rem 0}
+.paradox h3{font-family:var(--serif);font-size:1.3rem;color:var(--rouge);margin-bottom:.7rem}
+.paradox p{font-size:.9rem;color:rgba(240,244,241,.75);line-height:1.85}
+.paradox p strong{color:var(--ambre)}
+
+/* GISEMENTS */
+.gis-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:2rem}
+.gis-card{padding:1.6rem;border:1px solid rgba(82,183,136,.15);background:rgba(13,31,23,.6)}
+.gis-card h3{font-family:var(--serif);font-size:1.05rem;color:var(--vert-clair);margin-bottom:.4rem}
+.gis-num{font-family:var(--serif);font-size:1.8rem;font-weight:300;color:var(--vert-vif);line-height:1;margin-bottom:.4rem}
+.gis-card p{font-size:.8rem;color:rgba(240,244,241,.6);line-height:1.65}
+.gis-tag{margin-top:.8rem;font-size:.7rem;padding:.3rem .8rem;border-radius:20px;display:inline-block;font-weight:500;background:rgba(82,183,136,.12);color:var(--vert-vif);border:1px solid rgba(82,183,136,.3)}
+
+/* SCENARIOS TABLE */
+.sc-wrap{overflow-x:auto;margin-top:1.5rem}
+table{width:100%;border-collapse:collapse;font-size:.8rem}
+thead tr{background:rgba(26,58,40,.9)}
+thead th{padding:.8rem 1rem;text-align:left;color:var(--vert-clair);font-weight:500;letter-spacing:.08em;font-size:.72rem;text-transform:uppercase;border-bottom:2px solid var(--vert-vif)}
+tbody tr{border-bottom:1px solid rgba(82,183,136,.09);transition:background .2s}
+tbody tr:hover{background:rgba(13,31,23,.5)}
+tbody td{padding:.65rem 1rem;color:rgba(240,244,241,.75);vertical-align:top;line-height:1.5}
+tbody td:first-child{color:var(--blanc);font-weight:400}
+.td-v{color:var(--vert-vif)!important;font-weight:500}
+.td-a{color:var(--ambre)!important;font-weight:500}
+.td-r{color:var(--rouge)!important}
+
+/* BOUCLE */
+.boucle{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:.5rem;margin-top:2rem;padding:1.8rem;border:1px solid rgba(82,183,136,.2);background:rgba(13,31,23,.5)}
+.boucle-step{font-size:.8rem;color:rgba(240,244,241,.8);padding:.5rem 1rem;border:1px solid rgba(82,183,136,.25);background:rgba(29,58,40,.4);border-radius:4px;text-align:center;min-width:120px}
+.boucle-arrow{color:var(--vert-vif);font-size:1.2rem;font-weight:300}
+.boucle-title{font-family:var(--serif);font-size:1rem;color:var(--vert-vif);text-align:center;width:100%;margin-bottom:1rem}
+
+/* RISQUES */
+.risques-layout{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2rem}
+.risque-faux{padding:1.6rem;border:1px solid rgba(82,183,136,.2);background:rgba(29,58,40,.2)}
+.risque-reel{padding:1.6rem;border:1px solid rgba(192,57,43,.25);background:rgba(192,57,43,.06)}
+.risque-faux h3{font-family:var(--serif);color:var(--vert-vif);margin-bottom:.9rem}
+.risque-reel h3{font-family:var(--serif);color:#f1948a;margin-bottom:.9rem}
+.risque-item{font-size:.82rem;color:rgba(240,244,241,.65);line-height:1.6;padding:.4rem 0;border-bottom:1px solid rgba(82,183,136,.08)}
+.risque-item:last-child{border:none}
+.risque-item strong{display:block;color:var(--blanc);font-weight:500;margin-bottom:.15rem}
+
+/* BILAN */
+.bilan-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-top:2rem}
+.bilan-card{padding:1.4rem;border:1px solid rgba(82,183,136,.15);background:rgba(10,15,13,.6);text-align:center}
+.bilan-num{font-family:var(--serif);font-size:2rem;font-weight:300;line-height:1;margin-bottom:.3rem}
+.bilan-lbl{font-size:.72rem;color:var(--gris);text-transform:uppercase;letter-spacing:.1em;line-height:1.5}
+.bilan-card.v .bilan-num{color:var(--vert-vif)}
+.bilan-card.a .bilan-num{color:var(--ambre)}
+.bilan-card.r .bilan-num{color:var(--rouge)}
+.bilan-card.b .bilan-num{color:var(--bleu)}
+
+/* COHERENCE */
+.coher-box{margin-top:2rem;padding:1.8rem 2.2rem;border-left:4px solid var(--vert-vif);background:rgba(29,58,40,.22);border:1px solid rgba(82,183,136,.2);border-left:4px solid var(--vert-vif)}
+.coher-box h3{font-family:var(--serif);font-size:1.2rem;color:var(--vert-vif);margin-bottom:.7rem}
+.coher-box p{font-size:.88rem;color:rgba(240,244,241,.72);line-height:1.85}
+.coher-box p strong{color:var(--ambre)}
+
+/* DOC */
+.doc-box{display:grid;grid-template-columns:1fr 2fr;gap:2.5rem;align-items:center;margin-top:2rem;padding:2rem;border:1px solid rgba(82,183,136,.2);background:rgba(13,31,23,.5)}
+.doc-cover{background:rgba(10,15,13,.7);border:1px solid rgba(82,183,136,.25);padding:2rem 1.5rem;text-align:center}
+.doc-cover-title{font-family:var(--serif);font-size:1.1rem;color:var(--blanc);line-height:1.3;margin-bottom:.5rem}
+.doc-sub{font-size:.76rem;color:var(--gris);margin-bottom:1.5rem;line-height:1.5}
+
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+.reveal.visible{opacity:1;transform:none}
+footer{background:#050a07;padding:2rem 3rem;text-align:center;border-top:1px solid rgba(82,183,136,.08)}
+.footer-logo{font-family:var(--serif);font-size:1.4rem;font-weight:300;color:var(--vert-vif);margin-bottom:.3rem}
+footer p{font-size:.75rem;color:var(--gris);max-width:600px;margin:.3rem auto}
+@media(max-width:700px){nav{padding:.85rem 1.3rem}section{padding:3.5rem 1.4rem}.gis-grid,.risques-layout,.doc-box{grid-template-columns:1fr}.boucle{flex-direction:column}}
+</style>
+<script src="https://cdn.counter.dev/script.js" data-id="7e06e873-296f-4ef5-856b-537fc7ceb0db" data-utcoffset="2"></script>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">Programme Résilience V11</a>
+  <div style="display:flex;align-items:center;gap:1.2rem"><a href="index.html" style="font-size:.68rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(82,183,136,.6);text-decoration:none;border:1px solid rgba(82,183,136,.2);padding:.2rem .6rem;transition:color .3s" onmouseover="this.style.color='#52b788'" onmouseout="this.style.color='rgba(82,183,136,.6)'">⌂ Accueil</a>
+    <span class="nav-tag">Stratégie mondiale · Carbon-négatif</span>
+    <a href="carbone-resilience.html" class="nav-back">← Stratégie carbone</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div><div class="hero-grid"></div>
+  <div class="container" style="position:relative;z-index:1">
+    <div style="display:inline-block;border:1px solid var(--vert-vif);color:var(--vert-vif);font-size:.67rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:.3rem .85rem;margin-bottom:1.5rem">Note stratégique mondiale · Juin 2026</div>
+    <h1>La seule stratégie énergétique<br>qui <em>nettoie l'atmosphère</em><br>en produisant de l'énergie</h1>
+    <p class="lead">Toutes les autres solutions décarbonent — elles arrêtent d'aggraver le problème. Le scénario bio-GNV + pyrogazification + biochar va plus loin : il retire physiquement du CO₂ déjà accumulé dans l'atmosphère, tout en produisant de l'énergie, des engrais et des crédits carbone.</p>
+    <div style="display:flex;gap:.9rem;flex-wrap:wrap">
+      <a href="#paradigme" class="btn btn-primary">Lire l'analyse →</a>
+      <a href="Carbone_Resilience_Mobilite_Mondiale.pdf" class="btn btn-outline" target="_blank" download>⬇ Note complète PDF</a>
+    </div>
+    <div class="kpi-row">
+      <div class="kpi"><div class="kpi-num">~46 000 TWh</div><div class="kpi-lbl">Production bio-GNV/an<br>scénario central 2045</div></div>
+      <div class="kpi r"><div class="kpi-num">~5 940 Mt</div><div class="kpi-lbl">CO₂/an retirés de l'atmosphère<br>extraction nette permanente</div></div>
+      <div class="kpi a"><div class="kpi-num">~16 %</div><div class="kpi-lbl">des émissions mondiales actuelles<br>nettoyées chaque année</div></div>
+      <div class="kpi"><div class="kpi-num">~49 %</div><div class="kpi-lbl">de la consommation mondiale<br>d'énergie finale couverte</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PARADIGME -->
+<section id="paradigme" style="background:var(--foret)">
+  <div class="container">
+    <div class="stag reveal">Le changement de paradigme</div>
+    <h2 class="reveal">Neutralité carbone vs <em>carbon-négatif</em></h2>
+    <p class="lead reveal">L'Accord de Paris vise zéro émission nette. C'est nécessaire mais insuffisant : à 422 ppm de CO₂ atmosphérique, même la neutralité carbone ne ramène pas le climat à son état antérieur. Elle stabilise le problème — elle ne le résout pas.</p>
+    <div class="paradox reveal">
+      <h3>La métaphore décisive</h3>
+      <p>Solaire, éolien, nucléaire, hydrogène : toutes ces technologies <strong>arrêtent de remplir la baignoire qui déborde</strong>. C'est indispensable. Le scénario bio-GNV + pyrogazification + biochar fait autre chose : <strong>il commence à la vider</strong>. Dans un monde où la mobilité mondiale est décarbonée par le bio-GNV, le CO₂ émis à la combustion est du carbone atmosphérique recyclé via la photosynthèse — bilan zéro. Et le biochar co-produit séquestre physiquement du carbone dans les sols pour plus de 1 000 ans. Ce carbone ne retourne jamais à l'atmosphère. C'est une extraction nette, permanente, à grande échelle.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GISEMENTS -->
+<section id="gisements" style="background:var(--noir)">
+  <div class="container">
+    <div class="stag reveal">Les quatre gisements</div>
+    <h2 class="reveal">Une ressource mondiale<br><em>largement suffisante</em></h2>
+    <p class="lead reveal">Quatre sources complémentaires et non concurrentes couvrent les besoins d'une mobilité mondiale décarbonée. L'argument clé : aucun conflit d'usage alimentaire — les terres ciblées sont physiquement inadaptées aux cultures classiques.</p>
+
+    <div class="gis-grid reveal">
+      <div class="gis-card">
+        <h3>🌾 Terres marginales — le gisement ignoré</h3>
+        <div class="gis-num">27 840 TWh/an</div>
+        <p>800 Mha de terres dégradées ou arides, sans usage agricole rentable, plantées en miscanthus ou espèces adaptées au climat local. Zéro irrigation après établissement, zéro concurrence alimentaire. Ces terres n'ont aujourd'hui ni revenu ni usage — elles deviennent un actif productif sur 5 flux simultanés.</p>
+        <span class="gis-tag">Scénario bas 200 Mha · Central 800 Mha · Ambitieux 1 500 Mha</span>
+      </div>
+      <div class="gis-card">
+        <h3>🌲 Forêts gérées</h3>
+        <div class="gis-num">10 150 TWh/an</div>
+        <p>Rémanents forestiers, éclaircies, bois mort et houppiers sur 1 400 Mha de forêts gérées mondialement. Sans coupe rase, sans déforestation. Co-bénéfice : réduction du risque incendie et des ravageurs dans les forêts non gérées.</p>
+        <span class="gis-tag">Pyrogazification · Biomasse sèche directe</span>
+      </div>
+      <div class="gis-card">
+        <h3>🐄 Résidus humides — méthanisation</h3>
+        <div class="gis-num">5 870 TWh/an</div>
+        <p>Effluents d'élevage, résidus cultures tropicales, biodéchets urbains, CIVE. Gisement mondial = 70 à 110 fois le potentiel français (65 TWh), cohérent avec la représentativité de la France dans l'agriculture mondiale.</p>
+        <span class="gis-tag">Méthanisation · Digestat N-P-K · ISE</span>
+      </div>
+      <div class="gis-card">
+        <h3>⚡ Couplage Sabatier</h3>
+        <div class="gis-num">2 400 TWh/an</div>
+        <p>En 2045, les surplus ENR mondiaux non utilisés représentent 3 000 à 5 000 TWh électriques gaspillés. Le Sabatier (CO₂ + 4H₂ → CH₄) valorise ces surplus avec le CO₂ biogénique de l'épuration — cycle fermé complet, +2 400 TWh sans biomasse supplémentaire.</p>
+        <span class="gis-tag">Valorisation surplus ENR · Cycle fermé</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOUCLE VERTUEUSE -->
+<section id="boucle" style="background:var(--foret)">
+  <div class="container">
+    <div class="stag reveal">La boucle vertueuse</div>
+    <h2 class="reveal">Le mécanisme de rétroaction positive<br><em>absent de tous les scénarios classiques</em></h2>
+    <p class="lead reveal">La plupart des scénarios énergétiques s'arrêtent à la production d'énergie. Résilience construit une boucle où chaque flux renforce les suivants.</p>
+    <div class="boucle reveal">
+      <div class="boucle-title">Terres marginales → Biomasse → Pyrogazification → [Bio-GNV + Biochar + Distillats + Chaleur + CO₂ biogénique] → Amélioration des sols → Biomasse plus productive → ...</div>
+      <div class="boucle-step">🌾 Terres marginales</div>
+      <div class="boucle-arrow">→</div>
+      <div class="boucle-step">🔥 Pyrogazification ≥ 700°C</div>
+      <div class="boucle-arrow">→</div>
+      <div class="boucle-step">⛽ Bio-GNV · Mobilité décarbonée</div>
+      <div class="boucle-arrow" style="width:100%;text-align:center">↓</div>
+      <div class="boucle-step">⬛ Biochar EBC/CDC V3</div>
+      <div class="boucle-arrow">→</div>
+      <div class="boucle-step">🌱 Amélioration des sols</div>
+      <div class="boucle-arrow">→</div>
+      <div class="boucle-step">📈 Biomasse + productive</div>
+      <div class="boucle-arrow">→</div>
+      <div class="boucle-step">🔄 Cycle renforcé</div>
+    </div>
+    <div style="margin-top:1.5rem;padding:1.2rem 1.8rem;border-left:4px solid var(--ambre);background:rgba(233,196,106,.06);font-size:.88rem;color:rgba(240,244,241,.72);line-height:1.85" class="reveal">
+      <strong style="color:var(--ambre)">Le digestat liquide — l'engrais naturel sous-estimé :</strong> la méthanisation produit deux co-produits distincts : le digestat solide (amendement organique) et le digestat <em>liquide</em> — fraction azotée concentrée (NH₄⁺) directement assimilable par les plantes, substituant le procédé Haber-Bosch fossile. À l'échelle mondiale, le digestat liquide peut couvrir 20 à 30 % des besoins en engrais azotés actuellement produits à partir de gaz naturel. Note : les condensats de la pyrogazification haute température sont des goudrons (tars) — des impuretés à éliminer, non des co-produits valorisables (voir Annexe Goudrons V11). Le biochar amplifie l'efficacité du digestat en stabilisant les éléments fertilisants dans les sols.
+    </div>
+  </div>
+</section>
+
+<!-- BILAN SEQUESTRATION -->
+<section id="bilan" style="background:var(--noir)">
+  <div class="container">
+    <div class="stag reveal">Bilan carbone systémique 2045</div>
+    <h2 class="reveal">Dans un monde à mobilité décarbonée —<br><em>chaque tonne séquestrée nettoie l'atmosphère</em></h2>
+    <p class="lead reveal">Une fois la mobilité mondiale décarbonée par le bio-GNV, le CO₂ émis à la combustion est neutre (cycle fermé). Chaque tonne de CO₂ séquestrée via biochar, carbonatation ou géologie est une EXTRACTION nette de l'atmosphère — pas une compensation.</p>
+
+    <div class="bilan-grid reveal">
+      <div class="bilan-card v"><div class="bilan-num">4 240 Mt</div><div class="bilan-lbl">CO₂/an via biochar EBC/CDC V3<br>&gt; 1 000 ans dans les sols</div></div>
+      <div class="bilan-card b"><div class="bilan-num">300 Mt</div><div class="bilan-lbl">CO₂/an carbonatation<br>matériaux de construction</div></div>
+      <div class="bilan-card b"><div class="bilan-num">400 Mt</div><div class="bilan-lbl">CO₂/an séquestration<br>géologique biogénique</div></div>
+      <div class="bilan-card a"><div class="bilan-num">500 Mt</div><div class="bilan-lbl">CO₂/an enrichissement sols<br>rhizomes miscanthus</div></div>
+      <div class="bilan-card v"><div class="bilan-num">~5 940 Mt</div><div class="bilan-lbl">CO₂/an extraction nette totale<br>~16 % des émissions mondiales actuelles</div></div>
+      <div class="bilan-card a"><div class="bilan-num">~143 ans</div><div class="bilan-lbl">Pour résorber le stock excédentaire<br>Retour à 280 ppm vers 2170</div></div>
+    </div>
+
+    <div style="margin-top:2rem;padding:1.5rem 2rem;border-left:4px solid var(--rouge);background:rgba(192,57,43,.06);font-size:.88rem;color:rgba(240,244,241,.72);line-height:1.85" class="reveal">
+      <strong style="color:#f1948a">L'argument économique décisif :</strong> DAC (Direct Air Capture), BECCS conventionnel et reboisement massif coûtent 300 à 600 €/t CO₂ net. Le scénario Résilience généralisé <strong style="color:var(--blanc)">produit de la valeur nette</strong> sur 5 flux simultanés — bio-GNV vendu, crédits carbone ETS (~70 €/t), digestat liquide substituant les engrais Haber-Bosch fossiles, digestat solide comme amendement organique, chaleur fatale pour l'industrie locale. Il se finance lui-même dès que les signaux économiques sont en place.
+    </div>
+  </div>
+</section>
+
+<!-- RISQUES -->
+<section id="risques" style="background:var(--foret)">
+  <div class="container">
+    <div class="stag reveal">Risques et conditions de réussite</div>
+    <h2 class="reveal">Un scénario crédible expose<br><em>ses propres limites</em></h2>
+    <div class="risques-layout reveal">
+      <div class="risque-faux">
+        <h3>✓ Les faux risques — réfutation</h3>
+        <div class="risque-item"><strong>Concurrence alimentation/énergie</strong>Ces terres sont physiquement inadaptées aux cultures alimentaires. Pas d'arbitrage — valorisation d'espaces sans usage.</div>
+        <div class="risque-item"><strong>Déforestation</strong>Cible les terres déboisées ou jamais forestières. Les forêts fournissent des résidus sans coupe rase.</div>
+        <div class="risque-item"><strong>Irrigation massive</strong>Miscanthus, switchgrass, agave : zéro irrigation après établissement. Espèces choisies pour le climat local.</div>
+        <div class="risque-item"><strong>Perte de biodiversité</strong>Terres marginales = biodiversité quasi nulle. La couverture permanente crée de nouveaux habitats et stoppe l'érosion.</div>
+        <div class="risque-item"><strong>Monocultures risquées</strong>Gestion en mosaïque, corridors écologiques, diversité d'espèces selon les zones climatiques.</div>
+      </div>
+      <div class="risque-reel">
+        <h3>⚠ Les risques réels — et leur traitement</h3>
+        <div class="risque-item"><strong>Fuites de méthane — le risque principal</strong>CH₄ = 84× CO₂ sur 20 ans. Objectif opérationnel : zéro fuite tolérée — analogie culture de sûreté nucléaire. Télémétrie continue, audits annuels, sanctions immédiates, réparation sous 48h.</div>
+        <div class="risque-item"><strong>Incendies des cultures énergétiques</strong>Gestion en parcelles de 20 à 50 ha avec pistes pare-feu. Récolte annuelle limitant la charge combustible. Espèces à teneur en eau élevée en saison à risque.</div>
+        <div class="risque-item"><strong>Gouvernance foncière</strong>Droits d'usage long terme (40-60 ans). Le flux de revenus immédiats crée l'incitation économique naturelle. Mécanismes type REDD+ adaptés, financement Banque Mondiale/AFD.</div>
+        <div class="risque-item"><strong>Certification EBC/CDC V3 obligatoire</strong>Sans certification rigoureuse, le biochar ne garantit pas la séquestration. H/C ≤ 0,4 et T° ≥ 700°C : exigences contractuelles non négociables.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COHERENCE FRANCE -->
+<section id="france" style="background:var(--noir)">
+  <div class="container">
+    <div class="stag reveal">Cohérence arithmétique</div>
+    <h2 class="reveal">De Résilience France<br><em>à Résilience Monde</em></h2>
+    <p class="lead reveal">Le Programme Résilience V11 est la déclinaison nationale du scénario mondial. La cohérence entre les deux échelles valide les hypothèses.</p>
+    <div class="coher-box reveal">
+      <h3>La validation par le ratio France/Monde</h3>
+      <p>La France représente <strong>~0,85 % du potentiel mondial</strong> de biométhane (262 TWh sur ~30 000 TWh). Elle représente ~1 % de la population mondiale et ~1,5 % des terres arables comparables. Le ratio est cohérent à ±50 % — exactement ce qu'on attend d'une estimation de scénario. Autrement dit : si le Programme Résilience V11 est crédible à l'échelle nationale, le scénario mondial l'est au même niveau de robustesse.</p>
+      <div style="display:flex;gap:2rem;margin-top:1.2rem;flex-wrap:wrap">
+        <div style="border-left:2px solid var(--vert-vif);padding-left:1rem"><div style="font-family:var(--serif);font-size:1.6rem;color:var(--vert-vif)">262 TWh</div><div style="font-size:.7rem;color:var(--gris);text-transform:uppercase">France V11</div></div>
+        <div style="border-left:2px solid var(--gris);padding-left:1rem"><div style="font-family:var(--serif);font-size:1.6rem;color:var(--gris)">÷ 0,85 %</div><div style="font-size:.7rem;color:var(--gris);text-transform:uppercase">Part mondiale</div></div>
+        <div style="border-left:2px solid var(--ambre);padding-left:1rem"><div style="font-family:var(--serif);font-size:1.6rem;color:var(--ambre)">~30 800 TWh</div><div style="font-size:.7rem;color:var(--gris);text-transform:uppercase">Potentiel monde extrapolé</div></div>
+        <div style="border-left:2px solid var(--vert-vif);padding-left:1rem"><div style="font-family:var(--serif);font-size:1.6rem;color:var(--vert-vif)">46 260 TWh</div><div style="font-size:.7rem;color:var(--gris);text-transform:uppercase">Scénario central mondial</div></div>
+      </div>
+    </div>
+
+    <!-- PDF download -->
+    <div class="doc-box reveal" style="margin-top:2.5rem">
+      <div class="doc-cover">
+        <div style="font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gris);margin-bottom:.6rem">Note stratégique mondiale</div>
+        <div class="doc-cover-title">Carbone, Résilience et Mobilité à l'échelle mondiale</div>
+        <div class="doc-sub">Gisements · Bio-GNV · Biochar · Séquestration · Bilan carbon-négatif 2045 · Juin 2026</div>
+        <a href="Carbone_Resilience_Mobilite_Mondiale.pdf" class="btn btn-primary" target="_blank" download style="width:100%;text-align:center;font-size:.7rem">⬇ Télécharger le PDF</a>
+      </div>
+      <div>
+        <p style="font-size:.88rem;color:rgba(240,244,241,.68);line-height:1.85;margin-bottom:1rem">9 chapitres · 3 scénarios chiffrés (bas/central/ambitieux) · Analyse des risques réels et faux risques · Cohérence avec le Programme Résilience V11 national</p>
+        <ul style="list-style:none">
+          <li style="font-size:.82rem;color:rgba(240,244,241,.65);padding-left:1.1rem;position:relative;margin-bottom:.35rem"><span style="position:absolute;left:0;color:var(--vert-vif)">→</span>Le paradoxe central — neutralité vs carbon-négatif</li>
+          <li style="font-size:.82rem;color:rgba(240,244,241,.65);padding-left:1.1rem;position:relative;margin-bottom:.35rem"><span style="position:absolute;left:0;color:var(--vert-vif)">→</span>Les quatre gisements mondiaux avec 3 scénarios</li>
+          <li style="font-size:.82rem;color:rgba(240,244,241,.65);padding-left:1.1rem;position:relative;margin-bottom:.35rem"><span style="position:absolute;left:0;color:var(--vert-vif)">→</span>Production d'énergie — 53 700 TWh/an utiles</li>
+          <li style="font-size:.82rem;color:rgba(240,244,241,.65);padding-left:1.1rem;position:relative;margin-bottom:.35rem"><span style="position:absolute;left:0;color:var(--vert-vif)">→</span>Biochar + CO₂ biogénique — 5 940 Mt CO₂/an retirés</li>
+          <li style="font-size:.82rem;color:rgba(240,244,241,.65);padding-left:1.1rem;position:relative;margin-bottom:.35rem"><span style="position:absolute;left:0;color:var(--vert-vif)">→</span>Risques réels, faux risques, conditions de réussite</li>
+          <li style="font-size:.82rem;color:rgba(240,244,241,.65);padding-left:1.1rem;position:relative;margin-bottom:.35rem"><span style="position:absolute;left:0;color:var(--vert-vif)">→</span>Comparatif : tout-électrique / H₂ vert / Bio-GNV + biochar</li>
+        </ul>
+        <div style="display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.2rem">
+          <a href="carbone-resilience.html" class="btn btn-outline" style="font-size:.72rem">← Stratégie carbone France</a>
+          <a href="biodiversite.html" class="btn btn-outline" style="font-size:.72rem">Biodiversité & Climat →</a>
+          <a href="materiaux-critiques.html" class="btn btn-outline" style="font-size:.72rem">Matériaux critiques →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Programme Résilience V11</div>
+  <p>Carbone, Résilience et Mobilité · Échelle mondiale · Juin 2026 · Diffusion libre</p>
+  <p style="font-size:.7rem;color:#3a5044;margin-top:.3rem">Sources : AIE Global Critical Minerals Outlook · IRENA · FAO · IPCC · Connaissance des énergies</p>
+</footer>
+
+<script>
+const obs=new IntersectionObserver((e)=>{e.forEach((el,i)=>{if(el.isIntersecting){setTimeout(()=>el.target.classList.add('visible'),i*65);obs.unobserve(el.target)}})},{threshold:0.07});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
