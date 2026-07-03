@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pourquoi le tout-électrique ne suffit pas seul · Programme Résilience V11</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --noir:#0a0f0d;--foret:#0d1f17;--vert-vif:#52b788;--vert-clair:#95d5b2;
+  --ambre:#e9c46a;--rouge:#c0392b;--bleu:#2d5fa8;--bleu-clair:#6a9fd8;
+  --blanc:#f0f4f1;--gris:#8a9e93;--serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--noir);color:var(--blanc);font-family:var(--sans);font-weight:300;line-height:1.7;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:.9rem 2.5rem;background:rgba(10,15,13,.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(82,183,136,.12)}
+.nav-logo{font-family:var(--serif);font-size:1.15rem;font-weight:600;color:var(--vert-vif);text-decoration:none}
+.nav-back{font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gris);text-decoration:none;transition:color .3s}.nav-back:hover{color:var(--vert-vif)}
+.nav-tag{font-size:.66rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--gris);border:1px solid rgba(82,183,136,.2);padding:.25rem .75rem}
+section{padding:5.5rem 3rem}
+.container{max-width:1100px;margin:0 auto}
+.stag{font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--vert-vif);margin-bottom:.7rem}
+h1{font-family:var(--serif);font-size:clamp(2.4rem,5vw,4rem);font-weight:300;line-height:1.08;margin-bottom:1.2rem}
+h1 em{font-style:italic;color:var(--ambre)}
+h2{font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.4rem);font-weight:300;line-height:1.15;margin-bottom:1rem}
+h2 em{font-style:italic;color:var(--ambre)}
+.lead{font-size:.97rem;color:rgba(240,244,241,.7);max-width:700px;line-height:1.85;margin-bottom:1.8rem}
+.btn{display:inline-block;padding:.72rem 1.6rem;font-family:var(--sans);font-size:.76rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:all .3s}
+.btn-primary{background:var(--ambre);color:var(--noir)}.btn-primary:hover{background:#f5d47a;transform:translateY(-2px)}
+.btn-outline{background:transparent;color:var(--blanc);border:1px solid rgba(240,244,241,.28)}.btn-outline:hover{border-color:var(--vert-vif);color:var(--vert-vif);transform:translateY(-2px)}
+
+/* KPI STRIP */
+.kpi-strip{display:flex;gap:2.5rem;margin-top:2.5rem;flex-wrap:wrap}
+.kpi{border-left:2px solid var(--ambre);padding-left:1rem}
+.kpi.r{border-left-color:var(--rouge)}
+.kpi.b{border-left-color:var(--bleu-clair)}
+.kpi.g{border-left-color:var(--vert-vif)}
+.kpi-val{font-family:var(--serif);font-size:1.9rem;color:var(--ambre);line-height:1}
+.kpi.r .kpi-val{color:#e07070}
+.kpi.b .kpi-val{color:var(--bleu-clair)}
+.kpi.g .kpi-val{color:var(--vert-vif)}
+.kpi-lbl{font-size:.68rem;color:var(--gris);text-transform:uppercase;letter-spacing:.1em;margin-top:.2rem}
+
+/* SECTION NUMEROS */
+.sec-num{
+  display:flex;gap:1.8rem;align-items:flex-start;padding:2.5rem 0;
+  border-bottom:1px solid rgba(82,183,136,.1);
+}
+.sec-num:last-child{border-bottom:none}
+.num-badge{
+  flex-shrink:0;width:48px;height:48px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--serif);font-size:1.4rem;font-weight:300;
+  border:1px solid var(--ambre);color:var(--ambre);
+}
+.sec-num-body h3{font-family:var(--serif);font-size:1.4rem;font-weight:400;color:var(--blanc);margin-bottom:.5rem;line-height:1.2}
+.sec-num-body p{font-size:.9rem;color:rgba(240,244,241,.68);line-height:1.8}
+.sec-num-body p strong{color:var(--blanc);font-weight:500}
+.sec-num-body .stat{
+  margin-top:.8rem;display:inline-flex;align-items:baseline;gap:.6rem;
+  background:rgba(233,196,106,.08);border-left:3px solid var(--ambre);
+  padding:.4rem .9rem;font-size:.82rem;
+}
+.sec-num-body .stat .sv{font-family:var(--serif);font-size:1.4rem;color:var(--ambre)}
+.sec-num-body .stat .sl{color:var(--gris)}
+
+/* SCÉNARIO 5 JOURS */
+.scenario-box{
+  border:1px solid rgba(192,57,43,.35);background:rgba(30,10,10,.6);
+  padding:2rem 2.2rem;margin-top:2rem;
+}
+.scenario-box .sc-title{
+  font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+  color:#e07070;margin-bottom:1.2rem;
+}
+.scenario-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:rgba(192,57,43,.2);margin-top:1rem}
+.sc-step{background:rgba(20,5,5,.8);padding:1rem .8rem;text-align:center}
+.sc-step .sc-icon{font-size:1.4rem;margin-bottom:.4rem}
+.sc-step .sc-label{font-size:.75rem;color:rgba(240,244,241,.7);line-height:1.4}
+.sc-step .sc-val{font-size:.7rem;color:#e07070;margin-top:.3rem;font-weight:500}
+.sc-result{margin-top:1rem;padding:1rem 1.2rem;background:rgba(192,57,43,.12);font-size:.85rem;color:rgba(240,244,241,.7);line-height:1.6}
+.sc-result strong{color:#f4a0a0}
+
+/* STOCKAGE COMPARATIF */
+.stockage-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(82,183,136,.1);border:1px solid rgba(82,183,136,.1);margin-top:1.5rem}
+.st-card{background:rgba(13,31,23,.8);padding:1.3rem 1rem}
+.st-card.last{background:rgba(26,58,40,.6);border-top:2px solid var(--vert-vif)}
+.st-title{font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gris);margin-bottom:.5rem}
+.st-val{font-family:var(--serif);font-size:1.6rem;line-height:1;margin-bottom:.3rem}
+.st-card .st-val{color:#e07070}
+.st-card.last .st-val{color:var(--vert-vif)}
+.st-sub{font-size:.75rem;color:rgba(240,244,241,.55);line-height:1.4}
+
+/* CAPEX TABLE */
+.capex-tbl{width:100%;border-collapse:collapse;font-size:.82rem;margin-top:1.5rem}
+.capex-tbl thead tr{background:rgba(45,95,168,.3)}
+.capex-tbl thead th{padding:.75rem 1rem;text-align:left;color:var(--bleu-clair);font-weight:500;font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;border-bottom:2px solid var(--bleu)}
+.capex-tbl tbody tr{border-bottom:1px solid rgba(45,95,168,.15);transition:background .2s}
+.capex-tbl tbody tr:hover{background:rgba(45,95,168,.1)}
+.capex-tbl tbody td{padding:.7rem 1rem;color:rgba(240,244,241,.75);vertical-align:middle}
+.capex-tbl tbody td:first-child{color:var(--blanc);font-weight:400}
+.capex-tbl tfoot tr{background:rgba(45,95,168,.25)}
+.capex-tbl tfoot td{padding:.7rem 1rem;font-weight:600;border-top:2px solid var(--bleu)}
+.td-r{color:#e07070!important;font-weight:500}
+.td-g{color:var(--vert-vif)!important;font-weight:500}
+.td-a{color:var(--ambre)!important;font-weight:500}
+
+/* MATÉRIAUX */
+.mat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(82,183,136,.1);border:1px solid rgba(82,183,136,.1);margin-top:1.5rem}
+.mat-cell{background:rgba(13,31,23,.8);padding:1.4rem 1.2rem}
+.mat-cell.vs{background:rgba(26,58,40,.7);border-top:2px solid var(--vert-vif)}
+.mat-title{font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.8rem}
+.mat-cell .mat-title{color:#e07070}
+.mat-cell.vs .mat-title{color:var(--vert-vif)}
+.mat-item{display:flex;justify-content:space-between;align-items:center;padding:.4rem 0;border-bottom:1px solid rgba(82,183,136,.08);font-size:.82rem}
+.mat-item:last-child{border-bottom:none}
+.mat-item .mn{color:rgba(240,244,241,.75)}
+.mat-item .mv{font-weight:500}
+.mat-cell .mv{color:#e07070}
+.mat-cell.vs .mv{color:var(--vert-vif)}
+
+/* CO2 BOX */
+.co2-box{border:1px solid rgba(45,95,168,.3);background:rgba(10,15,40,.6);padding:2rem 2.2rem;margin-top:2rem}
+.co2-box h3{font-family:var(--serif);font-size:1.3rem;color:var(--bleu-clair);margin-bottom:.8rem}
+.co2-box p{font-size:.88rem;color:rgba(240,244,241,.68);line-height:1.8;margin-bottom:.7rem}
+.co2-box p strong{color:var(--blanc);font-weight:500}
+.co2-line{display:flex;gap:1rem;align-items:center;padding:.6rem 0;border-bottom:1px solid rgba(45,95,168,.15);font-size:.83rem}
+.co2-line:last-child{border-bottom:none}
+.co2-line .cl{width:140px;color:rgba(240,244,241,.6);flex-shrink:0}
+.co2-line .cv{font-weight:500}
+
+/* NOTE */
+.note{margin-top:1rem;padding:1rem 1.3rem;border-left:3px solid rgba(82,183,136,.35);background:rgba(10,15,13,.4);font-size:.78rem;color:rgba(240,244,241,.55);line-height:1.6}
+.note strong{color:rgba(233,196,106,.8)}
+
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+.reveal.visible{opacity:1;transform:none}
+footer{background:#050a07;padding:2rem 3rem;text-align:center;border-top:1px solid rgba(82,183,136,.08)}
+.footer-logo{font-family:var(--serif);font-size:1.4rem;font-weight:300;color:var(--vert-vif);margin-bottom:.3rem}
+footer p{font-size:.75rem;color:var(--gris);max-width:600px;margin:.3rem auto}
+@media(max-width:800px){
+  nav{padding:.85rem 1.3rem}section{padding:3.5rem 1.4rem}
+  .scenario-steps{grid-template-columns:repeat(2,1fr)}
+  .stockage-grid,.mat-grid{grid-template-columns:1fr}
+  .sec-num{flex-direction:column;gap:1rem}
+}
+</style>
+<script src="https://cdn.counter.dev/script.js" data-id="7e06e873-296f-4ef5-856b-537fc7ceb0db" data-utcoffset="2"></script>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo" title="Retour à l'accueil">⌂ Résilience 2045</a>
+  <div style="display:flex;align-items:center;gap:1.2rem">
+    <a href="index.html" style="font-size:.68rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(82,183,136,.6);text-decoration:none;border:1px solid rgba(82,183,136,.2);padding:.2rem .6rem;transition:color .3s" onmouseover="this.style.color='#52b788'" onmouseout="this.style.color='rgba(82,183,136,.6)'">⌂ Accueil</a>
+    <span class="nav-tag">Constat · Électrification</span>
+    <a href="fondements.html" class="nav-back">← Fondements</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section style="min-height:65vh;display:flex;align-items:center;padding-top:8rem;position:relative;overflow:hidden;background:linear-gradient(135deg,#0a0f0d 0%,#0d1520 50%,#060e09 100%)">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 30% 50%,rgba(45,95,168,.18) 0%,transparent 70%)"></div>
+  <div class="container" style="position:relative;z-index:1">
+    <div style="display:inline-block;border:1px solid rgba(233,196,106,.5);color:var(--ambre);font-size:.67rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:.3rem .85rem;margin-bottom:1.5rem">Analyse structurelle · Programme Résilience V11</div>
+    <h1>Pourquoi le tout-électrique<br>ne suffit pas <em>seul.</em></h1>
+    <p class="lead">L'électrification est nécessaire et doit se poursuivre. Mais un scénario reposant exclusivement sur l'électricité se heurte à six limites structurelles que ni les batteries, ni le V2G, ni les pompes à chaleur ne peuvent résoudre seuls — et qui ont des conséquences chiffrées sur le CAPEX, la souveraineté et le climat.</p>
+    <div style="display:flex;gap:.9rem;flex-wrap:wrap">
+      <a href="#limites" class="btn btn-primary">Les six limites →</a>
+      <a href="fondements.html" class="btn btn-outline">← Quatre crises simultanées</a>
+    </div>
+    <div class="kpi-strip">
+      <div class="kpi r"><div class="kpi-val">21 EPR2</div><div class="kpi-lbl">nécessaires en scénario tout-BEV</div></div>
+      <div class="kpi"><div class="kpi-val">+250/350 Md€</div><div class="kpi-lbl">économisés avec Résilience</div></div>
+      <div class="kpi b"><div class="kpi-val">+37,5 GW</div><div class="kpi-lbl">de pointe non absorbable par les batteries</div></div>
+      <div class="kpi g"><div class="kpi-val">130 TWh</div><div class="kpi-lbl">stockage saisonnier résolu par le réseau GRDF</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- LES 6 LIMITES -->
+<section id="limites" style="background:linear-gradient(180deg,var(--noir) 0%,#07090e 100%)">
+  <div class="container">
+    <div class="stag reveal">Six limites structurelles</div>
+    <h2 class="reveal">Ce que le tout-électrique ne peut pas résoudre <em>seul</em></h2>
+
+    <!-- 1 GW vs TWh -->
+    <div class="sec-num reveal">
+      <div class="num-badge">1</div>
+      <div class="sec-num-body">
+        <h3>Le mur de puissance — GW vs TWh</h3>
+        <p>Le tout-électrique confond deux grandeurs différentes. La France peut produire assez d'énergie en volume annuel (TWh) — le problème n'est pas là. Le problème est la <strong>puissance instantanée disponible lors des pics simultanés</strong> : jour de grand froid, vent faible, recharge massive de véhicules électriques. Le réseau doit fournir cette puissance en quelques secondes, pas en quelques jours.</p>
+        <p style="margin-top:.7rem">En scénario tout-BEV, la pointe hivernale actuelle de ~90 GW monterait vers ~130 GW. Les batteries stationnaires ont une autonomie de 4 à 6 heures — elles lissent les pics horaires, pas les creux de plusieurs jours. Dans le scénario Résilience, le Sabatier absorbe les surplus ENR et libère du bio-CH4 en hiver, ce qui permet au nucléaire de fonctionner à <strong>85,9 % de facteur de charge contre 75,9 %</strong> en tout-électrique — et de réduire le nombre d'EPR2 nécessaires.</p>
+        <div style="display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1rem">
+          <div class="stat"><span class="sv">+37,5 GW</span><span class="sl">lors des chassés-croisés estivaux simultanés</span></div>
+          <div class="stat"><span class="sv">21 EPR2</span><span class="sl">nécessaires en tout-BEV vs 14 avec Résilience</span></div>
+          <div class="stat" style="border-left-color:var(--vert-vif)"><span class="sv" style="color:var(--vert-vif)">−84 Md€</span><span class="sl">d'EPR2 évités sur ce seul poste</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2 Les 5 jours critiques -->
+    <div class="sec-num reveal">
+      <div class="num-badge">2</div>
+      <div class="sec-num-body">
+        <h3>Les 5 jours critiques — le scénario que les batteries ne couvrent pas</h3>
+        <p>Ce n'est pas un scénario catastrophiste — c'est un scénario météorologique récurrent en France. Cinq conditions simultanées suffisent à créer une tension extrême sur le réseau électrique qu'aucune batterie ne peut absorber sur la durée.</p>
+        <div class="scenario-box">
+          <div class="sc-title">⚠ Scénario tension réseau — janvier, 5 jours consécutifs</div>
+          <div class="scenario-steps">
+            <div class="sc-step"><div class="sc-icon">🌡️</div><div class="sc-label">Vague de froid</div><div class="sc-val">−10°C sur 5 jours</div></div>
+            <div class="sc-step"><div class="sc-icon">🌬️</div><div class="sc-label">Anticyclone</div><div class="sc-val">Éolien à 3 % capacité</div></div>
+            <div class="sc-step"><div class="sc-icon">☁️</div><div class="sc-label">Ciel couvert</div><div class="sc-val">Solaire quasi nul</div></div>
+            <div class="sc-step"><div class="sc-icon">🔌</div><div class="sc-label">Recharge VE</div><div class="sc-val">15 M VE la nuit</div></div>
+            <div class="sc-step"><div class="sc-icon">🏭</div><div class="sc-label">Industrie active</div><div class="sc-val">Pas de réduction conso.</div></div>
+          </div>
+          <div class="sc-result"><strong>Résultat :</strong> déficit de puissance de 30 à 45 GW pendant 5 jours consécutifs. Les batteries stationnaires (autonomie 4–6 h) sont épuisées en quelques heures. Le V2G suppose que les conducteurs acceptent de décharger leurs véhicules massivement — improbable lors d'une vague de froid. <strong>La seule solution à l'échelle nécessaire : le stockage saisonnier en réseau gaz.</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 Stockage saisonnier -->
+    <div class="sec-num reveal">
+      <div class="num-badge">3</div>
+      <div class="sec-num-body">
+        <h3>Le stockage saisonnier — 130 TWh non résolus en BEV pur</h3>
+        <p>La France dispose déjà d'une capacité de stockage saisonnier de <strong>130 TWh dans le réseau souterrain GRDF</strong> — sans aucun investissement supplémentaire. Aucune autre technologie ne peut offrir ce volume à cette échelle et à ce coût.</p>
+        <div class="stockage-grid">
+          <div class="st-card">
+            <div class="st-title">Batteries stationnaires</div>
+            <div class="st-val">4–6 h</div>
+            <div class="st-sub">Autonomie maximale · Lisse les pics horaires · ~2–5 TWh déployables en France à horizon 2035</div>
+          </div>
+          <div class="st-card">
+            <div class="st-title">STEP hydrauliques</div>
+            <div class="st-val">~5 TWh</div>
+            <div class="st-sub">Capacité française totale · Potentiel d'extension très limité · Géographie contraignante</div>
+          </div>
+          <div class="st-card">
+            <div class="st-title">V2G (Vehicle-to-Grid)</div>
+            <div class="st-val">Limité</div>
+            <div class="st-sub">Dépend de la disponibilité simultanée des véhicules · Accélère la dégradation des batteries · Comportement conducteur incertain</div>
+          </div>
+          <div class="st-card last">
+            <div class="st-title">Réseau GRDF — bio-CH4</div>
+            <div class="st-val">130 TWh</div>
+            <div class="st-sub">Capacité existante · 0 € CAPEX réseau · Stockage saisonnier réel · Disponible immédiatement</div>
+          </div>
+        </div>
+        <div class="note">Le réseau GRDF n'est pas un concurrent de l'électricité — c'est son complément de stockage naturel. L'énergie excédentaire des ENR en été est convertie en bio-CH4 (Sabatier) et stockée, puis utilisée en hiver pour la mobilité lourde et le backup réseau.</div>
+      </div>
+    </div>
+
+    <!-- 4 CAPEX -->
+    <div class="sec-num reveal">
+      <div class="num-badge">4</div>
+      <div class="sec-num-body">
+        <h3>Le CAPEX comparé — 250 à 350 Md€ d'écart</h3>
+        <p>Le scénario tout-BEV n'est pas seulement contraint physiquement — il est significativement plus coûteux que le scénario Résilience. La différence porte sur quatre postes principaux.</p>
+        <div style="overflow-x:auto">
+          <table class="capex-tbl">
+            <thead><tr><th>Poste d'investissement</th><th>Tout-BEV</th><th>Résilience V11</th><th>Écart</th><th>Qualif.</th></tr></thead>
+            <tbody>
+              <tr style="background:rgba(45,95,168,.15)"><td colspan="5" style="color:var(--bleu-clair);font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.5rem 1rem">Production électrique — couche commune</td></tr>
+              <tr><td>Solaire</td><td class="td-r">64–77 Md€</td><td class="td-g">49–60 Md€</td><td class="td-g">−4 à −28 Md€</td><td style="color:var(--vert-vif);font-size:.75rem">✅</td></tr>
+              <tr><td>Éolien terrestre</td><td class="td-r">12–15 Md€</td><td class="td-g">8–12 Md€</td><td class="td-g">−3 à −7 Md€</td><td style="color:var(--vert-vif);font-size:.75rem">✅</td></tr>
+              <tr><td>Éolien marin</td><td class="td-r">96–122 Md€</td><td class="td-g">58–84 Md€</td><td class="td-g">−12 à −64 Md€</td><td style="color:var(--vert-vif);font-size:.75rem">✅</td></tr>
+              <tr><td>EPR2 neufs (21 vs 14 × 12 Md€)</td><td class="td-r">252 Md€ <span style="font-size:.72rem;color:#e07070">(21 EPR2)</span></td><td class="td-g">168 Md€ <span style="font-size:.72rem;color:var(--vert-vif)">(14 EPR2)</span></td><td class="td-g">−84 Md€</td><td style="color:var(--vert-vif);font-size:.75rem">✅</td></tr>
+              <tr style="background:rgba(45,95,168,.1)"><td><strong>Sous-total production</strong></td><td class="td-r"><strong>424–466 Md€</strong></td><td class="td-g"><strong>283–324 Md€</strong></td><td class="td-g"><strong>−140 Md€</strong></td><td></td></tr>
+
+              <tr style="background:rgba(45,95,168,.15)"><td colspan="5" style="color:var(--bleu-clair);font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.5rem 1rem">Infrastructures</td></tr>
+              <tr><td>Réseau électrique RTE</td><td class="td-r">80–120 Md€</td><td class="td-g">50–70 Md€</td><td class="td-g">−40 à −50 Md€</td><td style="color:var(--vert-vif);font-size:.75rem">✅</td></tr>
+              <tr><td>Bornes DC BEV vs stations Bio-GNV</td><td class="td-r">40–60 Md€</td><td class="td-g">4,5–11 Md€</td><td class="td-g">−30 à −55 Md€</td><td style="color:var(--vert-vif);font-size:.75rem">✅</td></tr>
+              <tr><td>Véhicules — surcoût transition 33 M</td><td class="td-r">150–250 Md€</td><td class="td-g">80–140 Md€</td><td class="td-g">−70 à −110 Md€</td><td style="color:var(--ambre);font-size:.75rem">Plausible</td></tr>
+              <tr><td>Perte valeur actifs gaziers GRDF</td><td class="td-r">100–200 Md€</td><td class="td-g">0 Md€</td><td class="td-g">−100 à −200 Md€</td><td style="color:#e07070;font-size:.75rem">⚠ Incertain</td></tr>
+
+              <tr style="background:rgba(82,183,136,.1)"><td colspan="5" style="color:var(--vert-clair);font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.5rem 1rem">Couche 2 Résilience — filières bio-CH4 (investissements spécifiques)</td></tr>
+              <tr><td>Pyrogazéification 150 sites × 460 M€</td><td style="color:var(--gris)">0</td><td class="td-g">69 Md€</td><td class="td-r">+69 Md€</td><td style="color:var(--vert-vif);font-size:.75rem">✅ autofinancé 5–8 ans</td></tr>
+              <tr><td>Méthaniseurs boostés H₂ (300 retrofit)</td><td style="color:var(--gris)">0</td><td class="td-g">18 Md€</td><td class="td-r">+18 Md€</td><td style="color:var(--vert-vif);font-size:.75rem">✅</td></tr>
+              <tr><td>Électrolyseurs PEM Sabatier (50 GW)</td><td style="color:var(--gris)">0</td><td class="td-g">35 Md€</td><td class="td-r">+35 Md€</td><td style="color:var(--ambre);font-size:.75rem">Plausible TRL 7–8</td></tr>
+              <tr><td>Infrastructure Bio-GNV (4 000–4 800 stations)</td><td style="color:var(--gris)">0</td><td class="td-g">4,5–11 Md€</td><td class="td-r">+4,5–11 Md€</td><td style="color:var(--vert-vif);font-size:.75rem">✅</td></tr>
+              <tr><td>Valorisation CO₂ résiduel (CCS + serres)</td><td style="color:var(--gris)">0</td><td class="td-g">8–10 Md€</td><td class="td-r">+8–10 Md€</td><td style="color:var(--ambre);font-size:.75rem">Plausible</td></tr>
+              <tr><td>R&D ÉREV + certifications</td><td style="color:var(--gris)">0</td><td class="td-g">4,5 Md€</td><td class="td-r">+4,5 Md€</td><td style="color:var(--vert-vif);font-size:.75rem">✅</td></tr>
+              <tr style="background:rgba(82,183,136,.08)"><td><strong>Sous-total Couche 2</strong></td><td style="color:var(--gris)">0</td><td class="td-g"><strong>139–147 Md€ brut</strong><br><span style="font-size:.75rem;color:var(--vert-vif)">Net ~117 Md€ après revenus CO₂ + biochar</span></td><td class="td-a">+139–147 Md€</td><td style="color:var(--ambre);font-size:.75rem">Plausible</td></tr>
+            </tbody>
+            <tfoot>
+              <tr><td><strong>CAPEX TOTAL TRANSITION 2025–2045</strong></td><td class="td-r"><strong>794–1 096 Md€</strong></td><td class="td-g"><strong>540–690 Md€</strong></td><td class="td-g"><strong>−254 à −406 Md€<br>central ~−315 Md€</strong></td><td style="color:#e07070;font-size:.75rem">⚠ Ordre de grandeur</td></tr>
+            </tfoot>
+          </table>
+        </div>
+        <div class="note"><strong>⚠ Avertissement méthodologique :</strong> le différentiel ~315 Md€ est un ordre de grandeur. La "perte valeur actifs gaziers GRDF" (100–200 Md€) est le poste le plus incertain — il dépend des décisions réglementaires européennes sur l'avenir des réseaux gaz. La Couche 2 Résilience (139–147 Md€) est documentée poste par poste et génère <strong>~35 Md€/an de revenus à plein régime</strong> (bio-CH4 + biochar + chaleur + CO₂) — soit ~700 Md€ cumulés sur 20 ans. L'avantage économique réel est donc de ~315 Md€ en CAPEX et de <strong>~900–1 050 Md€ sur 20 ans</strong> en valeur totale créée vs coût net BEV. Source : Programme Résilience V11 Complet, section 3.2.</div>
+      </div>
+    </div>
+
+    <!-- 5 Matériaux -->
+    <div class="sec-num reveal">
+      <div class="num-badge">5</div>
+      <div class="sec-num-body">
+        <h3>Les matériaux critiques — remplacer une dépendance par une autre</h3>
+        <p>Le tout-électrique réduit la dépendance au pétrole et au gaz — c'est son objectif et c'est légitime. Mais il crée simultanément une <strong>dépendance accrue aux matériaux critiques</strong> dont 80 % de l'extraction mondiale est localisée hors d'Europe, dans des pays soumis à instabilité géopolitique ou sociale.</p>
+        <div class="mat-grid">
+          <div class="mat-cell">
+            <div class="mat-title">✗ BEV 80–150 kWh — dépendances</div>
+            <div class="mat-item"><span class="mn">Lithium</span><span class="mv">60–90 kg par véhicule · Australie, Chili, Chine</span></div>
+            <div class="mat-item"><span class="mn">Cobalt</span><span class="mv">10–20 kg · 70 % RD Congo</span></div>
+            <div class="mat-item"><span class="mn">Nickel</span><span class="mv">30–60 kg · Indonésie, Philippines</span></div>
+            <div class="mat-item"><span class="mn">Manganèse</span><span class="mv">30–50 kg · Afrique du Sud, Gabon</span></div>
+            <div class="mat-item"><span class="mn">Cuivre réseau</span><span class="mv">+500 000 t/an pour renforcement réseau</span></div>
+            <div class="mat-item"><span class="mn">Terres rares moteurs</span><span class="mv">Néodyme, dysprosium · 85 % Chine</span></div>
+          </div>
+          <div class="mat-cell vs">
+            <div class="mat-title">✓ ÉREV Résilience 20 kWh — réduction</div>
+            <div class="mat-item"><span class="mn">Lithium</span><span class="mv">15–20 kg · −75 % vs BEV</span></div>
+            <div class="mat-item"><span class="mn">Cobalt</span><span class="mv">2–4 kg · −80 % vs BEV (LFP)</span></div>
+            <div class="mat-item"><span class="mn">Nickel</span><span class="mv">Minimal · LFP sans nickel</span></div>
+            <div class="mat-item"><span class="mn">Infrastructure bio-CH4</span><span class="mv">Acier, béton, inox · matériaux européens</span></div>
+            <div class="mat-item"><span class="mn">Digestat</span><span class="mv">Substitue partiellement les 4 Md€/an d'engrais importés</span></div>
+            <div class="mat-item"><span class="mn">Biochar</span><span class="mv">Réduit les besoins en intrants · filière 100 % locale</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6 Angle mort CO2 -->
+    <div class="sec-num reveal">
+      <div class="num-badge">6</div>
+      <div class="sec-num-body">
+        <h3>L'angle mort climatique — 421 ppm qui restent 421 ppm</h3>
+        <p>C'est la limite la plus fondamentale, et la moins discutée dans les scénarios officiels. Même un scénario 100 % électrique réussi — zéro émission nette atteint — <strong>ne réduit pas le stock de CO2 déjà présent dans l'atmosphère.</strong> Il arrête seulement d'en ajouter.</p>
+        <div class="co2-box">
+          <h3>Ce que la neutralité carbone ne résout pas</h3>
+          <div class="co2-line"><span class="cl">Aujourd'hui</span><span class="cv" style="color:#e07070">421 ppm CO2 · record depuis 3 millions d'années</span></div>
+          <div class="co2-line"><span class="cl">Neutralité carbone</span><span class="cv" style="color:var(--ambre)">421 ppm maintenus indéfiniment · persistance 300–1 000 ans</span></div>
+          <div class="co2-line"><span class="cl">Résilience biochar</span><span class="cv" style="color:var(--vert-vif)">−23 Mt CO2/an net · extraction active · trajectoire vers ~380 ppm</span></div>
+          <div class="co2-line"><span class="cl">CO2 biogénique</span><span class="cv" style="color:var(--vert-vif)">Carbonatation + stockage géologique · potentiel additionnel non comptabilisé</span></div>
+        </div>
+        <p style="font-size:.88rem;color:rgba(240,244,241,.65);line-height:1.8;margin-top:1rem">La neutralité carbone est une condition nécessaire mais pas suffisante. Pour revenir à des conditions climatiques plus habitables à long terme, il faut des émissions nettes <em>négatives</em> — retirer du CO2 déjà accumulé. La séquestration naturelle passive est trop lente face aux 37 Gt/an d'émissions mondiales actuelles. Le biochar certifié EBC/CDC V3 est une des rares solutions réunissant permanence, mesurabilité et co-bénéfices agronomiques.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CE QUE RÉSILIENCE APPORTE -->
+<section style="background:var(--foret)">
+  <div class="container">
+    <div class="stag reveal">La réponse complémentaire</div>
+    <h2 class="reveal">Résilience ne remplace pas l'électrification —<br><em>il résout ce qu'elle ne peut pas faire seule</em></h2>
+    <p class="lead reveal">Les 262 TWh de bio-CH4 ne cherchent pas à remplacer les 350–400 TWh de gaz fossile consommés historiquement. Ils ciblent précisément les six angles morts identifiés ci-dessus : les pics de puissance, le stockage saisonnier, la mobilité lourde, la réduction des matériaux critiques, la restauration des sols, et l'extraction nette de CO2.</p>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap" class="reveal">
+      <a href="fondements.html" class="btn btn-outline">Les 4 crises simultanées →</a>
+      <a href="bio-ch4.html" class="btn btn-outline">Repositionnement bio-CH4 →</a>
+      <a href="materiaux-critiques.html" class="btn btn-outline">Matériaux critiques →</a>
+      <a href="trajectoires-co2.html" class="btn btn-outline">Trajectoires CO2 à 2200 →</a>
+      <a href="index.html" class="btn btn-outline">⌂ Accueil</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Programme Résilience V11</div>
+  <p>Pourquoi le tout-électrique ne suffit pas seul · Analyse structurelle · Juillet 2026 · Diffusion libre</p>
+  <p style="margin-top:.4rem">Sources : RTE Bilan Prévisionnel · ADEME Trajectoires · Programme Résilience V11 complet · Note CO2 V4</p>
+</footer>
+
+<script>
+const obs=new IntersectionObserver((e)=>{e.forEach((el,i)=>{if(el.isIntersecting){setTimeout(()=>el.target.classList.add('visible'),i*65);obs.unobserve(el.target)}})},{threshold:0.07});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
