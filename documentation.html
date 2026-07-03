@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Programme Résilience — Architecture Énergétique France 2045</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --noir:#0a0f0d;--foret:#0d1f17;--vert-prof:#1a3a28;--vert-med:#2d6a4f;
+  --vert-vif:#52b788;--vert-clair:#95d5b2;--terre:#a0522d;--ambre:#e9c46a;
+  --rouge:#c0392b;--bleu:#2980b9;--blanc:#f0f4f1;--gris:#8a9e93;
+  --serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--noir);color:var(--blanc);font-family:var(--sans);font-weight:300;line-height:1.7;overflow-x:hidden}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:.9rem 2.5rem;background:rgba(10,15,13,.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(82,183,136,.12)}
+.nav-logo{font-family:var(--serif);font-size:1.15rem;font-weight:600;color:var(--vert-vif);text-decoration:none}
+.nav-links{display:flex;gap:1.6rem;list-style:none}
+.nav-links a{color:var(--gris);text-decoration:none;font-size:.72rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;transition:color .3s}
+.nav-links a:hover{color:var(--vert-vif)}
+
+#hero{min-height:100vh;display:flex;align-items:center;padding:8rem 3rem 5rem;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 65% 50%,rgba(29,90,54,.38) 0%,transparent 70%),linear-gradient(135deg,#0a0f0d 0%,#0d1f17 50%,#060e09 100%)}
+.hero-grid{position:absolute;inset:0;opacity:.05;background-image:linear-gradient(var(--vert-vif) 1px,transparent 1px),linear-gradient(90deg,var(--vert-vif) 1px,transparent 1px);background-size:55px 55px}
+.hero-content{position:relative;z-index:1;max-width:800px}
+.hero-tag{display:inline-block;border:1px solid var(--vert-vif);color:var(--vert-vif);font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;padding:.3rem .85rem;margin-bottom:1.6rem;animation:fadeUp .7s ease both}
+h1{font-family:var(--serif);font-size:clamp(2.8rem,6vw,5.5rem);font-weight:300;line-height:1.05;margin-bottom:1.3rem;animation:fadeUp .7s .12s ease both}
+h1 em{font-style:italic;color:var(--vert-vif)}
+.hero-phrase{font-family:var(--serif);font-size:clamp(1.05rem,2vw,1.45rem);font-style:italic;color:var(--ambre);border-left:3px solid var(--ambre);padding-left:1.1rem;margin:1.6rem 0 1.8rem;line-height:1.5;animation:fadeUp .7s .24s ease both}
+.hero-intro{font-size:.97rem;color:rgba(240,244,241,.7);max-width:580px;line-height:1.85;animation:fadeUp .7s .36s ease both}
+.hero-cta{display:flex;gap:.9rem;margin-top:2rem;flex-wrap:wrap;animation:fadeUp .7s .48s ease both}
+.btn{display:inline-block;padding:.72rem 1.6rem;font-family:var(--sans);font-size:.76rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:all .3s;cursor:pointer;border:none}
+.btn-primary{background:var(--vert-vif);color:var(--noir)}
+.btn-primary:hover{background:var(--vert-clair);transform:translateY(-2px)}
+.btn-outline{background:transparent;color:var(--blanc);border:1px solid rgba(240,244,241,.28)}
+.btn-outline:hover{border-color:var(--vert-vif);color:var(--vert-vif);transform:translateY(-2px)}
+.hero-kpis{position:absolute;right:4rem;bottom:6rem;z-index:1;display:flex;flex-direction:column;gap:1.3rem;animation:fadeUp .7s .6s ease both}
+.kh-num{font-family:var(--serif);font-size:2.1rem;font-weight:600;color:var(--vert-vif);line-height:1;text-align:right}
+.kh-lbl{font-size:.65rem;color:var(--gris);letter-spacing:.1em;text-transform:uppercase;text-align:right}
+
+section{padding:6rem 3rem}
+.container{max-width:1200px;margin:0 auto}
+.stag{font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--vert-vif);margin-bottom:.7rem}
+h2{font-family:var(--serif);font-size:clamp(1.85rem,3.5vw,2.9rem);font-weight:300;line-height:1.15;margin-bottom:1.2rem}
+h2 em{font-style:italic;color:var(--vert-vif)}
+h3{font-family:var(--serif);font-size:1.35rem;font-weight:400;margin-bottom:.6rem}
+.lead{font-size:1rem;color:rgba(240,244,241,.7);max-width:680px;line-height:1.85;margin-bottom:1.8rem}
+.divider{border:none;border-top:1px solid rgba(82,183,136,.13);margin:2.5rem 0}
+
+/* BADGES QUALIFICATION V11 */
+.badge{display:inline-block;font-size:.62rem;font-weight:600;letter-spacing:.1em;padding:.18rem .55rem;border-radius:2px;margin-left:.4rem;vertical-align:middle}
+.b-ok{background:rgba(82,183,136,.2);color:var(--vert-vif);border:1px solid rgba(82,183,136,.4)}
+.b-pl{background:rgba(41,128,185,.18);color:#74b9e8;border:1px solid rgba(41,128,185,.35)}
+.b-pr{background:rgba(233,196,106,.18);color:var(--ambre);border:1px solid rgba(233,196,106,.35)}
+
+/* TABLES */
+.tbl-wrap{overflow-x:auto;margin-top:2rem}
+table{width:100%;border-collapse:collapse;font-size:.8rem}
+thead tr{background:rgba(26,58,40,.9)}
+thead th{padding:.85rem 1rem;text-align:left;color:var(--vert-clair);font-weight:500;letter-spacing:.08em;font-size:.72rem;text-transform:uppercase;border-bottom:2px solid var(--vert-vif)}
+tbody tr{border-bottom:1px solid rgba(82,183,136,.09);transition:background .2s}
+tbody tr:hover{background:rgba(13,31,23,.55)}
+tbody td{padding:.72rem 1rem;color:rgba(240,244,241,.75);vertical-align:top;line-height:1.5}
+tbody td:first-child{color:var(--blanc);font-weight:400}
+.td-g{color:var(--vert-vif)!important;font-weight:500}
+.td-r{color:#e74c3c!important}
+.td-a{color:var(--ambre)!important;font-weight:500}
+tfoot tr{background:rgba(26,58,40,.5)}
+tfoot td{padding:.72rem 1rem;color:var(--vert-clair);font-weight:500;border-top:2px solid var(--vert-vif)}
+
+/* CONSTAT */
+#constat{background:var(--foret)}
+.crise-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:1.5px;margin-top:3rem;border:1px solid rgba(82,183,136,.1);background:rgba(82,183,136,.1)}
+.crise-card{padding:2rem 1.7rem;background:rgba(13,31,23,.65);transition:background .3s}
+.crise-card:hover{background:rgba(29,58,40,.85)}
+.crise-num{font-family:var(--serif);font-size:3rem;font-weight:300;color:rgba(82,183,136,.16);line-height:1;margin-bottom:.4rem}
+.crise-card h3{color:var(--vert-clair);font-size:.97rem;font-weight:500;margin-bottom:.55rem}
+.crise-card p{font-size:.83rem;color:rgba(240,244,241,.6);line-height:1.65}
+
+/* REPOSITION BIO-CH4 */
+#bioch4{background:linear-gradient(180deg,var(--noir) 0%,#070e0a 100%);position:relative;overflow:hidden}
+.bioch4-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 20% 50%,rgba(29,90,54,.2) 0%,transparent 60%)}
+.perception-wrap{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:3rem;border:1px solid rgba(82,183,136,.1);background:rgba(82,183,136,.1);position:relative;z-index:1}
+.perc-col{padding:2.5rem 2.2rem}
+.perc-col.faux{background:rgba(20,10,10,.7)}
+.perc-col.reel{background:rgba(10,30,18,.6)}
+.perc-hdr{font-size:.68rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;margin-bottom:1.3rem;padding-bottom:.8rem;border-bottom:1px solid rgba(82,183,136,.18)}
+.faux .perc-hdr{color:var(--rouge)}
+.reel .perc-hdr{color:var(--vert-vif)}
+.perc-item{display:flex;gap:.85rem;margin-bottom:.9rem;align-items:flex-start}
+.perc-dot{width:5px;height:5px;border-radius:50%;margin-top:.58rem;flex-shrink:0}
+.faux .perc-dot{background:var(--rouge)}
+.reel .perc-dot{background:var(--vert-vif)}
+.perc-item p{font-size:.85rem;color:rgba(240,244,241,.68);line-height:1.6}
+.perc-item p strong{color:var(--blanc);font-weight:500}
+.redef-box{margin-top:2.5rem;padding:2rem 2.5rem;border:1px solid var(--vert-vif);background:rgba(29,58,40,.25);position:relative;z-index:1}
+.redef-box h3{font-family:var(--serif);font-size:1.6rem;color:var(--vert-vif);margin-bottom:1rem}
+.redef-box p{font-size:.92rem;color:rgba(240,244,241,.75);line-height:1.8}
+.redef-box p strong{color:var(--ambre)}
+
+/* PHILOSOPHIE */
+#philosophie{background:var(--foret)}
+.phil-wrap{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:3rem;border:1px solid rgba(82,183,136,.09);background:rgba(82,183,136,.09)}
+.phil-col{padding:2.5rem 2rem}
+.phil-col.versus{background:rgba(13,13,13,.7)}
+.phil-col.resil{background:rgba(29,58,40,.3)}
+.phil-hdr{font-size:.68rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;margin-bottom:1.3rem;padding-bottom:.8rem;border-bottom:1px solid rgba(82,183,136,.18)}
+.versus .phil-hdr{color:var(--gris)}
+.resil .phil-hdr{color:var(--vert-vif)}
+.phil-row{display:flex;gap:.85rem;margin-bottom:.95rem;align-items:flex-start}
+.phil-dot{width:5px;height:5px;border-radius:50%;margin-top:.58rem;flex-shrink:0}
+.versus .phil-dot{background:var(--gris)}
+.resil .phil-dot{background:var(--vert-vif)}
+.phil-row p{font-size:.84rem;color:rgba(240,244,241,.67);line-height:1.6}
+.phil-row p strong{color:var(--blanc);font-weight:500}
+
+/* SOLUTIONS */
+#solutions{background:var(--noir)}
+.sol-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.3rem;margin-top:3rem}
+.sol-card{padding:2rem;border:1px solid rgba(82,183,136,.12);background:rgba(10,15,13,.55);position:relative;overflow:hidden;transition:border-color .3s,transform .3s}
+.sol-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--vert-vif),var(--vert-clair));transform:scaleX(0);transform-origin:left;transition:transform .4s}
+.sol-card:hover{border-color:rgba(82,183,136,.35);transform:translateY(-3px)}
+.sol-card:hover::before{transform:scaleX(1)}
+.sol-icon{font-size:1.9rem;margin-bottom:.9rem;display:block}
+.sol-card h3{font-size:1.05rem;color:var(--vert-clair);margin-bottom:.65rem}
+.sol-card p{font-size:.83rem;color:rgba(240,244,241,.6);line-height:1.65}
+.sol-num{display:inline-block;margin-top:.9rem;font-family:var(--serif);font-size:1.2rem;color:var(--ambre);font-weight:600}
+
+/* BIOCHAR */
+#biochar{background:var(--foret)}
+.bc-layout{display:grid;grid-template-columns:1fr 1fr;gap:4.5rem;align-items:start}
+.bc-text p{font-size:.91rem;color:rgba(240,244,241,.68);line-height:1.85;margin-bottom:.9rem}
+.bc-text p strong{color:var(--vert-vif);font-weight:500}
+.bc-compare{display:flex;flex-direction:column;gap:1px;border:1px solid rgba(82,183,136,.1);background:rgba(82,183,136,.1)}
+.bc-row{display:grid;grid-template-columns:1.4fr 1fr 1fr;background:var(--foret);padding:.7rem 1rem;gap:.5rem;border-bottom:1px solid rgba(82,183,136,.08)}
+.bc-row.hdr{background:rgba(26,58,40,.9);font-size:.7rem;font-weight:600;color:var(--vert-clair);text-transform:uppercase;letter-spacing:.08em}
+.bc-row span{font-size:.8rem;color:rgba(240,244,241,.7);line-height:1.5}
+.bc-row span:first-child{color:var(--blanc);font-weight:400}
+.ebc-box{margin-top:2rem;padding:1.5rem 2rem;border-left:4px solid var(--ambre);background:rgba(233,196,106,.07)}
+.ebc-box h3{color:var(--ambre);font-size:1rem;margin-bottom:.5rem}
+.ebc-box p{font-size:.83rem;color:rgba(240,244,241,.65);line-height:1.65}
+
+/* VEHICULES */
+#vehicules{background:var(--noir)}
+.veh-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.3rem;margin-top:3rem}
+.veh-card{padding:2rem;border:1px solid rgba(82,183,136,.13);background:rgba(10,20,14,.6)}
+.veh-icon{font-size:2rem;margin-bottom:.9rem;display:block}
+.veh-card h3{font-size:1.05rem;color:var(--vert-clair);margin-bottom:1rem;padding-bottom:.7rem;border-bottom:1px solid rgba(82,183,136,.15)}
+.veh-spec{display:flex;justify-content:space-between;align-items:baseline;padding:.38rem 0;border-bottom:1px solid rgba(82,183,136,.07);font-size:.82rem}
+.veh-spec-lbl{color:var(--gris)}
+.veh-spec-val{color:var(--blanc);font-weight:500;text-align:right}
+.veh-spec-val.highlight{color:var(--vert-vif)}
+.veh-note{margin-top:1rem;font-size:.78rem;color:rgba(233,196,106,.75);font-style:italic;line-height:1.55}
+
+/* CRITIQUES */
+#critiques{background:var(--foret)}
+.note-box{background:rgba(29,58,40,.38);border:1px solid rgba(82,183,136,.22);border-left:4px solid var(--vert-vif);padding:1.3rem 1.7rem;margin-top:1.8rem;font-size:.86rem;color:rgba(240,244,241,.73);line-height:1.7}
+.note-box strong{color:var(--vert-vif)}
+.warn-box{background:rgba(160,82,45,.08);border:1px solid rgba(160,82,45,.25);border-left:4px solid var(--ambre);padding:1.3rem 1.7rem;margin-top:1.5rem;font-size:.84rem;color:rgba(240,244,241,.7);line-height:1.65}
+.warn-box strong{color:var(--ambre)}
+
+/* TRAJECTOIRE */
+#trajectoire{background:var(--noir)}
+.traj-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(195px,1fr));gap:1px;margin-top:2.8rem;border:1px solid rgba(82,183,136,.1);background:rgba(82,183,136,.1)}
+.traj-step{padding:1.7rem 1.4rem;background:var(--noir);transition:background .3s}
+.traj-step:hover{background:rgba(13,31,23,.8)}
+.traj-year{font-family:var(--serif);font-size:1.9rem;font-weight:300;color:var(--vert-vif);line-height:1;margin-bottom:.5rem}
+.traj-step h3{font-size:.86rem;color:var(--blanc);margin-bottom:.4rem}
+.traj-step p{font-size:.76rem;color:rgba(240,244,241,.52);line-height:1.55}
+.traj-badge{display:inline-block;margin-top:.55rem;font-size:.66rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ambre)}
+
+/* SOUVERAINETE */
+#souverainete{background:var(--foret)}
+.souv-layout{display:grid;grid-template-columns:3fr 2fr;gap:4rem;align-items:start}
+.souv-text p{font-size:.91rem;color:rgba(240,244,241,.68);line-height:1.85;margin-bottom:1rem}
+.souv-text p strong{color:var(--ambre);font-weight:500}
+.souv-items{display:flex;flex-direction:column;gap:.8rem}
+.souv-item{padding:1rem 1.3rem;border:1px solid rgba(82,183,136,.09)}
+.souv-item.bad{border-left:3px solid var(--rouge);background:rgba(160,82,45,.07)}
+.souv-item.good{border-left:3px solid var(--vert-vif);background:rgba(29,58,40,.2)}
+.souv-lbl{font-size:.64rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gris);margin-bottom:.25rem}
+.souv-val{font-size:.84rem;color:var(--blanc)}
+
+/* VERROUS */
+#verrous{background:var(--noir)}
+.verrou-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.2rem;margin-top:2.8rem}
+.verrou-card{padding:1.8rem;border:1px solid rgba(82,183,136,.1);background:rgba(10,15,13,.55)}
+.verrou-icon{font-size:1.5rem;margin-bottom:.7rem}
+.verrou-card h3{font-size:.95rem;margin-bottom:.5rem}
+.verrou-card.rouge h3{color:#e74c3c}
+.verrou-card.orange h3{color:var(--ambre)}
+.verrou-card.jaune h3{color:#f1c40f}
+.verrou-card p{font-size:.81rem;color:rgba(240,244,241,.58);line-height:1.6}
+.verrou-card .sol{margin-top:.8rem;font-size:.79rem;color:var(--vert-vif);font-style:italic}
+
+/* KPIs */
+#kpis{background:var(--vert-prof);padding:5rem 3rem}
+.kpis-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:2.3rem;text-align:center}
+.kpi-num{font-family:var(--serif);font-size:clamp(2rem,4vw,3.5rem);font-weight:300;color:var(--blanc);line-height:1}
+.kpi-unit{font-family:var(--serif);font-size:1rem;color:var(--vert-vif)}
+.kpi-lbl{font-size:.7rem;color:rgba(240,244,241,.55);letter-spacing:.1em;text-transform:uppercase;margin-top:.3rem}
+.kpi-qual{font-size:.62rem;color:rgba(149,213,178,.6);margin-top:.2rem}
+
+/* DOCUMENTS */
+#documents{background:var(--foret)}
+.doc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.2rem;margin-top:2.3rem}
+.doc-card{padding:1.7rem;border:1px solid rgba(82,183,136,.16);background:rgba(10,15,13,.6);display:flex;flex-direction:column;gap:.8rem;transition:border-color .3s}
+.doc-card:hover{border-color:rgba(82,183,136,.38)}
+.doc-n{font-family:var(--serif);font-size:2rem;color:rgba(82,183,136,.2);font-weight:300;line-height:1}
+.doc-card h3{font-size:.95rem;color:var(--blanc)}
+.doc-card p{font-size:.78rem;color:rgba(240,244,241,.5);line-height:1.6;flex:1}
+.doc-tag{font-size:.65rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--vert-vif)}
+
+footer{background:#050a07;padding:2.5rem 3rem;text-align:center;border-top:1px solid rgba(82,183,136,.08)}
+.footer-logo{font-family:var(--serif);font-size:1.6rem;font-weight:300;color:var(--vert-vif);margin-bottom:.4rem}
+footer p{font-size:.76rem;color:var(--gris);max-width:580px;margin:.35rem auto;line-height:1.7}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .65s ease,transform .65s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:900px){
+  nav{padding:.85rem 1.3rem}.nav-links{display:none}
+  section{padding:4.5rem 1.4rem}
+  .bc-layout,.souv-layout,.perception-wrap,.phil-wrap{grid-template-columns:1fr}
+  .hero-kpis{display:none}h1{font-size:2.7rem}
+}
+
+</style>
+<script>history.scrollRestoration='manual';if(location.hash)history.replaceState(null,'',location.pathname);</script>
+<script src="https://cdn.counter.dev/script.js" data-id="7e06e873-296f-4ef5-856b-537fc7ceb0db" data-utcoffset="2"></script>
+</head>
+<body>
+
+<nav>
+  <a href="#hero" class="nav-logo">Programme Résilience V11</a>
+  <ul class="nav-links">
+    <li><a href="fondements.html" style="color:var(--ambre)">Pourquoi ↗</a></li>
+    <li><a href="systeme-energetique.html" style="color:var(--ambre)">Fondements ↗</a></li>
+    <li><a href="#constat">Constat</a></li>
+    <li><a href="carbone-resilience.html" style="color:var(--vert-vif)">Carbone ↗</a></li>
+    <li><a href="trajectoires-co2.html" style="color:var(--vert-vif)">CO₂ 2200 ↗</a></li>
+    <li><a href="materiaux-critiques.html" style="color:var(--rouge)">Matériaux ↗</a></li>
+    <li><a href="#philosophie">Vision</a></li>
+    <li><a href="#solutions">Solutions</a></li>
+    <li><a href="#vehicules">Véhicules</a></li>
+    <li><a href="#trajectoire">Trajectoire</a></li>
+    <li><a href="#souverainete">Souveraineté</a></li>
+    <li><a href="#documents">Documents</a></li>
+    <li><a href="#annexes">Annexes</a></li>
+    <li><a href="finances-publiques.html" style="color:var(--ambre)">Finances ↗</a></li>
+  </ul>
+</nav>
+<!-- HERO -->
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div><div class="hero-grid"></div>
+  <div class="hero-content">
+    <span class="hero-tag">Programme Résilience V11 — France 2045 — Mai 2026</span>
+    <h1>Un scénario de <em>résilience</em><br>complémentaire<br>à l'électrification.</h1>
+    <p class="hero-phrase">« Plus on se déplace, plus on nettoie la planète et l'atmosphère. »</p>
+    <p class="hero-intro">Architecture hybride électricité + bio-CH₄ + biochar — complémentaire à l'électrification pour ce qu'elle ne peut pas couvrir seule : stockage saisonnier, pilotabilité hivernale, mobilité longue distance décarbonée. Non pas contre le BEV — pour le sécuriser.</p>
+    <div class="hero-cta">
+      <a href="#bioch4" class="btn btn-primary">Le repositionnement du bio-CH₄ →</a>
+      <a href="#documents" class="btn btn-outline">Documents complets</a>
+    </div>
+  </div>
+  <div class="hero-kpis">
+    <div><div class="kh-num">~262 TWh</div><div class="kh-lbl">bio-CH₄/an — scénario central</div></div>
+    <div><div class="kh-num">20–23 Mt</div><div class="kh-lbl">CO₂ séquestré/an (biochar net)</div></div>
+    <div><div class="kh-num">−250/350 Md€</div><div class="kh-lbl">économie programme complet vs tout-BEV<br><span style="font-size:.65rem;font-weight:400;opacity:.65">infrastructure 2026–2045, après déduction des investissements bio-CH₄</span></div></div>
+  </div>
+  <p style="font-size:.68rem;color:rgba(240,244,241,.3);text-align:right;margin-top:.8rem;max-width:900px;margin-left:auto;line-height:1.6">
+    <strong style="color:rgba(240,244,241,.45)">Deux niveaux de comparaison — ils ne mesurent pas la même chose :</strong><br>① <strong style="color:rgba(240,244,241,.5)">① Économie programme complet : −250/350 Md€</strong> — CAPEX total BEV 794–1&nbsp;096 Md€ vs Résilience 540–690 Md€. Décomposition complète poste par poste dans le <a href="Programme_Resilience_V11_Complet.pdf" style="color:rgba(149,213,178,.7)">Programme V11 enrichi — section 3.2</a>. Ordre de grandeur à affiner par études sectorielles indépendantes.<br><strong style="color:rgba(240,244,241,.5)">② Différentiel net infrastructure seul : −110/150 Md€</strong> — réseau + nucléaire + recharge évités, moins investissements bio-CH₄. Chaque poste sourcé, défendable devant la Cour des Comptes. Chaque poste est documenté et sourceable. C’est le chiffre défendable devant la DGEC ou la Cour des Comptes.<br>② <strong style="color:rgba(240,244,241,.5)">Économie programme complet : −250/350 Md€</strong> — comparaison CAPEX totaux BEV (794–1 096 Md€) vs Résilience (540–690 Md€), incluant véhicules, infrastructure partagée et production. Le CAPEX BEV n’est pas encore décomposé poste par poste : c’est un ordre de grandeur à affiner par études sectorielles indépendantes.
+  </p>
+</section>
+
+<!-- CONSTAT -->
+
+<!-- CARD FONDEMENTS SYSTÈME — lien vers page dédiée -->
+<section id="guide" style="padding:4rem 3rem;background:rgba(5,10,7,.85);border-bottom:1px solid rgba(82,183,136,.15)">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:1.8rem">
+      <div style="font-size:.65rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--ambre);margin-bottom:.5rem">Par où commencer ?</div>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:300;color:rgba(240,244,241,.6)">Ce site a une logique de lecture — choisissez votre niveau d'entrée</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5px;background:rgba(82,183,136,.1);border:1px solid rgba(82,183,136,.12)">
+
+      <div style="background:rgba(13,31,23,.8);padding:2.2rem 1.8rem;display:flex;flex-direction:column;gap:.8rem;min-height:280px">
+        <div style="display:flex;align-items:center;gap:.8rem">
+          <div style="width:32px;height:32px;border-radius:50%;background:rgba(233,196,106,.15);border:1px solid rgba(233,196,106,.4);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--ambre);flex-shrink:0">1</div>
+          <div style="font-size:.62rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ambre)">Pourquoi · 3 minutes</div>
+        </div>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:300;color:var(--blanc);line-height:1.3">L'électrification seule ne suffit pas</p>
+        <p style="font-size:.8rem;color:rgba(240,244,241,.5);line-height:1.6">Les cinq contraintes structurelles que les scénarios officiels n'adressent pas. Pour l'élu, le journaliste, le citoyen curieux.</p>
+        <div style="margin-top:auto;padding-top:.8rem;border-top:1px solid rgba(82,183,136,.12)">
+          <div style="font-size:.7rem;color:rgba(240,244,241,.35);margin-bottom:.6rem;font-style:italic">Pour : élus · journalistes · grand public</div>
+          <a href="fondements.html" style="display:inline-block;padding:.6rem 1.3rem;background:var(--ambre);color:var(--noir);font-family:'Jost',sans-serif;font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;text-decoration:none">Commencer ici →</a>
+        </div>
+      </div>
+
+      <div style="background:rgba(13,31,23,.6);padding:2.2rem 1.8rem;display:flex;flex-direction:column;gap:.8rem;min-height:280px">
+        <div style="display:flex;align-items:center;gap:.8rem">
+          <div style="width:32px;height:32px;border-radius:50%;background:rgba(82,183,136,.12);border:1px solid rgba(82,183,136,.35);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--vert-vif);flex-shrink:0">2</div>
+          <div style="font-size:.62rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--vert-vif)">Les solutions · 10 minutes</div>
+        </div>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:300;color:var(--blanc);line-height:1.3">L'architecture hybride Résilience</p>
+        <p style="font-size:.8rem;color:rgba(240,244,241,.5);line-height:1.6">Bio-CH₄ · Biochar · ÉREV · Séquestration carbone · Double dividende agronomique. Les six piliers du programme et leurs interactions.</p>
+        <div style="margin-top:auto;padding-top:.8rem;border-top:1px solid rgba(82,183,136,.12)">
+          <div style="font-size:.7rem;color:rgba(240,244,241,.35);margin-bottom:.6rem;font-style:italic">Pour : ingénieurs · décideurs · agriculteurs</div>
+          <a href="#solutions" style="display:inline-block;padding:.6rem 1.3rem;background:var(--vert-vif);color:var(--noir);font-family:'Jost',sans-serif;font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;text-decoration:none">Voir les solutions →</a>
+        </div>
+      </div>
+
+      <div style="background:rgba(13,31,23,.4);padding:2.2rem 1.8rem;display:flex;flex-direction:column;gap:.8rem;min-height:280px">
+        <div style="display:flex;align-items:center;gap:.8rem">
+          <div style="width:32px;height:32px;border-radius:50%;background:rgba(41,128,185,.12);border:1px solid rgba(41,128,185,.35);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1rem;color:#74b9e8;flex-shrink:0">3</div>
+          <div style="font-size:.62rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#74b9e8">Documentation · 30+ minutes</div>
+        </div>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:300;color:var(--blanc);line-height:1.3">Notes techniques &amp; analyses</p>
+        <p style="font-size:.8rem;color:rgba(240,244,241,.5);line-height:1.6">Neuf documents détaillés, annexes de validation, réponses aux objections institutionnelles. Chiffres sourcés, hypothèses explicitées.</p>
+        <div style="margin-top:auto;padding-top:.8rem;border-top:1px solid rgba(82,183,136,.12)">
+          <div style="font-size:.7rem;color:rgba(240,244,241,.35);margin-bottom:.6rem;font-style:italic">Pour : experts · chercheurs · cabinets ministériels</div>
+          <a href="#documents" style="display:inline-block;padding:.6rem 1.3rem;background:transparent;color:#74b9e8;border:1px solid rgba(41,128,185,.4);font-family:'Jost',sans-serif;font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;text-decoration:none">Accéder aux documents →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<section id="constat">
+  <div class="container">
+    <div class="reveal">
+      <p class="stag">Le constat</p>
+      <h2>L'électrification est <em>nécessaire.</em><br>Elle est insuffisante <em>seule.</em></h2>
+      <p class="lead">Le Programme Résilience n'est pas un plaidoyer contre le BEV ou l'électrification. Il identifie les contraintes réelles qu'un système tout-électrique doit résoudre — et propose une architecture hybride complémentaire.</p>
+    </div>
+    <div class="crise-grid reveal">
+      <div class="crise-card">
+        <div class="crise-num">01</div>
+        <h3>Le stockage saisonnier non résolu</h3>
+        <p>Les batteries couvrent 4 à 8 heures. Un anticyclone hivernal sans vent dure 3 à 7 jours. Besoin France : 2 à 5 TWh pour 5 jours à 20 GW. Batteries nécessaires : 480 Md€ — physiquement possible, économiquement prohibitif. Seul le réseau GRDF avec 130 TWh existants résout ce problème sans investissement nouveau.<span class="badge b-ok">✅ Avantage infra existante</span></p>
+      </div>
+      <div class="crise-card">
+        <div class="crise-num">02</div>
+        <h3>Le pic des chassés-croisés</h3>
+        <p>250 000 VE × 150 kW simultanés = 37,5 GW instantanés. Le vendredi avant Pâques 2045 : le solaire passe de 63 GW à 0 GW en 3 heures exactement quand les voitures arrivent. Déficit potentiel : −88 à −116 GW. Files d'attente de plusieurs heures sur A7, A10, A13.<span class="badge b-pl">🔬 À modéliser RTE</span></p>
+      </div>
+      <div class="crise-card">
+        <div class="crise-num">03</div>
+        <h3>Le V2G structurellement limité</h3>
+        <p>Le véhicule est branché précisément parce qu'il a besoin de se recharger. S'il roule, il n'est pas disponible. L'anti-corrélation entre disponibilité V2G et besoin réseau est structurelle — elle ne se résout pas par le smart-grid lors des migrations massives.<span class="badge b-ok">✅ Analyse opérationnelle</span></p>
+      </div>
+      <div class="crise-card">
+        <div class="crise-num">04</div>
+        <h3>28 Mt de biomasse gaspillées</h3>
+        <p>Les forêts françaises produisent 66 Mt MS/an pour 38 Mt prélevées. Les 28 Mt non récoltées se décomposent et émettent CO₂ + CH₄. Interceptées par la pyrogazéification, elles deviennent énergie + biochar stable. Un puits carbone qui n'existerait pas autrement.<span class="badge b-ok">✅ IGN IFN 2024</span></p>
+      </div>
+      <div class="crise-card">
+        <div class="crise-num">05</div>
+        <h3>Le coût réseau répercuté sur tous</h3>
+        <p>30 à 50 Md€ de renforcement réseau RTE/Enedis pour des pics qui durent 5 % du temps annuel. Répercutés sur la facture de tous les Français via le TURPE. Avec l'ÉREV, ces bornes rapides 150 kW autoroutières deviennent largement inutiles.<span class="badge b-ok">✅ Cour des Comptes 2024</span></p>
+      </div>
+      <div class="crise-card">
+        <div class="crise-num">06</div>
+        <h3>Le GRDF menacé de dépréciation</h3>
+        <p>200 000 km de canalisations, 130 TWh de stockage souterrain : un actif patrimonial de 200 à 400 Md€ construit sur 60 ans. Dans un scénario tout-BEV ou H₂ imposé par l'UE, cet actif devient stranded — déprécié sans compensation. Dans le scénario Résilience, il est la colonne vertébrale du système.<span class="badge b-ok">✅ Analyse financière</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REPOSITIONNEMENT BIO-CH4 -->
+<section id="bioch4">
+  <div class="bioch4-bg"></div>
+  <div class="container">
+    <div class="reveal">
+      <p class="stag">Repositionnement stratégique</p>
+      <h2>Le bio-CH₄ n'est pas<br>du <em>gaz fossile verdâtre.</em></h2>
+      <p class="lead">C'est le malentendu politique central qui bloque le programme. GRDF et les pouvoirs publics perçoivent le bio-CH₄ comme une continuité d'usage du gaz fossile. C'est l'inverse : c'est un outil de rupture avec les fossiles, à condition de le définir correctement.</p>
+    </div>
+    <div class="perception-wrap reveal">
+      <div class="perc-col faux">
+        <div class="perc-hdr">✗ &nbsp;Perception actuelle — L'erreur de cadrage</div>
+        <div class="perc-item"><div class="perc-dot"></div><p><strong>« C'est encore du gaz »</strong> — GRDF maintient la dépendance aux réseaux gaziers qui doivent disparaître</p></div>
+        <div class="perc-item"><div class="perc-dot"></div><p><strong>« Ça retarde la transition »</strong> — chaque euro investi en bio-CH₄ est un euro qui ne va pas aux PAC ou aux bornes</p></div>
+        <div class="perc-item"><div class="perc-dot"></div><p><strong>« La ressource est insuffisante »</strong> — on ne pourra jamais produire assez de biométhane pour remplacer le gaz fossile</p></div>
+        <div class="perc-item"><div class="perc-dot"></div><p><strong>« C'est un lobby gazier »</strong> — GRDF défend ses intérêts commerciaux sous couvert de transition écologique</p></div>
+        <div class="perc-item"><div class="perc-dot"></div><p><strong>« Le bilan carbone est mauvais »</strong> — brûler du méthane biogénique émet du CO₂ dans l'atmosphère</p></div>
+      </div>
+      <div class="perc-col reel">
+        <div class="perc-hdr">✓ &nbsp;Réalité — Ce qu'est vraiment le bio-CH₄</div>
+        <div class="perc-item"><div class="perc-dot"></div><p><strong>Un outil de stockage saisonnier</strong> — 130 TWh dans le réseau GRDF : l'unique solution réaliste pour transférer l'énergie de l'été vers l'hiver à grande échelle en France</p></div>
+        <div class="perc-item"><div class="perc-dot"></div><p><strong>Un carburant de mobilité irremplaçable</strong> — pour les PL longue distance, les tracteurs, l'aviation : des usages que l'électrification ne peut pas couvrir à l'horizon 2045</p></div>
+        <div class="perc-item"><div class="perc-dot"></div><p><strong>Une assurance réseau électrique</strong> — 40 GW de demande effacée passivement lors des pics, sans smart-grid, sans décision conducteur</p></div>
+        <div class="perc-item"><div class="perc-dot"></div><p><strong>Un producteur de biochar</strong> — via la pyrogazéification, le bio-CH₄ co-produit du carbone stable séquestré (fraction stable ~75 % sur >1 000 ans, norme EBC Premium) : stratégie carbon-négative</p></div>
+        <div class="perc-item"><div class="perc-dot"></div><p><strong>Une ressource 100 % nationale</strong> — non délocalisable, non embargable, créatrice d'un potentiel estimé à 100 000–200 000 emplois ruraux selon le niveau de déploiement : l'opposé exact de la dépendance aux fossiles <span class="badge b-pl">🔬</span></p></div>
+      </div>
+    </div>
+    <div class="redef-box reveal">
+      <h3>La redéfinition nécessaire pour les décideurs publics</h3>
+      <p>Le bio-CH₄ dans le Programme Résilience n'est <strong>pas un substitut du gaz fossile dans les chaudières</strong> — ce serait effectivement une mauvaise allocation. C'est un <strong>vecteur de stockage d'énergie renouvelable</strong> (comme une batterie géante de 130 TWh), un <strong>carburant de transport décarbonné pour les usages difficiles à électrifier</strong>, et un <strong>précurseur de biochar</strong> via la pyrogazéification. Ces trois usages n'ont pas d'alternative technologique équivalente avant 2045. C'est pourquoi la ressource limitée de biométhane doit être sanctuarisée pour ces usages — et soustraite au chauffage des bâtiments où la <strong>PAC électrique (COP 3–4) est 3 fois plus efficace</strong>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHIE -->
+<section id="philosophie">
+  <div class="container">
+    <div class="reveal">
+      <p class="stag">Deux architectures</p>
+      <h2>Ce n'est pas BEV <em>contre</em> Résilience.<br>C'est identifier les <em>complémentarités.</em></h2>
+      <p class="lead">La comparaison honnête n'est pas "quel scénario gagne" mais "quelles contraintes chaque architecture doit-elle résoudre, et à quel coût". V11 présente les deux côtés avec leurs forces et leurs limites.</p>
+    </div>
+    <div class="phil-wrap reveal">
+      <div class="phil-col versus">
+        <div class="phil-hdr">Architecture tout-BEV — Forces et contraintes</div>
+        <div class="phil-row"><div class="phil-dot"></div><p><strong>Force :</strong> Efficacité énergétique maximale pour les usages quotidiens (80–90 % vs 45–55 %)<span class="badge b-ok">✅</span></p></div>
+        <div class="phil-row"><div class="phil-dot"></div><p><strong>Force :</strong> Zéro émission à l'usage pour les 90 % de trajets couverts par la charge nocturne<span class="badge b-ok">✅</span></p></div>
+        <div class="phil-row"><div class="phil-dot"></div><p><strong>Contrainte :</strong> FC nucléaire 75,9 % (load-following contraint) — 57 TWh/an gaspillés — 21 EPR2 requis<span class="badge b-pl">🔬</span></p></div>
+        <div class="phil-row"><div class="phil-dot"></div><p><strong>Contrainte :</strong> Stockage saisonnier non résolu — batteries = 4–8h, pas 3–5 mois<span class="badge b-ok">✅ Structurelle</span></p></div>
+        <div class="phil-row"><div class="phil-dot"></div><p><strong>Contrainte :</strong> Déficit pilotable hivernal important — à quantifier finement par RTE<span class="badge b-pl">🔬</span></p></div>
+        <div class="phil-row"><div class="phil-dot"></div><p><strong>Contrainte :</strong> Iridium (PAC) 80 % Afrique du Sud — cobalt 70 % RDC — dépendances géopolitiques critiques<span class="badge b-ok">✅ IRENA 2024</span></p></div>
+        <div class="phil-row"><div class="phil-dot"></div><p><strong>Contrainte :</strong> CAPEX total estimé 794–1 096 Md€<span class="badge b-pl">🔬 Ordre de grandeur</span></p></div>
+      </div>
+      <div class="phil-col resil">
+        <div class="phil-hdr">Architecture Résilience — Forces et contraintes</div>
+        <div class="phil-row"><div class="phil-dot"></div><p><strong>Force :</strong> Stockage saisonnier résolu — GRDF 130 TWh existants et amortis<span class="badge b-ok">✅ Infrastructure réelle</span></p></div>
+        <div class="phil-row"><div class="phil-dot"></div><p><strong>Force :</strong> FC nucléaire 85,9 % baseload si Sabatier opérationnel — 14 EPR2 au lieu de 21<span class="badge b-pl">🔬 Hypothèse favorable</span></p></div>
+        <div class="phil-row"><div class="phil-dot"></div><p><strong>Force :</strong> 40 GW effacés passivement aux pics via ÉREV bio-GNV — sans smart-grid<span class="badge b-ok">✅ Mécanisme physique</span></p></div>
+        <div class="phil-row"><div class="phil-dot"></div><p><strong>Force :</strong> Biochar certifié CDC V3 : 20–23 Mt CO₂/an séquestrés > 100 ans<span class="badge b-pl">🔬 Certifiable EBC</span></p></div>
+        <div class="phil-row"><div class="phil-dot"></div><p><strong>Contrainte :</strong> Goudrons — verrou technique principal à lever en Phase 0 (2027–2029)<span class="badge b-pr">⚠ Critique Phase 0</span></p></div>
+        <div class="phil-row"><div class="phil-dot"></div><p><strong>Contrainte :</strong> Bois chauffage substitué (16 Mt) conditionnel adoption PAC — gisement non garanti<span class="badge b-pr">⚠ Conditionnel</span></p></div>
+        <div class="phil-row"><div class="phil-dot"></div><p><strong>Contrainte :</strong> CAPEX total BEV estimé 794–1 096 Md€ vs Résilience 540–690 Md€ — économie programme complet ~250–350 Md€ (ordre de grandeur, dont ~110–150 Md€ différentiel net infrastructure documenté)<span class="badge b-pl">🔬 Ordre de grandeur</span></p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTIONS -->
+<section id="solutions">
+  <div class="container">
+    <div class="reveal">
+      <p class="stag">Les solutions</p>
+      <h2>Six briques qui forment<br>un <em>système cohérent.</em></h2>
+    </div>
+    <div class="sol-grid reveal">
+      <div class="sol-card">
+        <span class="sol-icon">🌿</span>
+        <h3>Pyrogazéification + Biochar <span class="badge b-pl">🔬</span></h3>
+        <p>150 sites × 1 000 t/j transforment 50–60 Mt de biomasse lignocellulosique en énergie (~2,9 MWh CH₄/t MS) ET en biochar certifié CDC V3 (H/C ≤ 0,4, T° ≥ 550°C). La décomposition naturelle de cette biomasse émettrait CO₂ + CH₄. La pyrogazéification crée un puits carbone additionnel.</p>
+        <span class="sol-num">144–172 TWh CH₄/an · 11–13 Mt biochar</span>
+      </div>
+      <div class="sol-card">
+        <span class="sol-icon">⚡</span>
+        <h3>Véhicule ÉREV Bio-GNV <span class="badge b-pl">🔬</span></h3>
+        <p>Batterie 20–25 kWh (vs 60–150 kWh BEV), moteur Atkinson bio-GNV <strong>44–48 % d'efficacité en mode générateur série</strong> (50–55 % visés à horizon 2035 avec optimisation). 77 % des km en mode 100 % électrique. Basculement automatique en thermique lors des pics réseau — sans décision conducteur. 2 vitesses pour optimiser la plage de rendement.</p>
+        <span class="sol-num">−40 GW effacés aux pointes · −70/75 % métaux critiques</span>
+      </div>
+      <div class="sol-card">
+        <span class="sol-icon">🔬</span>
+        <h3>Sabatier — Surplus ENR → CH₄ <span class="badge b-pl">🔬 TRL 7–8</span></h3>
+        <p>50 GW d'électrolyseurs PEM absorbent instantanément chaque surplus ENR (67 TWh/an autrement curtailés). Le nucléaire fonctionne en baseload pur à FC 85,9 % au lieu de 75,9 % sous modulation forcée. Si cette hypothèse est confirmée par modélisation RTE, le besoin de nouvelles capacités nucléaires pourrait être réduit de l'ordre de 5 à 7 EPR2, soit une économie estimée de l'ordre de 60–84 Md€. <span class="badge b-pl">🔬 Hypothèse à valider RTE</span></p>
+        <span class="sol-num">~40 TWh CH₄/an · coût marginal ≈ 0 €/MWh</span>
+      </div>
+      <div class="sol-card">
+        <span class="sol-icon">🌾</span>
+        <h3>Méthanisation + Terres marginales <span class="badge b-pl">🔬</span></h3>
+        <p>Méthanisation des effluents d'élevage intercepte 1,5–2,5 Mt CH₄/an avant émission = 42–70 Mt CO₂e évités (GWP₁₀₀×28) — soit 126–210 Mt CO₂e sur horizon 20 ans (GWP₂₀×84), levier court terme prioritaire. Terres marginales V11 : 1,5–3,6 Mha jachères, talus, zones humides en miscanthus/TRC = 59–81 TWh supplémentaires sans concurrence alimentaire.</p>
+        <span class="sol-num">70 TWh méthani. · +68 TWh terres marginales</span>
+      </div>
+      <div class="sol-card">
+        <span class="sol-icon">🏗️</span>
+        <h3>Réseau GRDF reconverti <span class="badge b-ok">✅</span></h3>
+        <p>200 000 km de canalisations existantes, 130 TWh de stockage souterrain (24 aquifères + cavités), 100 % compatibles bio-CH₄ sans modification. Infrastructure amortie depuis 30–50 ans. Seule solution réaliste de transfert énergétique inter-saisonnier à grande échelle en France. Zéro CAPEX de réseau.</p>
+        <span class="sol-num">130 TWh stockage · 0 € d'infrastructure nouvelle</span>
+      </div>
+      <div class="sol-card">
+        <span class="sol-icon">💰</span>
+        <h3>Modèle économique multi-flux <span class="badge b-pl">🔬</span></h3>
+        <p>Chaque site génère 5 flux de revenus : bio-CH₄ (120–192 M€/an selon phase), chaleur fatale (4–6 M€), biochar (7–22 M€), crédits carbone CDC V3 (4–18 M€), CO₂ biogénique valorisé (2–15 M€). IRR estimé 8–15 %. Payback prudent 5–8 ans (2,4–3 ans avec soutien Phase 1).</p>
+        <span class="sol-num">EBITDA 115–194 M€/an/site · CAPEX 460 M€/site</span>
+      </div>
+    </div>
+
+    <hr class="divider">
+    <div class="reveal">
+      <h3 style="font-family:var(--serif);font-size:1.5rem;font-weight:300;margin-bottom:1rem">Bilan biomasse V11 — Sources et qualifications</h3>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Source</th><th>Mt/an</th><th>CH₄ TWh/an</th><th>Biochar Mt/an</th><th>Qualification</th></tr></thead>
+          <tbody>
+            <tr><td>Bois mort + rémanents forestiers</td><td>13–15</td><td class="td-g">38–44</td><td>3,1</td><td><span class="badge b-ok">✅</span> IGN/FCBA — gisement robuste</td></tr>
+            <tr><td>Éclaircies non commerciales</td><td>7–10</td><td>20–28</td><td>1,6</td><td><span class="badge b-pl">🔬</span> SRB régionaux — plausible</td></tr>
+            <tr><td>Houppiers + branches</td><td>8–10</td><td>22–27</td><td>1,8</td><td><span class="badge b-pl">🔬</span> Mobilisable progressivement</td></tr>
+            <tr><td>Bois chauffage substitué</td><td>16</td><td>~48</td><td>3,6</td><td><span class="badge b-pr">⚠</span> Conditionnel adoption PAC</td></tr>
+            <tr><td>Ripisylves + bois rivières</td><td>3–4</td><td>8–11</td><td>0,7</td><td><span class="badge b-ok">✅</span> ONF — mobilisation réglementaire</td></tr>
+            <tr><td><strong>Sous-total pyrogazéification</strong></td><td><strong>50–60 Mt</strong></td><td class="td-a"><strong>144–172 TWh</strong></td><td><strong>11,5–13,5 Mt</strong></td><td><span class="badge b-pl">🔬</span> Plausible si adoption PAC</td></tr>
+            <tr><td>Méthanisation (pailles + CIVE + biodéchets)</td><td>32–46</td><td class="td-g">~70 TWh</td><td>—</td><td><span class="badge b-ok">✅</span> Valeur prudente ADEME 2025</td></tr>
+            <tr><td>Sabatier (surplus ENR curtailés)</td><td>—</td><td class="td-g">~40 TWh</td><td>—</td><td><span class="badge b-pl">🔬</span> TRL 7–8 — 67 TWh × 56 %</td></tr>
+          </tbody>
+          <tfoot><tr><td><strong>TOTAL V11</strong></td><td>—</td><td><strong>254–282 TWh/an (~262 central)</strong></td><td>—</td><td><span class="badge b-pl">🔬</span> Scénario central plausible</td></tr></tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BIOCHAR EBC -->
+<section id="biochar">
+  <div class="container">
+    <div class="reveal">
+      <p class="stag">Biochar — Rigueur scientifique</p>
+      <h2>Ne pas dire « biochar ».<br>Dire <em>« Biochar certifié EBC / CDC V3 ».</em></h2>
+      <p class="lead">L'amalgame entre torréfaction basse température et pyrogazéification haute température est le principal risque de greenwashing et d'effondrement de crédibilité de toute la filière. La distinction est non négociable.</p>
+    </div>
+    <div class="bc-layout reveal">
+      <div class="bc-text">
+        <p>Le mot <strong>biochar</strong> utilisé seul ne signifie rien de précis. Un produit de torréfaction à 300°C et un produit de pyrogazéification à 750°C portent le même nom — mais leurs propriétés sont radicalement différentes. C'est la norme <strong>EBC (European Biochar Certificate)</strong> qui établit la distinction certifiable.</p>
+        <p>Le critère clé est le <strong>ratio H/C organique</strong>. Si H/C &gt; 0,7 (torréfaction basse température), le produit est déclassé : il n'est pas un puits de carbone au sens des normes GIEC. Si <strong>H/C ≤ 0,4 à T° ≥ 550°C</strong> (pyrogazéification), on obtient un biochar certifié EBC-Agro : fraction stable &gt; 1 000 ans estimée à ~75 %, sans HAP toxiques, améliorant la rétention d'eau et la vie microbienne des sols.</p>
+        <p>Pour le Programme Résilience, la certification <strong>CDC Biochar V3</strong> (H/C ≤ 0,4, carbone ≥ 50 % MS, matières volatiles &lt; 20 % MS) est une <strong>exigence contractuelle pour tous les 150 sites</strong>. Sans elle, aucun crédit carbone EU-ETS n'est défendable, et la séquestration revendiquée devient un passif juridique.</p>
+        <div class="ebc-box">
+          <h3>L'argument pour décideurs publics</h3>
+          <p>Si l'État subventionne des projets de stockage carbone dans les sols, il doit s'assurer que ce carbone n'y retournera pas dans 30 ans. Seul le biochar haute température (pyrogazéification ≥ 700°C) offre cette garantie. C'est la condition d'éligibilité aux crédits carbone permanents — et la condition de crédibilité du programme face aux experts ADEME, INRAE et Shift Project.</p>
+        </div>
+      </div>
+      <div>
+        <div class="bc-compare reveal">
+          <div class="bc-row hdr"><span>Critère</span><span>Torréfaction &lt;400°C</span><span>Pyrogazéification ≥700°C</span></div>
+          <div class="bc-row"><span>Ratio H/C organique</span><span style="color:var(--rouge)">0,7 à 1,2 — déclassé</span><span style="color:var(--vert-vif)">≤ 0,4 — certifié EBC</span></div>
+          <div class="bc-row"><span>Stabilité carbone sols</span><span style="color:var(--rouge)">10 à 100 ans max</span><span style="color:var(--vert-vif)">&gt; 500 à 1 000 ans</span></div>
+          <div class="bc-row"><span>Séquestration certifiable</span><span style="color:var(--rouge)">Non — GIEC rejette</span><span style="color:var(--vert-vif)">Oui — CDC V3 / EU-ETS</span></div>
+          <div class="bc-row"><span>HAP toxiques (sols)</span><span style="color:var(--rouge)">Risque élevé — interdit agri.</span><span style="color:var(--vert-vif)">Absent — EBC-Agro validé</span></div>
+          <div class="bc-row"><span>Rétention eau +30 %</span><span style="color:var(--rouge)">Faible — structure pauvre</span><span style="color:var(--vert-vif)">Forte — structure graphitée</span></div>
+          <div class="bc-row"><span>Rendement énergétique</span><span style="color:var(--rouge)">Faible — gaz pauvre</span><span style="color:var(--vert-vif)">Élevé — syngas 2,9 MWh/t</span></div>
+          <div class="bc-row"><span>Double dividende</span><span style="color:var(--rouge)">Non — un seul produit médiocre</span><span style="color:var(--vert-vif)">Oui — énergie + puits carbone</span></div>
+          <div class="bc-row"><span>Crédit carbone EU-ETS</span><span style="color:var(--rouge)">Non défendable</span><span style="color:var(--vert-vif)">20–23 Mt CO₂/an × 70 €/t</span></div>
+        </div>
+        <div class="warn-box reveal" style="margin-top:1.5rem">
+          <strong>⚠ Rendements &gt; 3,5 MWh CH₄/t MS :</strong> hors plage industriellement validée. Toute installation déclarant de tels rendements nécessite un audit indépendant avant comptabilisation dans le scénario. Référence validée : GoBiGas 2017–2018 = 2,85–3,0 MWh/t MS.
+        </div>
+        <div style="margin-top:1.2rem;text-align:center">
+          <a href="sequestration.html" class="btn btn-outline" style="font-size:.8rem;padding:.6rem 1.3rem">→ Pourquoi la séquestration biochar est permanente — Forêt libre vs Biochar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VEHICULES -->
+<section id="vehicules">
+  <div class="container">
+    <div class="reveal">
+      <p class="stag">Mobilité décarbonée</p>
+      <h2>Chaque usage, <em>le bon vecteur énergétique.</em></h2>
+      <p class="lead">L'architecture ÉREV bio-CH₄ couvre tous les segments de mobilité — du véhicule léger quotidien au poids lourd longue distance, en passant par le tracteur agricole. Pour chaque segment, le biométhane intervient là où l'électrification seule atteint ses limites.</p>
+    </div>
+    <div class="veh-grid reveal">
+
+      <div class="veh-card">
+        <span class="veh-icon">🚗</span>
+        <h3>VL ÉREV — Voiture particulière</h3>
+        <div class="veh-spec"><span class="veh-spec-lbl">Batterie quotidienne</span><span class="veh-spec-val highlight">20–25 kWh · 77 % des km en électrique</span></div>
+        <div class="veh-spec"><span class="veh-spec-lbl">Prolongateur bio-GNV</span><span class="veh-spec-val">Atkinson série · 44–48 % rendement actuel</span></div>
+        <div class="veh-spec"><span class="veh-spec-lbl">Autonomie totale</span><span class="veh-spec-val highlight">&gt; 500 km sans contrainte</span></div>
+        <div class="veh-spec"><span class="veh-spec-lbl">Rôle réseau</span><span class="veh-spec-val highlight">40 GW effacés passivement aux pics</span></div>
+        <div class="veh-spec"><span class="veh-spec-lbl">Avantage vs BEV</span><span class="veh-spec-val">−70 à −75 % métaux critiques · −7 000 à −10 000 € coût total</span></div>
+        <p class="veh-note">La valeur principale n'est pas le véhicule en soi — c'est son rôle dans le système électrique : il bascule passivement sur bio-GNV lors des pics, sans smart-grid, sans décision conducteur.</p>
+        <a href="voiture-erev.html" class="btn btn-outline" style="font-size:.68rem;padding:.5rem 1rem;margin-top:.8rem;display:inline-block">Voir l'analyse technique détaillée →</a>
+      </div>
+
+      <div class="veh-card">
+        <span class="veh-icon">🚛</span>
+        <h3>Camion Résilience 44t</h3>
+        <div class="veh-spec"><span class="veh-spec-lbl">Architecture</span><span class="veh-spec-val highlight">EREV Rex unique + Bio-LCH4 liquéfié</span></div>
+        <div class="veh-spec"><span class="veh-spec-lbl">Autonomie totale</span><span class="veh-spec-val highlight">1 150–1 300 km · comparable diesel</span></div>
+        <div class="veh-spec"><span class="veh-spec-lbl">Mode ZEV urbain</span><span class="veh-spec-val">110–130 km · zones portuaires · livraison</span></div>
+        <div class="veh-spec"><span class="veh-spec-lbl">Technologies existantes</span><span class="veh-spec-val">Volvo / Scania LNG · Cummins GNV · CATL LFP</span></div>
+        <div class="veh-spec"><span class="veh-spec-lbl">CO₂ usage</span><span class="veh-spec-val highlight">0 g/km (bio-CH₄ neutre carbone)</span></div>
+        <p class="veh-note">Le poids lourd longue distance est le segment où le tout-électrique échoue le plus clairement — 3 t de batterie en moins pour une autonomie insuffisante. Le Bio-LCH4 résout ce problème avec des technologies déjà industrialisées. <span class="badge b-pl">🔬 Développement industriel — certification 2028</span></p>
+        <a href="camion-resilience.html" class="btn btn-outline" style="font-size:.68rem;padding:.5rem 1rem;margin-top:.8rem;display:inline-block">Voir l'analyse technique détaillée →</a>
+      </div>
+
+      <div class="veh-card">
+        <span class="veh-icon">🚜</span>
+        <h3>Tracteur Agricole ÉREV</h3>
+        <div class="veh-spec"><span class="veh-spec-lbl">Carburant</span><span class="veh-spec-val highlight">Bio-GNV auto-produit à la ferme</span></div>
+        <div class="veh-spec"><span class="veh-spec-lbl">Autonomie</span><span class="veh-spec-val">4–5 h (GNV) · jusqu'à 10 h (GNL)</span></div>
+        <div class="veh-spec"><span class="veh-spec-lbl">Puissance</span><span class="veh-spec-val">80 à 400 CV · Rex unique scalable</span></div>
+        <div class="veh-spec"><span class="veh-spec-lbl">Référence existante</span><span class="veh-spec-val highlight">NH T6 Methane Power · certifié 2021</span></div>
+        <div class="veh-spec"><span class="veh-spec-lbl">Coût opérationnel</span><span class="veh-spec-val">9–12 €/h vs 31–34 €/h diesel</span></div>
+        <p class="veh-note">Synergie territoriale unique : les résidus agricoles alimentent le méthaniseur → produit le bio-GNV → alimente le tracteur. Circuit court énergétique complet. Le tracteur peut devenir un centre de profit via l'injection du surplus GRDF. <span class="badge b-pl">🔬 Développement industriel — certification 2028</span></p>
+        <a href="tracteur-erev.html" class="btn btn-outline" style="font-size:.68rem;padding:.5rem 1rem;margin-top:.8rem;display:inline-block">Voir l'analyse technique détaillée →</a>
+      </div>
+
+      <div class="veh-card">
+        <span class="veh-icon">✈️</span>
+        <h3>Aviation Long-Courrier Bio-GNL</h3>
+        <div class="veh-spec"><span class="veh-spec-lbl">Carburant</span><span class="veh-spec-val highlight">Bio-GNL liquéfié · bilan carbone potentiellement négatif</span></div>
+        <div class="veh-spec"><span class="veh-spec-lbl">Avantage masse</span><span class="veh-spec-val">Réduction estimée ~28 % masse carburant vs kérosène</span></div>
+        <div class="veh-spec"><span class="veh-spec-lbl">Émissions CO₂</span><span class="veh-spec-val highlight">0–15 t/vol (bio-GNL) vs 995 t (kérosène)</span></div>
+        <div class="veh-spec"><span class="veh-spec-lbl">NOx / PM</span><span class="veh-spec-val">−40 % / −70 % estimés vs kérosène</span></div>
+        <div class="veh-spec"><span class="veh-spec-lbl">Souveraineté</span><span class="veh-spec-val">95–110 TWh/an disponibles vs 35 TWh besoin aviation nationale</span></div>
+        <p class="veh-note"><strong>Piste technologique à horizon 2030–2040.</strong> Des études de faisabilité complètes par Airbus, Safran ou Rolls-Royce sont nécessaires avant toute affirmation définitive sur les performances. Les avantages théoriques sont significatifs et cohérents ; leur validation industrielle reste à construire. <span class="badge b-pr">⚠ Piste sérieuse — chiffres à consolider par l'industrie</span></p>
+        <a href="aviation-bio-gnl.html" class="btn btn-outline" style="font-size:.68rem;padding:.5rem 1rem;margin-top:.8rem;display:inline-block">Voir l'analyse technique détaillée →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SITUATIONS CRITIQUES -->
+<section id="critiques">
+  <div class="container">
+    <div class="reveal">
+      <p class="stag">5 configurations critiques récurrentes</p>
+      <h2>Des tensions normales,<br>pas des <em>accidents exceptionnels.</em></h2>
+      <p class="lead">Ces situations surviennent chaque année. Le mécanisme de résilience est passif : l'ÉREV bascule automatiquement en bio-GNV sans décision conducteur, sans smart-grid, sans signal prix.</p>
+    </div>
+    <div class="tbl-wrap reveal">
+      <table>
+        <thead><tr><th>Configuration</th><th>Tension BEV (GW)</th><th>Tension Résilience (GW)</th><th>Réduction</th><th>Mécanisme</th></tr></thead>
+        <tbody>
+          <tr><td>Grand froid hivernal (jan, −5°C, COP PAC ÷2)</td><td class="td-r">−65 à −80</td><td class="td-g">−10 à −20</td><td class="td-a">~75 %</td><td>ÉREV thermique −40 GW + électrolyseurs stoppés −50 GW + bio-CH₄ +10–20 GW <span class="badge b-ok">✅</span></td></tr>
+          <tr><td>Anticyclone hivernal (3–5 j sans vent)</td><td class="td-r">−55 à −65 durable</td><td class="td-g">−5 à −15</td><td class="td-a">~75 %</td><td>GRDF 130 TWh souterrains — stockage saisonnier existant <span class="badge b-ok">✅</span></td></tr>
+          <tr><td>Canicule estivale (35–40°C, climatisation)</td><td class="td-r">−40 à −55 soirée</td><td class="td-g">−5 à −15</td><td class="td-a">~70 %</td><td>Solaire fort en journée. ÉREV limite recharge soirée <span class="badge b-pl">🔬</span></td></tr>
+          <tr><td>Grands déplacements estivaux (autoroute)</td><td class="td-r">−70 à −90</td><td class="td-g">−10 à −20</td><td class="td-a">~75 %</td><td>ÉREV autonomie bio-GNV 500 km sans borne. Pas de saturation DC <span class="badge b-pl">🔬</span></td></tr>
+          <tr><td><strong>Vendredi Pâques — cas le plus sévère</strong></td><td class="td-r"><strong>−84 à −116</strong></td><td class="td-g"><strong>−8 à −30</strong></td><td class="td-a"><strong>~75–80 %</strong></td><td>ÉREV bio-GNV pendant trajet · recharge lente nocturne · solaire s'effondre en 3h <span class="badge b-pl">🔬 Modélisation RTE recommandée</span></td></tr>
+        </tbody>
+        <tfoot><tr><td><strong>Bilan</strong></td><td class="td-r"><strong>Tensions fortes 5/5</strong></td><td class="td-g"><strong>Tensions réduites 5/5</strong></td><td class="td-a"><strong>~70–80 % estimé</strong></td><td>Mécanisme passif — ordres de grandeur plausibles — validation indépendante recommandée</td></tr></tfoot>
+      </table>
+    </div>
+    <div class="warn-box reveal">
+      <strong>⚠ Note méthodologique V11 :</strong> Les chiffres de réduction (70–80 %) sont des estimations basées sur les bilans de puissance du tableau mensuel V11. Ils n'ont pas encore été modélisés par RTE ou un organisme indépendant. Ce sont des ordres de grandeur plausibles — pas des résultats certifiés. Une modélisation fine est recommandée en phase pilote 2027–2029.
+    </div>
+  </div>
+</section>
+
+<!-- TRAJECTOIRE -->
+<section id="trajectoire">
+  <div class="container">
+    <div class="reveal">
+      <p class="stag">Trajectoire 2025–2045</p>
+      <h2>Un programme d'action,<br>pas seulement <em>un horizon 2045.</em></h2>
+      <p class="lead">La première décision (2025–2026) ne coûte rien en infrastructure nouvelle. C'est un acte législatif et réglementaire. <strong>Sans validation Phase 0, pas de Phase 1</strong> — la rigueur industrielle est la condition de la crédibilité.</p>
+    </div>
+    <div class="tbl-wrap reveal">
+      <table>
+        <thead><tr><th>Année</th><th>Sites pyrogaz.</th><th>Bio-CH₄ (TWh/an)</th><th>Parc ÉREV (M)</th><th>Déficit hivernal résiduel (GW)</th><th>Statut</th></tr></thead>
+        <tbody>
+          <tr><td>2027</td><td>5 (pilotes)</td><td>3</td><td>0,1</td><td>~55</td><td>Validation CDC V3 + goudrons + rendements ≥ 2,7 MWh/t MS</td></tr>
+          <tr><td>2029</td><td>10</td><td>8</td><td>0,5</td><td>~50</td><td>Accélération conditionnelle si Phase 0 validée</td></tr>
+          <tr><td>2031</td><td>30</td><td>25</td><td>2</td><td>~38</td><td>Montée en régime — formation 5 000 techniciens</td></tr>
+          <tr><td class="td-a">2033</td><td class="td-a">75</td><td class="td-a">72</td><td class="td-a">6</td><td class="td-a">~22</td><td class="td-a">⚑ Seuil de contrôle — système se stabilise</td></tr>
+          <tr><td class="td-g">2035</td><td class="td-g">100</td><td class="td-g">100</td><td class="td-g">12</td><td class="td-g">~14</td><td class="td-g">✓ Auto-portant — marché bancaire seul si IRR &gt; 10 % démontré</td></tr>
+          <tr><td>2040</td><td>150</td><td>190</td><td>28</td><td>~5</td><td>Plein régime — export modèle industriel</td></tr>
+          <tr><td class="td-g">2045</td><td class="td-g">150 + SOEC opt.</td><td class="td-g">254–282</td><td class="td-g">33</td><td class="td-g">~3</td><td class="td-g">Objectif — France puits carbone net (si contribution totale confirmée)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="traj-steps reveal" style="margin-top:3rem">
+      <div class="traj-step"><div class="traj-year">2025</div><h3>Acte législatif</h3><p>Mandate 100 % bio-CH₄ dans flottes captives. CfD prix garanti 15 ans. Cadre ÉREV à Bruxelles.</p><span class="traj-badge">0 € nouveau CAPEX</span></div>
+      <div class="traj-step"><div class="traj-year">2026</div><h3>Bataille EU</h3><p>Faire reconnaître ÉREV bio-CH₄ dans révision règlement 2035. Fenêtre : révision inscrite au calendrier.</p><span class="traj-badge">Réglementaire urgent</span></div>
+      <div class="traj-step" style="background:rgba(13,31,23,.4)"><div class="traj-year">2027</div><h3>5 sites pilotes</h3><p>GAYA + Salamandre Le Havre. Validation goudrons + CDC V3. CONDITION : sans validation Phase 0, pas de Phase 1.</p><span class="traj-badge">Industriel critique</span></div>
+      <div class="traj-step" style="background:rgba(29,58,40,.3)"><div class="traj-year" style="color:var(--ambre)">2033</div><h3>Point de bascule</h3><p>75 sites, 6 M ÉREV, 72 TWh/an. Track record bankable. IRR &gt; 10 % prouvé sur terrain.</p><span class="traj-badge" style="color:var(--ambre)">⚑ Bascule</span></div>
+      <div class="traj-step"><div class="traj-year">2040</div><h3>Plein régime</h3><p>200 000+ emplois. Export modèle : Canada, Pologne, Brésil. Marché mondial pyrogazéification estimé 500–800 Md€.</p><span class="traj-badge">Export technologie</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SOUVERAINETE -->
+<section id="souverainete">
+  <div class="container">
+    <div class="souv-layout">
+      <div class="souv-text reveal">
+        <p class="stag">Géopolitique énergétique</p>
+        <h2>Ne pas reproduire<br>le <em>modèle Nord Stream.</em></h2>
+        <p>L'Allemagne et l'Espagne défendent l'H₂ pour des <strong>raisons qui leur sont propres</strong> — géologie salifère favorable (Basse-Saxe), ambition d'exportateur solaire (Espagne). Ces raisons sont valides pour eux. La France n'a ni la géologie ni les excédents ENR qui rendraient l'électrolyse économique.</p>
+        <p>Suivre les mandats H₂ européens sans défendre ses intérêts propres serait l'équivalent énergétique du <strong>Nord Stream : 200 Md€ de subventions énergie, récession industrielle, redémarrage du charbon</strong> — mais appliqué à l'H₂ importé en 2035–2040.</p>
+        <p>La France contrôle le territoire de transit du corridor BarMar (Espagne → France → Allemagne). <strong>Sans accord français, le pipeline H₂ européen n'existe pas.</strong> C'est un levier réel de négociation à Bruxelles pour obtenir reconnaissance du bio-CH₄, protection GRDF et exemption ÉREV du règlement 2035.</p>
+      </div>
+      <div class="souv-items reveal">
+        <div class="souv-item bad"><div class="souv-lbl">H₂ importé — risque structurel</div><div class="souv-val">Géologie défavorable · Cavernes salines quasi-absentes · Dépendance Espagne/Maroc · Modèle Nord Stream</div></div>
+        <div class="souv-item good"><div class="souv-lbl">Bio-CH₄ national</div><div class="souv-val">100 % français · Non embargable · Infrastructure existante amortie · Disponible dès 2025</div></div>
+        <div class="souv-item bad"><div class="souv-lbl">Iridium — contrainte physique absolue</div><div class="souv-val">50 GW PAC = 15–30 t = 2–4 ans production mondiale · Afrique du Sud 80 %</div></div>
+        <div class="souv-item bad"><div class="souv-lbl">GRDF menacé par mandats UE</div><div class="souv-val">200–400 Md€ d'actifs stranded si H₂ imposé · Blending H₂ &gt; 5 % = 50–100 Md€ remplacement appareils</div></div>
+        <div class="souv-item good"><div class="souv-lbl">Acier + biomasse</div><div class="souv-val">Arcelor/Vallourec · Fabrication locale · 200 000 emplois ruraux non délocalisables</div></div>
+        <div class="souv-item good"><div class="souv-lbl">Coalition France-Italie-Pologne</div><div class="souv-val">3 des 4 plus grandes économies UE · majorité de blocage réaliste sur règlements énergétiques</div></div>
+      </div>
+    </div>
+    <div style="margin-top:2.5rem;padding:1.4rem 2rem;border:1px solid rgba(192,57,43,.25);background:rgba(192,57,43,.06)" class="reveal">
+      <p style="font-size:.85rem;color:rgba(240,244,241,.72);line-height:1.75;margin-bottom:1rem"><strong style="color:#f1948a">La dépendance aux matériaux critiques — un risque de souveraineté aussi réel que le gaz fossile :</strong> lithium, cobalt et terres rares sont à 80–90 % sous contrôle chinois du raffinage. La Chine a déjà utilisé cet outil (restrictions 2023–2025). Le Programme Résilience minimise structurellement cette dépendance : zéro matériau critique rare pour le biométhane, 2 à 3× moins pour l'ÉREV vs BEV pur.</p>
+      <a href="materiaux-critiques.html" class="btn btn-outline" style="font-size:.74rem;padding:.55rem 1.2rem">Matériaux critiques & Souveraineté →</a>
+    </div>
+  </div>
+</section>
+
+<!-- VERROUS -->
+<section id="verrous">
+  <div class="container">
+    <div class="reveal">
+      <p class="stag">Conditions de succès</p>
+      <h2>Les verrous critiques<br>à lever <em>avant tout le reste.</em></h2>
+      <p class="lead">La crédibilité du Programme Résilience repose sur la levée de ces verrous dans l'ordre. Ignorer le verrou des goudrons en Phase 0 invaliderait toute la suite.</p>
+    </div>
+    <div class="verrou-grid reveal">
+      <div class="verrou-card rouge">
+        <div class="verrou-icon">🔴</div>
+        <h3>Goudrons — verrou technique principal</h3>
+        <p>Le craquage thermique/catalytique des goudrons issus de la pyrogazéification est obligatoire pour toute valorisation avancée du syngas. Sans solution industrielle validée, les sites ne peuvent pas atteindre les rendements cibles.</p>
+        <p class="sol">→ Phase 0 obligatoire 2027–2029 : CDC V3 §3.2. Non négociable avant financement de la Phase 1.</p>
+      </div>
+      <div class="verrou-card rouge">
+        <div class="verrou-icon">🔴</div>
+        <h3>Adoption PAC — libère 16 Mt de bois</h3>
+        <p>Le gisement conditionnel "bois chauffage substitué" (16 Mt/an, ~48 TWh) ne se matérialise que si les ménages abandonnent leurs poêles à bois au profit des PAC électriques. C'est une décision politique, pas technique.</p>
+        <p class="sol">→ Subvention PAC + obligation thermique + tarif progressif fioul. Décision 2026–2030.</p>
+      </div>
+      <div class="verrou-card orange">
+        <div class="verrou-icon">🟠</div>
+        <h3>Contrats biomasse 15 ans</h3>
+        <p>Sans contrats take-or-pay à prix plancher sur 15 ans avec les exploitants forestiers et agricoles, aucun financier ne peut sécuriser le modèle des 150 sites. C'est la condition de bancabilité.</p>
+        <p class="sol">→ Contractualisation avant Phase 1. Prix plancher agriculteur garanti par l'État.</p>
+      </div>
+      <div class="verrou-card orange">
+        <div class="verrou-icon">🟠</div>
+        <h3>Formation 20 000 techniciens</h3>
+        <p>Le programme nécessite un flux continu de techniciens spécialisés (opérateurs pyrogazéification, logistique biomasse, maintenance). 15 ans de montée en charge — comparable au programme nucléaire des années 1970.</p>
+        <p class="sol">→ BTS + CQP GNV + plan OPCO dès 2027. 2 500 emplois Phase 1, 200 000 en 2045.</p>
+      </div>
+      <div class="verrou-card jaune">
+        <div class="verrou-icon">🟡</div>
+        <h3>Modélisation indépendante RTE / Shift</h3>
+        <p>Les bilans de puissance du Programme Résilience n'ont pas encore été validés par RTE ou un organisme indépendant. C'est la condition de crédibilité institutionnelle pour les décideurs publics.</p>
+        <p class="sol">→ Mandat d'étude RTE/ADEME/Shift Project. Priorité crédibilité 2026–2027.</p>
+      </div>
+      <div class="verrou-card jaune">
+        <div class="verrou-icon">🟡</div>
+        <h3>Cadre réglementaire biochar CDC V3</h3>
+        <p>L'intégration du CDC Biochar V3 dans les ICPE (Installations Classées) et la conditionnalité des aides publiques à la certification EBC-Agro est nécessaire pour protéger la filière contre le greenwashing.</p>
+        <p class="sol">→ Décret ICPE + conditionnalité aides 2026–2028. Eligibilité EU-ETS biochar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KPIs -->
+<section id="kpis">
+  <div class="container">
+    <div class="kpis-row reveal">
+      <div><div class="kpi-num">~262 <span class="kpi-unit">TWh</span></div><div class="kpi-lbl">bio-CH₄/an (central V11)</div><div class="kpi-qual">🔬 Plausible</div></div>
+      <div><div class="kpi-num">20–23 <span class="kpi-unit">Mt CO₂</span></div><div class="kpi-lbl">séquestrés/an biochar net</div><div class="kpi-qual">🔬 Certifiable CDC V3</div></div>
+      <div><div class="kpi-num">150</div><div class="kpi-lbl">sites pyrogazéification</div><div class="kpi-qual">🔬 Objectif 2045</div></div>
+      <div><div class="kpi-num">100–200k</div><div class="kpi-lbl">emplois potentiels non délocalisables</div><div class="kpi-qual">🔬 Selon niveau de déploiement</div></div>
+      <div><div class="kpi-num">−250/350 <span class="kpi-unit">Md€</span></div><div class="kpi-lbl">économie programme complet vs tout-BEV<br><span style="font-size:.65rem;opacity:.6">ordre de grandeur — dont −110/150 Md€ net infrastructure (section 3.2)</span></div><div class="kpi-qual">🔬 Ordre de grandeur</div></div>
+      <div><div class="kpi-num">5–8 <span class="kpi-unit">ans</span></div><div class="kpi-lbl">payback par site (prudent)</div><div class="kpi-qual">🔬 IRR 8–15 %</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- DOCUMENTS -->
+<section id="documents">
+  <div class="container">
+    <div class="reveal">
+      <p class="stag">Le corpus complet</p>
+      <h2>Huit documents.<br>Chaque niveau de lecture <em>couvert.</em></h2>
+    </div>
+    <div class="doc-grid reveal">
+      <div class="doc-card">
+        <div class="doc-n">01</div>
+        <div class="doc-tag">Introduction · Philosophie</div>
+        <h3>Cadrage systémique — 8 dimensions</h3>
+        <p>Pourquoi ENR+H₂ et Résilience ne répondent pas à la même question. Stratégie carbone offensive vs défensive. Gestion active régénérative. Matériaux critiques.</p>
+        <a href="Introduction_Resilience_V11.pdf" target="_blank" class="btn btn-outline" style="font-size:.72rem;padding:.55rem 1.1rem;margin-top:auto">Télécharger PDF →</a>
+      </div>
+      <div class="doc-card">
+        <div class="doc-n">02</div>
+        <div class="doc-tag">Architecture technique · V11 Enrichi</div>
+        <h3>Programme Résilience V11 — Dossier complet</h3>
+        <p>Version enrichie — décomposition CAPEX complète réintégrée (section&nbsp;3.2) : BEV&nbsp;794–1 096&nbsp;Md€ vs Résilience&nbsp;540–690&nbsp;Md€, poste par poste. Bilan énergétique 6 secteurs. Qualifications ✅/Plausible/⚠. 150 sites pyrogazification. CDC Biochar V3. 5 configurations critiques. Plan industriel 2027–2045.</p>
+        <a href="Programme_Resilience_V11_Complet.pdf" target="_blank" class="btn btn-primary" style="font-size:.72rem;padding:.55rem 1.1rem;margin-top:auto">⬇ Télécharger le dossier complet</a>
+      </div>
+      <div class="doc-card">
+        <div class="doc-n">03</div>
+        <div class="doc-tag">Stockage · Analyse comparative</div>
+        <h3>H₂ vs Bio-CH₄ vs Bio-carburants</h3>
+        <p>3 horizons de stockage. Limites batteries et V2G. Comparaison technique 3 candidats chimiques. Architecture 4 couches. CAPEX 20 GW × 5 jours. Géologie française et contrainte H₂.</p>
+        <a href="Stockage_Energie_V11.pdf" target="_blank" class="btn btn-outline" style="font-size:.72rem;padding:.55rem 1.1rem;margin-top:auto">Télécharger PDF →</a>
+      </div>
+      <div class="doc-card">
+        <div class="doc-n">04</div>
+        <div class="doc-tag">Géopolitique · Stratégie EU</div>
+        <h3>Souveraineté énergétique française</h3>
+        <p>Pourquoi l'Allemagne et l'Espagne défendent l'H₂ pour des raisons qui ne s'appliquent pas à la France. Risques mandats UE. Parallèle Nord Stream. Stratégie Bruxelles 2026.</p>
+        <a href="Souverainete_Energetique_V11.pdf" target="_blank" class="btn btn-outline" style="font-size:.72rem;padding:.55rem 1.1rem;margin-top:auto">Télécharger PDF →</a>
+      </div>
+      <div class="doc-card">
+        <div class="doc-n">05</div>
+        <div class="doc-tag">Note de réflexion · Mai 2026</div>
+        <h3>Plan Électrification 2030 — Contraintes physiques et pistes complémentaires</h3>
+        <p>Une contribution citoyenne invitant les acteurs du secteur énergétique à s'interroger sur les contraintes physiques et financières du plan d'électrification, et sur l'intérêt d'architectures complémentaires. Destinée à RTE, GRDF, ADEME, DGEC, CEREMA.</p>
+        <a href="Note_Reflexion_Electrification_2030_V11.pdf" target="_blank" class="btn btn-outline" style="font-size:.72rem;padding:.55rem 1.1rem;margin-top:auto">Télécharger PDF →</a>
+      </div>
+    </div>
+      <div class="doc-card">
+        <div class="doc-n">06</div>
+        <div class="doc-tag">Positionnement politique · Mai 2026</div>
+        <h3>Résilience vs The Shift Project</h3>
+        <p>Analyse comparative en 9 parties. Convergences (7 points). Divergences fondamentales. Malentendu bio-CH₄. CAPEX comparé. Plan d’action 2026–2030. Arguments politiques par audience. CO₂ biogénique comme ressource.</p>
+        <a href="Note_Positionnement_Resilience_vs_Shift_V11.pdf" target="_blank" class="btn btn-outline" style="font-size:.72rem;padding:.55rem 1.1rem;margin-top:auto">Télécharger PDF →</a>
+      </div>
+      <div class="doc-card">
+        <div class="doc-n">07</div>
+        <div class="doc-tag">Cadrage système énergétique · Mai 2026</div>
+        <h3>France 1 600 TWh → 2045</h3>
+        <p>Pourquoi l’électrification seule ne suffit pas. Les 5 jours critiques. Comparaison H₂ / méthanol / bio-CH₄ sur 8 critères. Timeline 2025–2045. Pourquoi RTE semble moins contraint. Bouclier tarifaire TURPE.</p>
+        <a href="Note_Cadrage_Systeme_Energetique_V11.pdf" target="_blank" class="btn btn-outline" style="font-size:.72rem;padding:.55rem 1.1rem;margin-top:auto">Télécharger PDF →</a>
+      </div>
+      <div class="doc-card">
+        <div class="doc-n">08</div>
+        <div class="doc-tag">Finances publiques · Mai 2026</div>
+        <h3>Optimisation des dépenses — angle Cour des Comptes</h3>
+        <p>Pourquoi Résilience minimise la dépense publique. Actifs existants valorisés. Investissements autofinancés. Bouclier tarifaire TURPE. Coût direct État 10–15 Md€. Tableau comparatif financier complet. Section "pas une subvention".</p>
+        <a href="finances-publiques.html" class="btn btn-outline" style="font-size:.72rem;padding:.55rem 1.1rem;margin-top:auto">Voir la page →</a>
+      </div>
+      <div class="doc-card">
+        <div class="doc-n">09</div>
+        <div class="doc-tag">Séquestration · Juin 2026</div>
+        <h3>Forêt naturelle libre vs Biochar — Analyse comparative</h3>
+        <p>Pourquoi « laisser pousser les forêts » ne suffit pas. Cycle neutre vs séquestration permanente. Comparaison quantitative 5 scénarios. Graphique simulation 50 ans avec fourchettes d'incertitude. CO₂ biogénique concentré comme ressource stratégique post-fossile. Comparaison DAC / BECCS / Biochar / Reforestation.</p>
+        <a href="sequestration.html" class="btn btn-outline" style="font-size:.72rem;padding:.55rem 1.1rem;margin-top:auto">Lire la page →</a>
+        <a href="sequestration_CO2_foret_vs_biochar_v4.pdf" target="_blank" class="btn btn-outline" style="font-size:.72rem;padding:.55rem 1.1rem;margin-top:.4rem">Télécharger PDF →</a>
+      </div>
+      <div class="doc-card" style="border-color:rgba(82,183,136,.35)">
+        <div class="doc-n">10</div>
+        <div class="doc-tag">Trajectoires climatiques · Juin 2026</div>
+        <h3>CO₂ atmosphérique et températures 2026–2200</h3>
+        <p>Cinq scénarios comparés : statu quo, électrification idéale (GIEC SSP1-2.6), corrections physiques réalistes (fossiles résiduels, permafrost, puits dégradés), Programme Résilience base idéale et réaliste, dérèglement complet. Graphiques interactifs avec axe température. Validé par cross-validation entre cinq IA indépendantes.</p>
+        <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-top:auto">
+          <a href="trajectoires-co2.html" class="btn btn-primary" style="font-size:.72rem;padding:.55rem 1.1rem">Voir les courbes →</a>
+          <a href="Note_CO2_Temperatures_V4.pdf" target="_blank" class="btn btn-outline" style="font-size:.72rem;padding:.55rem 1.1rem" download>PDF →</a>
+        </div>
+      </div>
+    <div style="margin-top:2.5rem;text-align:center" class="reveal">
+      <p style="color:var(--gris);font-size:.86rem;margin-bottom:1.1rem">Pour toute question ou échange sur le programme :</p>
+      <a href="mailto:Helio3jd@gmail.com" class="btn btn-outline">Contacter →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ANNEXES TECHNIQUES ──────────────────────────────────────────────── -->
+<section id="annexes" style="padding:4rem 0;background:rgba(5,10,7,.7)">
+  <div class="container">
+    <div class="section-tag reveal">Corpus documentaire complet</div>
+    <h2 class="section-title reveal">Annexes techniques</h2>
+    <p class="section-sub reveal">Documents de réponse aux objections institutionnelles — DGEC, RTE, ADEME, ONG. Chaque annexe traite un angle d'attaque spécifique avec des engagements vérifiables.</p>
+    <div class="doc-grid reveal" style="margin-top:2rem">
+
+      <div class="doc-card">
+        <div class="doc-n" style="color:#e8a020">A1</div>
+        <div class="doc-tag">Verrou technique · Phase 0</div>
+        <h3>Goudrons en pyrogazéification</h3>
+        <p>Comparatif 6 technologies de craquage · TRL · CAPEX · Enseignements GoBiGas · Plan de validation Phase 0 avec 4 jalons contractualisables · Réponses aux objections DGEC et RTE.</p>
+        <a href="Annexe_Goudrons_V11.pdf" target="_blank" class="btn btn-outline" style="font-size:.72rem;padding:.55rem 1.1rem;margin-top:auto">Télécharger PDF →</a>
+      </div>
+
+      <div class="doc-card">
+        <div class="doc-n" style="color:#e8a020">A2</div>
+        <div class="doc-tag">Stratégie réglementaire · Bruxelles</div>
+        <h3>Cadre juridique européen</h3>
+        <p>Règlement 2019/631 · Précédent e-fuels mars 2023 · Catégorie ÉREV-RE · 6 principes avec base juridique article par article · Coalition France-Italie-Pologne · Feuille de route 2025–2028.</p>
+        <a href="Annexe_Juridique_EU_V11.pdf" target="_blank" class="btn btn-outline" style="font-size:.72rem;padding:.55rem 1.1rem;margin-top:auto">Télécharger PDF →</a>
+      </div>
+
+      <div class="doc-card">
+        <div class="doc-n" style="color:#e8a020">A3</div>
+        <div class="doc-tag">Architecture véhicule · Rôle réseau</div>
+        <h3>Spécifications ÉREV bio-GNV</h3>
+        <p>Comparatif 5 architectures de motorisation · SUV Résilience segment C/D · Conformité Euro 7 sans SCR · Durée de vie 300 000 km · TCO 15 ans · Mécanisme de résilience réseau passif · Réponses aux objections techniques.</p>
+        <a href="Annexe_EREV_V11.pdf" target="_blank" class="btn btn-outline" style="font-size:.72rem;padding:.55rem 1.1rem;margin-top:auto">Télécharger PDF →</a>
+      </div>
+
+      <div class="doc-card">
+        <div class="doc-n" style="color:#e8a020">A4</div>
+        <div class="doc-tag">Qualité environnementale · ONG</div>
+        <h3>Émissions fugitives, biodiversité &amp; charte méthanisation</h3>
+        <p>Protocole maîtrise émissions fugitives CH₄ · Comparaison pyrogazéification vs méthanisation ouverte · Bilan GES avec fuites · 5 zones de biomasse exclues · Réponses FNE/Canopée/WWF · Charte qualification méthanisation 4 niveaux · 8 critères techniques impératifs.</p>
+        <a href="Annexe_Environnementale_V11.pdf" target="_blank" class="btn btn-outline" style="font-size:.72rem;padding:.55rem 1.1rem;margin-top:auto">Télécharger PDF →</a>
+      </div>
+
+
+      <div class="doc-card">
+        <div class="doc-n" style="color:#e8a020">A5</div>
+        <div class="doc-tag">Angle mort climatique · CH₄ diffus</div>
+        <h3>Émissions diffuses de biomasse non gérée</h3>
+        <p>CH₄ diffus des biodéchets, effluents et rémanents · Mécanisme anaérobiose · GWP₂₀=84 vs CO₂ · Comparaison 4 scénarios de gestion · Intégration aux 150 sites · Argument de légitimité écologique · Correction CITEPA intégrée.</p>
+        <a href="annexe-emissions-diffuses.html" class="btn btn-outline" style="font-size:.72rem;padding:.55rem 1.1rem;margin-top:auto">Lire la page →</a>
+      </div>
+
+      <div class="doc-card">
+        <div class="doc-n" style="color:#74b9e8">🌍</div>
+        <div class="doc-tag">Géopolitique · Coopération industrielle</div>
+        <h3>Coopération internationale</h3>
+        <p>Deal CO₂ biogénique × H₂ espagnol · Coalition France-Espagne-Italie-Pologne · Exportation du modèle plutôt qu'importation de biomasse · Biochar comme outil agricole mondial · Perspectives internationales à investiguer.</p>
+        <a href="cooperation-internationale.html" class="btn btn-outline" style="font-size:.72rem;padding:.55rem 1.1rem;margin-top:auto">Lire la page →</a>
+      </div>
+
+      <div class="doc-card" style="border-color:rgba(82,183,136,.35)">
+        <div class="doc-n" style="color:var(--vert-vif)">🌍</div>
+        <div class="doc-tag">Note stratégique mondiale · Juin 2026</div>
+        <h3>Carbone, Résilience et Mobilité — Échelle mondiale</h3>
+        <p>La seule stratégie énergétique carbon-négative à grande échelle. 46 000 TWh/an de bio-GNV · 5 940 Mt CO₂/an retirés de l'atmosphère · 800 Mha de terres marginales valorisées · 3 scénarios chiffrés · Analyse des risques réels et faux risques · Cohérence arithmétique avec le Programme V11 national.</p>
+        <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-top:auto">
+          <a href="carbone-mondial.html" class="btn btn-outline" style="font-size:.72rem;padding:.55rem 1.1rem">Lire la page →</a>
+          <a href="Carbone_Resilience_Mobilite_Mondiale.pdf" target="_blank" class="btn btn-outline" style="font-size:.72rem;padding:.55rem 1.1rem" download>PDF →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SECTION BIOMASSE -->
+<section id="biomasse" class="alt">
+  <div class="container">
+    <div class="stag reveal">Filière biomasse nationale</div>
+    <h2 class="reveal">Le gisement qui<br><em>alimente tout le système</em></h2>
+    <p class="lead reveal">Les véhicules ÉREV et la séquestration biochar reposent sur un gisement national de 262 TWh/an de bio-méthane. D'où vient cette biomasse et comment la prélever sans détruire ce que l'on gère ? Ce cadre opérationnel répond à la question que toute ONG ou expert forestier posera.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem;margin:2rem 0">
+      <div class="card reveal">
+        <div class="num" style="font-family:var(--serif);font-size:2rem;color:var(--ambre);font-weight:300;line-height:1;margin-bottom:.35rem">262 TWh</div>
+        <h3 style="color:var(--vert-clair);font-family:var(--serif);font-size:1rem;margin:0 0 .5rem">Gisement national V11</h3>
+        <p style="font-size:.83rem;color:rgba(240,244,241,.6);line-height:1.65">9 filières · Effluents élevage · Résidus agricoles · CIVE · Déchets verts · Bois forestiers · Pailles grandes cultures</p>
+      </div>
+      <div class="card reveal">
+        <div class="num" style="font-family:var(--serif);font-size:2rem;color:var(--ambre);font-weight:300;line-height:1;margin-bottom:.35rem">~23 Mt</div>
+        <h3 style="color:var(--vert-clair);font-family:var(--serif);font-size:1rem;margin:0 0 .5rem">CO₂ séquestré / an</h3>
+        <p style="font-size:.83rem;color:rgba(240,244,241,.6);line-height:1.65">Via biochar certifié EBC Premium / CDC V3 · Stabilité > 100 ans · Fourchette V11 : 20–23 Mt CO₂/an</p>
+      </div>
+      <div class="card reveal" style="display:flex;flex-direction:column">
+        <h3 style="color:var(--vert-clair);font-family:var(--serif);font-size:1rem;margin:0 0 .5rem">Gestion écologique active</h3>
+        <p style="font-size:.83rem;color:rgba(240,244,241,.6);line-height:1.65;flex:1">On laisse ce qui structure · on gère ce qui bloque · on valorise ce qui se perd. Seuils écologiques issus de la littérature forestière européenne. Cible : biomasse fine &lt; 10–12 cm uniquement.</p>
+        <a href="gestion-forets.html" class="btn btn-outline" style="font-size:.72rem;padding:.55rem 1.1rem;margin-top:.8rem">Lire la page →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<footer>
+  <div class="footer-logo">Programme Résilience V11</div>
+  <p>Scénario de résilience complémentaire à l'électrification — Architecture hybride électricité + bio-CH₄ + biochar pour la France 2045.<br>Contribution citoyenne élaborée avec le soutien d'intelligences artificielles. Mai 2026. Diffusion libre.</p>
+  <p style="margin-top:.5rem;font-size:.7rem;color:#3a5044">Sources : RTE · ADEME · GRTgaz/GRDF · IGN IFN 2024 · Météo-France · GoBiGas 2017–2018 · BloombergNEF 2024 · IRENA 2024 · EBC v10.1 · CDC Biochar V3 2026 · Wang et al. 2016 · GIEC AR6 · ONRB/FranceAgriMer 2022 · FCBA 2024 · EU Critical Raw Materials Act 2023 · Cour des Comptes 2024</p>
+  <p style="margin-top:1.5rem">
+    <img src="https://hits.sh/helion31412.github.io/resilience2045.svg?style=flat&label=%F0%9F%91%81&color=52b788&labelColor=0d1f17" alt="" style="height:22px;vertical-align:middle">
+  </p>
+</footer>
+
+<script>
+document.documentElement.style.scrollBehavior='auto';
+window.scrollTo(0,0);
+window.addEventListener('load',function(){
+  window.scrollTo(0,0);
+  setTimeout(function(){document.documentElement.style.scrollBehavior='';},50);
+});
+const obs=new IntersectionObserver((entries)=>{
+  entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*65);obs.unobserve(e.target);}});
+},{threshold:0.07});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
