@@ -981,5 +981,22 @@ const obs=new IntersectionObserver((entries)=>{
 },{threshold:0.07});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 </script>
+
+<script>
+// Force scroll vers l'ancre après chargement complet
+window.addEventListener('load', function() {
+  var hash = window.location.hash;
+  if (hash) {
+    setTimeout(function() {
+      var el = document.querySelector(hash);
+      if (el) {
+        var offset = 110; // hauteur nav + bannière
+        var top = el.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+      }
+    }, 150);
+  }
+});
+</script>
 </body>
 </html>
