@@ -340,7 +340,7 @@ footer p{font-size:.76rem;color:var(--gris);max-width:580px;margin:.35rem auto;l
     </div>
   </div>
 </section>
-<section id="constat" style="scroll-margin-top:100px;scroll-margin-top:100px">
+<section id="constat" style="scroll-margin-top:110px">
   <div class="container">
     <div class="reveal">
       <p class="stag">Le constat</p>
@@ -383,7 +383,7 @@ footer p{font-size:.76rem;color:var(--gris);max-width:580px;margin:.35rem auto;l
 </section>
 
 <!-- REPOSITIONNEMENT BIO-CH4 -->
-<section id="bioch4" style="scroll-margin-top:100px;scroll-margin-top:100px">
+<section id="bioch4" style="scroll-margin-top:110px">
   <div class="bioch4-bg"></div>
   <div class="container">
     <div class="reveal">
@@ -417,7 +417,7 @@ footer p{font-size:.76rem;color:var(--gris);max-width:580px;margin:.35rem auto;l
 </section>
 
 <!-- PHILOSOPHIE -->
-<section id="philosophie" style="scroll-margin-top:100px;scroll-margin-top:100px">
+<section id="philosophie" style="scroll-margin-top:110px">
   <div class="container">
     <div class="reveal">
       <p class="stag">Deux architectures</p>
@@ -450,7 +450,7 @@ footer p{font-size:.76rem;color:var(--gris);max-width:580px;margin:.35rem auto;l
 </section>
 
 <!-- SOLUTIONS -->
-<section id="solutions" style="scroll-margin-top:100px;scroll-margin-top:100px">
+<section id="solutions" style="scroll-margin-top:110px">
   <div class="container">
     <div class="reveal">
       <p class="stag">Les solutions</p>
@@ -560,7 +560,7 @@ footer p{font-size:.76rem;color:var(--gris);max-width:580px;margin:.35rem auto;l
 </section>
 
 <!-- VEHICULES -->
-<section id="vehicules" style="scroll-margin-top:100px;scroll-margin-top:100px">
+<section id="vehicules" style="scroll-margin-top:110px">
   <div class="container">
     <div class="reveal">
       <p class="stag">Mobilité décarbonée</p>
@@ -649,7 +649,7 @@ footer p{font-size:.76rem;color:var(--gris);max-width:580px;margin:.35rem auto;l
 </section>
 
 <!-- TRAJECTOIRE -->
-<section id="trajectoire" style="scroll-margin-top:100px;scroll-margin-top:100px">
+<section id="trajectoire" style="scroll-margin-top:110px">
   <div class="container">
     <div class="reveal">
       <p class="stag">Trajectoire 2025–2045</p>
@@ -681,7 +681,7 @@ footer p{font-size:.76rem;color:var(--gris);max-width:580px;margin:.35rem auto;l
 </section>
 
 <!-- SOUVERAINETE -->
-<section id="souverainete" style="scroll-margin-top:100px;scroll-margin-top:100px">
+<section id="souverainete" style="scroll-margin-top:110px">
   <div class="container">
     <div class="souv-layout">
       <div class="souv-text reveal">
@@ -771,7 +771,7 @@ footer p{font-size:.76rem;color:var(--gris);max-width:580px;margin:.35rem auto;l
 </section>
 
 <!-- DOCUMENTS -->
-<section id="documents" style="scroll-margin-top:100px;scroll-margin-top:100px">
+<section id="documents" style="scroll-margin-top:110px">
   <div class="container">
     <div class="reveal">
       <p class="stag">Le corpus complet</p>
@@ -861,7 +861,7 @@ footer p{font-size:.76rem;color:var(--gris);max-width:580px;margin:.35rem auto;l
 </section>
 
 <!-- ─── ANNEXES TECHNIQUES ──────────────────────────────────────────────── -->
-<section id="annexes" style="scroll-margin-top:100px;scroll-margin-top:100px" style="padding:4rem 0;background:rgba(5,10,7,.7)">
+<section id="annexes" style="scroll-margin-top:110px" style="padding:4rem 0;background:rgba(5,10,7,.7)">
   <div class="container">
     <div class="section-tag reveal">Corpus documentaire complet</div>
     <h2 class="section-title reveal">Annexes techniques</h2>
@@ -983,20 +983,20 @@ document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 </script>
 
 <script>
-// Force scroll vers l'ancre après chargement complet
-window.addEventListener('load', function() {
+// Scroll robuste vers ancre — compense nav sticky + bannière
+function scrollToHash() {
   var hash = window.location.hash;
-  if (hash) {
-    setTimeout(function() {
-      var el = document.querySelector(hash);
-      if (el) {
-        var offset = 110; // hauteur nav + bannière
-        var top = el.getBoundingClientRect().top + window.pageYOffset - offset;
-        window.scrollTo({ top: top, behavior: 'smooth' });
-      }
-    }, 150);
-  }
-});
+  if (!hash) return;
+  var el = document.getElementById(hash.slice(1));
+  if (!el) return;
+  var offset = 110;
+  var top = el.getBoundingClientRect().top + window.pageYOffset - offset;
+  window.scrollTo({ top: top, behavior: 'auto' });
+}
+// Tenter 3 fois avec délai croissant pour couvrir les cas de rendu lent
+setTimeout(scrollToHash, 100);
+setTimeout(scrollToHash, 400);
+setTimeout(scrollToHash, 900);
 </script>
 </body>
 </html>
