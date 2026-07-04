@@ -983,20 +983,23 @@ document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 </script>
 
 <script>
-// Scroll robuste vers ancre — compense nav sticky + bannière
-function scrollToHash() {
+window.addEventListener('load', function() {
   var hash = window.location.hash;
   if (!hash) return;
-  var el = document.getElementById(hash.slice(1));
-  if (!el) return;
-  var offset = 110;
-  var top = el.getBoundingClientRect().top + window.pageYOffset - offset;
-  window.scrollTo({ top: top, behavior: 'auto' });
-}
-// Tenter 3 fois avec délai croissant pour couvrir les cas de rendu lent
-setTimeout(scrollToHash, 100);
-setTimeout(scrollToHash, 400);
-setTimeout(scrollToHash, 900);
+  // Forcer TOUS les éléments reveal à être visibles immédiatement
+  document.querySelectorAll('.reveal').forEach(function(el) {
+    el.classList.add('visible');
+  });
+  // Attendre que le DOM recalcule les hauteurs
+  requestAnimationFrame(function() {
+    requestAnimationFrame(function() {
+      var el = document.getElementById(hash.slice(1));
+      if (!el) return;
+      var top = el.getBoundingClientRect().top + window.pageYOffset - 110;
+      window.scrollTo({ top: top, behavior: 'auto' });
+    });
+  });
+});
 </script>
 </body>
 </html>
