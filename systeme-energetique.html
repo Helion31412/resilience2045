@@ -122,7 +122,7 @@ tbody td:first-child{color:var(--blanc);font-weight:400}
 .btn-outline:hover{border-color:var(--vert-vif);color:var(--vert-vif)}
 
 /* ANIM */
-.reveal{opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s ease}
+.reveal{opacity:1;transform:none}
 .reveal.visible{opacity:1;transform:none}
 
 footer{background:#050a07;padding:2.5rem 3rem;text-align:center;border-top:1px solid rgba(82,183,136,.08)}
@@ -130,7 +130,14 @@ footer{background:#050a07;padding:2.5rem 3rem;text-align:center;border-top:1px s
 footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;line-height:1.7}
 @media(max-width:700px){nav{padding:.85rem 1.3rem}section{padding:3rem 1.3rem}h1{font-size:2rem}.two-col{grid-template-columns:1fr}.kpi-num{font-size:2.2rem}}
 </style>
-<script src="https://cdn.counter.dev/script.js" data-id="7e06e873-296f-4ef5-856b-537fc7ceb0db" data-utcoffset="2"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1J0GBHR98B"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-1J0GBHR98B');
+</script>
 </head>
 <body>
 
@@ -243,7 +250,7 @@ footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;li
 <section class="alt">
   <div class="container">
     <div class="stag reveal">Structure de l'analyse</div>
-    <h2 class="reveal">Quatre phases ·<br><em>un raisonnement progressif</em></h2>
+    <h2>Quatre phases ·<br><em>un raisonnement progressif</em></h2>
     <div class="phases reveal">
 
       <div class="phase-card ph0">
@@ -282,7 +289,7 @@ footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;li
 <section>
   <div class="container">
     <div class="stag reveal">Analyse des stress maximaux</div>
-    <h2 class="reveal">Les 5 jours critiques<br><em>2045 (scénario BEV pur)</em></h2>
+    <h2>Les 5 jours critiques<br><em>2045 (scénario BEV pur)</em></h2>
     <p class="lead reveal">Cette analyse suppose un scénario volontairement optimiste : batteries Na-ion généralisées, recharge intelligente partielle, 817 TWh de production possible. Objectif : tester la robustesse physique du système, pas son équilibre annuel.</p>
 
     <div class="box box-bleu reveal">
@@ -350,7 +357,7 @@ footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;li
 <section class="alt">
   <div class="container">
     <div class="stag reveal">Position par rapport aux scénarios officiels</div>
-    <h2 class="reveal">Pourquoi RTE et ADEME<br><em>semblent moins contraints</em></h2>
+    <h2>Pourquoi RTE et ADEME<br><em>semblent moins contraints</em></h2>
     <p class="lead reveal">Un lecteur informé des travaux de RTE ou de l'ADEME se posera la question : ces organismes affirment que le tout-électrique est gérable. La réponse n'est pas que ces scénarios sont faux — c'est qu'ils ne répondent pas exactement aux mêmes questions.</p>
 
     <div class="two-col reveal">
@@ -374,7 +381,7 @@ footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;li
 <section>
   <div class="container">
     <div class="stag reveal">Comparaison des modes de mobilité</div>
-    <h2 class="reveal">BEV · FCEV · ÉREV ·<br><em>lecture système</em></h2>
+    <h2>BEV · FCEV · ÉREV ·<br><em>lecture système</em></h2>
 
     <div class="tbl-wrap reveal">
       <table>
@@ -410,7 +417,7 @@ footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;li
 <section id="b1" style="background:linear-gradient(135deg,#071228 0%,#0a0f0d 100%);border-top:3px solid #1E4A8C">
   <div class="container">
     <div class="stag reveal" style="color:#9FC4E8">Brique 1 — Soutenir le réseau électrique</div>
-    <h2 class="reveal" style="color:var(--blanc)">40 GW effacés passivement —<br><em>zéro infrastructure supplémentaire</em></h2>
+    <h2 style="color:var(--blanc)">40 GW effacés passivement —<br><em>zéro infrastructure supplémentaire</em></h2>
     <div class="two-col reveal">
       <div>
         <p style="font-size:.92rem;color:rgba(240,244,241,.72);line-height:1.85">L'ÉREV au bio-CH4 efface passivement 40 GW de demande aux pics réseau. Lors d'une période de tension (grand froid, recharge massive), le véhicule utilise son range extender bio-GNV au lieu de tirer sur le réseau électrique — sans décision du conducteur, sans smart grid, sans signal prix.</p>
@@ -427,7 +434,7 @@ footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;li
         </div>
       </div>
     </div>
-    <div style="display:flex;gap:.8rem;margin-top:1.5rem;flex-wrap:wrap" class="reveal">
+    <div style="display:flex;gap:.8rem;margin-top:1.5rem;flex-wrap:wrap">
       <a href="voiture-erev.html" style="font-size:.75rem;font-weight:600;color:#9FC4E8;text-decoration:none;border:1px solid rgba(159,196,232,.3);padding:.4rem .9rem;letter-spacing:.08em;text-transform:uppercase">Voiture ÉREV — le mécanisme →</a>
       <a href="bio-ch4.html" style="font-size:.75rem;font-weight:600;color:#9FC4E8;text-decoration:none;border:1px solid rgba(159,196,232,.3);padding:.4rem .9rem;letter-spacing:.08em;text-transform:uppercase">Bio-CH₄ — stockage réseau →</a>
     </div>
@@ -437,7 +444,7 @@ footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;li
 <section id="b2" style="background:linear-gradient(135deg,#0a1a07 0%,#0a0f0d 100%);border-top:3px solid #2D5C22">
   <div class="container">
     <div class="stag reveal" style="color:#A8D5A0">Brique 2 — Décarboner les transports lourds et longue distance</div>
-    <h2 class="reveal" style="color:var(--blanc)">Camions · tracteurs · aviation · maritime —<br><em>là où l'électrique n'arrive pas à horizon 2045</em></h2>
+    <h2 style="color:var(--blanc)">Camions · tracteurs · aviation · maritime —<br><em>là où l'électrique n'arrive pas à horizon 2045</em></h2>
     <div class="two-col reveal">
       <div>
         <p style="font-size:.92rem;color:rgba(240,244,241,.72);line-height:1.85">Le transport lourd longue distance est le domaine où les limites du tout-électrique apparaissent le plus clairement. Un camion 44t a besoin de 1 000–1 200 km d'autonomie sans immobilisation — une batterie capable de couvrir cette distance pèserait 3 tonnes supplémentaires et viderait la charge utile. L'ÉREV bio-LCH4 résout ce problème : 110–130 km en ZEV urbain + 950 km Rex = 1 150–1 300 km totaux.</p>
@@ -454,7 +461,7 @@ footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;li
         </div>
       </div>
     </div>
-    <div style="display:flex;gap:.8rem;margin-top:1.5rem;flex-wrap:wrap" class="reveal">
+    <div style="display:flex;gap:.8rem;margin-top:1.5rem;flex-wrap:wrap">
       <a href="camion-resilience.html" style="font-size:.75rem;font-weight:600;color:#A8D5A0;text-decoration:none;border:1px solid rgba(168,213,160,.3);padding:.4rem .9rem;letter-spacing:.08em;text-transform:uppercase">Camion 44t →</a>
       <a href="tracteur-erev.html" style="font-size:.75rem;font-weight:600;color:#A8D5A0;text-decoration:none;border:1px solid rgba(168,213,160,.3);padding:.4rem .9rem;letter-spacing:.08em;text-transform:uppercase">Tracteur ÉREV →</a>
       <a href="aviation-bio-gnl.html" style="font-size:.75rem;font-weight:600;color:#A8D5A0;text-decoration:none;border:1px solid rgba(168,213,160,.3);padding:.4rem .9rem;letter-spacing:.08em;text-transform:uppercase">Aviation bio-GNL →</a>
@@ -465,7 +472,7 @@ footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;li
 <section id="b3" style="background:linear-gradient(135deg,#1a0e05 0%,#0a0f0d 100%);border-top:3px solid #6B4420">
   <div class="container">
     <div class="stag reveal" style="color:#D4AA80">Brique 3 — Restaurer les sols agricoles</div>
-    <h2 class="reveal" style="color:var(--blanc)">Biochar certifié EBC —<br><em>séquestration 100–1 000 ans · fertilité · rétention d'eau</em></h2>
+    <h2 style="color:var(--blanc)">Biochar certifié EBC —<br><em>séquestration 100–1 000 ans · fertilité · rétention d'eau</em></h2>
     <div class="two-col reveal">
       <div>
         <p style="font-size:.92rem;color:rgba(240,244,241,.72);line-height:1.85">Les sols agricoles européens ont perdu 30 à 50 % de leur matière organique. Le biochar haute température (pyrogazéification ≥ 700°C, H/C ≤ 0,4) est un des rares amendements capables de reconstruire activement ce capital : +10 à +30 % de rétention d'eau, amélioration de la CEC, vie microbienne stimulée.</p>
@@ -482,7 +489,7 @@ footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;li
         </div>
       </div>
     </div>
-    <div style="display:flex;gap:.8rem;margin-top:1.5rem;flex-wrap:wrap" class="reveal">
+    <div style="display:flex;gap:.8rem;margin-top:1.5rem;flex-wrap:wrap">
       <a href="biochar.html" style="font-size:.75rem;font-weight:600;color:#D4AA80;text-decoration:none;border:1px solid rgba(212,170,128,.3);padding:.4rem .9rem;letter-spacing:.08em;text-transform:uppercase">Biochar EBC/CDC V3 →</a>
       <a href="sequestration.html" style="font-size:.75rem;font-weight:600;color:#D4AA80;text-decoration:none;border:1px solid rgba(212,170,128,.3);padding:.4rem .9rem;letter-spacing:.08em;text-transform:uppercase">Séquestration carbone →</a>
     </div>
@@ -492,7 +499,7 @@ footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;li
 <section id="b4" style="background:linear-gradient(135deg,#051416 0%,#0a0f0d 100%);border-top:3px solid #145860">
   <div class="container">
     <div class="stag reveal" style="color:#90CDD4">Brique 4 — Retirer du CO₂ de l'atmosphère</div>
-    <h2 class="reveal" style="color:var(--blanc)">20–23 Mt CO₂/an par biochar —<br><em>+ potentiel additionnel CO₂ biogénique géologique</em></h2>
+    <h2 style="color:var(--blanc)">20–23 Mt CO₂/an par biochar —<br><em>+ potentiel additionnel CO₂ biogénique géologique</em></h2>
     <div class="two-col reveal">
       <div>
         <p style="font-size:.92rem;color:rgba(240,244,241,.72);line-height:1.85">Même un scénario 100 % électrique réussi stabilise les émissions à ~0 — il ne réduit pas les 421 ppm déjà dans l'atmosphère. Ces concentrations persistent 300 à 1 000 ans sans capture active. La neutralité carbone est nécessaire mais insuffisante.</p>
@@ -509,7 +516,7 @@ footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;li
         </div>
       </div>
     </div>
-    <div style="display:flex;gap:.8rem;margin-top:1.5rem;flex-wrap:wrap" class="reveal">
+    <div style="display:flex;gap:.8rem;margin-top:1.5rem;flex-wrap:wrap">
       <a href="trajectoires-co2.html" style="font-size:.75rem;font-weight:600;color:#90CDD4;text-decoration:none;border:1px solid rgba(144,205,212,.3);padding:.4rem .9rem;letter-spacing:.08em;text-transform:uppercase">Trajectoires CO₂ à 2200 →</a>
       <a href="carbone-resilience.html" style="font-size:.75rem;font-weight:600;color:#90CDD4;text-decoration:none;border:1px solid rgba(144,205,212,.3);padding:.4rem .9rem;letter-spacing:.08em;text-transform:uppercase">Stratégie carbone →</a>
     </div>
@@ -519,7 +526,7 @@ footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;li
 <section id="b5" style="background:linear-gradient(135deg,#1a0e00 0%,#0a0f0d 100%);border-top:3px solid #8A5010">
   <div class="container">
     <div class="stag reveal" style="color:#F0B870">Brique 5 — Valoriser les déchets et la biomasse</div>
-    <h2 class="reveal" style="color:var(--blanc)">262 TWh/an · 9 filières · 150 sites —<br><em>zéro concurrence alimentaire</em></h2>
+    <h2 style="color:var(--blanc)">262 TWh/an · 9 filières · 150 sites —<br><em>zéro concurrence alimentaire</em></h2>
     <div class="two-col reveal">
       <div>
         <p style="font-size:.92rem;color:rgba(240,244,241,.72);line-height:1.85">La règle opérationnelle : on laisse ce qui structure l'écosystème, on gère ce qui le bloque, on valorise ce qui se perd de toute façon. Rémanents forestiers, bois mort, résidus agricoles ligneux, biodéchets, effluents d'élevage — des flux qui se décomposent aujourd'hui en libérant leur CO₂ sans valorisation.</p>
@@ -536,7 +543,7 @@ footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;li
         </div>
       </div>
     </div>
-    <div style="display:flex;gap:.8rem;margin-top:1.5rem;flex-wrap:wrap" class="reveal">
+    <div style="display:flex;gap:.8rem;margin-top:1.5rem;flex-wrap:wrap">
       <a href="biomasse.html" style="font-size:.75rem;font-weight:600;color:#F0B870;text-decoration:none;border:1px solid rgba(240,184,112,.3);padding:.4rem .9rem;letter-spacing:.08em;text-transform:uppercase">Gisement biomasse →</a>
       <a href="pyrogazeification-resilience.html" style="font-size:.75rem;font-weight:600;color:#F0B870;text-decoration:none;border:1px solid rgba(240,184,112,.3);padding:.4rem .9rem;letter-spacing:.08em;text-transform:uppercase">Pyrogazéification →</a>
       <a href="methanisation-reforme.html" style="font-size:.75rem;font-weight:600;color:#F0B870;text-decoration:none;border:1px solid rgba(240,184,112,.3);padding:.4rem .9rem;letter-spacing:.08em;text-transform:uppercase">Méthanisation →</a>
@@ -547,7 +554,7 @@ footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;li
 <section id="b6" style="background:linear-gradient(135deg,#0e0a1e 0%,#0a0f0d 100%);border-top:3px solid #4A3A80">
   <div class="container">
     <div class="stag reveal" style="color:#B8A8E8">Brique 6 — Renforcer la souveraineté</div>
-    <h2 class="reveal" style="color:var(--blanc)">Ressources 100 % françaises —<br><em>non délocalisables · −250/350 Md€ vs tout-BEV</em></h2>
+    <h2 style="color:var(--blanc)">Ressources 100 % françaises —<br><em>non délocalisables · −250/350 Md€ vs tout-BEV</em></h2>
     <div class="two-col reveal">
       <div>
         <p style="font-size:.92rem;color:rgba(240,244,241,.72);line-height:1.85">Le tout-électrique réduit la dépendance au pétrole et au gaz — c'est légitime. Mais il crée une dépendance accrue au lithium, cobalt, nickel et terres rares, extraits à 80 % hors d'Europe. L'ÉREV Résilience utilise une batterie de 20 kWh (vs 80–150 kWh BEV) — soit 75 à 85 % moins de matériaux critiques.</p>
@@ -564,7 +571,7 @@ footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;li
         </div>
       </div>
     </div>
-    <div style="display:flex;gap:.8rem;margin-top:1.5rem;flex-wrap:wrap" class="reveal">
+    <div style="display:flex;gap:.8rem;margin-top:1.5rem;flex-wrap:wrap">
       <a href="materiaux-critiques.html" style="font-size:.75rem;font-weight:600;color:#B8A8E8;text-decoration:none;border:1px solid rgba(184,168,232,.3);padding:.4rem .9rem;letter-spacing:.08em;text-transform:uppercase">Matériaux critiques →</a>
       <a href="finances-publiques.html" style="font-size:.75rem;font-weight:600;color:#B8A8E8;text-decoration:none;border:1px solid rgba(184,168,232,.3);padding:.4rem .9rem;letter-spacing:.08em;text-transform:uppercase">Finances publiques →</a>
     </div>
@@ -575,7 +582,7 @@ footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;li
 <section class="alt">
   <div class="container">
     <div class="stag reveal">Approfondissements</div>
-    <h2 class="reveal">Les solutions<br><em>en détail</em></h2>
+    <h2>Les solutions<br><em>en détail</em></h2>
     <div class="renvoi-grid reveal">
       <a href="voiture-erev.html" class="renvoi-card">
         <div class="rc-tag">Mobilité VP</div>
@@ -646,6 +653,21 @@ footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;li
 <script>
 const obs=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*60);obs.unobserve(e.target);}});},{threshold:0.06});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+
+<script>
+window.addEventListener('load', function() {
+  var hash = window.location.hash;
+  if (!hash) return;
+  var el = document.getElementById(hash.slice(1));
+  if (!el) return;
+  requestAnimationFrame(function() {
+    requestAnimationFrame(function() {
+      var top = el.getBoundingClientRect().top + window.pageYOffset - 70;
+      window.scrollTo({ top: top, behavior: 'auto' });
+    });
+  });
+});
 </script>
 </body>
 </html>

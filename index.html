@@ -142,8 +142,10 @@
   .pillar{
     display:flex;flex-direction:column;align-items:flex-start;gap:10px;
     padding:22px 18px 20px;border-right:1px solid rgba(255,255,255,.15);
-    position:relative;overflow:hidden;
+    position:relative;overflow:hidden;cursor:pointer;
+    transition:opacity .18s, transform .18s;
   }
+  .pillar:hover{opacity:.85;transform:translateY(-2px);}
   .pillar:last-child{border-right:none;}
   .pillar-ic{
     width:44px;height:44px;border-radius:8px;display:flex;align-items:center;justify-content:center;
@@ -254,7 +256,7 @@
   <div class="wrap">
     <div class="pillar-grid">
 
-      <div class="pillar p-blue reveal">
+      <a class="pillar p-blue reveal" href="systeme-energetique.html#b1" style="text-decoration:none">
         <div class="pillar-ic">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z"/></svg>
         </div>
@@ -262,9 +264,9 @@
           <div class="pillar-label">Soutenir le réseau</div>
           <div class="pillar-text">40 GW de demande effacée passivement aux pics — zéro infrastructure supplémentaire</div>
         </div>
-      </div>
+      </a>
 
-      <div class="pillar p-green reveal">
+      <a class="pillar p-green reveal" href="systeme-energetique.html#b2" style="text-decoration:none">
         <div class="pillar-ic">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="9" width="12" height="8" rx="1"/><path d="M14 11h4l3 3v3h-7z"/><circle cx="6.5" cy="19" r="1.6"/><circle cx="17" cy="19" r="1.6"/></svg>
         </div>
@@ -272,9 +274,9 @@
           <div class="pillar-label">Décarboner les transports lourds</div>
           <div class="pillar-text">Camions · tracteurs · aviation · maritime — là où l'électrique n'arrive pas à l'horizon 2045</div>
         </div>
-      </div>
+      </a>
 
-      <div class="pillar p-brown reveal">
+      <a class="pillar p-brown reveal" href="systeme-energetique.html#b3" style="text-decoration:none">
         <div class="pillar-ic">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20V10"/><path d="M12 10C12 10 6 9 6 4c5 0 6 4 6 6z"/><path d="M12 14c0 0 6-1 6-6-5 0-6 4-6 6z"/><path d="M4 20h16"/></svg>
         </div>
@@ -282,9 +284,9 @@
           <div class="pillar-label">Restaurer les sols agricoles</div>
           <div class="pillar-text">Biochar certifié EBC — séquestration 100–1 000 ans · fertilité · rétention d'eau</div>
         </div>
-      </div>
+      </a>
 
-      <div class="pillar p-teal reveal">
+      <a class="pillar p-teal reveal" href="systeme-energetique.html#b4" style="text-decoration:none">
         <div class="pillar-ic">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 17l4-8 4 4 4-6 4 4"/><path d="M3 21h18"/></svg>
         </div>
@@ -292,9 +294,9 @@
           <div class="pillar-label">Retirer du CO₂ de l'atmosphère</div>
           <div class="pillar-text">20–23 Mt CO₂/an par biochar + potentiel additionnel CO₂ biogénique géologique</div>
         </div>
-      </div>
+      </a>
 
-      <div class="pillar p-amber reveal">
+      <a class="pillar p-amber reveal" href="systeme-energetique.html#b5" style="text-decoration:none">
         <div class="pillar-ic">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4v5h5M20 20v-5h-5"/><path d="M4.6 15A8 8 0 0019.4 9M19.4 9A8 8 0 004.6 15"/></svg>
         </div>
@@ -302,9 +304,9 @@
           <div class="pillar-label">Valoriser les déchets &amp; la biomasse</div>
           <div class="pillar-text">Gisement national 262 TWh/an · 9 filières · 150 sites · zéro concurrence alimentaire</div>
         </div>
-      </div>
+      </a>
 
-      <div class="pillar p-purple reveal">
+      <a class="pillar p-purple reveal" href="systeme-energetique.html#b6" style="text-decoration:none">
         <div class="pillar-ic">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4z"/></svg>
         </div>
