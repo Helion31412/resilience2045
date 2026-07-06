@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zone Pyrénées-Orientales · Tramontane · Pyrogazéification et prévention incendie · Programme Résilience V11</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --noir:#0a0f0d;--foret:#0d1f17;--vert-vif:#52b788;--vert-clair:#95d5b2;
+  --ambre:#e9c46a;--rouge:#ff6b35;--bleu:#2980b9;--blanc:#f0f4f1;--gris:#8a9e93;
+  --feu:#843C0C;--feu-clair:#FBE4D5;--feu-mid:#C45A1A;
+  --or:#b8962e;--or-clair:#f0d580;--or-bg:rgba(184,150,46,.06);
+  --tram:#1a4a7a;--tram-clair:#6aabdf;
+  --serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--noir);color:var(--blanc);font-family:var(--sans);font-weight:300;line-height:1.7;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:.9rem 2.5rem;background:rgba(10,15,13,.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(132,60,12,.25)}
+.nav-logo{font-family:var(--serif);font-size:1.15rem;font-weight:600;color:var(--vert-vif);text-decoration:none}
+.nav-tag{font-size:.66rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--feu-mid);border:1px solid rgba(132,60,12,.35);padding:.25rem .75rem}
+.nav-back{font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gris);text-decoration:none;transition:color .3s}.nav-back:hover{color:var(--feu-mid)}
+section{padding:5rem 3rem}
+.container{max-width:1100px;margin:0 auto}
+.stag{font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--feu-mid);margin-bottom:.7rem}
+.stag-vert{font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--vert-vif);margin-bottom:.7rem}
+.stag-tram{font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--tram-clair);margin-bottom:.7rem}
+h1{font-family:var(--serif);font-size:clamp(2.2rem,4.5vw,3.8rem);font-weight:300;line-height:1.1;margin-bottom:1.2rem}
+h1 em{font-style:italic;color:var(--feu-mid)}
+h1 strong{font-weight:600;color:var(--feu-mid)}
+h2{font-family:var(--serif);font-size:clamp(1.6rem,2.8vw,2.4rem);font-weight:300;line-height:1.15;margin-bottom:1rem}
+h2 em{font-style:italic;color:var(--feu-mid)}
+h2 strong{font-weight:600;color:var(--or-clair)}
+.lead{font-size:.97rem;color:rgba(240,244,241,.7);max-width:700px;line-height:1.85;margin-bottom:1.8rem}
+.btn{display:inline-block;padding:.72rem 1.6rem;font-family:var(--sans);font-size:.76rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:all .3s}
+.btn-primary{background:var(--feu-mid);color:var(--blanc)}.btn-primary:hover{background:#d46a2a;transform:translateY(-2px)}
+.btn-outline{background:transparent;color:var(--blanc);border:1px solid rgba(240,244,241,.28)}.btn-outline:hover{border-color:var(--feu-mid);color:var(--feu-mid);transform:translateY(-2px)}
+.alt{background:rgba(8,14,10,.6)}
+/* KPI */
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1.2rem;margin-top:1.8rem}
+.kpi-card{background:rgba(13,31,23,.6);border:1px solid rgba(132,60,12,.2);border-top:3px solid var(--feu-mid);padding:1.3rem 1.2rem}
+.kpi-card.tram{border-top-color:var(--tram-clair)}
+.kpi-card.vert{border-top-color:var(--vert-vif)}
+.kpi-val{font-family:var(--serif);font-size:2rem;color:var(--feu-mid);line-height:1;margin-bottom:.2rem}
+.kpi-card.tram .kpi-val{color:var(--tram-clair)}
+.kpi-card.vert .kpi-val{color:var(--vert-vif)}
+.kpi-unit{font-size:.7rem;color:var(--gris);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.4rem}
+.kpi-lbl{font-size:.8rem;color:rgba(240,244,241,.65);line-height:1.4}
+/* BOXES */
+.box{padding:1.5rem 1.8rem;margin-top:1.5rem;border-left:4px solid var(--feu-mid)}
+.box-feu{background:rgba(132,60,12,.08);border-color:var(--feu-mid)}
+.box-vert{background:rgba(82,183,136,.07);border-color:var(--vert-vif)}
+.box-tram{background:rgba(26,74,122,.1);border-color:var(--tram-clair)}
+.box-or{background:var(--or-bg);border-color:var(--or)}
+.box h3{font-family:var(--serif);font-size:1.1rem;margin-bottom:.6rem}
+.box-feu h3{color:var(--feu-mid)}
+.box-vert h3{color:var(--vert-vif)}
+.box-tram h3{color:var(--tram-clair)}
+.box-or h3{color:var(--or-clair)}
+.box p{font-size:.88rem;color:rgba(240,244,241,.7);line-height:1.75}
+.box p strong{color:var(--blanc);font-weight:500}
+/* COMPARATIF */
+.comp-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(132,60,12,.15);margin-top:1.5rem}
+.comp-col{background:rgba(10,15,13,.8);padding:1.4rem 1.4rem}
+.comp-col.rouge{border-top:3px solid var(--rouge)}
+.comp-col.vert{border-top:3px solid var(--vert-vif)}
+.comp-head{font-size:.68rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;margin-bottom:1rem;padding-bottom:.6rem;border-bottom:1px solid rgba(240,244,241,.08)}
+.comp-col.rouge .comp-head{color:var(--rouge)}
+.comp-col.vert .comp-head{color:var(--vert-vif)}
+.comp-item{display:flex;gap:.7rem;margin-bottom:.7rem;align-items:flex-start}
+.comp-dot{width:5px;height:5px;border-radius:50%;margin-top:.6rem;flex-shrink:0}
+.comp-col.rouge .comp-dot{background:var(--rouge)}
+.comp-col.vert .comp-dot{background:var(--vert-vif)}
+.comp-item p{font-size:.84rem;color:rgba(240,244,241,.68);line-height:1.6}
+.comp-item p strong{color:var(--blanc);font-weight:500}
+/* TABLE */
+.tbl-wrap{overflow-x:auto;margin-top:1.5rem}
+table{width:100%;border-collapse:collapse;font-size:.82rem}
+thead tr{background:rgba(132,60,12,.3)}
+thead th{padding:.7rem 1rem;text-align:left;color:var(--feu-clair);font-weight:500;font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;border-bottom:2px solid var(--feu-mid)}
+tbody tr{border-bottom:1px solid rgba(132,60,12,.1);transition:background .2s}
+tbody tr:hover{background:rgba(132,60,12,.08)}
+tbody td{padding:.65rem 1rem;color:rgba(240,244,241,.75);vertical-align:top;line-height:1.5}
+tbody td:first-child{color:var(--blanc);font-weight:400}
+.td-g{color:var(--vert-vif)!important;font-weight:500}
+.td-r{color:var(--rouge)!important;font-weight:500}
+.td-a{color:var(--ambre)!important;font-weight:500}
+.td-t{color:var(--tram-clair)!important;font-weight:500}
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+.reveal.visible{opacity:1;transform:none}
+footer{background:#050a07;padding:2.5rem 3rem;text-align:center;border-top:1px solid rgba(132,60,12,.15)}
+.footer-logo{font-family:var(--serif);font-size:1.4rem;font-weight:300;color:var(--feu-mid);margin-bottom:.4rem}
+footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;line-height:1.7}
+@media(max-width:700px){nav{padding:.85rem 1.3rem}section{padding:3.5rem 1.4rem}h1{font-size:2rem}.comp-grid{grid-template-columns:1fr}}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1J0GBHR98B"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-1J0GBHR98B');
+</script>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo" title="Retour à l'accueil">⌂ Résilience 2045</a>
+  <div style="display:flex;align-items:center;gap:1.2rem">
+    <a href="index.html" style="font-size:.68rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(82,183,136,.6);text-decoration:none;border:1px solid rgba(82,183,136,.2);padding:.2rem .6rem" onmouseover="this.style.color='#52b788'" onmouseout="this.style.color='rgba(82,183,136,.6)'">⌂ Accueil</a>
+    <span class="nav-tag">🔥 Pyrénées-Orientales · Tramontane · DFCI</span>
+    <a href="zone-c-incendie.html" class="nav-back">← Zone C Gard</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero" style="min-height:70vh;display:flex;align-items:center;padding-top:8rem;background:linear-gradient(135deg,#0a0f0d 0%,#1a0a04 50%,#060a0e 100%);position:relative;overflow:hidden">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 30% 50%,rgba(132,60,12,.25) 0%,transparent 60%),radial-gradient(ellipse 40% 40% at 75% 40%,rgba(26,74,122,.15) 0%,transparent 60%)"></div>
+  <div class="container" style="position:relative;z-index:1">
+    <div style="display:inline-block;border:1px solid var(--feu-mid);color:var(--feu-mid);font-size:.67rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:.3rem .85rem;margin-bottom:1.5rem">Deuxième démonstrateur · Programme Résilience V11</div>
+    <h1>Pyrénées-Orientales :<br><em>la tramontane,</em><br><strong>défi ou ressource ?</strong></h1>
+    <p class="lead">Le département le plus touché par les méga-feux méditerranéens après la Gironde. Un vent violent qui rend les incendies ingérables une fois déclenchés. Une seule réponse efficace : empêcher le feu de prendre en gérant la biomasse combustible avant qu'elle ne brûle — et en transformer le prélèvement en énergie, biochar et revenus ruraux.</p>
+    <div style="display:flex;gap:.9rem;flex-wrap:wrap">
+      <a href="#tramontane" class="btn btn-primary">La tramontane — le multiplicateur →</a>
+      <a href="zone-c-incendie.html" class="btn btn-outline">← Zone C Gard</a>
+    </div>
+    <div style="display:flex;gap:2.5rem;margin-top:2.5rem;flex-wrap:wrap">
+      <div style="border-left:2px solid var(--rouge);padding-left:1rem"><div style="font-family:var(--serif);font-size:1.9rem;color:var(--rouge)">4 500 ha</div><div style="font-size:.68rem;color:var(--gris);text-transform:uppercase;letter-spacing:.1em">brûlés · juillet 2026 · Trévillach</div></div>
+      <div style="border-left:2px solid var(--tram-clair);padding-left:1rem"><div style="font-family:var(--serif);font-size:1.9rem;color:var(--tram-clair)">150 km/h</div><div style="font-size:.68rem;color:var(--gris);text-transform:uppercase;letter-spacing:.1em">tramontane — vitesse de pointe</div></div>
+      <div style="border-left:2px solid var(--ambre);padding-left:1rem"><div style="font-family:var(--serif);font-size:1.9rem;color:var(--ambre)">64 000 ha</div><div style="font-size:.68rem;color:var(--gris);text-transform:uppercase;letter-spacing:.1em">vignes en reconversion — gisement disponible</div></div>
+      <div style="border-left:2px solid var(--vert-vif);padding-left:1rem"><div style="font-family:var(--serif);font-size:1.9rem;color:var(--vert-vif)">2 sites</div><div style="font-size:.68rem;color:var(--gris);text-transform:uppercase;letter-spacing:.1em">pyrogazéification estimés nécessaires</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TRAMONTANE -->
+<section id="tramontane">
+  <div class="container">
+    <div class="stag-tram reveal">La tramontane — multiplicateur de risque unique</div>
+    <h2 class="reveal">Un vent qui rend les incendies<br><em>ingérables une fois déclenchés</em></h2>
+    <p class="lead reveal">La tramontane est le vent dominant des Pyrénées-Orientales : violent, sec, froid, il souffle du nord-ouest à des vitesses pouvant dépasser 150 km/h pendant 10 à 15 jours consécutifs. Son impact sur les incendies est sans équivalent en France métropolitaine.</p>
+
+    <div class="kpi-grid reveal">
+      <div class="kpi-card tram">
+        <div class="kpi-val">×5 à ×10</div>
+        <div class="kpi-unit">multiplication</div>
+        <div class="kpi-lbl">Vitesse de propagation du feu sous tramontane vs feu sans vent</div>
+      </div>
+      <div class="kpi-card tram">
+        <div class="kpi-val">> 500 m</div>
+        <div class="kpi-unit">sauts de feu</div>
+        <div class="kpi-lbl">Brandons transportés — les coupe-feux classiques deviennent inefficaces</div>
+      </div>
+      <div class="kpi-card tram">
+        <div class="kpi-val">10–15 j</div>
+        <div class="kpi-unit">consécutifs</div>
+        <div class="kpi-lbl">Durée d'un épisode tramontane — canadairs et pompiers ne peuvent pas intervenir</div>
+      </div>
+      <div class="kpi-card tram">
+        <div class="kpi-val">Avril–mai</div>
+        <div class="kpi-unit">dessèchement précoce</div>
+        <div class="kpi-lbl">La tramontane printanière crée des conditions d'inflammabilité maximale avant l'été</div>
+      </div>
+    </div>
+
+    <div class="box box-tram reveal">
+      <h3>Juillet 2026 — Trévillach : l'illustration en temps réel</h3>
+      <p>Le 4 juillet 2026, un incendie s'est déclaré dans un massif difficile d'accès à 35 km à l'ouest de Perpignan. En moins de 48 heures : <strong>4 500 hectares parcourus, 700 pompiers mobilisés sur un front de 18 km, 10 000 personnes évacuées</strong> dont l'ensemble des habitants d'Ille-sur-Têt. Le feu a franchi la Têt et menacé le massif des Aspres. Le préfet a comparé l'événement au méga-feu de 1976 (7 000 ha). Le ministre de l'Intérieur s'est dit <em>"très inquiet"</em> que la saison des feux ait commencé <em>"avec un mois d'avance"</em>. C'est l'équation tramontane à l'état pur : <strong>un feu sous vent violent est incontrôlable — le levier le plus robuste est d'empêcher le feu de démarrer.</strong></p>
+      <p style="font-size:.78rem;color:rgba(240,244,241,.5);margin-top:.6rem;font-style:italic">L'incendie d'Opoul-Périllos de juin 2022 (1 050 ha) avait déjà illustré ce mécanisme dans le département. Source : France 3 Occitanie · Préfecture 66 · juillet 2026</p>
+    </div>
+
+    <div class="box box-or reveal" style="margin-top:1rem">
+      <h3>La tramontane comme ressource — le paradoxe Résilience</h3>
+      <p>Le vent qui rend les incendies ingérables est aussi une ressource énergétique considérable. Les Pyrénées-Orientales ont un potentiel éolien parmi les plus importants de France métropolitaine. Dans l'architecture Résilience, ce surplus éolien peut alimenter des électrolyseurs PEM qui produisent de l'H₂ — lequel, combiné au CO₂ biogénique concentré par la pyrogazéification locale, produit du bio-CH₄ additionnel via le procédé Sabatier. <strong>Le vent qui attise les incendies devient une ressource pour décarboner davantage.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- GISEMENT BIOMASSE -->
+<section class="alt">
+  <div class="container">
+    <div class="stag reveal">Gisement biomasse — Pyrénées-Orientales</div>
+    <h2 class="reveal">Un gisement plus robuste<br><em>que le Gard</em></h2>
+    <p class="lead reveal">Contrairement au Gard dominé par la garrigue à faible densité, les Pyrénées-Orientales disposent d'un gisement biomasse plus varié et plus dense, avec quatre sources complémentaires.</p>
+
+    <div class="tbl-wrap reveal">
+      <table>
+        <thead><tr><th>Source</th><th>Surface / Volume</th><th>Potentiel t MS/an</th><th>Disponibilité</th><th>Qualification</th></tr></thead>
+        <tbody>
+          <tr><td>Forêts de pin maritime et sylvestre (altitude)</td><td>~80 000 ha mobilisables</td><td class="td-g">80 000–120 000 t/an</td><td class="td-g">Annuelle</td><td>✅ Robuste — rémanents d'éclaircie</td></tr>
+          <tr><td>Châtaigneraies et forêts de chênes-lièges</td><td>~30 000 ha</td><td class="td-g">30 000–50 000 t/an</td><td class="td-g">Annuelle</td><td>✅ Robuste — gestion DFCI existante</td></tr>
+          <tr><td>Vignes en reconversion (arrachage PAC)</td><td>Plusieurs dizaines de milliers d'ha selon scénarios PAC</td><td class="td-a">40 000–80 000 t/an</td><td class="td-a">Ponctuelle</td><td>⚠ Conditionnel — dépend rythme PAC</td></tr>
+          <tr><td>Maquis et garrigue méditerranéenne</td><td>~120 000 ha accessibles</td><td class="td-a">40 000–80 000 t/an</td><td class="td-a">Saisonnière</td><td>Plausible — débroussaillage DFCI</td></tr>
+          <tr><td>Résidus agricoles (vergers, maraîchage)</td><td>~20 000 ha</td><td class="td-g">15 000–25 000 t/an</td><td class="td-a">Saisonnière</td><td>✅ Robuste — déchets actuellement brûlés</td></tr>
+        </tbody>
+        <tfoot style="background:rgba(132,60,12,.2)">
+          <tr><td><strong>TOTAL estimé</strong></td><td>—</td><td class="td-g"><strong>200 000–325 000 t MS/an</strong></td><td>—</td><td><strong>Plausible — 1 à 2 sites × 1 000 t/j</strong></td></tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <div class="kpi-grid reveal" style="margin-top:2rem">
+      <div class="kpi-card">
+        <div class="kpi-val">1–2 sites</div>
+        <div class="kpi-unit">pyrogazéification</div>
+        <div class="kpi-lbl">Dimensionnement estimé pour le département (vs 150 à l'échelle nationale)</div>
+      </div>
+      <div class="kpi-card vert">
+        <div class="kpi-val">~900–1 700 GWh</div>
+        <div class="kpi-unit">bio-CH₄/an</div>
+        <div class="kpi-lbl">Production énergétique locale · injection réseau GRTgaz / GNV transports</div>
+      </div>
+      <div class="kpi-card vert">
+        <div class="kpi-val">13 000–25 000 t</div>
+        <div class="kpi-unit">biochar/an</div>
+        <div class="kpi-lbl">Amendement des sols viticoles en reconversion · séquestration 100–1 000 ans</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-val">36 000–75 000 t</div>
+        <div class="kpi-unit">CO₂ séquestré/an</div>
+        <div class="kpi-lbl">Séquestration nette certifiable CRCF sur le département</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARATIF PARADIGMES -->
+<section>
+  <div class="container">
+    <div class="stag reveal">Le changement de paradigme</div>
+    <h2 class="reveal">Ce que le raisonnement classique<br><em>ne voit pas</em></h2>
+
+    <div class="comp-grid reveal">
+      <div class="comp-col rouge">
+        <div class="comp-head">✗ Approche défensive classique</div>
+        <div class="comp-item"><div class="comp-dot"></div><p><strong>Coupe-feux statiques</strong> — franchis par les brandons sous tramontane dès 80 km/h</p></div>
+        <div class="comp-item"><div class="comp-dot"></div><p><strong>Canadairs et pompiers</strong> — ne peuvent pas intervenir sous tramontane forte · fenêtre d'action nulle</p></div>
+        <div class="comp-item"><div class="comp-dot"></div><p><strong>Débroussaillage obligatoire</strong> — mal appliqué, biomasse laissée sur place et séchée par la tramontane</p></div>
+        <div class="comp-item"><div class="comp-dot"></div><p><strong>Vignes arrachées abandonnées</strong> — souches et sarments constituent un combustible sec idéal</p></div>
+        <div class="comp-item"><div class="comp-dot"></div><p><strong>Coût net</strong> — aucun retour économique sur la gestion du risque · charge pour les collectivités</p></div>
+      </div>
+      <div class="comp-col vert">
+        <div class="comp-head">✓ Approche productive Résilience</div>
+        <div class="comp-item"><div class="comp-dot"></div><p><strong>Prélèvement préventif systématique</strong> — rémanents et houppiers fins collectés avant la saison sèche · charge de feu réduite structurellement</p></div>
+        <div class="comp-item"><div class="comp-dot"></div><p><strong>Vignes arrachées valorisées</strong> — sarments et souches vers pyrogazéification · reconversion économique des exploitations</p></div>
+        <div class="comp-item"><div class="comp-dot"></div><p><strong>Biochar sur vignes nouvelles</strong> — amélioration de la rétention d'eau · résilience aux sécheresses méditerranéennes</p></div>
+        <div class="comp-item"><div class="comp-dot"></div><p><strong>Éolien tramontane + Sabatier</strong> — surplus éolien → bio-CH₄ additionnel · le vent devient ressource</p></div>
+        <div class="comp-item"><div class="comp-dot"></div><p><strong>Revenus territoriaux</strong> — emplois locaux non délocalisables · filière souveraine · coopération transfrontalière Catalogne</p></div>
+      </div>
+    </div>
+
+    <div class="box box-feu reveal">
+      <h3>L'argument décisif : la prévention est la seule stratégie efficace</h3>
+      <p>Sous tramontane à 100 km/h, un feu parcourt 2 à 3 km/heure. En 6 heures, il peut brûler 1 500 à 2 000 hectares avant que les premiers renforts extérieurs arrivent. <strong>Aucune stratégie curative n'est efficace dans ces conditions.</strong> La réduction de la charge combustible au sol — par prélèvement systématique des rémanents fins — est le seul levier qui fonctionne indépendamment des conditions météorologiques. C'est ce que fait la pyrogazéification en valorisant cette biomasse au lieu de la laisser sécher sur place.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DIMENSION TRANSFRONTALIÈRE -->
+<section class="alt">
+  <div class="container">
+    <div class="stag-vert reveal">Dimension transfrontalière</div>
+    <h2 class="reveal">Catalogne espagnole —<br><em>un partenariat naturel</em></h2>
+    <p class="lead reveal">Les Pyrénées-Orientales partagent leur frontière avec la Catalogne, qui fait face aux mêmes problématiques : méga-feux méditerranéens, sécheresses chroniques, vignobles en reconversion. La coopération transfrontalière ouvre des perspectives que le seul cadre national ne permet pas.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1.5rem" class="reveal">
+      <div class="box box-vert" style="margin-top:0">
+        <h3>Côté français — Pyrénées-Orientales</h3>
+        <p>Biomasse lignocellulosique abondante · gisement forestier robuste · vignes en reconversion · réseau GRDF pour injection bio-CH₄ · savoir-faire pyrogazéification (démonstrateurs nationaux en cours)</p>
+      </div>
+      <div class="box box-vert" style="margin-top:0">
+        <h3>Côté espagnol — Catalogne</h3>
+        <p>Potentiel éolien et solaire exceptionnel · capacité de production H₂ vert · réseau de distribution GNL pour transport lourd · marché bio-GNV en développement · accords bilatéraux énergie France-Espagne</p>
+      </div>
+    </div>
+
+    <div class="box box-or reveal">
+      <h3>Le partenariat transfrontalier Résilience</h3>
+      <p>Un échange structurel entre les deux régions : <strong>biomasse et bio-CH₄ côté français</strong> contre <strong>H₂ vert et énergie solaire côté espagnol</strong>. Le CO₂ biogénique concentré produit par les sites français peut alimenter les serres maraîchères catalanes en hiver. La chaleur fatale peut chauffer les bâtiments des deux côtés de la frontière. C'est l'application directe de la stratégie de coopération France-Espagne développée dans le Programme Résilience V11.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAISABILITÉ ET CONDITIONS -->
+<section>
+  <div class="container">
+    <div class="stag reveal">Faisabilité et conditions</div>
+    <h2 class="reveal">Ce qui rend ce démonstrateur<br><em>plus solide que le Gard</em></h2>
+
+    <div class="tbl-wrap reveal">
+      <table>
+        <thead><tr><th>Critère</th><th>Zone C Gard</th><th>Pyrénées-Orientales</th></tr></thead>
+        <tbody>
+          <tr><td>Gisement biomasse</td><td class="td-a">Plausible — garrigue à faible densité</td><td class="td-g">Robuste — forêts d'altitude + vignes reconversion</td></tr>
+          <tr><td>Régularité d'approvisionnement</td><td class="td-a">Variable — aléas climatiques</td><td class="td-g">Plus stable — mix 5 sources complémentaires</td></tr>
+          <tr><td>Risque incendie</td><td class="td-r">Élevé — garrigue inflammable</td><td class="td-r">Extrême — tramontane · 4 500 ha en juillet 2026</td></tr>
+          <tr><td>Urgence politique locale</td><td class="td-a">Forte — après Gard 2022</td><td class="td-g">Maximale — 4 500 ha juillet 2026 · 10 000 évacués</td></tr>
+          <tr><td>Potentiel ENR couplé</td><td class="td-a">Solaire modéré</td><td class="td-g">Éolien tramontane + solaire exceptionnel</td></tr>
+          <tr><td>Dimension transfrontalière</td><td style="color:var(--gris)">Absente</td><td class="td-g">Forte — Catalogne, accords bilatéraux</td></tr>
+          <tr><td>Vignes en reconversion</td><td style="color:var(--gris)">Marginale</td><td class="td-g">Structurelle — 1er département viticole en arrachage</td></tr>
+          <tr><td>Viabilité économique</td><td class="td-a">Conditionnelle</td><td class="td-g">Plausible — gisement plus robuste · revenus multiples</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="box box-vert reveal">
+      <h3>Qualification V11</h3>
+      <p>Le démonstrateur Pyrénées-Orientales est qualifié <strong>Plausible</strong> dans le corpus Résilience V11 — un cran au-dessus de la qualification Conditionnelle du Gard, grâce à un gisement biomasse plus robuste et à la convergence de plusieurs facteurs favorables : urgence politique post-2022, gisement viticole structurel, potentiel éolien couplable, dimension transfrontalière. Les incertitudes résiduelles portent sur le rythme réel d'arrachage des vignes et sur la mobilisation des forêts privées.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- POURQUOI PRIORITAIRE + SCHÉMA -->
+<section style="background:linear-gradient(135deg,#050a07 0%,#0d1a0f 100%)">
+  <div class="container">
+
+    <!-- Schéma SVG simple -->
+    <div class="stag-vert reveal">Schéma de synthèse</div>
+    <h2 class="reveal" style="margin-bottom:1.5rem">Un problème, <em>une infrastructure, cinq bénéfices</em></h2>
+    <div class="reveal" style="display:flex;justify-content:center;margin-bottom:2.5rem">
+      <svg viewBox="0 0 680 180" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;width:680px">
+        <!-- Noeuds -->
+        <rect x="10" y="70" width="90" height="40" rx="6" fill="#1a4a7a"/>
+        <text x="55" y="86" text-anchor="middle" fill="#6aabdf" font-family="Jost,sans-serif" font-size="9" font-weight="600">TRAMONTANE</text>
+        <text x="55" y="100" text-anchor="middle" fill="#9fc4e8" font-family="Jost,sans-serif" font-size="8">Vent · Incendie</text>
+
+        <rect x="140" y="70" width="90" height="40" rx="6" fill="#843C0C"/>
+        <text x="185" y="86" text-anchor="middle" fill="#FBE4D5" font-family="Jost,sans-serif" font-size="9" font-weight="600">BIOMASSE</text>
+        <text x="185" y="100" text-anchor="middle" fill="#FBE4D5" font-family="Jost,sans-serif" font-size="8">Forêts · Vignes</text>
+
+        <rect x="275" y="70" width="100" height="40" rx="6" fill="#2d6a2d"/>
+        <text x="325" y="86" text-anchor="middle" fill="#95d5b2" font-family="Jost,sans-serif" font-size="9" font-weight="600">PYROGAZÉIFICATION</text>
+        <text x="325" y="100" text-anchor="middle" fill="#95d5b2" font-family="Jost,sans-serif" font-size="8">+ Sabatier ENR éolien</text>
+
+        <!-- Produits -->
+        <rect x="420" y="10" width="80" height="30" rx="4" fill="#1a3a28"/>
+        <text x="460" y="29" text-anchor="middle" fill="#52b788" font-family="Jost,sans-serif" font-size="8" font-weight="600">Bio-CH₄</text>
+
+        <rect x="420" y="50" width="80" height="30" rx="4" fill="#4a3010"/>
+        <text x="460" y="69" text-anchor="middle" fill="#e9c46a" font-family="Jost,sans-serif" font-size="8" font-weight="600">Biochar</text>
+
+        <rect x="420" y="90" width="80" height="30" rx="4" fill="#0a2a3a"/>
+        <text x="460" y="109" text-anchor="middle" fill="#6aabdf" font-family="Jost,sans-serif" font-size="8" font-weight="600">CO₂ valorisé</text>
+
+        <rect x="420" y="130" width="80" height="30" rx="4" fill="#2a1a0a"/>
+        <text x="460" y="149" text-anchor="middle" fill="#C45A1A" font-family="Jost,sans-serif" font-size="8" font-weight="600">Chaleur fatale</text>
+
+        <!-- Résilience -->
+        <rect x="560" y="65" width="110" height="50" rx="6" fill="#0d1f17" stroke="#52b788" stroke-width="1.5"/>
+        <text x="615" y="84" text-anchor="middle" fill="#52b788" font-family="Jost,sans-serif" font-size="10" font-weight="700">RÉSILIENCE</text>
+        <text x="615" y="100" text-anchor="middle" fill="#95d5b2" font-family="Jost,sans-serif" font-size="8">Énergie · Carbone</text>
+        <text x="615" y="112" text-anchor="middle" fill="#95d5b2" font-family="Jost,sans-serif" font-size="8">Sécurité · Emplois</text>
+
+        <!-- Flèches -->
+        <line x1="100" y1="90" x2="138" y2="90" stroke="#6aabdf" stroke-width="1.5" marker-end="url(#arr)"/>
+        <line x1="230" y1="90" x2="273" y2="90" stroke="#C45A1A" stroke-width="1.5" marker-end="url(#arr)"/>
+        <line x1="375" y1="75" x2="418" y2="28" stroke="#52b788" stroke-width="1" marker-end="url(#arr)"/>
+        <line x1="375" y1="85" x2="418" y2="68" stroke="#e9c46a" stroke-width="1" marker-end="url(#arr)"/>
+        <line x1="375" y1="95" x2="418" y2="108" stroke="#6aabdf" stroke-width="1" marker-end="url(#arr)"/>
+        <line x1="375" y1="105" x2="418" y2="148" stroke="#C45A1A" stroke-width="1" marker-end="url(#arr)"/>
+        <line x1="500" y1="28" x2="558" y2="82" stroke="#52b788" stroke-width="1" marker-end="url(#arr)"/>
+        <line x1="500" y1="68" x2="558" y2="88" stroke="#e9c46a" stroke-width="1" marker-end="url(#arr)"/>
+        <line x1="500" y1="108" x2="558" y2="98" stroke="#6aabdf" stroke-width="1" marker-end="url(#arr)"/>
+        <line x1="500" y1="148" x2="558" y2="108" stroke="#C45A1A" stroke-width="1" marker-end="url(#arr)"/>
+
+        <defs>
+          <marker id="arr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L6,3 z" fill="rgba(240,244,241,.5)"/>
+          </marker>
+        </defs>
+      </svg>
+    </div>
+
+    <!-- Encadré priorité -->
+    <div class="stag reveal">Argument de priorité</div>
+    <h2 class="reveal">Pourquoi ce démonstrateur<br><em>est prioritaire ?</em></h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.2rem" class="reveal">
+      <div style="background:rgba(13,31,23,.5);border-left:3px solid var(--vert-vif);padding:1rem 1.2rem">
+        <div style="font-size:.68rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--vert-vif);margin-bottom:.5rem">Risque & urgence</div>
+        <p style="font-size:.84rem;color:rgba(240,244,241,.72);line-height:1.6">Risque incendie parmi les plus élevés de France métropolitaine · saison 2026 commencée un mois en avance · 4 500 ha brûlés en juillet 2026 · urgence politique documentée</p>
+      </div>
+      <div style="background:rgba(13,31,23,.5);border-left:3px solid var(--vert-vif);padding:1rem 1.2rem">
+        <div style="font-size:.68rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--vert-vif);margin-bottom:.5rem">Gisement</div>
+        <p style="font-size:.84rem;color:rgba(240,244,241,.72);line-height:1.6">Biomasse plus diversifiée que le Gard · mix annuel + saisonnier + ponctuel · reconversion viticole offrant un gisement supplémentaire structurel</p>
+      </div>
+      <div style="background:rgba(13,31,23,.5);border-left:3px solid var(--ambre);padding:1rem 1.2rem">
+        <div style="font-size:.68rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ambre);margin-bottom:.5rem">Synergies ENR</div>
+        <p style="font-size:.84rem;color:rgba(240,244,241,.72);line-height:1.6">Potentiel éolien tramontane exceptionnel · couplage Sabatier → bio-CH₄ additionnel · le problème devient ressource</p>
+      </div>
+      <div style="background:rgba(13,31,23,.5);border-left:3px solid var(--ambre);padding:1rem 1.2rem">
+        <div style="font-size:.68rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ambre);margin-bottom:.5rem">Financement européen</div>
+        <p style="font-size:.84rem;color:rgba(240,244,241,.72);line-height:1.6">Dimension transfrontalière avec la Catalogne · accès aux fonds INTERREG / POCTEFA · coopérations énergétiques France-Espagne actives</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- NAVIGATION -->
+<section style="background:var(--foret);padding:3.5rem 3rem">
+  <div class="container">
+    <div style="display:flex;gap:1rem;flex-wrap:wrap" class="reveal">
+      <a href="zone-c-incendie.html" class="btn btn-outline">← Zone C Gard</a>
+      <a href="pyrogazeification-resilience.html" class="btn btn-outline">Pyrogazéification →</a>
+      <a href="cooperation-internationale.html" class="btn btn-outline">Coopération France-Espagne →</a>
+      <a href="biomasse.html" class="btn btn-outline">Gisement biomasse →</a>
+      <a href="Demonstrateur_Pyrenees_Orientales_V3.pdf" class="btn btn-primary" target="_blank">↓ Télécharger le PDF V2</a>
+      <a href="index.html" class="btn btn-outline">⌂ Accueil</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Programme Résilience V11</div>
+  <p>Pyrénées-Orientales · Tramontane · Pyrogazéification et prévention incendie · Juillet 2026 · Diffusion libre</p>
+  <p style="margin-top:.4rem">Sources : SDIS 66 · ONF · PAC vignes arrachage · Météo-France tramontane · GRDF gisement biométhane · Programme Résilience V11</p>
+</footer>
+
+<script>
+const obs=new IntersectionObserver((e)=>{e.forEach((el,i)=>{if(el.isIntersecting){setTimeout(()=>el.target.classList.add('visible'),i*65);obs.unobserve(el.target)}})},{threshold:0.07});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
