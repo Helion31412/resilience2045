@@ -7,31 +7,89 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--noir:#0a0f0d;--foret:#0d1f17;--vert-vif:#52b788;--vert-clair:#95d5b2;--ambre:#e9c46a;--blanc:#f0f4f1;--gris:#8a9e93;--serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',sans-serif;}
+:root{
+  --noir:#0a0f0d;--foret:#0d1f17;--vert-vif:#52b788;--vert-clair:#95d5b2;
+  --ambre:#e9c46a;--blanc:#f0f4f1;--gris:#8a9e93;
+  --feu:#ff8c5a;--feu-bg:rgba(255,140,90,.08);--feu-border:rgba(255,140,90,.3);
+  --tram:#6aabdf;--tram-bg:rgba(106,171,223,.08);--tram-border:rgba(106,171,223,.3);
+  --bocage:#a8d5a0;--bocage-bg:rgba(168,213,160,.08);--bocage-border:rgba(168,213,160,.3);
+  --coming:rgba(82,183,136,.35);
+  --serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',sans-serif;
+}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:var(--noir);color:var(--blanc);font-family:var(--sans);font-weight:300;line-height:1.7;overflow-x:hidden}
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:.9rem 2.5rem;background:rgba(10,15,13,.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(82,183,136,.12)}
 .nav-logo{font-family:var(--serif);font-size:1.15rem;font-weight:600;color:var(--vert-vif);text-decoration:none}
 .nav-back{font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gris);text-decoration:none;transition:color .3s}.nav-back:hover{color:var(--vert-vif)}
+
 section{padding:5rem 3rem}
 .container{max-width:1100px;margin:0 auto}
 .stag{font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--vert-vif);margin-bottom:.7rem}
 h1{font-family:var(--serif);font-size:clamp(2.2rem,4.5vw,3.6rem);font-weight:300;line-height:1.1;margin-bottom:1.2rem}
 h1 em{font-style:italic;color:var(--vert-vif)}
 .lead{font-size:.97rem;color:rgba(240,244,241,.7);max-width:700px;line-height:1.85;margin-bottom:2rem}
-.dem-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.5rem;margin-top:2rem}
-.dem-card{display:flex;flex-direction:column;border:1px solid rgba(82,183,136,.15);background:rgba(13,31,23,.4);padding:1.8rem 1.6rem;transition:border-color .2s,background .2s;text-decoration:none;color:inherit}
-.dem-card:hover{border-color:rgba(82,183,136,.4);background:rgba(13,31,23,.7)}
-.dem-num{font-family:var(--serif);font-size:3rem;font-weight:300;line-height:1;margin-bottom:.5rem}
-.dem-tag{font-size:.65rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;margin-bottom:.6rem}
-.dem-card h2{font-family:var(--serif);font-size:1.3rem;font-weight:400;margin-bottom:.6rem;line-height:1.3}
-.dem-card p{font-size:.84rem;color:rgba(240,244,241,.6);line-height:1.65;flex-grow:1;margin-bottom:1rem}
-.dem-qualif{display:inline-block;font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.25rem .7rem;border:1px solid;margin-bottom:.8rem}
-.dem-links{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:auto}
-.dem-btn{font-size:.7rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;padding:.35rem .8rem;border:1px solid;transition:all .2s}
-.coming{opacity:.45;border-style:dashed}
-.coming .dem-num{color:rgba(82,183,136,.2)}
+
+/* GRILLE FIXE 3 COLONNES */
+.dem-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1.4rem;
+  margin-top:2rem;
+}
+@media(max-width:900px){.dem-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.dem-grid{grid-template-columns:1fr}}
+
+/* CARTES */
+.dem-card{
+  display:flex;flex-direction:column;
+  border:1px solid rgba(82,183,136,.15);
+  background:rgba(13,31,23,.4);
+  padding:1.6rem 1.5rem;
+  text-decoration:none;color:inherit;
+  transition:border-color .2s,background .2s;
+}
+.dem-card:hover{background:rgba(13,31,23,.7)}
+.dem-card.feu{border-top:3px solid var(--feu)}
+.dem-card.feu:hover{border-color:var(--feu-border)}
+.dem-card.tram{border-top:3px solid var(--tram)}
+.dem-card.tram:hover{border-color:var(--tram-border)}
+.dem-card.bocage{border-top:3px solid var(--bocage)}
+.dem-card.bocage:hover{border-color:var(--bocage-border)}
+.dem-card.coming{opacity:.5;border-top:3px solid rgba(82,183,136,.25);cursor:default}
+
+.dem-num{font-family:var(--serif);font-size:2.5rem;font-weight:300;line-height:1;margin-bottom:.4rem}
+.dem-card.feu .dem-num{color:rgba(255,140,90,.3)}
+.dem-card.tram .dem-num{color:rgba(106,171,223,.3)}
+.dem-card.bocage .dem-num{color:rgba(168,213,160,.3)}
+.dem-card.coming .dem-num{color:rgba(82,183,136,.15)}
+
+.dem-tag{font-size:.63rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.5rem}
+.dem-card.feu .dem-tag{color:var(--feu)}
+.dem-card.tram .dem-tag{color:var(--tram)}
+.dem-card.bocage .dem-tag{color:var(--bocage)}
+.dem-card.coming .dem-tag{color:rgba(82,183,136,.4)}
+
+.dem-qualif{display:inline-block;font-size:.66rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.22rem .65rem;border:1px solid;margin-bottom:.7rem}
+.dem-card h2{font-family:var(--serif);font-size:1.25rem;font-weight:400;margin-bottom:.5rem;line-height:1.3}
+.dem-card.feu h2{color:var(--blanc)}
+.dem-card.tram h2{color:var(--blanc)}
+.dem-card.bocage h2{color:var(--blanc)}
+.dem-card.coming h2{color:rgba(240,244,241,.45)}
+.dem-card p{font-size:.82rem;color:rgba(240,244,241,.6);line-height:1.6;flex-grow:1;margin-bottom:1rem}
+.dem-card.coming p{color:rgba(240,244,241,.35)}
+
+.dem-links{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:auto}
+.dem-btn{font-size:.68rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;padding:.32rem .75rem;border:1px solid;transition:all .2s;white-space:nowrap}
+.dem-card.feu .dem-btn.primary{color:var(--feu);border-color:var(--feu-border)}.dem-card.feu .dem-btn.primary:hover{background:var(--feu-bg)}
+.dem-card.feu .dem-btn.sec{color:rgba(240,244,241,.45);border-color:rgba(240,244,241,.15)}
+.dem-card.tram .dem-btn.primary{color:var(--tram);border-color:var(--tram-border)}.dem-card.tram .dem-btn.primary:hover{background:var(--tram-bg)}
+.dem-card.tram .dem-btn.sec{color:rgba(240,244,241,.45);border-color:rgba(240,244,241,.15)}
+.dem-card.bocage .dem-btn.primary{color:var(--bocage);border-color:var(--bocage-border)}.dem-card.bocage .dem-btn.primary:hover{background:var(--bocage-bg)}
+.dem-card.bocage .dem-btn.sec{color:rgba(240,244,241,.45);border-color:rgba(240,244,241,.15)}
+
+.coming-lbl{font-size:.7rem;color:rgba(240,244,241,.3);font-style:italic}
+
 footer{background:#050a07;padding:2rem 3rem;text-align:center;border-top:1px solid rgba(82,183,136,.08)}
 .footer-logo{font-family:var(--serif);font-size:1.3rem;font-weight:300;color:var(--vert-vif);margin-bottom:.3rem}
 footer p{font-size:.75rem;color:var(--gris);max-width:600px;margin:.2rem auto}
@@ -58,7 +116,8 @@ footer p{font-size:.75rem;color:var(--gris);max-width:600px;margin:.2rem auto}
   </div>
 </nav>
 
-<section style="min-height:50vh;display:flex;align-items:center;padding-top:8rem;background:linear-gradient(135deg,#0a0f0d 0%,#0d1f17 60%,#060e09 100%)">
+<!-- HERO -->
+<section style="min-height:45vh;display:flex;align-items:center;padding-top:8rem;background:linear-gradient(135deg,#0a0f0d 0%,#0d1f17 60%,#060e09 100%)">
   <div class="container">
     <div class="stag">Méthode de planification territoriale · Programme Résilience V11</div>
     <h1>Démonstrateurs<br><em>territoriaux</em></h1>
@@ -66,77 +125,99 @@ footer p{font-size:.75rem;color:var(--gris);max-width:600px;margin:.2rem auto}
   </div>
 </section>
 
+<!-- GRILLE -->
 <section style="background:var(--foret)">
   <div class="container">
-    <div class="stag reveal">Démonstrateurs actifs</div>
+    <div class="stag reveal">Démonstrateurs actifs et en préparation</div>
+
     <div class="dem-grid">
 
-      <!-- Gard -->
-      <a href="zone-c-incendie.html" class="dem-card reveal">
-        <div class="dem-num" style="color:rgba(255,107,53,.4)">01</div>
-        <div class="dem-tag" style="color:#ff6b35">🔥 Zone C · Incendie · DFCI</div>
-        <div class="dem-qualif" style="color:#ff8c5a;border-color:rgba(255,107,53,.3)">⚠ Conditionnelle</div>
+      <!-- 01 GARD -->
+      <div class="dem-card feu reveal">
+        <div class="dem-num">01</div>
+        <div class="dem-tag">🔥 Zone C · Incendie · DFCI</div>
+        <div class="dem-qualif" style="color:#ff8c5a;border-color:rgba(255,140,90,.4)">⚠ Conditionnelle</div>
         <h2>Gard (30) — Forêt méditerranéenne</h2>
         <p>La forêt méditerranéenne : pas une contrainte à éviter — une ressource à organiser. Garrigue, taillis, rémanents. Premier démonstrateur de la méthode Résilience.</p>
         <div class="dem-links">
-          <a href="zone-c-incendie.html" class="dem-btn" style="color:#ff6b35;border-color:rgba(255,107,53,.3)">Voir la page →</a>
-          <a href="Demonstrateur_Zone_C_Gard_Pyrogazeification_DFCI_V2.pdf" target="_blank" class="dem-btn" style="color:rgba(240,244,241,.5);border-color:rgba(240,244,241,.15)">PDF →</a>
-        </div>
-      </a>
-
-      <!-- Pyrénées-Orientales -->
-      <a href="zone-pyrenees-orientales.html" class="dem-card reveal">
-        <div class="dem-num" style="color:rgba(106,171,223,.35)">02</div>
-        <div class="dem-tag" style="color:#6aabdf">🌬️ Tramontane · Méga-feux · Catalogne</div>
-        <div class="dem-qualif" style="color:var(--vert-vif);border-color:rgba(82,183,136,.3)">✅ Plausible</div>
-        <h2>Pyrénées-Orientales (66) — Tramontane</h2>
-        <p>Risque incendie extrême · gisement biomasse plus robuste que le Gard · potentiel éolien tramontane · coopération transfrontalière Catalogne. Incendie Trévillach · juillet 2026 · 4 500 ha.</p>
-        <div class="dem-links">
-          <a href="zone-pyrenees-orientales.html" class="dem-btn" style="color:#6aabdf;border-color:rgba(106,171,223,.3)">Voir la page →</a>
-          <a href="Demonstrateur_Pyrenees_Orientales_V3.pdf" target="_blank" class="dem-btn" style="color:rgba(240,244,241,.5);border-color:rgba(240,244,241,.15)">PDF V3 →</a>
-        </div>
-      </a>
-
-      <!-- À venir -->
-      <div class="dem-card coming reveal">
-        <div class="dem-num" style="color:rgba(82,183,136,.15)">04</div>
-        <div class="dem-tag" style="color:rgba(82,183,136,.4)">🌲 Forêt landaise · Pin maritime</div>
-        <div class="dem-qualif" style="color:rgba(240,244,241,.3);border-color:rgba(240,244,241,.1)">En préparation</div>
-        <h2 style="color:rgba(240,244,241,.4)">Landes (40) — Forêt tempérée</h2>
-        <p>Après les méga-feux de 2022 (30 000 ha), la plus grande forêt artificielle d'Europe cherche un modèle de reconversion. Gisement résineux exceptionnel.</p>
-        <div class="dem-links">
-          <span style="font-size:.7rem;color:rgba(240,244,241,.3)">Disponible prochainement</span>
+          <a href="zone-c-incendie.html" class="dem-btn" style="color:#ff8c5a;border-color:rgba(255,140,90,.4)">Voir la page →</a>
+          <a href="Demonstrateur_Zone_C_Gard_Pyrogazeification_DFCI_V2.pdf" target="_blank" class="dem-btn" style="color:rgba(240,244,241,.5);border-color:rgba(240,244,241,.2)">PDF →</a>
         </div>
       </div>
 
-      <a href="zone-normandie.html" class="dem-card reveal">
-        <div class="dem-num" style="color:rgba(168,213,160,.35)">03</div>
-        <div class="dem-tag" style="color:#a8d5a0">🌿 Bocage · Logistique · Trois sources</div>
-        <div class="dem-qualif" style="color:#52b788;border-color:rgba(82,183,136,.3)">✅ Plausible</div>
+      <!-- 02 PYRÉNÉES-ORIENTALES -->
+      <div class="dem-card tram reveal">
+        <div class="dem-num">02</div>
+        <div class="dem-tag">🌬️ Tramontane · Méga-feux · Catalogne</div>
+        <div class="dem-qualif" style="color:#95d5b2;border-color:rgba(82,183,136,.4)">✅ Plausible</div>
+        <h2>Pyrénées-Orientales (66) — Tramontane</h2>
+        <p>Risque incendie extrême · gisement biomasse plus robuste que le Gard · potentiel éolien tramontane · coopération transfrontalière Catalogne. Incendie Trévillach · juillet 2026 · 4 500 ha.</p>
+        <div class="dem-links">
+          <a href="zone-pyrenees-orientales.html" class="dem-btn" style="color:#95d5b2;border-color:rgba(149,213,178,.4)">Voir la page →</a>
+          <a href="Demonstrateur_Pyrenees_Orientales_V3.pdf" target="_blank" class="dem-btn" style="color:rgba(240,244,241,.5);border-color:rgba(240,244,241,.2)">PDF V3 →</a>
+        </div>
+      </div>
+
+      <!-- 03 NORMANDIE -->
+      <div class="dem-card bocage reveal">
+        <div class="dem-num">03</div>
+        <div class="dem-tag">🌿 Bocage · Logistique · Trois sources</div>
+        <div class="dem-qualif" style="color:#95d5b2;border-color:rgba(82,183,136,.4)">✅ Plausible</div>
         <h2>Normandie — Bocage et logistique biomasse</h2>
         <p>123 400 km de haies bocagères · trois sources complémentaires (bocage, forêt, paille) · modèle logistique à 3 niveaux · CUMA et coopératives existantes · marge +17 à +65 % sur le besoin.</p>
         <div class="dem-links">
-          <a href="zone-normandie.html" class="dem-btn" style="color:#a8d5a0;border-color:rgba(168,213,160,.3)">Voir la page →</a>
-          <a href="Demonstrateur_Normandie_V1.pdf" target="_blank" class="dem-btn" style="color:rgba(240,244,241,.5);border-color:rgba(240,244,241,.15)">PDF V2 →</a>
+          <a href="zone-normandie.html" class="dem-btn" style="color:#a8d5a0;border-color:rgba(168,213,160,.4)">Voir la page →</a>
+          <a href="Demonstrateur_Normandie_V1.pdf" target="_blank" class="dem-btn" style="color:rgba(240,244,241,.5);border-color:rgba(240,244,241,.2)">PDF V1 →</a>
         </div>
-      </a>
+      </div>
+
+      <!-- 04 LANDES -->
+      <div class="dem-card coming reveal">
+        <div class="dem-num">04</div>
+        <div class="dem-tag">🌲 Forêt landaise · Pin maritime</div>
+        <div class="dem-qualif" style="color:rgba(240,244,241,.3);border-color:rgba(240,244,241,.1)">En préparation</div>
+        <h2>Landes (40) — Forêt tempérée</h2>
+        <p>Après les méga-feux de 2022 (30 000 ha), la plus grande forêt artificielle d'Europe cherche un modèle de reconversion. Gisement résineux exceptionnel.</p>
+        <div class="dem-links"><span class="coming-lbl">Disponible prochainement</span></div>
+      </div>
+
+      <!-- 05 MASSIF CENTRAL -->
+      <div class="dem-card coming reveal">
+        <div class="dem-num">05</div>
+        <div class="dem-tag">⛰️ Forêt de montagne · Élevage</div>
+        <div class="dem-qualif" style="color:rgba(240,244,241,.3);border-color:rgba(240,244,241,.1)">En préparation</div>
+        <h2>Massif Central — Forêts et élevage extensif</h2>
+        <p>Résineux en altitude, effluents d'élevage, territoires en déprise. Gisement multi-sources dans des bassins peu concurrentiels.</p>
+        <div class="dem-links"><span class="coming-lbl">Disponible prochainement</span></div>
+      </div>
+
+      <!-- 06 BRETAGNE -->
+      <div class="dem-card coming reveal">
+        <div class="dem-num">06</div>
+        <div class="dem-tag">🌊 Bocage breton · Élevage intensif</div>
+        <div class="dem-qualif" style="color:rgba(240,244,241,.3);border-color:rgba(240,244,241,.1)">En préparation</div>
+        <h2>Bretagne — Bocage et effluents d'élevage</h2>
+        <p>Densité d'élevage la plus élevée de France, bocage en régression, tensions sur les nitrates. Complémentarité méthanisation + pyrogazéification.</p>
+        <div class="dem-links"><span class="coming-lbl">Disponible prochainement</span></div>
+      </div>
 
     </div>
 
-    <div style="margin-top:2.5rem;padding:1.2rem 1.6rem;background:rgba(82,183,136,.06);border-left:3px solid rgba(82,183,136,.3)" class="reveal">
-      <p style="font-size:.85rem;color:rgba(240,244,241,.6);line-height:1.7">
+    <div style="margin-top:2.5rem;padding:1.2rem 1.6rem;background:rgba(82,183,136,.05);border-left:3px solid rgba(82,183,136,.25)" class="reveal">
+      <p style="font-size:.84rem;color:rgba(240,244,241,.6);line-height:1.7">
         <strong style="color:var(--vert-vif)">La méthode :</strong> chaque démonstrateur suit le même canevas en 10 sections — contexte territorial, problème principal, ressources disponibles, architecture Résilience, bénéfices énergétiques/climatiques/économiques/sécurité, verrous Phase 0, qualification V11. Ce format uniforme permet la comparaison directe entre territoires.
       </p>
     </div>
   </div>
 </section>
 
+<!-- NAVIGATION -->
 <section style="padding:3rem 3rem">
   <div class="container">
     <div style="display:flex;gap:1rem;flex-wrap:wrap" class="reveal">
-      <a href="index.html" style="font-size:.76rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:var(--blanc);border:1px solid rgba(240,244,241,.28);padding:.72rem 1.6rem;transition:all .3s" onmouseover="this.style.borderColor='#52b788';this.style.color='#52b788'" onmouseout="this.style.borderColor='rgba(240,244,241,.28)';this.style.color='var(--blanc)'">⌂ Accueil</a>
-      <a href="biomasse.html" style="font-size:.76rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:var(--blanc);border:1px solid rgba(240,244,241,.28);padding:.72rem 1.6rem;transition:all .3s" onmouseover="this.style.borderColor='#52b788';this.style.color='#52b788'" onmouseout="this.style.borderColor='rgba(240,244,241,.28)';this.style.color='var(--blanc)'">Gisement biomasse →</a>
-      <a href="documents-liste.html" style="font-size:.76rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:var(--blanc);border:1px solid rgba(240,244,241,.28);padding:.72rem 1.6rem;transition:all .3s" onmouseover="this.style.borderColor='#52b788';this.style.color='#52b788'" onmouseout="this.style.borderColor='rgba(240,244,241,.28)';this.style.color='var(--blanc)'">Documents →</a>
+      <a href="index.html" style="font-size:.76rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:var(--blanc);border:1px solid rgba(240,244,241,.25);padding:.65rem 1.4rem;transition:all .3s" onmouseover="this.style.borderColor='#52b788';this.style.color='#52b788'" onmouseout="this.style.borderColor='rgba(240,244,241,.25)';this.style.color='var(--blanc)'">⌂ Accueil</a>
+      <a href="biomasse.html" style="font-size:.76rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:var(--blanc);border:1px solid rgba(240,244,241,.25);padding:.65rem 1.4rem;transition:all .3s" onmouseover="this.style.borderColor='#52b788';this.style.color='#52b788'" onmouseout="this.style.borderColor='rgba(240,244,241,.25)';this.style.color='var(--blanc)'">Gisement biomasse →</a>
+      <a href="documents-liste.html" style="font-size:.76rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:var(--blanc);border:1px solid rgba(240,244,241,.25);padding:.65rem 1.4rem;transition:all .3s" onmouseover="this.style.borderColor='#52b788';this.style.color='#52b788'" onmouseout="this.style.borderColor='rgba(240,244,241,.25)';this.style.color='var(--blanc)'">Documents →</a>
     </div>
   </div>
 </section>
