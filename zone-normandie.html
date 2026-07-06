@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zone Normandie · Bocage · Pyrogazéification · Programme Résilience V11</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --noir:#0a0f0d;--foret:#0d1f17;--vert-vif:#52b788;--vert-clair:#95d5b2;
+  --ambre:#e9c46a;--blanc:#f0f4f1;--gris:#8a9e93;
+  --bocage:#2d5c22;--bocage-clair:#a8d5a0;--bocage-bg:#e8f5e8;
+  --paille:#8a6010;--paille-clair:#f0c870;--paille-bg:#fdf6e3;
+  --foret-c:#4a3010;--foret-clair:#c8a070;--foret-bg:#f5ede0;
+  --serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--noir);color:var(--blanc);font-family:var(--sans);font-weight:300;line-height:1.7;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:.9rem 2.5rem;background:rgba(10,15,13,.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(82,183,136,.12)}
+.nav-logo{font-family:var(--serif);font-size:1.15rem;font-weight:600;color:var(--vert-vif);text-decoration:none}
+.nav-tag{font-size:.66rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--bocage-clair);border:1px solid rgba(45,92,34,.35);padding:.25rem .75rem}
+.nav-back{font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gris);text-decoration:none;transition:color .3s}.nav-back:hover{color:var(--vert-vif)}
+section{padding:5rem 3rem}
+.container{max-width:1100px;margin:0 auto}
+.stag{font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--bocage-clair);margin-bottom:.7rem}
+.stag-vert{font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--vert-vif);margin-bottom:.7rem}
+.stag-or{font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--ambre);margin-bottom:.7rem}
+h1{font-family:var(--serif);font-size:clamp(2.2rem,4.5vw,3.8rem);font-weight:300;line-height:1.1;margin-bottom:1.2rem}
+h1 em{font-style:italic;color:var(--bocage-clair)}
+h2{font-family:var(--serif);font-size:clamp(1.6rem,2.8vw,2.4rem);font-weight:300;line-height:1.15;margin-bottom:1rem}
+h2 em{font-style:italic;color:var(--bocage-clair)}
+.lead{font-size:.97rem;color:rgba(240,244,241,.7);max-width:700px;line-height:1.85;margin-bottom:1.8rem}
+.btn{display:inline-block;padding:.72rem 1.6rem;font-family:var(--sans);font-size:.76rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:all .3s}
+.btn-primary{background:var(--bocage);color:var(--blanc)}.btn-primary:hover{background:#3a7a2a;transform:translateY(-2px)}
+.btn-outline{background:transparent;color:var(--blanc);border:1px solid rgba(240,244,241,.28)}.btn-outline:hover{border-color:var(--bocage-clair);color:var(--bocage-clair);transform:translateY(-2px)}
+.alt{background:rgba(8,14,10,.6)}
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1.2rem;margin-top:1.8rem}
+.kpi-card{background:rgba(13,31,23,.6);border:1px solid rgba(45,92,34,.2);border-top:3px solid var(--bocage-clair);padding:1.3rem 1.2rem}
+.kpi-card.or{border-top-color:var(--paille-clair)}
+.kpi-card.foret{border-top-color:var(--foret-clair)}
+.kpi-card.vert{border-top-color:var(--vert-vif)}
+.kpi-val{font-family:var(--serif);font-size:2rem;color:var(--bocage-clair);line-height:1;margin-bottom:.2rem}
+.kpi-card.or .kpi-val{color:var(--paille-clair)}
+.kpi-card.foret .kpi-val{color:var(--foret-clair)}
+.kpi-card.vert .kpi-val{color:var(--vert-vif)}
+.kpi-unit{font-size:.7rem;color:var(--gris);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.4rem}
+.kpi-lbl{font-size:.8rem;color:rgba(240,244,241,.65);line-height:1.4}
+.box{padding:1.5rem 1.8rem;margin-top:1.5rem;border-left:4px solid var(--bocage-clair)}
+.box-bocage{background:rgba(45,92,34,.08);border-color:var(--bocage-clair)}
+.box-vert{background:rgba(82,183,136,.07);border-color:var(--vert-vif)}
+.box-or{background:rgba(138,96,16,.08);border-color:var(--paille-clair)}
+.box-alerte{background:rgba(233,196,106,.06);border-color:var(--ambre)}
+.box h3{font-family:var(--serif);font-size:1.1rem;margin-bottom:.6rem}
+.box-bocage h3{color:var(--bocage-clair)}
+.box-vert h3{color:var(--vert-vif)}
+.box-or h3{color:var(--paille-clair)}
+.box-alerte h3{color:var(--ambre)}
+.box p{font-size:.88rem;color:rgba(240,244,241,.7);line-height:1.75}
+.box p strong{color:var(--blanc);font-weight:500}
+.comp-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(45,92,34,.15);margin-top:1.5rem}
+.comp-col{background:rgba(10,15,13,.8);padding:1.4rem 1.4rem}
+.comp-col.rouge{border-top:3px solid rgba(200,80,50,.8)}
+.comp-col.vert{border-top:3px solid var(--vert-vif)}
+.comp-head{font-size:.68rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;margin-bottom:1rem;padding-bottom:.6rem;border-bottom:1px solid rgba(240,244,241,.08)}
+.comp-col.rouge .comp-head{color:rgba(220,100,70,.9)}
+.comp-col.vert .comp-head{color:var(--vert-vif)}
+.comp-item{display:flex;gap:.7rem;margin-bottom:.7rem;align-items:flex-start}
+.comp-dot{width:5px;height:5px;border-radius:50%;margin-top:.6rem;flex-shrink:0}
+.comp-col.rouge .comp-dot{background:rgba(220,100,70,.9)}
+.comp-col.vert .comp-dot{background:var(--vert-vif)}
+.comp-item p{font-size:.84rem;color:rgba(240,244,241,.68);line-height:1.6}
+.comp-item p strong{color:var(--blanc);font-weight:500}
+.tbl-wrap{overflow-x:auto;margin-top:1.5rem}
+table{width:100%;border-collapse:collapse;font-size:.82rem}
+thead tr{background:rgba(45,92,34,.3)}
+thead th{padding:.7rem 1rem;text-align:left;color:var(--bocage-clair);font-weight:500;font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;border-bottom:2px solid var(--bocage-clair)}
+tbody tr{border-bottom:1px solid rgba(45,92,34,.1);transition:background .2s}
+tbody tr:hover{background:rgba(45,92,34,.08)}
+tbody td{padding:.65rem 1rem;color:rgba(240,244,241,.75);vertical-align:top;line-height:1.5}
+tbody td:first-child{color:var(--blanc);font-weight:400}
+.td-g{color:var(--vert-vif)!important;font-weight:500}
+.td-a{color:var(--ambre)!important;font-weight:500}
+.td-r{color:rgba(220,100,70,.9)!important;font-weight:500}
+.td-b{color:var(--bocage-clair)!important;font-weight:500}
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+.reveal.visible{opacity:1;transform:none}
+footer{background:#050a07;padding:2.5rem 3rem;text-align:center;border-top:1px solid rgba(45,92,34,.15)}
+.footer-logo{font-family:var(--serif);font-size:1.4rem;font-weight:300;color:var(--bocage-clair);margin-bottom:.4rem}
+footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;line-height:1.7}
+@media(max-width:700px){nav{padding:.85rem 1.3rem}section{padding:3.5rem 1.4rem}h1{font-size:2rem}.comp-grid{grid-template-columns:1fr}}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1J0GBHR98B"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-1J0GBHR98B');
+</script>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">⌂ Résilience 2045</a>
+  <div style="display:flex;align-items:center;gap:1.2rem">
+    <a href="index.html" style="font-size:.68rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(82,183,136,.6);text-decoration:none;border:1px solid rgba(82,183,136,.2);padding:.2rem .6rem">⌂ Accueil</a>
+    <span class="nav-tag">🌿 Normandie · Bocage · Logistique biomasse</span>
+    <a href="demonstrateurs.html" class="nav-back">← Démonstrateurs</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero" style="min-height:70vh;display:flex;align-items:center;padding-top:8rem;background:linear-gradient(135deg,#0a0f0d 0%,#0d1a0a 50%,#060e09 100%);position:relative;overflow:hidden">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 30% 50%,rgba(45,92,34,.2) 0%,transparent 60%),radial-gradient(ellipse 40% 40% at 75% 40%,rgba(138,96,16,.1) 0%,transparent 60%)"></div>
+  <div class="container" style="position:relative;z-index:1">
+    <div style="display:inline-block;border:1px solid var(--bocage-clair);color:var(--bocage-clair);font-size:.67rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:.3rem .85rem;margin-bottom:1.5rem">Troisième démonstrateur · Programme Résilience V11</div>
+    <h1>Normandie :<br><em>le bocage,</em><br>ressource logistique clé</h1>
+    <p class="lead">123 400 km de haies, trois sources de biomasse complémentaires, un réseau de coopératives agricoles existant. La Normandie illustre le principe central de Résilience : ce n'est pas la quantité de biomasse qui compte, c'est la capacité à l'organiser en flux continu vers le site industriel.</p>
+    <div style="display:flex;gap:.9rem;flex-wrap:wrap">
+      <a href="#sources" class="btn btn-primary">Les trois sources →</a>
+      <a href="Logistique_Approvisionnement_Biomasse_Normandie_V2.pdf" target="_blank" class="btn btn-outline">↓ Note logistique PDF</a>
+      <a href="demonstrateurs.html" class="btn btn-outline">← Démonstrateurs</a>
+    </div>
+    <div style="display:flex;gap:2.5rem;margin-top:2.5rem;flex-wrap:wrap">
+      <div style="border-left:2px solid var(--bocage-clair);padding-left:1rem"><div style="font-family:var(--serif);font-size:1.9rem;color:var(--bocage-clair)">123 400 km</div><div style="font-size:.68rem;color:var(--gris);text-transform:uppercase;letter-spacing:.1em">haies bocagères — Basse-Normandie</div></div>
+      <div style="border-left:2px solid var(--paille-clair);padding-left:1rem"><div style="font-family:var(--serif);font-size:1.9rem;color:var(--paille-clair)">330 000 t/an</div><div style="font-size:.68rem;color:var(--gris);text-transform:uppercase;letter-spacing:.1em">besoin site 1 000 t/j × 330 jours</div></div>
+      <div style="border-left:2px solid var(--foret-clair);padding-left:1rem"><div style="font-family:var(--serif);font-size:1.9rem;color:var(--foret-clair)">385–545 kt</div><div style="font-size:.68rem;color:var(--gris);text-transform:uppercase;letter-spacing:.1em">gisement net mobilisable estimé</div></div>
+      <div style="border-left:2px solid var(--vert-vif);padding-left:1rem"><div style="font-family:var(--serif);font-size:1.9rem;color:var(--vert-vif)">+17 à +65 %</div><div style="font-size:.68rem;color:var(--gris);text-transform:uppercase;letter-spacing:.1em">marge sur le besoin · scénario central</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 1. CONTEXTE -->
+<section>
+  <div class="container">
+    <div class="stag reveal">1. Contexte territorial</div>
+    <h2 class="reveal">La région bocagère par excellence —<br><em>trois gisements, trois saisonnalités</em></h2>
+    <p class="lead reveal">La Normandie combine les trois types de gisements mobilisables par Résilience dans des proportions représentatives de la France de l'Ouest : bocage, forêt et résidus de grandes cultures. Ce triptyque est précisément ce qui permet de lisser l'approvisionnement sur l'année — chaque source ayant sa propre fenêtre de récolte.</p>
+
+    <div class="kpi-grid reveal">
+      <div class="kpi-card">
+        <div class="kpi-val">123 400 km</div>
+        <div class="kpi-unit">haies bocagères</div>
+        <div class="kpi-lbl">Basse-Normandie · densité 53 m/ha · 2× la moyenne nationale</div>
+      </div>
+      <div class="kpi-card or">
+        <div class="kpi-val">1,9 Mt/an</div>
+        <div class="kpi-unit">paille produite</div>
+        <div class="kpi-lbl">Dont ~210 000 t/an excédentaires mobilisables sans tension d'usage</div>
+      </div>
+      <div class="kpi-card foret">
+        <div class="kpi-val">22,8 M m³</div>
+        <div class="kpi-unit">volume sur pied</div>
+        <div class="kpi-lbl">Massif forestier bas-normand · rémanents mobilisables</div>
+      </div>
+      <div class="kpi-card vert">
+        <div class="kpi-val">5 Mt/an</div>
+        <div class="kpi-unit">céréales</div>
+        <div class="kpi-lbl">3,6 Mt blé tendre + orge + maïs · résidus agricoles abondants</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. PROBLÈME CENTRAL -->
+<section class="alt">
+  <div class="container">
+    <div class="stag reveal">2. Problème central — Le vrai défi logistique</div>
+    <h2 class="reveal">Offre saisonnière dispersée<br><em>vs demande industrielle continue</em></h2>
+    <p class="lead reveal">Un site de 1 000 t/j consomme 330 000 t/an en continu. La biomasse normande — forestière, bocagère, agricole — est par nature saisonnière, dispersée entre des milliers de propriétaires, et fragmentée géographiquement. C'est cet écart qui a fait échouer la majorité des projets biomasse industrielle en Europe ces vingt dernières années.</p>
+
+    <div class="comp-grid reveal">
+      <div class="comp-col rouge">
+        <div class="comp-head">✗ Sans organisation logistique structurée</div>
+        <div class="comp-item"><div class="comp-dot"></div><p><strong>Approvisionnement spot</strong> — prix volatils, ruptures saisonnières, aucune visibilité à 15 ans</p></div>
+        <div class="comp-item"><div class="comp-dot"></div><p><strong>Milliers de contrats individuels</strong> — ingérable administrativement pour un site industriel</p></div>
+        <div class="comp-item"><div class="comp-dot"></div><p><strong>Stock géant sur site</strong> — pour absorber toute la saisonnalité · CAPEX prohibitif</p></div>
+        <div class="comp-item"><div class="comp-dot"></div><p><strong>Concurrence avec chaufferies existantes</strong> — tension sur la ressource et les prix</p></div>
+      </div>
+      <div class="comp-col vert">
+        <div class="comp-head">✓ Modèle à 3 niveaux Résilience</div>
+        <div class="comp-item"><div class="comp-dot"></div><p><strong>Contrats-cadres 10–15 ans</strong> avec coopératives/CUMA — prix indexés stables</p></div>
+        <div class="comp-item"><div class="comp-dot"></div><p><strong>5 à 10 contrats-cadres</strong> avec structures intermédiaires existantes — praticable industriellement</p></div>
+        <div class="comp-item"><div class="comp-dot"></div><p><strong>Stock tampon site 30–45 jours</strong> — lissage assuré en amont par les 4–6 plateformes</p></div>
+        <div class="comp-item"><div class="comp-dot"></div><p><strong>Cartographie préalable</strong> des usages existants — évite la cannibalisation des filières locales</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. SOURCES -->
+<section id="sources">
+  <div class="container">
+    <div class="stag reveal">3. Ressources disponibles — Trois sources complémentaires</div>
+    <h2 class="reveal">Gisement net mobilisable :<br><em>385 000 à 545 000 t/an</em></h2>
+
+    <div class="tbl-wrap reveal">
+      <table>
+        <thead><tr><th>Source</th><th>Gisement brut</th><th>Taux mobilisation</th><th>Gisement net</th><th>Disponibilité</th><th>Qualification</th></tr></thead>
+        <tbody>
+          <tr><td>Bocage (haies Basse-Normandie)</td><td>~400 000 t/an</td><td class="td-a">40–60 %</td><td class="td-b">160 000–240 000 t</td><td class="td-b">Annuelle (oct.–mars)</td><td>✅ Robuste</td></tr>
+          <tr><td>Forêt (rémanents d'exploitation)</td><td>~150 000–180 000 t</td><td class="td-a">50–70 %</td><td class="td-b">80 000–125 000 t</td><td class="td-b">Annuelle (oct.–déc.)</td><td>Plausible</td></tr>
+          <tr><td>Paille excédentaire (céréales)</td><td>~210 000 t/an</td><td class="td-g">70–85 %</td><td class="td-g">145 000–180 000 t</td><td class="td-a">Saisonnière (juil.–août)</td><td>✅ Robuste</td></tr>
+        </tbody>
+        <tfoot style="background:rgba(45,92,34,.2)">
+          <tr><td><strong>TOTAL NET MOBILISABLE</strong></td><td>—</td><td>—</td><td class="td-g"><strong>385 000–545 000 t</strong></td><td>—</td><td><strong>+17 à +65 % vs besoin</strong></td></tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <div class="box box-alerte reveal">
+      <h3>⚠ La règle des taux de mobilisation</h3>
+      <p>Un gisement brut de 400 000 t/an de bocage dépasse arithmétiquement le besoin — mais c'est une erreur de méthode. Sur du foncier privé fragmenté, <strong>40 à 60 % seulement des propriétaires signent</strong> (contractualisation réaliste). Les haies multi-strates, corridors écologiques et zones Natura 2000 sont exclues. L'accessibilité mécanique n'est pas universelle. C'est le gisement net — pas le brut — qui doit servir de base à toute décision d'investissement.</p>
+    </div>
+
+    <!-- Calendrier saisonnier -->
+    <h2 class="reveal" style="margin-top:2.5rem">Le calendrier de récolte —<br><em>la complémentarité naturelle</em></h2>
+    <div class="tbl-wrap reveal">
+      <table>
+        <thead><tr><th>Source</th><th>Automne (sept–nov)</th><th>Hiver (déc–fév)</th><th>Printemps (mars–mai)</th><th>Été (juin–août)</th><th>Pic</th></tr></thead>
+        <tbody>
+          <tr><td>Bocage (élagage haies)</td><td>●●</td><td class="td-b">●●●</td><td>●</td><td>—</td><td>Déc–fév · hors sève · faune nicheuse</td></tr>
+          <tr><td>Forêt (rémanents)</td><td class="td-b">●●●</td><td>●●</td><td>●</td><td>—</td><td>Oct–déc · sols portants en automne</td></tr>
+          <tr><td>Paille (excédent moisson)</td><td>—</td><td>—</td><td>—</td><td class="td-a">●●●●</td><td>Juil–août · 4–6 semaines · pic concentré</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:.82rem;color:rgba(240,244,241,.55);margin-top:.8rem;font-style:italic">La complémentarité calendaire est presque parfaite : paille en été, forêt en automne, bocage en hiver. Cette structure naturelle permet un stock tampon dimensionné pour quelques mois, pas pour une année entière.</p>
+  </div>
+</section>
+
+<!-- 4. ARCHITECTURE LOGISTIQUE -->
+<section class="alt">
+  <div class="container">
+    <div class="stag reveal">4. Architecture Résilience proposée — Modèle à 3 niveaux</div>
+    <h2 class="reveal">Du champ au site :<br><em>trois niveaux, zéro flux direct</em></h2>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-top:1.5rem" class="reveal">
+      <div class="box box-bocage" style="margin-top:0">
+        <h3>Niveau 1 — Collecte de proximité</h3>
+        <p>Rayon 25–35 km · CUMA, ETA, exploitants forestiers locaux · déchiqueteuses mobiles, presses à balles · aucun matériel nouveau majeur · parc existant en Normandie (chaufferies collectives)</p>
+      </div>
+      <div class="box box-bocage" style="margin-top:0">
+        <h3>Niveau 2 — Plateformes de regroupement</h3>
+        <p>4 à 6 plateformes en étoile · 1,5 à 3 ha chacune · hangar couvert 1 000–2 500 m² · stockage tampon 1 500–3 000 t · séchage naturel 3–4 mois · 1 salarié/plateforme · modèle Mayenne Bois Énergie</p>
+      </div>
+      <div class="box box-bocage" style="margin-top:0">
+        <h3>Niveau 3 — Stock tampon sur site</h3>
+        <p>30 à 45 jours de consommation · 27 000–41 000 t · silos/hangars à atmosphère contrôlée · amortit les aléas logistiques · ne stocke pas la saisonnalité (rôle des plateformes)</p>
+      </div>
+    </div>
+
+    <div class="box box-vert reveal">
+      <h3>Le rôle pivot des CUMA et coopératives agricoles</h3>
+      <p>Le site Résilience signe <strong>5 à 10 contrats-cadres</strong> avec des structures intermédiaires — CUMA, coopératives céréalières, SCIC bois-énergie — qui gèrent elles-mêmes la relation avec les centaines de propriétaires individuels. Ce modèle est documenté : Mayenne Bois Énergie, CUMA Innov'17 (Charente-Maritime), coopératives céréalières normandes. <strong>C'est ce qui rend la gestion contractuelle praticable à l'échelle industrielle.</strong></p>
+    </div>
+
+    <div class="box box-alerte reveal">
+      <h3>⚠ Le flux de 40 camions/jour — acceptabilité locale</h3>
+      <p>~40 rotations de semi-remorques par jour vers le site (1 000 t ÷ 25 t/camion). Cela nécessite <strong>un accès routier calibré, l'évitement des traversées de bourgs, et un plan de circulation concerté avec les communes riveraines.</strong> C'est un sujet d'acceptabilité locale à anticiper dès le choix de localisation, au même titre que le bruit et le trafic.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 5-8. BÉNÉFICES -->
+<section>
+  <div class="container">
+    <div class="stag reveal">5 à 8. Bénéfices — Énergie · Climat · Économie · Sécurité</div>
+    <h2 class="reveal">Un site, <em>cinq flux valorisés simultanément</em></h2>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1.5rem" class="reveal">
+      <div>
+        <div style="font-size:.66rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--bocage-clair);margin-bottom:.8rem">Bénéfices énergétiques</div>
+        <div style="border-left:3px solid var(--bocage-clair);padding:1rem 1.2rem;background:rgba(45,92,34,.07);margin-bottom:.8rem">
+          <div style="font-family:var(--serif);font-size:1.8rem;color:var(--bocage-clair)">3,5–3,7 TWh/an</div>
+          <div style="font-size:.75rem;color:var(--gris);text-transform:uppercase;letter-spacing:.1em">bio-CH₄ injecté réseau · 1 site</div>
+        </div>
+        <div style="border-left:3px solid var(--paille-clair);padding:1rem 1.2rem;background:rgba(138,96,16,.07)">
+          <div style="font-family:var(--serif);font-size:1.8rem;color:var(--paille-clair)">100–200 MWth</div>
+          <div style="font-size:.75rem;color:var(--gris);text-transform:uppercase;letter-spacing:.1em">chaleur fatale · séchage + réseau local</div>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:.66rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--vert-vif);margin-bottom:.8rem">Bénéfices climatiques</div>
+        <div style="border-left:3px solid var(--vert-vif);padding:1rem 1.2rem;background:rgba(82,183,136,.07);margin-bottom:.8rem">
+          <div style="font-family:var(--serif);font-size:1.8rem;color:var(--vert-vif)">13 000–25 000 t/an</div>
+          <div style="font-size:.75rem;color:var(--gris);text-transform:uppercase;letter-spacing:.1em">biochar certifié EBC · séquestration > 100 ans</div>
+        </div>
+        <div style="border-left:3px solid var(--vert-vif);padding:1rem 1.2rem;background:rgba(82,183,136,.07)">
+          <div style="font-family:var(--serif);font-size:1.8rem;color:var(--vert-vif)">36 000–75 000 t</div>
+          <div style="font-size:.75rem;color:var(--gris);text-transform:uppercase;letter-spacing:.1em">CO₂ séquestré net/an · certifiable CRCF UE</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="box box-bocage reveal" style="margin-top:1.5rem">
+      <h3>Bénéfice spécifique Normandie — Le bouclage bocager</h3>
+      <p>Le biochar produit par le site peut être retourné aux sols agricoles normands — amendement des terres céréalières et prairies bocagères, amélioration de la rétention d'eau en période de sécheresse estivale. <strong>Les cendres minérales (K, P, Ca) substituent partiellement les engrais importés — directement utiles à la filière élevage laitier normande.</strong> La biomasse prélevée dans le bocage retourne au bocage sous forme améliorée.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 9. VERROUS PHASE 0 -->
+<section class="alt">
+  <div class="container">
+    <div class="stag reveal">9. Verrous de la Phase 0</div>
+    <h2 class="reveal">Cinq points à valider<br><em>avant décision d'investissement</em></h2>
+
+    <div class="tbl-wrap reveal">
+      <table>
+        <thead><tr><th>Verrou</th><th>Nature</th><th>Action requise en Phase 0</th></tr></thead>
+        <tbody>
+          <tr><td>Étude de gisement SIG</td><td>Rayon 35–40 km autour du site retenu</td><td class="td-g">Obligatoire — soustraction usages bois-énergie existants, Natura 2000, refus estimés</td></tr>
+          <tr><td>Taux de contractualisation réel</td><td>40–60 % estimé · à confirmer sur le terrain</td><td class="td-a">Démarchage 50+ propriétaires pilotes · CUMA locales · Chambres d'agriculture</td></tr>
+          <tr><td>Desserte forestière privée</td><td>80 % des forêts privées nécessitent amélioration</td><td class="td-a">Cartographie pistes + plan d'investissement · éligibilité Fonds Forêt-Bois</td></tr>
+          <tr><td>Recul du linéaire bocager</td><td>−1 200 km/an (Manche) · fragilité long terme</td><td class="td-a">Clause de reconstitution obligatoire dans contrats-cadres bocage 15 ans</td></tr>
+          <tr><td>Cannibalisation filières existantes</td><td>Chaufferies collectives normandes déjà alimentées</td><td class="td-g">Cartographie des usages concurrents dans le rayon · mix multi-source réduit la pression</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="box box-or reveal">
+      <h3>Le scénario dégradé — analyse de sensibilité</h3>
+      <p>À <strong>80 % du gisement central</strong> : 308 000–436 000 t/an · couverture 93–132 % · marge négative possible en scénario bas → extension du rayon de collecte ou 4ème source d'appoint (CSR agricole, bois en fin de vie).<br>
+      À <strong>60 % du gisement central</strong> : risque de sous-approvisionnement structurel en scénario bas.<br>
+      <strong>La marge de +17 % en scénario bas central est insuffisante pour absorber un aléa climatique majeur sans source de secours identifiée.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- 10. QUALIFICATION -->
+<section>
+  <div class="container">
+    <div class="stag-vert reveal">10. Qualification V11</div>
+    <h2 class="reveal">Normandie — <em>Plausible</em></h2>
+    <p class="lead reveal">La Normandie est qualifiée <strong>Plausible</strong> dans le corpus Résilience V11. Le gisement est réel, diversifié et documenté. Les structures logistiques intermédiaires (CUMA, coopératives, Chambres d'agriculture) existent déjà. La complémentarité calendaire des trois sources est une force structurelle. Les incertitudes résiduelles portent sur le taux de contractualisation réel et la desserte forestière.</p>
+
+    <!-- Encadré pourquoi prioritaire -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.5rem" class="reveal">
+      <div style="background:rgba(13,31,23,.5);border-left:3px solid var(--vert-vif);padding:1rem 1.2rem">
+        <div style="font-size:.68rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--vert-vif);margin-bottom:.5rem">Gisement documenté</div>
+        <p style="font-size:.84rem;color:rgba(240,244,241,.72);line-height:1.6">Études DRAAF, Chambres d'agriculture, Biomasse Normandie · retours d'expérience filières bois-énergie existantes · données IGN disponibles</p>
+      </div>
+      <div style="background:rgba(13,31,23,.5);border-left:3px solid var(--vert-vif);padding:1rem 1.2rem">
+        <div style="font-size:.68rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--vert-vif);margin-bottom:.5rem">Structures intermédiaires existantes</div>
+        <p style="font-size:.84rem;color:rgba(240,244,241,.72);line-height:1.6">CUMA normandes actives · coopératives céréalières structurées · réseau Chambres d'agriculture · modèle Mayenne Bois Énergie reproductible</p>
+      </div>
+      <div style="background:rgba(13,31,23,.5);border-left:3px solid var(--ambre);padding:1rem 1.2rem">
+        <div style="font-size:.68rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ambre);margin-bottom:.5rem">Complémentarité calendaire</div>
+        <p style="font-size:.84rem;color:rgba(240,244,241,.72);line-height:1.6">Bocage hiver · forêt automne · paille été · trois sources naturellement décalées → stockage tampon minimal · CAPEX réduit</p>
+      </div>
+      <div style="background:rgba(13,31,23,.5);border-left:3px solid var(--ambre);padding:1rem 1.2rem">
+        <div style="font-size:.68rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ambre);margin-bottom:.5rem">Principe réplicable</div>
+        <p style="font-size:.84rem;color:rgba(240,244,241,.72);line-height:1.6">La Normandie illustre un modèle applicable aux 150 sites Résilience · aucune région ne peut compter sur une seule source · le mix 3 sources est la règle générale</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NAVIGATION -->
+<section style="background:var(--foret);padding:3.5rem 3rem">
+  <div class="container">
+    <div style="display:flex;gap:1rem;flex-wrap:wrap" class="reveal">
+      <a href="Logistique_Approvisionnement_Biomasse_Normandie_V2.pdf" target="_blank" class="btn btn-primary">↓ Note logistique PDF V2</a>
+      <a href="demonstrateurs.html" class="btn btn-outline">← Tous les démonstrateurs</a>
+      <a href="zone-c-incendie.html" class="btn btn-outline">Zone C Gard →</a>
+      <a href="zone-pyrenees-orientales.html" class="btn btn-outline">Pyrénées-Orientales →</a>
+      <a href="biomasse.html" class="btn btn-outline">Gisement biomasse →</a>
+      <a href="index.html" class="btn btn-outline">⌂ Accueil</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Programme Résilience V11</div>
+  <p>Normandie · Bocage · Logistique biomasse · Juillet 2026 · Diffusion libre</p>
+  <p style="margin-top:.4rem">Sources : DRAAF Normandie · Chambres d'agriculture · Biomasse Normandie · IGN · CIBE · Mayenne Bois Énergie · ARPE Normandie · Intercéréales</p>
+</footer>
+
+<script>
+const obs=new IntersectionObserver((e)=>{e.forEach((el,i)=>{if(el.isIntersecting){setTimeout(()=>el.target.classList.add('visible'),i*65);obs.unobserve(el.target)}})},{threshold:0.07});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
