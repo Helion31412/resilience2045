@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lexique &amp; Glossaire — Résilience 2045</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Source+Sans+3:wght@400;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0B2A52; --navy-2:#16345A; --blue:#1566A8; --blue-tint:#E8F1FA;
+    --green:#3A6E2F; --green-tint:#EAF3E6;
+    --amber:#B87225; --amber-tint:#F6EBD9;
+    --purple:#5C509A; --purple-tint:#EDEAF7;
+    --teal:#1A6B72; --teal-tint:#E2F2F3;
+    --brown:#7A5230; --brown-tint:#F0E4D6;
+    --ink:#1E2E24; --ink-soft:#5A6A72; --line:#DDE3E8; --white:#FFF; --off:#F4F6F8;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--white);color:var(--ink);font-family:'Source Sans 3',sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+  h1,h2,h3{font-family:'Fraunces',serif;font-weight:600;margin:0;letter-spacing:-0.01em;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:900px;margin:0 auto;padding:0 28px;}
+  .wrap-wide{max-width:1240px;margin:0 auto;padding:0 28px;}
+
+  .topbar{position:sticky;top:0;z-index:20;background:rgba(11,42,82,0.97);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.08);padding:12px 0;}
+  .topbar .wrap-wide{display:flex;align-items:center;justify-content:space-between;gap:12px;}
+  .brand{display:flex;align-items:center;gap:10px;}
+  .brand-text{font-family:'Fraunces',serif;font-size:17px;font-weight:600;color:#fff;line-height:1.1;}
+  .brand-text small{display:block;font-family:'Source Sans 3',sans-serif;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-top:2px;}
+  .topbar nav{display:flex;gap:3px;flex-wrap:wrap;justify-content:flex-end;}
+  .topbar nav a{font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.68);padding:5px 10px;border-radius:2px;transition:background .15s,color .15s;white-space:nowrap;}
+  .topbar nav a:hover{background:rgba(255,255,255,.13);color:#fff;}
+  .topbar nav a.hi{color:#F6BD6A;}
+
+  .crumb{padding:16px 0 0;font-size:12px;color:var(--ink-soft);}
+  .crumb a{color:var(--teal);font-weight:600;}
+  .crumb a:hover{text-decoration:underline;}
+
+  .hero{padding:28px 0 24px;}
+  .hero .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);background:var(--teal-tint);border:1px solid #A4D0D4;padding:5px 10px;border-radius:3px;margin-bottom:16px;}
+  .hero h1{font-size:clamp(26px,4vw,38px);color:var(--navy);line-height:1.18;}
+  .hero p{margin-top:14px;font-size:15.5px;color:var(--ink-soft);max-width:640px;}
+
+  .search-box{position:sticky;top:57px;z-index:15;background:var(--white);padding:14px 0;border-bottom:1px solid var(--line);}
+  .search-box input{width:100%;font-family:'Source Sans 3',sans-serif;font-size:15px;padding:11px 16px 11px 40px;border:1px solid var(--line);border-radius:5px;background:var(--off) url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="%235A6A72" stroke-width="2"><circle cx="6.5" cy="6.5" r="5"/><line x1="10.5" y1="10.5" x2="15" y2="15"/></svg>') no-repeat 14px center;outline:none;transition:border-color .15s;}
+  .search-box input:focus{border-color:var(--teal);}
+  .filter-row{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px;}
+  .filter-chip{font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:5px 10px;border-radius:20px;border:1px solid var(--line);background:var(--white);color:var(--ink-soft);cursor:pointer;transition:all .15s;}
+  .filter-chip:hover{border-color:var(--teal);}
+  .filter-chip.active{background:var(--navy);color:#fff;border-color:var(--navy);}
+
+  .lex-list{padding:20px 0 60px;}
+  .lex-count{font-size:13px;color:var(--ink-soft);margin-bottom:18px;}
+  .lex-entry{padding:18px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:210px 1fr;gap:22px;}
+  .lex-term{display:flex;flex-direction:column;gap:6px;}
+  .lex-term h3{font-size:17px;color:var(--navy);}
+  .lex-tag{align-self:flex-start;font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:2px 7px;border-radius:2px;}
+  .lex-body p{font-size:14.5px;color:#2A3A34;margin:0 0 8px;}
+  .lex-body p:last-child{margin-bottom:0;}
+  .lex-body .expand{font-size:13px;color:var(--ink-soft);font-style:italic;}
+  .lex-see{font-size:12.5px;margin-top:4px;}
+  .lex-see a{color:var(--teal);font-weight:600;}
+  .lex-see a:hover{text-decoration:underline;}
+
+  .tag-mobilite{background:var(--blue-tint);color:var(--blue);}
+  .tag-carbone{background:var(--teal-tint);color:var(--teal);}
+  .tag-procede{background:var(--green-tint);color:var(--green);}
+  .tag-climat{background:var(--purple-tint);color:var(--purple);}
+  .tag-reglement{background:var(--amber-tint);color:var(--amber);}
+
+  footer{border-top:1px solid var(--line);padding:18px 0 28px;font-size:12px;color:var(--ink-soft);}
+  footer .wrap-wide{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+
+  @media(max-width:640px){
+    .lex-entry{grid-template-columns:1fr;gap:8px;}
+    .topbar nav{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap-wide">
+    <a class="brand" href="index.html">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+        <circle cx="14" cy="14" r="13" stroke="rgba(255,255,255,.35)" stroke-width="1"/>
+        <path d="M14 22C14 22 7 17.5 7 12C7 8.5 10 6 14 6C18 6 21 8.5 21 12C21 17.5 14 22 14 22Z" fill="#3A6E2F"/>
+        <line x1="14" y1="20" x2="14" y2="10" stroke="white" stroke-width="1.2"/>
+      </svg>
+      <div class="brand-text">Résilience 2045<small>Énergie · Climat · Territoires</small></div>
+    </a>
+    <nav>
+      <a href="fondements.html">Pourquoi</a>
+      <a href="systeme-energetique.html">Système</a>
+      <a href="pyrogazeification-resilience.html">Pyrogazéification</a>
+      <a href="carbone-resilience.html">Carbone</a>
+      <a href="voiture-erev.html">ÉREV</a>
+      <a href="documents-liste.html">Documents</a>
+      <a href="lexique.html" class="hi">Lexique →</a>
+    </nav>
+  </div>
+</div>
+
+<div class="crumb wrap">
+  <a href="index.html">Accueil</a> · Lexique &amp; Glossaire
+</div>
+
+<div class="hero wrap">
+  <div class="eyebrow">Référence &middot; tous les sigles du programme</div>
+  <h1>Lexique &amp; Glossaire</h1>
+  <p>Les sigles et notions techniques utilisés dans le Programme Résilience, en une définition courte suivie, quand nécessaire, d'un complément technique. Classés par thème et cherchables directement.</p>
+</div>
+
+<div class="search-box">
+  <div class="wrap">
+    <input type="text" id="lex-search" placeholder="Chercher un terme (ex. REx, biochar, CPB, ppm...)" oninput="filterLex()">
+    <div class="filter-row" id="filter-row">
+      <button class="filter-chip active" data-cat="all" onclick="setCat('all')">Tous</button>
+      <button class="filter-chip" data-cat="mobilite" onclick="setCat('mobilite')">Mobilité</button>
+      <button class="filter-chip" data-cat="carbone" onclick="setCat('carbone')">Carbone &amp; séquestration</button>
+      <button class="filter-chip" data-cat="procede" onclick="setCat('procede')">Procédés &amp; filières</button>
+      <button class="filter-chip" data-cat="climat" onclick="setCat('climat')">Climat &amp; modélisation</button>
+      <button class="filter-chip" data-cat="reglement" onclick="setCat('reglement')">Réglementaire</button>
+    </div>
+  </div>
+</div>
+
+<div class="lex-list wrap">
+  <div class="lex-count" id="lex-count"></div>
+  <div id="lex-entries">
+
+    <div class="lex-entry" data-cat="mobilite" data-term="rex range extender prolongateur autonomie">
+      <div class="lex-term"><h3>REx</h3><span class="lex-tag tag-mobilite">Mobilité</span></div>
+      <div class="lex-body">
+        <p><strong>Range Extender</strong> (prolongateur d'autonomie). Petit moteur thermique couplé à un générateur, embarqué dans un véhicule électrique, dont le seul rôle est de produire de l'électricité pour recharger la batterie ou alimenter le moteur électrique — il n'entraîne jamais directement les roues.</p>
+        <p class="expand">Dans l'architecture ÉREV du programme, le REx est un moteur Miller-Atkinson turbocompound au bio-CH₄, optimisé pour tourner à régime quasi constant (d'où son rendement thermique élevé, ~55 %) plutôt que de gérer toute la plage de charge/vitesse du véhicule. Exemple grand public : BMW i3 REx.</p>
+        <div class="lex-see">Voir aussi : <a href="#erev">ÉREV</a></div>
+      </div>
+    </div>
+
+    <div class="lex-entry" data-cat="mobilite" data-term="erev vehicule electrique autonomie etendue" id="erev">
+      <div class="lex-term"><h3>ÉREV</h3><span class="lex-tag tag-mobilite">Mobilité</span></div>
+      <div class="lex-body">
+        <p><strong>Véhicule Électrique à Autonomie Étendue</strong>. Architecture combinant une batterie de capacité modeste (20 kWh LFP dans le programme) avec un REx au bio-CH₄, trois réservoirs GNV de Type 3, pour un rendement pondéré annuel de 67,2 % contre 38–45 % pour un véhicule à pile à combustible (FCEV).</p>
+        <div class="lex-see">Voir aussi : <a href="#rex">REx</a></div>
+      </div>
+    </div>
+
+    <div class="lex-entry" data-cat="carbone" data-term="biochar charbon vegetal sequestration" id="biochar">
+      <div class="lex-term"><h3>Biochar</h3><span class="lex-tag tag-carbone">Carbone</span></div>
+      <div class="lex-body">
+        <p>Résidu solide carboné de la pyrogazéification (ou pyrolyse) de biomasse. Constitué d'un carbone fortement aromatique, quasi indécomposable par les micro-organismes du sol — durée de résidence 500 à 5 000 ans. C'est la principale voie de séquestration durable du carbone du programme.</p>
+        <p class="expand">Certifié selon le standard EBC. Amendement agricole : rétention d'eau +15 à 30 %, réduction des besoins en engrais.</p>
+        <div class="lex-see">Voir aussi : <a href="#ebc">EBC</a> · <a href="#co2bio">CO₂ biogénique concentré</a></div>
+      </div>
+    </div>
+
+    <div class="lex-entry" data-cat="carbone" data-term="co2 biogenique concentre" id="co2bio">
+      <div class="lex-term"><h3>CO₂ biogénique concentré</h3><span class="lex-tag tag-carbone">Carbone</span></div>
+      <div class="lex-body">
+        <p>Flux de CO₂ issu de la méthanisation ou de la pyrogazéification, déjà concentré (plusieurs dizaines de % à quasi pur), contrairement au CO₂ atmosphérique très dilué (0,04 %). Valorisable en méthanation Sabatier, minéralisation, serres agricoles, ou stockage géologique — sans le coût énergétique du captage direct de l'air (DAC).</p>
+      </div>
+    </div>
+
+    <div class="lex-entry" data-cat="carbone" data-term="stockage reversible sequestration durable puits naturel">
+      <div class="lex-term"><h3>Stockage réversible vs séquestration durable</h3><span class="lex-tag tag-carbone">Carbone</span></div>
+      <div class="lex-body">
+        <p>Distinction centrale du corpus : le <strong>stockage réversible</strong> (forêts, sols, biomasse vivante) retient le carbone quelques années à quelques décennies avant qu'il ne reparte en CO₂ par décomposition (incendie, sécheresse, coupe). La <strong>séquestration durable</strong> (biochar, minéralisation, stockage géologique) le rend inaccessible aux décomposeurs pour des siècles à des millénaires. Le terme « puits naturel », utilisé par le Global Carbon Budget, désigne un flux net mesuré — pas une séquestration permanente.</p>
+      </div>
+    </div>
+
+    <div class="lex-entry" data-cat="carbone" data-term="ebc european biochar certificate" id="ebc">
+      <div class="lex-term"><h3>EBC</h3><span class="lex-tag tag-carbone">Carbone</span></div>
+      <div class="lex-body">
+        <p><strong>European Biochar Certificate</strong>. Standard de certification européen du biochar (qualité, teneur en contaminants, stabilité carbone), condition d'accès aux marchés carbone volontaires. Référence utilisée dans tout le corpus pour qualifier un biochar comme séquestration certifiable.</p>
+      </div>
+    </div>
+
+    <div class="lex-entry" data-cat="procede" data-term="pyrogazeification pyrolyse syngaz">
+      <div class="lex-term"><h3>Pyrogazéification</h3><span class="lex-tag tag-procede">Procédé</span></div>
+      <div class="lex-body">
+        <p>Décomposition thermochimique de biomasse à haute température (&gt;750 °C) en l'absence d'oxygène, produisant un syngaz (gaz de synthèse : H₂, CO, CO₂) et du biochar solide. Cœur technique des 150 sites du programme.</p>
+        <div class="lex-see">Voir aussi : <a href="#biochar">Biochar</a> · <a href="#digestat">Digestat</a></div>
+      </div>
+    </div>
+
+    <div class="lex-entry" data-cat="procede" data-term="digestat methanisation solide liquide" id="digestat">
+      <div class="lex-term"><h3>Digestat</h3><span class="lex-tag tag-procede">Procédé</span></div>
+      <div class="lex-body">
+        <p>Résidu de la méthanisation (digestion anaérobie), après extraction du biogaz. Séparé en une fraction liquide (azote ammoniacal, potassium — fertilisant direct) et une fraction solide (fibres ligno-cellulosiques non digérées), cette dernière pouvant être séchée puis pyrolysée pour produire un biochar complémentaire.</p>
+        <div class="lex-see">Voir aussi : <a href="#diet">DIET</a></div>
+      </div>
+    </div>
+
+    <div class="lex-entry" data-cat="procede" data-term="diet direct interspecies electron transfer" id="diet">
+      <div class="lex-term"><h3>DIET</h3><span class="lex-tag tag-procede">Procédé</span></div>
+      <div class="lex-body">
+        <p><strong>Direct Interspecies Electron Transfer</strong> (transfert d'électrons interspécifique direct). Mécanisme par lequel un biochar conducteur, réintroduit dans un digesteur de méthanisation, facilite les échanges électroniques entre micro-organismes et augmente le rendement en méthane (gains observés de 5 % à plus de 30 % selon les études).</p>
+      </div>
+    </div>
+
+    <div class="lex-entry" data-cat="procede" data-term="methanation sabatier hydrogene">
+      <div class="lex-term"><h3>Méthanation Sabatier</h3><span class="lex-tag tag-procede">Procédé</span></div>
+      <div class="lex-body">
+        <p>Réaction chimique combinant CO₂ (biogénique concentré) et H₂ (électrolyse ENR) pour produire du méthane de synthèse, stockable dans le réseau gazier existant. Une des voies de valorisation du CO₂ biogénique du programme.</p>
+      </div>
+    </div>
+
+    <div class="lex-entry" data-cat="procede" data-term="cive culture intermediaire vocation energetique">
+      <div class="lex-term"><h3>CIVE</h3><span class="lex-tag tag-procede">Procédé</span></div>
+      <div class="lex-body">
+        <p><strong>Culture Intermédiaire à Vocation Énergétique</strong>. Culture semée entre deux cultures principales (ex. entre blé et maïs), destinée à la méthanisation plutôt qu'à l'alimentation — n'entre donc pas en concurrence directe avec les surfaces vivrières.</p>
+      </div>
+    </div>
+
+    <div class="lex-entry" data-cat="climat" data-term="ppm parties par million co2">
+      <div class="lex-term"><h3>ppm</h3><span class="lex-tag tag-climat">Climat</span></div>
+      <div class="lex-body">
+        <p><strong>Parties par million</strong>. Unité de concentration du CO₂ atmosphérique. Niveau préindustriel : 280 ppm. Niveau 2026 : environ 420-430 ppm.</p>
+      </div>
+    </div>
+
+    <div class="lex-entry" data-cat="climat" data-term="ecs sensibilite climatique equilibre">
+      <div class="lex-term"><h3>ECS</h3><span class="lex-tag tag-climat">Climat</span></div>
+      <div class="lex-body">
+        <p><strong>Equilibrium Climate Sensitivity</strong> (sensibilité climatique à l'équilibre). Hausse de température attendue pour un doublement du CO₂ atmosphérique. Médiane GIEC AR6 : 3,0 °C (fourchette 2,5–4,0 °C). Valeur de référence utilisée dans toutes les trajectoires du corpus.</p>
+      </div>
+    </div>
+
+    <div class="lex-entry" data-cat="climat" data-term="zec zero emissions commitment">
+      <div class="lex-term"><h3>ZEC</h3><span class="lex-tag tag-climat">Climat</span></div>
+      <div class="lex-body">
+        <p><strong>Zero Emissions Commitment</strong>. Évolution attendue de la température après un arrêt total et immédiat des émissions de CO₂. Estimation GIEC AR6 : 0 ± 0,3 °C — contredit l'ancienne hypothèse d'un réchauffement qui se poursuivrait mécaniquement pendant des siècles.</p>
+      </div>
+    </div>
+
+    <div class="lex-entry" data-cat="climat" data-term="gwp prg pouvoir rechauffement global methane">
+      <div class="lex-term"><h3>GWP / PRG</h3><span class="lex-tag tag-climat">Climat</span></div>
+      <div class="lex-body">
+        <p><strong>Global Warming Potential</strong> (pouvoir de réchauffement global). Mesure l'effet réchauffant d'un gaz relativement au CO₂ sur une période donnée. Le méthane a un GWP d'environ 28 à 84 selon l'horizon (100 ans / 20 ans) — d'où l'importance du seuil de fuite ≤1 % dans le programme.</p>
+      </div>
+    </div>
+
+    <div class="lex-entry" data-cat="climat" data-term="ssp shared socioeconomic pathways scenario giec">
+      <div class="lex-term"><h3>SSP</h3><span class="lex-tag tag-climat">Climat</span></div>
+      <div class="lex-body">
+        <p><strong>Shared Socioeconomic Pathways</strong>. Familles de scénarios utilisées par le GIEC pour modéliser les trajectoires futures d'émissions (ex. SSP1-2.6 : décarbonation ambitieuse ; SSP3-7.0 : statu quo ; SSP5-8.5 : dérèglement complet). Base des cinq scénarios comparés dans la note CO₂ atmosphérique du programme.</p>
+      </div>
+    </div>
+
+    <div class="lex-entry" data-cat="reglement" data-term="cpb certificats production biogaz">
+      <div class="lex-term"><h3>CPB</h3><span class="lex-tag tag-reglement">Réglementaire</span></div>
+      <div class="lex-body">
+        <p><strong>Certificats de Production de Biogaz</strong>. Mécanisme de soutien financier français à la production de biogaz. L'article R.446-105 en exclut aujourd'hui la pyrogazéification — verrou réglementaire identifié comme prioritaire par le programme (question sénatoriale S. Piednoir, avril 2026).</p>
+        <div class="lex-see">Voir aussi : <a href="#crcf">CRCF</a></div>
+      </div>
+    </div>
+
+    <div class="lex-entry" data-cat="reglement" data-term="crcf carbon removal carbon farming reglement ue" id="crcf">
+      <div class="lex-term"><h3>CRCF</h3><span class="lex-tag tag-reglement">Réglementaire</span></div>
+      <div class="lex-body">
+        <p>Règlement européen <strong>Carbon Removal and Carbon Farming</strong>. Reconnaît le biochar comme solution de séquestration certifiable au niveau UE depuis l'acte délégué du 3 février 2026 — en avance sur le droit français, qui n'a pas encore aligné l'article R.446-105 sur cette reconnaissance.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="wrap-wide">
+    <span>Programme Résilience 2045 — document de travail indépendant — V11 · Juillet 2026</span>
+    <span>helion31412.github.io/resilience2045</span>
+  </div>
+</footer>
+
+<script>
+  let activeCat = 'all';
+  function setCat(cat){
+    activeCat = cat;
+    document.querySelectorAll('.filter-chip').forEach(c => c.classList.toggle('active', c.dataset.cat === cat));
+    filterLex();
+  }
+  function filterLex(){
+    const q = document.getElementById('lex-search').value.trim().toLowerCase();
+    const entries = document.querySelectorAll('.lex-entry');
+    let visible = 0;
+    entries.forEach(e => {
+      const matchesCat = activeCat === 'all' || e.dataset.cat === activeCat;
+      const matchesQuery = !q || e.dataset.term.includes(q) || e.innerText.toLowerCase().includes(q);
+      const show = matchesCat && matchesQuery;
+      e.style.display = show ? 'grid' : 'none';
+      if(show) visible++;
+    });
+    document.getElementById('lex-count').textContent = visible + ' terme' + (visible !== 1 ? 's' : '');
+  }
+  filterLex();
+</script>
+
+</body>
+</html>
