@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le cycle du carbone : des champignons au Programme Résilience — Résilience 2045</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Source+Sans+3:wght@400;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0B2A52; --navy-2:#16345A; --blue:#1566A8; --blue-tint:#E8F1FA;
+    --green:#3A6E2F; --green-tint:#EAF3E6;
+    --amber:#B87225; --amber-tint:#F6EBD9;
+    --purple:#5C509A; --purple-tint:#EDEAF7;
+    --teal:#1A6B72; --teal-tint:#E2F2F3;
+    --brown:#7A5230; --brown-tint:#F0E4D6;
+    --ink:#1E2E24; --ink-soft:#5A6A72; --line:#DDE3E8; --white:#FFF; --off:#F4F6F8;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--white);color:var(--ink);font-family:'Source Sans 3',sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+  h1,h2,h3{font-family:'Fraunces',serif;font-weight:600;margin:0;letter-spacing:-0.01em;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 28px;}
+  .wrap-wide{max-width:1240px;margin:0 auto;padding:0 28px;}
+  .reveal{opacity:0;transform:translateY(10px);transition:opacity .55s ease,transform .55s ease;}
+  .reveal.in{opacity:1;transform:none;}
+
+  /* ===== TOPBAR (identique au site) ===== */
+  .topbar{position:sticky;top:0;z-index:20;background:rgba(11,42,82,0.97);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.08);padding:12px 0;}
+  .topbar .wrap-wide{display:flex;align-items:center;justify-content:space-between;gap:12px;}
+  .brand{display:flex;align-items:center;gap:10px;}
+  .brand-text{font-family:'Fraunces',serif;font-size:17px;font-weight:600;color:#fff;line-height:1.1;}
+  .brand-text small{display:block;font-family:'Source Sans 3',sans-serif;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-top:2px;}
+  .topbar nav{display:flex;gap:3px;flex-wrap:wrap;justify-content:flex-end;}
+  .topbar nav a{font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.68);padding:5px 10px;border-radius:2px;transition:background .15s,color .15s;white-space:nowrap;}
+  .topbar nav a:hover{background:rgba(255,255,255,.13);color:#fff;}
+  .topbar nav a.hi{color:#F6BD6A;}
+  .topbar nav a.hi:hover{background:rgba(246,189,106,.15);color:#F6BD6A;}
+
+  /* ===== BREADCRUMB ===== */
+  .crumb{padding:16px 0 0;font-size:12px;color:var(--ink-soft);}
+  .crumb a{color:var(--teal);font-weight:600;}
+  .crumb a:hover{text-decoration:underline;}
+
+  /* ===== HERO ===== */
+  .hero{padding:28px 0 8px;}
+  .hero .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);background:var(--teal-tint);border:1px solid #A4D0D4;padding:5px 10px;border-radius:3px;margin-bottom:16px;}
+  .hero h1{font-size:clamp(26px,4vw,40px);color:var(--navy);line-height:1.18;max-width:820px;}
+  .hero .subtitle{font-family:'Fraunces',serif;font-style:italic;font-weight:500;font-size:clamp(15px,1.8vw,19px);color:var(--teal);margin-top:14px;max-width:700px;}
+  .hero .lede{margin-top:18px;font-size:15.5px;color:var(--ink-soft);max-width:700px;}
+  .hero-meta{display:flex;gap:18px;flex-wrap:wrap;margin-top:22px;font-size:12px;color:var(--ink-soft);}
+  .hero-meta span{display:flex;align-items:center;gap:6px;}
+  .dl-btn{display:inline-flex;align-items:center;gap:7px;background:var(--navy);color:#fff;font-size:12.5px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;padding:9px 16px;border-radius:3px;margin-top:22px;transition:background .15s;}
+  .dl-btn:hover{background:var(--teal);}
+
+  /* ===== TIMELINE (élément signature) ===== */
+  .timeline-band{background:var(--off);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:36px 0 40px;margin-top:32px;}
+  .timeline-band h2{font-size:14px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft);text-align:center;margin-bottom:28px;font-family:'Source Sans 3',sans-serif;font-weight:700;}
+  .tl{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:0;}
+  .tl::before{content:"";position:absolute;top:19px;left:6%;right:6%;height:2px;background:linear-gradient(to right,var(--brown) 0%,var(--brown) 24%,var(--green) 24%,var(--green) 50%,var(--amber) 50%,var(--amber) 75%,var(--teal) 75%,var(--teal) 100%);}
+  .tl-step{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 10px;}
+  .tl-dot{width:14px;height:14px;border-radius:50%;border:3px solid var(--white);box-shadow:0 0 0 2px currentColor;margin-bottom:14px;z-index:1;}
+  .tl-step:nth-child(1) .tl-dot{color:var(--brown);background:var(--brown);}
+  .tl-step:nth-child(2) .tl-dot{color:var(--green);background:var(--green);}
+  .tl-step:nth-child(3) .tl-dot{color:var(--amber);background:var(--amber);}
+  .tl-step:nth-child(4) .tl-dot{color:var(--teal);background:var(--teal);}
+  .tl-when{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:var(--ink-soft);margin-bottom:5px;}
+  .tl-label{font-size:13.5px;font-weight:700;color:var(--navy);max-width:180px;line-height:1.3;}
+  .tl-text{font-size:12px;color:var(--ink-soft);max-width:190px;margin-top:6px;line-height:1.45;}
+
+  /* ===== ARTICLE ===== */
+  .article{padding:44px 0 10px;}
+  .article p{font-size:15.5px;margin:0 0 16px;color:#2A3A34;}
+  .article ul{margin:0 0 16px;padding-left:22px;}
+  .article li{font-size:15.5px;margin-bottom:7px;color:#2A3A34;}
+  .flow{font-family:'IBM Plex Mono',monospace;font-size:13.5px;border-radius:4px;padding:14px 18px;margin:0 0 16px;font-weight:600;}
+
+  /* ---- sections colorées ---- */
+  .sec{border-radius:6px;padding:26px 28px 6px;margin:0 0 22px;border:1px solid transparent;}
+  .sec-head{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+  .sec-ic{width:38px;height:38px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .sec h3{font-size:clamp(18px,2.1vw,21px);margin:0;}
+  .sec-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;margin-bottom:3px;display:block;}
+
+  .sec-brown{background:linear-gradient(160deg,#FBF6EF 0%,#F5EADA 100%);border-color:#E3CBA6;}
+  .sec-brown .sec-ic{background:#E9D4B4;color:var(--brown);}
+  .sec-brown h3{color:#5A3A1E;}
+  .sec-brown .sec-eyebrow{color:var(--brown);}
+  .sec-brown li::marker{color:var(--brown);}
+  .sec-brown .flow{background:#F0E0C4;color:#5A3A1E;}
+
+  .sec-green{background:linear-gradient(160deg,#F3F9F1 0%,#E4F1DE 100%);border-color:#BFDEB2;}
+  .sec-green .sec-ic{background:#D3E9C8;color:var(--green);}
+  .sec-green h3{color:#1E4014;}
+  .sec-green .sec-eyebrow{color:var(--green);}
+  .sec-green li::marker{color:var(--green);}
+  .sec-green .flow{background:#DCEFD4;color:#1E4014;}
+
+  .sec-amber{background:linear-gradient(160deg,#FDF8EF 0%,#F8ECD4 100%);border-color:#E8CE9E;}
+  .sec-amber .sec-ic{background:#F0DDB2;color:var(--amber);}
+  .sec-amber h3{color:#6B3F0E;}
+  .sec-amber .sec-eyebrow{color:var(--amber);}
+  .sec-amber li::marker{color:var(--amber);}
+
+  .sec-teal{background:linear-gradient(160deg,#F1FAFB 0%,#DFF1F2 100%);border-color:#A8D6D9;}
+  .sec-teal .sec-ic{background:#C8E7E9;color:var(--teal);}
+  .sec-teal h3{color:#0E3A3E;}
+  .sec-teal .sec-eyebrow{color:var(--teal);}
+  .sec-teal li::marker{color:var(--teal);}
+  .sec-teal .flow{background:#CFE9EB;color:#0E3A3E;}
+
+  .sec-blue{background:linear-gradient(160deg,#F1F7FD 0%,#DEEBF8 100%);border-color:#A9CCE9;}
+  .sec-blue .sec-ic{background:#C9E0F5;color:var(--blue);}
+  .sec-blue h3{color:#0B2A52;}
+  .sec-blue .sec-eyebrow{color:var(--blue);}
+  .sec-blue li::marker{color:var(--blue);}
+
+  .sec-purple{background:linear-gradient(160deg,#F7F5FC 0%,#EBE6F7 100%);border-color:#C7B9E6;}
+  .sec-purple .sec-ic{background:#DFD5F2;color:var(--purple);}
+  .sec-purple h3{color:#2E2258;}
+  .sec-purple .sec-eyebrow{color:var(--purple);}
+  .sec-purple li::marker{color:var(--purple);}
+  .sec-purple .flow{background:#E2D6F5;color:#2E2258;}
+
+  /* callouts colorés */
+  .callout{display:flex;gap:12px;align-items:flex-start;border-radius:4px;padding:14px 18px;margin:6px 0 18px;border-left:4px solid;}
+  .callout .tag{flex-shrink:0;color:#fff;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 7px;border-radius:2px;margin-top:2px;white-space:nowrap;}
+  .callout p{margin:0;font-size:13.5px;line-height:1.55;}
+  .callout-amber{background:#FCF0DC;border-color:var(--amber);}
+  .callout-amber .tag{background:var(--amber);}
+  .callout-amber p{color:#5A3A0E;}
+  .callout-amber strong{color:#3E2606;}
+  .callout-purple{background:#EFE9F9;border-color:var(--purple);}
+  .callout-purple .tag{background:var(--purple);}
+  .callout-purple p{color:#2E2258;}
+  .callout-purple strong{color:#1E1640;}
+  .callout-teal{background:#DEF0F1;border-color:var(--teal);}
+  .callout-teal .tag{background:var(--teal);}
+  .callout-teal p{color:#0E3A3E;}
+  .callout-teal strong{color:#04191B;}
+
+  .signature-line{font-family:'Fraunces',serif;font-style:italic;font-weight:500;font-size:clamp(16px,2vw,19px);color:var(--navy);text-align:center;max-width:640px;margin:44px auto 8px;line-height:1.5;}
+
+  /* ===== STATS (identique au site) ===== */
+  .stats-band{background:var(--navy);padding:36px 0;margin-top:44px;}
+  .stats-inner{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+  .stat{text-align:center;padding:0 8px;border-right:1px solid rgba(255,255,255,.1);}
+  .stat:last-child{border-right:none;}
+  .stat .sv{display:block;font-family:'IBM Plex Mono',monospace;font-size:clamp(14px,1.6vw,19px);font-weight:600;color:#fff;margin-bottom:5px;line-height:1.2;}
+  .stat .sl{font-size:10.5px;color:rgba(200,218,236,.72);line-height:1.4;}
+
+  /* ===== QUOTE (identique au site) ===== */
+  .quote-band{background:var(--navy-2);padding:42px 0;text-align:center;}
+  .quote-band blockquote{font-family:'Fraunces',serif;font-weight:500;font-style:italic;font-size:clamp(16px,2vw,21px);color:#fff;max-width:780px;margin:0 auto;line-height:1.55;}
+  .quote-band blockquote::before{content:"\201C";color:rgba(200,218,236,.35);font-size:2.2em;line-height:0;vertical-align:-.3em;}
+  .quote-band blockquote::after{content:"\201D";color:rgba(200,218,236,.35);font-size:2.2em;line-height:0;vertical-align:-.3em;}
+
+  /* ===== NEXT / RETOUR ===== */
+  .next-band{padding:40px 0 20px;}
+  .next-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  .next-card{padding:18px 18px 16px;border:1px solid var(--line);border-radius:4px;transition:transform .15s,box-shadow .15s;}
+  .next-card:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(11,42,82,0.08);}
+  .next-card .nc-label{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--teal);margin-bottom:6px;}
+  .next-card h4{font-size:14.5px;color:var(--navy);font-weight:700;font-family:'Source Sans 3',sans-serif;}
+
+  footer{border-top:1px solid var(--line);padding:18px 0 28px;font-size:12px;color:var(--ink-soft);}
+  footer .wrap-wide{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+
+  @media(max-width:900px){
+    .tl{grid-template-columns:repeat(2,1fr);row-gap:28px;}
+    .tl::before{display:none;}
+    .stats-inner{grid-template-columns:repeat(2,1fr);}
+    .stat{border-right:none;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:14px;}
+    .next-grid{grid-template-columns:1fr;}
+  }
+  @media(max-width:560px){
+    .topbar nav{display:none;}
+    .stats-inner{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== TOPBAR ===== -->
+<div class="topbar">
+  <div class="wrap-wide">
+    <a class="brand" href="index.html">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+        <circle cx="14" cy="14" r="13" stroke="rgba(255,255,255,.35)" stroke-width="1"/>
+        <path d="M14 22C14 22 7 17.5 7 12C7 8.5 10 6 14 6C18 6 21 8.5 21 12C21 17.5 14 22 14 22Z" fill="#3A6E2F"/>
+        <line x1="14" y1="20" x2="14" y2="10" stroke="white" stroke-width="1.2"/>
+      </svg>
+      <div class="brand-text">Résilience 2045<small>Énergie · Climat · Territoires</small></div>
+    </a>
+    <nav>
+      <a href="fondements.html">Pourquoi</a>
+      <a href="systeme-energetique.html">Système</a>
+      <a href="pyrogazeification-resilience.html">Pyrogazéification</a>
+      <a href="carbone-resilience.html">Carbone</a>
+      <a href="trajectoires-co2.html">CO₂ 2200</a>
+      <a href="voiture-erev.html">ÉREV</a>
+      <a href="documents-liste.html" class="hi">Documents →</a>
+    </nav>
+  </div>
+</div>
+
+<div class="crumb wrap">
+  <a href="index.html">Accueil</a> · <a href="carbone-resilience.html">Carbone, Climat &amp; Sols</a> · Champignons &amp; cycle du carbone
+</div>
+
+<!-- ===== HERO ===== -->
+<div class="hero">
+  <div class="wrap reveal">
+    <div class="eyebrow">Fondements &middot; lecture 6 min</div>
+    <h1>Le cycle du carbone : des champignons au Programme Résilience</h1>
+    <p class="subtitle">Une nouvelle lecture du changement climatique</p>
+    <p class="lede">Pendant 300 millions d'années, un thermostat biologique a régulé le carbone terrestre. La révolution industrielle l'a débordé. Le Programme Résilience ne cherche pas à le remplacer — il en détourne une partie, avant que le cycle ne se referme.</p>
+    <div class="hero-meta">
+      <span>📖 Basé notamment sur Floudas et al., <em>Science</em>, 2012 &amp; Sciences et Avenir n°953/954, juillet–août 2026</span>
+    </div>
+    <a class="dl-btn" href="Cycle_Carbone_Champignons_Resilience_v2.docx" target="_blank">⇩ Télécharger le texte complet (.docx)</a>
+  </div>
+</div>
+
+<!-- ===== TIMELINE (signature) ===== -->
+<div class="timeline-band">
+  <div class="wrap-wide">
+    <h2>Quatre temps du cycle du carbone</h2>
+    <div class="tl">
+      <div class="tl-step reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-when">− 350 Ma</div>
+        <div class="tl-label">Le Carbonifère</div>
+        <div class="tl-text">Aucun organisme ne dégrade encore efficacement la lignine. Le bois s'accumule, se fossilise : charbon, pétrole, gaz.</div>
+      </div>
+      <div class="tl-step reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-when">− 300 Ma</div>
+        <div class="tl-label">Naissance du thermostat</div>
+        <div class="tl-text">Des champignons acquièrent les enzymes de dégradation de la lignine. Le cycle du carbone se referme.</div>
+      </div>
+      <div class="tl-step reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-when">XIX<sup>e</sup> s. — auj.</div>
+        <div class="tl-label">La rupture industrielle</div>
+        <div class="tl-text">L'homme réinjecte le carbone fossile soustrait au cycle depuis 300 Ma. Le déséquilibre s'installe.</div>
+      </div>
+      <div class="tl-step reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-when">2026 — 2045</div>
+        <div class="tl-label">Programme Résilience</div>
+        <div class="tl-text">Une part de la biomasse est détournée avant décomposition : bio-CH₄, biochar, CO₂ biogénique concentré.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== ARTICLE ===== -->
+<div class="article">
+  <div class="wrap">
+
+    <div class="sec sec-brown reveal">
+      <div class="sec-head">
+        <div class="sec-ic">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10"/><path d="M12 10C12 10 6 9 6 4c5 0 6 4 6 6z"/><path d="M12 14c0 0 6-1 6-6-5 0-6 4-6 6z"/><path d="M4 20h16"/></svg>
+        </div>
+        <div>
+          <span class="sec-eyebrow">− 350 Ma</span>
+          <h3>Avant les champignons : la Terre stockait naturellement le carbone</h3>
+        </div>
+      </div>
+    <p>Il y a environ 350 millions d'années, durant le Carbonifère, les végétaux terrestres connaissent un développement spectaculaire. Grâce à la photosynthèse, ils captent de grandes quantités de dioxyde de carbone atmosphérique et les transforment en bois, constitué principalement de cellulose, d'hémicellulose et de lignine — une molécule d'une solidité redoutable, que les cellules du bois assemblent en un réseau complexe et particulièrement résistant à la dégradation.</p>
+    <p>À cette époque, les organismes capables de dégrader efficacement cette lignine ne semblent pas encore exister. C'est l'hypothèse la plus documentée à ce jour, issue du séquençage de 31 génomes de champignons de la famille des pourritures blanches (étude franco-américaine publiée dans <em>Science</em> en juin 2012) : elle situe l'apparition de l'ancêtre commun de ces décomposeurs à une date qui coïncide avec l'arrêt de la formation des grands gisements de charbon.</p>
+    <div class="callout callout-amber">
+      <span class="tag">Nuance</span>
+      <p>Le débat scientifique n'est pas totalement clos : d'autres travaux suggèrent que des champignons ligninolytiques existaient peut-être déjà avant cette date, et que des facteurs tectoniques et climatiques (bassins sédimentaires, assèchement des zones tropicales) ont pu jouer un rôle au moins aussi déterminant. Les auteurs de l'étude de 2012 reconnaissent eux-mêmes l'incertitude sur ce qu'aurait donné, sur les temps géologiques, une accumulation continue de bois mort non dégradé.</p>
+    </div>
+    <p>En l'absence de dégradation efficace de la lignocellulose, celle-ci s'enfouit progressivement sous les sédiments et subit, au cours des temps géologiques, un lent processus de « houillification » sous l'effet de la pression et de la chaleur, donnant naissance aux immenses gisements de charbon, puis plus tard au pétrole et au gaz naturel. Cette immobilisation progressive du carbone provoque une diminution du CO₂ atmosphérique et contribue au refroidissement de la planète.</p>
+    <p>Autrement dit, la Terre retirait naturellement du carbone de l'atmosphère parce qu'elle ne savait pas encore recycler efficacement le bois.</p>
+    </div>
+
+    <div class="sec sec-green reveal">
+      <div class="sec-head">
+        <div class="sec-ic">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8 2 4 6 4 10c0 5 8 12 8 12s8-7 8-12c0-4-4-8-8-8z"/><circle cx="12" cy="10" r="2.5"/></svg>
+        </div>
+        <div>
+          <span class="sec-eyebrow">− 300 Ma</span>
+          <h3>L'apparition des champignons : naissance du thermostat biologique</h3>
+        </div>
+      </div>
+    <p>L'évolution fait ensuite apparaître des champignons — les pourritures blanches, brunes et molles, toutes membres de la famille des Agaricomycètes — capables de produire les enzymes dégradant la lignine. Cette innovation biologique transforme profondément le fonctionnement de la planète. Désormais, le carbone suit un cycle presque fermé :</p>
+    <div class="flow">CO₂ atmosphérique → photosynthèse → biomasse végétale → champignons → CO₂ atmosphérique</div>
+    <p>Les champignons deviennent les grands recycleurs du carbone terrestre. Le rôle est loin d'être anecdotique : sur les 120 milliards de tonnes de carbone que les plantes captent chaque année par photosynthèse, une écrasante majorité retourne à l'atmosphère — dont l'essentiel via le travail souterrain des champignons, qui décomposent la matière organique et la lignocellulose. Sans ce CO₂ ainsi relargué, l'effet de serre serait nettement plus faible et les températures terrestres beaucoup plus basses ; les plantes elles-mêmes en ont besoin pour poursuivre leur photosynthèse. Le système forme ainsi une boucle globalement équilibrée sur le temps long.</p>
+    <p>Les champignons ne produisent pas de carbone supplémentaire ; ils assurent le recyclage du carbone récemment capté par les plantes, empêchent l'accumulation continue de bois mort, assurent le recyclage des nutriments et maintiennent la fertilité des sols. Pendant près de 300 millions d'années, ce système fonctionne dans un équilibre remarquable.</p>
+    </div>
+
+    <div class="sec sec-amber reveal">
+      <div class="sec-head">
+        <div class="sec-ic">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v6M12 22v-6M4.9 4.9l4.2 4.2M14.9 14.9l4.2 4.2M2 12h6M16 12h6M4.9 19.1l4.2-4.2M14.9 9.1l4.2-4.2"/></svg>
+        </div>
+        <div>
+          <span class="sec-eyebrow">XIX<sup>e</sup> s. — aujourd'hui</span>
+          <h3>La rupture de l'ère industrielle</h3>
+        </div>
+      </div>
+    <p>La révolution industrielle modifie profondément cet équilibre. En exploitant le charbon, le pétrole et le gaz naturel, l'humanité remet brutalement en circulation un carbone qui avait été soustrait au cycle biologique depuis des centaines de millions d'années. Le CO₂ atmosphérique augmente. Les plantes absorbent une partie de ce surplus. Mais lorsqu'elles meurent, les champignons continuent d'accomplir leur fonction naturelle : ils décomposent cette biomasse et renvoient ce carbone dans l'atmosphère.</p>
+    <p>Les champignons ne sont donc pas responsables du changement climatique. Ils continuent simplement à faire fonctionner un cycle naturel auquel l'homme apporte désormais un flux supplémentaire de carbone fossile. Le déséquilibre provient de cette injection permanente de carbone géologique dans un cycle biologique qui n'avait jamais été conçu pour l'absorber.</p>
+    </div>
+
+    <div class="sec sec-teal reveal">
+      <div class="sec-head">
+        <div class="sec-ic">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l4-8 4 4 4-6 4 4"/><path d="M3 21h18"/></svg>
+        </div>
+        <div>
+          <span class="sec-eyebrow">Aujourd'hui</span>
+          <h3>Les limites du cycle naturel</h3>
+        </div>
+      </div>
+    <p>Aujourd'hui, les forêts absorbent chaque année des quantités considérables de CO₂ — de l'ordre de 120 milliards de tonnes de carbone par an à l'échelle de la photosynthèse mondiale. Mais la plus grande partie de ce carbone retourne naturellement dans l'atmosphère :</p>
+    <ul>
+      <li>par la respiration des végétaux et leur évapotranspiration ;</li>
+      <li>par les animaux ;</li>
+      <li>par les bactéries ;</li>
+      <li>surtout par la décomposition assurée par les champignons, qui referment ainsi le cycle presque aussi vite qu'il s'ouvre.</li>
+    </ul>
+    <p>Le cycle biologique est donc extrêmement performant pour recycler le carbone, mais il ne le séquestre pas au sens strict : sur la biomasse morte, 95 à 99 % du carbone repart en CO₂ en quelques années par décomposition, et seuls 1 à 5 % s'incorporent durablement à l'humus stable des sols. Une fraction supplémentaire est absorbée par l'océan, par dissolution et via la pompe biologique marine — mais l'essentiel de cette absorption reste, elle aussi, un stockage réversible à l'échelle de quelques décennies ; seule la part qui atteint les sédiments océaniques profonds constitue une séquestration réellement durable, sur des échelles de temps millénaires.</p>
+    <div class="callout callout-teal">
+      <span class="tag">Précision</span>
+      <p>Le terme « puits naturel » désigne un flux net mesuré, pas une séquestration permanente : ce stockage reste réversible (incendie, sécheresse, coupe) et il se dégrade déjà sous l'effet du changement climatique lui-même. Selon le Global Carbon Budget 2025, le réchauffement rend aujourd'hui les puits terrestres 25 % moins efficaces et les puits océaniques 7 % moins efficaces qu'ils ne le seraient sans changement climatique — environ 8 % de la hausse du CO₂ atmosphérique depuis 1960 lui est directement imputable.</p>
+    </div>
+    <p>Ce stockage naturel réversible existe donc déjà, mais son flux net reste, à l'échelle actuelle, insuffisant pour compenser l'excédent de carbone fossile réinjecté depuis la révolution industrielle.</p>
+    <p>Or, pour revenir progressivement vers un équilibre climatique stable, il ne suffit plus de réduire les émissions : il devient nécessaire de créer une séquestration active et durable du carbone, qui ne dépende pas de la seule capacité — limitée et déclinante — du stockage naturel réversible.</p>
+    </div>
+
+    <div class="sec sec-blue reveal">
+      <div class="sec-head">
+        <div class="sec-ic">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z"/></svg>
+        </div>
+        <div>
+          <span class="sec-eyebrow">2026 — 2045</span>
+          <h3>Le principe du Programme Résilience</h3>
+        </div>
+      </div>
+    <p>Le Programme Résilience n'a pas pour objectif de remplacer les champignons ni de contourner leur fonction. Il intervient en amont de leur action. Une partie de la biomasse disponible — non compétitive avec les usages agricoles et forestiers existants — est prélevée avant sa décomposition naturelle et dirigée vers des unités de méthanisation et de pyrogazéification.</p>
+    <p>Ces installations deviennent de véritables plateformes territoriales de gestion du carbone. Elles produisent simultanément :</p>
+    <ul>
+      <li>du bio-CH₄ qui remplace du gaz fossile ;</li>
+      <li>du biochar qui immobilise durablement une partie du carbone ;</li>
+      <li>un CO₂ biogénique concentré qui devient une nouvelle ressource industrielle.</li>
+    </ul>
+    </div>
+
+    <div class="sec sec-brown reveal">
+      <div class="sec-head">
+        <div class="sec-ic">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.2"/></svg>
+        </div>
+        <div>
+          <span class="sec-eyebrow">100 — 1 000 ans</span>
+          <h3>Le biochar : remettre le carbone hors de portée des champignons</h3>
+        </div>
+      </div>
+    <p>Le biochar est constitué d'un carbone fortement aromatique que les enzymes ligninolytiques des champignons ne peuvent pratiquement plus dégrader. Une partie du carbone capté par les plantes est ainsi soustraite au recyclage biologique pendant plusieurs siècles, voire plusieurs millénaires selon les conditions de stockage (standards EBC / Puro.earth).</p>
+    <p>D'une certaine manière, Résilience recrée artificiellement — mais de façon contrôlée, rapide et compatible avec les besoins énergétiques modernes — un mécanisme de séquestration qui rappelle celui à l'œuvre pendant le Carbonifère, avant même l'apparition des champignons ligninolytiques.</p>
+    </div>
+
+    <div class="sec sec-purple reveal">
+      <div class="sec-head">
+        <div class="sec-ic">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4v5h5M20 20v-5h-5"/><path d="M4.6 15A8 8 0 0019.4 9M19.4 9A8 8 0 004.6 15"/></svg>
+        </div>
+        <div>
+          <span class="sec-eyebrow">Ressource industrielle</span>
+          <h3>Le CO₂ biogénique concentré : une nouvelle opportunité</h3>
+        </div>
+      </div>
+    <p>Contrairement au CO₂ atmosphérique, très dilué (environ 0,04 %), le CO₂ produit par la méthanisation et certaines étapes de la pyrogazéification est déjà concentré. Il devient alors beaucoup plus facile à utiliser ou à séquestrer. Il peut notamment être dirigé vers :</p>
+    <ul>
+      <li>la fertilisation des serres agricoles ;</li>
+      <li>la culture de microalgues ;</li>
+      <li>la méthanation de type Sabatier avec de l'hydrogène renouvelable afin de produire davantage de bio-CH₄ ;</li>
+      <li>la carbonatation accélérée de matériaux minéraux et la fabrication de carbonates stables ;</li>
+      <li>la minéralisation dans des déchets alcalins ;</li>
+      <li>le stockage géologique profond ;</li>
+      <li>ou toute autre technologie future de captage et de stockage du carbone.</li>
+    </ul>
+    <p>Ainsi, chaque progrès futur des technologies de séquestration pourra être intégré sans modifier l'architecture générale du système.</p>
+    </div>
+
+    <div class="sec sec-teal reveal">
+      <div class="sec-head">
+        <div class="sec-ic">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4z"/></svg>
+        </div>
+        <div>
+          <span class="sec-eyebrow">Synthèse</span>
+          <h3>Une plateforme territoriale de redistribution du carbone</h3>
+        </div>
+      </div>
+    <p>Le Programme Résilience ne constitue pas uniquement une filière énergétique. Il devient une plateforme capable d'orienter le devenir du carbone selon plusieurs voies complémentaires : une première partie transformée en bio-CH₄, une seconde immobilisée durablement sous forme de biochar, une troisième récupérée sous forme de CO₂ biogénique concentré, immédiatement disponible pour les technologies actuelles ou futures de fixation du carbone.</p>
+    <div class="callout callout-purple">
+      <span class="tag">Condition</span>
+      <p>Le carbone n'est donc plus condamné à retourner systématiquement dans l'atmosphère par la décomposition naturelle — <strong>sous réserve que le taux de fuite méthane du dispositif reste maîtrisé (≤ 1 %)</strong>, condition non négociable de la cohérence climatique globale du programme.</p>
+    </div>
+    </div>
+
+    <p class="signature-line">« Du Carbonifère au Programme Résilience : comment recréer un puits de carbone durable sans renoncer à l'énergie. »</p>
+
+  </div>
+</div>
+
+<!-- ===== STATS ===== -->
+<div class="stats-band">
+  <div class="wrap-wide">
+    <div class="stats-inner">
+      <div class="stat reveal">
+        <span class="sv">120 Md t C/an</span>
+        <span class="sl">capté par photosynthèse mondiale — l'essentiel recyclé par les champignons</span>
+      </div>
+      <div class="stat reveal">
+        <span class="sv">100–1 000 ans</span>
+        <span class="sl">durée de séquestration du biochar — standards EBC / Puro.earth</span>
+      </div>
+      <div class="stat reveal">
+        <span class="sv">0,04 % → concentré</span>
+        <span class="sl">le CO₂ biogénique de pyrogazéification est directement valorisable</span>
+      </div>
+      <div class="stat reveal">
+        <span class="sv">≤ 1 %</span>
+        <span class="sl">seuil de fuite méthane — condition non négociable du bilan climatique</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== QUOTE ===== -->
+<div class="quote-band">
+  <div class="wrap-wide">
+    <blockquote class="reveal">Le Programme Résilience ne cherche pas à modifier le rôle des champignons ; il crée une dérivation volontaire d'une partie du flux de carbone avant sa décomposition.</blockquote>
+  </div>
+</div>
+
+<!-- ===== POUR ALLER PLUS LOIN ===== -->
+<div class="next-band">
+  <div class="wrap">
+    <div class="next-grid">
+      <a class="next-card reveal" href="biochar.html">
+        <div class="nc-label">Approfondir</div>
+        <h4>Biochar — séquestration &amp; amendement</h4>
+      </a>
+      <a class="next-card reveal" href="carbone-resilience.html">
+        <div class="nc-label">Approfondir</div>
+        <h4>Carbone — architecture Résilience</h4>
+      </a>
+      <a class="next-card reveal" href="trajectoires-co2.html">
+        <div class="nc-label">Approfondir</div>
+        <h4>Trajectoires CO₂ atmosphérique à 2200</h4>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap-wide">
+    <span>Programme Résilience 2045 — document de travail indépendant — V11 · Juillet 2026</span>
+    <span>helion31412.github.io/resilience2045</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in');});return;}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:0.1});
+  els.forEach(function(e){io.observe(e);});
+})();
+</script>
+</body>
+</html>
