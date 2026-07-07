@@ -13,6 +13,7 @@
   --feu:#ff8c5a;--feu-bg:rgba(255,140,90,.08);--feu-border:rgba(255,140,90,.3);
   --tram:#6aabdf;--tram-bg:rgba(106,171,223,.08);--tram-border:rgba(106,171,223,.3);
   --bocage:#a8d5a0;--bocage-bg:rgba(168,213,160,.08);--bocage-border:rgba(168,213,160,.3);
+  --resine:#c99a2e;--resine-bg:rgba(201,154,46,.08);--resine-border:rgba(201,154,46,.3);
   --coming:rgba(82,183,136,.35);
   --serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',sans-serif;
 }
@@ -56,18 +57,22 @@ h1 em{font-style:italic;color:var(--vert-vif)}
 .dem-card.tram:hover{border-color:var(--tram-border)}
 .dem-card.bocage{border-top:3px solid var(--bocage)}
 .dem-card.bocage:hover{border-color:var(--bocage-border)}
+.dem-card.resine{border-top:3px solid var(--resine)}
+.dem-card.resine:hover{border-color:var(--resine-border)}
 .dem-card.coming{opacity:.5;border-top:3px solid rgba(82,183,136,.25);cursor:default}
 
 .dem-num{font-family:var(--serif);font-size:2.5rem;font-weight:300;line-height:1;margin-bottom:.4rem}
 .dem-card.feu .dem-num{color:rgba(255,140,90,.3)}
 .dem-card.tram .dem-num{color:rgba(106,171,223,.3)}
 .dem-card.bocage .dem-num{color:rgba(168,213,160,.3)}
+.dem-card.resine .dem-num{color:rgba(201,154,46,.3)}
 .dem-card.coming .dem-num{color:rgba(82,183,136,.15)}
 
 .dem-tag{font-size:.63rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.5rem}
 .dem-card.feu .dem-tag{color:var(--feu)}
 .dem-card.tram .dem-tag{color:var(--tram)}
 .dem-card.bocage .dem-tag{color:var(--bocage)}
+.dem-card.resine .dem-tag{color:var(--resine)}
 .dem-card.coming .dem-tag{color:rgba(82,183,136,.4)}
 
 .dem-qualif{display:inline-block;font-size:.66rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.22rem .65rem;border:1px solid;margin-bottom:.7rem}
@@ -75,6 +80,7 @@ h1 em{font-style:italic;color:var(--vert-vif)}
 .dem-card.feu h2{color:var(--blanc)}
 .dem-card.tram h2{color:var(--blanc)}
 .dem-card.bocage h2{color:var(--blanc)}
+.dem-card.resine h2{color:var(--blanc)}
 .dem-card.coming h2{color:rgba(240,244,241,.45)}
 .dem-card p{font-size:.82rem;color:rgba(240,244,241,.6);line-height:1.6;flex-grow:1;margin-bottom:1rem}
 .dem-card.coming p{color:rgba(240,244,241,.35)}
@@ -87,6 +93,8 @@ h1 em{font-style:italic;color:var(--vert-vif)}
 .dem-card.tram .dem-btn.sec{color:rgba(240,244,241,.45);border-color:rgba(240,244,241,.15)}
 .dem-card.bocage .dem-btn.primary{color:var(--bocage);border-color:var(--bocage-border)}.dem-card.bocage .dem-btn.primary:hover{background:var(--bocage-bg)}
 .dem-card.bocage .dem-btn.sec{color:rgba(240,244,241,.45);border-color:rgba(240,244,241,.15)}
+.dem-card.resine .dem-btn.primary{color:var(--resine);border-color:var(--resine-border)}.dem-card.resine .dem-btn.primary:hover{background:var(--resine-bg)}
+.dem-card.resine .dem-btn.sec{color:rgba(240,244,241,.45);border-color:rgba(240,244,241,.15)}
 
 .coming-lbl{font-size:.7rem;color:rgba(240,244,241,.3);font-style:italic}
 
@@ -172,13 +180,16 @@ footer p{font-size:.75rem;color:var(--gris);max-width:600px;margin:.2rem auto}
       </div>
 
       <!-- 04 LANDES -->
-      <div class="dem-card coming reveal">
+      <div class="dem-card resine reveal">
         <div class="dem-num">04</div>
-        <div class="dem-tag">🌲 Forêt landaise · Pin maritime</div>
-        <div class="dem-qualif" style="color:rgba(240,244,241,.3);border-color:rgba(240,244,241,.1)">En préparation</div>
-        <h2>Landes (40) — Forêt tempérée</h2>
-        <p>Après les méga-feux de 2022 (30 000 ha), la plus grande forêt artificielle d'Europe cherche un modèle de reconversion. Gisement résineux exceptionnel.</p>
-        <div class="dem-links"><span class="coming-lbl">Disponible prochainement</span></div>
+        <div class="dem-tag">🌲 Forêt landaise · Pin maritime · Réserve stratégique</div>
+        <div class="dem-qualif" style="color:#c99a2e;border-color:rgba(201,154,46,.4)">📋 Note de plaidoyer</div>
+        <h2>Landes (40) — Résilience post-tempête</h2>
+        <p>Pas le meilleur territoire de production (Zone B, Phase 2 — la Dordogne reste préférée tant que le procédé n'est pas validé sur biomasse résinière), mais la seule réserve stratégique capable d'absorber un choc comme la tempête Klaus (2009 : 45 Mm³ de bois au sol, 857 M€ de fonds publics).</p>
+        <div class="dem-links">
+          <a href="zone-landes.html" class="dem-btn" style="color:#c99a2e;border-color:rgba(201,154,46,.4)">Voir la page →</a>
+          <a href="Demonstrateur_Landes_Resilience_PostTempete_V1.docx" target="_blank" class="dem-btn" style="color:rgba(240,244,241,.5);border-color:rgba(240,244,241,.2)">Word →</a>
+        </div>
       </div>
 
       <!-- 05 MASSIF CENTRAL -->
