@@ -15,6 +15,7 @@
   --bocage:#a8d5a0;--bocage-bg:rgba(168,213,160,.08);--bocage-border:rgba(168,213,160,.3);
   --resine:#c99a2e;--resine-bg:rgba(201,154,46,.08);--resine-border:rgba(201,154,46,.3);
   --coming:rgba(82,183,136,.35);
+  --or:#b8962e;--or-clair:#f0d580;--or-bg:rgba(184,150,46,.07);--or-border:rgba(184,150,46,.35);
   --serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',sans-serif;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -98,6 +99,21 @@ h1 em{font-style:italic;color:var(--vert-vif)}
 
 .coming-lbl{font-size:.7rem;color:rgba(240,244,241,.3);font-style:italic}
 
+/* CARTE NATIONALE — bandeau distinct au-dessus de la grille */
+.carte-nationale{
+  display:grid;grid-template-columns:auto 1fr auto;gap:2rem;align-items:center;
+  border:1px solid var(--or-border);background:var(--or-bg);
+  padding:1.8rem 2rem;margin-bottom:2.4rem;text-decoration:none;color:inherit;
+  transition:border-color .2s,background .2s;
+}
+.carte-nationale:hover{background:rgba(184,150,46,.13);border-color:var(--or-clair)}
+.cn-icon{font-family:var(--serif);font-size:2.6rem;font-weight:300;color:var(--or-clair);line-height:1}
+.cn-tag{font-size:.62rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);margin-bottom:.5rem}
+.cn-title{font-family:var(--serif);font-size:1.35rem;color:var(--blanc);margin-bottom:.4rem;line-height:1.25}
+.cn-desc{font-size:.83rem;color:rgba(240,244,241,.6);line-height:1.6;max-width:640px}
+.cn-btn{font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--or-clair);border:1px solid var(--or-border);padding:.55rem 1.1rem;white-space:nowrap}
+@media(max-width:750px){.carte-nationale{grid-template-columns:1fr;text-align:left;gap:.9rem}.cn-icon{display:none}}
+
 footer{background:#050a07;padding:2rem 3rem;text-align:center;border-top:1px solid rgba(82,183,136,.08)}
 .footer-logo{font-family:var(--serif);font-size:1.3rem;font-weight:300;color:var(--vert-vif);margin-bottom:.3rem}
 footer p{font-size:.75rem;color:var(--gris);max-width:600px;margin:.2rem auto}
@@ -137,6 +153,16 @@ footer p{font-size:.75rem;color:var(--gris);max-width:600px;margin:.2rem auto}
 <section style="background:var(--foret)">
   <div class="container">
     <div class="stag reveal">Démonstrateurs actifs et en préparation</div>
+
+    <a href="positionnement-territorial.html" class="carte-nationale reveal">
+      <div class="cn-icon">🗺️</div>
+      <div>
+        <div class="cn-tag">Vue nationale · Note de positionnement stratégique · V1</div>
+        <div class="cn-title">Pourquoi ces territoires ? La logique des 150 sites</div>
+        <div class="cn-desc">Chaque démonstrateur ci-dessous est un cas parmi ~150 sites possibles. Cette analyse croise gisement biomasse, réseau GRDF, boisement et tensions d'usage pour situer chaque territoire dans les zones A, B, C ou D — et expliquer le calendrier de déploiement 2029–2040.</div>
+      </div>
+      <div class="cn-btn">Voir la carte des 4 zones →</div>
+    </a>
 
     <div class="dem-grid">
 
@@ -227,6 +253,7 @@ footer p{font-size:.75rem;color:var(--gris);max-width:600px;margin:.2rem auto}
   <div class="container">
     <div style="display:flex;gap:1rem;flex-wrap:wrap" class="reveal">
       <a href="index.html" style="font-size:.76rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:var(--blanc);border:1px solid rgba(240,244,241,.25);padding:.65rem 1.4rem;transition:all .3s" onmouseover="this.style.borderColor='#52b788';this.style.color='#52b788'" onmouseout="this.style.borderColor='rgba(240,244,241,.25)';this.style.color='var(--blanc)'">⌂ Accueil</a>
+      <a href="positionnement-territorial.html" style="font-size:.76rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:var(--or-clair);border:1px solid var(--or-border);padding:.65rem 1.4rem;transition:all .3s" onmouseover="this.style.borderColor='#f0d580'" onmouseout="this.style.borderColor='rgba(184,150,46,.35)'">🗺️ Positionnement des 150 sites →</a>
       <a href="biomasse.html" style="font-size:.76rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:var(--blanc);border:1px solid rgba(240,244,241,.25);padding:.65rem 1.4rem;transition:all .3s" onmouseover="this.style.borderColor='#52b788';this.style.color='#52b788'" onmouseout="this.style.borderColor='rgba(240,244,241,.25)';this.style.color='var(--blanc)'">Gisement biomasse →</a>
       <a href="documents-liste.html" style="font-size:.76rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:var(--blanc);border:1px solid rgba(240,244,241,.25);padding:.65rem 1.4rem;transition:all .3s" onmouseover="this.style.borderColor='#52b788';this.style.color='#52b788'" onmouseout="this.style.borderColor='rgba(240,244,241,.25)';this.style.color='var(--blanc)'">Documents →</a>
     </div>

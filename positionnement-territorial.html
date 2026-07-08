@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Positionnement territorial des 150 sites · Zones A, B, C, D · Programme Résilience V11</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --noir:#0a0f0d;--foret:#0d1f17;--vert-vif:#52b788;--vert-clair:#95d5b2;
+  --ambre:#e9c46a;--rouge:#ff6b35;--bleu:#2980b9;--blanc:#f0f4f1;--gris:#8a9e93;
+  --feu:#843C0C;--feu-clair:#FBE4D5;--feu-mid:#C45A1A;
+  --paille:#8a6010;--paille-mid:#C99A2E;--paille-clair:#f0c870;
+  --exclu:#5c6b64;--exclu-clair:#9aa8a2;
+  --or:#b8962e;--or-clair:#f0d580;--or-bg:rgba(184,150,46,.06);
+  --serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--noir);color:var(--blanc);font-family:var(--sans);font-weight:300;line-height:1.7;overflow-x:hidden}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:.9rem 2.5rem;background:rgba(10,15,13,.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(184,150,46,.25)}
+.nav-logo{font-family:var(--serif);font-size:1.15rem;font-weight:600;color:var(--vert-vif);text-decoration:none}
+.nav-tag{font-size:.66rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);border:1px solid rgba(184,150,46,.35);padding:.25rem .75rem}
+.nav-back{font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gris);text-decoration:none;transition:color .3s}
+.nav-back:hover{color:var(--or-clair)}
+
+section{padding:5rem 3rem}
+.container{max-width:1140px;margin:0 auto}
+.stag{font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--or);margin-bottom:.7rem}
+.stag-vert{font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--vert-vif);margin-bottom:.7rem}
+h1{font-family:var(--serif);font-size:clamp(2.2rem,4.5vw,3.8rem);font-weight:300;line-height:1.1;margin-bottom:1.2rem}
+h1 em{font-style:italic;color:var(--or-clair)}
+h1 strong{font-weight:600;color:var(--or-clair)}
+h2{font-family:var(--serif);font-size:clamp(1.6rem,2.8vw,2.4rem);font-weight:300;line-height:1.15;margin-bottom:1rem}
+h2 em{font-style:italic;color:var(--or-clair)}
+h2 strong{font-weight:600;color:var(--or-clair)}
+h3{font-family:var(--serif);font-size:1.2rem;font-weight:400;margin-bottom:.5rem;color:var(--vert-clair)}
+.lead{font-size:.97rem;color:rgba(240,244,241,.7);max-width:760px;line-height:1.85;margin-bottom:1.8rem}
+p.body{font-size:.88rem;color:rgba(240,244,241,.62);line-height:1.88;margin-bottom:.9rem;max-width:860px}
+.btn{display:inline-block;padding:.72rem 1.6rem;font-family:var(--sans);font-size:.76rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:all .3s}
+.btn-or{background:var(--or);color:var(--noir)}
+.btn-or:hover{background:var(--or-clair);transform:translateY(-2px)}
+.btn-outline{background:transparent;color:var(--blanc);border:1px solid rgba(240,244,241,.25)}
+.btn-outline:hover{border-color:var(--or-clair);color:var(--or-clair)}
+
+/* HERO */
+#hero{min-height:74vh;display:flex;align-items:center;padding:8rem 3rem 5rem;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 55% 35%,rgba(184,150,46,.18) 0%,transparent 65%),linear-gradient(135deg,#0a0f0d 0%,#140f05 50%,#080e0a 100%)}
+.hero-grid{position:absolute;inset:0;opacity:.03;background-image:linear-gradient(var(--or) 1px,transparent 1px),linear-gradient(90deg,var(--or) 1px,transparent 1px);background-size:55px 55px}
+.hero-content{position:relative;z-index:1;max-width:860px}
+.hero-tag{display:inline-block;border:1px solid var(--or);color:var(--or-clair);font-size:.67rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:.3rem .85rem;margin-bottom:1.5rem}
+.hero-phrase{font-family:var(--serif);font-size:clamp(1rem,2vw,1.3rem);font-style:italic;color:var(--ambre);border-left:3px solid var(--ambre);padding-left:1.1rem;margin:1.4rem 0 1.8rem;line-height:1.5;max-width:680px}
+.hero-kpis{display:flex;gap:2.2rem;flex-wrap:wrap;margin-top:2.2rem}
+.hk-val{font-family:var(--serif);font-size:2rem;color:var(--or-clair);line-height:1}
+.hk-lbl{font-size:.72rem;color:var(--gris);letter-spacing:.06em;margin-top:.25rem}
+
+/* MATRICE 4 ZONES */
+.matrice-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin:2rem 0;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04)}
+.m-col{padding:1.6rem 1.3rem;background:rgba(10,15,13,.92);display:flex;flex-direction:column;gap:.75rem}
+.m-col-head{padding-bottom:.7rem;border-bottom:1px solid rgba(255,255,255,.1);margin-bottom:.3rem}
+.m-tag{display:inline-block;font-size:.62rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:.22rem .6rem;margin-bottom:.5rem}
+.m-title{font-family:var(--serif);font-size:1.15rem;color:var(--blanc)}
+.m-n{font-family:var(--serif);font-size:2rem;font-weight:300;margin-top:.15rem}
+.m-row{font-size:.76rem;color:rgba(240,244,241,.6);line-height:1.55}
+.m-row b{display:block;font-size:.62rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(240,244,241,.4);margin-bottom:.15rem}
+.zoneA{border-top:3px solid var(--vert-vif)}
+.zoneA .m-tag{background:rgba(82,183,136,.12);color:var(--vert-vif);border:1px solid rgba(82,183,136,.3)}
+.zoneA .m-n{color:var(--vert-vif)}
+.zoneB{border-top:3px solid var(--paille-mid)}
+.zoneB .m-tag{background:rgba(201,154,46,.12);color:var(--paille-clair);border:1px solid rgba(201,154,46,.3)}
+.zoneB .m-n{color:var(--paille-clair)}
+.zoneC{border-top:3px solid var(--feu-mid)}
+.zoneC .m-tag{background:rgba(132,60,12,.12);color:#ff9d6a;border:1px solid rgba(196,90,26,.3)}
+.zoneC .m-n{color:var(--feu-mid)}
+.zoneD{border-top:3px solid var(--exclu)}
+.zoneD .m-tag{background:rgba(92,107,100,.15);color:var(--exclu-clair);border:1px solid rgba(92,107,100,.35)}
+.zoneD .m-n{color:var(--exclu-clair)}
+
+/* SUBZONE CARDS */
+.subzone-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin:2rem 0;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04)}
+.subzone-card{padding:1.7rem 1.4rem;background:rgba(10,8,6,.85)}
+.sz-n{font-family:var(--serif);font-size:2.4rem;font-weight:300;line-height:1;margin-bottom:.3rem;opacity:.35}
+.sz-title{font-family:var(--serif);font-size:1.1rem;color:var(--blanc);margin-bottom:.5rem}
+.sz-sites{font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.6rem}
+.sz-desc{font-size:.79rem;color:rgba(240,244,241,.55);line-height:1.65}
+
+/* KPI */
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin:2rem 0}
+.kpi-card{padding:1.4rem 1.2rem;border:1px solid rgba(184,150,46,.2);background:rgba(184,150,46,.05);text-align:center}
+.kpi-val{font-family:var(--serif);font-size:2rem;font-weight:300;color:var(--or-clair);line-height:1;margin-bottom:.3rem}
+.kpi-unit{font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gris);margin-bottom:.4rem}
+.kpi-lbl{font-size:.78rem;color:rgba(240,244,241,.55);line-height:1.4}
+
+/* TABLE générique */
+.data-table{width:100%;border-collapse:collapse;font-size:.82rem;margin:1.5rem 0}
+.data-table thead th{background:rgba(184,150,46,.35);padding:.65rem 1rem;text-align:left;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;font-weight:500;color:var(--blanc)}
+.data-table tbody tr:nth-child(even){background:rgba(184,150,46,.04)}
+.data-table tbody td{padding:.65rem 1rem;border-bottom:1px solid rgba(255,255,255,.05);color:rgba(240,244,241,.65);vertical-align:top}
+.data-table tbody td:first-child{color:var(--blanc)}
+.data-table .td-val{color:var(--or-clair)!important;font-weight:500;white-space:nowrap}
+.data-table .td-excl{color:var(--exclu-clair)!important}
+
+/* CALENDRIER BAR */
+.phase-bar{display:flex;height:8px;width:100%;overflow:hidden;border-radius:2px;margin-top:.3rem}
+.phase-1{background:var(--or)}
+.phase-2{background:rgba(184,150,46,.25)}
+
+/* PREALABLES */
+.prealable-grid{display:flex;flex-direction:column;gap:.8rem;margin:2rem 0}
+.prealable-card{display:grid;grid-template-columns:52px 1fr;gap:0;border:1px solid rgba(255,255,255,.07);background:rgba(13,15,12,.6);overflow:hidden;transition:border-color .3s}
+.prealable-card:hover{border-color:rgba(184,150,46,.4)}
+.pr-n{background:var(--or);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1.4rem;font-weight:300;color:var(--noir);padding:1rem}
+.pr-body{padding:1.1rem 1.5rem}
+.pr-title{font-family:var(--serif);font-size:1.02rem;color:var(--blanc);margin-bottom:.35rem}
+.pr-desc{font-size:.8rem;color:rgba(240,244,241,.55);line-height:1.65}
+
+/* BOX */
+.box{padding:1.2rem 1.6rem;margin:1.6rem 0;font-size:.87rem;line-height:1.75;border-left:4px solid}
+.box strong{font-weight:500}
+.box-or{background:rgba(184,150,46,.07);border-color:var(--or);color:rgba(240,244,241,.78)}
+.box-or strong{color:var(--or-clair)}
+.box-vert{background:rgba(29,58,40,.3);border-color:var(--vert-vif);color:rgba(240,244,241,.78)}
+.box-vert strong{color:var(--vert-vif)}
+.box-feu{background:rgba(132,60,12,.08);border-color:var(--feu);color:rgba(240,244,241,.78)}
+.box-feu strong{color:var(--feu-mid)}
+
+/* RENVOIS */
+.renvoi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1rem;margin:2rem 0}
+.renvoi-card{padding:1.2rem 1.4rem;border:1px solid rgba(184,150,46,.2);background:rgba(10,15,13,.5);text-decoration:none;transition:border-color .3s,background .3s;display:block}
+.renvoi-card:hover{border-color:var(--or-clair);background:rgba(40,32,5,.2)}
+.rc-tag{font-size:.62rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--or-clair);margin-bottom:.4rem}
+.rc-title{font-family:var(--serif);font-size:1rem;color:var(--blanc);margin-bottom:.3rem}
+.rc-desc{font-size:.78rem;color:rgba(240,244,241,.5);line-height:1.5}
+
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+.reveal.visible{opacity:1;transform:none}
+.alt{background:var(--foret)}
+
+footer{background:#050a07;padding:2.5rem 3rem;text-align:center;border-top:1px solid rgba(184,150,46,.15)}
+.footer-logo{font-family:var(--serif);font-size:1.4rem;font-weight:300;color:var(--or-clair);margin-bottom:.4rem}
+footer p{font-size:.76rem;color:var(--gris);max-width:640px;margin:.3rem auto;line-height:1.7}
+
+@media(max-width:900px){
+  .matrice-grid{grid-template-columns:1fr 1fr}
+  .subzone-grid{grid-template-columns:1fr}
+}
+@media(max-width:700px){
+  nav{padding:.85rem 1.3rem}
+  section{padding:3.5rem 1.4rem}
+  h1{font-size:2rem}
+  .matrice-grid{grid-template-columns:1fr}
+  .hero-kpis{gap:1.4rem}
+  .data-table{font-size:.74rem}
+  .data-table thead th,.data-table tbody td{padding:.5rem .6rem}
+}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1J0GBHR98B"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-1J0GBHR98B');
+</script>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo" title="Retour à l'accueil">⌂ Résilience 2045</a>
+  <div style="display:flex;align-items:center;gap:1.2rem">
+    <a href="index.html" style="font-size:.68rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(82,183,136,.6);text-decoration:none;border:1px solid rgba(82,183,136,.2);padding:.2rem .6rem;transition:color .3s" onmouseover="this.style.color='#52b788'" onmouseout="this.style.color='rgba(82,183,136,.6)'">⌂ Accueil</a>
+    <span class="nav-tag">🗺️ Positionnement territorial · 150 sites</span>
+    <a href="demonstrateurs.html" class="nav-back">← Démonstrateurs</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Note de positionnement stratégique · V1 · Juin 2026 · Programme Résilience V11</div>
+    <h1>150 sites de pyrogazéification.<br><em>Où les positionner</em> sans créer de tension sur la ressource ?</h1>
+    <p class="hero-phrase">La question « où » est aussi critique que la question « comment ». Le verrou territorial est la troisième dimension nécessaire pour passer d'un projet à une politique.</p>
+    <p class="lead">Chaque site requiert 330 000 t/an de biomasse sèche mobilisable dans un rayon de 35 à 50 km. En croisant quatre critères objectifs — gisement mobilisable, accès réseau GRDF, taux de boisement, tensions d'usage existantes — cette analyse identifie quatre types de territoires, dont une catégorie paradoxale : les zones à fort risque incendie, où la pyrogazéification n'est pas une contrainte à éviter mais un outil de résilience forestière.</p>
+    <div class="hero-kpis">
+      <div><div class="hk-val">150</div><div class="hk-lbl">sites visés à 2040</div></div>
+      <div><div class="hk-val">4</div><div class="hk-lbl">types de territoires</div></div>
+      <div><div class="hk-val">35</div><div class="hk-lbl">sites Phase 1 · 2029–2033</div></div>
+      <div><div class="hk-val">330k</div><div class="hk-lbl">t/an biomasse par site</div></div>
+    </div>
+    <div style="display:flex;gap:.9rem;flex-wrap:wrap;margin-top:2rem">
+      <a href="#matrice" class="btn btn-or">La matrice des 4 zones →</a>
+      <a href="Positionnement_150_Sites_Pyrogazeification_V1.pdf" class="btn btn-outline" target="_blank" download>↓ Note complète PDF</a>
+    </div>
+  </div>
+</section>
+
+<!-- §1 — LA QUESTION POSÉE -->
+<section>
+  <div class="container">
+    <div class="stag reveal">Introduction</div>
+    <h2 class="reveal">Le verrou technologique est documenté.<br>Le verrou logistique est <em>quantifié</em>.<br>Reste le verrou <strong>territorial</strong>.</h2>
+    <p class="body reveal">Le Programme Résilience V11 prévoit le déploiement de 150 sites de pyrogazéification de 1 000 t/j sur le territoire métropolitain à horizon 2040. Chacun requiert 330 000 t/an de biomasse sèche mobilisable dans un rayon de 35 à 50 km — condition sine qua non de la viabilité économique avant même que la question technologique ne se pose.</p>
+    <p class="body reveal">Cette analyse répond à une question pratique et stratégique : où positionner ces 150 sites ? En croisant quatre critères objectifs (gisement biomasse mobilisable, accès réseau GRDF, taux de boisement, tensions d'usage existantes), elle identifie quatre types de territoires aux profils distincts — dont une catégorie rarement discutée en dehors de ce corpus : les zones à fort risque incendie, où la pyrogazéification devient un outil de résilience forestière à mobiliser en priorité plutôt qu'une contrainte à éviter.</p>
+    <div class="box box-or reveal">
+      <strong>Ce que cette analyse change :</strong> la question décisive n'est plus « peut-on faire un site ? » — la faisabilité locale est démontrée par l'étude de cas normande. C'est « peut-on faire 150 sites sans tensions cumulées sur la ressource ? ». Cette analyse territoriale est le préalable à cette démonstration.
+    </div>
+  </div>
+</section>
+
+<!-- §2 — MATRICE DES 4 ZONES -->
+<section class="alt" id="matrice">
+  <div class="container">
+    <div class="stag-vert reveal">Grille de sélection</div>
+    <h2 class="reveal">Quatre critères, <em>quatre profils</em><br>de territoires</h2>
+    <p class="lead reveal">Le croisement du gisement biomasse net, de l'accès au réseau GRDF, du taux de boisement/bocage et de la tension d'usage existante fait apparaître quatre familles de territoires, chacune avec sa mission spécifique.</p>
+
+    <div class="matrice-grid reveal">
+      <div class="m-col zoneA">
+        <div class="m-col-head">
+          <span class="m-tag">Priorité 1</span>
+          <div class="m-title">Zone A</div>
+          <div class="m-n">~110</div>
+        </div>
+        <div class="m-row"><b>Gisement net (r=40km)</b>≥ 400 000 t/an</div>
+        <div class="m-row"><b>Réseau GRDF</b>Dense ≤ 15 km</div>
+        <div class="m-row"><b>Boisement / bocage</b>≥ 30 % ou bocage dense</div>
+        <div class="m-row"><b>Tension d'usage</b>Faible à modérée</div>
+        <div class="m-row"><b>Mission</b>Production optimale biométhane + biochar</div>
+      </div>
+      <div class="m-col zoneB">
+        <div class="m-col-head">
+          <span class="m-tag">Priorité 2</span>
+          <div class="m-title">Zone B</div>
+          <div class="m-n">~30</div>
+        </div>
+        <div class="m-row"><b>Gisement net (r=40km)</b>250 000–400 000 t/an</div>
+        <div class="m-row"><b>Réseau GRDF</b>Modéré 15–30 km</div>
+        <div class="m-row"><b>Boisement / bocage</b>20–30 % boisement</div>
+        <div class="m-row"><b>Tension d'usage</b>Modérée — à vérifier</div>
+        <div class="m-row"><b>Mission</b>Production + structuration filière locale</div>
+      </div>
+      <div class="m-col zoneC">
+        <div class="m-col-head">
+          <span class="m-tag">Spéciale incendie</span>
+          <div class="m-title">Zone C</div>
+          <div class="m-n">~10</div>
+        </div>
+        <div class="m-row"><b>Gisement net (r=40km)</b>≥ 200 000 t/an (biomasse combustible)</div>
+        <div class="m-row"><b>Réseau GRDF</b>Faible — compression locale</div>
+        <div class="m-row"><b>Boisement / bocage</b>Forêt méditerranéenne dense mais combustible</div>
+        <div class="m-row"><b>Tension d'usage</b>Quasi nulle — forêt non gérée</div>
+        <div class="m-row"><b>Mission</b>Production + DFCI préventive (double mission)</div>
+      </div>
+      <div class="m-col zoneD">
+        <div class="m-col-head">
+          <span class="m-tag">Exclue</span>
+          <div class="m-title">Zone D</div>
+          <div class="m-n">0</div>
+        </div>
+        <div class="m-row"><b>Gisement net (r=40km)</b>&lt; 200 000 t/an</div>
+        <div class="m-row"><b>Réseau GRDF</b>Absent ou très loin</div>
+        <div class="m-row"><b>Boisement / bocage</b>&lt; 15 % — plaines agricoles pures</div>
+        <div class="m-row"><b>Tension d'usage</b>N/A — gisement insuffisant</div>
+        <div class="m-row"><b>Mission</b>Hors périmètre pyrogazéification</div>
+      </div>
+    </div>
+    <p style="font-size:.75rem;color:var(--gris);font-style:italic">Tableau 1 — Matrice des critères de sélection par type de zone. Les nombres de sites sont des estimations indicatives à affiner par étude SIG détaillée.</p>
+  </div>
+</section>
+
+<!-- §3 — ZONE A -->
+<section>
+  <div class="container">
+    <div class="stag reveal" style="color:var(--vert-vif)">Zone A · Priorité 1 · ~110 sites</div>
+    <h2 class="reveal">Les territoires à <em style="color:var(--vert-clair)">gisement complet</em></h2>
+    <p class="lead reveal">La Zone A regroupe les territoires qui cumulent trois gisements complémentaires (forêt, bocage, résidus agricoles) dans un même bassin de 40 km, un réseau GRDF dense, et une tension d'usage bois-énergie restée limitée. C'est le cœur industriel du programme — dimensionné pour la performance.</p>
+
+    <div class="subzone-grid reveal">
+      <div class="subzone-card" style="border-left:3px solid var(--vert-vif)">
+        <div class="sz-n" style="color:var(--vert-vif)">55</div>
+        <div class="sz-title">Grand Ouest bocager</div>
+        <div class="sz-sites" style="color:var(--vert-vif)">Normandie · Bretagne · Pays de Loire · Poitou-Charentes</div>
+        <div class="sz-desc">Le territoire le plus favorable de France — cas d'étude du document Logistique V2. 123 400 km de haies bocagères (160 000–240 000 t/an), 1,9 Mt/an de paille (excédent 210 000 t/an), massifs feuillus. Répartition calendaire idéale : paille (juil.–août) + forêt (oct.–déc.) + bocage (jan.–mars).</div>
+      </div>
+      <div class="subzone-card" style="border-left:3px solid var(--vert-vif)">
+        <div class="sz-n" style="color:var(--vert-vif)">25</div>
+        <div class="sz-title">Massif Central</div>
+        <div class="sz-sites" style="color:var(--vert-vif)">Auvergne · Corrèze · Creuse · Lozère · Ardèche nord</div>
+        <div class="sz-desc">Biomasse forestière feuillue abondante, structurellement sous-exploitée (taux de prélèvement &lt; 50 % de la production biologique nette). Tensions d'usage faibles. Gisement quasi-vierge du point de vue pyrogazéification — contrainte : réseau GRDF moins dense, extension ou compression locale à prévoir.</div>
+      </div>
+      <div class="subzone-card" style="border-left:3px solid var(--vert-vif)">
+        <div class="sz-n" style="color:var(--vert-vif)">30</div>
+        <div class="sz-title">Grand Est forestier</div>
+        <div class="sz-sites" style="color:var(--vert-vif)">Vosges · Alsace · Bourgogne nord · Champagne-Ardenne</div>
+        <div class="sz-desc">Production biologique de bois la plus élevée de France : 7 m³/ha/an contre 5,3 en moyenne nationale (IGN IFN 2024). Seule région où la forêt publique est majoritaire (56 % vs 25 % national) — contractualisation ONF facilitée. Vigilance : industrie papetière déjà consommatrice de bois de faible dimension.</div>
+      </div>
+    </div>
+    <div class="box box-vert reveal">
+      <strong>Conclusion Zone A :</strong> c'est là que les 20 premiers sites de Phase 1 (2029–2033) devront être implantés pour démontrer la viabilité industrielle avant le déploiement élargi vers les Zones B et C — coût logistique minimal, réseau GRDF accessible, gisement multi-sources éprouvé.
+    </div>
+  </div>
+</section>
+
+<!-- §4 — ZONE B -->
+<section class="alt">
+  <div class="container">
+    <div class="stag reveal" style="color:var(--paille-clair)">Zone B · Priorité 2 · ~30 sites</div>
+    <h2 class="reveal">Les territoires à <em style="color:var(--paille-clair)">structurer</em></h2>
+    <p class="lead reveal">Gisement réel mais moins diversifié qu'en Zone A, ou réseau GRDF nécessitant des extensions. Rôle complémentaire : structurer des filières locales qui n'existent pas encore et consolider l'équilibre territorial du programme.</p>
+
+    <div class="subzone-grid reveal">
+      <div class="subzone-card" style="border-left:3px solid var(--paille-mid)">
+        <div class="sz-n" style="color:var(--paille-clair)">10</div>
+        <div class="sz-title">Normandie-Picardie céréalière</div>
+        <div class="sz-sites" style="color:var(--paille-clair)">Pays de Caux · Picardie · Vexin normand</div>
+        <div class="sz-desc">1,9 Mt/an de paille en Normandie seule, mais bocage en fort recul depuis les remembrements — mix à deux sources moins robuste qu'à l'Ouest bocager. Les coopératives céréalières (Invivo, Axereal) peuvent structurer directement l'approvisionnement paille.</div>
+      </div>
+      <div class="subzone-card" style="border-left:3px solid var(--paille-mid)">
+        <div class="sz-n" style="color:var(--paille-clair)">10</div>
+        <div class="sz-title">Nouvelle-Aquitaine</div>
+        <div class="sz-sites" style="color:var(--paille-clair)">Dordogne · Lot-et-Garonne · Charente (hors Landes strict)</div>
+        <div class="sz-desc">Le massif des Landes (1 Mha de pin maritime) est énorme mais le pin produit des résines modifiant le syngas — à valider en Phase 0. Positionnement préférentiel en Dordogne : forêts feuillues mixtes, bocage périgourdin, résidus de maïs — profil plus favorable.</div>
+      </div>
+      <div class="subzone-card" style="border-left:3px solid var(--paille-mid)">
+        <div class="sz-n" style="color:var(--paille-clair)">10</div>
+        <div class="sz-title">Bourgogne-Franche-Comté</div>
+        <div class="sz-sites" style="color:var(--paille-clair)">Châtillonnais · Morvan · Jura</div>
+        <div class="sz-desc">Forêts feuillues de haute qualité, bonne desserte, réseau GRDF développé. Contrainte principale : filière bois d'œuvre structurée (tonnellerie, merrains) déjà en place — les sites doivent cibler les flux non concurrents (rémanents, bois secs non commerciaux).</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- §5 — ZONE C -->
+<section>
+  <div class="container">
+    <div class="stag reveal" style="color:var(--feu-mid)">Zone C · Spéciale incendie · ~10 sites</div>
+    <h2 class="reveal">La zone <em style="color:#ff9d6a">paradoxale</em></h2>
+    <p class="lead reveal">Les territoires méditerranéens à fort risque incendie ont d'abord été exclus de l'analyse, puis reconsidérés pour une raison fondamentale : l'absence de débouché économique pour la biomasse combustible est précisément ce qui l'accumule et alimente les grands feux. La pyrogazéification devient l'outil qui rend la sylviculture préventive économiquement viable sans subvention — pas la victime du problème.</p>
+
+    <div class="kpi-grid reveal">
+      <div class="kpi-card" style="border-color:rgba(196,90,26,.25);background:rgba(196,90,26,.05)">
+        <div class="kpi-val" style="color:var(--feu-mid)">4</div>
+        <div class="kpi-unit">territoires identifiés</div>
+        <div class="kpi-lbl">Gard/Hérault · Var intérieur · Corse intérieure · Ardèche-Drôme</div>
+      </div>
+      <div class="kpi-card" style="border-color:rgba(196,90,26,.25);background:rgba(196,90,26,.05)">
+        <div class="kpi-val" style="color:var(--feu-mid)">60–80 %</div>
+        <div class="kpi-unit">subventions DFCI</div>
+        <div class="kpi-lbl">Débroussaillage éligible — cofinancement additionnel inexistant en Zone A/B</div>
+      </div>
+      <div class="kpi-card" style="border-color:rgba(196,90,26,.25);background:rgba(196,90,26,.05)">
+        <div class="kpi-val" style="color:var(--feu-mid)">60–90j</div>
+        <div class="kpi-unit">stock tampon requis</div>
+        <div class="kpi-lbl">vs 30–45 jours en Zone A/B — aléa incendie imprévisible</div>
+      </div>
+    </div>
+
+    <div class="box box-feu reveal">
+      <strong>Renversement du modèle :</strong> au lieu que l'État paie pour qu'on enlève la biomasse combustible, le site paie le propriétaire forestier pour qu'il l'apporte. Le plan de massif DFCI pilote la collecte — le site s'y adapte, devenant prestataire de service DFCI et non simple consommateur de biomasse. Chaque site est co-signé par l'opérateur et le service départemental DFCI, avec audit annuel de la réduction du risque incendie.
+    </div>
+
+    <div class="renvoi-grid reveal">
+      <a href="zone-c-incendie.html" class="renvoi-card" style="border-color:rgba(196,90,26,.25)">
+        <div class="rc-tag" style="color:var(--feu-mid)">Démonstrateur complet</div>
+        <div class="rc-title">Zone C — Gard (30)</div>
+        <div class="rc-desc">Le renversement économique en détail : gisement 4 sources, 5 flux de valeur, coûts évités, gouvernance Phase 0.</div>
+      </a>
+      <a href="zone-pyrenees-orientales.html" class="renvoi-card" style="border-color:rgba(196,90,26,.25)">
+        <div class="rc-tag" style="color:var(--feu-mid)">Second cas Zone C</div>
+        <div class="rc-title">Pyrénées-Orientales — Tramontane</div>
+        <div class="rc-desc">Un contexte climatique différent : vent de Tramontane, coopération transfrontalière France-Espagne.</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- §6 — ZONE D -->
+<section class="alt">
+  <div class="container">
+    <div class="stag reveal" style="color:var(--exclu-clair)">Zone D · Exclue</div>
+    <h2 class="reveal">Les plaines agricoles <em style="color:var(--exclu-clair)">sans biomasse ligneuse</em></h2>
+    <p class="lead reveal">Territoires où le gisement ligneux (forêt + bocage) est structurellement insuffisant, même en combinant toutes les sources. La paille seule ne peut constituer l'intégralité d'un gisement de site : qualité trop homogène, fenêtre de récolte concentrée sur 4–6 semaines, variabilité inter-annuelle élevée.</p>
+
+    <table class="data-table reveal">
+      <thead><tr><th>Territoire</th><th>Raison d'exclusion</th><th>Alternative proposée</th></tr></thead>
+      <tbody>
+        <tr><td>Beauce (Eure-et-Loir, Loiret)</td><td class="td-excl">Boisement &lt; 10 % — gisement mono-source</td><td>Méthanisation (CIVE, effluents) ou paille en appoint Zone A/B</td></tr>
+        <tr><td>Plaine alsacienne (Bas-Rhin)</td><td class="td-excl">Bocage inexistant — forêts vosgiennes trop éloignées du réseau</td><td>Sites Zone A repositionnés en Vosges / Haut-Rhin</td></tr>
+        <tr><td>Île-de-France</td><td class="td-excl">Pression foncière extrême — forêts protégées non mobilisables</td><td>Hors périmètre — méthanisation des biodéchets urbains</td></tr>
+        <tr><td>Brie champenoise (Marne, Aube)</td><td class="td-excl">Grandes cultures sans massif forestier</td><td>Méthanisation agricole (effluents viticoles + CIVE)</td></tr>
+      </tbody>
+    </table>
+    <p class="body reveal" style="font-size:.82rem">L'exclusion de la Zone D n'est pas définitive — c'est une question de priorité. Si les 150 sites de Zones A, B et C démontrent leur viabilité sur 2029–2040, une Phase 2 pourrait explorer des sites mixtes pyrogazéification/méthanisation dans certains territoires de Zone D, avec des seuils de gisement bois revus à la baisse.</p>
+  </div>
+</section>
+
+<!-- §7 — RÉPARTITION NATIONALE -->
+<section>
+  <div class="container">
+    <div class="stag reveal">Répartition et calendrier</div>
+    <h2 class="reveal">150 sites, <em>deux phases</em> de déploiement</h2>
+    <p class="lead reveal">35 sites en Phase 1 (2029–2033) exclusivement en Zone A — validation industrielle sur le risque logistique minimal — avant tout déploiement en Zone B et C en Phase 2 (2034–2040). Cette séquence protège le programme contre un échec précoce sur des sites plus complexes.</p>
+
+    <table class="data-table reveal">
+      <thead><tr><th>Territoire</th><th>Zone</th><th>Sites</th><th>Phase 1 (29–33)</th><th>Phase 2 (34–40)</th></tr></thead>
+      <tbody>
+        <tr><td>Grand Ouest bocager</td><td class="td-val">A</td><td class="td-val">55</td><td>20</td><td>35</td></tr>
+        <tr><td>Grand Est forestier</td><td class="td-val">A</td><td class="td-val">30</td><td>8</td><td>22</td></tr>
+        <tr><td>Massif Central</td><td class="td-val">A</td><td class="td-val">25</td><td>5</td><td>20</td></tr>
+        <tr><td>Normandie-Picardie céréalière</td><td>B</td><td>10</td><td>2</td><td>8</td></tr>
+        <tr><td>Nouvelle-Aquitaine (hors Landes)</td><td>B</td><td>10</td><td>0</td><td>10</td></tr>
+        <tr><td>Bourgogne-Franche-Comté</td><td>B</td><td>10</td><td>0</td><td>10</td></tr>
+        <tr><td>Zones méditerranéennes (DFCI)</td><td style="color:var(--feu-mid)">C</td><td style="color:var(--feu-mid)">10</td><td>0</td><td>10</td></tr>
+        <tr style="font-weight:500"><td><strong>TOTAL A+B+C</strong></td><td>—</td><td class="td-val"><strong>150</strong></td><td><strong>35</strong></td><td><strong>115</strong></td></tr>
+      </tbody>
+    </table>
+    <div class="phase-bar reveal"><div class="phase-1" style="width:23%"></div><div class="phase-2" style="width:77%"></div></div>
+    <p style="font-size:.72rem;color:var(--gris);margin-top:.4rem">35 sites Phase 1 (23 %) — exclusivement Zone A · 115 sites Phase 2 (77 %) — Zones A, B et C</p>
+  </div>
+</section>
+
+<!-- §8 — PRÉALABLES -->
+<section class="alt">
+  <div class="container">
+    <div class="stag reveal">Avant tout engagement</div>
+    <h2 class="reveal">Trois préalables <em>non négociables</em></h2>
+    <p class="lead reveal">Cette note constitue un cadre d'analyse stratégique — pas une localisation définitive. Avant tout engagement de Phase 1 sur un site précis :</p>
+
+    <div class="prealable-grid reveal">
+      <div class="prealable-card">
+        <div class="pr-n">1</div>
+        <div class="pr-body">
+          <div class="pr-title">Étude SIG département par département</div>
+          <div class="pr-desc">Pour chaque bassin candidat, soustraire du gisement théorique : usages bois-énergie existants, zones Natura 2000, refus de contractualisation attendus (40–60 % des propriétaires sollicités), contraintes d'accès routier. Le gisement net mobilisable n'est connu qu'après cette soustraction.</div>
+        </div>
+      </div>
+      <div class="prealable-card">
+        <div class="pr-n">2</div>
+        <div class="pr-body">
+          <div class="pr-title">Cartographie nationale des usages concurrents</div>
+          <div class="pr-desc">La faisabilité d'un site isolé (étude Normandie) ne démontre pas que 150 sites sont faisables simultanément sans tensions cumulées sur la ressource et les prix. Une cartographie nationale croisant gisement et usages existants est la prochaine étape analytique indispensable.</div>
+        </div>
+      </div>
+      <div class="prealable-card">
+        <div class="pr-n">3</div>
+        <div class="pr-body">
+          <div class="pr-title">Accord formel DFCI pour les sites de Zone C</div>
+          <div class="pr-desc">Aucun site de Zone C ne doit démarrer sans un accord co-signé opérateur / service départemental DFCI / DRAAF, définissant zones de récolte prioritaires, volumes garantis, protocole d'audit du risque incendie et mécanismes de compensation en cas de sinistre.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- §9 — DOCUMENT + RENVOIS -->
+<section>
+  <div class="container">
+    <div class="stag-vert reveal">Documentation et démonstrateurs</div>
+    <h2 class="reveal">Ce que cette analyse <em>change dans le corpus</em></h2>
+    <p class="lead reveal">Au-delà d'un programme énergétique, Résilience est aussi un programme de gestion des risques naturels. Les 10 sites de Zone C ne produisent pas seulement du biométhane — ils réduisent structurellement le risque d'incendie sur des millions d'hectares actuellement non gérés. Un argument pour Piednoir (OPECST) et les ministères de l'Agriculture et de l'Intérieur, au-delà du seul ministère de l'Énergie.</p>
+
+    <div style="margin:2rem 0" class="reveal">
+      <a href="Positionnement_150_Sites_Pyrogazeification_V1.pdf" target="_blank" download
+         style="display:block;padding:1.8rem;border:1px solid rgba(184,150,46,.3);background:rgba(184,150,46,.06);text-decoration:none;transition:border-color .3s"
+         onmouseover="this.style.borderColor='#f0d580'" onmouseout="this.style.borderColor='rgba(184,150,46,.3)'">
+        <div style="font-size:.65rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);margin-bottom:.6rem">PDF · Note complète · V1</div>
+        <div style="font-family:var(--serif);font-size:1.05rem;color:var(--blanc);margin-bottom:.4rem">Positionnement territorial des 150 sites de pyrogazéification</div>
+        <div style="font-size:.8rem;color:rgba(240,244,241,.55);line-height:1.55">Matrice complète des critères · 10 territoires détaillés · calendrier de déploiement · préalables SIG · Juin 2026</div>
+      </a>
+    </div>
+
+    <div class="renvoi-grid reveal">
+      <a href="demonstrateurs.html" class="renvoi-card">
+        <div class="rc-tag">Vue d'ensemble</div>
+        <div class="rc-title">Tous les démonstrateurs</div>
+        <div class="rc-desc">Normandie, Landes, Pyrénées-Orientales, Gard — les territoires étudiés en détail.</div>
+      </a>
+      <a href="zone-normandie.html" class="renvoi-card">
+        <div class="rc-tag">Zone A · Grand Ouest</div>
+        <div class="rc-title">Normandie — Bocage</div>
+        <div class="rc-desc">Le cas d'étude Zone A : logistique biomasse, mix trois sources, taux de mobilisation réaliste.</div>
+      </a>
+      <a href="zone-landes.html" class="renvoi-card">
+        <div class="rc-tag">Zone B · Nouvelle-Aquitaine</div>
+        <div class="rc-title">Landes — Pin maritime</div>
+        <div class="rc-desc">Résilience post-tempête : la fonction d'amortisseur face aux événements extrêmes.</div>
+      </a>
+      <a href="pyrogazeification-resilience.html" class="renvoi-card">
+        <div class="rc-tag">Hub technique</div>
+        <div class="rc-title">Pyrogazéification — la filière</div>
+        <div class="rc-desc">L'architecture complète : économie, verrou goudrons, acteurs Phase 0→1, biochar certifié.</div>
+      </a>
+      <a href="index.html" class="renvoi-card">
+        <div class="rc-tag">Vue d'ensemble</div>
+        <div class="rc-title">Programme Résilience V11</div>
+        <div class="rc-desc">L'architecture complète : électricité + gaz + biochar + ÉREV + aviation.</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Programme Résilience V11 · Positionnement territorial</div>
+  <p>150 sites de pyrogazéification · Zones A, B, C, D · Note de positionnement stratégique · Juin 2026</p>
+  <p style="font-size:.7rem;color:#6a5a2a;margin-top:.4rem">Estimations indicatives à affiner par étude SIG département par département — cadre d'analyse stratégique, pas une localisation définitive</p>
+</footer>
+
+<script>
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*65);obs.unobserve(e.target);}});
+},{threshold:0.06});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
