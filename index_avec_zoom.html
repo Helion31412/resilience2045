@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Résilience 2045 — Programme d'architecture énergétique française</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Source+Sans+3:wght@400;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0B2A52; --navy-2:#16345A; --blue:#1566A8; --blue-tint:#E8F1FA;
+    --green:#3A6E2F; --green-tint:#EAF3E6;
+    --amber:#B87225; --amber-tint:#F6EBD9;
+    --purple:#5C509A; --purple-tint:#EDEAF7;
+    --teal:#1A6B72; --teal-tint:#E2F2F3;
+    --brown:#7A5230; --brown-tint:#F0E4D6;
+    --ink:#1E2E24; --ink-soft:#5A6A72; --line:#DDE3E8; --white:#FFF; --off:#F4F6F8;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--white);color:var(--ink);font-family:'Source Sans 3',sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+  h1,h2,h3{font-family:'Fraunces',serif;font-weight:600;margin:0;letter-spacing:-0.01em;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 28px;}
+  .reveal{opacity:0;transform:translateY(10px);transition:opacity .55s ease,transform .55s ease;}
+  .reveal.in{opacity:1;transform:none;}
+
+  /* ===== TOPBAR ===== */
+  .topbar{
+    position:sticky;top:0;z-index:20;
+    background:rgba(11,42,82,0.97);backdrop-filter:blur(8px);
+    border-bottom:1px solid rgba(255,255,255,.08);padding:12px 0;
+  }
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;}
+  .brand{display:flex;align-items:center;gap:10px;}
+  .brand-text{font-family:'Fraunces',serif;font-size:17px;font-weight:600;color:#fff;line-height:1.1;}
+  .brand-text small{display:block;font-family:'Source Sans 3',sans-serif;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-top:2px;}
+  .topbar nav{display:flex;gap:3px;flex-wrap:wrap;justify-content:flex-end;}
+  .topbar nav a{
+    font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;
+    color:rgba(255,255,255,.68);padding:5px 10px;border-radius:2px;
+    transition:background .15s,color .15s;white-space:nowrap;
+  }
+  .topbar nav a:hover{background:rgba(255,255,255,.13);color:#fff;}
+  .topbar nav a.hi{color:#F6BD6A;}
+  .topbar nav a.hi:hover{background:rgba(246,189,106,.15);color:#F6BD6A;}
+
+  /* ===== HERO IMAGE — zoom in place (x1 à x2) ===== */
+  .hero-img{
+    width:100%;background:var(--navy);
+    position:relative;overflow:hidden;
+    touch-action:none;
+  }
+  .hero-img .hero-frame{
+    width:100%;max-width:1240px;margin:0 auto;
+    overflow:hidden;position:relative;cursor:zoom-in;
+  }
+  .hero-img .hero-frame.zoomed{cursor:grab;}
+  .hero-img .hero-frame.dragging{cursor:grabbing;}
+  .hero-img img{
+    width:100%;display:block;
+    transform-origin:0 0;will-change:transform;
+    user-select:none;-webkit-user-drag:none;
+  }
+  .hero-zoom-controls{
+    position:absolute;bottom:14px;right:14px;z-index:5;
+    display:flex;align-items:center;gap:2px;
+    background:rgba(11,42,82,.85);border:1px solid rgba(255,255,255,.15);
+    border-radius:9px;padding:5px;backdrop-filter:blur(6px);
+  }
+  .hero-zoom-controls .hz-btn{
+    width:32px;height:32px;display:flex;align-items:center;justify-content:center;
+    background:transparent;border:none;color:#fff;cursor:pointer;border-radius:6px;
+    font-size:16px;font-family:'IBM Plex Mono',monospace;transition:background .15s;
+    line-height:1;
+  }
+  .hero-zoom-controls .hz-btn:hover{background:rgba(255,255,255,.14);}
+  .hero-zoom-controls .hz-btn:disabled{opacity:.35;cursor:default;}
+  .hero-zoom-controls .hz-btn:disabled:hover{background:transparent;}
+  .hz-level{
+    min-width:40px;text-align:center;font-family:'IBM Plex Mono',monospace;
+    font-size:11px;color:rgba(255,255,255,.85);
+  }
+  .zoom-hint{
+    position:absolute;bottom:14px;left:14px;z-index:5;
+    background:rgba(11,42,82,.82);color:#fff;font-size:12px;font-weight:600;
+    padding:7px 12px;border-radius:20px;display:flex;align-items:center;gap:6px;
+    pointer-events:none;opacity:.92;letter-spacing:.02em;
+    transition:opacity .2s;
+  }
+  .zoom-hint svg{flex-shrink:0;}
+  .zoom-hint.faded{opacity:0;}
+  @media(max-width:560px){
+    .zoom-hint{font-size:10.5px;padding:6px 9px;bottom:10px;left:10px;}
+    .hero-zoom-controls{bottom:10px;right:10px;}
+    .hz-btn{width:28px;height:28px;font-size:14px;}
+  }
+
+  /* ===== CORRECTIONS ===== */
+  .corrections{background:var(--navy-2);border-top:2px solid var(--amber);padding:13px 0;}
+  .corrections .wrap{display:flex;gap:32px;flex-wrap:wrap;}
+  .corr{display:flex;gap:10px;align-items:flex-start;max-width:530px;}
+  .corr .tag{flex-shrink:0;background:var(--amber);color:#fff;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 7px;margin-top:2px;white-space:nowrap;}
+  .corr p{margin:0;font-size:12.5px;color:rgba(255,255,255,.8);line-height:1.5;}
+  .corr strong{color:#fff;}
+
+  /* ===== ENTRY LEVELS ===== */
+  .section-label{padding:52px 0 20px;text-align:center;}
+  .section-label h2{font-size:clamp(20px,2.4vw,26px);color:var(--navy);margin-bottom:8px;}
+  .section-label p{color:var(--ink-soft);max-width:620px;margin:0 auto;font-size:15px;}
+
+  .entry-levels{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:4px;}
+  .entry-card{
+    padding:30px 26px 26px;display:flex;flex-direction:column;gap:7px;
+    position:relative;overflow:hidden;transition:transform .18s ease, box-shadow .18s ease;
+    border-radius:4px;
+  }
+  .e1{ background:linear-gradient(135deg,#EBF3FC 0%,#D6E8F7 100%); border:1px solid #B8D4EE; }
+  .e2{ background:linear-gradient(135deg,#EBF4E8 0%,#D4EBCF 100%); border:1px solid #B0D6A8; }
+  .e3{ background:linear-gradient(135deg,#EDEAF7 0%,#DDD8F0 100%); border:1px solid #C0B8E4; }
+  .entry-card:hover{ transform:translateY(-3px); box-shadow:0 8px 24px rgba(11,42,82,0.12); }
+  .entry-card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;}
+  .e1::before{background:var(--blue);}
+  .e2::before{background:var(--green);}
+  .e3::before{background:var(--purple);}
+  .entry-num{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;}
+  .e1 .entry-num{color:#0D4A8C;}
+  .e2 .entry-num{color:#1A4A10;}
+  .e3 .entry-num{color:#35206A;}
+  .entry-card h3{font-size:19px;line-height:1.25;}
+  .e1 h3{color:#071E3A;}
+  .e2 h3{color:#0E2808;}
+  .e3 h3{color:#1E0E58;}
+  .entry-card .for{font-size:11.5px;font-style:italic;}
+  .e1 .for{color:#1A4A7A;}
+  .e2 .for{color:#1A4A10;}
+  .e3 .for{color:#38208A;}
+  .entry-card p{font-size:13.5px;margin:2px 0 0;flex-grow:1;}
+  .e1 p{color:#0E2E4E;}
+  .e2 p{color:#0E2E0E;}
+  .e3 p{color:#221058;}
+  .entry-cta{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin-top:6px;transition:gap .15s;}
+  .e1 .entry-cta{color:var(--blue);}
+  .e2 .entry-cta{color:var(--green);}
+  .e3 .entry-cta{color:var(--purple);}
+  .entry-card:hover .entry-cta{gap:10px;}
+
+  /* ===== THEME GRID ===== */
+  .themes-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);
+    gap:14px; margin-top:14px;
+  }
+  .theme-card{
+    padding:22px 20px 18px;display:flex;flex-direction:column;gap:5px;
+    transition:transform .18s ease, box-shadow .18s ease;
+    border-radius:4px;
+  }
+  .theme-card:nth-child(1){ background:linear-gradient(135deg,#EBF3FC,#DCE9F5); border:1px solid #B8D4EE; }
+  .theme-card:nth-child(2){ background:linear-gradient(135deg,#EBF4E8,#D8EDD4); border:1px solid #B0D4A8; }
+  .theme-card:nth-child(3){ background:linear-gradient(135deg,#E2F2F3,#D0EAEC); border:1px solid #A4D0D4; }
+  .theme-card:nth-child(4){ background:linear-gradient(135deg,#F0E9E0,#E8DDD2); border:1px solid #C8B090; }
+  .theme-card:nth-child(5){ background:linear-gradient(135deg,#F6EBD9,#EEE0C8); border:1px solid #D4B07A; }
+  .theme-card:nth-child(6){ background:linear-gradient(135deg,#EDEAF7,#E2DCF2); border:1px solid #C0B4E4; }
+  .theme-card:hover{ transform:translateY(-2px); box-shadow:0 6px 20px rgba(11,42,82,0.10); }
+  .th-head{display:flex;align-items:center;gap:10px;margin-bottom:6px;}
+  .th-ic{width:34px;height:34px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .theme-card h3{font-size:15px;color:var(--navy);font-weight:700;}
+  .th-links{display:flex;flex-direction:column;}
+  .th-link{
+    display:flex;align-items:center;gap:6px;font-size:13px;color:#1E3040;
+    padding:7px 0;border-bottom:1px solid rgba(0,0,0,.1);line-height:1.35;
+    transition:color .15s;font-weight:500;
+  }
+  .th-link:last-child{border-bottom:none;}
+  .th-link:hover{color:var(--navy);}
+  .th-link .badge{
+    flex-shrink:0;font-size:9.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+    padding:1px 5px;border-radius:2px;margin-left:auto;
+  }
+  .badge-pdf{background:#E8D8C0;color:#8A5010;}
+  .badge-html{background:#C8DCEE;color:#0D4A8C;}
+  .th-link .arr{opacity:.5;margin-left:4px;transition:opacity .15s,transform .15s;font-size:11px;}
+  .th-link:hover .arr{opacity:1;transform:translateX(2px);}
+
+  /* ===== PILLARS BAND ===== */
+  .pillars-band{padding:0;background:var(--off);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .pillar-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:0;}
+  .pillar{
+    display:flex;flex-direction:column;align-items:flex-start;gap:10px;
+    padding:22px 18px 20px;border-right:1px solid rgba(255,255,255,.15);
+    position:relative;overflow:hidden;cursor:pointer;
+    transition:opacity .18s, transform .18s;
+  }
+  .pillar:hover{opacity:.85;transform:translateY(-2px);}
+  .pillar:last-child{border-right:none;}
+  .pillar-ic{
+    width:44px;height:44px;border-radius:8px;display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;opacity:.92;
+  }
+  .pillar-body{display:flex;flex-direction:column;gap:5px;}
+  .pillar-label{font-size:12.5px;font-weight:700;line-height:1.25;}
+  .pillar-text{font-size:11.5px;line-height:1.5;opacity:.82;}
+
+  .p-blue{background:#1E4A8C;color:#E8F1FA;}
+  .p-blue .pillar-ic{background:rgba(255,255,255,.12);color:#9FC4E8;}
+  .p-green{background:#2D5C22;color:#E8F3E4;}
+  .p-green .pillar-ic{background:rgba(255,255,255,.12);color:#A8D5A0;}
+  .p-brown{background:#6B4420;color:#F0E2D0;}
+  .p-brown .pillar-ic{background:rgba(255,255,255,.12);color:#D4AA80;}
+  .p-teal{background:#145860;color:#DCF0F2;}
+  .p-teal .pillar-ic{background:rgba(255,255,255,.12);color:#90CDD4;}
+  .p-amber{background:#8A5010;color:#FAE8D0;}
+  .p-amber .pillar-ic{background:rgba(255,255,255,.12);color:#F0B870;}
+  .p-purple{background:#4A3A80;color:#EAE6F8;}
+  .p-purple .pillar-ic{background:rgba(255,255,255,.12);color:#B8A8E8;}
+
+  /* ===== STATS ===== */
+  .stats-band{background:var(--navy);padding:40px 0;margin-top:1px;}
+  .stats-inner{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;}
+  .stat{text-align:center;padding:0 8px;border-right:1px solid rgba(255,255,255,.1);}
+  .stat:last-child{border-right:none;}
+  .stat .sv{display:block;font-family:'IBM Plex Mono',monospace;font-size:clamp(15px,1.7vw,21px);font-weight:600;color:#fff;margin-bottom:5px;line-height:1.2;}
+  .stat .sl{font-size:11px;color:rgba(200,218,236,.72);line-height:1.4;}
+
+  /* ===== QUOTE ===== */
+  .quote-band{background:var(--navy-2);padding:42px 0;text-align:center;}
+  .quote-band blockquote{
+    font-family:'Fraunces',serif;font-weight:500;font-style:italic;
+    font-size:clamp(16px,2vw,21px);color:#fff;max-width:780px;margin:0 auto;line-height:1.55;
+  }
+  .quote-band blockquote::before{content:"\201C";color:rgba(200,218,236,.35);font-size:2.2em;line-height:0;vertical-align:-.3em;}
+  .quote-band blockquote::after{content:"\201D";color:rgba(200,218,236,.35);font-size:2.2em;line-height:0;vertical-align:-.3em;}
+
+  footer{border-top:1px solid var(--line);padding:18px 0 28px;font-size:12px;color:var(--ink-soft);}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+
+  @media(max-width:1100px){.pillar-grid{grid-template-columns:repeat(3,1fr);}.pillar{border-bottom:1px solid rgba(255,255,255,.1);}}
+  @media(max-width:900px){
+    .entry-levels{grid-template-columns:1fr;}
+    .themes-grid{grid-template-columns:repeat(2,1fr);}
+    .stats-inner{grid-template-columns:repeat(2,1fr);}
+    .stat{border-right:none;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:16px;}
+  }
+  @media(max-width:560px){
+    .topbar nav{display:none;}
+    .pillar-grid{grid-template-columns:repeat(2,1fr);}
+    .themes-grid{grid-template-columns:1fr;}
+    .stats-inner{grid-template-columns:1fr;}
+    .corrections .wrap{flex-direction:column;gap:14px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== TOPBAR ===== -->
+<div class="topbar">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+        <circle cx="14" cy="14" r="13" stroke="rgba(255,255,255,.35)" stroke-width="1"/>
+        <path d="M14 22C14 22 7 17.5 7 12C7 8.5 10 6 14 6C18 6 21 8.5 21 12C21 17.5 14 22 14 22Z" fill="#3A6E2F"/>
+        <line x1="14" y1="20" x2="14" y2="10" stroke="white" stroke-width="1.2"/>
+      </svg>
+      <div class="brand-text">Résilience 2045<small>Énergie · Climat · Territoires</small></div>
+    </a>
+    <nav>
+      <a href="fondements.html">Pourquoi</a>
+      <a href="systeme-energetique.html">Système</a>
+      <a href="pyrogazeification-resilience.html">Pyrogazéification</a>
+      <a href="carbone-resilience.html">Carbone</a>
+      <a href="trajectoires-co2.html">CO₂ 2200</a>
+      <a href="voiture-erev.html">ÉREV</a>
+      <a href="finances-publiques.html">Finances</a>
+      <a href="documents-liste.html" class="hi">Documents →</a>
+      <a href="lexique.html">Lexique</a>
+    </nav>
+  </div>
+</div>
+
+<!-- ===== INFOGRAPHIE PLEINE LARGEUR — zoom in place (x1 à x2) ===== -->
+<div class="hero-img">
+  <div class="hero-frame" id="hero-frame">
+    <img id="hero-schema" src="schema_resilience_web.jpg"
+         alt="Infographie Résilience 2045 — système énergétique sobre, résilient et carbone-négatif"
+         loading="eager"/>
+  </div>
+  <div class="zoom-hint" id="zoom-hint">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
+    Molette ou pincement pour zoomer un détail
+  </div>
+  <div class="hero-zoom-controls">
+    <button class="hz-btn" id="hz-out" aria-label="Zoom arrière">−</button>
+    <span class="hz-level" id="hz-level">100%</span>
+    <button class="hz-btn" id="hz-in" aria-label="Zoom avant">+</button>
+    <button class="hz-btn" id="hz-reset" aria-label="Réinitialiser" style="font-size:13px;" disabled>⟲</button>
+  </div>
+</div>
+
+<!-- ===== CORRECTIONS FACTUELLES ===== -->
+<div class="corrections">
+  <div class="wrap">
+    <div class="corr">
+      <span class="tag">Précision</span>
+      <p>Le bio-CH₄ de Résilience <strong>complète et renforce l'électrification</strong> — il cible les usages où l'électrique est structurellement insuffisant. Il ne vise pas à remplacer le gaz fossile actuel : la biomasse disponible ne le permettrait pas à cette échelle.</p>
+    </div>
+    <div class="corr">
+      <span class="tag">Précision</span>
+      <p>La séquestration carbone nette visée est de <strong>20 à 23 Mt CO₂eq/an par le biochar</strong> (EBC/Puro.earth, 100–1 000 ans). Potentiel additionnel via CO₂ biogénique piégé par voie géologique ou carbonatation — non encore comptabilisé dans cette fourchette.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== BLOC COLORÉ SOUS LE SCHÉMA ===== -->
+<div class="pillars-band">
+  <div class="wrap">
+    <div class="pillar-grid">
+
+      <a class="pillar p-blue reveal" href="systeme-energetique.html#b1" style="text-decoration:none">
+        <div class="pillar-ic">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z"/></svg>
+        </div>
+        <div class="pillar-body">
+          <div class="pillar-label">Soutenir le réseau</div>
+          <div class="pillar-text">40 GW de demande effacée passivement aux pics — zéro infrastructure supplémentaire</div>
+        </div>
+      </a>
+
+      <a class="pillar p-green reveal" href="systeme-energetique.html#b2" style="text-decoration:none">
+        <div class="pillar-ic">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="9" width="12" height="8" rx="1"/><path d="M14 11h4l3 3v3h-7z"/><circle cx="6.5" cy="19" r="1.6"/><circle cx="17" cy="19" r="1.6"/></svg>
+        </div>
+        <div class="pillar-body">
+          <div class="pillar-label">Décarboner les transports lourds</div>
+          <div class="pillar-text">Camions · tracteurs · aviation · maritime — là où l'électrique n'arrive pas à l'horizon 2045</div>
+        </div>
+      </a>
+
+      <a class="pillar p-brown reveal" href="systeme-energetique.html#b3" style="text-decoration:none">
+        <div class="pillar-ic">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20V10"/><path d="M12 10C12 10 6 9 6 4c5 0 6 4 6 6z"/><path d="M12 14c0 0 6-1 6-6-5 0-6 4-6 6z"/><path d="M4 20h16"/></svg>
+        </div>
+        <div class="pillar-body">
+          <div class="pillar-label">Restaurer les sols agricoles</div>
+          <div class="pillar-text">Biochar certifié EBC — séquestration 100–1 000 ans · fertilité · rétention d'eau</div>
+        </div>
+      </a>
+
+      <a class="pillar p-teal reveal" href="systeme-energetique.html#b4" style="text-decoration:none">
+        <div class="pillar-ic">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 17l4-8 4 4 4-6 4 4"/><path d="M3 21h18"/></svg>
+        </div>
+        <div class="pillar-body">
+          <div class="pillar-label">Retirer du CO₂ de l'atmosphère</div>
+          <div class="pillar-text">20–23 Mt CO₂/an par biochar + potentiel additionnel CO₂ biogénique géologique</div>
+        </div>
+      </a>
+
+      <a class="pillar p-amber reveal" href="systeme-energetique.html#b5" style="text-decoration:none">
+        <div class="pillar-ic">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4v5h5M20 20v-5h-5"/><path d="M4.6 15A8 8 0 0019.4 9M19.4 9A8 8 0 004.6 15"/></svg>
+        </div>
+        <div class="pillar-body">
+          <div class="pillar-label">Valoriser les déchets &amp; la biomasse</div>
+          <div class="pillar-text">Gisement national 262 TWh/an · 9 filières · 150 sites · zéro concurrence alimentaire</div>
+        </div>
+      </a>
+
+      <a class="pillar p-purple reveal" href="systeme-energetique.html#b6" style="text-decoration:none">
+        <div class="pillar-ic">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4z"/></svg>
+        </div>
+        <div class="pillar-body">
+          <div class="pillar-label">Renforcer la souveraineté</div>
+          <div class="pillar-text">Ressources 100 % françaises · non délocalisables · −250/350 Md€ vs tout-BEV</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</div>
+
+<!-- ===== PAR OÙ COMMENCER ===== -->
+<div class="section-label">
+  <div class="wrap reveal">
+    <h2>Par où commencer ?</h2>
+    <p>Ce site a une logique de lecture — choisissez votre niveau d'entrée.</p>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="entry-levels reveal">
+
+    <a class="entry-card e1" href="fondements.html">
+      <div class="entry-num">1 — 3 minutes</div>
+      <h3>Cinq crises simultanées. Une même source.</h3>
+      <div class="for">Pour l'élu · le journaliste · le citoyen curieux</div>
+      <p>Les cinq contraintes structurelles que les scénarios officiels n'adressent pas. Puissance, matériaux, réseau, carbone des sols, mobilité lourde.</p>
+      <span class="entry-cta">Commencer ici →</span>
+    </a>
+
+    <a class="entry-card e2" href="systeme-energetique.html">
+      <div class="entry-num">2 — 10 minutes</div>
+      <h3>Six briques qui forment un système cohérent.</h3>
+      <div class="for">Pour l'ingénieur · le décideur · l'agriculteur</div>
+      <p>Bio-CH₄ · Biochar · ÉREV · Séquestration carbone · Double dividende agronomique. Les six piliers du programme et leurs interactions.</p>
+      <span class="entry-cta">Voir le système →</span>
+    </a>
+
+    <a class="entry-card e3" href="documents-liste.html">
+      <div class="entry-num">3 — 30+ minutes</div>
+      <h3>Notes techniques &amp; analyses</h3>
+      <div class="for">Pour l'expert · le chercheur · le cabinet ministériel</div>
+      <p>Plus de dix documents, annexes de validation, réponses aux objections institutionnelles. Chiffres sourcés, hypothèses explicitées.</p>
+      <span class="entry-cta">Accéder aux documents →</span>
+    </a>
+
+  </div>
+</div>
+
+<!-- ===== EXPLORER PAR THÈME ===== -->
+<div class="section-label" style="padding-top:48px;">
+  <div class="wrap reveal">
+    <h2>Explorer par thème</h2>
+    <p>Chaque section du programme est accessible directement.</p>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="themes-grid">
+
+    <!-- 1. CONSTAT & FONDEMENTS -->
+    <div class="theme-card reveal">
+      <div class="th-head">
+        <div class="th-ic" style="background:var(--blue-tint);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <h3>Constat &amp; Fondements</h3>
+      </div>
+      <div class="th-links">
+        <a class="th-link" href="electrification-limites.html">
+          Pourquoi l'électrification seule ne suffit pas<span class="badge badge-html">page</span><span class="arr">→</span>
+        </a>
+        <a class="th-link" href="fondements.html">
+          Cinq crises simultanées. Une même source.<span class="badge badge-html">page</span><span class="arr">→</span>
+        </a>
+        <a class="th-link" href="systeme-energetique.html">
+          Six briques qui forment un système cohérent<span class="badge badge-html">page</span><span class="arr">→</span>
+        </a>
+        <a class="th-link" href="Note_Reflexion_Electrification_2030_V11.pdf" target="_blank">
+          Note — Réflexion électrification 2030<span class="badge badge-pdf">pdf</span><span class="arr">→</span>
+        </a>
+        <a class="th-link" href="Note_Cadrage_Systeme_Energetique_V11.pdf" target="_blank">
+          Note de cadrage — système énergétique V11<span class="badge badge-pdf">pdf</span><span class="arr">→</span>
+        </a>
+        <a class="th-link" href="Cadrage_Arret_Fossiles_Insuffisant_V2.pdf" target="_blank">
+          L'arrêt des fossiles seul est insuffisant<span class="badge badge-pdf">pdf</span><span class="arr">→</span>
+        </a>
+        <a class="th-link" href="Note_Positionnement_Resilience_vs_Shift_V11.pdf" target="_blank">
+          Positionnement Résilience vs Shift Project<span class="badge badge-pdf">pdf</span><span class="arr">→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- 2. ÉNERGIE, PYRO & MÉTHANISATION -->
+    <div class="theme-card reveal">
+      <div class="th-head">
+        <div class="th-ic" style="background:var(--green-tint);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M12 2C8 2 4 6 4 10c0 5 8 12 8 12s8-7 8-12c0-4-4-8-8-8z"/><circle cx="12" cy="10" r="2.5"/></svg>
+        </div>
+        <h3>Énergie, Pyrogazéification &amp; Méthanisation</h3>
+      </div>
+      <div class="th-links">
+        <a class="th-link" href="pyrogazeification-resilience.html">
+          Pyrogazéification — architecture &amp; bilan<span class="badge badge-html">page</span><span class="arr">→</span>
+        </a>
+        <a class="th-link" href="bio-ch4.html">
+          Bio-CH₄ — production &amp; usages<span class="badge badge-html">page</span><span class="arr">→</span>
+        </a>
+        <a class="th-link" href="methanisation-reforme.html">
+          Méthanisation — cahier des charges<span class="badge badge-html">page</span><span class="arr">→</span>
+        </a>
+        <a class="th-link" href="biomasse.html">
+          Gisement biomasse &amp; approvisionnement<span class="badge badge-html">page</span><span class="arr">→</span>
+        </a>
+        <a class="th-link" href="Note_Cadrage_Pyrogazeification_Systeme_Resilience_V1.pdf" target="_blank">
+          Note de cadrage pyrogazéification<span class="badge badge-pdf">pdf</span><span class="arr">→</span>
+        </a>
+        <a class="th-link" href="Positionnement_150_Sites_Pyrogazeification_V1.pdf" target="_blank">
+          150 sites — positionnement national<span class="badge badge-pdf">pdf</span><span class="arr">→</span>
+        </a>
+        <a class="th-link" href="Gisement_national_net_V3.pdf" target="_blank">
+          Gisement national net de biomasse<span class="badge badge-pdf">pdf</span><span class="arr">→</span>
+        </a>
+        <a class="th-link" href="Note_Cascade_Methanisation_Pyrolyse_V2.docx" target="_blank">
+          Cascade méthanisation → digestat → pyrolyse<span class="badge badge-pdf">docx</span><span class="arr">→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- 3. CARBONE, CLIMAT & SOLS -->
+    <div class="theme-card reveal">
+      <div class="th-head">
+        <div class="th-ic" style="background:var(--teal-tint);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2"><path d="M3 17l4-8 4 4 4-6 4 4"/><path d="M3 21h18"/></svg>
+        </div>
+        <h3>Carbone, Climat &amp; Sols</h3>
+      </div>
+      <div class="th-links">
+        <a class="th-link" href="carbone-resilience.html">
+          Carbone — architecture Résilience<span class="badge badge-html">page</span><span class="arr">→</span>
+        </a>
+        <a class="th-link" href="trajectoires-co2.html">
+          Trajectoires CO₂ atmosphérique à 2200<span class="badge badge-html">page</span><span class="arr">→</span>
+        </a>
+        <a class="th-link" href="biochar.html">
+          Biochar — séquestration &amp; amendement<span class="badge badge-html">page</span><span class="arr">→</span>
+        </a>
+        <a class="th-link" href="sequestration.html">
+          Séquestration carbone — mécanismes<span class="badge badge-html">page</span><span class="arr">→</span>
+        </a>
+        <a class="th-link" href="biodiversite.html">
+          Biodiversité &amp; climat<span class="badge badge-html">page</span><span class="arr">→</span>
+        </a>
+        <a class="th-link" href="carbone-mondial.html">
+          Carbone Résilience — mobilité mondiale<span class="badge badge-html">page</span><span class="arr">→</span>
+        </a>
+        <a class="th-link" href="carbone-champignons-resilience.html">
+          Le cycle du carbone &amp; les champignons<span class="badge badge-html">page</span><span class="arr">→</span>
+        </a>
+        <a class="th-link" href="Note_CO2_Temperatures_V4.pdf" target="_blank">
+          Note CO₂ &amp; températures V4<span class="badge badge-pdf">pdf</span><span class="arr">→</span>
+        </a>
+        <a class="th-link" href="Note_Limites_Puits_Carbone_Naturels_V2.pdf" target="_blank">
+          Pourquoi la nature seule ne suffira pas<span class="badge badge-pdf">pdf</span><span class="arr">→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- 4. MOBILITÉ & VÉHICULES -->
+    <div class="theme-card reveal">
+      <div class="th-head">
+        <div class="th-ic" style="background:#E8F4F5;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2"><rect x="2" y="9" width="12" height="8" rx="1"/><path d="M14 11h4l3 3v3h-7z"/><circle cx="6.5" cy="19" r="1.6"/><circle cx="17" cy="19" r="1.6"/></svg>
+        </div>
+        <h3>Mobilité &amp; Véhicules</h3>
+      </div>
+      <div class="th-links">
+        <a class="th-link" href="voiture-erev.html">
+          Voiture ÉREV au bio-CH₄<span class="badge badge-html">page</span><span class="arr">→</span>
+        </a>
+        <a class="th-link" href="camion-resilience.html">
+          Camion Résilience 44t<span class="badge badge-html">page</span><span class="arr">→</span>
+        </a>
+        <a class="th-link" href="tracteur-erev.html">
+          Tracteur ÉREV<span class="badge badge-html">page</span><span class="arr">→</span>
+        </a>
+        <a class="th-link" href="aviation-bio-gnl.html">
+          Aviation bio-GNL<span class="badge badge-html">page</span><span class="arr">→</span>
+        </a>
+        <a class="th-link" href="EREV_Rendements_Comparatif_V2.pdf" target="_blank">
+          Rendements ÉREV — comparatif V2<span class="badge badge-pdf">pdf</span><span class="arr">→</span>
+        </a>
+        <a class="th-link" href="Comparatif_Camions_44t_Resilience_V11.pdf" target="_blank">
+          Comparatif camions 44t<span class="badge badge-pdf">pdf</span><span class="arr">→</span>
+        </a>
+        <a class="th-link" href="Resilience_V11_Securite_Incendie_EREV_BioCH4.pdf" target="_blank">
+          Sécurité incendie — ÉREV &amp; bio-CH₄<span class="badge badge-pdf">pdf</span><span class="arr">→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- 5. FORÊTS, TERRITOIRES & BIODIVERSITÉ -->
+    <div class="theme-card reveal">
+      <div class="th-head">
+        <div class="th-ic" style="background:var(--brown-tint);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--brown)" stroke-width="2"><path d="M12 20V10"/><path d="M12 10C12 10 6 9 6 4c5 0 6 4 6 6z"/><path d="M12 14c0 0 6-1 6-6-5 0-6 4-6 6z"/><path d="M4 20h16"/></svg>
+        </div>
+        <h3>Forêts, Territoires &amp; Biodiversité</h3>
+      </div>
+      <div class="th-links">
+        <a class="th-link" href="gestion-forets.html">
+          Gestion écologique des forêts<span class="badge badge-html">page</span><span class="arr">→</span>
+        </a>
+        <a class="th-link" href="demonstrateurs.html">
+          Démonstrateurs territoriaux — atlas (Gard, Pyrénées-Orientales, Normandie…)<span class="badge badge-html">page</span><span class="arr">→</span>
+        </a>
+        <a class="th-link" href="positionnement-territorial.html">
+          Positionnement territorial des 150 sites — zones A, B, C, D<span class="badge badge-html">page</span><span class="arr">→</span>
+        </a>
+        <a class="th-link" href="biodiversite.html">
+          Biodiversité &amp; résilience climatique<span class="badge badge-html">page</span><span class="arr">→</span>
+        </a>
+        <a class="th-link" href="cooperation-internationale.html">
+          Coopération France–Espagne<span class="badge badge-html">page</span><span class="arr">→</span>
+        </a>
+        <a class="th-link" href="Cadre_Gestion_Ecologique_Forets_V11.pdf" target="_blank">
+          Cadre gestion écologique des forêts<span class="badge badge-pdf">pdf</span><span class="arr">→</span>
+        </a>
+        <a class="th-link" href="QR_Objections_Naturalistes_V3.pdf" target="_blank">
+          Q&amp;R — objections naturalistes<span class="badge badge-pdf">pdf</span><span class="arr">→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- 6. ÉCONOMIE, SOUVERAINETÉ & DOCUMENTS -->
+    <div class="theme-card reveal">
+      <div class="th-head">
+        <div class="th-ic" style="background:var(--purple-tint);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4z"/></svg>
+        </div>
+        <h3>Économie, Souveraineté &amp; Documentation</h3>
+      </div>
+      <div class="th-links">
+        <a class="th-link" href="finances-publiques.html">
+          Finances publiques — analyse comparative<span class="badge badge-html">page</span><span class="arr">→</span>
+        </a>
+        <a class="th-link" href="materiaux-critiques.html">
+          Matériaux critiques &amp; filières françaises<span class="badge badge-html">page</span><span class="arr">→</span>
+        </a>
+        <a class="th-link" href="annexe-emissions-diffuses.html">
+          Émissions diffuses — annexe<span class="badge badge-html">page</span><span class="arr">→</span>
+        </a>
+        <a class="th-link" href="Programme_Resilience_V11_Complet.pdf" target="_blank">
+          Programme V11 complet<span class="badge badge-pdf">pdf</span><span class="arr">→</span>
+        </a>
+        <a class="th-link" href="Souverainete_Energetique_V11.pdf" target="_blank">
+          Souveraineté énergétique V11<span class="badge badge-pdf">pdf</span><span class="arr">→</span>
+        </a>
+        <a class="th-link" href="Materiaux_Critiques_Transition_Energetique.pdf" target="_blank">
+          Matériaux critiques — rapport complet<span class="badge badge-pdf">pdf</span><span class="arr">→</span>
+        </a>
+        <a class="th-link" href="documents-liste.html">
+          Toutes les annexes &amp; sources<span class="badge badge-html">page</span><span class="arr">→</span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== STATS ===== -->
+<div class="stats-band">
+  <div class="wrap">
+    <div class="stats-inner">
+      <div class="stat reveal">
+        <span class="sv">≈262 TWh/an</span>
+        <span class="sl">bio-CH₄ — sur les usages où l'électrification seule est insuffisante</span>
+      </div>
+      <div class="stat reveal">
+        <span class="sv">20–23 Mt/an</span>
+        <span class="sl">CO₂ séquestré par biochar + potentiel additionnel CO₂ biogénique</span>
+      </div>
+      <div class="stat reveal">
+        <span class="sv">150 sites</span>
+        <span class="sl">pyrogazéification · 1 000 t matière sèche/j/site</span>
+      </div>
+      <div class="stat reveal">
+        <span class="sv">−250/350 Md€</span>
+        <span class="sl">économie vs trajectoire tout-BEV · CAPEX 2026–2045</span>
+      </div>
+      <div class="stat reveal">
+        <span class="sv">~2033</span>
+        <span class="sl">point de basculement — 8–12 M ÉREV · 80–100 TWh bio-CH₄/an</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CITATION ===== -->
+<div class="quote-band">
+  <div class="wrap">
+    <blockquote class="reveal">Plus on se déplace, plus on nettoie la planète et l'atmosphère.</blockquote>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span>Programme Résilience 2045 — document de travail indépendant — V11 · Mai 2026</span>
+    <span>helion31412.github.io/resilience2045</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in');});return;}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:0.1});
+  els.forEach(function(e){io.observe(e);});
+})();
+</script>
+
+<!-- ===== ZOOM INFOGRAPHIE — in place, x1 à x2 ===== -->
+<script>
+(function(){
+  var frame   = document.getElementById('hero-frame');
+  var img     = document.getElementById('hero-schema');
+  var hint    = document.getElementById('zoom-hint');
+  var inBt    = document.getElementById('hz-in');
+  var outBt   = document.getElementById('hz-out');
+  var resetBt = document.getElementById('hz-reset');
+  var levelEl = document.getElementById('hz-level');
+  if(!frame||!img) return;
+
+  var MIN=1, MAX=2;
+  var scale=1, tx=0, ty=0;
+  var dragging=false, dragStartX=0, dragStartY=0, startTx=0, startTy=0;
+  var pinchStartDist=0, pinchStartScale=1;
+  var hintFaded=false;
+
+  function clamp(v,a,b){ return Math.max(a,Math.min(b,v)); }
+
+  function clampPan(){
+    // empêche de faire glisser l'image hors de son cadre
+    var fw = frame.clientWidth, fh = frame.clientHeight;
+    var iw = fw*scale, ih = fh*scale;
+    var minTx = Math.min(0, fw-iw), maxTx = 0;
+    var minTy = Math.min(0, fh-ih), maxTy = 0;
+    tx = clamp(tx, minTx, maxTx);
+    ty = clamp(ty, minTy, maxTy);
+  }
+
+  function apply(){
+    clampPan();
+    img.style.transform = 'translate('+tx+'px,'+ty+'px) scale('+scale+')';
+    levelEl.textContent = Math.round(scale*100)+'%';
+    outBt.disabled = scale<=MIN+0.001;
+    inBt.disabled  = scale>=MAX-0.001;
+    resetBt.disabled = scale<=MIN+0.001;
+    frame.classList.toggle('zoomed', scale>MIN+0.001);
+    fadeHint();
+  }
+
+  function fadeHint(){
+    if(hintFaded) return;
+    hintFaded=true;
+    hint.classList.add('faded');
+    setTimeout(function(){ if(hint.parentNode) hint.style.display='none'; }, 250);
+  }
+
+  function zoomAt(clientX, clientY, factor){
+    var rect = frame.getBoundingClientRect();
+    var px = clientX-rect.left, py = clientY-rect.top;
+    var newScale = clamp(scale*factor, MIN, MAX);
+    var ratio = newScale/scale;
+    tx = px - (px-tx)*ratio;
+    ty = py - (py-ty)*ratio;
+    scale = newScale;
+    apply();
+  }
+
+  // Molette : Ctrl/Cmd+molette libre, molette seule aussi (zone dédiée) mais on relâche le scroll de page
+  // si l'utilisateur n'est pas déjà zoomé, une molette "vers le haut" sur l'image zoome au lieu de scroller la page.
+  frame.addEventListener('wheel', function(e){
+    // on ne bloque le scroll de page que pour zoomer ; si déjà à MIN et qu'on dézoome encore, laisser le scroll naturel
+    var factor = e.deltaY<0 ? 1.12 : 1/1.12;
+    var would = clamp(scale*factor, MIN, MAX);
+    if(would===scale && scale<=MIN){ return; } // rien à faire, laisser défiler la page
+    e.preventDefault();
+    zoomAt(e.clientX, e.clientY, factor);
+  }, {passive:false});
+
+  // Boutons
+  inBt.addEventListener('click', function(){
+    var r=frame.getBoundingClientRect();
+    zoomAt(r.left+r.width/2, r.top+r.height/2, 1.4);
+  });
+  outBt.addEventListener('click', function(){
+    var r=frame.getBoundingClientRect();
+    zoomAt(r.left+r.width/2, r.top+r.height/2, 1/1.4);
+  });
+  resetBt.addEventListener('click', function(){
+    scale=MIN; tx=0; ty=0; apply();
+  });
+  frame.addEventListener('click', function(e){
+    if(scale<=MIN+0.001){
+      zoomAt(e.clientX, e.clientY, 1.6);
+    }
+  });
+
+  // Glisser à la souris (uniquement utile une fois zoomé)
+  frame.addEventListener('mousedown', function(e){
+    if(scale<=MIN+0.001) return;
+    dragging=true; frame.classList.add('dragging');
+    dragStartX=e.clientX; dragStartY=e.clientY; startTx=tx; startTy=ty;
+    e.preventDefault();
+  });
+  window.addEventListener('mousemove', function(e){
+    if(!dragging) return;
+    tx = startTx + (e.clientX-dragStartX);
+    ty = startTy + (e.clientY-dragStartY);
+    apply();
+  });
+  window.addEventListener('mouseup', function(){ dragging=false; frame.classList.remove('dragging'); });
+
+  // Tactile : un doigt = pan (si zoomé), deux doigts = pincement
+  function touchDist(t){
+    var dx=t[0].clientX-t[1].clientX, dy=t[0].clientY-t[1].clientY;
+    return Math.sqrt(dx*dx+dy*dy);
+  }
+  frame.addEventListener('touchstart', function(e){
+    if(e.touches.length===1 && scale>MIN+0.001){
+      dragging=true;
+      dragStartX=e.touches[0].clientX; dragStartY=e.touches[0].clientY;
+      startTx=tx; startTy=ty;
+    } else if(e.touches.length===2){
+      dragging=false;
+      pinchStartDist=touchDist(e.touches);
+      pinchStartScale=scale;
+    }
+  }, {passive:true});
+  frame.addEventListener('touchmove', function(e){
+    if(e.touches.length===1 && dragging){
+      e.preventDefault();
+      tx = startTx + (e.touches[0].clientX-dragStartX);
+      ty = startTy + (e.touches[0].clientY-dragStartY);
+      apply();
+    } else if(e.touches.length===2){
+      e.preventDefault();
+      var d = touchDist(e.touches);
+      var factor = d/pinchStartDist;
+      var newScale = clamp(pinchStartScale*factor, MIN, MAX);
+      var cx=(e.touches[0].clientX+e.touches[1].clientX)/2;
+      var cy=(e.touches[0].clientY+e.touches[1].clientY)/2;
+      var rect=frame.getBoundingClientRect();
+      var px=cx-rect.left, py=cy-rect.top;
+      var ratio=newScale/scale;
+      tx = px-(px-tx)*ratio; ty = py-(py-ty)*ratio;
+      scale=newScale;
+      apply();
+    }
+  }, {passive:false});
+  frame.addEventListener('touchend', function(e){
+    if(e.touches.length===0) dragging=false;
+  });
+
+  apply();
+})();
+</script>
+</body>
+</html>
