@@ -46,9 +46,56 @@
   .topbar nav a.hi{color:#F6BD6A;}
   .topbar nav a.hi:hover{background:rgba(246,189,106,.15);color:#F6BD6A;}
 
-  /* ===== HERO IMAGE ===== */
-  .hero-img{width:100%;background:var(--navy);display:flex;justify-content:center;}
-  .hero-img img{width:100%;max-width:1240px;display:block;}
+  /* ===== HERO IMAGE — zoom in place (x1 à x2) ===== */
+  .hero-img{
+    width:100%;background:var(--navy);
+    position:relative;overflow:hidden;
+    touch-action:none;
+  }
+  .hero-img .hero-frame{
+    width:100%;max-width:1240px;margin:0 auto;
+    overflow:hidden;position:relative;cursor:zoom-in;
+  }
+  .hero-img .hero-frame.zoomed{cursor:grab;}
+  .hero-img .hero-frame.dragging{cursor:grabbing;}
+  .hero-img img{
+    width:100%;display:block;
+    transform-origin:0 0;will-change:transform;
+    user-select:none;-webkit-user-drag:none;
+  }
+  .hero-zoom-controls{
+    position:absolute;bottom:14px;right:14px;z-index:5;
+    display:flex;align-items:center;gap:2px;
+    background:rgba(11,42,82,.85);border:1px solid rgba(255,255,255,.15);
+    border-radius:9px;padding:5px;backdrop-filter:blur(6px);
+  }
+  .hero-zoom-controls .hz-btn{
+    width:32px;height:32px;display:flex;align-items:center;justify-content:center;
+    background:transparent;border:none;color:#fff;cursor:pointer;border-radius:6px;
+    font-size:16px;font-family:'IBM Plex Mono',monospace;transition:background .15s;
+    line-height:1;
+  }
+  .hero-zoom-controls .hz-btn:hover{background:rgba(255,255,255,.14);}
+  .hero-zoom-controls .hz-btn:disabled{opacity:.35;cursor:default;}
+  .hero-zoom-controls .hz-btn:disabled:hover{background:transparent;}
+  .hz-level{
+    min-width:40px;text-align:center;font-family:'IBM Plex Mono',monospace;
+    font-size:11px;color:rgba(255,255,255,.85);
+  }
+  .zoom-hint{
+    position:absolute;bottom:14px;left:14px;z-index:5;
+    background:rgba(11,42,82,.82);color:#fff;font-size:12px;font-weight:600;
+    padding:7px 12px;border-radius:20px;display:flex;align-items:center;gap:6px;
+    pointer-events:none;opacity:.92;letter-spacing:.02em;
+    transition:opacity .2s;
+  }
+  .zoom-hint svg{flex-shrink:0;}
+  .zoom-hint.faded{opacity:0;}
+  @media(max-width:560px){
+    .zoom-hint{font-size:10.5px;padding:6px 9px;bottom:10px;left:10px;}
+    .hero-zoom-controls{bottom:10px;right:10px;}
+    .hz-btn{width:28px;height:28px;font-size:14px;}
+  }
 
   /* ===== CORRECTIONS ===== */
   .corrections{background:var(--navy-2);border-top:2px solid var(--amber);padding:13px 0;}
@@ -231,11 +278,23 @@
   </div>
 </div>
 
-<!-- ===== INFOGRAPHIE PLEINE LARGEUR ===== -->
+<!-- ===== INFOGRAPHIE PLEINE LARGEUR — zoom in place (x1 à x2) ===== -->
 <div class="hero-img">
-  <img src="schema_resilience_web.jpg"
-       alt="Infographie Résilience 2045 — système énergétique sobre, résilient et carbone-négatif"
-       loading="eager"/>
+  <div class="hero-frame" id="hero-frame">
+    <img id="hero-schema" src="schema_resilience_web.jpg"
+         alt="Infographie Résilience 2045 — système énergétique sobre, résilient et carbone-négatif"
+         loading="eager"/>
+  </div>
+  <div class="zoom-hint" id="zoom-hint">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
+    Molette ou pincement pour zoomer un détail
+  </div>
+  <div class="hero-zoom-controls">
+    <button class="hz-btn" id="hz-out" aria-label="Zoom arrière">−</button>
+    <span class="hz-level" id="hz-level">100%</span>
+    <button class="hz-btn" id="hz-in" aria-label="Zoom avant">+</button>
+    <button class="hz-btn" id="hz-reset" aria-label="Réinitialiser" style="font-size:13px;" disabled>⟲</button>
+  </div>
 </div>
 
 <!-- ===== CORRECTIONS FACTUELLES ===== -->
@@ -630,6 +689,157 @@
     entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
   },{threshold:0.1});
   els.forEach(function(e){io.observe(e);});
+})();
+</script>
+
+<!-- ===== ZOOM INFOGRAPHIE — in place, x1 à x2 ===== -->
+<script>
+(function(){
+  var frame   = document.getElementById('hero-frame');
+  var img     = document.getElementById('hero-schema');
+  var hint    = document.getElementById('zoom-hint');
+  var inBt    = document.getElementById('hz-in');
+  var outBt   = document.getElementById('hz-out');
+  var resetBt = document.getElementById('hz-reset');
+  var levelEl = document.getElementById('hz-level');
+  if(!frame||!img) return;
+
+  var MIN=1, MAX=2;
+  var scale=1, tx=0, ty=0;
+  var dragging=false, dragStartX=0, dragStartY=0, startTx=0, startTy=0;
+  var pinchStartDist=0, pinchStartScale=1;
+  var hintFaded=false;
+
+  function clamp(v,a,b){ return Math.max(a,Math.min(b,v)); }
+
+  function clampPan(){
+    // empêche de faire glisser l'image hors de son cadre
+    var fw = frame.clientWidth, fh = frame.clientHeight;
+    var iw = fw*scale, ih = fh*scale;
+    var minTx = Math.min(0, fw-iw), maxTx = 0;
+    var minTy = Math.min(0, fh-ih), maxTy = 0;
+    tx = clamp(tx, minTx, maxTx);
+    ty = clamp(ty, minTy, maxTy);
+  }
+
+  function apply(){
+    clampPan();
+    img.style.transform = 'translate('+tx+'px,'+ty+'px) scale('+scale+')';
+    levelEl.textContent = Math.round(scale*100)+'%';
+    outBt.disabled = scale<=MIN+0.001;
+    inBt.disabled  = scale>=MAX-0.001;
+    resetBt.disabled = scale<=MIN+0.001;
+    frame.classList.toggle('zoomed', scale>MIN+0.001);
+  }
+
+  function fadeHint(){
+    if(hintFaded) return;
+    hintFaded=true;
+    hint.classList.add('faded');
+    setTimeout(function(){ if(hint.parentNode) hint.style.display='none'; }, 250);
+  }
+
+  function zoomAt(clientX, clientY, factor){
+    var rect = frame.getBoundingClientRect();
+    var px = clientX-rect.left, py = clientY-rect.top;
+    var newScale = clamp(scale*factor, MIN, MAX);
+    var ratio = newScale/scale;
+    tx = px - (px-tx)*ratio;
+    ty = py - (py-ty)*ratio;
+    scale = newScale;
+    apply();
+  }
+
+  // Molette : Ctrl/Cmd+molette libre, molette seule aussi (zone dédiée) mais on relâche le scroll de page
+  // si l'utilisateur n'est pas déjà zoomé, une molette "vers le haut" sur l'image zoome au lieu de scroller la page.
+  frame.addEventListener('wheel', function(e){
+    // on ne bloque le scroll de page que pour zoomer ; si déjà à MIN et qu'on dézoome encore, laisser le scroll naturel
+    var factor = e.deltaY<0 ? 1.12 : 1/1.12;
+    var would = clamp(scale*factor, MIN, MAX);
+    if(would===scale && scale<=MIN){ return; } // rien à faire, laisser défiler la page
+    e.preventDefault();
+    fadeHint();
+    zoomAt(e.clientX, e.clientY, factor);
+  }, {passive:false});
+
+  // Boutons
+  inBt.addEventListener('click', function(){
+    fadeHint();
+    var r=frame.getBoundingClientRect();
+    zoomAt(r.left+r.width/2, r.top+r.height/2, 1.4);
+  });
+  outBt.addEventListener('click', function(){
+    fadeHint();
+    var r=frame.getBoundingClientRect();
+    zoomAt(r.left+r.width/2, r.top+r.height/2, 1/1.4);
+  });
+  resetBt.addEventListener('click', function(){
+    scale=MIN; tx=0; ty=0; apply();
+  });
+  frame.addEventListener('click', function(e){
+    if(scale<=MIN+0.001){
+      fadeHint();
+      zoomAt(e.clientX, e.clientY, 1.6);
+    }
+  });
+
+  // Glisser à la souris (uniquement utile une fois zoomé)
+  frame.addEventListener('mousedown', function(e){
+    if(scale<=MIN+0.001) return;
+    dragging=true; frame.classList.add('dragging');
+    dragStartX=e.clientX; dragStartY=e.clientY; startTx=tx; startTy=ty;
+    e.preventDefault();
+  });
+  window.addEventListener('mousemove', function(e){
+    if(!dragging) return;
+    tx = startTx + (e.clientX-dragStartX);
+    ty = startTy + (e.clientY-dragStartY);
+    apply();
+  });
+  window.addEventListener('mouseup', function(){ dragging=false; frame.classList.remove('dragging'); });
+
+  // Tactile : un doigt = pan (si zoomé), deux doigts = pincement
+  function touchDist(t){
+    var dx=t[0].clientX-t[1].clientX, dy=t[0].clientY-t[1].clientY;
+    return Math.sqrt(dx*dx+dy*dy);
+  }
+  frame.addEventListener('touchstart', function(e){
+    if(e.touches.length===1 && scale>MIN+0.001){
+      dragging=true;
+      dragStartX=e.touches[0].clientX; dragStartY=e.touches[0].clientY;
+      startTx=tx; startTy=ty;
+    } else if(e.touches.length===2){
+      dragging=false;
+      pinchStartDist=touchDist(e.touches);
+      pinchStartScale=scale;
+    }
+  }, {passive:true});
+  frame.addEventListener('touchmove', function(e){
+    if(e.touches.length===1 && dragging){
+      e.preventDefault();
+      tx = startTx + (e.touches[0].clientX-dragStartX);
+      ty = startTy + (e.touches[0].clientY-dragStartY);
+      apply();
+    } else if(e.touches.length===2){
+      e.preventDefault();
+      var d = touchDist(e.touches);
+      var factor = d/pinchStartDist;
+      var newScale = clamp(pinchStartScale*factor, MIN, MAX);
+      var cx=(e.touches[0].clientX+e.touches[1].clientX)/2;
+      var cy=(e.touches[0].clientY+e.touches[1].clientY)/2;
+      var rect=frame.getBoundingClientRect();
+      var px=cx-rect.left, py=cy-rect.top;
+      var ratio=newScale/scale;
+      tx = px-(px-tx)*ratio; ty = py-(py-ty)*ratio;
+      scale=newScale;
+      apply();
+    }
+  }, {passive:false});
+  frame.addEventListener('touchend', function(e){
+    if(e.touches.length===0) dragging=false;
+  });
+
+  apply();
 })();
 </script>
 </body>
