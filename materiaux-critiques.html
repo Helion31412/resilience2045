@@ -9,7 +9,7 @@
 <style>
 :root{
   --noir:#0a0f0d;--foret:#0d1f17;--vert-vif:#52b788;--vert-clair:#95d5b2;
-  --ambre:#e9c46a;--rouge:#c0392b;--rouge-light:#fadbd8;--bleu:#2980b9;
+  --ambre:#e9c46a;--rouge:#e8563f;--rouge-light:#ffe0d6;--bleu:#2980b9;
   --blanc:#f0f4f1;--gris:#8a9e93;--orange:#e76f51;
   --serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',sans-serif;
 }
@@ -34,7 +34,7 @@ h2 em{font-style:italic;color:var(--vert-vif)}
 
 /* HERO */
 #hero{min-height:72vh;display:flex;align-items:center;padding:8rem 3rem 5rem;position:relative;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 35% 50%,rgba(192,57,43,.18) 0%,transparent 60%),linear-gradient(135deg,#0a0f0d 0%,#0d1f17 50%,#060e09 100%)}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 35% 50%,rgba(232,86,63,.18) 0%,transparent 60%),linear-gradient(135deg,#0a0f0d 0%,#0d1f17 50%,#060e09 100%)}
 .hero-grid{position:absolute;inset:0;opacity:.04;background-image:linear-gradient(var(--vert-vif) 1px,transparent 1px),linear-gradient(90deg,var(--vert-vif) 1px,transparent 1px);background-size:55px 55px}
 .kpi-row{display:flex;gap:2.5rem;margin-top:2.5rem;flex-wrap:wrap}
 .kpi{border-left:2px solid var(--rouge);padding-left:1rem}
@@ -46,7 +46,7 @@ h2 em{font-style:italic;color:var(--vert-vif)}
 .kpi-lbl{font-size:.68rem;color:var(--gris);text-transform:uppercase;letter-spacing:.1em;margin-top:.2rem}
 
 /* PARADOXE */
-.paradox-box{border:1px solid var(--rouge);background:rgba(192,57,43,.08);padding:1.8rem 2.2rem;margin:2rem 0}
+.paradox-box{border:1px solid var(--rouge);background:rgba(232,86,63,.08);padding:1.8rem 2.2rem;margin:2rem 0}
 .paradox-box h3{font-family:var(--serif);font-size:1.3rem;color:var(--rouge);margin-bottom:.7rem}
 .paradox-box p{font-size:.9rem;color:rgba(240,244,241,.75);line-height:1.85}
 .paradox-box p strong{color:var(--ambre)}
@@ -54,10 +54,10 @@ h2 em{font-style:italic;color:var(--vert-vif)}
 /* MATÉRIAUX GRID */
 .mat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.2rem;margin-top:2rem}
 .mat-card{padding:1.6rem;border:1px solid rgba(82,183,136,.14);background:rgba(13,31,23,.6)}
-.mat-card.rouge{border-color:rgba(192,57,43,.35);background:rgba(192,57,43,.07)}
+.mat-card.rouge{border-color:rgba(232,86,63,.35);background:rgba(232,86,63,.07)}
 .mat-card.ambre{border-color:rgba(233,196,106,.3);background:rgba(233,196,106,.05)}
 .mat-card h3{font-family:var(--serif);font-size:1.05rem;color:var(--vert-clair);margin-bottom:.4rem}
-.mat-card.rouge h3{color:#f1948a}
+.mat-card.rouge h3{color:#ff8a70}
 .mat-card.ambre h3{color:var(--ambre)}
 .mat-num{font-family:var(--serif);font-size:1.8rem;font-weight:300;line-height:1;margin-bottom:.4rem}
 .mat-card.rouge .mat-num{color:var(--rouge)}
@@ -65,14 +65,14 @@ h2 em{font-style:italic;color:var(--vert-vif)}
 .mat-card .mat-num{color:var(--vert-vif)}
 .mat-card p{font-size:.8rem;color:rgba(240,244,241,.6);line-height:1.65}
 .mat-tag{margin-top:.8rem;font-size:.7rem;padding:.3rem .8rem;border-radius:20px;display:inline-block;font-weight:500}
-.rouge-tag{background:rgba(192,57,43,.18);color:#f1948a;border:1px solid rgba(192,57,43,.35)}
+.rouge-tag{background:rgba(232,86,63,.18);color:#ff8a70;border:1px solid rgba(232,86,63,.35)}
 .ambre-tag{background:rgba(233,196,106,.12);color:var(--ambre);border:1px solid rgba(233,196,106,.3)}
 .vert-tag{background:rgba(82,183,136,.12);color:var(--vert-vif);border:1px solid rgba(82,183,136,.3)}
 
 /* CHINE */
 .chine-layout{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2rem}
-.chine-col{padding:1.8rem 2rem;border:1px solid rgba(192,57,43,.25);background:rgba(192,57,43,.06)}
-.chine-col h3{font-family:var(--serif);font-size:1.1rem;color:#f1948a;margin-bottom:1rem;padding-bottom:.6rem;border-bottom:1px solid rgba(192,57,43,.2)}
+.chine-col{padding:1.8rem 2rem;border:1px solid rgba(232,86,63,.25);background:rgba(232,86,63,.06)}
+.chine-col h3{font-family:var(--serif);font-size:1.1rem;color:#ff8a70;margin-bottom:1rem;padding-bottom:.6rem;border-bottom:1px solid rgba(232,86,63,.2)}
 .chine-item{display:flex;justify-content:space-between;align-items:center;margin-bottom:.7rem;font-size:.83rem}
 .chine-item .lbl{color:rgba(240,244,241,.65)}
 .chine-item .pct{font-family:var(--serif);font-size:1.2rem;color:var(--rouge);font-weight:300}
@@ -241,8 +241,8 @@ footer p{font-size:.75rem;color:var(--gris);max-width:600px;margin:.3rem auto}
       </div>
     </div>
 
-    <div style="margin-top:2rem;padding:1.5rem 2rem;border-left:4px solid var(--rouge);background:rgba(192,57,43,.07);border:1px solid rgba(192,57,43,.2);border-left:4px solid var(--rouge)" class="reveal">
-      <p style="font-size:.88rem;color:rgba(240,244,241,.75);line-height:1.85"><strong style="color:#f1948a">Le parallèle avec le gaz russe :</strong> en 2021, l'Europe s'était convaincue que la dépendance au gaz russe était gérable car "les marchés fonctionnent". Elle a découvert en 2022 que la dépendance à un fournisseur unique d'un bien stratégique crée une vulnérabilité existentielle. La dépendance aux matériaux critiques chinois reproduit ce schéma — avec des substituts encore plus difficiles à trouver, et des délais de diversification de 15 à 20 ans au lieu de 2 à 3 ans. La Chine a déjà commencé à utiliser cet outil.</p>
+    <div style="margin-top:2rem;padding:1.5rem 2rem;border-left:4px solid var(--rouge);background:rgba(232,86,63,.07);border:1px solid rgba(232,86,63,.2);border-left:4px solid var(--rouge)" class="reveal">
+      <p style="font-size:.88rem;color:rgba(240,244,241,.75);line-height:1.85"><strong style="color:#ff8a70">Le parallèle avec le gaz russe :</strong> en 2021, l'Europe s'était convaincue que la dépendance au gaz russe était gérable car "les marchés fonctionnent". Elle a découvert en 2022 que la dépendance à un fournisseur unique d'un bien stratégique crée une vulnérabilité existentielle. La dépendance aux matériaux critiques chinois reproduit ce schéma — avec des substituts encore plus difficiles à trouver, et des délais de diversification de 15 à 20 ans au lieu de 2 à 3 ans. La Chine a déjà commencé à utiliser cet outil.</p>
     </div>
   </div>
 </section>
