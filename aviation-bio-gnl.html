@@ -121,7 +121,7 @@ footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;li
       </div>
       <div class="card">
         <h3>Pourquoi le Bio-GNL a des avantages réels ?</h3>
-        <p>Densité volumique : 5,86 kWh/L (vs 10 kWh/L kérosène, soit seulement 1,7× moins dense). PCI supérieur : 50 MJ/kg vs 43 MJ/kg kérosène. Liquéfaction : 0,3 à 0,6 kWh/kg (2 à 4,3 % de l'énergie à grande échelle) — un facteur 6 à 8× moins que l'H₂ liquide (8–12 kWh/kg soit 24 à 36 % de l'énergie). Combustion plus propre : moins de suies, moins de particules nucléaires de contrails. <span class="bq b-ok">✅ Physique établie</span></p>
+        <p>Densité volumique : 5,86 kWh/L (vs 10 kWh/L kérosène, soit seulement 1,7× moins dense). PCI supérieur : 50 MJ/kg vs 43 MJ/kg kérosène. Liquéfaction : 0,25–0,30 kWh/kg soit 1,8–2,2 % du PCI — contre 15 kWh/kg pour l'H₂ (45 % de son propre PCI) : ~25× moins d'énergie de liquéfaction par kWh transporté. Combustion sans soufre ni aromatiques : moins de suies, absence de noyaux de condensation des contrails. <span class="bq b-ok">✅ Physique établie</span></p>
       </div>
     </div>
   </div>
@@ -143,7 +143,7 @@ footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;li
           <tr><td>CO₂ par vol <span class="bq b-ok">✅</span></td><td>~995 t</td><td class="td-g">0–15 t (biogénique)</td><td>Bio-GNL = carbone biogénique · Bilan neutre à négatif si biochar co-produit <span class="bq b-ok">✅ Chimie</span></td></tr>
           <tr><td>NOx <span class="bq b-est">🔬</span></td><td>Référence</td><td class="td-g">−40 % estimé</td><td>Température combustion CH4 plus basse → moins de NOx thermiques · <strong>À valider banc moteur</strong></td></tr>
           <tr><td>Particules fines <span class="bq b-est">🔬</span></td><td>Référence</td><td class="td-g">−70 % estimé</td><td>Pas de soufre, pas d'aromatiques → moins de suies · <strong>À valider banc moteur</strong></td></tr>
-          <tr><td>Traînées de condensation (contrails) <span class="bq b-est">🔬</span></td><td>Forçage radiatif élevé</td><td class="td-a">−50 à −90 % estimé</td><td>Moins de noyaux de condensation (pas de suies/soufre) · Température combustion plus basse · <strong>À valider en vol</strong></td></tr>
+          <tr><td>Traînées de condensation (contrails) <span class="bq b-est">🔬</span></td><td>Forçage radiatif élevé</td><td class="td-a">−50 à −90 % estimé</td><td>Absence de noyaux de condensation solides (soufre, aromatiques) — cristaux plus gros, sédimentent plus vite, forçage radiatif moindre · Note : plus de vapeur d'eau par kg (H/C=4) peut légèrement déplacer la zone de formation (critère Schmidt-Appleman), effet dominé par l'absence de noyaux · <strong>À valider en vol</strong></td></tr>
         </tbody>
       </table>
     </div>
@@ -230,10 +230,17 @@ footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;li
           <p style="margin-bottom:.6rem">• Particules fines : <strong style="color:var(--vert-vif)">−70 %</strong> structurel (absence de soufre et d'aromatiques)</p>
           <p style="margin-bottom:.6rem">• Contrails : <strong style="color:var(--vert-vif)">−50 à −90 %</strong> (moins de noyaux de condensation)</p>
           <p style="margin-bottom:.6rem">• Coût carburant : <strong style="color:var(--vert-vif)">−15 %</strong> (méthane = PCI 16 % supérieur au kérosène)</p>
-          <p style="margin-bottom:0;font-style:italic;color:rgba(240,244,241,.5);font-size:.78rem">Source : PDF Aviation Résilience V11 · Tu-156 (Tupolev 1996–1999)</p>
+          <p style="margin-bottom:0;font-style:italic;color:rgba(240,244,241,.5);font-size:.78rem">Source : PDF Aviation Résilience V11 · Tu-155 (Tupolev — vols GNL méthane à partir de janvier 1989)</p>
         </div>
       </div>
 
+    </div>
+
+    <div style="margin-top:1.2rem;padding:1rem 1.4rem;border-left:3px solid rgba(82,183,136,.4);background:rgba(13,31,23,.4);font-size:.82rem;color:rgba(240,244,241,.65);line-height:1.7" class="reveal">
+      <strong style="color:rgba(149,213,178,.8)">Note LCA vs émissions directes (EU-ETS) :</strong> l'équivalence "46,5 % de SAF HEFA" s'exprime en cycle de vie complet (LCA). Le SAF ne réduit pas le CO₂ mesuré à la tuyère — il réémet le carbone capté en amont, la neutralité étant comptabilisée sur le cycle de vie. Le GNL fossile, lui, réduit le CO₂ réellement émis à l'échappement : avantage opérationnel direct pour les mécanismes EU-ETS qui taxent les émissions à la tuyère.
+    </div>
+    <div style="margin-top:.7rem;padding:1rem 1.4rem;border-left:3px solid rgba(82,183,136,.4);background:rgba(13,31,23,.4);font-size:.82rem;color:rgba(240,244,241,.65);line-height:1.7" class="reveal">
+      <strong style="color:rgba(149,213,178,.8)">Note sur le −37 % :</strong> calculé sur la base du PCI et de la masse carburant pure. La pénalité des réservoirs cryogéniques (+9 t vs kérosène) est plus que compensée par la réduction carburant (−89 t) : la masse totale embarquée est inférieure de 80 t pour le GNL. Le −37 % est donc <em>conservateur</em> — une simulation aérodynamique complète donnerait un résultat légèrement plus favorable.
     </div>
 
     <!-- Tableau comparatif des 3 voies -->
@@ -282,13 +289,13 @@ footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;li
             <td style="padding:.65rem 1rem;color:#f0f4f1">Faisabilité 2030</td>
             <td style="padding:.65rem 1rem;color:#e07070">Très partielle (0,6 % production)</td>
             <td style="padding:.65rem 1rem;color:var(--vert-vif)">Oui — GNL fossile immédiat</td>
-            <td style="padding:.65rem 1rem;color:rgba(240,244,241,.5)">Non — 2040+ minimum</td>
+            <td style="padding:.65rem 1rem;color:rgba(240,244,241,.5)">Non — contraintes physiques permanentes</td>
           </tr>
           <tr style="background:rgba(13,31,23,.5)">
             <td style="padding:.65rem 1rem;color:#f0f4f1;font-weight:600">Verdict 2035</td>
             <td style="padding:.65rem 1rem;color:#e07070;font-weight:600">Insuffisant</td>
             <td style="padding:.65rem 1rem;color:var(--vert-vif);font-weight:600">Solution optimale</td>
-            <td style="padding:.65rem 1rem;color:rgba(240,244,241,.5);font-weight:600">Prématuré</td>
+            <td style="padding:.65rem 1rem;color:rgba(240,244,241,.5);font-weight:600">Inadapté structurellement</td>
           </tr>
         </tbody>
       </table>
