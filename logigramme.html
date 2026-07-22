@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Logigramme · Logique systémique · Programme Résilience 2045</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --noir:#0a0f0d;--foret:#0d1f17;--vert-prof:#1a3a28;--vert-med:#2d6a4f;
+  --vert-vif:#52b788;--vert-clair:#95d5b2;--ambre:#e9c46a;
+  --rouge:#c0392b;--bleu:#2980b9;--blanc:#f0f4f1;--gris:#8a9e93;
+  --ardoise:#4a5c6a;--violet:#7b2d8b;
+  --serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--noir);color:var(--blanc);font-family:var(--sans);font-weight:300;line-height:1.7;overflow-x:hidden}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:.9rem 2.5rem;background:rgba(10,15,13,.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(82,183,136,.12)}
+.nav-logo{font-family:var(--serif);font-size:1.15rem;font-weight:600;color:var(--vert-vif);text-decoration:none}
+.nav-back{color:var(--gris);text-decoration:none;font-size:.72rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;transition:color .3s}
+.nav-back:hover{color:var(--vert-vif)}
+.nav-tag{font-size:.65rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--ambre);background:rgba(233,196,106,.12);border:1px solid rgba(233,196,106,.25);padding:.2rem .7rem}
+
+#hero{min-height:44vh;display:flex;align-items:center;padding:8rem 3rem 3rem;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 70% at 20% 60%,rgba(82,183,136,.08) 0%,rgba(29,58,40,.2) 40%,transparent 70%),linear-gradient(135deg,#0a0f0d 0%,#0d1f17 55%,#060e09 100%)}
+.hero-grid{position:absolute;inset:0;opacity:.035;background-image:linear-gradient(var(--vert-vif) 1px,transparent 1px),linear-gradient(90deg,var(--vert-vif) 1px,transparent 1px);background-size:60px 60px}
+.hero-content{position:relative;z-index:1;max-width:860px}
+.hero-tag{display:inline-block;border:1px solid var(--ambre);color:var(--ambre);font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;padding:.3rem .85rem;margin-bottom:1.4rem}
+h1{font-family:var(--serif);font-size:clamp(2.2rem,5vw,3.6rem);font-weight:300;line-height:1.1;margin-bottom:1.2rem}
+h1 em{font-style:italic;color:var(--vert-vif)}
+.hero-sub{font-size:.92rem;color:rgba(240,244,241,.6);max-width:680px;line-height:1.9;margin-top:.8rem}
+
+section{padding:4rem 3rem}
+.container{max-width:960px;margin:0 auto}
+.alt{background:var(--foret)}
+
+.stag{font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--vert-vif);margin-bottom:.6rem}
+h2{font-family:var(--serif);font-size:clamp(1.5rem,2.5vw,2.2rem);font-weight:300;line-height:1.15;margin-bottom:1rem}
+h2 em{font-style:italic;color:var(--vert-vif)}
+.lead{font-size:.92rem;color:rgba(240,244,241,.65);max-width:740px;line-height:1.9;margin-bottom:1.4rem}
+p.body{font-size:.86rem;color:rgba(240,244,241,.58);line-height:1.88;margin-bottom:.9rem;max-width:840px}
+
+/* SVG WRAPPER */
+.schema-wrap{background:#fff;border-radius:4px;padding:1.5rem;margin:2rem 0;overflow:hidden}
+.schema-wrap svg{width:100%;height:auto;display:block}
+
+/* BOUTONS */
+.btn{display:inline-block;padding:.75rem 1.8rem;font-family:var(--sans);font-size:.76rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:all .3s}
+.btn-primary{background:var(--vert-vif);color:var(--noir)}
+.btn-primary:hover{background:var(--vert-clair)}
+.btn-outline{background:transparent;color:var(--blanc);border:1px solid rgba(240,244,241,.25)}
+.btn-outline:hover{border-color:var(--vert-vif);color:var(--vert-vif)}
+.btn-pdf{border-color:rgba(233,196,106,.4);color:var(--ambre)}
+.btn-pdf:hover{border-color:var(--ambre);color:var(--ambre)}
+.btn-row{display:flex;flex-wrap:wrap;gap:1rem;margin-top:1.5rem;align-items:center}
+
+footer{background:#050a07;padding:2.5rem 3rem;text-align:center;border-top:1px solid rgba(82,183,136,.08)}
+.footer-logo{font-family:var(--serif);font-size:1.4rem;font-weight:300;color:var(--vert-vif);margin-bottom:.4rem}
+footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;line-height:1.7}
+
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:none}
+
+@media(max-width:700px){
+  nav{padding:.8rem 1.2rem}
+  #hero{padding:7rem 1.5rem 2.5rem}
+  section{padding:3rem 1.5rem}
+  .schema-wrap{padding:.5rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Programme Résilience V11</a>
+  <div style="display:flex;align-items:center;gap:1.2rem">
+    <a href="index.html" style="font-size:.68rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(82,183,136,.6);text-decoration:none;border:1px solid rgba(82,183,136,.2);padding:.2rem .6rem;transition:color .3s" onmouseover="this.style.color='#52b788'" onmouseout="this.style.color='rgba(82,183,136,.6)'">⌂ Accueil</a>
+    <span class="nav-tag">Vue d'ensemble · Logique systémique</span>
+    <a href="index.html" class="nav-back">← Retour</a>
+  </div>
+</nav>
+
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Logigramme · Résilience 2045</div>
+    <h1>La logique du programme<br><em>en un seul regard</em></h1>
+    <p class="hero-sub">Pourquoi le tout-électrique ne suffit pas. Pourquoi le bio-CH₄ a été retenu. Comment les trois procédés, les co-produits et les usages s'articulent en un système cohérent. Et comment ce système agit simultanément sur l'énergie, le carbone, les sols, l'eau et les territoires.</p>
+  </div>
+</section>
+
+<!-- LOGIGRAMME -->
+<section class="alt">
+  <div class="container">
+    <div class="stag reveal">Logigramme systémique</div>
+    <h2 class="reveal">Du diagnostic aux <em>boucles territoriales</em></h2>
+    <p class="lead reveal">Ce logigramme se lit de haut en bas : du système énergétique actuel aux trois failles du scénario tout-électrique, du choix du bio-CH₄ aux trois voies de production, des co-produits stratégiques aux usages, et enfin aux boucles systémiques qui font de Résilience bien plus qu'une filière énergétique.</p>
+
+    <div class="schema-wrap reveal">
+      <svg viewBox="0 0 680 1240" xmlns="http://www.w3.org/2000/svg" style="font-family:'Jost',sans-serif">
+        <defs>
+          <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </marker>
+          <!-- Palettes couleurs sur fond blanc -->
+          <style>
+            .bk-gray{fill:#f4f4f2;stroke:#b0b0a8}
+            .bk-coral{fill:#fff3f0;stroke:#d4856a}
+            .bk-teal{fill:#e8f6f1;stroke:#2d8a68}
+            .bk-green{fill:#edf6ed;stroke:#3d8a3d}
+            .bk-amber{fill:#fdf6e3;stroke:#c49a1a}
+            .bk-blue{fill:#e8f2fb;stroke:#3a7fbd}
+            .bk-result{fill:#e0f4ec;stroke:#1a7a50}
+            .th{font-size:13px;font-weight:600;fill:#1a1a18}
+            .th-sm{font-size:11px;font-weight:600;fill:#1a1a18;opacity:.75}
+            .ts{font-size:11px;font-weight:400;fill:#3a3a38}
+            .sep{stroke:#00000018;stroke-width:0.6}
+            .arr-line{stroke:#5a7a6a;stroke-width:1.2;fill:none;marker-end:url(#arr)}
+            .arr-thick{stroke:#2d6a4f;stroke-width:1.8;fill:none;marker-end:url(#arr)}
+            .dash{stroke:#b0b8b4;stroke-width:0.5;stroke-dasharray:4 3}
+          </style>
+        </defs>
+
+        <!-- TITRE -->
+        <text x="340" y="24" text-anchor="middle" class="th" font-size="14">Programme Résilience 2045 — logique systémique</text>
+
+        <!-- BLOC 1 : POINT DE DÉPART -->
+        <rect x="40" y="34" width="600" height="58" rx="6" class="bk-gray" stroke-width="0.8"/>
+        <text x="340" y="50" text-anchor="middle" class="th-sm">POINT DE DÉPART</text>
+        <text x="340" y="66" text-anchor="middle" class="th">Système actuel : électricité + gaz fossile + combustibles liquides</text>
+        <text x="340" y="82" text-anchor="middle" class="ts">Redondant et fiable — mais émetteur net de CO₂, stock atmosphérique en hausse depuis 1750</text>
+
+        <line x1="340" y1="92" x2="340" y2="110" class="arr-line"/>
+        <text x="356" y="105" class="ts" font-size="10" fill="#888">Décarbonation → scénario tout-électrique</text>
+
+        <!-- BLOC 2 : 3 FAILLES -->
+        <rect x="40" y="110" width="600" height="92" rx="6" class="bk-coral" stroke-width="0.8"/>
+        <text x="340" y="126" text-anchor="middle" class="th">3 FAILLES DU SCÉNARIO TOUT-ÉLECTRIQUE</text>
+        <line x1="55" y1="134" x2="625" y2="134" class="sep"/>
+        <text x="149" y="152" text-anchor="middle" class="th">Fragilité par concentration</text>
+        <text x="149" y="168" text-anchor="middle" class="ts">Réduit la redondance</text>
+        <text x="149" y="183" text-anchor="middle" class="ts">des vecteurs énergétiques</text>
+        <line x1="258" y1="138" x2="258" y2="198" class="sep"/>
+        <text x="340" y="152" text-anchor="middle" class="th">Mobilité lourde</text>
+        <text x="340" y="168" text-anchor="middle" class="ts">Peu d'alternatives</text>
+        <text x="340" y="183" text-anchor="middle" class="ts">efficaces et denses</text>
+        <line x1="422" y1="138" x2="422" y2="198" class="sep"/>
+        <text x="531" y="152" text-anchor="middle" class="th">Stock CO₂ non traité</text>
+        <text x="531" y="168" text-anchor="middle" class="ts">Arrête les flux entrants</text>
+        <text x="531" y="183" text-anchor="middle" class="ts">≠ réduit le stock accumulé</text>
+
+        <line x1="340" y1="202" x2="340" y2="220" class="arr-line"/>
+
+        <!-- LIAISON -->
+        <rect x="60" y="220" width="560" height="42" rx="6" class="bk-gray" stroke-width="0.5"/>
+        <text x="340" y="235" text-anchor="middle" class="ts">Résilience conserve plusieurs vecteurs complémentaires :</text>
+        <text x="340" y="252" text-anchor="middle" class="ts">l'électricité pour ses usages optimaux, le bio-CH₄ pour les autres</text>
+
+        <line x1="340" y1="262" x2="340" y2="280" class="arr-line"/>
+
+        <!-- BLOC 3 : VECTEURS -->
+        <rect x="40" y="280" width="178" height="72" rx="6" class="bk-gray" stroke-width="0.5"/>
+        <text x="129" y="296" text-anchor="middle" class="th-sm">H₂ VERT — écarté</text>
+        <line x1="55" y1="304" x2="203" y2="304" class="sep"/>
+        <text x="129" y="320" text-anchor="middle" class="ts">Pertes élevées</text>
+        <text x="129" y="336" text-anchor="middle" class="ts">Réseau coûteux à construire</text>
+
+        <rect x="247" y="280" width="186" height="72" rx="6" class="bk-teal" stroke-width="1.2"/>
+        <text x="340" y="296" text-anchor="middle" class="th">BIO-CH₄ — retenu ✓</text>
+        <line x1="262" y1="304" x2="418" y2="304" class="sep"/>
+        <text x="340" y="320" text-anchor="middle" class="ts">Même molécule que gaz fossile</text>
+        <text x="340" y="336" text-anchor="middle" class="ts">Réseau + stockage existants</text>
+
+        <rect x="462" y="280" width="178" height="72" rx="6" class="bk-gray" stroke-width="0.5"/>
+        <text x="551" y="296" text-anchor="middle" class="th-sm">MOLÉCULES COMPLEXES</text>
+        <line x1="477" y1="304" x2="625" y2="304" class="sep"/>
+        <text x="551" y="320" text-anchor="middle" class="ts">Coûteux à produire</text>
+        <text x="551" y="336" text-anchor="middle" class="ts">Usages trop limités</text>
+
+        <line x1="340" y1="352" x2="340" y2="370" class="arr-thick"/>
+
+        <!-- BLOC 4 : PROCÉDÉS -->
+        <rect x="40" y="370" width="600" height="72" rx="6" class="bk-green" stroke-width="0.8"/>
+        <text x="340" y="386" text-anchor="middle" class="th">3 PROCÉDÉS DE PRODUCTION DU BIO-CH₄</text>
+        <line x1="55" y1="394" x2="625" y2="394" class="sep"/>
+        <text x="149" y="412" text-anchor="middle" class="th">Méthanisation</text>
+        <text x="149" y="428" text-anchor="middle" class="ts">Effluents, biodéchets humides</text>
+        <line x1="258" y1="398" x2="258" y2="438" class="sep"/>
+        <text x="340" y="412" text-anchor="middle" class="th">Pyrogazéification</text>
+        <text x="340" y="428" text-anchor="middle" class="ts">Biomasse sèche, résidus ligneux</text>
+        <line x1="422" y1="398" x2="422" y2="438" class="sep"/>
+        <text x="531" y="412" text-anchor="middle" class="th">Méthanation Sabatier</text>
+        <text x="531" y="428" text-anchor="middle" class="ts">CO₂ biogénique + H₂ électrolytique</text>
+
+        <line x1="149" y1="442" x2="149" y2="462" class="arr-line"/>
+        <line x1="340" y1="442" x2="340" y2="462" class="arr-thick"/>
+        <line x1="531" y1="442" x2="531" y2="462" class="arr-line"/>
+
+        <!-- BLOC 5 : CO-PRODUITS -->
+        <rect x="40" y="462" width="600" height="72" rx="6" class="bk-amber" stroke-width="0.8"/>
+        <text x="340" y="478" text-anchor="middle" class="th">CO-PRODUITS STRATÉGIQUES</text>
+        <line x1="55" y1="486" x2="625" y2="486" class="sep"/>
+        <text x="149" y="503" text-anchor="middle" class="th">Digestat + cendres</text>
+        <text x="149" y="519" text-anchor="middle" class="ts">Amendement organique sol</text>
+        <line x1="258" y1="490" x2="258" y2="530" class="sep"/>
+        <text x="340" y="503" text-anchor="middle" class="th">Biochar EBC ✓</text>
+        <text x="340" y="519" text-anchor="middle" class="ts">Séq. 500 ans à &gt;1 000 ans · eau · fertilité</text>
+        <line x1="422" y1="490" x2="422" y2="530" class="sep"/>
+        <text x="531" y="503" text-anchor="middle" class="th">CO₂ biogénique concentré</text>
+        <text x="531" y="519" text-anchor="middle" class="ts">Serres · Sabatier · CCS</text>
+
+        <line x1="340" y1="534" x2="340" y2="552" class="arr-line"/>
+
+        <!-- BLOC 6 : USAGES 2x2 -->
+        <rect x="40" y="552" width="600" height="110" rx="6" class="bk-blue" stroke-width="0.8"/>
+        <text x="340" y="568" text-anchor="middle" class="th">USAGES DU BIO-CH₄</text>
+        <line x1="55" y1="576" x2="625" y2="576" class="sep"/>
+        <line x1="340" y1="576" x2="340" y2="657" class="sep"/>
+        <line x1="55" y1="622" x2="625" y2="622" class="sep"/>
+        <text x="190" y="594" text-anchor="middle" class="th">Mobilité lourde</text>
+        <text x="190" y="610" text-anchor="middle" class="ts">Camions · trains · navires</text>
+        <text x="490" y="594" text-anchor="middle" class="th">Aviation</text>
+        <text x="490" y="610" text-anchor="middle" class="ts">Bio-GNL long-courrier</text>
+        <text x="190" y="638" text-anchor="middle" class="th">ÉREV légers</text>
+        <text x="190" y="654" text-anchor="middle" class="ts">Voitures · VUL hybrides</text>
+        <text x="490" y="638" text-anchor="middle" class="th">Réseau GRDF</text>
+        <text x="490" y="654" text-anchor="middle" class="ts">Stockage · pointe électrique</text>
+
+        <!-- SÉPARATEUR -->
+        <line x1="40" y1="678" x2="640" y2="678" class="dash"/>
+
+        <!-- BLOC 7 : BOUCLES -->
+        <rect x="40" y="686" width="600" height="148" rx="6" class="bk-green" stroke-width="0.8"/>
+        <text x="340" y="702" text-anchor="middle" class="th">BOUCLES SYSTÉMIQUES — co-bénéfices territoire, sols, eau, carbone</text>
+        <line x1="55" y1="710" x2="625" y2="710" class="sep"/>
+        <line x1="258" y1="714" x2="258" y2="788" class="sep"/>
+        <line x1="422" y1="714" x2="422" y2="788" class="sep"/>
+        <text x="149" y="728" text-anchor="middle" class="th">Biomasse forestière</text>
+        <text x="149" y="744" text-anchor="middle" class="ts">Moins de combustible</text>
+        <text x="149" y="760" text-anchor="middle" class="ts">→ moins de méga-incendies</text>
+        <text x="149" y="776" text-anchor="middle" class="ts">→ forêts préservées</text>
+        <text x="340" y="728" text-anchor="middle" class="th">Biochar dans les sols</text>
+        <text x="340" y="744" text-anchor="middle" class="ts">+10 à 40 % rétention eau</text>
+        <text x="340" y="760" text-anchor="middle" class="ts">→ infiltration facilitée</text>
+        <text x="340" y="776" text-anchor="middle" class="ts">→ nappes rechargées · moins ruissellement</text>
+        <text x="531" y="728" text-anchor="middle" class="th">Effluents méthanisés</text>
+        <text x="531" y="744" text-anchor="middle" class="ts">Digestat + biochar épandu</text>
+        <text x="531" y="760" text-anchor="middle" class="ts">→ substitue engrais synthèse</text>
+        <text x="531" y="776" text-anchor="middle" class="ts">→ moins nitrates nappes</text>
+        <line x1="55" y1="788" x2="625" y2="788" class="sep"/>
+        <text x="340" y="804" text-anchor="middle" class="th">Résidus interceptés avant décomposition</text>
+        <text x="340" y="820" text-anchor="middle" class="ts">Évite CH₄ diffus · valorisés en énergie + biochar</text>
+
+        <line x1="340" y1="834" x2="340" y2="852" class="arr-line"/>
+
+        <!-- BLOC 8 : HIÉRARCHIE CARBONE -->
+        <rect x="40" y="852" width="600" height="120" rx="6" class="bk-teal" stroke-width="1.2"/>
+        <text x="340" y="868" text-anchor="middle" class="th">HIÉRARCHIE DES LEVIERS CARBONE — ordre physique non substituable</text>
+        <line x1="55" y1="876" x2="625" y2="876" class="sep"/>
+        <line x1="258" y1="880" x2="258" y2="968" class="sep"/>
+        <line x1="422" y1="880" x2="422" y2="968" class="sep"/>
+        <text x="149" y="896" text-anchor="middle" class="th">Levier 1 — Indispensable</text>
+        <text x="149" y="912" text-anchor="middle" class="ts">Arrêt des fossiles</text>
+        <text x="149" y="928" text-anchor="middle" class="ts">Stoppe l'injection de carbone</text>
+        <text x="149" y="944" text-anchor="middle" class="ts">Condition sine qua non</text>
+        <text x="340" y="896" text-anchor="middle" class="th">Levier 2 — Accélérateur</text>
+        <text x="340" y="912" text-anchor="middle" class="ts">Bio-CH₄ substitue le fossile</text>
+        <text x="340" y="928" text-anchor="middle" class="ts">Réduit les entrées</text>
+        <text x="340" y="944" text-anchor="middle" class="ts">Maintient la résilience réseau</text>
+        <text x="531" y="896" text-anchor="middle" class="th">Levier 3 — Irremplaçable</text>
+        <text x="531" y="912" text-anchor="middle" class="ts">Biochar séquestre durablement</text>
+        <text x="531" y="928" text-anchor="middle" class="ts">Retire le stock accumulé</text>
+        <text x="531" y="944" text-anchor="middle" class="ts">Seul levier décroissance du stock CO₂</text>
+
+        <line x1="340" y1="972" x2="340" y2="990" class="arr-thick"/>
+
+        <!-- RÉSULTAT FINAL -->
+        <rect x="40" y="990" width="600" height="72" rx="8" class="bk-result" stroke-width="1.5"/>
+        <text x="340" y="1008" text-anchor="middle" class="th" font-size="13">262 TWh/an bio-CH₄ · 20–23 Mt CO₂/an séquestrés · système carbone négatif</text>
+        <text x="340" y="1026" text-anchor="middle" class="ts">Souveraineté énergétique · résilience hydrique et territoriale</text>
+        <text x="340" y="1042" text-anchor="middle" class="ts">150 sites · emplois locaux · financement filières forestières et agricoles</text>
+
+        <text x="340" y="1078" text-anchor="middle" font-size="10" fill="#aaa">Programme Résilience 2045 · Juillet 2026 · resilience2045.fr</text>
+      </svg>
+    </div>
+
+    <!-- BOUTONS -->
+    <div class="btn-row reveal">
+      <a href="Logigramme_resilience2045_fr.pdf" target="_blank" class="btn btn-outline btn-pdf">
+        ↓ Télécharger le logigramme en PDF
+      </a>
+      <a href="index.html" class="btn btn-outline">
+        ← Retour au programme complet
+      </a>
+    </div>
+
+    <p class="body reveal" style="margin-top:2rem">Ce logigramme est un complément au schéma général du Programme Résilience. Il est conçu pour donner en un seul regard la logique systémique complète — du diagnostic énergétique aux boucles territoriales et à la hiérarchie des leviers carbone. Pour les détails techniques, chaque thématique est développée dans les notes et pages du programme.</p>
+  </div>
+</section>
+
+<!-- NAVIGATION THÉMATIQUE -->
+<section>
+  <div class="container">
+    <div class="stag reveal">Explorer le programme</div>
+    <h2 class="reveal">Approfondir chaque <em>dimension</em></h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:1.5rem">
+      <a href="carbone-resilience.html" style="text-decoration:none;padding:1.4rem;border:1px solid rgba(82,183,136,.15);background:rgba(29,58,40,.15);display:block;transition:border-color .3s" onmouseover="this.style.borderColor='rgba(82,183,136,.4)'" onmouseout="this.style.borderColor='rgba(82,183,136,.15)'">
+        <div style="font-size:.65rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--vert-vif);margin-bottom:.5rem">Carbone · Climat</div>
+        <div style="font-family:var(--serif);font-size:1rem;color:var(--blanc);margin-bottom:.4rem">Cycle du carbone et gestion des flux</div>
+        <div style="font-size:.78rem;color:var(--gris)">Carbone actif, fossile, puits et réservoirs →</div>
+      </a>
+      <a href="biochar.html" style="text-decoration:none;padding:1.4rem;border:1px solid rgba(233,196,106,.15);background:rgba(45,40,10,.15);display:block;transition:border-color .3s" onmouseover="this.style.borderColor='rgba(233,196,106,.4)'" onmouseout="this.style.borderColor='rgba(233,196,106,.15)'">
+        <div style="font-size:.65rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--ambre);margin-bottom:.5rem">Biochar · Séquestration</div>
+        <div style="font-family:var(--serif);font-size:1rem;color:var(--blanc);margin-bottom:.4rem">Le puits de carbone structurel</div>
+        <div style="font-size:.78rem;color:var(--gris)">EBC · sols · rétention eau →</div>
+      </a>
+      <a href="gestion-forets.html" style="text-decoration:none;padding:1.4rem;border:1px solid rgba(82,183,136,.15);background:rgba(10,30,15,.2);display:block;transition:border-color .3s" onmouseover="this.style.borderColor='rgba(82,183,136,.4)'" onmouseout="this.style.borderColor='rgba(82,183,136,.15)'">
+        <div style="font-size:.65rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--vert-vif);margin-bottom:.5rem">Forêts · Biomasse</div>
+        <div style="font-family:var(--serif);font-size:1rem;color:var(--blanc);margin-bottom:.4rem">Gestion écologique active</div>
+        <div style="font-size:.78rem;color:var(--gris)">Incendies · gisement · territoires →</div>
+      </a>
+      <a href="camion-resilience.html" style="text-decoration:none;padding:1.4rem;border:1px solid rgba(41,128,185,.15);background:rgba(10,20,35,.2);display:block;transition:border-color .3s" onmouseover="this.style.borderColor='rgba(41,128,185,.4)'" onmouseout="this.style.borderColor='rgba(41,128,185,.15)'">
+        <div style="font-size:.65rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#74b9e8;margin-bottom:.5rem">Mobilité · ÉREV</div>
+        <div style="font-family:var(--serif);font-size:1rem;color:var(--blanc);margin-bottom:.4rem">Le camion ÉREV Bio-CH₄</div>
+        <div style="font-size:.78rem;color:var(--gris)">Comparatif · performances · déploiement →</div>
+      </a>
+    </div>
+
+    <div style="text-align:center;margin-top:3rem">
+      <a href="index.html" class="btn btn-outline">← Retour au programme complet</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Programme Résilience V11</div>
+  <p>Logigramme systémique · Logique complète du Programme Résilience 2045 · Juillet 2026</p>
+  <p style="font-size:.7rem;color:#3a5044;margin-top:.4rem">Les chiffres sont des ordres de grandeur · Hypothèses détaillées dans le Programme V11 · Diffusion libre</p>
+</footer>
+
+<script>
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{
+    if(e.isIntersecting){
+      setTimeout(()=>e.target.classList.add('visible'),i*80);
+      obs.unobserve(e.target);
+    }
+  });
+},{threshold:0.05});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
