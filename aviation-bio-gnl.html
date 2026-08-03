@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aviation Bio-GNL — Analyse technique · Programme Résilience V11</title>
+<title>Aviation Bio-GNL & Méthane-ÉREV — Gamme complète · Programme Résilience V11</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -81,7 +81,7 @@ footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;li
 <nav>
   <a href="index.html" class="nav-logo">Programme Résilience V11</a>
   <div style="display:flex;align-items:center;gap:1.2rem">
-    <span class="nav-tag">Piste technologique · Horizon 2030–2040</span>
+    <span class="nav-tag">Aviation · 7 segments · Programme Résilience V11</span>
     <a href="index.html#vehicules" class="nav-back">← Retour</a>
   </div>
 </nav>
@@ -89,9 +89,9 @@ footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;li
 <section id="hero">
   <div class="hero-bg"></div><div class="hero-grid"></div>
   <div class="hero-content">
-    <div class="hero-tag">⚠ Piste sérieuse — non encore démontrée industriellement</div>
-    <h1>Aviation Long-Courrier<br><em>Bio-GNL</em></h1>
-    <p class="hero-sub">L'aviation longue distance est le segment le plus difficile à décarboner — et le seul où le biométhane liquéfié présente des avantages physiques théoriques significatifs sur le kérosène. Cette page documente ce qui est calculé, ce qui reste à démontrer, et pourquoi une étude industrielle par Airbus/Safran/Rolls-Royce est la prochaine étape nécessaire.</p>
+    <div class="hero-tag">Programme Résilience V11 — Gamme aviation complète</div>
+    <h1>Aviation <em>Bio-GNL</em><br>&amp; Méthane–EREV</h1>
+    <p class="hero-sub">Du gyrodyne torique à l'avion long-courrier : le Programme Résilience V11 couvre l'ensemble des segments de l'aviation, du méthane liquide à basse altitude jusqu'au GNL fossile puis bio-GNL pour les vols intercontinentaux. Cette page documente la gamme complète, la synthèse comparative carburants, et les notes techniques disponibles en téléchargement.</p>
   </div>
 </section>
 
@@ -106,6 +106,313 @@ footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;li
   <span class="bq b-est">🔬 Calcul théorique cohérent</span> ·
   <span class="bq b-hyp">⚠ Hypothèse à valider industriellement</span></p>
 </div></div>
+
+<!-- GAMME COMPLÈTE AVIATION -->
+<section class="alt">
+  <div class="container">
+    <div class="stag reveal">Architecture de gamme · Programme Résilience V11</div>
+    <h2 class="reveal">Quatre segments — <em>une filière carburant unique</em></h2>
+    <p class="lead reveal">Un seul carburant (méthane → bio-méthane filière Résilience), quatre architectures adaptées à chaque segment. Du VTOL urbain au long-courrier intercontinental, la progression 0→100 % bio se fait sans modifier les appareils ni les réseaux.</p>
+
+    <div class="tbl-wrap reveal">
+      <table>
+        <thead>
+          <tr>
+            <th>Segment</th>
+            <th>① VTOL Gyro-Torique</th>
+            <th>② Régional 15 places</th>
+            <th>③ ATR-72 ÉREV</th>
+            <th>④ Moyen-courrier</th>
+            <th>⑤ Long-courrier</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Usage</td>
+            <td>VTOL urbain · Médical · ISR · Souveraineté</td>
+            <td>Régional 15 pax · < 1 500 km</td>
+            <td>Régional 70 pax · 400–700 km</td>
+            <td>Monocouloir 180–220 pax · 2 000–4 000 km</td>
+            <td>Long-courrier 200–300 pax · > 8 000 km</td>
+          </tr>
+          <tr>
+            <td>Propulsion</td>
+            <td>6–8 rotors élec. + ÉREV Atkinson 40–250 kW</td>
+            <td>4–6 hélices élec. + ÉREV Atkinson 2×~500 kW</td>
+            <td>2 hélices élec. + ÉREV Atkinson 2×900 kW</td>
+            <td>Turbofan méthane + APU Atkinson</td>
+            <td>Turbofan méthane + APU Atkinson</td>
+          </tr>
+          <tr>
+            <td>Carburant / stockage</td>
+            <td>Bio-GNL −162°C · tore segmenté</td>
+            <td>GNL −162°C (> 800 km) ou GNV 250 bar</td>
+            <td>GNV 250 bar · réservoirs composites</td>
+            <td>Bio-GNL −162°C · réservoirs <strong>dans les ailes</strong></td>
+            <td>Bio-GNL −162°C · réservoirs fuselage arrière</td>
+          </tr>
+          <tr>
+            <td>Rendement chaîne</td>
+            <td>46–52 % (Atkinson régime fixe)</td>
+            <td>52–55 % (Atkinson point optimal)</td>
+            <td>45–48 % (2 groupes parallèles)</td>
+            <td>44–48 % (turbofan méthane sur-détente)</td>
+            <td>44–48 % (turbofan méthane sur-détente)</td>
+          </tr>
+          <tr>
+            <td>CO₂ vs kérosène (fossile)</td>
+            <td class="td-g">−45 à −50 %</td>
+            <td class="td-g">−45 à −50 %</td>
+            <td class="td-g">−45 à −48 %</td>
+            <td class="td-g">−37 à −45 %</td>
+            <td class="td-g">−37 %</td>
+          </tr>
+          <tr>
+            <td>CO₂ à 50 % bio-GNL/GNV</td>
+            <td class="td-g">−70 à −72 %</td>
+            <td class="td-g">−70 à −72 %</td>
+            <td class="td-g">−70 à −72 %</td>
+            <td class="td-g">−70 à −72 %</td>
+            <td class="td-g">−69 à −75 % + biochar</td>
+          </tr>
+          <tr>
+            <td>NOx / PM / Contrails</td>
+            <td>−40 % / −70 % / quasi nuls (basse alt.)</td>
+            <td>−40 % / −70 % / faibles (FL180–250)</td>
+            <td>−40 % / −70 % / faibles (FL180–220)</td>
+            <td class="td-g">−40 % / −70 % / −50→70 % (FL350–390)</td>
+            <td class="td-g">−40 % / −70 % / −50→90 % (FL350–410)</td>
+          </tr>
+          <tr>
+            <td>Coût carburant vs kérosène</td>
+            <td class="td-g">−60 à −70 % (bio-GNL Résilience)</td>
+            <td class="td-g">−15 % (fossile) → −65 % (bio)</td>
+            <td class="td-g">−65 à −75 % (bio-GNV)</td>
+            <td class="td-g">−15 % (fossile) → −60 % (bio)</td>
+            <td class="td-g">−15 % (fossile) → −50 % (bio)</td>
+          </tr>
+          <tr>
+            <td>1er vol certifiable</td>
+            <td class="td-a">2030–2033</td>
+            <td class="td-a">2030–2032</td>
+            <td class="td-a">2030–2033</td>
+            <td class="td-a">2033–2038</td>
+            <td class="td-a">2032–2035</td>
+          </tr>
+          <tr>
+            <td>Document de référence</td>
+            <td><a href="Resilience_Segment1_GyroTorique_V3.pdf" style="color:var(--vert-vif);font-size:.75rem" download>Segment 1 — GyroTorique V3 ↓</a></td>
+            <td><a href="Resilience_Segment2_15Places_EREV_V2.pdf" style="color:var(--vert-vif);font-size:.75rem" download>Segment 2 — 15 places V2 ↓</a></td>
+            <td><a href="Resilience_Segment3_ATR72_EREV_V2.pdf" style="color:var(--vert-vif);font-size:.75rem" download>Segment 3 — ATR-72 V2 ↓</a></td>
+            <td><a href="Avion_Moyen_Courrier_BioGNL_V3.pdf" style="color:var(--vert-vif);font-size:.75rem" download>Moyen-courrier V3 ↓</a></td>
+            <td><a href="Resilience_Segment4_LongCourrier_V6_compatible.pdf" style="color:var(--vert-vif);font-size:.75rem" download>Segment 4 — Long-courrier V6 ↓</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="box box-vert reveal" style="margin-top:1.5rem">
+      <strong>Invariants de la gamme :</strong> cycle Atkinson pistons à régime fixe ~2 500 tr/min (segments ①②③) · turbofan méthane à sur-détente optimisée (④⑤) · bus DC 800 V · batterie tampon modeste (décollage + transitoires) · filière carburant unique Résilience (pyrogazification → bio-CH₄) · montée 0→100 % bio sans modifier les appareils. NOx −40 % et particules −70 % sont <strong>constants quel que soit le pourcentage de bio</strong> — ils dépendent de la chimie du CH₄, pas de son origine.
+    </div>
+
+    <!-- Avantage différenciant moyen-courrier -->
+    <h3 class="reveal" style="margin-top:2rem;color:var(--ambre)">Nouveau · Segment moyen-courrier — avantage architectural décisif</h3>
+    <p class="body reveal">Le moyen-courrier Bio-GNL (classe A321neo, 180–220 pax, 2 000–4 000 km) apporte un avantage architectural que le long-courrier n'a pas : <strong style="color:var(--blanc)">les réservoirs GNL s'intègrent dans les caissons d'aile redessinés</strong>, sans toucher au fuselage. Résultat : cabine commerciale inchangée, centre de gravité stable, complexité de certification inférieure au long-courrier.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;margin:1.2rem 0" class="reveal">
+      <div class="card">
+        <div class="num">−30/40 %</div>
+        <h3>Masse carburant</h3>
+        <p>PCI GNL +16 % vs kérosène. Sur mission 3 000 km : ~7 500–8 500 kg GNL vs ~12 000 kg kérosène.</p>
+      </div>
+      <div class="card">
+        <div class="num">−1,8 t</div>
+        <h3>Bilan masse net</h3>
+        <p>Gain carburant (−3 500 à −4 500 kg) dépasse le surpoids système GNL (+1,0 à 1,7 t). MTOW maintenu.</p>
+      </div>
+      <div class="card">
+        <div class="num">~7 kW</div>
+        <h3>Froid cryogénique gratuit</h3>
+        <p>Valorisation passive du GNL à −162°C : précooling air moteur, refroidissement avionique, conditionnement cabine. Gain propulsif estimé 3–5 %.</p>
+      </div>
+      <div class="card">
+        <div class="num">7/8</div>
+        <h3>Dimensions gagnées</h3>
+        <p>Vs SAF (1/8) et H₂ liquide (0/8) sur 8 dimensions de comparaison filière : disponibilité, coût, NOx, PM, contrails, scalabilité, infrastructure, biochar.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:1.2rem;display:flex;gap:.8rem;flex-wrap:wrap" class="reveal">
+      <a href="Avion_Moyen_Courrier_BioGNL_V3.pdf" class="btn btn-outline" download>Note moyen-courrier V3 (PDF) ↓</a>
+      <a href="Aviation_Methane_EREV_Atkinson_Gamme_V9.pdf" class="btn btn-outline" download>Matrice de gamme V9 (PDF) ↓</a>
+      <a href="Apport_Titane_EREV_Aviation_Gamme_V4.pdf" class="btn btn-outline" download>Apport Titane gamme V4 (PDF) ↓</a>
+    </div>
+  </div>
+</section>
+
+<!-- DÉNOMINATEUR COMMUN — CHIMIE CH4 -->
+<section>
+  <div class="container">
+    <div class="stag reveal">Cohérence climatique consolidée · Gamme V9</div>
+    <h2 class="reveal">Trois polluants traités simultanément —<br><em>par la chimie du CH₄, pas son origine</em></h2>
+    <p class="lead reveal">NOx, particules et contrails représentent ensemble > 50 % du forçage radiatif de l'aviation sur 20 ans (IPCC AR6). Le SAF ne touche structurellement aucun de ces trois vecteurs. La famille méthane Résilience les traite tous, dès le premier vol fossile.</p>
+
+    <div class="tbl-wrap reveal">
+      <table>
+        <thead><tr><th>Polluant</th><th>Part forçage radiatif 20 ans</th><th>SAF 50 %</th><th>Méthane fossile</th><th>Mécanisme physique</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>CO₂</td><td>~35 %</td>
+            <td class="td-a">−18 % (50 % × 65 % moy. réglementaire)</td>
+            <td class="td-g">−37 % (fossile) → −75 % (bio + biochar)</td>
+            <td>PCI +16 % + rendement supérieur → moins de carburant</td>
+          </tr>
+          <tr>
+            <td>NOx</td><td>~15 %</td>
+            <td class="td-r">0 % (chimie kérosène inchangée)</td>
+            <td class="td-g">−40 % structurel · constant fossile ou bio</td>
+            <td>Mécanisme de Zeldovich : NOx thermiques exponentiels en T°. CH₄ brûle plus froid. <span class="bq b-ok">✅ Physique</span></td>
+          </tr>
+          <tr>
+            <td>Particules fines PM</td><td>~10 %</td>
+            <td class="td-a">−15 à −25 % (partiel)</td>
+            <td class="td-g">−70 % structurel · constant fossile ou bio</td>
+            <td>CH₄ pur : zéro soufre, zéro aromatiques → zéro suies. Vérifié Tu-156 (1988–1991). <span class="bq b-ok">✅ Chimie</span></td>
+          </tr>
+          <tr>
+            <td>Contrails</td><td class="td-r">~40 % (dominant sur 20 ans)</td>
+            <td class="td-r">−5 à −15 % (marginal)</td>
+            <td class="td-g">−50 à −90 % (FL350+) · segments ④⑤</td>
+            <td>T° combustion plus basse + absence noyaux condensation (soufre, suies). Bénéfice concentré sur long-courrier ④⑤. <span class="bq b-est">🔬 Calcul</span></td>
+          </tr>
+          <tr style="background:rgba(13,31,23,.5)">
+            <td><strong>TOTAL forçage</strong></td><td>100 %</td>
+            <td class="td-a">~−20 à −25 %</td>
+            <td class="td-g"><strong>~−60 à −70 %</strong></td>
+            <td>Méthane traite tous les polluants par sa chimie propre</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="box box-ambre reveal">
+      <strong>Verrou non-négociable (toute la gamme) :</strong> fuites CH₄ ≤ 1 % contractuel sur toute la chaîne. GWP₁₀₀ CH₄ = 27,9 (IPCC AR6) — au-delà de 3,5 % de fuite, le bénéfice CO₂ est effacé. Détection embarquée ≤ 0,5 % vol. obligatoire sur tous les segments. Systèmes de récupération boil-off en boucle fermée.
+    </div>
+  </div>
+</section>
+
+<!-- VERROUS TECHNIQUES COMMUNS -->
+<section class="alt">
+  <div class="container">
+    <div class="stag reveal">Verrous technologiques · Feuille de route commune</div>
+    <h2 class="reveal">Ce qui doit être résolu —<br><em>avant le premier vol commercial</em></h2>
+
+    <div class="tbl-wrap reveal">
+      <table>
+        <thead><tr><th>Verrou</th><th>Nature</th><th>Segments</th><th>Horizon</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Dessication GNL avant injection</strong> (tamis moléculaires 3Å — CRITIQUE)</td>
+            <td class="td-r">Sécurité</td>
+            <td>①②③④⑤</td>
+            <td class="td-a">Phase 1 · 2025–2027</td>
+          </tr>
+          <tr>
+            <td>Certification EASA moteur Atkinson piston propulsion aéronautique</td>
+            <td class="td-a">Réglementaire</td>
+            <td>①②③</td>
+            <td>Dialogue EASA 2026 · Certif. 2028–2030</td>
+          </tr>
+          <tr>
+            <td>Gestion vibrations pistons (AVC 4 niveaux, documenté ① — à étendre ②③)</td>
+            <td>Technique</td>
+            <td>①②③</td>
+            <td>Bancs essai 2026–2028</td>
+          </tr>
+          <tr>
+            <td>Turbocompression haute altitude (puissance Atkinson maintenue FL180+)</td>
+            <td>Technique</td>
+            <td>②③</td>
+            <td>Adaptation aviation 2027–2029</td>
+          </tr>
+          <tr>
+            <td>Slip méthane pistons Atkinson (CH₄ non brûlé à l'échappement)</td>
+            <td>Technique</td>
+            <td>①②③</td>
+            <td>Banc essai dédié 2026–2027</td>
+          </tr>
+          <tr>
+            <td>Réservoirs cryogéniques aile CS-25 (précédent inexistant aviation civile)</td>
+            <td class="td-a">Réglementaire</td>
+            <td>④ (moyen-courrier)</td>
+            <td>Dialogue EASA 2026 · Qualif. 2028–2030</td>
+          </tr>
+          <tr>
+            <td>Fatigue thermique échangeur intercooler CCA (ΔT > 800°C · Inconel/316L)</td>
+            <td>Technique · métallurgie</td>
+            <td>④⑤</td>
+            <td>Programme Safran/RR Phase 1–2</td>
+          </tr>
+          <tr>
+            <td><strong>Masse réelle moteurs Atkinson pistons</strong> (verrou PRIORITÉ 1 — ②③)</td>
+            <td class="td-r">Incertitude critique</td>
+            <td>②③</td>
+            <td>Mesure sur banc avant tout engagement design</td>
+          </tr>
+          <tr>
+            <td>Titane Ti-6Al-4V — décision de conception native (ROI < 18 mois estimé)</td>
+            <td>Conception</td>
+            <td>①②③④⑤</td>
+            <td>Décision Phase 0 · 2026</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="box box-rouge reveal">
+      <strong>Verrou critique commun à toute la gamme — dessication méthane :</strong> le méthane vaporisé depuis GNL −162°C contient de l'humidité résiduelle → formation de glace dans les injecteurs, blocage des soupapes, délaminage MLI. Solution : tamis moléculaires 3Å (2 lits, régénération cyclique). Point de rosée garanti < −60°C. Masse : 15–25 kg. Technologie GNL maritime existante à qualifier en aviation. Identifié et documenté Programme Résilience V11 — juillet 2026.
+    </div>
+
+    <div class="tbl-wrap reveal" style="margin-top:1.5rem">
+      <table>
+        <thead><tr><th>Période</th><th>Actions communes</th><th>① VTOL</th><th>②③ Régionaux</th><th>④ Moyen-courrier</th><th>⑤ Long-courrier</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>2026–2028</strong></td>
+            <td>Banc ÉREV Atkinson · AVC · Turbocompr. alt. · Dialogue EASA · Capteurs CH₄</td>
+            <td>Démonstr. 1:2 non habité</td>
+            <td>Concept + maquette · Retrofit banc sol ATR-72</td>
+            <td>Études réservoirs aile GNL + turbofan méthane</td>
+            <td>Études Airbus/RR turbofan méthane</td>
+          </tr>
+          <tr>
+            <td><strong>2028–2031</strong></td>
+            <td>Qual. réservoirs GNL composites · Premiers vols bio-GNL · Certif. partielle EASA</td>
+            <td>Prototype habité CS-27</td>
+            <td>1ers vols ②③</td>
+            <td>Démonstr. sol réservoirs aile</td>
+            <td>Démonstr. turbofan méthane</td>
+          </tr>
+          <tr>
+            <td><strong>2031–2038</strong></td>
+            <td>Certification ①②③ · Infra GNV/GNL aéroports · Montée bio-GNL Phase 2</td>
+            <td class="td-g">Entrée service ①</td>
+            <td class="td-g">Certification + service ②③</td>
+            <td class="td-g">Prototype + certif. CS-25</td>
+            <td class="td-g">1er vol + certif.</td>
+          </tr>
+          <tr class="tr-best">
+            <td><strong>2038–2045</strong></td>
+            <td>Montée bio 10→100 % · Biochar comptabilisé · −60/−80 Mt CO₂/an France</td>
+            <td class="td-g">Montée bio</td>
+            <td class="td-g">Montée bio</td>
+            <td class="td-g">Déploiement série</td>
+            <td class="td-g">Déploiement série</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
 
 <!-- POURQUOI LE BIO-GNL -->
 <section>
@@ -326,12 +633,25 @@ footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;li
       <p style="font-size:.9rem;color:rgba(240,244,241,.75);line-height:1.85">Le rendement +19 % sur moteur réel, les émissions NOx en vol, le comportement des réservoirs cryogéniques en conditions de vol (vibrations, pressions, certification EASA), le coût réel de l'infrastructure GNL aéroportuaire, et surtout l'économie réelle du vol Bio-GNL pour les compagnies. <strong>Ces points nécessitent un programme d'essais de plusieurs années — aucun avion Bio-GNL n'a volé à ce jour.</strong> Les affirmations définitives sur les performances sont prématurées.</p>
     </div>
 
-    <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap" class="reveal">
-      <a href="index.html#vehicules" class="btn btn-outline">← Retour aux véhicules</a>
-      <a href="Note_Aviation_BioGNL_V11.pdf" class="btn btn-outline" download>Note Aviation complète (PDF)</a>
-      <a href="Aviation_BioGNL_Synthese_V11.pdf" class="btn btn-outline" download>Comparatif des carburants aviation (PDF)</a>
-      <a href="cooperation-internationale.html" class="btn btn-outline">Deal franco-espagnol →</a>
-      <a href="Tu155_et_Annexe_Securite_V3.pdf" class="btn btn-outline" download>Tu-155 &amp; Sécurité GNL Aviation (PDF)</a>
+    <div style="margin-top:2rem" class="reveal">
+      <div style="font-size:.68rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gris);margin-bottom:.9rem">Documents disponibles en téléchargement · Programme Résilience V11</div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:.6rem;margin-bottom:1.2rem">
+        <a href="Resilience_Segment1_GyroTorique_V3.pdf" class="btn btn-outline" download style="text-align:left;font-size:.72rem">① VTOL Gyro-Torique V3 ↓</a>
+        <a href="Resilience_Segment2_15Places_EREV_V2.pdf" class="btn btn-outline" download style="text-align:left;font-size:.72rem">② Régional 15 places ÉREV V2 ↓</a>
+        <a href="Resilience_Segment3_ATR72_EREV_V2.pdf" class="btn btn-outline" download style="text-align:left;font-size:.72rem">③ ATR-72 ÉREV V2 ↓</a>
+        <a href="Avion_Moyen_Courrier_BioGNL_V3.pdf" class="btn btn-outline" download style="text-align:left;font-size:.72rem">④ Moyen-courrier Bio-GNL V3 ↓</a>
+        <a href="Resilience_Segment4_LongCourrier_V6_compatible.pdf" class="btn btn-outline" download style="text-align:left;font-size:.72rem">⑤ Long-courrier V6 ↓</a>
+        <a href="Aviation_Methane_EREV_Atkinson_Gamme_V9.pdf" class="btn btn-outline" download style="text-align:left;font-size:.72rem">Matrice de gamme ÉREV V9 ↓</a>
+        <a href="Apport_Titane_EREV_Aviation_Gamme_V4.pdf" class="btn btn-outline" download style="text-align:left;font-size:.72rem">Apport Titane gamme V4 ↓</a>
+        <a href="Aviation_BioGNL_Synthese_V11.pdf" class="btn btn-outline" download style="text-align:left;font-size:.72rem">Synthèse comparative carburants V11 ↓</a>
+      </div>
+
+      <div style="display:flex;gap:1rem;flex-wrap:wrap">
+        <a href="index.html#vehicules" class="btn btn-outline">← Retour aux véhicules</a>
+        <a href="cooperation-internationale.html" class="btn btn-outline">Deal franco-espagnol →</a>
+        <a href="Tu155_et_Annexe_Securite_V3.pdf" class="btn btn-outline" download>Tu-155 &amp; Sécurité GNL (PDF) ↓</a>
+      </div>
     </div>
   </div>
 </section>
@@ -341,20 +661,25 @@ footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;li
     <p style="font-size:.75rem;color:var(--gris);line-height:1.85">
       <strong style="color:rgba(240,244,241,.5)">Sources :</strong>
       NIST — PCI méthane (50 MJ/kg), kérosène (43 MJ/kg) ·
-      IPCC AR6 — forçage radiatif contrails ·
+      IPCC AR6 — forçage radiatif contrails (Lee et al. 2021) ·
+      IATA SAF Report 2025 · EASA Production SAF 2024 ·
       Rolls-Royce R&D GNL civil 2023 ·
       IATA Long Range Aircraft Fuel Study 2022 ·
-      Airbus ZEROe programme 2023 ·
       IEA Hydrogen — comparatif liquéfaction H₂ vs LNG ·
-      EASA CS-25 — certification avions civils ·
-      Programme Résilience V11 — Note Aviation BioGNL V11 (mai 2026)
+      EASA CS-25 §25.963 §25.1455 §25.863 — certification avions civils ·
+      GIIGNL 2023 · AIGA Doc 2022 — boil-off GNL vs H₂ ·
+      Archives Tupolev Tu-156 GNL 1996–1999 · Tu-155 vols GNL méthane 1988–1991 ·
+      Mécanisme de Zeldovich (NOx thermiques) — base physique établie ·
+      EBC / Puro.earth — ratio CO₂eq biochar (2,5–3,1 t/t) ·
+      Safran ENGINeUS · MagniX · Rolls-Royce Spirit of Innovation — moteurs élec. aéronautiques ·
+      Programme Résilience V11 — Matrice gamme Aviation V9 · Moyen-courrier V3 · Note Aviation V11 (juillet 2026)
     </p>
   </div>
 </section>
 <footer>
   <div class="footer-logo">Programme Résilience V11</div>
-  <p>Analyse technique niveau 3 · Aviation Bio-GNL · Horizon 2030–2040 · Mai 2026</p>
-  <p style="font-size:.7rem;color:#3a5044;margin-top:.4rem">Piste sérieuse · Calculs théoriques cohérents · Validation industrielle entièrement à construire · Diffusion libre</p>
+  <p>Analyse technique · Gamme Aviation Bio-GNL / Méthane-ÉREV · Horizon 2030–2045 · Juillet 2026</p>
+  <p style="font-size:.7rem;color:#3a5044;margin-top:.4rem">5 segments documentés · Matrice de gamme V9 · Calculs théoriques bornés · Validation industrielle à construire · Diffusion libre</p>
 </footer>
 <script>
 const obs=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*60);obs.unobserve(e.target);}});},{threshold:0.06});
