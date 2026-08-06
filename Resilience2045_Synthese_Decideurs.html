@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Résilience 2045 — Décarboner, restaurer le climat, renforcer la souveraineté</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap');
+
+:root {
+  --vert:#1a5c3a;
+  --vert-clair:#2e7d52;
+  --ambre:#c8960a;
+  --gris:#2d3748;
+  --gris-clair:#f7f9f7;
+  --noir:#1a1a1a;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Jost','Helvetica Neue',sans-serif;
+}
+
+* { box-sizing:border-box; margin:0; padding:0; }
+
+body {
+  font-family:var(--sans);
+  font-weight:300;
+  font-size:12pt;
+  line-height:1.85;
+  color:var(--noir);
+  background:#fff;
+  max-width:820px;
+  margin:0 auto;
+  padding:2rem;
+}
+
+@media print {
+  body { max-width:100%; padding:0; font-size:11pt; }
+  .page-break { page-break-before:always; }
+  .no-break { page-break-inside:avoid; }
+  .print-hint { display:none; }
+}
+
+/* COVER */
+.cover {
+  min-height:96vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  border-left:4px solid var(--vert);
+  padding:3rem 3rem 3rem 3.5rem;
+  background:linear-gradient(160deg,#f7faf8 0%,#eef5f0 100%);
+  margin-bottom:2rem;
+}
+.cover-pretitle {
+  font-size:9pt;
+  font-weight:600;
+  letter-spacing:.25em;
+  text-transform:uppercase;
+  color:var(--vert-clair);
+  margin-bottom:1.5rem;
+}
+.cover h1 {
+  font-family:var(--serif);
+  font-size:2.6rem;
+  font-weight:300;
+  line-height:1.1;
+  color:var(--noir);
+  margin-bottom:.4rem;
+}
+.cover h1 em { font-style:italic; color:var(--vert); }
+.cover-subtitle {
+  font-family:var(--serif);
+  font-size:1.3rem;
+  font-weight:400;
+  color:var(--vert);
+  margin-bottom:.8rem;
+  line-height:1.3;
+}
+.cover-sub {
+  font-family:var(--serif);
+  font-size:1.15rem;
+  font-weight:300;
+  font-style:italic;
+  color:var(--gris);
+  margin-bottom:2.5rem;
+  line-height:1.4;
+}
+.cover-meta {
+  font-size:9.5pt;
+  color:var(--gris);
+  letter-spacing:.08em;
+  margin-bottom:2rem;
+}
+
+/* IDÉE CENTRALE — encadré couverture */
+.cover-idee {
+  background:#fff;
+  border-left:4px solid var(--vert);
+  border-top:1px solid rgba(26,92,58,.15);
+  border-bottom:1px solid rgba(26,92,58,.15);
+  padding:1.2rem 1.6rem;
+  margin-bottom:1.5rem;
+}
+.cover-idee-titre {
+  font-size:8.5pt;
+  font-weight:600;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--vert-clair);
+  margin-bottom:.6rem;
+}
+.cover-idee p {
+  font-family:var(--serif);
+  font-size:1.15rem;
+  font-weight:400;
+  line-height:1.6;
+  color:var(--noir);
+  margin:0;
+}
+.cover-idee strong { color:var(--vert); font-weight:600; }
+
+.cover-intent {
+  background:rgba(200,150,10,.07);
+  border-left:3px solid var(--ambre);
+  padding:1rem 1.4rem;
+  font-size:.95rem;
+  color:var(--gris);
+  line-height:1.75;
+  max-width:560px;
+}
+.cover-intent strong { color:var(--noir); font-weight:500; }
+
+/* SOMMAIRE */
+.toc { margin:2rem 0 3rem; }
+.toc-title {
+  font-size:9pt;
+  font-weight:600;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--vert);
+  margin-bottom:1rem;
+  padding-bottom:.4rem;
+  border-bottom:1px solid rgba(26,92,58,.2);
+}
+.toc ol { padding-left:1.4rem; }
+.toc li { font-size:.95rem; line-height:2.1; color:var(--gris); }
+.toc li strong { color:var(--noir); font-weight:500; }
+
+/* SECTIONS */
+.section { margin-bottom:3rem; }
+.section-num {
+  font-size:9pt;
+  font-weight:600;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--vert-clair);
+  margin-bottom:.3rem;
+}
+h2 {
+  font-family:var(--serif);
+  font-size:1.75rem;
+  font-weight:300;
+  line-height:1.15;
+  color:var(--noir);
+  margin-bottom:.9rem;
+  border-bottom:1px solid rgba(26,92,58,.15);
+  padding-bottom:.5rem;
+}
+h2 em { font-style:italic; color:var(--vert); }
+h3 {
+  font-family:var(--sans);
+  font-size:.9rem;
+  font-weight:600;
+  color:var(--vert);
+  letter-spacing:.05em;
+  text-transform:uppercase;
+  margin:1.4rem 0 .5rem;
+}
+p { margin-bottom:.85rem; }
+
+/* ENCADRÉS */
+.box {
+  border-left:3px solid var(--vert);
+  background:var(--gris-clair);
+  padding:1rem 1.4rem;
+  margin:1.2rem 0;
+  font-size:.96rem;
+  line-height:1.8;
+}
+.box-ambre { border-color:var(--ambre); background:rgba(200,150,10,.05); }
+.box-rouge { border-left-color:#c0392b; }
+.box strong { font-weight:600; }
+
+/* CHIFFRES CLÉS */
+.chiffres {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1rem;
+  margin:1.2rem 0;
+}
+.chiffre {
+  background:var(--gris-clair);
+  border-top:3px solid var(--vert);
+  padding:.9rem 1rem;
+  text-align:center;
+}
+.chiffre-val {
+  font-family:var(--serif);
+  font-size:1.7rem;
+  font-weight:600;
+  color:var(--vert);
+  line-height:1;
+  display:block;
+  margin-bottom:.3rem;
+}
+.chiffre-lab { font-size:.85rem; color:var(--gris); line-height:1.5; }
+
+/* TABLEAU SYSTÉMIQUE */
+.tbl-sys {
+  width:100%;
+  border-collapse:collapse;
+  margin:1.2rem 0;
+  font-size:.96rem;
+}
+.tbl-sys th {
+  background:var(--vert);
+  color:#fff;
+  font-weight:500;
+  text-align:left;
+  padding:.6rem 1rem;
+  font-size:.88rem;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+}
+.tbl-sys td {
+  padding:.6rem 1rem;
+  border-bottom:1px solid #e2ebe5;
+  vertical-align:middle;
+  line-height:1.6;
+}
+.tbl-sys tr:nth-child(even) td { background:#f4f8f5; }
+.arr { color:var(--vert); font-weight:600; font-size:1.1rem; text-align:center; }
+.td-v { color:var(--vert); font-weight:500; }
+.td-r { color:#c0392b; }
+.td-a { color:var(--ambre); font-weight:500; }
+
+/* TABLEAU COMPARATIF */
+table.cmp {
+  width:100%;
+  border-collapse:collapse;
+  font-size:.92rem;
+  margin:1.2rem 0;
+}
+table.cmp th {
+  background:var(--vert);
+  color:#fff;
+  font-weight:500;
+  text-align:left;
+  padding:.6rem .9rem;
+  font-size:.88rem;
+}
+table.cmp td {
+  padding:.6rem .9rem;
+  border-bottom:1px solid #e2ebe5;
+  vertical-align:top;
+  line-height:1.65;
+}
+table.cmp tr:nth-child(even) td { background:#f4f8f5; }
+
+/* SCHÉMA FILIÈRE SVG */
+.schema-wrap {
+  background:#f0f5f1;
+  border:1px solid #c8ddd0;
+  padding:1.5rem;
+  margin:1.5rem 0;
+  border-radius:2px;
+}
+.schema-titre {
+  font-size:8.5pt;
+  font-weight:600;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--vert);
+  margin-bottom:1rem;
+  text-align:center;
+}
+
+/* LISTE */
+ul.custom { list-style:none; padding:0; margin:.6rem 0 1rem; }
+ul.custom li {
+  padding-left:1.4rem;
+  position:relative;
+  margin-bottom:.5rem;
+  font-size:.96rem;
+  line-height:1.75;
+}
+ul.custom li::before {
+  content:"▸";
+  color:var(--vert);
+  position:absolute;
+  left:0;
+  font-size:.8rem;
+  top:.2rem;
+}
+
+blockquote {
+  border-left:3px solid var(--ambre);
+  padding:.7rem 1.3rem;
+  font-family:var(--serif);
+  font-size:1.15rem;
+  font-style:italic;
+  color:var(--gris);
+  margin:1.3rem 0;
+  line-height:1.65;
+}
+
+.doc-footer {
+  margin-top:4rem;
+  padding-top:1rem;
+  border-top:1px solid #ddd;
+  font-size:9pt;
+  color:#555;
+  display:flex;
+  justify-content:space-between;
+}
+
+.print-hint {
+  text-align:center;
+  padding:.7rem;
+  background:#f0f5f1;
+  border:1px solid #c8ddd0;
+  font-size:.88rem;
+  color:var(--gris);
+  margin-bottom:2rem;
+}
+.print-hint a { color:var(--vert); }
+
+.image-mentale {
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  gap:0;
+  margin:1.4rem 0;
+  align-items:center;
+}
+.im-bloc {
+  background:var(--gris-clair);
+  border:1px solid #c8ddd0;
+  border-top:3px solid var(--vert);
+  padding:1rem;
+  text-align:center;
+}
+.im-bloc-ambre { border-top-color:var(--ambre); }
+.im-titre { font-weight:600; font-size:.82rem; letter-spacing:.08em; text-transform:uppercase; color:var(--vert); margin-bottom:.3rem; }
+.im-titre-ambre { color:var(--ambre); }
+.im-desc { font-size:.85rem; color:var(--gris); line-height:1.5; }
+.im-plus {
+  font-size:2rem;
+  color:var(--vert);
+  font-weight:300;
+  padding:0 1rem;
+  text-align:center;
+}
+</style>
+</head>
+<body>
+
+<div class="print-hint">
+  Document optimisé pour impression A4 — Ctrl+P / ⌘+P &nbsp;·&nbsp;
+  <a href="https://resilience2045.fr">resilience2045.fr</a>
+</div>
+
+<!-- ══════════════════════════════════════════ COUVERTURE -->
+<div class="cover no-break">
+  <div class="cover-pretitle">Programme Résilience 2045 · Juillet 2026 · Document de synthèse</div>
+  <h1>Résilience <em>2045</em></h1>
+  <p class="cover-subtitle">Décarboner, restaurer le climat<br>et renforcer la souveraineté énergétique</p>
+  <p class="cover-sub">Un programme français de gestion intelligente des cycles du carbone,<br>de la biomasse et des territoires</p>
+  <p class="cover-meta">Version non technique · À l'usage des décideurs politiques, journalistes et non-spécialistes · Juillet 2026</p>
+
+  <div class="cover-idee">
+    <div class="cover-idee-titre">L'idée centrale</div>
+    <p>Résilience 2045 valorise <strong>l'ensemble de la biomasse française</strong> — déchets urbains, résidus agricoles, bois forestier non valorisé — pour produire <strong>simultanément</strong> : de l'énergie renouvelable, des matériaux de séquestration du carbone, de la fertilité pour les sols, une réduction du risque incendie et une souveraineté énergétique nationale. Le bio-méthane n'est qu'une des conséquences de cette logique — la plus visible, pas la seule.</p>
+  </div>
+
+  <div class="cover-intent">
+    <strong>Ce document répond à une question simple :</strong> nous avons décidé de supprimer les énergies fossiles et de tout électrifier. C'est nécessaire. Mais est-ce suffisant ? Et que fait-on des secteurs que l'électricité ne peut pas atteindre — l'aviation, les poids lourds, l'agriculture, l'industrie lourde ? Et surtout : comment fait-on baisser le CO₂ déjà accumulé dans l'atmosphère depuis deux siècles ? Résilience 2045 propose une réponse complémentaire, souveraine et régénérative.
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════ SOMMAIRE -->
+<div class="toc no-break">
+  <div class="toc-title">Sommaire</div>
+  <ol>
+    <li><strong>Le constat climatique</strong> — Ce que l'on sait, ce que l'on oublie</li>
+    <li><strong>L'impasse du tout-électrique</strong> — Les limites physiques que personne ne dit clairement</li>
+    <li><strong>La vision systémique</strong> — Quand les déchets deviennent des ressources</li>
+    <li><strong>Le pivot Résilience</strong> — Le bio-méthane, complément indispensable de l'électricité</li>
+    <li><strong>Restaurer le climat</strong> — Aller au-delà de la neutralité carbone</li>
+    <li><strong>Régénérer les sols</strong> — L'éponge hydrique et la résilience agricole</li>
+    <li><strong>Forêts et incendies</strong> — Transformer le combustible des incendies en ressource</li>
+    <li><strong>L'infrastructure existante</strong> — Pourquoi ça coûte moins cher qu'on ne croit</li>
+    <li><strong>Les applications sectorielles</strong> — Mobilité, aviation, agriculture, industrie</li>
+    <li><strong>Comparaison des deux voies</strong> — Tout-électrique vs Résilience 2045</li>
+    <li><strong>Ce que nous demandons aux décideurs</strong> — Trois décisions, une fenêtre 2026–2028</li>
+  </ol>
+</div>
+
+<div class="page-break"></div>
+
+<!-- ══════════════════════════════════════════ 01 -->
+<div class="section">
+  <div class="section-num">01 · Le constat climatique</div>
+  <h2>Ce que l'on sait —<br><em>et ce que l'on oublie</em></h2>
+
+  <p>Le dérèglement climatique n'est plus une projection : il se manifeste chaque été par des canicules record, des sécheresses prolongées, des incendies de forêt de plus en plus violents, des pluies diluviennes suivies de ruissellements destructeurs. La cause scientifique est établie : la concentration de CO₂ dans l'atmosphère dépasse 420 parties par million, soit un niveau inégalé depuis au moins 3 millions d'années.</p>
+
+  <p>La réponse politique adoptée depuis l'Accord de Paris est logique : supprimer progressivement les combustibles fossiles pour stopper les émissions de CO₂. C'est indispensable. Mais cette réponse souffre de deux angles morts qu'il faut nommer clairement.</p>
+
+  <div class="box box-ambre no-break">
+    <strong>Angle mort n°1 — Stopper les émissions ne réduit pas le CO₂ déjà là.</strong><br>
+    Même si nous arrêtions toutes les émissions fossiles demain, les 420 ppm resteraient dans l'atmosphère pendant des siècles. La neutralité carbone arrête la dégradation du climat — elle ne le restaure pas. Pour améliorer réellement le climat, il faut <em>retirer</em> du CO₂ atmosphérique, pas seulement cesser d'en émettre.
+  </div>
+
+  <div class="box box-ambre no-break">
+    <strong>Angle mort n°2 — Les puits naturels de carbone ne sont pas la solution.</strong><br><br>
+    Forêts et océans absorbent aujourd'hui environ la moitié de nos émissions. Cette capacité est souvent présentée comme un filet de sécurité. Mais cette vision est dangereusement optimiste — pour quatre raisons que le débat public ignore largement.
+  </div>
+
+  <ul class="custom">
+    <li><strong>Ils s'affaiblissent déjà.</strong> Le réchauffement, les sécheresses et les incendies réduisent progressivement la capacité d'absorption des forêts. Certains massifs — Amazonie, forêts boréales — deviennent émetteurs nets de CO₂ certaines années. Les océans s'acidifient, réduisant l'absorption par le phytoplancton.</li>
+    <li><strong>Leur carbone est instable.</strong> Le carbone stocké dans un arbre est libéré lors d'un incendie, d'une tempête ou de sa décomposition. Ce n'est pas du carbone retiré définitivement de l'atmosphère — c'est du carbone temporairement mis en attente, toujours susceptible de revenir.</li>
+    <li><strong>Ils ne peuvent pas réduire le stock existant.</strong> Même si les forêts absorbaient davantage, cela ne pourrait que compenser des émissions nouvelles. Les 420 ppm accumulés depuis deux siècles ne diminueront pas grâce aux puits naturels seuls. Ils <em>ralentissent</em> l'accumulation — ils ne l'inversent pas.</li>
+    <li><strong>Le permafrost ajoute un risque incontrôlable.</strong> Les sols gelés en permanence des régions arctiques — le permafrost — contiennent des quantités colossales de méthane et de CO₂ fossilisés depuis des millénaires. Sous l'effet du réchauffement, ce pergélisol dégèle et libère ces gaz. Ce phénomène crée une boucle de rétroaction autonome : plus il fait chaud, plus le permafrost dégèle, plus il libère de gaz à effet de serre, plus il fait chaud. Cette dynamique est entièrement indépendante de nos propres émissions — elle peut s'enclencher même si nous atteignons la neutralité carbone. C'est l'argument le plus fort en faveur d'un retrait actif du CO₂ atmosphérique plutôt que d'une simple réduction des émissions.</li>
+  </ul>
+
+  <p>À cela s'ajoute un troisième problème souvent ignoré : un siècle d'agriculture intensive a appauvri les sols en matière organique. Devenus compacts et fragiles, ils absorbent mal les pluies (ruissellement, érosion), sèchent plus vite lors des sécheresses et nourrissent moins bien les cultures.</p>
+
+  <div class="chiffres no-break">
+    <div class="chiffre">
+      <span class="chiffre-val">420</span>
+      <span class="chiffre-lab">ppm de CO₂ atmosphérique — niveau record depuis 3 millions d'années</span>
+    </div>
+    <div class="chiffre">
+      <span class="chiffre-val">50 %</span>
+      <span class="chiffre-lab">des émissions mondiales absorbées par forêts et océans — capacité en dégradation</span>
+    </div>
+    <div class="chiffre">
+      <span class="chiffre-val">30–40 %</span>
+      <span class="chiffre-lab">de matière organique perdue dans les sols agricoles européens depuis 1950</span>
+    </div>
+  </div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- ══════════════════════════════════════════ 02 -->
+<div class="section">
+  <div class="section-num">02 · L'impasse du tout-électrique</div>
+  <h2>Les limites physiques que<br><em>personne ne dit clairement</em></h2>
+
+  <p>L'électrification est juste et nécessaire pour une grande partie de nos usages. Mais en faire le seul vecteur de la transition crée des tensions physiques et économiques réelles que les discours politiques passent souvent sous silence.</p>
+
+  <h3>Le problème de la puissance de pointe</h3>
+  <p>Une société ne consomme pas seulement de l'énergie au fil de l'eau — elle a besoin de <em>puissance</em> à certains moments critiques. Lors d'une semaine de grand froid sans vent ni soleil (ce que les météorologues appellent <em>Dunkelflaute</em>), les éoliennes et panneaux solaires produisent très peu. Le réseau électrique seul, même bien dimensionné, peut se retrouver en tension sans un vecteur de réserve stockable.</p>
+
+  <h3>Le stockage inter-saisonnier</h3>
+  <p>L'électricité se stocke difficilement en grande quantité. Les batteries sont utiles pour quelques heures, pas pour plusieurs mois. Or la transition énergétique crée un déséquilibre saisonnier : surplus d'électricité solaire en été, déficit en hiver. Les volumes de matière et les coûts nécessaires pour couvrir ce besoin par batteries seuls sont considérables.</p>
+
+  <h3>Les secteurs difficiles à électrifier</h3>
+  <p>Certains usages sont aujourd'hui très difficiles à convertir à la batterie en raison du rapport poids/énergie ou de la puissance exigée :</p>
+
+  <ul class="custom">
+    <li><strong>L'aviation commerciale</strong> — Un avion de ligne consomme autant d'énergie en une heure qu'une ville moyenne. Les technologies de batterie actuelles et prévisibles ne permettent pas de vol moyen ou long-courrier.</li>
+    <li><strong>Le transport lourd longue distance</strong> — Poids lourds de 44 tonnes sur 1 000 km, navires de commerce.</li>
+    <li><strong>L'agriculture et les chantiers</strong> — Tracteurs, moissonneuses, pelleteuses : puissance continue pendant des heures, loin de tout réseau.</li>
+    <li><strong>L'industrie à haute température</strong> — Fours de verrerie, hauts fourneaux, fours cimentiers : températures de 1 000 à 1 600°C difficiles à atteindre économiquement par l'électricité seule.</li>
+  </ul>
+
+  <div class="box no-break">
+    <strong>En résumé :</strong> le tout-électrique apporte une réponse robuste pour environ 60 à 70 % des besoins énergétiques. Pour les 30 à 40 % restants — les usages les plus difficiles à décarboner, les pointes de puissance, le stockage de masse saisonnier — il est aujourd'hui plus réaliste de s'appuyer sur un second vecteur complémentaire. C'est précisément le rôle du bio-méthane.
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════ 03 -->
+<div class="section">
+  <div class="section-num">03 · La vision systémique</div>
+  <h2>Quand les déchets deviennent<br><em>des ressources</em></h2>
+
+  <p>Avant de présenter les technologies, il faut comprendre la logique centrale du programme. Résilience 2045 n'est pas d'abord un projet énergétique — c'est un projet de gestion intelligente des cycles du carbone et des territoires. L'énergie en est une conséquence majeure, pas la seule finalité.</p>
+
+  <p>L'image mentale la plus juste est celle-ci :</p>
+
+  <div class="image-mentale no-break">
+    <div class="im-bloc">
+      <div class="im-titre">L'électricité</div>
+      <div class="im-desc">Le cerveau du système — rapide, précis, efficace pour les usages du quotidien</div>
+    </div>
+    <div class="im-plus">+</div>
+    <div class="im-bloc im-bloc-ambre">
+      <div class="im-titre im-titre-ambre">Le bio-méthane</div>
+      <div class="im-desc">Le muscle du système — puissant, stockable, pour ce que l'électricité ne peut pas faire seule</div>
+    </div>
+  </div>
+
+  <p>Ensemble, ils forment un système complet. Séparément, chacun a ses angles morts.</p>
+
+  <p>La transformation systémique que Résilience 2045 opère peut se résumer en un tableau simple :</p>
+
+  <table class="tbl-sys no-break">
+    <thead>
+      <tr>
+        <th style="width:40%">Ce qui existe aujourd'hui</th>
+        <th style="width:10%;text-align:center">→</th>
+        <th style="width:50%">Ce que Résilience en fait</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Déchets organiques urbains</td><td class="arr">→</td><td class="td-v">Énergie renouvelable + fertilisant</td></tr>
+      <tr><td>Résidus forestiers et sous-bois (combustible incendies)</td><td class="arr">→</td><td class="td-v">Bio-méthane + biochar + revenus pour les territoires</td></tr>
+      <tr><td>Effluents d'élevage</td><td class="arr">→</td><td class="td-v">Énergie + digestat (engrais local)</td></tr>
+      <tr><td>CO₂ atmosphérique accumulé</td><td class="arr">→</td><td class="td-v">Carbone séquestré dans les sols via biochar</td></tr>
+      <tr><td>Excédents électriques d'été</td><td class="arr">→</td><td class="td-v">Méthane de synthèse stocké pour l'hiver</td></tr>
+      <tr><td>Sols agricoles appauvris</td><td class="arr">→</td><td class="td-v">Sols régénérés, rétention hydrique améliorée</td></tr>
+      <tr><td>Chaleur industrielle perdue</td><td class="arr">→</td><td class="td-v">Chaleur utile valorisée localement</td></tr>
+      <tr><td>Dépendance énergétique importée</td><td class="arr">→</td><td class="td-v">Souveraineté sur ressources locales françaises</td></tr>
+    </tbody>
+  </table>
+
+  <div class="box no-break">
+    <strong>Ce tableau est la clé de lecture du programme.</strong> Chaque ressource locale aujourd'hui négligée ou coûteuse à gérer devient une matière première valorisable. Résilience 2045 est un programme de révolution des usages, pas une révolution technologique.
+  </div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- ══════════════════════════════════════════ 04 -->
+<div class="section">
+  <div class="section-num">04 · Le pivot Résilience</div>
+  <h2>Le bio-méthane, complément<br><em>indispensable de l'électricité</em></h2>
+
+  <p>Le Programme Résilience 2045 ne s'oppose pas à l'électrification. Il lui apporte ce qu'elle ne peut pas se donner seule : un vecteur moléculaire stockable, puissant, compatible avec les infrastructures existantes et produit depuis nos propres ressources territoriales.</p>
+
+  <p>Ce vecteur, c'est le <strong>bio-méthane</strong> — du méthane (CH₄) produit non pas depuis des puits de gaz fossile, mais depuis la biomasse : déchets organiques urbains, résidus agricoles, bois de forêt non valorisé. Sa molécule est identique au gaz naturel. Ses infrastructures de transport et de stockage existent déjà.</p>
+
+  <p>Le programme repose sur deux procédés industriels complémentaires, illustrés ci-dessous :</p>
+
+  <!-- SCHÉMA FILIÈRE SVG -->
+  <div class="schema-wrap no-break">
+    <div class="schema-titre">La filière Résilience — de la biomasse aux usages</div>
+    <svg viewBox="0 0 720 380" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block">
+      <!-- styles -->
+      <style>
+        .lbl { font-family:'Jost','Helvetica Neue',sans-serif; font-size:11px; fill:#2d3748; }
+        .lbl-vert { fill:#1a5c3a; font-weight:600; }
+        .lbl-titre { font-size:10px; font-weight:600; letter-spacing:1.5px; fill:#1a5c3a; text-transform:uppercase; }
+        .lbl-ambre { fill:#c8960a; font-weight:600; }
+        .boite { rx:4; ry:4; }
+      </style>
+
+      <!-- ═══ COLONNE GAUCHE : MÉTHANISATION ═══ -->
+      <!-- Biomasse humide -->
+      <rect x="30" y="20" width="150" height="44" rx="4" fill="#eef5f0" stroke="#2e7d52" stroke-width="1.5"/>
+      <text x="105" y="38" text-anchor="middle" class="lbl lbl-vert">Biomasse humide</text>
+      <text x="105" y="54" text-anchor="middle" class="lbl" style="font-size:9.5px;fill:#4a5568">Effluents · Biodéchets · Boues</text>
+
+      <!-- flèche vers méthanisation -->
+      <line x1="105" y1="64" x2="105" y2="100" stroke="#2e7d52" stroke-width="1.5" marker-end="url(#arr)"/>
+
+      <!-- Méthanisation -->
+      <rect x="30" y="100" width="150" height="38" rx="4" fill="#1a5c3a" stroke="#1a5c3a"/>
+      <text x="105" y="114" text-anchor="middle" class="lbl" style="fill:#fff;font-size:10px;font-weight:600;letter-spacing:1px">MÉTHANISATION</text>
+      <text x="105" y="129" text-anchor="middle" class="lbl" style="fill:rgba(255,255,255,.75);font-size:9px">Fermentation anaérobie</text>
+
+      <!-- flèche bio-méthane gauche -->
+      <line x1="180" y1="119" x2="290" y2="119" stroke="#2e7d52" stroke-width="1.5" marker-end="url(#arr)"/>
+      <text x="235" y="113" text-anchor="middle" class="lbl" style="font-size:9px;fill:#2e7d52">bio-méthane</text>
+
+      <!-- flèche digestat -->
+      <line x1="105" y1="138" x2="105" y2="175" stroke="#c8960a" stroke-width="1.5" marker-end="url(#arr-ambre)"/>
+      <rect x="30" y="175" width="150" height="38" rx="4" fill="rgba(200,150,10,.1)" stroke="#c8960a" stroke-width="1.5"/>
+      <text x="105" y="190" text-anchor="middle" class="lbl lbl-ambre" style="font-size:10px">Digestat</text>
+      <text x="105" y="205" text-anchor="middle" class="lbl" style="font-size:9px;fill:#4a5568">Engrais organique local</text>
+      <line x1="105" y1="213" x2="105" y2="245" stroke="#c8960a" stroke-width="1.2" stroke-dasharray="4,3"/>
+      <text x="105" y="260" text-anchor="middle" class="lbl" style="font-size:9px;fill:#c8960a">→ Sols agricoles régénérés</text>
+
+      <!-- ═══ COLONNE DROITE : PYROGAZÉIFICATION ═══ -->
+      <!-- Biomasse sèche -->
+      <rect x="530" y="20" width="160" height="44" rx="4" fill="#eef5f0" stroke="#2e7d52" stroke-width="1.5"/>
+      <text x="610" y="38" text-anchor="middle" class="lbl lbl-vert">Biomasse sèche</text>
+      <text x="610" y="54" text-anchor="middle" class="lbl" style="font-size:9.5px;fill:#4a5568">Bois · Paille · Résidus forestiers</text>
+
+      <!-- flèche vers pyrogaz -->
+      <line x1="610" y1="64" x2="610" y2="100" stroke="#2e7d52" stroke-width="1.5" marker-end="url(#arr)"/>
+
+      <!-- Pyrogazéification -->
+      <rect x="530" y="100" width="160" height="38" rx="4" fill="#1a5c3a" stroke="#1a5c3a"/>
+      <text x="610" y="114" text-anchor="middle" class="lbl" style="fill:#fff;font-size:10px;font-weight:600;letter-spacing:1px">PYROGAZÉIFICATION</text>
+      <text x="610" y="129" text-anchor="middle" class="lbl" style="fill:rgba(255,255,255,.75);font-size:9px">Haute température sans oxygène</text>
+
+      <!-- flèche bio-méthane droite -->
+      <line x1="530" y1="119" x2="430" y2="119" stroke="#2e7d52" stroke-width="1.5" marker-end="url(#arr)"/>
+      <text x="480" y="113" text-anchor="middle" class="lbl" style="font-size:9px;fill:#2e7d52">bio-méthane</text>
+
+      <!-- flèches sorties pyrogaz -->
+      <line x1="610" y1="138" x2="610" y2="165" stroke="#c8960a" stroke-width="1.5" marker-end="url(#arr-ambre)"/>
+
+      <!-- Chaleur -->
+      <rect x="530" y="165" width="70" height="34" rx="4" fill="rgba(200,150,10,.1)" stroke="#c8960a" stroke-width="1.2"/>
+      <text x="565" y="178" text-anchor="middle" class="lbl lbl-ambre" style="font-size:10px">Chaleur</text>
+      <text x="565" y="192" text-anchor="middle" class="lbl" style="font-size:8.5px;fill:#4a5568">Industries locales</text>
+
+      <!-- Biochar -->
+      <rect x="615" y="165" width="75" height="34" rx="4" fill="#1a5c3a" stroke="#1a5c3a"/>
+      <text x="652" y="179" text-anchor="middle" class="lbl" style="fill:#fff;font-size:10px;font-weight:600">Biochar</text>
+      <text x="652" y="193" text-anchor="middle" class="lbl" style="fill:rgba(255,255,255,.8);font-size:8.5px">Carbone stable</text>
+
+      <!-- flèche biochar vers séquestration -->
+      <line x1="652" y1="199" x2="652" y2="235" stroke="#1a5c3a" stroke-width="1.5" marker-end="url(#arr)"/>
+      <rect x="590" y="235" width="135" height="34" rx="4" fill="#eef5f0" stroke="#1a5c3a" stroke-width="1.5"/>
+      <text x="657" y="250" text-anchor="middle" class="lbl lbl-vert" style="font-size:10px">Séquestration sols</text>
+      <text x="657" y="264" text-anchor="middle" class="lbl" style="font-size:8.5px;fill:#4a5568">500–1 000 ans · −3 t CO₂eq/t</text>
+
+      <!-- ═══ CENTRE : BIO-MÉTHANE ═══ -->
+      <rect x="290" y="95" width="140" height="48" rx="4" fill="#2e7d52" stroke="#1a5c3a" stroke-width="2"/>
+      <text x="360" y="113" text-anchor="middle" class="lbl" style="fill:#fff;font-weight:600;font-size:12px">BIO-MÉTHANE</text>
+      <text x="360" y="130" text-anchor="middle" class="lbl" style="fill:rgba(255,255,255,.85);font-size:9.5px">CH₄ · Molécule identique au gaz naturel</text>
+
+      <!-- flèche bio-méthane vers usages -->
+      <line x1="360" y1="143" x2="360" y2="185" stroke="#2e7d52" stroke-width="2" marker-end="url(#arr)"/>
+
+      <!-- Usages -->
+      <rect x="250" y="185" width="220" height="130" rx="4" fill="#f7f9f7" stroke="#2e7d52" stroke-width="1.5"/>
+      <text x="360" y="205" text-anchor="middle" class="lbl-titre">Usages</text>
+      <text x="360" y="225" text-anchor="middle" class="lbl" style="font-size:10px">⚡ Réseau électrique (puissance de pointe)</text>
+      <text x="360" y="244" text-anchor="middle" class="lbl" style="font-size:10px">✈ Aviation &amp; Maritime (GNL)</text>
+      <text x="360" y="263" text-anchor="middle" class="lbl" style="font-size:10px">🚛 Transport lourd (GNV)</text>
+      <text x="360" y="282" text-anchor="middle" class="lbl" style="font-size:10px">🏭 Industrie haute température</text>
+      <text x="360" y="300" text-anchor="middle" class="lbl" style="font-size:10px">🚜 Agriculture &amp; engins</text>
+
+      <!-- Réseau gazier note -->
+      <text x="360" y="340" text-anchor="middle" class="lbl" style="font-size:9px;fill:#2e7d52;font-style:italic">→ Réseau gazier existant · Stockage saisonnier · Infrastructures amorties</text>
+
+      <!-- MARQUEURS -->
+      <defs>
+        <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#1a5c3a"/>
+        </marker>
+        <marker id="arr-ambre" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#c8960a"/>
+        </marker>
+      </defs>
+    </svg>
+  </div>
+
+  <div class="chiffres no-break">
+    <div class="chiffre">
+      <span class="chiffre-val">150</span>
+      <span class="chiffre-lab">sites industriels prévus, maillage national, ~1 000 t biomasse/jour chacun</span>
+    </div>
+    <div class="chiffre">
+      <span class="chiffre-val">540–690</span>
+      <span class="chiffre-lab">Md€ d'investissement Résilience vs 794–1 096 Md€ tout-électrique</span>
+    </div>
+    <div class="chiffre">
+      <span class="chiffre-val">2028</span>
+      <span class="chiffre-lab">premiers sites opérationnels si décision industrielle prise en 2026</span>
+    </div>
+  </div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- ══════════════════════════════════════════ 05 -->
+<div class="section">
+  <div class="section-num">05 · Restaurer le climat</div>
+  <h2>Aller au-delà de la neutralité —<br><em>retirer le CO₂ déjà accumulé</em></h2>
+
+  <p>Depuis trente ans, le débat public est centré sur la réduction des émissions. C'est indispensable. Mais cela ne suffit plus. À 420 ppm de CO₂ atmosphérique, le simple arrêt des émissions fossiles stabilise la concentration — il ne la réduit pas. Restaurer progressivement le climat impose de retirer une partie du CO₂ déjà accumulé depuis deux siècles.</p>
+
+  <p>Résilience 2045 est conçu précisément autour de cette double logique. C'est probablement son idée la plus originale — et la plus différenciante par rapport à tous les autres scénarios de transition.</p>
+
+  <blockquote>
+    "Sans biochar, on réduit les émissions. Avec biochar, on retire du CO₂ de l'atmosphère. Ce n'est pas la même chose — c'est un changement de paradigme climatique."
+  </blockquote>
+
+  <p>Le mécanisme repose sur le cycle naturel du carbone, orienté par l'industrie :</p>
+
+  <ul class="custom">
+    <li>Les plantes absorbent le CO₂ atmosphérique via la photosynthèse — c'est le cycle court du carbone.</li>
+    <li>En transformant cette biomasse en bio-méthane, sa combustion restitue ce CO₂ prélevé : c'est le niveau <strong>zéro émission nette</strong>.</li>
+    <li>Mais la pyrogazéification produit en même temps du <strong>biochar</strong> — un carbone solide, stable, qui une fois incorporé au sol ne se décompose pas pendant 500 à 1 000 ans. Ce carbone est donc <strong>retiré définitivement de l'atmosphère</strong>.</li>
+  </ul>
+
+  <p>C'est ce qu'on appelle le bilan carbone négatif : le programme retire plus de CO₂ de l'atmosphère qu'il n'en produit. Aucun autre scénario de transition énergétique disponible aujourd'hui ne propose ce mécanisme à cette échelle et à ce coût.</p>
+
+  <div class="chiffres no-break">
+    <div class="chiffre">
+      <span class="chiffre-val">2,5–3 t</span>
+      <span class="chiffre-lab">de CO₂ séquestrées durablement par tonne de biochar produit (source EBC / Puro.earth)</span>
+    </div>
+    <div class="chiffre">
+      <span class="chiffre-val">500–1 000</span>
+      <span class="chiffre-lab">années de stabilité du carbone dans le biochar — contre quelques décennies pour les forêts</span>
+    </div>
+    <div class="chiffre">
+      <span class="chiffre-val">−60 à −80 Mt</span>
+      <span class="chiffre-lab">de CO₂/an retirés de l'atmosphère à l'horizon 2045 avec 150 sites en fonctionnement</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════ 06 -->
+<div class="section">
+  <div class="section-num">06 · Régénérer les sols</div>
+  <h2>L'éponge hydrique —<br><em>résilience agricole et gestion de l'eau</em></h2>
+
+  <p>Les sols agricoles français ont perdu entre 30 et 40 % de leur matière organique depuis 1950. Ce n'est pas qu'un problème agronomique : c'est un facteur aggravant du dérèglement climatique local. Un sol appauvri se comporte comme du béton : l'eau de pluie ruisselle au lieu de s'infiltrer, les nappes phréatiques se rechargent moins, les cultures souffrent plus vite en sécheresse.</p>
+
+  <p>Le Programme Résilience 2045 apporte deux co-produits qui régénèrent directement les sols :</p>
+
+  <ul class="custom">
+    <li><strong>Le digestat de méthanisation</strong> — matière organique riche en azote et phosphore directement assimilables. Il se substitue avantageusement aux engrais minéraux d'origine fossile, dont la production consomme du gaz naturel importé.</li>
+    <li><strong>Le biochar</strong> — sa structure microporeuse augmente la capacité de rétention d'eau du sol de 20 à 40 %, améliore sa vie biologique et réduit le besoin en irrigation. Un sol enrichi en biochar est une éponge : il absorbe les pluies diluviennes et restitue l'eau lentement aux cultures.</li>
+  </ul>
+
+  <div class="box no-break">
+    <strong>Un bénéfice systémique :</strong> la même filière qui produit de l'énergie et séquestre du carbone améliore simultanément la résilience agricole face aux sécheresses, réduit la dépendance aux engrais importés, et diminue les inondations par ruissellement. Ce n'est pas un bénéfice secondaire — c'est une des finalités fondamentales du programme.
+  </div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- ══════════════════════════════════════════ 07 -->
+<div class="section">
+  <div class="section-num">07 · Forêts et incendies</div>
+  <h2>Transformer le combustible des incendies<br><em>en ressource énergétique</em></h2>
+
+  <p>Les méga-incendies de forêt ne sont pas seulement une conséquence du réchauffement — ils en sont aussi un accélérateur. Chaque grand incendie libère en quelques jours autant de CO₂ que des années d'absorption forestière. Et les forêts françaises accumulent depuis des décennies une biomasse non entretenue — sous-bois, rémanents, bois mort — qui constitue le carburant des feux de grande ampleur.</p>
+
+  <p>Le Programme Résilience 2045 renverse l'équation économique :</p>
+
+  <ul class="custom">
+    <li>Les résidus forestiers et la biomasse fine deviennent une <strong>matière première rémunérée</strong> pour les sites de production de bio-méthane.</li>
+    <li>L'entretien des massifs n'est plus une charge — c'est une <strong>source de revenus</strong> pour les communes forestières et les gestionnaires.</li>
+    <li>La <strong>charge combustible</strong> des forêts est réduite structurellement, diminuant la probabilité et l'intensité des grands incendies.</li>
+  </ul>
+
+  <div class="box no-break">
+    <strong>Démonstrateurs territoriaux en cours :</strong> Pyrénées-Orientales, Landes (post-incendie 2022 et post-tempête), Massif Central, Gard, Normandie. Chaque territoire dispose d'une analyse de gisement complète, d'une logistique identifiée et d'une équation économique documentée. Ces sites ne sont pas des projets pilotes expérimentaux — ce sont les cinq premiers sites d'un déploiement national.
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════ 08 -->
+<div class="section">
+  <div class="section-num">08 · L'infrastructure existante</div>
+  <h2>Pourquoi ça coûte moins cher<br><em>qu'on ne croit</em></h2>
+
+  <p>Vouloir tout électrifier impose des investissements importants dans de nouvelles infrastructures : renforcement des lignes haute tension, multiplication des postes de transformation, réseau dense de bornes de recharge rapide, batteries stationnaires. Ces infrastructures doivent souvent être construites ou fortement renforcées.</p>
+
+  <p>Le bio-méthane emprunte un chemin différent : il <em>valorise ce qui existe déjà</em>.</p>
+
+  <ul class="custom">
+    <li><strong>Le réseau gazier français</strong> — 200 000 km de canalisations souterraines, déjà amorties, capables de transporter du bio-méthane sans modification majeure. Une infrastructure sécurisée, invisible, qui dessert déjà industrie et chauffage sur tout le territoire.</li>
+    <li><strong>Les cavités de stockage souterrain</strong> — La France dispose de capacités de stockage gazier équivalentes à plusieurs semaines de consommation nationale. Ce sont les réserves stratégiques qui permettent de passer les hivers difficiles sans risque.</li>
+    <li><strong>Les stations GNV existantes</strong> — Des centaines de stations de gaz naturel pour véhicules lourds sont déjà en service. Elles peuvent distribuer du bio-méthane dès aujourd'hui.</li>
+  </ul>
+
+  <div class="box no-break">
+    <strong>Coût total estimé :</strong> 540 à 690 milliards d'euros sur 20 ans pour Résilience 2045, contre 794 à 1 096 milliards pour le scénario tout-électrique équivalent. L'économie de 150 à 400 milliards provient essentiellement de la réutilisation des infrastructures gazières existantes et de la réduction du surdimensionnement nécessaire du réseau électrique.
+  </div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- ══════════════════════════════════════════ 09 -->
+<div class="section">
+  <div class="section-num">09 · Les applications sectorielles</div>
+  <h2>Mobilité, aviation, agriculture —<br><em>les secteurs que l'électricité ne couvre pas encore</em></h2>
+
+  <h3>A. Les véhicules légers — l'ÉREV pour les grandes distances</h3>
+  <p>Pour les trajets quotidiens courts, le véhicule électrique à batterie est la solution idéale : silencieux, propre, économique. Mais pour les grandes distances — trajets interurbains, zones rurales mal couvertes, retours de vacances — deux problèmes réels apparaissent : l'attente aux bornes de recharge rapide, et surtout les <strong>appels de puissance massifs sur le réseau électrique</strong> précisément aux moments où il est le plus sollicité.</p>
+
+  <p>L'architecture ÉREV (Extended Range Electric Vehicle) bio-GNV résout ce problème structurellement : un petit moteur thermique optimisé au bio-GNV fonctionne à régime fixe, uniquement pour recharger la batterie en roulant — jamais pour entraîner les roues directement. La traction reste 100 % électrique. Ce moteur atteint 45 à 48 % d'efficacité thermique au point fixe — bien supérieur à un moteur conventionnel. La batterie reste modeste, dimensionnée pour les trajets quotidiens. Sur autoroute ou en zone sans borne, le moteur gaz prend le relais silencieusement.</p>
+
+  <div class="box no-break">
+    <strong>L'argument réseau :</strong> si des millions de véhicules rechargeaient simultanément sur autoroute lors des grands week-ends ou retours de vacances, les appels de puissance sur le réseau seraient considérables — exactement aux moments où il est déjà le plus tendu. L'ÉREV bio-GNV évite structurellement ces pics : il <em>produit</em> son énergie embarquée depuis le gaz, il ne la <em>consomme pas</em> sur le réseau électrique. C'est une contribution directe à la stabilité du réseau, sans aucun investissement d'infrastructure supplémentaire.
+  </div>
+
+  <h3>B. Le transport lourd — ÉREV bio-GNV pour poids lourds et cars</h3>
+  <p>Pour les véhicules utilitaires lourds, poids lourds de 44 tonnes et cars interurbains, la même architecture hybride offre une traction 100 % électrique avec un moteur Atkinson à régime fixe fonctionnant au bio-GNV. Rendement thermique 45 à 48 % au point fixe, jusqu'à 55 % en rendement global système. Avec le bio-GNV issu de la filière Résilience, le bilan carbone sur le cycle de vie est <strong>neutre à négatif</strong> — le carbone biogénique consommé a été absorbé par la biomasse, et le biochar co-produit séquestre durablement une fraction supplémentaire. Autonomie illimitée, zéro appel de puissance sur le réseau.</p>
+
+  <h3>C. L'aviation — la démonstration la plus frappante</h3>
+  <p>L'aviation est le cas d'école. Les batteries ne peuvent pas faire voler un avion de ligne — la densité énergétique nécessaire est dix fois hors de portée des technologies actuelles et prévisibles. L'hydrogène liquide impose des réservoirs beaucoup plus volumineux que le kérosène et perd 30 à 35 % de son énergie lors de la liquéfaction. Le SAF (carburant durable d'aviation) est présenté comme la voie prioritaire, mais sa production mondiale en 2025 ne représente que 0,6 % de la consommation de kérosène — le multiplier par 80 d'ici 2035 se heurte à des contraintes physiques et agricoles majeures.</p>
+
+  <p>Le méthane liquide (bio-GNL) constitue aujourd'hui la voie la plus réaliste pour la décarbonation de l'aviation commerciale :</p>
+
+  <ul class="custom">
+    <li>Le <strong>GNL fossile seul</strong> est déjà équivalent en CO₂ à un kérosène mélangé à <strong>46 % de SAF HEFA</strong> — un niveau que le SAF ne pourra jamais atteindre à l'échelle mondiale (0,6 % de la consommation en 2025, multiplication par 80 nécessaire d'ici 2035 : impossible). Le méthane fossile est donc le point de départ immédiat, pas l'objectif final.</li>
+    <li>Avec la montée progressive en <strong>bio-GNL issu de la filière Résilience</strong>, le bilan carbone devient <strong>neutre à négatif</strong> sur le cycle de vie : le carbone biogénique est neutre par nature, et le biochar co-produit de la pyrogazéification séquestre durablement 2,5 à 3 t de CO₂ par tonne produite. Un vol Paris–New York approche la neutralité carbone nette à l'horizon 2040.</li>
+    <li>Au-delà du CO₂ : NOx <strong>−40 %</strong>, particules fines <strong>−70 %</strong>, traînées de condensation <strong>−50 à −90 %</strong> — bénéfices permanents liés à la chimie du méthane, constants quel que soit le pourcentage de bio. Ces trois polluants représentent ensemble <strong>plus de 50 % du forçage radiatif de l'aviation sur 20 ans</strong> (IPCC AR6) — davantage que le CO₂ seul.</li>
+    <li>Le Programme Résilience couvre l'ensemble de la gamme : du VTOL médical au long-courrier intercontinental, en passant par le turboprop régional type ATR-72.</li>
+  </ul>
+
+  <h3>D. L'agriculture et les engins de chantier</h3>
+  <p>Tracteurs, moissonneuses, pelleteuses exigent une puissance continue pendant des heures, loin de tout réseau. L'architecture hybride bio-GNV/électrique leur apporte le couple nécessaire au travail de force. Avec le bio-GNV issu de la filière Résilience, le bilan carbone est <strong>neutre à négatif</strong> sur le cycle de vie — même logique que pour le transport lourd. Souveraineté énergétique complète sur un carburant produit localement depuis des déchets agricoles et forestiers.</p>
+
+  <h3>E. Le soutien au réseau électrique</h3>
+  <p>Des centrales de cogénération au bio-méthane, réparties sur le territoire, peuvent injecter de la puissance sur le réseau électrique en quelques minutes lors des pointes de consommation ou des déficits d'éolien et de solaire. C'est le "muscle de réserve" que le réseau 100 % renouvelable ne possède pas seul.</p>
+</div>
+
+<div class="page-break"></div>
+
+<!-- ══════════════════════════════════════════ 10 -->
+<div class="section">
+  <div class="section-num">10 · Comparaison des deux voies</div>
+  <h2>Tout-électrique vs Résilience 2045 —<br><em>les critères qui comptent vraiment</em></h2>
+
+  <table class="cmp">
+    <thead>
+      <tr>
+        <th style="width:28%">Critère</th>
+        <th style="width:36%">Tout-électrique</th>
+        <th style="width:36%">Résilience 2045<br>(Électricité + Bio-méthane)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Puissance de pointe hivernale</strong></td>
+        <td class="td-a">Réseau sous tension en cas de Dunkelflaute · Surdimensionnement coûteux</td>
+        <td class="td-v">Couverte par le bio-méthane stocké · Réseau gazier existant</td>
+      </tr>
+      <tr>
+        <td><strong>Stockage inter-saisonnier</strong></td>
+        <td class="td-r">Très difficile par batteries à coût raisonnable</td>
+        <td class="td-v">Cavités salines et réseau gazier · Capacité existante</td>
+      </tr>
+      <tr>
+        <td><strong>Aviation, maritime, industrie lourde</strong></td>
+        <td class="td-r">Non couverts aujourd'hui · Angles morts de la transition</td>
+        <td class="td-v">Bio-GNL et bio-méthane industriel · Solutions les plus réalistes disponibles</td>
+      </tr>
+      <tr>
+        <td><strong>Impact sur le CO₂ atmosphérique</strong></td>
+        <td class="td-a">Neutralité visée · Arrêt des émissions seulement</td>
+        <td class="td-v">Bilan négatif possible · Retrait net via biochar</td>
+      </tr>
+      <tr>
+        <td><strong>Qualité des sols agricoles</strong></td>
+        <td class="td-r">Aucun levier direct</td>
+        <td class="td-v">Digestat + biochar · Régénération mesurable</td>
+      </tr>
+      <tr>
+        <td><strong>Risque méga-incendies</strong></td>
+        <td class="td-r">Subi · Aucun levier sur la biomasse forestière</td>
+        <td class="td-v">Atténué · Collecte rémunérée des rémanents forestiers</td>
+      </tr>
+      <tr>
+        <td><strong>Souveraineté énergétique</strong></td>
+        <td class="td-a">Dépendance lithium, cobalt, terres rares importés</td>
+        <td class="td-v">Valorisation de ressources locales · 100 % française</td>
+      </tr>
+      <tr>
+        <td><strong>Coût d'investissement 2045</strong></td>
+        <td class="td-r">794–1 096 Md€ estimés</td>
+        <td class="td-v">540–690 Md€ estimés · −150 à −400 Md€</td>
+      </tr>
+      <tr>
+        <td><strong>Robustesse face aux aléas</strong></td>
+        <td class="td-a">Un seul vecteur · Fragilité si conditions climatiques défavorables</td>
+        <td class="td-v">Deux vecteurs complémentaires · Résilience par redondance</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="box no-break" style="margin-top:1.2rem">
+    <strong>Ce tableau ne doit pas être lu comme "électricité contre méthane".</strong> L'électricité reste le vecteur principal — véhicules légers, chauffage, usage quotidien. Le bio-méthane est son complément pour ce qu'elle ne peut pas faire seule. Les deux ensemble constituent une transition complète, robuste et souveraine.
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════ 11 -->
+<div class="section">
+  <div class="section-num">11 · Ce que nous demandons aux décideurs</div>
+  <h2>Trois décisions —<br><em>une fenêtre 2026–2028</em></h2>
+
+  <p>Le Programme Résilience 2045 n'est pas un projet académique. C'est un programme industriel chiffré, avec une feuille de route précise, des démonstrateurs territoriaux en cours et des premières mises en service possibles dès 2028 si les décisions sont prises maintenant.</p>
+
+  <div class="box no-break" style="margin-bottom:1rem">
+    <strong>Décision 1 — Adapter le cadre réglementaire pour reconnaître la filière à bilan négatif</strong><br><br>
+    La pyrogazéification de biomasse est reconnue comme énergie renouvelable par la directive RED III. Ce qui manque encore, c'est la reconnaissance officielle de la double valorisation — bio-méthane <em>et</em> biochar certifié comme retrait durable de CO₂ (CDR — Carbon Dioxide Removal). Cette reconnaissance conditionne la rentabilité de chaque site et l'engagement des investisseurs privés. Elle ne coûte rien à l'État : elle ouvre la voie au financement du marché.
+  </div>
+
+  <div class="box no-break" style="margin-bottom:1rem">
+    <strong>Décision 2 — Lancer les 5 premiers démonstrateurs territoriaux industriels</strong><br><br>
+    Normandie, Landes, Massif Central, Pyrénées-Orientales et Gard disposent chacun d'une analyse de gisement complète, d'une logistique identifiée et d'une équation économique documentée. Cinq sites industriels pilotes à 1 000 t/j permettraient de valider les rendements, former les opérateurs, qualifier les fournisseurs et générer les données réglementaires nécessaires. Investissement estimé Phase 0 : 200 à 350 millions d'euros sur 3 ans.
+  </div>
+
+  <div class="box no-break" style="margin-bottom:1.5rem">
+    <strong>Décision 3 — Lancer le consortium aviation méthane (Airbus + Safran/Rolls-Royce)</strong><br><br>
+    La France dispose des industriels (Airbus, Safran), du réseau gazier et de la filière bio-méthane pour être parmi les premières nations à développer un avion commercial fonctionnant au méthane liquide. Premier vol commercial réaliste entre 2032 et 2035 si le programme est lancé maintenant. Le bio-méthane est disponible immédiatement. L'hydrogène liquide, présenté comme alternative, ne le sera pas pour l'aviation longue distance avant des décennies — ses contraintes physiques y sont structurellement défavorables.
+  </div>
+
+  <h3>La feuille de route en quatre phases</h3>
+  <table class="cmp no-break">
+    <thead><tr><th>Phase</th><th>Période</th><th>Objectif</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Phase 0 — Démonstration</strong></td><td>2026–2028</td><td>5 sites pilotes · Qualification réglementaire · Consortium aviation</td></tr>
+      <tr><td><strong>Phase 1 — Déploiement</strong></td><td>2028–2032</td><td>30 à 50 sites actifs · Premiers ÉREV bio-GNV en flotte · Premier vol méthane</td></tr>
+      <tr><td><strong>Phase 2 — Montée en puissance</strong></td><td>2032–2038</td><td>100 sites · Bio-méthane couvre 30–40 % des besoins non électrifiables</td></tr>
+      <tr><td><strong>Phase 3 — Maturité</strong></td><td>2038–2045</td><td>150 sites · Bilan carbone négatif · Aviation bio-GNL commerciale · Sols régénérés</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ══════════════════════════════════════════ CONCLUSION -->
+<div class="section no-break">
+  <div style="background:linear-gradient(135deg,#f0f7f2,#e8f3ec);border-left:4px solid var(--vert);padding:2rem 2.5rem;margin-top:1rem">
+    <div class="section-num" style="margin-bottom:.8rem">Conclusion</div>
+    <h2 style="border:none;padding:0;margin-bottom:1rem">Un projet de pays —<br><em>pas seulement un projet énergétique</em></h2>
+    <p>Résilience 2045 propose une transition complète, pas seulement partielle. L'électricité décarbonée reste le pilier — mais le bio-méthane est le complément indispensable qui couvre ce qu'elle ne peut pas faire seule : stocker l'énergie saisonnièrement, alimenter les secteurs à haute densité énergétique, régénérer les sols agricoles, réduire le risque incendie, et surtout extraire activement du CO₂ de l'atmosphère via le biochar.</p>
+    <p>Ce n'est pas un plan alternatif à l'électrification. C'est le plan A rendu complet. Une transition sans vecteur stockable de masse, sans solution pour l'aviation et l'industrie lourde, et sans mécanisme de retrait du CO₂ déjà accumulé n'est pas une transition — c'est un demi-chemin.</p>
+    <p>Le bio-méthane est la seule énergie renouvelable 100 % française : produite depuis nos déchets, stockée dans nos infrastructures, distribuée sur nos territoires. La fenêtre de décision est 2026–2028.</p>
+    <p style="margin-bottom:0"><strong>La France a les ressources, les industriels, le réseau et le savoir-faire. Il reste à décider.</strong></p>
+  </div>
+</div>
+
+<div class="doc-footer">
+  <span>Programme Résilience 2045 · Synthèse décideurs V2 · Juillet 2026 · Diffusion libre</span>
+  <span>resilience2045.fr · corpus complet disponible en ligne</span>
+</div>
+
+</body>
+</html>
