@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mix énergétique 2045 — Nucléaire, ENR et bio-méthane · Programme Résilience V11</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --noir:#0a0f0d;--foret:#0d1f17;--vert-vif:#52b788;--vert-clair:#95d5b2;
+  --ambre:#e9c46a;--rouge:#FF4D1A;--rouge-cl:#FF7040;--bleu:#2980b9;
+  --blanc:#f0f4f1;--gris:#8a9e93;
+  --serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--noir);color:var(--blanc);font-family:var(--sans);font-weight:300;line-height:1.7;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:.9rem 2.5rem;background:rgba(10,15,13,.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(82,183,136,.12)}
+.nav-logo{font-family:var(--serif);font-size:1.15rem;font-weight:600;color:var(--vert-vif);text-decoration:none}
+.nav-back{color:var(--gris);text-decoration:none;font-size:.72rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;transition:color .3s}.nav-back:hover{color:var(--vert-vif)}
+.nav-tag{font-size:.65rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--ambre);background:rgba(233,196,106,.12);border:1px solid rgba(233,196,106,.25);padding:.2rem .7rem}
+#hero{min-height:50vh;display:flex;align-items:center;padding:8rem 3rem 4rem;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 30% 50%,rgba(29,90,54,.18) 0%,transparent 70%),linear-gradient(135deg,#0a0f0d 0%,#0d1f17 50%,#060e09 100%)}
+.hero-grid{position:absolute;inset:0;opacity:.04;background-image:linear-gradient(var(--vert-vif) 1px,transparent 1px),linear-gradient(90deg,var(--vert-vif) 1px,transparent 1px);background-size:55px 55px}
+.hero-content{position:relative;z-index:1;max-width:820px}
+.hero-tag{display:inline-block;border:1px solid rgba(233,196,106,.6);color:rgba(233,196,106,.8);font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;padding:.3rem .85rem;margin-bottom:1.4rem}
+h1{font-family:var(--serif);font-size:clamp(2rem,4.5vw,3.8rem);font-weight:300;line-height:1.1;margin-bottom:1rem}
+h1 em{font-style:italic;color:var(--vert-vif)}
+.hero-sub{font-size:.95rem;color:rgba(240,244,241,.65);max-width:680px;line-height:1.85;margin-top:.8rem}
+.metho-bar{background:rgba(41,128,185,.07);border:1px solid rgba(41,128,185,.2);border-left:4px solid var(--bleu);padding:1.2rem 2rem}
+.metho-bar p{font-size:.83rem;color:rgba(240,244,241,.65);line-height:1.7}.metho-bar strong{color:#74b9e8}
+section{padding:4.5rem 3rem}.container{max-width:1100px;margin:0 auto}.alt{background:var(--foret)}
+.stag{font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--vert-vif);margin-bottom:.6rem}
+h2{font-family:var(--serif);font-size:clamp(1.6rem,2.8vw,2.4rem);font-weight:300;line-height:1.15;margin-bottom:.9rem}
+h2 em{font-style:italic;color:var(--vert-vif)}
+h3{font-family:var(--serif);font-size:1.2rem;font-weight:400;color:var(--vert-clair);margin:1.6rem 0 .5rem}
+.lead{font-size:.95rem;color:rgba(240,244,241,.68);max-width:720px;line-height:1.85;margin-bottom:1.2rem}
+p.body{font-size:.88rem;color:rgba(240,244,241,.65);line-height:1.85;margin-bottom:.8rem;max-width:860px}
+.tbl-wrap{overflow-x:auto;margin:1.8rem 0}
+table{width:100%;border-collapse:collapse;font-size:.8rem}
+thead tr{background:rgba(26,58,40,.9)}
+thead th{padding:.8rem 1rem;text-align:left;color:var(--vert-clair);font-weight:500;letter-spacing:.07em;font-size:.72rem;text-transform:uppercase;border-bottom:2px solid var(--vert-vif)}
+tbody tr{border-bottom:1px solid rgba(82,183,136,.08)}
+tbody td{padding:.7rem 1rem;color:rgba(240,244,241,.72);vertical-align:top;line-height:1.5}
+tbody td:first-child{color:var(--blanc);font-weight:400}
+.td-g{color:var(--vert-vif)!important;font-weight:500}
+.td-r{color:#FF5500!important;font-weight:500}
+.td-a{color:var(--ambre)!important;font-weight:500}
+.td-b{color:#74b9e8!important;font-weight:500}
+.td-gr{color:var(--gris)!important}
+.tr-best td{background:rgba(29,58,40,.35)!important}
+.tr-warn td{background:rgba(255,77,26,.06)!important}
+.tr-total td{background:rgba(26,58,40,.6)!important;font-weight:600;border-top:2px solid var(--vert-vif)}
+.box{padding:1.2rem 1.6rem;margin:1.5rem 0;font-size:.86rem;line-height:1.75}
+.box-vert{background:rgba(29,58,40,.35);border:1px solid rgba(82,183,136,.22);border-left:4px solid var(--vert-vif);color:rgba(240,244,241,.82)}.box-vert strong{color:var(--vert-vif)}
+.box-ambre{background:rgba(233,196,106,.06);border:1px solid rgba(233,196,106,.22);border-left:4px solid var(--ambre);color:rgba(240,244,241,.78)}.box-ambre strong{color:var(--ambre)}
+.box-rouge{background:rgba(255,77,26,.07);border:1px solid rgba(255,77,26,.28);border-left:4px solid var(--rouge);color:rgba(240,244,241,.82)}.box-rouge strong{color:var(--rouge-cl)}
+.box-bleu{background:rgba(41,128,185,.07);border:1px solid rgba(41,128,185,.25);border-left:4px solid var(--bleu);color:rgba(240,244,241,.82)}.box-bleu strong{color:#74b9e8}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem;margin:1.8rem 0}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:1.4rem;margin:1.8rem 0}
+.card{padding:1.4rem;border:1px solid rgba(82,183,136,.12);background:rgba(10,15,13,.5);position:relative}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--vert-vif),var(--vert-clair))}
+.card-rouge::before{background:linear-gradient(90deg,#FF4D1A,#FF7040)}
+.card-ambre::before{background:linear-gradient(90deg,var(--ambre),#f4d03f)}
+.card h3{margin-top:0;margin-bottom:.6rem;font-size:.95rem;color:var(--vert-clair)}.card p{font-size:.82rem;color:rgba(240,244,241,.62);line-height:1.6}
+.num{font-family:var(--serif);font-size:2rem;font-weight:300;line-height:1;margin-bottom:.35rem}
+.num-r{color:#FF5500}.num-v{color:var(--vert-vif)}.num-a{color:var(--ambre)}
+.matrice{overflow-x:auto;margin:1.8rem 0}
+.matrice table{font-size:.75rem;min-width:920px}
+.matrice thead th{font-size:.66rem;padding:.6rem .5rem;text-align:center}
+.matrice thead th:first-child{text-align:left;width:140px}
+.matrice tbody td{padding:.6rem .45rem;text-align:center;font-size:.75rem}
+.matrice tbody td:first-child{text-align:left;font-weight:500;color:var(--blanc);font-size:.8rem}
+.m-f{background:rgba(82,183,136,.22);color:var(--vert-vif);font-weight:600}
+.m-m{background:rgba(82,183,136,.09);color:var(--vert-clair)}
+.m-fa{background:rgba(255,77,26,.1);color:#FF7040}
+.m-n{background:rgba(255,77,26,.2);color:#FF5500;font-weight:600}
+.m-ar{background:rgba(233,196,106,.14);color:var(--ambre);font-weight:600}
+.m-p{background:rgba(233,196,106,.2);color:var(--ambre);font-weight:600}
+.m-bg{background:rgba(82,183,136,.15);color:var(--vert-vif)}
+.bilan-card{padding:1.6rem;border:1px solid rgba(82,183,136,.15);background:rgba(10,15,13,.6)}
+.bilan-card h3{font-size:1rem;margin-bottom:1rem;padding-bottom:.5rem;border-bottom:1px solid rgba(82,183,136,.15)}
+.bilan-line{display:flex;justify-content:space-between;align-items:baseline;padding:.32rem 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.82rem}
+.bilan-line span:first-child{color:rgba(240,244,241,.62)}
+.bilan-line span:last-child{font-weight:500}
+.alloc-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;margin:1.8rem 0}
+@media(max-width:760px){.alloc-grid{grid-template-columns:1fr}}
+.alloc-bloc{padding:1.4rem 1.6rem;border:1px solid rgba(82,183,136,.15)}
+.alloc-bloc h3{font-size:.85rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-bottom:1rem;padding-bottom:.5rem;border-bottom:1px solid rgba(82,183,136,.12)}
+.alloc-item{display:flex;gap:.8rem;padding:.4rem 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.83rem;align-items:baseline}
+.alloc-twh{min-width:65px;font-weight:600;font-family:var(--serif);font-size:1rem}
+.alloc-desc{color:rgba(240,244,241,.68);line-height:1.45}
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s ease}.reveal.visible{opacity:1;transform:none}
+.btn{display:inline-block;padding:.7rem 1.5rem;font-family:var(--sans);font-size:.76rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:all .3s}
+.btn-outline{background:transparent;color:var(--blanc);border:1px solid rgba(240,244,241,.28)}.btn-outline:hover{border-color:var(--vert-vif);color:var(--vert-vif)}
+footer{background:#050a07;padding:2.5rem 3rem;text-align:center;border-top:1px solid rgba(82,183,136,.08)}
+.footer-logo{font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--vert-vif);margin-bottom:.4rem}
+footer p{font-size:.76rem;color:var(--gris);max-width:620px;margin:.3rem auto;line-height:1.7}
+@media(max-width:700px){nav{padding:.85rem 1.3rem}section{padding:3rem 1.3rem}h1{font-size:2rem}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Programme Résilience V11</a>
+  <div style="display:flex;align-items:center;gap:1.2rem">
+    <span class="nav-tag">Mix énergétique · Analyse systémique · V11</span>
+    <a href="index.html" class="nav-back">← Retour</a>
+  </div>
+</nav>
+
+<section id="hero">
+  <div class="hero-bg"></div><div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Programme Résilience V11 — Bilan énergétique 2045</div>
+    <h1>Alimenter la France en 2045 —<br><em>les chiffres qu'on ne met pas côte à côte</em></h1>
+    <p class="hero-sub">Avant de débattre "nucléaire ou éolien ou solaire", il faut poser les besoins réels secteur par secteur, regarder ce qu'on peut produire avec les vrais chiffres industriels, et identifier ce que l'électricité seule ne peut pas couvrir. C'est seulement alors que le rôle du bio-méthane devient évident — et que Résilience devient indispensable.</p>
+  </div>
+</section>
+
+<div class="metho-bar"><div class="container">
+  <p><strong>Cohérence V11 :</strong> tous les chiffres sont issus du Programme Résilience V11 (mai 2026) — section 1.1 (bilan sectoriel), section 2.1 (EPR2 / Sabatier), section 2.2 (biomasse ~262 TWh central), section 3.1 (comparaison BEV vs Résilience). Données RTE 2024–2025 pour les facteurs de charge ENR. Qualifications systématiques ✅ Robuste / Plausible / ⚠ Conditionnel.</p>
+</div></div>
+
+<!-- 00 BILAN GÉNÉRAL -->
+<section class="alt">
+<div class="container">
+  <div class="stag reveal">00 · Bilan général</div>
+  <h2 class="reveal">Besoins, production, déficit —<br><em>le tableau qu'on ne montre jamais ensemble</em></h2>
+  <p class="lead reveal">Avant de débattre de mix électrique ou de biomasse, il faut poser trois bilans côte à côte : ce que la France consomme aujourd'hui et avec quoi, ce que l'électrification maximale couvre en 2045 et ce qu'elle laisse sans réponse, puis ce que Résilience produit en bio-CH₄ et ce qu'il faudra en plus pour une décarbonation complète.</p>
+
+  <!-- BILAN A : Aujourd'hui -->
+  <h3 class="reveal">A · La France aujourd'hui — 1 600 TWh, trois vecteurs</h3>
+  <div class="tbl-wrap reveal">
+    <table>
+      <thead><tr><th>Secteur</th><th>TWh actuels</th><th>Électricité</th><th>Gaz / Pétrole</th><th>Électrifiable ?</th></tr></thead>
+      <tbody>
+        <tr><td>🏠 Logements + tertiaire</td><td class="td-a">500</td><td>~175 TWh (35 %)</td><td>~275 TWh (gaz 43 % + fioul 12 %)</td><td class="td-g">Oui — PAC ×3–4 déjà engagé</td></tr>
+        <tr><td>🏭 Industrie</td><td class="td-a">350</td><td>~120 TWh (35 %)</td><td>~195 TWh (gaz 55 %)</td><td class="td-a">Partiel — HT &gt;500°C résiste</td></tr>
+        <tr><td>🚗 VL + VU + Bus</td><td class="td-a">300</td><td>~15 TWh</td><td>~285 TWh (pétrole 95 %)</td><td class="td-a">Majoritairement — Rex 23 % km</td></tr>
+        <tr><td>🚛 Poids lourds longue dist.</td><td class="td-r">250</td><td>~5 TWh</td><td>~245 TWh (pétrole 97 %)</td><td class="td-r">Très partiellement — 70 % bio-GNV</td></tr>
+        <tr><td>✈ Aviation</td><td class="td-r">150</td><td>0</td><td>150 TWh kérosène 100 %</td><td class="td-r">Long-courrier : non — bio-GNL seul</td></tr>
+        <tr><td>🌾 Agriculture + autres</td><td class="td-a">50</td><td>~5 TWh</td><td>~45 TWh (pétrole 90 %)</td><td class="td-a">Partiel — Rex tracteurs ÉREV</td></tr>
+        <tr class="tr-total"><td><strong>TOTAL</strong></td><td><strong>1 600 TWh</strong></td><td><strong>~320 TWh (20 %)</strong></td><td><strong>~1 195 TWh (75 %)</strong></td><td class="td-a"><strong>~60 % électrifiable</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- BILAN B : 2045 électrification -->
+  <h3 class="reveal">B · En 2045 — ce que l'électrification couvre, ce qu'elle laisse</h3>
+  <div class="tbl-wrap reveal">
+    <table>
+      <thead><tr><th>Secteur</th><th>TWh élec. BEV</th><th>TWh élec. Résilience</th><th>Résidu non-électrique Résilience</th><th>Vecteur résidu</th></tr></thead>
+      <tbody>
+        <tr><td>🏠 Logements + tertiaire</td><td class="td-g">250</td><td class="td-g">250</td><td class="td-gr">—</td><td class="td-gr">Chaleur fatale pyrogaz.</td></tr>
+        <tr><td>🏭 Industrie</td><td class="td-g">200</td><td class="td-g">200</td><td class="td-a">~25 TWh HT irremplaçable</td><td class="td-a">Bio-CH₄ procédés &gt;500°C</td></tr>
+        <tr><td>🚗 VL + VU + Bus</td><td class="td-g">150</td><td class="td-g">120</td><td class="td-a">75 TWh Rex longue dist.</td><td class="td-a">Bio-GNV ÉREV</td></tr>
+        <tr><td>🚛 Poids lourds</td><td class="td-a">100</td><td class="td-g">30</td><td class="td-r">170 TWh non couverts</td><td class="td-r">Bio-GNV obligatoire</td></tr>
+        <tr><td>✈ Aviation</td><td class="td-r">150 kéro fossile</td><td class="td-g">~5 TWh élec. (VTOL)</td><td class="td-r">~110 TWh tous segments</td><td class="td-r">Bio-GNL / bio-GNV obligatoire</td></tr>
+        <tr><td>🌾 Agriculture</td><td class="td-g">40</td><td class="td-g">38</td><td class="td-a">~12 TWh Rex tracteurs</td><td class="td-a">Bio-GNV ÉREV</td></tr>
+        <tr class="tr-total"><td><strong>TOTAL</strong></td><td class="td-r"><strong>750 TWh — aviation fossile non résolue</strong></td><td class="td-g"><strong>643 TWh élec.</strong></td><td class="td-r"><strong>~392 TWh non-électriques</strong></td><td class="td-r"><strong>Bio-CH₄ indispensable</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="box box-rouge reveal">
+    <strong>Ce que le tout-électrique ne résout pas :</strong> ~392 TWh restent structurellement hors portée de l'électrification — aviation long-courrier, poids lourds, industrie haute T°, Rex tracteurs et voitures. Le BEV les conserve en fossile. Résilience les couvre avec du bio-CH₄.
+  </div>
+
+  <!-- BILAN C : Besoins bio-CH₄ -->
+  <h3 class="reveal">C · Les besoins réels en bio-CH₄ — secteur par secteur</h3>
+  <div class="tbl-wrap reveal">
+    <table>
+      <thead><tr><th>Usage</th><th>TWh bio-CH₄</th><th>Pourquoi irremplaçable</th><th>Qualification</th></tr></thead>
+      <tbody>
+        <tr><td>🚛 Poids lourds longue distance</td><td class="td-r">170</td><td>Autonomie 800–1 000 km impossible en batterie seule à coût raisonnable. 70 % des km.</td><td class="td-g">✅ Robuste</td></tr>
+        <tr><td>🚗 VL + VU + Bus — Rex</td><td class="td-a">75</td><td>23 % des km longue distance et zones sans bornes. Rex automatique sous seuil de charge.</td><td class="td-g">✅ Robuste</td></tr>
+        <tr><td>✈ Aviation — tous segments</td><td class="td-r">~110</td><td>VTOL : élec. pur. Régionaux ②③ : ÉREV bio-GNV. Moyen + long-courrier ④ : turbofan bio-GNL. Calculé depuis trafic départ France V9.</td><td class="td-a">Plausible — à affiner</td></tr>
+        <tr><td>🏭 Industrie HT résiduelle</td><td class="td-a">~25</td><td>Procédés &gt;500°C après max électrification et changements de procédés. Fours verriers, métallurgie, chimie.</td><td class="td-a">Plausible</td></tr>
+        <tr><td>🌾 Agriculture — Rex tracteurs</td><td class="td-a">~12</td><td>Mix ÉREV. Puissance continue hors réseau, travaux lourds. Rex minoritaire mais indispensable.</td><td class="td-a">Plausible</td></tr>
+        <tr><td>⚡ Soutien réseau hivernal</td><td class="td-a">~25</td><td>Résidu après bon dimensionnement éolien offshore + nucléaire baseload. Dunkelflaute et pointes. Stock GRDF 130 TWh.</td><td class="td-a">Plausible</td></tr>
+        <tr class="tr-total"><td><strong>TOTAL BESOINS</strong></td><td class="td-r"><strong>~417 TWh</strong></td><td colspan="2">Dont <strong>170+75 = 245 TWh robustes</strong> (mobilité lourde) + ~172 TWh plausibles (aviation, industrie, agri, réseau)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- BILAN D : Production et leviers -->
+  <h3 class="reveal">D · Production V11 et leviers — comment combler les ~128 TWh manquants</h3>
+  <div class="tbl-wrap reveal">
+    <table>
+      <thead><tr><th>Source</th><th>Voie</th><th>TWh/an</th><th>Qualification V11</th></tr></thead>
+      <tbody>
+        <tr><td colspan="4" style="color:var(--vert-clair);font-size:.75rem;padding:.5rem 1rem;background:rgba(82,183,136,.06);letter-spacing:.08em;text-transform:uppercase">Base V11 — biomasse résiduelle documentée</td></tr>
+        <tr><td>Résidus culture + paille</td><td>Pyrogazéification</td><td class="td-a">~48</td><td class="td-a">⚠ Conditionnel</td></tr>
+        <tr><td>Bois mort + rémanents forestiers</td><td>Pyrogazéification</td><td class="td-g">38–44</td><td class="td-g">✅ Robuste</td></tr>
+        <tr><td>Houppiers + branches</td><td>Pyrogazéification</td><td class="td-g">22–27</td><td class="td-g">✅ Robuste</td></tr>
+        <tr style="background:rgba(82,183,136,.05)"><td><strong>Sous-total pyrogaz. 150 sites</strong></td><td>—</td><td class="td-g"><strong>~108–119</strong></td><td>150 sites × 1 000 t/j</td></tr>
+        <tr><td>Effluents d'élevage</td><td>Méthanisation</td><td class="td-g">~70</td><td class="td-g">✅ PPE3 cible 60 TWh 2030</td></tr>
+        <tr><td>Biodéchets + STEP + CSR</td><td>Méthanisation</td><td class="td-a">~40–50</td><td class="td-a">Plausible</td></tr>
+        <tr style="background:rgba(82,183,136,.05)"><td><strong>Sous-total méthanisation</strong></td><td>—</td><td class="td-g"><strong>~110–120</strong></td><td>—</td></tr>
+        <tr><td>Sabatier — surplus ENR été</td><td>Électrolyse + CO₂ concentré sites</td><td class="td-a">~25–30</td><td class="td-a">Plausible TRL 7–8</td></tr>
+        <tr class="tr-total"><td><strong>TOTAL BASE V11</strong></td><td>—</td><td class="td-g"><strong>~262 TWh</strong></td><td class="td-a">Fourchette 254–282</td></tr>
+
+        <tr><td colspan="4" style="color:var(--ambre);font-size:.75rem;padding:.5rem 1rem;background:rgba(233,196,106,.04);letter-spacing:.08em;text-transform:uppercase">Déficit à couvrir : ~128 TWh (417 − 262 − Sabatier base ~27) — trois leviers complémentaires</td></tr>
+        <tr><td>L1 — Sabatier maximisé<br><span style="font-size:.75rem;color:var(--gris)">CO₂ concentré gratuit sur les 150 sites + surplus ENR croissants</span></td><td>Électrolyse</td><td class="td-a">+15–25</td><td class="td-a">Plausible — dépend surplus ENR</td></tr>
+        <tr><td>L2 — Gaz fossile résiduel + séquestration géologique<br><span style="font-size:.75rem;color:var(--gris)">~60–80 TWh fossile. Émissions ~12–16 Mt CO₂ compensées par biochar −23 Mt + séquestration géo CO₂ concentré −35 Mt → bilan carbone négatif</span></td><td>Fossile + CCS</td><td class="td-a">~60–80</td><td class="td-a">⚠ Résiduel — moins cher que Sabatier (×3–4)</td></tr>
+        <tr><td>L3 — Cultures dédiées miscanthus et autres<br><span style="font-size:.75rem;color:var(--gris)">Terres marginales en priorité (ex-vignes, friches, 0,5–1,5 Mha), puis terres non alimentaires. Double séquestration : captation CO₂ croissance + biochar millénaire.</span></td><td>Pyrogazéification</td><td class="td-g">+15–45</td><td class="td-a">Prospectif — levier carbone négatif</td></tr>
+        <tr class="tr-total"><td><strong>Avec L1+L2+L3</strong></td><td>—</td><td class="td-g"><strong>~350–430 TWh</strong></td><td class="td-g"><strong>Couverture totale possible</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Bilan carbone -->
+  <h3 class="reveal">E · Bilan carbone selon les leviers activés</h3>
+  <div class="tbl-wrap reveal">
+    <table>
+      <thead><tr><th>Scénario</th><th>Production CH₄</th><th>Fossile résiduel</th><th>Séquestration totale</th><th>Bilan net</th></tr></thead>
+      <tbody>
+        <tr><td>V11 base seule (~262 TWh)</td><td>~262 TWh</td><td class="td-r">~128 TWh → ~26 Mt CO₂</td><td>−23 Mt biochar</td><td class="td-r">~+3 Mt — insuffisant</td></tr>
+        <tr><td>+ L1 Sabatier maximisé (+20 TWh)</td><td>~282 TWh</td><td class="td-a">~108 TWh → ~22 Mt CO₂</td><td>−23 Mt biochar</td><td class="td-a">~−1 Mt — quasi neutre</td></tr>
+        <tr class="tr-best"><td>+ L2 séquestration géologique CO₂ concentré</td><td>~282 TWh</td><td class="td-a">~108 TWh → ~22 Mt CO₂</td><td class="td-g">−23 Mt biochar − 35 Mt géo</td><td class="td-g"><strong>~−36 Mt — carbone négatif ✅</strong></td></tr>
+        <tr class="tr-best"><td>+ L3 miscanthus 1 Mha (+20 TWh)</td><td>~302 TWh</td><td class="td-a">~88 TWh → ~18 Mt CO₂</td><td class="td-g">−23 −35 −15 Mt</td><td class="td-g"><strong>~−55 Mt — fortement négatif ✅</strong></td></tr>
+        <tr class="tr-best"><td>Couverture totale sans fossile (L1+L3 max)</td><td>~417 TWh</td><td class="td-g">0 TWh fossile</td><td class="td-g">−23 −35 −30 Mt</td><td class="td-g"><strong>~−88 Mt — maximum ✅</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="grid3 reveal" style="margin-top:2rem">
+    <div class="card">
+      <div class="num num-r">~128 TWh</div>
+      <h3>Le déficit à couvrir</h3>
+      <p>Entre les ~262 TWh de la base V11 + ~27 TWh Sabatier de base et les ~417 TWh nécessaires. Ce déficit ne remet pas en cause l'architecture — il définit la stratégie des leviers complémentaires.</p>
+    </div>
+    <div class="card card-ambre">
+      <div class="num num-a">L2 d'abord</div>
+      <h3>La voie la moins chère</h3>
+      <p>Séquestration géologique du CO₂ concentré des 150 sites (~35 Mt/an) + fossile résiduel compensé. 3 à 4× moins cher que le Sabatier. Bilan carbone net négatif dès cette étape.</p>
+    </div>
+    <div class="card">
+      <div class="num num-v">L3 ensuite</div>
+      <h3>Le levier carbone négatif</h3>
+      <p>Cultures dédiées miscanthus sur terres marginales — double séquestration (croissance + biochar). Non indispensable à la décarbonation, mais nécessaire pour un retrait net de CO₂ atmosphérique à long terme.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 01 BESOINS ACTUELS -->
+<section>
+<div class="container">
+  <div class="stag reveal">01 · Les besoins énergétiques — aujourd'hui</div>
+  <h2 class="reveal">D'où vient l'énergie que nous consommons ?<br><em>1 600 TWh — six secteurs, trois vecteurs</em></h2>
+  <p class="lead reveal">La France consomme 1 600 TWh d'énergie finale par an. Avant de débattre de transition, il faut comprendre qui consomme quoi, avec quel vecteur, et pour quoi faire. C'est le point de départ du tableau V11 — et il contient déjà la conclusion : environ 40 % des besoins résistent à l'électrification directe.</p>
+
+  <div class="tbl-wrap reveal">
+    <table>
+      <thead><tr><th>Secteur</th><th>Conso. actuelle</th><th>Vecteur principal</th><th>Électrifiable ?</th><th>Pourquoi / pourquoi pas</th></tr></thead>
+      <tbody>
+        <tr><td>🏠 Logements + tertiaire</td><td class="td-a">500 TWh</td><td>Gaz 43 % · Fioul 12 % · Élec 35 %</td><td class="td-g">Oui — PAC déjà en cours</td><td>PAC ×3 à ×4 vs résistance. Gain d'efficacité majeur. Déjà engagé.</td></tr>
+        <tr><td>🏭 Industrie (tous usages)</td><td class="td-a">350 TWh</td><td>Gaz 55 % · Élec 35 %</td><td class="td-a">Partiel — basse T° oui, haute T° non</td><td>Procédés &lt;500°C : électrifiables. &gt;500°C (fours, métallurgie, verrerie) : températures non atteignables économiquement par l'électricité.</td></tr>
+        <tr><td>🚗 VL + VU + Bus</td><td class="td-a">300 TWh</td><td>Pétrole 95 %</td><td class="td-a">Majoritairement oui — pas entièrement</td><td>77 % des km en électrique (trajets quotidiens). 23 % en bio-GNV (longue distance, zones sans bornes). ÉREV Atkinson 41–46 %.</td></tr>
+        <tr><td>🚛 Poids lourds longue distance</td><td class="td-r">250 TWh</td><td>Pétrole 97 %</td><td class="td-r">Très partiellement</td><td>30 % élec + 70 % bio-GNV. Autonomie 800–1 000 km impossible en batterie seule à coût raisonnable.</td></tr>
+        <tr class="tr-warn"><td>✈ Aviation</td><td class="td-r">150 TWh (kérosène)</td><td>Kérosène 100 %</td><td class="td-r">Non pour le long-courrier</td><td>Densité énergétique batterie ×10 insuffisante pour moyen et long-courrier. Court-courrier + CC : 25 TWh élec. Long-courrier : 50 TWh bio-GNL.</td></tr>
+        <tr><td>🌾 Agriculture + autres</td><td class="td-a">50 TWh</td><td>Pétrole 90 %</td><td class="td-a">Partiellement</td><td>Tracteurs ÉREV + méthanisation ferme. Puissance continue hors réseau — pas substituable en totalité.</td></tr>
+        <tr class="tr-total"><td><strong>TOTAL France</strong></td><td><strong>1 600 TWh</strong></td><td>Fossiles ~75 %</td><td class="td-a">~60 % électrifiable</td><td>~400 TWh résistent à l'électrification directe — transport lourd, aviation, industrie haute T°.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="box box-ambre reveal">
+    <strong>Ce que ce tableau dit déjà :</strong> environ 400 TWh (poids lourds + aviation + industrie haute T°) ne peuvent pas être couverts par l'électricité avec les technologies actuelles et prévisibles. Ce n'est pas un choix politique — c'est une contrainte physique. La question n'est pas "tout électrifier" mais <strong>"avec quoi couvre-t-on le reste ?"</strong>
+  </div>
+</div>
+</section>
+
+<!-- 02 BESOINS 2045 -->
+<section class="alt">
+<div class="container">
+  <div class="stag reveal">02 · Les besoins en 2045 — après électrification maximale</div>
+  <h2 class="reveal">Même en électrifiant tout ce qu'on peut —<br><em>que reste-t-il sans solution ?</em></h2>
+  <p class="lead reveal">Le tableau de synthèse V11 (section 1.1) compare trois scénarios secteur par secteur. Il montre ce que chaque vecteur couvre — et ce que le tout-BEV laisse sans réponse.</p>
+
+  <div class="tbl-wrap reveal">
+    <table>
+      <thead><tr><th>Secteur</th><th>Actuel (TWh)</th><th>BEV élec (TWh)</th><th>Résil. élec (TWh)</th><th>Résil. bio-CH₄ (TWh)</th><th>Résil. therm. (TWh)</th><th>Note V11</th></tr></thead>
+      <tbody>
+        <tr><td>🏠 Logements + tertiaire</td><td>500</td><td class="td-g">250</td><td class="td-g">250</td><td class="td-gr">—</td><td class="td-b">30</td><td>PAC + élec directe · Chaleur fatale pyrogaz.</td></tr>
+        <tr><td>🏭 Industrie</td><td>350</td><td class="td-g">200</td><td class="td-g">200</td><td class="td-a">~22</td><td class="td-b">10</td><td>Électrification procédés &lt;500°C · bio-CH₄ HT résiduel irremplaçable (&gt;500°C)</td></tr>
+        <tr><td>🚗 VL + VU + Bus</td><td>300</td><td class="td-g">150</td><td class="td-g">120</td><td class="td-a">75</td><td class="td-gr">—</td><td>77 % km élec / 23 % bio-GNV · ÉREV Atkinson 41–46 %</td></tr>
+        <tr><td>🚛 Poids lourds longue dist.</td><td>250</td><td class="td-a">100</td><td class="td-g">30</td><td class="td-a">170</td><td class="td-gr">—</td><td>30 % élec + 70 % bio-GNV · autonomie 800–1 000 km</td></tr>
+        <tr class="tr-warn"><td>✈ Aviation</td><td>150 kéro</td><td class="td-r">150 kéro ← non résolu</td><td class="td-g">~2 (VTOL)</td><td class="td-r">~110 tous segments</td><td class="td-gr">—</td><td><strong style="color:#FF5500">BEV conserve 150 TWh fossile</strong> · Résilience : VTOL élec., régionaux ÉREV bio-GNV, moyen+long-courrier turbofan bio-GNL — tous segments V9</td></tr>
+        <tr><td>🌾 Agriculture + autres</td><td>50</td><td class="td-g">40</td><td class="td-g">38</td><td class="td-a">~13</td><td class="td-b">5</td><td>Tracteurs &lt;80 CV élec. · Rex bio-GNV 120–400 CV · Chaleur fatale méthaniseurs ferme</td></tr>
+        <tr class="tr-total"><td><strong>TOTAL</strong></td><td><strong>1 600</strong></td><td class="td-r"><strong>750 TWh élec</strong></td><td class="td-g"><strong>~643 TWh élec</strong></td><td class="td-r"><strong>~390 TWh bio-CH₄</strong></td><td class="td-g"><strong>~45 TWh therm.</strong></td><td>Besoins bio-CH₄ ~390 TWh · Production V11 base ~262 TWh · Déficit ~128 TWh → leviers L1/L2/L3</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="grid2 reveal">
+    <div class="box box-rouge" style="margin:0">
+      <strong>Ce que le tout-BEV laisse sans solution :</strong> l'aviation conserve 150 TWh de kérosène fossile — aucune technologie disponible à cet horizon ne peut les remplacer. Le scénario BEV n'est donc pas une décarbonation complète : il laisse intact le secteur qui représente à lui seul plus de 50 % du forçage radiatif de l'aviation sur 20 ans (NOx + contrails + CO₂).
+    </div>
+    <div class="box box-vert" style="margin:0">
+      <strong>Ce que Résilience apporte :</strong> ~107 TWh de moins sur le réseau électrique (750 → 643 TWh). ~390 TWh de bio-CH₄ nécessaires pour couvrir transport lourd, aviation tous segments, industrie HT et réseau — dont ~262 TWh produits depuis la biomasse résiduelle V11 et ~128 TWh à couvrir via leviers complémentaires (Sabatier, séquestration + fossile compensé, cultures dédiées). <strong>Le bio-CH₄ n'est pas un substitut volumétrique au gaz fossile — c'est un outil de stabilisation pour ce que l'électricité ne peut pas faire seule.</strong> (V11, section 1.1)
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 03 PRODUCTION -->
+<section>
+<div class="container">
+  <div class="stag reveal">03 · Ce qu'on peut réellement produire</div>
+  <h2 class="reveal">Le bilan de production —<br><em>avec les vrais chiffres industriels</em></h2>
+  <p class="lead reveal">Avant de dimensionner le mix, il faut regarder ce qu'on peut réellement construire — pas ce qu'on voudrait. C'est ici que les contraintes industrielles du nucléaire, les limites des ENR et leur saisonnalité changent fondamentalement le débat.</p>
+
+  <h3 class="reveal">☢ Le nucléaire — le mur des 14 EPR2</h3>
+
+  <div class="tbl-wrap reveal">
+    <table>
+      <thead><tr><th>Paramètre</th><th>BEV tout-électrique</th><th>Résilience V11</th><th>Explication</th></tr></thead>
+      <tbody>
+        <tr><td>Socle existant maintenu 2045</td><td class="td-b">~30 GW</td><td class="td-b">~30 GW</td><td>Identique dans les deux scénarios. Série 900 MW arrêtée (58–68 ans en 2045).</td></tr>
+        <tr><td>EPR2 neufs à construire</td><td class="td-r">21 EPR2 — dépasse la capacité industrielle</td><td class="td-g">14 EPR2 — maximum jugé faisable</td><td>14 = limite démontrée (cadences Flamanville, chaîne appro., ressources humaines). 21 = +50 % au-delà. V11 section 2.1 ✅</td></tr>
+        <tr><td>Puissance nucléaire totale</td><td class="td-r">64,65 GW</td><td class="td-g">53,10 GW</td><td>30 GW socle + 14 × 1,65 GW neufs</td></tr>
+        <tr><td>Facteur de charge</td><td class="td-r">75,9 % (modulation face ENR)</td><td class="td-g">85,9 % (baseload pur)</td><td>Sabatier absorbe les surplus ENR → nucléaire ne module plus. ✅ Mécanisme démontré V11</td></tr>
+        <tr><td>CAPEX EPR2 seuls</td><td class="td-r">21 × 12 Md€ = 252 Md€</td><td class="td-g">14 × 12 Md€ = 168 Md€</td><td class="td-g">Économie 84 Md€</td></tr>
+        <tr><td>Déficit pilotable janvier</td><td class="td-r">−59,77 GW</td><td class="td-g">−10,56 GW</td><td class="td-g">Résilience <strong>5× plus robuste</strong> en pointe hivernale</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="box box-rouge reveal">
+    <strong>Contraintes croissantes sur les sites nucléaires :</strong> refroidissement fleuves menacé par les canicules (arrêts partiels 2022–2023 documentés), températures d'eau croissantes qui limitent les rejets thermiques, peu de nouveaux sites acceptables. Les SMR/SNR sont prometteurs mais rencontreront le même problème de refroidissement — horizon réaliste : 2040+ pour des unités commerciales. Construire des EPR sur des fleuves est un risque structurel qui s'aggrave avec le réchauffement climatique.
+  </div>
+
+  <h3 class="reveal">⚡ La matrice temporelle — production vs demande mois par mois</h3>
+  <p class="body reveal">C'est le tableau que le débat public n'ose pas montrer. La disponibilité réelle de chaque source, croisée avec les pics de demande, révèle les coïncidences critiques que le tout-électrique ne peut pas absorber.</p>
+
+  <div class="matrice reveal">
+    <table>
+      <thead><tr><th>Source</th><th>Jan</th><th>Fév</th><th>Mar</th><th>Avr</th><th>Mai</th><th>Jun</th><th>Jul</th><th>Aoû</th><th>Sep</th><th>Oct</th><th>Nov</th><th>Déc</th></tr></thead>
+      <tbody>
+        <tr><td>☢ Nucléaire dispo</td><td class="m-f">Fort</td><td class="m-f">Fort</td><td class="m-m">Moy.</td><td class="m-m">Moy.</td><td class="m-ar">↓ Arr.</td><td class="m-ar">↓ Arr.</td><td class="m-ar">↓ Arr.</td><td class="m-ar">↓ Arr.</td><td class="m-m">Reprise</td><td class="m-f">Fort</td><td class="m-f">Fort</td><td class="m-f">Fort</td></tr>
+        <tr><td>💨 Éolien terrestre</td><td class="m-f">Fort</td><td class="m-f">Fort</td><td class="m-m">Moy.</td><td class="m-m">Moy.</td><td class="m-fa">Faible</td><td class="m-n">~10 %</td><td class="m-n">~12 %</td><td class="m-fa">Faible</td><td class="m-m">Moy.</td><td class="m-m">Moy.</td><td class="m-f">Fort</td><td class="m-f">Fort</td></tr>
+        <tr><td>🌊 Éolien offshore</td><td class="m-f">Fort</td><td class="m-f">Fort</td><td class="m-m">Moy.</td><td class="m-m">Moy.</td><td class="m-m">Moy.</td><td class="m-fa">Faible</td><td class="m-fa">Faible</td><td class="m-fa">Faible</td><td class="m-m">Moy.</td><td class="m-f">Fort</td><td class="m-f">Fort</td><td class="m-f">Fort</td></tr>
+        <tr><td>☀ Solaire PV</td><td class="m-n">~5 %</td><td class="m-fa">Faible</td><td class="m-m">Moy.</td><td class="m-m">Moy.</td><td class="m-f">Fort</td><td class="m-f">Fort</td><td class="m-f">Fort†</td><td class="m-f">Fort†</td><td class="m-m">Moy.</td><td class="m-fa">Faible</td><td class="m-n">~5 %</td><td class="m-n">~4 %</td></tr>
+        <tr style="border-top:1px solid rgba(233,196,106,.3)"><td style="color:var(--ambre)">⚡ Demande réseau</td><td class="m-p">PIC</td><td class="m-p">PIC</td><td class="m-m">Moy.</td><td class="m-m">Moy.</td><td class="m-m">Moy.</td><td class="m-m">↑ Clim</td><td class="m-p">PIC ?</td><td class="m-p">PIC ?</td><td class="m-m">Moy.</td><td class="m-m">Moy.</td><td class="m-p">PIC</td><td class="m-p">PIC</td></tr>
+        <tr class="tr-best"><td style="color:var(--vert-vif)">🌿 Bio-CH₄ GRDF</td><td class="m-bg">130 TWh</td><td class="m-bg">dispo</td><td class="m-bg">dispo</td><td class="m-bg">dispo</td><td class="m-bg">recharge</td><td class="m-bg">recharge</td><td class="m-bg">recharge</td><td class="m-bg">recharge</td><td class="m-bg">dispo</td><td class="m-bg">dispo</td><td class="m-bg">dispo</td><td class="m-bg">dispo</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="body reveal" style="font-size:.75rem;color:rgba(240,244,241,.38);margin-top:-.8rem">† Solaire juillet–août : rendement dégradé par les fortes chaleurs (~0,5 %/°C au-dessus de 25°C). Paradoxe : canicule = demande climatisation maximale + production PV réduite simultanément.</p>
+
+  <div class="box box-rouge reveal">
+    <strong>La convergence critique juillet–août :</strong> nucléaire à mi-régime (arrêts maintenance + étiage fleuves), éolien terrestre à 10–12 %, solaire dégradé par la chaleur, demande montante (climatisation généralisée). C'est précisément à ce moment-là que le tout-BEV est le plus fragile — et qu'aucune ENR ne peut se substituer à une autre.
+  </div>
+
+  <h3 class="reveal">📊 Potentiel et limites des ENR</h3>
+  <div class="tbl-wrap reveal">
+    <table>
+      <thead><tr><th>Filière</th><th>GW installables 2045</th><th>Production/an</th><th>Facteur charge</th><th>Limite principale</th></tr></thead>
+      <tbody>
+        <tr><td>Solaire PV</td><td>90–105 GW</td><td>~120–140 TWh</td><td>13–14 %</td><td class="td-r">Absent hiver et nuit. Rendement dégradé par chaleur. Surplus invendables été (2 000 GWh écrêtés S1 2025).</td></tr>
+        <tr><td>Éolien terrestre</td><td>25–27 GW</td><td>~50 TWh</td><td>~22 %</td><td class="td-r">Zones favorables saturées. Revamping complexifié. Délais &gt;10 ans.</td></tr>
+        <tr><td>Éolien offshore posé</td><td>~20 GW</td><td>~55 TWh</td><td>~32–35 %</td><td class="td-a">2,5–3 Md€/GW · 8–12 ans · saturation des zones côtières.</td></tr>
+        <tr><td>Éolien offshore flottant</td><td>~9–18 GW (long terme)</td><td>~30–60 TWh</td><td>~35–40 %</td><td class="td-r">Technologie en validation · 4–6 Md€/GW · Horizon 2038+.</td></tr>
+        <tr class="tr-total"><td><strong>Total ENR 2045</strong></td><td><strong>~144–170 GW</strong></td><td><strong>~255–295 TWh</strong></td><td>—</td><td>Fort en hiver (éolien) / fort en été (solaire). Les creux se cumulent aux mauvais moments.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</section>
+
+<!-- 04 EQUATION IMPOSSIBLE -->
+<section class="alt">
+<div class="container">
+  <div class="stag reveal">04 · L'équation impossible du tout-électrique</div>
+  <h2 class="reveal">Même en poussant tous les curseurs au maximum —<br><em>trois trous que rien ne referme</em></h2>
+  <p class="lead reveal">750 TWh d'électricité (nucléaire + ENR au maximum), 21 EPR2 impossibles à construire, et pourtant trois problèmes structurels que le surdimensionnement ne résout pas.</p>
+
+  <div class="grid3 reveal">
+    <div class="card card-rouge">
+      <div class="num num-r">~400 TWh</div>
+      <h3>Les usages non électrifiables</h3>
+      <p>Aviation long-courrier, poids lourds longue distance, industrie haute T° (&gt;500°C), agriculture hors réseau. Le BEV les laisse en fossile faute d'alternative. 25 % des besoins totaux conservés en kérosène et fioul.</p>
+    </div>
+    <div class="card card-rouge">
+      <div class="num num-r">×87</div>
+      <h3>Le stockage saisonnier manquant</h3>
+      <p>Batteries : 4–8 heures. GRDF : 130 TWh souterrains = ×87 le stockage électrique national. Surplus solaire été → déficit hiver : physiquement insoluble en batteries à coût raisonnable.</p>
+    </div>
+    <div class="card card-rouge">
+      <div class="num num-r">−59,77 GW</div>
+      <h3>Le déficit pilotable en janvier</h3>
+      <p>Puissance pilotable manquante en pointe hivernale dans le scénario BEV (V11, section 3.1). En Résilience : −10,56 GW. Le tout-électrique est 5× plus fragile face aux situations critiques.</p>
+    </div>
+  </div>
+
+  <div class="box box-ambre reveal">
+    <strong>Le vecteur manquant — quatre critères simultanément nécessaires :</strong> stockable sur des semaines à des mois · pilotable en quelques minutes · haute densité énergétique (transport longue distance, aviation) · utilisable sans réseau électrique (agriculture, chantiers). Aucune ENR ne répond à ces quatre critères ensemble. Le nucléaire en satisfait deux mais pas les deux premiers. Il manque un vecteur moléculaire.
+  </div>
+</div>
+</section>
+
+<!-- 05 BIOMASSE -->
+<section>
+<div class="container">
+  <div class="stag reveal">05 · La biomasse française — une ressource documentée</div>
+  <h2 class="reveal">Ce vecteur existe —<br><em>produit depuis nos propres déchets et résidus</em></h2>
+  <p class="lead reveal">Le bio-méthane n'est pas un projet hypothétique. La France produit déjà ~10 TWh injectés en 2024. La PPE3 fixe 60 TWh à 2030. Le Programme V11 documente un gisement central de ~262 TWh depuis neuf filières de biomasse française — sans importer quoi que ce soit.</p>
+
+  <div class="tbl-wrap reveal">
+    <table>
+      <thead><tr><th>Source</th><th>Voie</th><th>Volume</th><th>Bio-CH₄ (TWh/an)</th><th>Biochar (Mt/an)</th><th>Qualification V11</th></tr></thead>
+      <tbody>
+        <tr><td>Résidus de culture + paille</td><td>Pyrogazéification</td><td>~16 Mt/an</td><td>~48</td><td>3,6</td><td class="td-a">⚠ Conditionnel</td></tr>
+        <tr><td>Bois mort + rémanents forestiers</td><td>Pyrogazéification</td><td>13–15 Mt/an</td><td>38–44</td><td>3,1</td><td class="td-g">✅ Robuste</td></tr>
+        <tr><td>Houppiers + branches</td><td>Pyrogazéification</td><td>8–10 Mt/an</td><td>22–27</td><td>~2,0</td><td class="td-g">✅ Robuste</td></tr>
+        <tr><td>Effluents d'élevage</td><td>Méthanisation</td><td>—</td><td>~70</td><td>—</td><td class="td-g">✅ PPE3 cible 60 TWh 2030</td></tr>
+        <tr><td>Biodéchets + STEP + CSR</td><td>Méthanisation</td><td>—</td><td>~40–50</td><td>—</td><td class="td-a">Plausible</td></tr>
+        <tr><td>Méthane Sabatier<br><span style="font-size:.75rem;color:var(--gris)">(non-biomasse — surplus ENR)</span></td><td>Électrolyse + CO₂</td><td>50 GW élec. → 67 TWh absorbés</td><td>~25–40</td><td>—</td><td class="td-a">Plausible TRL 7–8 · 35 Md€ CAPEX</td></tr>
+        <tr class="tr-total"><td><strong>Total V11 central</strong><br><span style="font-size:.75rem;color:var(--gris)">150 sites pyrogaz × 1 000 t/j + méthanisation</span></td><td>—</td><td>Pyrogaz. : ~37–41 Mt/an biomasse sèche</td><td><strong>~262 TWh</strong><br><span style="font-size:.75rem;color:var(--gris)">(fourchette 254–282)<br>Haute avec Sabatier 40 : ~295 TWh</span></td><td><strong>~20–23 Mt CO₂ séq./an</strong></td><td class="td-g">V11 section 2.2</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="grid2 reveal">
+    <div class="box box-vert" style="margin:0">
+      <strong>La filière produit trois choses simultanément :</strong><br><br>
+      1. Du <strong>bio-méthane</strong> — vecteur stockable, réseau GRDF existant (130 TWh souterrains)<br>
+      2. Du <strong>biochar</strong> — 2,5 à 3 t CO₂ séquestrées par tonne produite, stable 500–1 000 ans → bilan carbone négatif possible<br>
+      3. Du <strong>digestat</strong> — engrais organique local, régénération des sols agricoles, substitution aux intrants fossiles importés<br><br>
+      Ce n'est pas une filière énergétique qui produit des co-bénéfices. C'est une filière climatique et agricole qui produit aussi de l'énergie.
+    </div>
+    <div class="box box-ambre" style="margin:0">
+      <strong>Lecture des chiffres V11 — 262 TWh ou 295 TWh ?</strong><br><br>
+      Le Sabatier (~25–40 TWh) est <strong>déjà inclus</strong> dans le total V11 de 262 TWh (central, fourchette 254–282). Les 295 TWh du tableau de synthèse section 1.1 correspondent à la <strong>fourchette haute</strong> (282 TWh) avec le Sabatier à 40 TWh — un scénario optimiste mais plausible.<br><br>
+      Décomposition des 150 sites × 1 000 t/j de pyrogazéification :<br>
+      — Résidus culture + paille : ~48 TWh ⚠<br>
+      — Bois mort + rémanents : 38–44 TWh ✅<br>
+      — Houppiers + branches : 22–27 TWh ✅<br>
+      — <strong>Sous-total pyrogaz. : ~108–119 TWh</strong> depuis ~37–41 Mt/an de biomasse sèche<br>
+      — Méthanisation (effluents, biodéchets, STEP) : ~110–120 TWh ✅<br>
+      — Sabatier (surplus ENR → électrolyse) : ~25–40 TWh Plausible TRL 7–8<br>
+      — <strong>Total central : ~262 TWh</strong> · Fourchette haute avec Sabatier 40 TWh : ~295 TWh
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 06 ALLOCATION -->
+<section class="alt">
+<div class="container">
+  <div class="stag reveal">06 · L'allocation fonctionnelle</div>
+  <h2 class="reveal">Le bio-méthane n'est pas le backup<br><em>de l'électricité — c'est son complément structurel</em></h2>
+  <p class="lead reveal">Si les creux du réseau électrique consomment librement les 262 TWh disponibles, il ne reste rien pour l'aviation, les poids lourds et l'industrie lourde. L'allocation doit être fonctionnelle : usages irremplaçables en priorité absolue, soutien réseau sur le solde — et le dimensionnement des ENR s'adapte pour ne pas dépasser ce solde.</p>
+
+  <div class="alloc-grid reveal">
+    <div class="alloc-bloc" style="border-color:rgba(255,77,26,.3);background:rgba(255,77,26,.04)">
+      <h3 style="color:#FF5500;border-color:rgba(255,77,26,.2)">Priorité 1 — Usages irremplaçables</h3>
+      <div class="alloc-item"><span class="alloc-twh" style="color:#FF5500">~110 TWh</span><span class="alloc-desc">Aviation tous segments (bio-GNV régionaux ②③ · bio-GNL moyen+long-courrier ④) — VTOL seul en élec. pur · aucune alternative moléculaire à cet horizon</span></div>
+      <div class="alloc-item"><span class="alloc-twh" style="color:#FF5500">170 TWh</span><span class="alloc-desc">Poids lourds longue distance (bio-GNV) — 70 % des km non couverts par batterie</span></div>
+      <div class="alloc-item"><span class="alloc-twh" style="color:#FF5500">75 TWh</span><span class="alloc-desc">VL + VU + Bus — 23 % des km en bio-GNV (longue distance, zones sans bornes)</span></div>
+      <div class="alloc-item"><span class="alloc-twh" style="color:#FF5500">~22 TWh</span><span class="alloc-desc">Industrie HT &gt;500°C résiduelle — procédés irremplaçables après max électrification et changements de procédés</span></div>
+      <div class="alloc-item"><span class="alloc-twh" style="color:#FF5500">~13 TWh</span><span class="alloc-desc">Agriculture — Rex bio-GNV tracteurs 120–400 CV · travaux lourds hors réseau</span></div>
+      <p style="font-size:.78rem;color:rgba(240,244,241,.4);margin-top:.8rem">Budget P1 total : ~390 TWh. Non négociable — rien d'autre ne peut couvrir ces usages. À réserver avant tout dimensionnement réseau. Production V11 base : ~262 TWh → déficit ~128 TWh couvert par leviers L1/L2/L3.</p>
+    </div>
+    <div class="alloc-bloc" style="border-color:rgba(82,183,136,.3);background:rgba(82,183,136,.04)">
+      <h3 style="color:var(--vert-vif);border-color:rgba(82,183,136,.2)">Priorité 2 — Soutien réseau (solde disponible)</h3>
+      <div class="alloc-item"><span class="alloc-twh num-v">~25 TWh</span><span class="alloc-desc">Centrales bio-CH₄ en pointe hivernale (Dunkelflaute, pics de demande) — depuis le stock GRDF 130 TWh · solde disponible après P1</span></div>
+      <div class="alloc-item"><span class="alloc-twh num-v">Sabatier</span><span class="alloc-desc">Surplus ENR estivaux → électrolyse → méthane de synthèse stocké pour l'hiver — s'ajoute à la production base, ne mobilise pas le stock P1 (TRL 7–8)</span></div>
+      <p style="font-size:.78rem;color:rgba(240,244,241,.4);margin-top:.8rem">Ce budget P2 n'est disponible qu'après couverture intégrale des P1 (~390 TWh). Il impose que les ENR hivernales soient suffisamment dimensionnées — éolien offshore fort en hiver — pour ne pas empiéter sur P1. C'est l'électricité qui se dimensionne en conséquence.</p>
+    </div>
+  </div>
+
+  <div class="box box-bleu reveal">
+    <strong>La conséquence pour les ENR — la saisonnalité comme colonne vertébrale :</strong> si l'éolien offshore hivernal est insuffisant, le réseau appelle du bio-méthane réservé à l'aviation et aux camions. Il faut donc installer assez d'éolien offshore (fort en hiver, 32–38 % de facteur de charge) pour que la demande sur le budget P2 reste dans les ~25 TWh disponibles après couverture des P1. Ce n'est pas un détail de l'analyse — <strong>c'est la contrainte de conception du mix</strong>. Le dimensionnement des ENR s'adapte au budget bio-méthane, pas l'inverse.
+  </div>
+
+  <div class="tbl-wrap reveal">
+    <table>
+      <thead><tr><th>Situation critique</th><th>Sans bon dimensionnement ENR</th><th>Avec bon dimensionnement ENR</th></tr></thead>
+      <tbody>
+        <tr><td>Hiver froid sans vent ni soleil (Dunkelflaute)</td><td class="td-r">Réseau appelle bio-CH₄ P1 → pénurie transport lourd / aviation</td><td class="td-g">Éolien offshore fort en hiver + nucléaire baseload couvrent la base. Bio-CH₄ P2 intact.</td></tr>
+        <tr><td>Canicule estivale + climatisation + nucléaire mi-régime</td><td class="td-r">Triple contrainte → appel massif bio-CH₄ → budget P1 entamé</td><td class="td-g">Solaire dimensionné pour pointes estivales. Bio-CH₄ P1 transport/aviation préservé.</td></tr>
+        <tr><td>Surplus solaire estival (midi)</td><td class="td-a">Électricité gaspillée — 2 000 GWh écrêtés S1 2025</td><td class="td-g">Surplus → électrolyseurs → Sabatier → recharge stock bio-CH₄ pour l'hiver. Nucléaire monte en facteur de charge.</td></tr>
+        <tr><td>Grands départs été / week-ends</td><td class="td-r">Pics recharge réseau massifs → pression sur budget P2 → P1 menacé</td><td class="td-g">ÉREV bio-GNV : recharge embarquée → zéro appel réseau sur les trajets → P1 intact.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</section>
+
+<!-- 07 BILAN COMPARATIF -->
+<section>
+<div class="container">
+  <div class="stag reveal">07 · Le bilan comparatif V11</div>
+  <h2 class="reveal">Tout-BEV vs Résilience 2045 —<br><em>les chiffres V11 côte à côte</em></h2>
+
+  <div class="tbl-wrap reveal">
+    <table>
+      <thead><tr><th>Indicateur</th><th>BEV tout-électrique</th><th>Résilience V11</th><th>Écart et analyse</th></tr></thead>
+      <tbody>
+        <tr><td>Consommation élec réseau/an</td><td class="td-r">750 TWh</td><td class="td-g">665 TWh</td><td class="td-g">−85 TWh → moins d'infrastructure, moins de nucléaire, moins de réseau</td></tr>
+        <tr><td>Nucléaire installé total</td><td class="td-r">64,65 GW (21 EPR2 neufs)</td><td class="td-g">53,10 GW (14 EPR2 neufs)</td><td class="td-g">−7 EPR2 = −84 Md€. 14 = maximum faisable.</td></tr>
+        <tr><td>Facteur de charge nucléaire</td><td class="td-r">75,9 % (modulation ENR)</td><td class="td-g">85,9 % (baseload pur)</td><td>+10 pts — surplus ENR absorbés par Sabatier ✅</td></tr>
+        <tr><td>Déficit pilotable janvier</td><td class="td-r">−59,77 GW</td><td class="td-g">−10,56 GW</td><td class="td-g">Résilience 5× plus robuste en pointe hivernale</td></tr>
+        <tr><td>Stockage saisonnier</td><td class="td-r">Batteries 4–8 h max</td><td class="td-g">GRDF 130 TWh souterrains</td><td class="td-g">×87 le stockage électrique national — zéro CAPEX supplémentaire</td></tr>
+        <tr><td>Aviation — tous segments</td><td class="td-r">150 TWh kérosène fossile — non résolu</td><td class="td-g">~2 TWh élec (VTOL) + ~110 TWh bio-CH₄ (tous segments V9)</td><td class="td-g">Résilience couvre toute l'aviation. BEV la laisse intégralement en fossile.</td></tr>
+        <tr><td>Bio-CH₄ total produit</td><td class="td-r">0</td><td class="td-g">~262 TWh (central V11)</td><td>Fourchette 254–282 TWh/an</td></tr>
+        <tr><td>Biochar séquestré</td><td class="td-r">0</td><td class="td-g">20–23 Mt CO₂/an</td><td>Séquestration permanente &gt;100 ans — bilan carbone négatif possible</td></tr>
+        <tr><td>CAPEX réseau électrique RTE</td><td class="td-r">30–50 Md€ suppl.</td><td class="td-g">8–15 Md€ suppl.</td><td class="td-g">Économie 20–35 Md€</td></tr>
+        <tr class="tr-total"><td><strong>CAPEX total transition</strong></td><td class="td-r"><strong>794–1 096 Md€</strong></td><td class="td-g"><strong>~540–690 Md€</strong></td><td class="td-g"><strong>Économie centrale ~315 Md€ ⚠ ordre de grandeur</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="grid2 reveal">
+    <div class="bilan-card">
+      <h3 style="color:#FF5500;border-color:rgba(255,77,26,.2)">BEV — Tout-électrique 2045</h3>
+      <div class="bilan-line"><span>Réseau électrique</span><span class="td-r">750 TWh</span></div>
+      <div class="bilan-line"><span>Aviation</span><span class="td-r">Non résolue — 150 TWh kéro fossile</span></div>
+      <div class="bilan-line"><span>EPR2 à construire</span><span class="td-r">21 — dépasse la capacité industrielle</span></div>
+      <div class="bilan-line"><span>Déficit pilotable hiver</span><span class="td-r">−59,77 GW</span></div>
+      <div class="bilan-line"><span>Stockage saisonnier</span><span class="td-r">Non résolu</span></div>
+      <div class="bilan-line"><span>Émissions résiduelles</span><span class="td-r">~35 Mt CO₂/an (aviation)</span></div>
+      <div class="bilan-line"><span>CAPEX</span><span class="td-r">794–1 096 Md€</span></div>
+    </div>
+    <div class="bilan-card">
+      <h3 style="color:var(--vert-vif);border-color:rgba(82,183,136,.2)">Résilience V11 — Architecture hybride</h3>
+      <div class="bilan-line"><span>Réseau électrique</span><span class="td-g">665 TWh</span></div>
+      <div class="bilan-line"><span>Bio-CH₄ produit (base V11)</span><span class="td-g">~262 TWh</span></div>
+      <div class="bilan-line"><span>Bio-CH₄ nécessaire total</span><span class="td-a">~390 TWh → leviers L1/L2/L3</span></div>
+      <div class="bilan-line"><span>Aviation</span><span class="td-g">Résolue — ~2 TWh élec (VTOL) + ~110 TWh bio-CH₄ tous segments V9</span></div>
+      <div class="bilan-line"><span>EPR2 à construire</span><span class="td-g">14 — maximum faisable</span></div>
+      <div class="bilan-line"><span>Déficit pilotable hiver</span><span class="td-g">−10,56 GW (5× moins)</span></div>
+      <div class="bilan-line"><span>Biochar séquestré</span><span class="td-g">20–23 Mt CO₂/an</span></div>
+      <div class="bilan-line"><span>CAPEX</span><span class="td-g">~540–690 Md€</span></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 08 CONCLUSION -->
+<section class="alt">
+<div class="container">
+  <div class="stag reveal">08 · Conclusion</div>
+  <h2 class="reveal">Ce que le débat radio<br><em>ne dit jamais</em></h2>
+
+  <p class="body reveal">Dans les débats médiatiques sur l'énergie, experts et journalistes s'affrontent sur nucléaire vs éolien vs solaire. Personne ne pose les besoins secteur par secteur. Personne ne regarde la matrice temporelle mois par mois. Personne ne quantifie ce que l'électrification ne peut structurellement pas couvrir — aviation tous segments, transport lourd, industrie haute T°, Rex agricoles — ni ne pose la question de avec quoi on le couvre. Personne ne parle de l'impossibilité physique de construire 21 EPR2 d'ici 2045.</p>
+
+  <p class="body reveal">Quand on pose toutes ces questions ensemble, la réponse est claire : il faut les deux vecteurs, dimensionnés fonctionnellement. <strong style="color:var(--blanc)">L'électricité couvre les usages électrifiables. Le bio-méthane couvre les usages irremplaçables et sécurise le réseau sur le solde disponible. Et c'est la saisonnalité de chaque source qui guide le dimensionnement des ENR — pour garantir que les deux budgets restent compatibles.</strong></p>
+
+  <div class="box box-ambre reveal">
+    <strong>Note sur la couverture complète des besoins en bio-CH₄ :</strong> le Programme Résilience V11 documente une production de ~262 TWh/an depuis la biomasse résiduelle française. L'analyse sectorielle complète — intégrant l'aviation sur tous ses segments, l'industrie haute température et les tracteurs ÉREV — porte les besoins réels à ~390 TWh. Le déficit de ~128 TWh est couvert par trois leviers complémentaires, dans l'ordre économique : <strong>(1) Sabatier maximisé</strong> sur surplus ENR — valorise le CO₂ concentré gratuit des 150 sites ; <strong>(2) Séquestration chimique et géologique</strong> du CO₂ biogénique concentré produit sur les 150 sites (~35 Mt/an disponibles) — cette séquestration permet, à titre limité et résiduel, de compléter l'approvisionnement par du CH₄ fossile tout en conservant un bilan carbone fortement négatif : les émissions du fossile résiduel restent très inférieures au CO₂ séquestré (biochar + géologique) ; <strong>(3) Cultures dédiées miscanthus</strong> sur terres marginales — levier de décarbonation profonde et de retrait net de CO₂ atmosphérique. Ce bilan complet est développé dans la <strong>section 00 · Bilan général</strong> de ce document.
+  </div>
+
+  <div class="grid3 reveal" style="margin:2rem 0">
+    <div class="card">
+      <div class="num num-r">~390 TWh</div>
+      <h3>Non électrifiables</h3>
+      <p>Aviation tous segments, transport lourd, industrie haute T°, Rex tracteurs. Le BEV les conserve en fossile. Résilience les couvre avec ~262 TWh de bio-CH₄ base V11 + ~128 TWh via leviers complémentaires (Sabatier, séquestration + fossile compensé, cultures dédiées).</p>
+    </div>
+    <div class="card">
+      <div class="num num-v">−84 Md€</div>
+      <h3>CAPEX nucléaire économisé</h3>
+      <p>14 EPR2 au lieu de 21. Le maximum industriellement faisable — sans supposer des capacités de construction qui n'ont jamais existé en France.</p>
+    </div>
+    <div class="card">
+      <div class="num num-v">5 ×</div>
+      <h3>Plus robuste en hiver</h3>
+      <p>Déficit pilotable : −10,56 GW (Résilience) vs −59,77 GW (BEV). Le bio-CH₄ stocké dans 130 TWh de réseau GRDF existant est le muscle de réserve que le réseau 100 % électrique n'a pas.</p>
+    </div>
+  </div>
+
+  <div style="margin-top:1.5rem;display:flex;gap:.8rem;flex-wrap:wrap" class="reveal">
+    <a href="systeme-energetique.html" class="btn btn-outline">← Système énergétique</a>
+    <a href="electrification-limites.html" class="btn btn-outline">Limites de l'électrification →</a>
+    <a href="Tableau_Bilan_Energetique_Sectoriel_V11.pdf" target="_blank" class="btn btn-outline">Tableau bilan sectoriel V11 ↓</a>
+    <a href="Programme_Resilience_V11_Complet.pdf" target="_blank" class="btn btn-outline">Programme complet V11 ↓</a>
+  </div>
+</div>
+</section>
+
+<footer>
+  <div class="footer-logo">Résilience 2045</div>
+  <p>Mix énergétique 2045 · Programme Résilience V11 · Août 2026</p>
+  <p style="font-size:.7rem;color:#3a5044;margin-top:.4rem">Chiffres issus du Programme V11 sections 1.1 · 2.1 · 2.2 · 3.1 · Données RTE 2024–2025 · Estimations 2045 soumises à validation sectorielle indépendante · Diffusion libre</p>
+</footer>
+
+<script>
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
