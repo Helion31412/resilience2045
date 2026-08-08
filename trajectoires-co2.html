@@ -242,7 +242,7 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-  document.querySelectorAll('a[href$=".pdf"]').forEach(function(a) {
+  document.querySelectorAll('a[href*=".pdf"], a[href*="viewer"]').forEach(function(a) {
     a.target = "_blank";
     a.rel = "noopener";
   });
@@ -272,11 +272,42 @@ document.addEventListener("DOMContentLoaded", function () {
 <main>
 <div class="container">
 
+  <div class="encadre encadre-info" style="margin-bottom:1.5rem;">
+    <h3>📐 Statut de ce modèle — à lire en premier</h3>
+    <p style="font-size:.9rem;line-height:1.65;margin-bottom:.6rem;">
+      Ce document n'est <strong>pas un modèle climatique prédictif</strong>. Il s'agit d'un
+      <strong>modèle paramétrique prospectif</strong> destiné à explorer les ordres de grandeur
+      et les tendances du bilan atmosphérique du CO₂ selon différentes trajectoires d'action humaine.
+    </p>
+    <p style="font-size:.9rem;line-height:1.65;margin-bottom:.6rem;">
+      Les paramètres relatifs aux puits naturels, aux rétroactions climatiques, aux incendies
+      et à la séquestration active constituent des <strong>hypothèses de scénario</strong>,
+      et non des constantes physiques. Leur objectif est d'examiner la sensibilité des résultats
+      aux différentes hypothèses et de dégager des <strong>tendances robustes</strong> —
+      non de reproduire avec précision les modèles climatiques complets utilisés par le GIEC.
+    </p>
+    <p style="font-size:.9rem;line-height:1.65;margin-bottom:.6rem;">
+      Les chiffres clés — <em>0,4 Gt/an</em> de séquestration naturelle durable,
+      <em>2,2 Gt/an</em> de dégradation supplémentaire des puits (scénario incendies aggravés),
+      <em>7 Gt/an</em> d'objectif de séquestration Résilience,
+      <em>2,3 Gt/an</em> de résidu fossile difficilement compressible — sont des
+      <strong>paramètres d'ordre de grandeur</strong> à lire comme hypothèses, scénarios
+      ou objectifs, et non comme des prévisions ponctuelles.
+    </p>
+    <p style="font-size:.9rem;line-height:1.65;font-style:italic;border-top:1px solid rgba(46,117,182,.2);padding-top:.6rem;margin-top:.4rem;">
+      <strong>Les orientations des scénarios restent cohérentes avec la réalité même si les paramètres
+      varient significativement :</strong> quelle que soit la précision exacte des chiffres,
+      la trajectoire statu quo monte, l'électrification seule ne fait pas redescendre le CO₂,
+      et seule une séquestration durable active à grande échelle peut inverser la tendance.
+      Ce sont des conclusions de structure — pas de valeur numérique précise.
+    </p>
+  </div>
+
   <div class="message-central">
-    <h2>Message central — correction V5</h2>
-    <p><strong>Les puits naturels (forêts + océans) absorbent ~18 Gt CO₂/an mais en réémettent 97–98 % en quelques décennies.</strong> La séquestration millénaire nette réelle est de ~0,4 Gt/an seulement — insuffisante pour compenser quelque émission résiduelle que ce soit.</p>
-    <p><strong>L'électrification maximale conserve ~2,3 Gt/an de fossile incompressible</strong> (aviation, poids lourds, industrie haute température). Avec des puits naturels dégradés par les incendies et sécheresses, le CO₂ continue de monter indéfiniment — il ne redescend jamais sans extraction active.</p>
-    <p><strong>Résilience V11 est la seule trajectoire physiquement divergente :</strong> zéro fossile résiduel (bio-CH₄ couvre les 390 TWh) + séquestration permanente active montant jusqu'à 7 Gt CO₂/an (biochar EBC millénaire + minéralisation géologique). Le CO₂ descend activement après 2050.</p>
+    <h2>Deux problèmes simultanés — deux phases d'action</h2>
+    <p><strong>Phase 1 — Arrêter la montée du CO₂ :</strong> réduire les émissions fossiles jusqu'à ce que les retraits compensent au minimum les émissions et les rétroactions. Électrifier ce qui peut l'être. Mais même à émissions quasi-nulles, le CO₂ ne redescend pas seul — il se stabilise à un niveau élevé.</p>
+    <p><strong>Phase 2 — Faire redescendre la concentration :</strong> cela exige, en plus de la réduction des émissions, des retraits nets et <em>durables</em> du CO₂ atmosphérique. Un puits naturel net (forêts, océans) ne doit pas être confondu avec une élimination permanente : ce carbone est réémis à 97–98 % en quelques décennies. Seule une séquestration active et durable — biochar millénaire, minéralisation géologique — agit sur le stock.</p>
+    <p><strong>Le temps n'est pas neutre :</strong> réchauffement → dégradation des puits naturels → émissions supplémentaires (incendies, permafrost) → concentration plus élevée → réchauffement amplifié. Chaque année de retard rend la Phase 2 plus difficile et plus coûteuse. C'est précisément là que l'architecture Résilience — zéro fossile résiduel + 7 Gt/an de séquestration durable — constitue une rupture de nature, pas simplement une amélioration de degré.</p>
   </div>
 
   <!-- SECTION 1 : DONNÉES HISTORIQUES + SCÉNARIOS FUTURS -->
@@ -347,17 +378,17 @@ document.addEventListener("DOMContentLoaded", function () {
   <!-- SECTION 2 : PHYSIQUE DES PUITS -->
   <div class="section">
     <div class="section-label">Fondements physiques</div>
-    <h2>Pourquoi les puits naturels ne suffisent pas</h2>
+    <h2>Puits naturels : absorption cyclique ≠ élimination permanente</h2>
 
-    <p>Les forêts et océans absorbent chaque année environ 18 Gt de CO₂ par photosynthèse et dissolution. Mais ce carbone n'est pas retiré définitivement de l'atmosphère — il entre dans un <em>cycle rapide</em> dont le temps de résidence est de quelques décennies, pas de millénaires.</p>
+    <p>Les forêts et océans absorbent chaque année environ 18 Gt de CO₂ — c'est le terme de « puits de carbone » au sens du Global Carbon Budget, et ce terme est scientifiquement établi. Mais <strong>un puits naturel net ne doit pas être confondu avec une élimination permanente du CO₂ atmosphérique.</strong> Ce carbone entre dans un cycle rapide dont le temps de résidence est de quelques décennies : il est réémis à 97–98 % par respiration, décomposition et perturbations. En outre, dans un climat qui se réchauffe, la capacité de ces puits peut se dégrader, voire devenir localement une source nette.</p>
 
     <div class="encadre encadre-warning">
-      <h3>❌ Ce que les puits naturels ne font pas</h3>
+      <h3>⚠ Ce qu'un puits naturel net ne fait pas — distinction essentielle</h3>
       <ul>
         <li><strong>Forêts :</strong> le carbone fixé par photosynthèse retourne à l'atmosphère par respiration des arbres (~50%), décomposition de la litière (~40%), incendies et perturbations. Seul ~2–3% s'accumule dans l'humus profond ou les sédiments sur des millénaires.</li>
         <li><strong>Océans :</strong> le CO₂ dissous dans les eaux de surface est réémis quand les eaux froides remontent ou que la température augmente. La solubilité du CO₂ diminue avec la température — les océans chauds absorbent moins. Seule la fraction qui atteint les sédiments profonds (~0,1 Gt/an) est permanente.</li>
         <li><strong>Dégradation avec le réchauffement :</strong> au-delà de +2°C local, les puits terrestres peuvent basculer en sources nettes — déjà observé sur des zones amazoniennes et boréales.</li>
-        <li><strong>Séquestration naturelle permanente nette réelle :</strong> ~0,4 Gt/an seulement (humus profonds + carbonates marins profonds). C'est 45× moins que l'absorption brute affichée.</li>
+        <li><strong>Hypothèse de séquestration durable de scénario :</strong> ~0,4 Gt/an (ordre de grandeur — fourchette littérature 0,2–0,6 Gt/an) est la fraction qui s'accumule réellement dans l'humus profond et les carbonates marins profonds sur des échelles millénaires. Ce paramètre de scénario est 45× inférieur à l'absorption brute cyclique affichée dans les bilans courants.</li>
       </ul>
     </div>
 
@@ -412,6 +443,26 @@ document.addEventListener("DOMContentLoaded", function () {
         <li><strong>Incendies aggravés :</strong> paramètre de dégradation −50% à 2080 est un scénario pessimiste plausible, non une médiane. La médiane de base utilise −30%.</li>
         <li>Ces trajectoires sont des projections paramétriques cohérentes avec AR6, non des modèles de circulation générale (GCM).</li>
       </ul>
+    </div>
+  </div>
+
+  <!-- SECTION CONCLUSION -->
+  <div class="section">
+    <div class="section-label">Conclusion — deux ruptures nécessaires</div>
+    <h2>Ce que ce modèle démontre</h2>
+    <p>Ce modèle prospectif cherche à répondre à une question opérationnelle : <em>que devient la concentration atmosphérique de CO₂ selon les actions que l'humanité est effectivement capable de mettre en œuvre ?</em></p>
+    <p>Il met en évidence trois résultats qui se tiennent quelle que soit la précision des paramètres :</p>
+    <div class="encadre encadre-warning">
+      <h3>1 · Réduire les émissions ne suffit pas à faire baisser le CO₂</h3>
+      <p>Même avec −50 % des fossiles, même avec une électrification maximale laissant ~2,3 Gt/an de résidu incompressible, le bilan net reste positif : le CO₂ continue de monter, plus lentement. <strong>Électrifier ≠ supprimer les émissions ≠ faire baisser le CO₂ atmosphérique.</strong> C'est une distinction de nature, pas de degré.</p>
+    </div>
+    <div class="encadre encadre-warning" style="margin-top:.8rem;">
+      <h3>2 · Même zéro émission fossile ne suffit pas nécessairement à faire redescendre rapidement le CO₂</h3>
+      <p>Si le système terrestre continue à subir incendies, sécheresses, dégel du permafrost et dégradation des forêts, le bilan net atmosphère–biosphère–océan peut rester positif ou quasi-nul même après l'arrêt total des fossiles. Le CO₂ se stabilise à un niveau élevé mais ne redescend pas.</p>
+    </div>
+    <div class="encadre encadre-success" style="margin-top:.8rem;">
+      <h3>3 · La séquestration durable active est la seule voie pour inverser la trajectoire</h3>
+      <p>L'objectif de 7 Gt/an de séquestration Résilience ne doit pas être lu comme une prédiction mais comme <strong>la capacité qu'il faudrait construire</strong> pour non seulement arrêter la croissance du CO₂ mais inverser la trajectoire à l'échelle du siècle. Le modèle matérialise cette montée progressive de 2030 à 2065. Plus le déploiement tarde, plus la Phase 2 — faire redescendre — devient difficile, car entre-temps le système climatique dégrade les puits naturels et réduit les marges de manœuvre.</p>
     </div>
   </div>
 
