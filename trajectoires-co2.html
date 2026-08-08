@@ -239,6 +239,15 @@
     .download-box { flex-direction: column; }
   }
 </style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll('a[href$=".pdf"]').forEach(function(a) {
+    a.target = "_blank";
+    a.rel = "noopener";
+  });
+});
+</script>
 </head>
 <body>
 
@@ -412,7 +421,7 @@
       <h3>Note de synthèse complète — CO₂ atmosphérique et températures V5</h3>
       <p>Modèle physique corrigé · Séquestration permanente vs cyclique · Scénario incendies aggravés · Données 1873–2200<br>Programme Résilience V11 · Août 2026</p>
     </div>
-    <a href="https://resilience2045.fr/Note_CO2_Temperatures_V5.pdf" class="btn-download">Télécharger le PDF</a>
+    <a href="https://docs.google.com/viewer?url=https://resilience2045.fr/Note_CO2_Temperatures_V5.pdf" class="btn-download" target="_blank" rel="noopener">Télécharger le PDF</a>
   </div>
 
   <div class="download-box" style="background:#7B4DB7;">
@@ -420,7 +429,7 @@
       <h3>Note complémentaire — Pourquoi la nature seule ne suffira pas</h3>
       <p>Puits naturels réversibles, limites physiques, incendies et séquestration active — fondements de la V5</p>
     </div>
-    <a href="https://resilience2045.fr/Note_Limites_Puits_Carbone_Naturels_V2.pdf" class="btn-download" style="color:#7B4DB7;">Télécharger le PDF</a>
+    <a href="https://docs.google.com/viewer?url=https://resilience2045.fr/Note_Limites_Puits_Carbone_Naturels_V2.pdf" class="btn-download" style="color:#7B4DB7;" target="_blank" rel="noopener">Télécharger le PDF</a>
   </div>
 
   <div class="sources">
