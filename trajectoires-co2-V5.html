@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trajectoires CO₂ 1873–2200 — Programme Résilience V5</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+  :root {
+    --bleu:    #1F4E79;
+    --bleu2:   #2E75B6;
+    --bleu-cl: #E6F1FB;
+    --vert:    #0F6E56;
+    --vert-cl: #E8F5EE;
+    --rouge:   #C0392B;
+    --orange:  #D68910;
+    --bordeaux:#7B1F1F;
+    --violet:  #7B4DB7;
+    --gris:    #4A4A4A;
+    --gris-cl: #F5F5F5;
+    --border:  #DDE3EA;
+    --blanc:   #FFFFFF;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Georgia', serif; background: #F8FAFB; color: var(--gris); line-height: 1.7; }
+
+  /* NAV */
+  nav.breadcrumb {
+    background: #1F4E79; border-bottom: 2px solid #2E75B6;
+    padding: .9rem 2rem; display: flex; align-items: center; gap: .75rem; flex-wrap: wrap;
+  }
+  nav.breadcrumb a.home {
+    font-size: .78rem; font-weight: 600; color: rgba(46,117,182,.8);
+    text-decoration: none; padding: .15rem .5rem;
+    border: 1px solid rgba(46,117,182,.3); border-radius: 2px;
+  }
+  nav.breadcrumb a.back {
+    display: inline-flex; align-items: center; gap: .4rem;
+    background: white; color: #1F4E79; padding: .4rem 1rem;
+    border-radius: 4px; font-family: Arial,sans-serif; font-size: .82rem;
+    font-weight: bold; text-decoration: none; white-space: nowrap;
+  }
+  nav.breadcrumb .sep { color: rgba(255,255,255,.5); font-size: .8rem; }
+  nav.breadcrumb .cur { color: rgba(255,255,255,.85); font-family: Arial,sans-serif; font-size: .8rem; }
+  nav.breadcrumb a.lex {
+    margin-left: auto; font-size: .78rem; font-weight: 600;
+    color: rgba(255,255,255,.85); text-decoration: none;
+    padding: .15rem .6rem; border: 1px solid rgba(255,255,255,.3); border-radius: 2px;
+  }
+
+  /* HEADER */
+  header {
+    background: var(--bleu); color: white;
+    padding: 3rem 2rem 2.5rem; text-align: center;
+    position: relative; overflow: hidden;
+  }
+  header::before {
+    content: ''; position: absolute; inset: 0;
+    background: repeating-linear-gradient(-45deg,transparent,transparent 40px,rgba(255,255,255,.03) 40px,rgba(255,255,255,.03) 80px);
+  }
+  .header-label {
+    font-family: Arial,sans-serif; font-size: .75rem; letter-spacing: .2em;
+    text-transform: uppercase; color: rgba(255,255,255,.6); margin-bottom: .75rem;
+  }
+  header h1 {
+    font-size: clamp(1.6rem,4vw,2.4rem); font-weight: normal;
+    line-height: 1.25; margin-bottom: .75rem; position: relative;
+  }
+  header h1 sup { font-size: .6em; vertical-align: super; }
+  .header-sub {
+    font-family: Arial,sans-serif; font-size: .95rem;
+    color: rgba(255,255,255,.75); max-width: 640px; margin: 0 auto 1.2rem;
+  }
+  .header-badges { display: flex; gap: .6rem; justify-content: center; flex-wrap: wrap; margin-top: .5rem; }
+  .header-badge {
+    display: inline-block; background: rgba(255,255,255,.12);
+    border: 1px solid rgba(255,255,255,.25); border-radius: 4px;
+    padding: .35rem 1rem; font-family: Arial,sans-serif;
+    font-size: .8rem; color: rgba(255,255,255,.85);
+  }
+  .badge-new { background: rgba(15,110,86,.5); border-color: rgba(15,110,86,.8); }
+
+  /* LAYOUT */
+  .container { max-width: 1000px; margin: 0 auto; padding: 0 1.5rem; }
+
+  /* MESSAGE CENTRAL */
+  .message-central {
+    background: var(--bleu-cl); border-left: 5px solid var(--bleu2);
+    border-radius: 0 6px 6px 0; padding: 1.5rem 1.75rem; margin: 2.5rem 0 2rem;
+  }
+  .message-central h2 {
+    font-family: Arial,sans-serif; font-size: .7rem; letter-spacing: .18em;
+    text-transform: uppercase; color: var(--bleu2); margin-bottom: .75rem;
+  }
+  .message-central p { font-size: .95rem; color: var(--bleu); margin-bottom: .5rem; }
+  .message-central p:last-child { margin-bottom: 0; }
+  .message-central strong { color: var(--bleu); }
+
+  /* SECTIONS */
+  .section { padding: 2rem 0; border-top: 1px solid var(--border); }
+  .section-label {
+    font-family: Arial,sans-serif; font-size: .7rem; letter-spacing: .18em;
+    text-transform: uppercase; color: var(--bleu2); margin-bottom: .5rem;
+  }
+  .section h2 { font-size: 1.35rem; font-weight: normal; color: var(--bleu); margin-bottom: 1rem; }
+  .section p { font-size: .93rem; margin-bottom: .85rem; }
+
+  /* TABS */
+  .chart-tabs { display: flex; gap: 6px; margin-bottom: .75rem; flex-wrap: wrap; }
+  .chart-tab {
+    padding: 5px 14px; border-radius: 20px; cursor: pointer; font-family: Arial,sans-serif;
+    font-size: .78rem; border: 1px solid var(--border); background: white; color: var(--gris);
+    transition: all .15s;
+  }
+  .chart-tab.active { background: var(--bleu); color: white; border-color: var(--bleu); }
+
+  /* GRAPHIQUE */
+  .chart-wrap {
+    background: white; border: 1px solid var(--border); border-radius: 8px;
+    padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 2px 8px rgba(0,0,0,.04);
+  }
+  .chart-title {
+    font-family: Arial,sans-serif; font-size: .85rem; font-weight: bold;
+    color: var(--bleu); margin-bottom: .75rem; text-align: center;
+  }
+  .chart-canvas { position: relative; height: 440px; }
+  .chart-legend {
+    display: flex; flex-wrap: wrap; gap: .4rem 1rem;
+    margin-top: .9rem; font-family: Arial,sans-serif; font-size: .76rem; color: var(--gris);
+  }
+  .legend-item { display: flex; align-items: center; gap: .4rem; }
+  .legend-line { width: 24px; height: 3px; border-radius: 2px; flex-shrink: 0; }
+  .legend-dashed { border-top: 2px dashed; background: none !important; height: 0; }
+  .legend-dotted { border-top: 2px dotted; background: none !important; height: 0; }
+
+  /* CARTES VALEURS */
+  .cards {
+    display: grid; grid-template-columns: repeat(auto-fit,minmax(170px,1fr));
+    gap: 1rem; margin: 1.5rem 0;
+  }
+  .card {
+    background: white; border: 1px solid var(--border); border-radius: 8px;
+    padding: 1rem 1.2rem; border-top: 3px solid var(--bleu2);
+  }
+  .card.rouge   { border-top-color: var(--rouge); }
+  .card.orange  { border-top-color: var(--orange); }
+  .card.bleu    { border-top-color: var(--bleu2); }
+  .card.vert    { border-top-color: var(--vert); }
+  .card.bordeaux{ border-top-color: var(--bordeaux); }
+  .card.violet  { border-top-color: var(--violet); }
+  .card-label   { font-family: Arial,sans-serif; font-size: .71rem; color: #888; margin-bottom: .3rem; }
+  .card-val     { font-family: Arial,sans-serif; font-size: 1.55rem; font-weight: bold; color: var(--bleu); line-height: 1.1; }
+  .card.rouge   .card-val { color: var(--rouge); }
+  .card.orange  .card-val { color: var(--orange); }
+  .card.bleu    .card-val { color: var(--bleu2); }
+  .card.vert    .card-val { color: var(--vert); }
+  .card.bordeaux .card-val{ color: var(--bordeaux); }
+  .card.violet  .card-val { color: var(--violet); }
+  .card-unit    { font-size: .73rem; color: #888; margin-top: .2rem; font-family: Arial,sans-serif; }
+
+  /* ENCADRÉS */
+  .encadre { border-radius: 6px; padding: 1.25rem 1.5rem; margin: 1.25rem 0; font-size: .9rem; }
+  .encadre-warning { background: #FEF3F3; border-left: 4px solid var(--rouge); }
+  .encadre-success { background: var(--vert-cl); border-left: 4px solid var(--vert); }
+  .encadre-info    { background: #F5F0FF; border-left: 4px solid var(--violet); }
+  .encadre-orange  { background: #FFF8ED; border-left: 4px solid var(--orange); }
+  .encadre h3 {
+    font-family: Arial,sans-serif; font-size: .8rem; font-weight: bold;
+    text-transform: uppercase; letter-spacing: .1em; margin-bottom: .6rem;
+  }
+  .encadre ul { padding-left: 1.2rem; }
+  .encadre li { margin-bottom: .35rem; }
+
+  /* TABLE COMPARAISON */
+  .diff-table {
+    width: 100%; border-collapse: collapse; font-family: Arial,sans-serif;
+    font-size: .82rem; margin: 1rem 0; background: white;
+    border: 1px solid var(--border); border-radius: 8px; overflow: hidden;
+  }
+  .diff-table th {
+    background: var(--bleu); color: white; padding: .6rem 1rem;
+    text-align: left; font-weight: normal; font-size: .77rem;
+  }
+  .diff-table td { padding: .5rem 1rem; border-bottom: 1px solid var(--border); font-size: .81rem; }
+  .diff-table tr:last-child td { border-bottom: none; }
+  .diff-table tr:nth-child(even) td { background: var(--gris-cl); }
+  .diff-table .pos { color: var(--rouge); font-weight: bold; }
+  .diff-table .neg { color: var(--vert); font-weight: bold; }
+
+  /* TABLE CO2/TEMP */
+  .temp-table {
+    width: 100%; border-collapse: collapse; font-family: Arial,sans-serif;
+    font-size: .85rem; margin: 1rem 0; background: white;
+    border: 1px solid var(--border); border-radius: 8px; overflow: hidden;
+  }
+  .temp-table th {
+    background: var(--bleu); color: white; padding: .6rem 1rem;
+    text-align: left; font-weight: normal; font-size: .78rem; letter-spacing: .05em;
+  }
+  .temp-table td { padding: .55rem 1rem; border-bottom: 1px solid var(--border); font-size: .83rem; }
+  .temp-table tr:last-child td { border-bottom: none; }
+  .temp-table tr:nth-child(even) td { background: var(--gris-cl); }
+  .temp-table .actuel td { background: #FFF8E6; font-weight: bold; }
+
+  /* DOWNLOAD */
+  .download-box {
+    background: var(--bleu); color: white; border-radius: 8px;
+    padding: 1.5rem 2rem; margin: 2rem 0;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .download-box h3 { font-family: Arial,sans-serif; font-size: 1rem; font-weight: bold; margin-bottom: .3rem; }
+  .download-box p  { font-size: .85rem; color: rgba(255,255,255,.75); }
+  .btn-download {
+    background: white; color: var(--bleu); padding: .65rem 1.5rem;
+    border-radius: 5px; text-decoration: none; font-family: Arial,sans-serif;
+    font-weight: bold; font-size: .85rem; white-space: nowrap;
+  }
+  .btn-download:hover { opacity: .85; }
+
+  /* SOURCES / FOOTER */
+  .sources {
+    background: var(--gris-cl); border-top: 1px solid var(--border);
+    padding: 1.5rem 0; font-family: Arial,sans-serif; font-size: .75rem;
+    color: #888; margin-top: 2rem;
+  }
+  .sources strong { color: var(--gris); }
+  footer {
+    background: var(--bleu); color: rgba(255,255,255,.7);
+    text-align: center; padding: 1.5rem;
+    font-family: Arial,sans-serif; font-size: .78rem;
+  }
+  footer a { color: rgba(255,255,255,.85); }
+
+  @media (max-width:600px) {
+    header { padding: 2rem 1rem 1.5rem; }
+    .container { padding: 0 1rem; }
+    .chart-canvas { height: 300px; }
+    .download-box { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="breadcrumb">
+  <a class="home" href="index.html">⌂ Accueil</a>
+  <a class="back" href="index.html">← Programme Résilience V11</a>
+  <span class="sep">›</span>
+  <span class="cur">Trajectoires CO₂ et températures 1873–2200</span>
+  <a class="lex" href="lexique.html">Lexique →</a>
+</nav>
+
+<header>
+  <div class="header-label">Programme Résilience — Analyse climatique V5</div>
+  <h1>CO<sub>2</sub> atmosphérique et températures<br>Trajectoires 1873–2200</h1>
+  <p class="header-sub">Données observées depuis 1873 · Cinq scénarios futurs · Distinction physique rigoureuse entre séquestration permanente et absorption cyclique</p>
+  <div class="header-badges">
+    <span class="header-badge">Niveau actuel 2026 : 424 ppm — +1,3°C vs préindustriel</span>
+    <span class="header-badge badge-new">V5 — modèle physique corrigé · août 2026</span>
+  </div>
+</header>
+
+<main>
+<div class="container">
+
+  <div class="message-central">
+    <h2>Message central — correction V5</h2>
+    <p><strong>Les puits naturels (forêts + océans) absorbent ~18 Gt CO₂/an mais en réémettent 97–98 % en quelques décennies.</strong> La séquestration millénaire nette réelle est de ~0,4 Gt/an seulement — insuffisante pour compenser quelque émission résiduelle que ce soit.</p>
+    <p><strong>L'électrification maximale conserve ~2,3 Gt/an de fossile incompressible</strong> (aviation, poids lourds, industrie haute température). Avec des puits naturels dégradés par les incendies et sécheresses, le CO₂ continue de monter indéfiniment — il ne redescend jamais sans extraction active.</p>
+    <p><strong>Résilience V11 est la seule trajectoire physiquement divergente :</strong> zéro fossile résiduel (bio-CH₄ couvre les 390 TWh) + séquestration permanente active montant jusqu'à 7 Gt CO₂/an (biochar EBC millénaire + minéralisation géologique). Le CO₂ descend activement après 2050.</p>
+  </div>
+
+  <!-- SECTION 1 : DONNÉES HISTORIQUES + SCÉNARIOS FUTURS -->
+  <div class="section">
+    <div class="section-label">Données observées 1873–2026 · Projections 2026–2200</div>
+    <h2>Trajectoires complètes — CO₂ et températures</h2>
+
+    <p>La courbe noire retrace les données mesurées : analyses de carottes glaciaires pour la période 1873–1957, puis mesures continues de l'observatoire de Mauna Loa (Keeling curve) depuis 1958, et station Île Amsterdam (réseau ICOS-France) pour la France. Le <em>genou</em> visible vers 1980–1990 marque l'accélération nette — la concentration augmentait de 0,8 ppm/an dans les années 1960, elle dépasse 3,5 ppm/an en 2024.</p>
+
+    <p>Les cinq scénarios futurs partent tous du même point (424 ppm en 2026) et divergent selon leur bilan de flux permanents nets — émissions fossiles moins séquestration millénaire réelle.</p>
+
+    <div class="chart-tabs">
+      <button class="chart-tab active" onclick="switchView('co2',this)">CO₂ atmosphérique (ppm)</button>
+      <button class="chart-tab" onclick="switchView('temp',this)">Température ressentie (°C)</button>
+      <button class="chart-tab" onclick="switchView('elec',this)">Focus : électrification</button>
+      <button class="chart-tab" onclick="switchView('res',this)">Focus : Résilience</button>
+      <button class="chart-tab" onclick="switchView('fire',this)">Scénario : incendies aggravés</button>
+    </div>
+
+    <div class="chart-wrap">
+      <div class="chart-title" id="chartTitle">CO₂ atmosphérique (ppm) — données observées 1873–2026 · cinq scénarios 2026–2200</div>
+      <div class="chart-canvas">
+        <canvas id="mainChart" role="img" aria-label="Trajectoires CO2 atmosphérique 1873-2200, cinq scénarios"></canvas>
+      </div>
+      <div class="chart-legend">
+        <div class="legend-item"><div class="legend-line" style="background:#2C3E50;"></div>Observé 1873–2026</div>
+        <div class="legend-item"><div class="legend-line" style="background:#C0392B;"></div>Statu quo fossile</div>
+        <div class="legend-item"><div class="legend-line legend-dashed" style="border-color:#7B1F1F;"></div>Statu quo + incendies aggravés</div>
+        <div class="legend-item"><div class="legend-line legend-dashed" style="border-color:#D68910;"></div>−50% fossiles 2050</div>
+        <div class="legend-item"><div class="legend-line legend-dashed" style="border-color:#2E75B6;"></div>Électrification max (résidu 2,3 Gt/an)</div>
+        <div class="legend-item"><div class="legend-line legend-dotted" style="border-color:#1A5276;"></div>Électrif. max + incendies aggravés</div>
+        <div class="legend-item"><div class="legend-line" style="background:#0F6E56;width:30px;"></div>Résilience V11 — séquestration permanente</div>
+        <div class="legend-item"><div class="legend-line legend-dashed" style="border-color:#0D5C34;"></div>Résilience + incendies aggravés</div>
+      </div>
+    </div>
+
+    <div class="cards" id="cardsValues"></div>
+
+    <!-- Tableau comparatif V4 vs V5 -->
+    <div class="section-label" style="margin-top:1.5rem;">Comparaison avec la version précédente</div>
+    <h2 style="font-size:1.1rem;">Écarts V4 → V5 en 2100 (correction modèle)</h2>
+    <table class="diff-table" id="diffTable">
+      <tr>
+        <th>Scénario</th>
+        <th>V4 — 2100 (ppm)</th>
+        <th>V5 corrigé — 2100 (ppm)</th>
+        <th>Écart</th>
+        <th>+ Incendies aggravés</th>
+        <th>Écart supplémentaire</th>
+      </tr>
+    </table>
+    <p style="font-size:.8rem;color:#888;font-family:Arial,sans-serif;margin-top:.5rem;">
+      La V4 sous-estimait l'accumulation pour tous les scénarios non-Résilience car elle confondait absorption cyclique (~18 Gt/an réémise à 97%) et séquestration permanente. La V5 corrige ce biais physique fondamental.
+    </p>
+
+    <div class="encadre encadre-warning" style="margin-top:1.5rem;">
+      <h3>⚠ Incendies aggravés — un risque réel depuis 2020</h3>
+      <ul>
+        <li><strong>Canada 2023 :</strong> 18,4 Mha brûlés — plus grande saison d'incendies jamais enregistrée, émission estimée ~1,8 Gt CO₂ en quelques mois, transformant temporairement les forêts canadiennes en source nette.</li>
+        <li><strong>Sibérie (récurrent) :</strong> tourbières et forêts boréales brûlent chaque été, libérant du CO₂ et du CH₄ millénaire accumulé — feedback non linéaire avec le réchauffement.</li>
+        <li><strong>Méditerranée (Grèce, Portugal, Algérie) :</strong> saisons d'incendies de plus en plus longues, zones brûlées 3× supérieures à la moyenne 1980–2000.</li>
+        <li><strong>Amazonie :</strong> combinaison sécheresses record + déforestation — basculement partiel de puits à source nette documenté sur 2015–2020 (Science, Gatti et al., 2021).</li>
+        <li>Si cette tendance se poursuit, la capacité d'absorption terrestre pourrait perdre <strong>−50% à l'horizon 2080</strong> au lieu des −30% du scénario de base — ajoutant +25 à +60 ppm sur toutes les trajectoires non-Résilience.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SECTION 2 : PHYSIQUE DES PUITS -->
+  <div class="section">
+    <div class="section-label">Fondements physiques</div>
+    <h2>Pourquoi les puits naturels ne suffisent pas</h2>
+
+    <p>Les forêts et océans absorbent chaque année environ 18 Gt de CO₂ par photosynthèse et dissolution. Mais ce carbone n'est pas retiré définitivement de l'atmosphère — il entre dans un <em>cycle rapide</em> dont le temps de résidence est de quelques décennies, pas de millénaires.</p>
+
+    <div class="encadre encadre-warning">
+      <h3>❌ Ce que les puits naturels ne font pas</h3>
+      <ul>
+        <li><strong>Forêts :</strong> le carbone fixé par photosynthèse retourne à l'atmosphère par respiration des arbres (~50%), décomposition de la litière (~40%), incendies et perturbations. Seul ~2–3% s'accumule dans l'humus profond ou les sédiments sur des millénaires.</li>
+        <li><strong>Océans :</strong> le CO₂ dissous dans les eaux de surface est réémis quand les eaux froides remontent ou que la température augmente. La solubilité du CO₂ diminue avec la température — les océans chauds absorbent moins. Seule la fraction qui atteint les sédiments profonds (~0,1 Gt/an) est permanente.</li>
+        <li><strong>Dégradation avec le réchauffement :</strong> au-delà de +2°C local, les puits terrestres peuvent basculer en sources nettes — déjà observé sur des zones amazoniennes et boréales.</li>
+        <li><strong>Séquestration naturelle permanente nette réelle :</strong> ~0,4 Gt/an seulement (humus profonds + carbonates marins profonds). C'est 45× moins que l'absorption brute affichée.</li>
+      </ul>
+    </div>
+
+    <div class="encadre encadre-success">
+      <h3>✅ Ce que Résilience fait différemment</h3>
+      <ul>
+        <li><strong>Biochar EBC (H/C &lt; 0,4, ≥ 700°C) :</strong> le carbone de la biomasse est pyrolysé en une structure aromatique stable sur des millénaires — séquestration permanente certifiée, ~2,5–3,1 t CO₂eq/t biochar. Non réversible par les incendies (stabilité thermique du biochar).</li>
+        <li><strong>CO₂ biogénique concentré → minéralisation géologique :</strong> les 150 sites de pyrogazéification produisent un flux de CO₂ biogénique pur. Ce CO₂ est injecté dans des formations basaltiques ou des aquifères salins où il se minéralise en quelques années (CarbFix, Islande). Permanence : &gt;10 000 ans.</li>
+        <li><strong>Montée en puissance mondiale :</strong> 5 Gt/an de biochar + 2 Gt/an de séquestration géologique = 7 Gt/an à plein déploiement (2060), montée progressive depuis 2030.</li>
+        <li><strong>Immunité aux incendies :</strong> la séquestration active Résilience ne dépend pas des puits naturels — elle les <em>remplace et dépasse</em>. Même si les forêts basculent en sources nettes, le bilan Résilience reste fortement négatif.</li>
+      </ul>
+    </div>
+
+    <div class="encadre encadre-orange">
+      <h3>⚡ Électrification maximale — le plancher incompressible</h3>
+      <p>Même en électrifiant tout ce qui est électrifiable (logements, industrie basse T°, véhicules légers), le bilan V11 identifie ~390 TWh fossiles structurellement irremplaçables par l'électricité seule : aviation long-courrier (kérosène), poids lourds longue distance, industrie haute température (&gt;500°C), agriculture hors réseau. À l'échelle mondiale (en proportion), ce résidu représente ~2,3 Gt CO₂/an incompressible.</p>
+      <p style="margin-top:.75rem"><strong>Avec des puits naturels dégradés (−30% à −50% d'ici 2080), cette accumulation résiduelle suffit à maintenir le CO₂ en hausse lente et permanente.</strong> Il n'existe aucun mécanisme physique pour faire redescendre le stock atmosphérique sans extraction active — quelle que soit la durée attendue.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 3 : TABLE CO2/TEMP -->
+  <div class="section">
+    <div class="section-label">Référence physique</div>
+    <h2>Correspondances CO₂ / température</h2>
+    <p>Relation logarithmique : chaque doublement de CO₂ par rapport au niveau préindustriel (280 ppm) entraîne +3°C (ECS médiane GIEC AR6, fourchette 2,5–4,0°C). La température affichée dans les graphiques intègre un décalage de 30 ans dû à l'inertie thermique des océans.</p>
+
+    <table class="temp-table">
+      <thead>
+        <tr><th>CO₂ (ppm)</th><th>Anomalie T° (équilibre)</th><th>Situation / Seuil</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>280 ppm</td><td>0°C</td><td>Niveau préindustriel — objectif Résilience à long terme</td></tr>
+        <tr><td>300 ppm</td><td>+0,27°C</td><td>Objectif intermédiaire Résilience ~2180</td></tr>
+        <tr><td>350 ppm</td><td>+0,65°C</td><td>Objectif climatique sûr (Hansen/NASA)</td></tr>
+        <tr class="actuel"><td>424 ppm</td><td>+1,30°C</td><td>⬅ Niveau actuel 2026 — canicules actuelles</td></tr>
+        <tr><td>450 ppm</td><td>+1,68°C</td><td>Seuil correspondant à +2°C à l'équilibre</td></tr>
+        <tr><td>560 ppm</td><td>+3,0°C</td><td>Doublement préindustriel — seuil critique</td></tr>
+        <tr><td>660 ppm</td><td>+3,5°C</td><td>Électrification max + incendies aggravés, 2200</td></tr>
+        <tr><td>740 ppm</td><td>+3,7°C</td><td>Statu quo fossile en 2200</td></tr>
+        <tr><td>840 ppm</td><td>+4,0°C</td><td>Statu quo + incendies aggravés en 2200</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:.8rem;color:#888;font-family:Arial,sans-serif;margin-top:.5rem;">Note : les températures d'équilibre ci-dessus sont des correspondances physiques directes (ECS = 3,0°C/doublement, médiane AR6). Les températures ressenties dans les graphiques intègrent un décalage de 30 ans — elles sont inférieures à l'équilibre pour toute année en cours de transition.</p>
+
+    <div class="encadre encadre-info">
+      <h3>⚠ Incertitudes de la modélisation V5</h3>
+      <ul>
+        <li><strong>ECS :</strong> fourchette AR6 = 2,5–4,0°C/doublement. Ce document utilise 3,0°C (médiane). Un ECS à 4°C aggraverait toutes les trajectoires d'environ +33%.</li>
+        <li><strong>Permafrost :</strong> estimations AR6 = 50 à 200 Gt CO₂eq d'ici 2100. Ce document utilise ~100 Gt (médiane), modulé par la T° locale dans chaque scénario.</li>
+        <li><strong>Séquestration naturelle permanente :</strong> estimée à ~0,4 Gt/an (fourchette littérature : 0,2–0,6 Gt/an). Ce paramètre clé est peu discuté dans les modèles grand public qui confondent flux cyclique et séquestration permanente.</li>
+        <li><strong>Potentiel séquestration Résilience :</strong> 7 Gt/an est l'estimation centrale (biochar 5 + géologique 2). À 400 Mha au lieu de 800 Mha, le potentiel biochar est ~2,5 Gt/an — la descente du CO₂ est ralentie mais reste qualitativement différente de l'électrification.</li>
+        <li><strong>Incendies aggravés :</strong> paramètre de dégradation −50% à 2080 est un scénario pessimiste plausible, non une médiane. La médiane de base utilise −30%.</li>
+        <li>Ces trajectoires sont des projections paramétriques cohérentes avec AR6, non des modèles de circulation générale (GCM).</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- TÉLÉCHARGEMENTS -->
+  <div class="download-box">
+    <div>
+      <h3>Note de synthèse complète — CO₂ atmosphérique et températures V5</h3>
+      <p>Modèle physique corrigé · Séquestration permanente vs cyclique · Scénario incendies aggravés · Données 1873–2200<br>Programme Résilience V11 · Août 2026</p>
+    </div>
+    <a href="Note_CO2_Temperatures_V5.pdf" class="btn-download" download>Télécharger le PDF</a>
+  </div>
+
+  <div class="download-box" style="background:#7B4DB7;">
+    <div>
+      <h3>Note complémentaire — Pourquoi la nature seule ne suffira pas</h3>
+      <p>Puits naturels réversibles, limites physiques, incendies et séquestration active — fondements de la V5</p>
+    </div>
+    <a href="Note_Limites_Puits_Carbone_Naturels_V2.pdf" class="btn-download" style="color:#7B4DB7;" download>Télécharger le PDF</a>
+  </div>
+
+  <div class="sources">
+    <div class="container">
+      <strong>Sources :</strong> GIEC AR6 WG1 (2021) · SSP3-7.0, SSP1-2.6, SSP5-8.5 · ECS = 3,0°C/doublement CO₂ (médiane AR6, fourchette 2,5–4,0°C) · Inertie thermique océanique : décalage 30 ans · 1 ppm = 7,8 Gt CO₂ · Séquestration naturelle permanente nette : ~0,4 Gt/an (LSCE, Ciais et al.) · Programme Résilience V11 (mai 2026) : séquestration biochar 5 Gt/an + géologique 2 Gt/an · Carbone Résilience Mobilité Mondiale (V11) · Données historiques : NOAA/Mauna Loa · ICOS-France (Île Amsterdam) · Météo-France (Paris-Montsouris 1873–2026) · Carottes glaciaires EPICA/Vostok · Incendies : Global Fire Emissions Database (GFED5) · Canada 2023 : Natural Resources Canada · Amazonie puits→source : Gatti et al., Science 2021 · CarbFix (Islande) : minéralisation basaltique · Règlement CRCF UE (acte délégué biochar, 3 févr. 2026) · Note OPECST n°48 (Piednoir, oct. 2025)
+    </div>
+  </div>
+
+</div>
+</main>
+
+<footer>
+  <div style="margin-bottom:1.5rem;">
+    <a href="index.html" style="display:inline-block;padding:.65rem 1.8rem;background:#1F4E79;color:white;border-radius:5px;text-decoration:none;font-family:Arial,sans-serif;font-size:.85rem;font-weight:bold;border:1px solid rgba(255,255,255,.2);">← Retour au Programme Résilience V11</a>
+  </div>
+  <a href="index.html">Programme Résilience V11</a> · <a href="https://resilience2045.fr">resilience2045.fr</a> · Version V5 — Août 2026
+</footer>
+
+<script>
+// ═══════════════════════════════════════════════════════════════════
+// CONSTANTES PHYSIQUES
+// ═══════════════════════════════════════════════════════════════════
+const ECS    = 3.0;   // °C par doublement CO2 (médiane AR6)
+const DELAY  = 30;    // ans — inertie thermique océanique
+const GT_PPM = 1/7.8; // 1 Gt CO2 = 1/7.8 ppm
+
+function co2ToTemp(ppm) {
+  if (ppm <= 280) return 0;
+  return ECS * Math.log2(Math.max(ppm, 281) / 280);
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// DONNÉES HISTORIQUES 1873–2025
+// Sources : carottes glaciaires + Mauna Loa + ICOS-France
+// ═══════════════════════════════════════════════════════════════════
+const HY = [1873,1880,1890,1900,1910,1920,1930,1940,1950,1958,1965,1970,1975,1980,1985,1990,1995,2000,2005,2010,2015,2020,2025];
+const HC = [290, 291, 293, 296, 300, 304, 308, 311, 315, 315, 320, 325, 332, 339, 346, 354, 362, 370, 380, 390, 401, 413, 424];
+const NH = HY.length;
+
+// Années futures
+const FY = [];
+for (let y = 2026; y <= 2200; y++) FY.push(y);
+const NF = FY.length;
+const ALL = [...HY, ...FY];
+
+// ═══════════════════════════════════════════════════════════════════
+// FONCTIONS PHYSIQUES
+// ═══════════════════════════════════════════════════════════════════
+
+// Séquestration naturelle PERMANENTE nette (~0,4 Gt/an, pas 18 Gt)
+// Dégradation progressive avec T° et incendies
+// fireSc : intensité dégradation incendies (0.30 = base, 0.50 = aggravé)
+function seqNatPerm(y, ppm, fireSc) {
+  const base = 0.40; // Gt/an — séquestration millénaire réelle (humus profonds, carbonates marins)
+  const warm = co2ToTemp(ppm);
+  const tempLoss = Math.max(0, (warm - 1.0) * 0.12); // perd 0,12 Gt/°C au-delà de 1°C
+  const fireRef  = 2022; // début de la série aggravée
+  const fireLoss = y > fireRef ? Math.min((y - fireRef) * fireSc / 58, fireSc) : 0;
+  return Math.max(0, base - tempLoss - fireLoss);
+}
+
+// Feedback permafrost (couplé à la T° locale)
+function pfeedback(y, ppm, scale) {
+  if (y < 2040) return 0;
+  const warm = co2ToTemp(ppm);
+  return Math.min((y - 2040) * 0.055 * scale * Math.min(warm / 1.5, 1.5), 3.5 * scale);
+}
+
+// Séquestration permanente active Résilience (biochar EBC + géologique)
+// Montée progressive 2030→2060 : 5 Gt/an biochar + 2 Gt/an géologique = 7 Gt/an
+function seqResilience(y) {
+  if (y < 2030) return 0;
+  const biochar = y <= 2060 ? 5.0 * (y - 2030) / 30 : 5.0;
+  const geo     = y < 2035 ? 0 : (y <= 2065 ? 2.0 * (y - 2035) / 30 : 2.0);
+  return biochar + geo;
+}
+
+// Émissions fossiles brutes par scénario (Gt CO2/an)
+function emFossile(y, sc) {
+  if (sc === 'stq') {
+    // Statu quo : légère croissance jusqu'à 2035, plateau, déclin très lent
+    if (y <= 2035) return 37 + 0.28 * (y - 2026);
+    if (y <= 2070) return 39.5;
+    if (y <= 2120) return 39.5 - 0.07 * (y - 2070);
+    return 36.0;
+  }
+  if (sc === '50f') {
+    // −50% fossiles à 2050, puis poursuite de la réduction
+    if (y <= 2050) return 37 - 18.5 * (y - 2026) / 24;
+    if (y <= 2080) return 18.5 - 6.5 * (y - 2050) / 30;
+    return 12.0;
+  }
+  if (sc === 'elc') {
+    // Électrification max : plancher structurel ~2,3 Gt/an (390 TWh fossile mondial résiduel)
+    if (y <= 2045) return Math.max(37 - 34.7 * (y - 2026) / 19, 2.3);
+    return 2.3;
+  }
+  if (sc === 'res') {
+    // Résilience : bio-CH4 remplace tout — zéro fossile en 2045
+    if (y <= 2045) return Math.max(37 - 37 * (y - 2026) / 19, 0);
+    return 0;
+  }
+  return 0;
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// SIMULATION — deux variantes : base (fireSc=0.30) et aggravé (0.50)
+// ═══════════════════════════════════════════════════════════════════
+function simulate(fireSc) {
+  const STQ = [], F50 = [], ELC = [], RES = [];
+  let ps = 424, pf = 424, pe = 424, pr = 424;
+
+  for (let i = 0; i < NF; i++) {
+    const y = FY[i];
+
+    // Statu quo
+    { const em = emFossile(y,'stq');
+      const pf_ = pfeedback(y, ps, 1.0);
+      const sq  = seqNatPerm(y, ps, fireSc);
+      ps += (em + pf_ - sq) * GT_PPM;
+      STQ.push(parseFloat(ps.toFixed(1))); }
+
+    // −50% fossiles
+    { const em = emFossile(y,'50f');
+      const pf_ = pfeedback(y, pf, 0.65);
+      const sq  = seqNatPerm(y, pf, fireSc);
+      pf += (em + pf_ - sq) * GT_PPM;
+      F50.push(parseFloat(pf.toFixed(1))); }
+
+    // Électrification max
+    { const em = emFossile(y,'elc');
+      const pf_ = pfeedback(y, pe, 0.40);
+      const sq  = seqNatPerm(y, pe, fireSc);
+      pe += (em + pf_ - sq) * GT_PPM;
+      ELC.push(parseFloat(pe.toFixed(1))); }
+
+    // Résilience
+    { const em  = emFossile(y,'res');
+      const pf_ = pfeedback(y, pr, 0.12); // T° décroissante → permafrost minimal
+      const sq  = seqNatPerm(y, pr, fireSc);
+      const sqA = seqResilience(y);
+      pr += (em + pf_ - sq - sqA) * GT_PPM;
+      pr = Math.max(pr, 270);
+      RES.push(parseFloat(pr.toFixed(1))); }
+  }
+  return { STQ, F50, ELC, RES };
+}
+
+const BASE = simulate(0.30);
+const FIRE = simulate(0.50);
+
+// ═══════════════════════════════════════════════════════════════════
+// MODÈLE V4 ORIGINAL (reproduction exacte pour comparaison)
+// ═══════════════════════════════════════════════════════════════════
+const anc1 = {2026:420,2030:425,2040:445,2050:468,2060:492,2070:515,2080:535,2090:558,2100:578,2120:618,2150:668,2200:720};
+const anc2 = {2026:420,2030:428,2040:447,2050:455,2060:452,2070:447,2080:440,2090:432,2100:422,2120:410,2150:395,2200:378};
+function interpAnc(a, y) {
+  const ks = Object.keys(a).map(Number).sort((x,z) => x-z);
+  for (let i = 0; i < ks.length-1; i++) {
+    const y0=ks[i], y1=ks[i+1];
+    if (y >= y0 && y <= y1) { const t=(y-y0)/(y1-y0); return a[y0]*(1-t)+a[y1]*t; }
+  }
+  return y < ks[0] ? a[ks[0]] : a[ks[ks.length-1]];
+}
+function resSinkV4(y) { if(y<2030)return 0; if(y<=2060)return 5.94*(y-2030)/30; return 5.94; }
+function pfV4(y,sc=1) { if(y<2040)return 0; return Math.min((1+Math.min(y-2040,60)*0.04)*sc,3.5*sc); }
+
+const V4_STQ=[], V4_ELEC=[], V4_RES=[];
+let v4_pe=420, v4_pr=420, v4_p2prev=420;
+for (let i = 0; i < NF; i++) {
+  const y = FY[i];
+  V4_STQ.push(interpAnc(anc1, y));
+  const p2 = interpAnc(anc2, y); V4_ELEC.push(p2);
+  const dp2 = p2 - v4_p2prev;
+  const dp4i = dp2 + pfV4(y,0.05)*GT_PPM + (y>=2070?1.5*GT_PPM:0) - resSinkV4(y)*GT_PPM;
+  v4_pr = Math.max(v4_pr + dp4i, 278); V4_RES.push(v4_pr);
+  v4_p2prev = p2;
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// TEMPÉRATURES (décalage 30 ans)
+// ═══════════════════════════════════════════════════════════════════
+function delayedTemp(series) {
+  const buf = [...Array(DELAY).fill(series[0]), ...series];
+  return series.map((_, i) => parseFloat(co2ToTemp(buf[i]).toFixed(2)));
+}
+const TH = HC.map(v => parseFloat(co2ToTemp(v).toFixed(2)));
+
+// ═══════════════════════════════════════════════════════════════════
+// DATASETS
+// ═══════════════════════════════════════════════════════════════════
+function pH(a) { return [...a, ...Array(NF).fill(null)]; }
+function pF(a) { return [...Array(NH-1).fill(null), HC[NH-1], ...a]; }
+function pFt(a){ return [...Array(NH-1).fill(null), TH[NH-1], ...a]; }
+
+const DS_CO2 = [
+  {label:'Observé 1873–2026',                  data:pH(HC),            borderColor:'#2C3E50', borderWidth:2.5, pointRadius:2,   tension:0.35, fill:false, borderDash:[]},
+  {label:'Statu quo fossile',                   data:pF(BASE.STQ),      borderColor:'#C0392B', borderWidth:2.2, pointRadius:0,   tension:0.35, fill:false, borderDash:[]},
+  {label:'Statu quo + incendies aggravés',       data:pF(FIRE.STQ),      borderColor:'#7B1F1F', borderWidth:1.5, pointRadius:0,   tension:0.35, fill:false, borderDash:[3,3]},
+  {label:'−50% fossiles 2050',                  data:pF(BASE.F50),      borderColor:'#D68910', borderWidth:1.8, pointRadius:0,   tension:0.35, fill:false, borderDash:[7,4]},
+  {label:'Électrification max (2,3 Gt/an rés.)',data:pF(BASE.ELC),      borderColor:'#2E75B6', borderWidth:1.8, pointRadius:0,   tension:0.35, fill:false, borderDash:[5,4]},
+  {label:'Électrif. max + incendies aggravés',  data:pF(FIRE.ELC),      borderColor:'#1A5276', borderWidth:1.5, pointRadius:0,   tension:0.35, fill:false, borderDash:[3,3]},
+  {label:'Résilience V11',                      data:pF(BASE.RES),      borderColor:'#0F6E56', borderWidth:3.0, pointRadius:0,   tension:0.35, fill:false, borderDash:[]},
+  {label:'Résilience + incendies aggravés',     data:pF(FIRE.RES),      borderColor:'#0D5C34', borderWidth:1.5, pointRadius:0,   tension:0.35, fill:false, borderDash:[4,3]},
+];
+
+const DS_TEMP = [
+  {label:'Observé',                             data:pH(TH),                      borderColor:'#2C3E50', borderWidth:2.5, pointRadius:2,   tension:0.35, fill:false, borderDash:[]},
+  {label:'Statu quo',                           data:pFt(delayedTemp(BASE.STQ)),  borderColor:'#C0392B', borderWidth:2.2, pointRadius:0,   tension:0.35, fill:false, borderDash:[]},
+  {label:'Statu quo + incendies',               data:pFt(delayedTemp(FIRE.STQ)),  borderColor:'#7B1F1F', borderWidth:1.5, pointRadius:0,   tension:0.35, fill:false, borderDash:[3,3]},
+  {label:'−50% fossiles',                       data:pFt(delayedTemp(BASE.F50)),  borderColor:'#D68910', borderWidth:1.8, pointRadius:0,   tension:0.35, fill:false, borderDash:[7,4]},
+  {label:'Électrification max',                 data:pFt(delayedTemp(BASE.ELC)),  borderColor:'#2E75B6', borderWidth:1.8, pointRadius:0,   tension:0.35, fill:false, borderDash:[5,4]},
+  {label:'Électrif. + incendies',               data:pFt(delayedTemp(FIRE.ELC)),  borderColor:'#1A5276', borderWidth:1.5, pointRadius:0,   tension:0.35, fill:false, borderDash:[3,3]},
+  {label:'Résilience V11',                      data:pFt(delayedTemp(BASE.RES)),  borderColor:'#0F6E56', borderWidth:3.0, pointRadius:0,   tension:0.35, fill:false, borderDash:[]},
+  {label:'Résilience + incendies',              data:pFt(delayedTemp(FIRE.RES)),  borderColor:'#0D5C34', borderWidth:1.5, pointRadius:0,   tension:0.35, fill:false, borderDash:[4,3]},
+];
+
+// ═══════════════════════════════════════════════════════════════════
+// PLUGINS GRAPHIQUE
+// ═══════════════════════════════════════════════════════════════════
+const THRESH_CO2 = [
+  {v:280, c:'#1baf7a', l:'280 ppm — préindustriel'},
+  {v:350, c:'#2a78d6', l:'350 ppm — objectif sûr'},
+  {v:424, c:'#888',    l:'424 ppm — 2026'},
+  {v:450, c:'#D68910', l:'450 ppm → +2°C éq.'},
+  {v:560, c:'#C0392B', l:'560 ppm → +3°C éq.'},
+];
+const THRESH_TEMP = [
+  {v:1.5, c:'#D68910', l:'+1,5°C — seuil Paris'},
+  {v:2.0, c:'#e34948', l:'+2,0°C — limite'},
+  {v:3.0, c:'#C0392B', l:'+3,0°C — critique'},
+  {v:4.0, c:'#7B1F1F', l:'+4,0°C — catastrophique'},
+];
+
+function threshPlugin(thresholds) {
+  return { id:'thresh', afterDraw(chart) {
+    const { ctx, scales:{x,y} } = chart;
+    thresholds.forEach(({v,c,l}) => {
+      if (v < y.min || v > y.max) return;
+      const yp = y.getPixelForValue(v);
+      ctx.save();
+      ctx.strokeStyle=c; ctx.lineWidth=0.8; ctx.setLineDash([3,7]); ctx.globalAlpha=0.5;
+      ctx.beginPath(); ctx.moveTo(x.left,yp); ctx.lineTo(x.right,yp); ctx.stroke();
+      ctx.setLineDash([]); ctx.globalAlpha=0.85;
+      ctx.fillStyle=c; ctx.font='10px Arial'; ctx.textAlign='right';
+      ctx.fillText(l, x.right-4, yp-4);
+      ctx.restore();
+    });
+  }};
+}
+
+function vertPlugin() {
+  return { id:'vert', afterDraw(chart) {
+    const { ctx, scales:{x,y} } = chart;
+    [[2026,'#888','2026'],[2045,'#0F6E56','2045\n0 fossile'],[2060,'#0F6E56','2060\nséq. max'],[2100,'#4a4a8a','2100'],[2150,'#4a4a8a','2150']].forEach(([yr,c,l]) => {
+      const idx = ALL.indexOf(yr);
+      if (idx < 0) return;
+      const xp = x.getPixelForValue(idx);
+      ctx.save();
+      ctx.strokeStyle=c; ctx.lineWidth=0.8; ctx.setLineDash([3,5]); ctx.globalAlpha=0.3;
+      ctx.beginPath(); ctx.moveTo(xp,y.top); ctx.lineTo(xp,y.bottom); ctx.stroke();
+      ctx.setLineDash([]); ctx.globalAlpha=0.65;
+      ctx.fillStyle=c; ctx.font='9px Arial'; ctx.textAlign='center';
+      const lines = l.split('\n');
+      lines.forEach((line,i) => ctx.fillText(line, xp, y.top + 11 + i*11));
+      ctx.restore();
+    });
+  }};
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// CONSTRUCTION DU GRAPHIQUE
+// ═══════════════════════════════════════════════════════════════════
+const gc = 'rgba(0,0,0,0.05)';
+const tc = '#888';
+
+let currentChart = null;
+
+function buildChart(datasets, isTemp) {
+  if (currentChart) { currentChart.destroy(); currentChart = null; }
+  const ctx = document.getElementById('mainChart').getContext('2d');
+  currentChart = new Chart(ctx, {
+    type: 'line',
+    data: { labels: ALL, datasets },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      interaction: { mode:'index', intersect:false },
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: c => {
+          const v = c.parsed.y;
+          if (v === null) return null;
+          if (isTemp) return `${c.dataset.label}: +${v.toFixed(1)}°C`;
+          return `${c.dataset.label}: ${Math.round(v)} ppm (≈+${co2ToTemp(v).toFixed(1)}°C éq.)`;
+        }}}
+      },
+      scales: {
+        x: { ticks: { color:tc, font:{size:10}, maxTicksLimit:16, autoSkip:true,
+                       callback:(v,i) => ALL[i] }, grid: { color:gc } },
+        y: { min: isTemp?0:270, max: isTemp?5.0:810,
+             ticks: { color:tc, font:{size:10},
+                      callback: v => isTemp ? (v>=0?'+':'')+v.toFixed(1)+'°C' : v+' ppm' },
+             grid: { color:gc } }
+      }
+    },
+    plugins: [threshPlugin(isTemp ? THRESH_TEMP : THRESH_CO2), vertPlugin()]
+  });
+}
+
+// Vue courante
+let currentView = 'co2';
+
+// Filtres par onglet
+const VIEW_FILTERS = {
+  co2:  [0,1,2,3,4,5,6,7],   // tout
+  temp: [0,1,2,3,4,5,6,7],   // tout en température
+  elec: [0,1,2,3,4,5],       // focus électrification (sans Résilience)
+  res:  [0,6,7],             // focus Résilience
+  fire: [0,1,2,4,5,6,7],    // focus incendies : stq, élec, résilience en base vs aggravé
+};
+const VIEW_TITLES = {
+  co2:  'CO₂ atmosphérique (ppm) — données observées 1873–2026 · cinq scénarios 2026–2200',
+  temp: 'Température ressentie (°C) — décalage 30 ans (inertie thermique océanique)',
+  elec: 'Focus électrification — pourquoi le CO₂ continue de monter même à émissions quasi-nulles',
+  res:  'Focus Résilience V11 — séquestration permanente biochar + géologique',
+  fire: 'Scénario incendies aggravés — impact de la dégradation des puits terrestres (−50% à 2080)',
+};
+
+function switchView(view, btn) {
+  document.querySelectorAll('.chart-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  currentView = view;
+  const isTemp = (view === 'temp');
+  const ds = (isTemp ? DS_TEMP : DS_CO2).map((d,i) => ({
+    ...d,
+    hidden: !VIEW_FILTERS[view].includes(i)
+  }));
+  document.getElementById('chartTitle').textContent = VIEW_TITLES[view];
+  buildChart(ds, isTemp);
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// CARTES VALEURS CLÉS
+// ═══════════════════════════════════════════════════════════════════
+function buildCards() {
+  const i100 = ALL.indexOf(2100);
+  const i200 = ALL.indexOf(2200);
+  const items = [
+    { l:'Statu quo 2100',           v:Math.round(BASE.STQ[i100-NH]), cls:'rouge',   unit:`+${co2ToTemp(Math.round(BASE.STQ[i100-NH])).toFixed(1)}°C · 2200: ${Math.round(BASE.STQ[i200-NH])} ppm` },
+    { l:'Statu quo + incendies',    v:Math.round(FIRE.STQ[i100-NH]), cls:'bordeaux',unit:`+${co2ToTemp(Math.round(FIRE.STQ[i100-NH])).toFixed(1)}°C · 2200: ${Math.round(FIRE.STQ[i200-NH])} ppm` },
+    { l:'−50% fossiles 2100',       v:Math.round(BASE.F50[i100-NH]), cls:'orange',  unit:`+${co2ToTemp(Math.round(BASE.F50[i100-NH])).toFixed(1)}°C · 2200: ${Math.round(BASE.F50[i200-NH])} ppm` },
+    { l:'Électrif. max 2100',       v:Math.round(BASE.ELC[i100-NH]), cls:'bleu',    unit:`+${co2ToTemp(Math.round(BASE.ELC[i100-NH])).toFixed(1)}°C · 2200: ${Math.round(BASE.ELC[i200-NH])} ppm` },
+    { l:'Électrif. + incendies',    v:Math.round(FIRE.ELC[i100-NH]), cls:'bleu',    unit:`+${co2ToTemp(Math.round(FIRE.ELC[i100-NH])).toFixed(1)}°C · 2200: ${Math.round(FIRE.ELC[i200-NH])} ppm` },
+    { l:'Résilience V11 2100',      v:Math.round(BASE.RES[i100-NH]), cls:'vert',    unit:`+${co2ToTemp(Math.round(BASE.RES[i100-NH])).toFixed(1)}°C · 2200: ${Math.round(BASE.RES[i200-NH])} ppm` },
+  ];
+  document.getElementById('cardsValues').innerHTML = items.map(d =>
+    `<div class="card ${d.cls}">
+      <div class="card-label">${d.l}</div>
+      <div class="card-val">${d.v} ppm</div>
+      <div class="card-unit">${d.unit}</div>
+    </div>`
+  ).join('');
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// TABLEAU COMPARATIF V4 vs V5
+// ═══════════════════════════════════════════════════════════════════
+function buildDiffTable() {
+  const i100 = ALL.indexOf(2100);
+  const rows = [
+    { l:'Statu quo',       v4:Math.round(V4_STQ[i100-NH]),  b:Math.round(BASE.STQ[i100-NH]), f:Math.round(FIRE.STQ[i100-NH]) },
+    { l:'Électrif. max',   v4:Math.round(V4_ELEC[i100-NH]), b:Math.round(BASE.ELC[i100-NH]), f:Math.round(FIRE.ELC[i100-NH]) },
+    { l:'Résilience V11',  v4:Math.round(V4_RES[i100-NH]),  b:Math.round(BASE.RES[i100-NH]), f:Math.round(FIRE.RES[i100-NH]) },
+  ];
+  let html = '';
+  rows.forEach(r => {
+    const d1 = r.b - r.v4;
+    const d2 = r.f - r.b;
+    const c1 = d1 > 0 ? 'pos' : d1 < 0 ? 'neg' : '';
+    const c2 = d2 > 0 ? 'pos' : d2 < 0 ? 'neg' : '';
+    html += `<tr>
+      <td><strong>${r.l}</strong></td>
+      <td>${r.v4} ppm</td>
+      <td>${r.b} ppm</td>
+      <td class="${c1}">${d1>0?'+':''}${d1} ppm</td>
+      <td>${r.f} ppm</td>
+      <td class="${c2}">${d2>0?'+':''}${d2} ppm</td>
+    </tr>`;
+  });
+  document.getElementById('diffTable').innerHTML += html;
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// INITIALISATION
+// ═══════════════════════════════════════════════════════════════════
+buildChart(DS_CO2.map((d,i) => ({...d, hidden: !VIEW_FILTERS['co2'].includes(i)})), false);
+buildCards();
+buildDiffTable();
+</script>
+</body>
+</html>
