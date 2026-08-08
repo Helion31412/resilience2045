@@ -364,8 +364,9 @@ blockquote {
 <body>
 
 <div class="print-hint">
-  Document optimisé pour impression A4 — Ctrl+P / ⌘+P &nbsp;·&nbsp;
-  <a href="https://resilience2045.fr">resilience2045.fr</a>
+  <a href="https://resilience2045.fr" style="font-weight:500;">← Retour au site</a>
+  &nbsp;·&nbsp; Document optimisé pour impression A4 — Ctrl+P / ⌘+P
+  &nbsp;·&nbsp; <a href="https://resilience2045.fr/Resilience2045_Synthese_Decideurs_V3.pdf" target="_blank" rel="noopener" style="font-weight:500;">↓ Télécharger le PDF</a>
 </div>
 
 <!-- ══════════════════════════════════════════ COUVERTURE -->
@@ -927,5 +928,25 @@ blockquote {
   <span>resilience2045.fr · corpus complet disponible en ligne</span>
 </div>
 
+
+<script>
+/* Résilience2045 — forcer ouverture liens externes dans nouvel onglet */
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll("a[href]").forEach(function (a) {
+    var href = a.getAttribute("href") || "";
+    if (href.match(/\.pdf(\?.*)?$/i) || 
+        (href.indexOf("http") === 0 && href.indexOf("resilience2045.fr") === -1)) {
+      a.setAttribute("target", "_blank");
+      a.setAttribute("rel", "noopener");
+    }
+    if (href.match(/\.pdf(\?.*)?$/i)) {
+      a.addEventListener("click", function (e) {
+        e.preventDefault();
+        window.open(a.href, "_blank", "noopener");
+      });
+    }
+  });
+});
+</script>
 </body>
 </html>
