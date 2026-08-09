@@ -364,8 +364,13 @@ blockquote {
 <body>
 
 <div class="print-hint">
-  Document optimisé pour impression A4 — Ctrl+P / ⌘+P &nbsp;·&nbsp;
-  <a href="https://resilience2045.fr">resilience2045.fr</a>
+  <a href="https://resilience2045.fr" style="font-weight:500;">← Retour au site</a>
+  &nbsp;·&nbsp;
+  <a href="https://resilience2045.fr/documents-liste.html" style="font-weight:500;">Documents</a>
+  &nbsp;·&nbsp;
+  Document optimisé pour impression A4 — Ctrl+P / ⌘+P
+  &nbsp;·&nbsp;
+  <a href="https://resilience2045.fr/Resilience2045_Synthese_Decideurs_V3.pdf" target="_blank" rel="noopener" style="font-weight:500;">↓ Télécharger le PDF</a>
 </div>
 
 <!-- ══════════════════════════════════════════ COUVERTURE -->
@@ -927,5 +932,17 @@ blockquote {
   <span>resilience2045.fr · corpus complet disponible en ligne</span>
 </div>
 
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll('a[href]').forEach(function(a) {
+    var href = a.getAttribute('href') || '';
+    if (href.match(/\.pdf(\?.*)?$/i)) {
+      a.target = '_blank';
+      a.rel = 'noopener';
+    }
+  });
+});
+</script>
 </body>
 </html>
