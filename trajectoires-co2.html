@@ -278,6 +278,11 @@ document.addEventListener("DOMContentLoaded", function () {
       Ce document n'est <strong>pas un modèle climatique prédictif</strong>. Il s'agit d'un
       <strong>modèle paramétrique prospectif</strong> destiné à explorer les ordres de grandeur
       et les tendances du bilan atmosphérique du CO₂ selon différentes trajectoires d'action humaine.
+      Cette démarche part d'un constat simple : la réduction des émissions fossiles est indispensable,
+      mais elle ne suffit pas à elle seule à faire rapidement diminuer le stock de CO₂ déjà présent
+      dans l'atmosphère. La construction simultanée de capacités de retrait durable du CO₂ constitue
+      une seconde composante de l'action climatique, particulièrement importante pour les émissions
+      résiduelles des secteurs difficiles à électrifier ou à décarboner.
     </p>
     <p style="font-size:.9rem;line-height:1.65;margin-bottom:.6rem;">
       Les paramètres relatifs aux puits naturels, aux rétroactions climatiques, aux incendies
@@ -302,13 +307,28 @@ document.addEventListener("DOMContentLoaded", function () {
       Ce sont des conclusions de structure — pas de valeur numérique précise.
     </p>
     <p style="font-size:.9rem;line-height:1.65;border-top:1px solid rgba(46,117,182,.2);padding-top:.6rem;margin-top:.4rem;">
-      <strong>Cette approche par scénarios paramétriques est la même que celle utilisée par le GIEC
-      dans son rapport AR6 (2021)</strong> avec ses cinq trajectoires SSP — qui sont également
-      des hypothèses d'évolution socioéconomique et climatique, pas des prédictions ponctuelles.
-      Le modèle V5 s'inscrit dans cette même famille méthodologique avec deux extensions explicites :
-      il prolonge les trajectoires <strong>au-delà de 2100 jusqu'en 2200</strong>, et il intègre
-      un <strong>scénario de séquestration active à grande échelle</strong> que les SSP du GIEC
-      ne modélisent pas — comblant ainsi deux lacunes de l'approche standard.
+      <strong>Ce modèle ne conteste pas les scénarios climatiques du GIEC.</strong>
+      Il examine une question complémentaire, que le GIEC lui-même pose dans l'AR6 :
+      le retrait durable du CO₂ (CDR) y est reconnu comme inévitable pour compenser les émissions
+      résiduelles difficiles à éliminer. Le modèle V5 s'inscrit dans la même logique paramétrique
+      que les trajectoires SSP, avec deux extensions : horizon prolongé jusqu'en 2200 et
+      scénario de séquestration active à grande échelle que les SSP ne modélisent pas encore
+      explicitement. L'AR6 reconnaît que certaines rétroactions — incendies, permafrost —
+      sont encore <em>imparfaitement représentées dans les modèles</em> ;
+      c'est précisément ce que le scénario « incendies aggravés » cherche à tester.
+    </p>
+    <p style="font-size:.9rem;line-height:1.65;background:rgba(15,110,86,.07);border-radius:4px;padding:.7rem .9rem;margin-top:.6rem;border-left:3px solid #0F6E56;">
+      <strong>L'objectif de ce modèle n'est pas de prévoir avec précision la concentration
+      atmosphérique de CO₂ à l'horizon 2100 ou 2200.</strong> Une telle précision serait
+      illusoire compte tenu des incertitudes portant sur les émissions futures, les puits naturels,
+      les rétroactions climatiques et les trajectoires technologiques. L'objectif est différent :
+      utiliser des hypothèses volontairement explicites et faire varier leur amplitude afin
+      d'identifier les capacités d'action dont l'humanité devrait disposer pour éviter que
+      le bilan atmosphérique ne devienne durablement défavorable. <strong>Un scénario n'est
+      donc pas présenté comme une prédiction, mais comme un test de résistance du système.</strong>
+      L'enjeu n'est pas de savoir si la valeur exacte sera de 650, 750 ou 850 ppm en 2200 ;
+      l'enjeu est de déterminer quelles décisions restent robustes face à cette incertitude —
+      et quel parapluie construire aujourd'hui, sachant que la pluie est déjà là.
     </p>
   </div>
 
@@ -330,7 +350,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     <div class="chart-tabs">
       <button class="chart-tab active" onclick="switchView('co2',this)">CO₂ atmosphérique (ppm)</button>
-      <button class="chart-tab" onclick="switchView('temp',this)">Température ressentie (°C)</button>
+      <button class="chart-tab" onclick="switchView('temp',this)">Anomalie de température modélisée (°C)</button>
       <button class="chart-tab" onclick="switchView('elec',this)">Focus : électrification</button>
       <button class="chart-tab" onclick="switchView('res',this)">Focus : Résilience</button>
       <button class="chart-tab" onclick="switchView('fire',this)">Scénario : incendies aggravés</button>
@@ -369,7 +389,7 @@ document.addEventListener("DOMContentLoaded", function () {
       </tr>
     </table>
     <p style="font-size:.8rem;color:#888;font-family:Arial,sans-serif;margin-top:.5rem;">
-      La V4 sous-estimait l'accumulation pour tous les scénarios non-Résilience car elle confondait absorption cyclique (~18 Gt/an réémise à 97%) et séquestration permanente. La V5 corrige ce biais physique fondamental.
+      La V4 sous-estimait l'accumulation pour tous les scénarios non-Résilience car elle confondait les flux cycliques bruts et la séquestration permanente nette. La V5 corrige ce biais physique fondamental.
     </p>
 
     <div class="encadre encadre-warning" style="margin-top:1.5rem;">
@@ -389,7 +409,7 @@ document.addEventListener("DOMContentLoaded", function () {
     <div class="section-label">Fondements physiques</div>
     <h2>Puits naturels : absorption cyclique ≠ élimination permanente</h2>
 
-    <p>Les forêts et océans absorbent chaque année environ 18 Gt de CO₂ — c'est le terme de « puits de carbone » au sens du Global Carbon Budget, et ce terme est scientifiquement établi. Mais <strong>un puits naturel net ne doit pas être confondu avec une élimination permanente du CO₂ atmosphérique.</strong> Ce carbone entre dans un cycle rapide dont le temps de résidence est de quelques décennies : il est réémis à 97–98 % par respiration, décomposition et perturbations. En outre, dans un climat qui se réchauffe, la capacité de ces puits peut se dégrader, voire devenir localement une source nette.</p>
+    <p>Les écosystèmes terrestres et océaniques sont traversés par des flux naturels de carbone très supérieurs à leur puits net vis-à-vis des émissions anthropiques — c'est le terme de « puits de carbone » au sens du Global Carbon Budget, terme scientifiquement établi. Mais une grande partie du carbone échangé annuellement relève de cycles rapides réémis en quelques décennies. <strong>Un puits naturel net ne doit pas être confondu avec une élimination permanente du CO₂ atmosphérique.</strong> Ce carbone entre dans un cycle rapide dont le temps de résidence est de quelques décennies : il est réémis à 97–98 % par respiration, décomposition et perturbations. En outre, dans un climat qui se réchauffe, la capacité de ces puits peut se dégrader, voire devenir localement une source nette.</p>
 
     <div class="encadre encadre-warning">
       <h3>⚠ Ce qu'un puits naturel net ne fait pas — distinction essentielle</h3>
@@ -412,9 +432,9 @@ document.addEventListener("DOMContentLoaded", function () {
     </div>
 
     <div class="encadre encadre-orange">
-      <h3>⚡ Électrification maximale — le plancher incompressible</h3>
-      <p>Même en électrifiant tout ce qui est électrifiable (logements, industrie basse T°, véhicules légers), le bilan V11 identifie ~390 TWh fossiles structurellement irremplaçables par l'électricité seule : aviation long-courrier (kérosène), poids lourds longue distance, industrie haute température (&gt;500°C), agriculture hors réseau. À l'échelle mondiale (en proportion), ce résidu représente ~2,3 Gt CO₂/an incompressible.</p>
-      <p style="margin-top:.75rem"><strong>Avec des puits naturels dégradés (−30% à −50% d'ici 2080), cette accumulation résiduelle suffit à maintenir le CO₂ en hausse lente et permanente.</strong> Il n'existe aucun mécanisme physique pour faire redescendre le stock atmosphérique sans extraction active — quelle que soit la durée attendue.</p>
+      <h3>⚡ Électrification maximale — les émissions résiduelles difficiles à supprimer</h3>
+      <p>Même en électrifiant tout ce qui est électrifiable (logements, industrie basse T°, véhicules légers), le bilan V11 identifie ~390 TWh fossiles structurellement irremplaçables par l'électricité seule : aviation long-courrier (kérosène), poids lourds longue distance, industrie haute température (&gt;500°C), agriculture hors réseau. À l'échelle mondiale (en proportion), ce résidu représente ~2,3 Gt CO₂/an dans le scénario retenu pour l'électrification maximale.</p>
+      <p style="margin-top:.75rem"><strong>Avec des puits naturels dégradés (−30% à −50% d'ici 2080), cette accumulation résiduelle suffit à maintenir le CO₂ en hausse lente et permanente.</strong> Dans les scénarios étudiés, avec un résidu fossile de 2,3 Gt/an et des puits naturels dégradés, les mécanismes naturels ne suffisent pas à faire basculer le bilan atmosphérique en négatif sans extraction active supplémentaire.</p>
     </div>
   </div>
 
@@ -432,8 +452,9 @@ document.addEventListener("DOMContentLoaded", function () {
         <tr><td>280 ppm</td><td>0°C</td><td>Niveau préindustriel — objectif Résilience à long terme</td></tr>
         <tr><td>300 ppm</td><td>+0,27°C</td><td>Objectif intermédiaire Résilience ~2180</td></tr>
         <tr><td>350 ppm</td><td>+0,65°C</td><td>Objectif climatique sûr (Hansen/NASA)</td></tr>
-        <tr class="actuel"><td>424 ppm</td><td>+1,30°C</td><td>⬅ Niveau actuel 2026 — canicules actuelles</td></tr>
-        <tr><td>450 ppm</td><td>+1,68°C</td><td>Seuil correspondant à +2°C à l'équilibre</td></tr>
+        <tr class="actuel"><td>424 ppm</td><td>+1,80°C éq. / +1,3°C observé</td><td>⬅ Niveau actuel 2026 · T° équilibre non encore atteinte (inertie thermique)</td></tr>
+        <tr><td>444 ppm</td><td>+2,00°C</td><td>Seuil Accord de Paris — +2°C à l'équilibre (ECS=3°C)</td></tr>
+        <tr><td>450 ppm</td><td>+2,05°C</td><td>Légèrement au-delà du seuil +2°C</td></tr>
         <tr><td>560 ppm</td><td>+3,0°C</td><td>Doublement préindustriel — seuil critique</td></tr>
         <tr><td>660 ppm</td><td>+3,5°C</td><td>Électrification max + incendies aggravés, 2200</td></tr>
         <tr><td>740 ppm</td><td>+3,7°C</td><td>Statu quo fossile en 2200</td></tr>
@@ -463,7 +484,7 @@ document.addEventListener("DOMContentLoaded", function () {
     <p>Il met en évidence trois résultats qui se tiennent quelle que soit la précision des paramètres :</p>
     <div class="encadre encadre-warning">
       <h3>1 · Réduire les émissions ne suffit pas à faire baisser le CO₂</h3>
-      <p>Même avec −50 % des fossiles, même avec une électrification maximale laissant ~2,3 Gt/an de résidu incompressible, le bilan net reste positif : le CO₂ continue de monter, plus lentement. <strong>Électrifier ≠ supprimer les émissions ≠ faire baisser le CO₂ atmosphérique.</strong> C'est une distinction de nature, pas de degré.</p>
+      <p>Même avec −50 % des fossiles, même avec une électrification maximale laissant ~2,3 Gt/an d'émissions résiduelles dans le scénario retenu, le bilan net reste positif : le CO₂ continue de monter, plus lentement. <strong>Électrifier ≠ supprimer les émissions ≠ faire baisser le CO₂ atmosphérique.</strong> C'est une distinction de nature, pas de degré.</p>
     </div>
     <div class="encadre encadre-warning" style="margin-top:.8rem;">
       <h3>2 · Même zéro émission fossile ne suffit pas nécessairement à faire redescendre rapidement le CO₂</h3>
@@ -543,7 +564,7 @@ const ALL = [...HY, ...FY];
 //   Δppm/an = (émissions_nettes + permafrost + fire_extra − séq_permanente − séq_résilience) / 7.8
 //
 // Émissions nettes = émissions brutes × 0.50
-// (l'absorption cyclique ~18 Gt/an compense ~50% des émissions brutes — déjà intégré)
+// (les flux cycliques bruts compensent ~50% des émissions brutes en termes nets — déjà intégré)
 //
 // Séquestration naturelle permanente : ~0,4 Gt/an seulement (humus + carbonates marins profonds)
 //
@@ -816,7 +837,7 @@ const VIEW_FILTERS = {
 };
 const VIEW_TITLES = {
   co2:  'CO₂ atmosphérique (ppm) — données observées 1873–2026 · cinq scénarios 2026–2200',
-  temp: 'Température ressentie (°C) — décalage 30 ans (inertie thermique océanique)',
+  temp: 'Anomalie de température modélisée (°C) — décalage 30 ans (inertie thermique océanique)',
   elec: 'Focus électrification — pourquoi le CO₂ continue de monter même à émissions quasi-nulles',
   res:  'Focus Résilience V11 — séquestration permanente biochar + géologique',
   fire: 'Scénario incendies aggravés — impact de la dégradation des puits terrestres (−50% à 2080)',
