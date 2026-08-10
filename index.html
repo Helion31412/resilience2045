@@ -250,22 +250,6 @@
     .corrections .wrap{flex-direction:column;gap:14px;}
   }
 </style>
-
-<script>
-/* Résilience2045 — forcer ouverture PDF dans nouvel onglet */
-document.addEventListener("DOMContentLoaded", function () {
-  document.querySelectorAll("a[href]").forEach(function (a) {
-    if (a.href && a.href.match(/\.pdf(\?.*)?$/i)) {
-      a.setAttribute("target", "_blank");
-      a.setAttribute("rel", "noopener");
-      a.addEventListener("click", function (e) {
-        e.preventDefault();
-        window.open(a.href, "_blank", "noopener");
-      });
-    }
-  });
-});
-</script>
 </head>
 <body>
 
@@ -286,7 +270,7 @@ document.addEventListener("DOMContentLoaded", function () {
       <a href="mix-energetique.html">Mix 2045</a>
       <a href="pyrogazeification-resilience.html">Pyrogazéification</a>
       <a href="carbone-resilience.html">Carbone</a>
-      <a href="trajectoires-co2.html" class="hi">CO₂ V5 ↗</a>
+      <a href="trajectoires-co2.html">CO₂ 2200</a>
       <a href="voiture-erev.html">ÉREV</a>
       <a href="finances-publiques.html">Finances</a>
       <a href="documents-liste.html" class="hi">Documents →</a>
@@ -324,10 +308,6 @@ document.addEventListener("DOMContentLoaded", function () {
     <div class="corr">
       <span class="tag">Précision</span>
       <p>La séquestration carbone nette visée est de <strong>20 à 23 Mt CO₂eq/an par le biochar</strong> (EBC/Puro.earth, 100–1 000 ans). Potentiel additionnel via CO₂ biogénique piégé par voie géologique ou carbonatation — non encore comptabilisé dans cette fourchette.</p>
-    </div>
-    <div class="corr">
-      <span class="tag">Mise à jour V5 — août 2026</span>
-      <p>Les trajectoires CO₂ 1873–2200 ont été recalculées sur un <strong>modèle physique corrigé</strong> : séquestration naturelle permanente ~0,4 Gt/an (et non ~18 Gt confondus avec l'absorption cyclique). Un scénario <strong>incendies aggravés</strong> (−50 % puits terrestres) est désormais intégré. La divergence Résilience / électrification max est qualitative, pas seulement temporelle.</p>
     </div>
   </div>
 </div>
@@ -409,13 +389,32 @@ document.addEventListener("DOMContentLoaded", function () {
       <h2 style="margin-bottom:.6rem;color:#f0f4f1;font-size:clamp(1.4rem,2.8vw,2.1rem);line-height:1.15">Avant d'entrer dans les détails —<br><em style="font-style:italic;color:#6ecf9a">lisez ceci en 10 minutes</em></h2>
       <p style="font-size:.92rem;color:rgba(240,244,241,.92);max-width:580px;line-height:1.8;margin-bottom:1rem">Pourquoi l'électrification seule ne suffit pas. Pourquoi les puits naturels de carbone ne résoudront pas le problème. Et comment le bio-méthane complète ce que l'électricité ne peut pas faire seule. Un document qui explique simplement tout cela.</p>
       <div style="display:flex;gap:.8rem;flex-wrap:wrap;align-items:center">
-        <a href="Resilience2045_Synthese_Decideurs.html" style="display:inline-block;padding:.75rem 1.8rem;background:#52b788;color:#0a0f0d;font-family:'Jost',sans-serif;font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;border:2px solid #52b788;transition:all .3s">Lire la synthèse →</a>
-        <a href="https://resilience2045.fr/Resilience2045_Synthese_Decideurs_V3.pdf" style="display:inline-block;padding:.75rem 1.8rem;background:transparent;color:#f0f4f1;font-family:'Jost',sans-serif;font-size:.75rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:1px solid rgba(240,244,241,.5);transition:all .3s" target="_blank" rel="noopener">↓ PDF direct (10 pages)</a>
+        <a href="synthese.html" style="display:inline-block;padding:.75rem 1.8rem;background:#52b788;color:#0a0f0d;font-family:'Jost',sans-serif;font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;border:2px solid #52b788;transition:all .3s">Lire la synthèse →</a>
+        <a href="Resilience2045_Synthese_Decideurs_V3.pdf" download style="display:inline-block;padding:.75rem 1.8rem;background:transparent;color:#f0f4f1;font-family:'Jost',sans-serif;font-size:.75rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:1px solid rgba(240,244,241,.5);transition:all .3s">↓ PDF direct (10 pages)</a>
       </div>
     </div>
     <div style="text-align:center;min-width:140px">
       <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:4rem;font-weight:300;color:#6ecf9a;line-height:1">10</div>
       <div style="font-size:.68rem;color:rgba(240,244,241,.7);letter-spacing:.12em;text-transform:uppercase;margin-top:.2rem">minutes<br>de lecture</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== GENÈSE DU PROJET ===== -->
+<div style="background:linear-gradient(135deg,rgba(10,74,58,.45) 0%,rgba(13,31,23,.95) 100%);border-top:1px solid rgba(82,183,136,.2);border-bottom:1px solid rgba(82,183,136,.2);padding:2.5rem 0">
+  <div class="wrap reveal" style="display:grid;grid-template-columns:1fr auto;align-items:center;gap:2.5rem;flex-wrap:wrap">
+    <div>
+      <div style="font-size:.62rem;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:#6ecf9a;margin-bottom:.7rem">Genèse · Comprendre d'où vient le projet</div>
+      <h2 style="margin-bottom:.6rem;color:#f0f4f1;font-size:clamp(1.2rem,2.4vw,1.7rem);line-height:1.2">Comment Résilience est devenu<br>ce qu'il est — et pourquoi</h2>
+      <p style="font-size:.88rem;color:rgba(240,244,241,.85);max-width:560px;line-height:1.8;margin-bottom:1rem">Le projet n'a pas commencé comme un grand système. Il est devenu un système parce que chaque problème rencontré obligeait à résoudre le suivant. Énergie → puissance → molécules → biomasse → biochar → carbone → forêt → incendies → territoires. Une histoire reconstruite à partir du corpus par cinq intelligences artificielles.</p>
+      <div style="display:flex;gap:.8rem;flex-wrap:wrap;align-items:center">
+        <a href="histoire-resilience.html" style="display:inline-block;padding:.65rem 1.5rem;background:transparent;color:#6ecf9a;font-family:'Jost',sans-serif;font-size:.74rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;border:1px solid rgba(110,207,154,.5);transition:all .3s">Lire la genèse →</a>
+        <a href="https://resilience2045.fr/Histoire_Projet_Resilience.pdf" target="_blank" rel="noopener" style="display:inline-block;padding:.65rem 1.5rem;background:transparent;color:rgba(240,244,241,.7);font-family:'Jost',sans-serif;font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:1px solid rgba(240,244,241,.25);transition:all .3s">↓ PDF</a>
+      </div>
+    </div>
+    <div style="text-align:center;min-width:120px;opacity:.8">
+      <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:3.5rem;font-weight:300;color:#6ecf9a;line-height:1">11</div>
+      <div style="font-size:.65rem;color:rgba(240,244,241,.6);letter-spacing:.12em;text-transform:uppercase;margin-top:.2rem">étapes<br>de genèse</div>
     </div>
   </div>
 </div>
@@ -499,35 +498,32 @@ document.addEventListener("DOMContentLoaded", function () {
         <a class="th-link" href="systeme-energetique.html">
           Six briques qui forment un système cohérent<span class="badge badge-html">page</span><span class="arr">→</span>
         </a>
-        <a class="th-link" href="https://resilience2045.fr/Note_Reflexion_Electrification_2030_V11.pdf" target="_blank" target="_blank" rel="noopener">
+        <a class="th-link" href="Note_Reflexion_Electrification_2030_V11.pdf" target="_blank">
           Note — Réflexion électrification 2030<span class="badge badge-pdf">pdf</span><span class="arr">→</span>
         </a>
-        <a class="th-link" href="https://resilience2045.fr/Note_Cadrage_Systeme_Energetique_V11.pdf" target="_blank" target="_blank" rel="noopener">
+        <a class="th-link" href="Note_Cadrage_Systeme_Energetique_V11.pdf" target="_blank">
           Note de cadrage — système énergétique V11<span class="badge badge-pdf">pdf</span><span class="arr">→</span>
         </a>
-        <a class="th-link" href="https://resilience2045.fr/Cadrage_Arret_Fossiles_Insuffisant_V2.pdf" target="_blank" target="_blank" rel="noopener">
+        <a class="th-link" href="Cadrage_Arret_Fossiles_Insuffisant_V2.pdf" target="_blank">
           L'arrêt des fossiles seul est insuffisant<span class="badge badge-pdf">pdf</span><span class="arr">→</span>
         </a>
-        <a class="th-link" href="https://resilience2045.fr/Note_Positionnement_Resilience_vs_Shift_V11.pdf" target="_blank" target="_blank" rel="noopener">
+        <a class="th-link" href="Note_Positionnement_Resilience_vs_Shift_V11.pdf" target="_blank">
           Positionnement Résilience vs Shift Project<span class="badge badge-pdf">pdf</span><span class="arr">→</span>
         </a>
-        <a class="th-link" href="https://resilience2045.fr/Tableau_Bilan_Energetique_Sectoriel_V11.pdf" target="_blank" target="_blank" rel="noopener">
+        <a class="th-link" href="Tableau_Bilan_Energetique_Sectoriel_V11.pdf" target="_blank">
           Bilan énergétique sectoriel &amp; argument EPR2 — Aujourd'hui · BEV · Résilience 2045<span class="badge badge-pdf">pdf</span><span class="arr">→</span>
         </a>
-        <a class="th-link" href="https://resilience2045.fr/Note_Biomasse_V4_Resilience_2045.pdf" target="_blank" target="_blank" rel="noopener">
+        <a class="th-link" href="Note_Biomasse_V4_Resilience_2045.pdf" target="_blank">
           La ressource biomasse existe-t-elle ? — Analyse territoriale des gisements 2045<span class="badge badge-pdf">pdf</span><span class="arr">→</span>
         </a>
-        <a class="th-link" href="https://resilience2045.fr/Note_Fusion_Resilience_V3.pdf" target="_blank" target="_blank" rel="noopener">
+        <a class="th-link" href="Note_Fusion_Resilience_V3.pdf" target="_blank">
           Résilience 2045 dans un avenir incertain — Fusion, ENR et gestion permanente du carbone<span class="badge badge-pdf">pdf</span><span class="arr">→</span>
         </a>
         <a class="th-link" href="mix-energetique.html">
           Mix énergétique 2045 — nucléaire, ENR et bio-méthane<span class="badge badge-html">page</span><span class="arr">→</span>
         </a>
-        <a class="th-link" href="https://resilience2045.fr/Mix_Energetique_2045_Bilan_General_V11.pdf" target="_blank" target="_blank" rel="noopener">
+        <a class="th-link" href="Mix_Energetique_2045_Bilan_General_V11.pdf" target="_blank">
           Bilan général mix énergétique 2045 — besoins sectoriels, production bio-CH₄, déficit et leviers V11<span class="badge badge-pdf">pdf</span><span class="arr">→</span>
-        </a>
-        <a class="th-link" href="trajectoires-co2.html" style="background:rgba(21,102,168,.07);border-radius:3px;padding-left:6px;margin-top:4px;">
-          ↳ Voir aussi : trajectoires CO₂ V5 — conséquences sur le climat à 2200<span class="badge badge-html">page</span><span class="arr">→</span>
         </a>
       </div>
     </div>
@@ -553,13 +549,13 @@ document.addEventListener("DOMContentLoaded", function () {
         <a class="th-link" href="biomasse.html">
           Gisement biomasse &amp; approvisionnement<span class="badge badge-html">page</span><span class="arr">→</span>
         </a>
-        <a class="th-link" href="https://resilience2045.fr/Note_Cadrage_Pyrogazeification_Systeme_Resilience_V1.pdf" target="_blank" target="_blank" rel="noopener">
+        <a class="th-link" href="Note_Cadrage_Pyrogazeification_Systeme_Resilience_V1.pdf" target="_blank">
           Note de cadrage pyrogazéification<span class="badge badge-pdf">pdf</span><span class="arr">→</span>
         </a>
-        <a class="th-link" href="https://resilience2045.fr/Positionnement_150_Sites_Pyrogazeification_V1.pdf" target="_blank" target="_blank" rel="noopener">
+        <a class="th-link" href="Positionnement_150_Sites_Pyrogazeification_V1.pdf" target="_blank">
           150 sites — positionnement national<span class="badge badge-pdf">pdf</span><span class="arr">→</span>
         </a>
-        <a class="th-link" href="https://resilience2045.fr/Gisement_national_net_V3.pdf" target="_blank" target="_blank" rel="noopener">
+        <a class="th-link" href="Gisement_national_net_V3.pdf" target="_blank">
           Gisement national net de biomasse<span class="badge badge-pdf">pdf</span><span class="arr">→</span>
         </a>
         <a class="th-link" href="Note_Cascade_Methanisation_Pyrolyse_V2.docx" target="_blank">
@@ -581,7 +577,7 @@ document.addEventListener("DOMContentLoaded", function () {
           Carbone — architecture Résilience<span class="badge badge-html">page</span><span class="arr">→</span>
         </a>
         <a class="th-link" href="trajectoires-co2.html">
-          Trajectoires CO₂ atmosphérique 1873–2200 — modèle V5 corrigé · incendies aggravés<span class="badge badge-html">page</span><span class="arr">→</span>
+          Trajectoires CO₂ atmosphérique à 2200<span class="badge badge-html">page</span><span class="arr">→</span>
         </a>
         <a class="th-link" href="biochar.html">
           Biochar — séquestration &amp; amendement<span class="badge badge-html">page</span><span class="arr">→</span>
@@ -598,19 +594,19 @@ document.addEventListener("DOMContentLoaded", function () {
         <a class="th-link" href="carbone-champignons-resilience.html">
           Le cycle du carbone &amp; les champignons<span class="badge badge-html">page</span><span class="arr">→</span>
         </a>
-        <a class="th-link" href="https://resilience2045.fr/Note_CO2_Temperatures_V5.pdf" target="_blank" target="_blank" rel="noopener">
-          Note CO₂ &amp; températures V5 — modèle physique corrigé · données 1873–2200 · incendies<span class="badge badge-pdf">pdf</span><span class="arr">→</span>
+        <a class="th-link" href="Note_CO2_Temperatures_V4.pdf" target="_blank">
+          Note CO₂ &amp; températures V4<span class="badge badge-pdf">pdf</span><span class="arr">→</span>
         </a>
-        <a class="th-link" href="https://resilience2045.fr/Note_Limites_Puits_Carbone_Naturels_V2.pdf" target="_blank" target="_blank" rel="noopener">
-          Pourquoi la nature seule ne suffira pas — puits naturels réversibles, incendies 2023–2026, séquestration permanente<span class="badge badge-pdf">pdf</span><span class="arr">→</span>
+        <a class="th-link" href="Note_Limites_Puits_Carbone_Naturels_V2.pdf" target="_blank">
+          Pourquoi la nature seule ne suffira pas<span class="badge badge-pdf">pdf</span><span class="arr">→</span>
         </a>
-        <a class="th-link" href="https://resilience2045.fr/Carbone_Fossile_Methane_Biogenique_Elevage_V11.pdf" target="_blank" target="_blank" rel="noopener">
+        <a class="th-link" href="Carbone_Fossile_Methane_Biogenique_Elevage_V11.pdf" target="_blank">
           Carbone fossile, méthane biogénique et élevage — distinctions physiques pour la politique climatique<span class="badge badge-pdf">pdf</span><span class="arr">→</span>
         </a>
-        <a class="th-link" href="https://resilience2045.fr/Gestion_Carbone_Confusions_Realite_Physique_V3.pdf" target="_blank" target="_blank" rel="noopener">
+        <a class="th-link" href="Gestion_Carbone_Confusions_Realite_Physique_V3.pdf" target="_blank">
           Gestion du carbone — confusions fréquentes et réalité physique<span class="badge badge-pdf">pdf</span><span class="arr">→</span>
         </a>
-        <a class="th-link" href="https://resilience2045.fr/Gestion_Eau_Cycle_Hydrique_Resilience_V10.pdf" target="_blank" target="_blank" rel="noopener">
+        <a class="th-link" href="Gestion_Eau_Cycle_Hydrique_Resilience_V10.pdf" target="_blank">
           Cycle de l'eau &amp; ressources hydriques — stocker quand ça tombe, préserver quand ça manque<span class="badge badge-pdf">pdf</span><span class="arr">→</span>
         </a>
       </div>
@@ -637,28 +633,28 @@ document.addEventListener("DOMContentLoaded", function () {
         <a class="th-link" href="aviation-bio-gnl.html">
           Aviation méthane &amp; bio-GNL — gamme complète (5 segments)<span class="badge badge-html">page</span><span class="arr">→</span>
         </a>
-        <a class="th-link" href="https://resilience2045.fr/Aviation_Methane_EREV_Atkinson_Gamme_V9.pdf" target="_blank" target="_blank" rel="noopener">
+        <a class="th-link" href="Aviation_Methane_EREV_Atkinson_Gamme_V9.pdf" target="_blank">
           Matrice de gamme aviation ÉREV Atkinson V9<span class="badge badge-pdf">pdf</span><span class="arr">→</span>
         </a>
-        <a class="th-link" href="https://resilience2045.fr/Apport_Titane_EREV_Aviation_Gamme_V4.pdf" target="_blank" target="_blank" rel="noopener">
+        <a class="th-link" href="Apport_Titane_EREV_Aviation_Gamme_V4.pdf" target="_blank">
           Apport titane Ti-6Al-4V — gamme aviation ÉREV V4<span class="badge badge-pdf">pdf</span><span class="arr">→</span>
         </a>
-        <a class="th-link" href="https://resilience2045.fr/Aviation_BioGNL_Synthese_V11.pdf" target="_blank" target="_blank" rel="noopener">
+        <a class="th-link" href="Aviation_BioGNL_Synthese_V11.pdf" target="_blank">
           Synthèse comparative carburants aviation V11 — GNL fossile · bio-GNL · SAF<span class="badge badge-pdf">pdf</span><span class="arr">→</span>
         </a>
-        <a class="th-link" href="https://resilience2045.fr/Avion_Moyen_Courrier_BioGNL_V3.pdf" target="_blank" style="padding-left:20px;opacity:.78;font-style:italic;border-bottom:1px solid rgba(0,0,0,.06);" target="_blank" rel="noopener">
+        <a class="th-link" href="Avion_Moyen_Courrier_BioGNL_V3.pdf" target="_blank" style="padding-left:20px;opacity:.78;font-style:italic;border-bottom:1px solid rgba(0,0,0,.06);">
           ↳ Note — moyen-courrier bio-GNL V3 (A321neo · réservoirs aile)<span class="badge badge-pdf">pdf</span><span class="arr">→</span>
         </a>
-        <a class="th-link" href="https://resilience2045.fr/EREV_Rendements_Comparatif_V2.pdf" target="_blank" target="_blank" rel="noopener">
+        <a class="th-link" href="EREV_Rendements_Comparatif_V2.pdf" target="_blank">
           Rendements ÉREV — comparatif V2<span class="badge badge-pdf">pdf</span><span class="arr">→</span>
         </a>
-        <a class="th-link" href="https://resilience2045.fr/Comparatif_Camions_44t_Resilience_V11.pdf" target="_blank" target="_blank" rel="noopener">
+        <a class="th-link" href="Comparatif_Camions_44t_Resilience_V11.pdf" target="_blank">
           Comparatif camions 44t<span class="badge badge-pdf">pdf</span><span class="arr">→</span>
         </a>
-        <a class="th-link" href="https://resilience2045.fr/Resilience_V11_Securite_Incendie_EREV_BioCH4.pdf" target="_blank" target="_blank" rel="noopener">
+        <a class="th-link" href="Resilience_V11_Securite_Incendie_EREV_BioCH4.pdf" target="_blank">
           Sécurité incendie — ÉREV &amp; bio-CH₄<span class="badge badge-pdf">pdf</span><span class="arr">→</span>
         </a>
-        <a class="th-link" href="https://resilience2045.fr/GyroTorique_Version_Titane_Complet_V2.pdf" target="_blank" target="_blank" rel="noopener">
+        <a class="th-link" href="GyroTorique_Version_Titane_Complet_V2.pdf" target="_blank">
           Gyro-Torique Bio-GNL — plateforme aéronautique modulaire ÉREV titane Ti-6Al-4V V2<span class="badge badge-pdf">pdf</span><span class="arr">→</span>
         </a>
       </div>
@@ -688,17 +684,14 @@ document.addEventListener("DOMContentLoaded", function () {
         <a class="th-link" href="cooperation-internationale.html">
           Coopération France–Espagne<span class="badge badge-html">page</span><span class="arr">→</span>
         </a>
-        <a class="th-link" href="https://resilience2045.fr/Cadre_Gestion_Ecologique_Forets_V11.pdf" target="_blank" target="_blank" rel="noopener">
+        <a class="th-link" href="Cadre_Gestion_Ecologique_Forets_V11.pdf" target="_blank">
           Cadre gestion écologique des forêts<span class="badge badge-pdf">pdf</span><span class="arr">→</span>
         </a>
-        <a class="th-link" href="https://resilience2045.fr/QR_Objections_Naturalistes_V3.pdf" target="_blank" target="_blank" rel="noopener">
+        <a class="th-link" href="QR_Objections_Naturalistes_V3.pdf" target="_blank">
           Q&amp;R — objections naturalistes<span class="badge badge-pdf">pdf</span><span class="arr">→</span>
         </a>
-        <a class="th-link" href="https://resilience2045.fr/Note_Megaincendies_V6_2026.pdf" target="_blank" target="_blank" rel="noopener">
+        <a class="th-link" href="Note_Megaincendies_V6_2026.pdf" target="_blank">
           Méga-incendies : repenser la prévention — prévention structurelle, valorisation thermochimique et Programme Résilience 2045<span class="badge badge-pdf">pdf</span><span class="arr">→</span>
-        </a>
-        <a class="th-link" href="trajectoires-co2.html" style="background:rgba(21,102,168,.07);border-radius:3px;padding-left:6px;margin-top:4px;font-style:italic;opacity:.85;">
-          ↳ Impact sur les puits : scénario incendies aggravés — trajectoires CO₂ V5<span class="badge badge-html">page</span><span class="arr">→</span>
         </a>
       </div>
     </div>
@@ -721,13 +714,13 @@ document.addEventListener("DOMContentLoaded", function () {
         <a class="th-link" href="annexe-emissions-diffuses.html">
           Émissions diffuses — annexe<span class="badge badge-html">page</span><span class="arr">→</span>
         </a>
-        <a class="th-link" href="https://resilience2045.fr/Programme_Resilience_V11_Complet.pdf" target="_blank" target="_blank" rel="noopener">
+        <a class="th-link" href="Programme_Resilience_V11_Complet.pdf" target="_blank">
           Programme V11 complet<span class="badge badge-pdf">pdf</span><span class="arr">→</span>
         </a>
-        <a class="th-link" href="https://resilience2045.fr/Souverainete_Energetique_V11.pdf" target="_blank" target="_blank" rel="noopener">
+        <a class="th-link" href="Souverainete_Energetique_V11.pdf" target="_blank">
           Souveraineté énergétique V11<span class="badge badge-pdf">pdf</span><span class="arr">→</span>
         </a>
-        <a class="th-link" href="https://resilience2045.fr/Materiaux_Critiques_Transition_Energetique.pdf" target="_blank" target="_blank" rel="noopener">
+        <a class="th-link" href="Materiaux_Critiques_Transition_Energetique.pdf" target="_blank">
           Matériaux critiques — rapport complet<span class="badge badge-pdf">pdf</span><span class="arr">→</span>
         </a>
         <a class="th-link" href="documents-liste.html">
@@ -749,7 +742,7 @@ document.addEventListener("DOMContentLoaded", function () {
       </div>
       <div class="stat reveal">
         <span class="sv">20–23 Mt/an</span>
-        <span class="sl">CO₂ séquestré par biochar (FR) + géologique CO₂ biogénique · 7 Gt/an potentiel mondial (800 Mha)</span>
+        <span class="sl">CO₂ séquestré par biochar + potentiel additionnel CO₂ biogénique</span>
       </div>
       <div class="stat reveal">
         <span class="sv">150 sites</span>
@@ -776,7 +769,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 <footer>
   <div class="wrap">
-    <span>Programme Résilience 2045 — document de travail indépendant — V11 · Août 2026</span>
+    <span>Programme Résilience 2045 — document de travail indépendant — V11 · Mai 2026</span>
     <span>resilience2045.fr</span>
   </div>
 </footer>

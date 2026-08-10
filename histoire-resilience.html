@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L'histoire du Projet Résilience — Programme Résilience 2045</title>
+<style>
+  :root {
+    --vert:    #0F6E56;
+    --vert-dk: #0A4A3A;
+    --vert-cl: #E8F5EE;
+    --vert-md: #1B8B6E;
+    --bleu:    #1F4E79;
+    --gris:    #4A4A4A;
+    --gris-cl: #F8F8F6;
+    --border:  #C8E6DA;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Georgia, serif; background: #F8FAF9; color: var(--gris);
+         line-height: 1.75; }
+
+  /* NAV */
+  nav { background: var(--vert-dk); padding: .85rem 2rem;
+        display: flex; align-items: center; gap: .75rem; flex-wrap: wrap; }
+  nav a.back { background: white; color: var(--vert-dk); padding: .4rem 1rem;
+               border-radius: 4px; font-family: Arial, sans-serif; font-size: .82rem;
+               font-weight: bold; text-decoration: none; }
+  nav a.docs { color: rgba(255,255,255,.75); font-family: Arial, sans-serif;
+               font-size: .8rem; text-decoration: none; margin-left: .5rem; }
+  nav a.docs:hover { color: white; }
+  nav .sep { color: rgba(255,255,255,.3); }
+
+  /* HEADER */
+  header { background: var(--vert-dk); color: white; padding: 4rem 2rem 3rem;
+           text-align: center; }
+  .surtitre { font-family: Arial, sans-serif; font-size: .75rem;
+              letter-spacing: .2em; text-transform: uppercase;
+              color: rgba(255,255,255,.55); margin-bottom: .75rem; }
+  header h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: normal;
+              line-height: 1.25; margin-bottom: .75rem; }
+  header .sous { font-family: Arial, sans-serif; font-size: 1rem;
+                 color: rgba(255,255,255,.7); max-width: 540px; margin: 0 auto 1rem; }
+  header .meta { font-family: Arial, sans-serif; font-size: .8rem;
+                 color: rgba(255,255,255,.45); }
+
+  /* LAYOUT */
+  .container { max-width: 780px; margin: 0 auto; padding: 0 1.5rem; }
+
+  /* INTRO BLOC */
+  .intro-bloc { background: var(--vert-cl); border-left: 5px solid var(--vert);
+                border-radius: 0 6px 6px 0; padding: 1.5rem 1.75rem;
+                margin: 2.5rem 0 2rem; font-size: .97rem; line-height: 1.8; }
+
+  /* CHAPITRES */
+  .chapitre { padding: 2rem 0; border-bottom: 1px solid var(--border); }
+  .chapitre:last-child { border-bottom: none; }
+  .chap-num { font-family: Arial, sans-serif; font-size: .7rem; font-weight: bold;
+              letter-spacing: .2em; text-transform: uppercase;
+              color: var(--vert); margin-bottom: .4rem; }
+  .chapitre h2 { font-size: 1.4rem; font-weight: normal; color: var(--vert-dk);
+                 margin-bottom: 1rem; line-height: 1.35; }
+  .chapitre p { margin-bottom: .9rem; font-size: .97rem; }
+  .chapitre p:last-child { margin-bottom: 0; }
+
+  /* ÉPILOGUE */
+  .epilogue { background: var(--vert-dk); color: white; padding: 3rem 2rem;
+              margin: 2rem 0; border-radius: 8px; }
+  .epilogue .ep-titre { font-family: Arial, sans-serif; font-size: .7rem;
+                        letter-spacing: .2em; text-transform: uppercase;
+                        color: rgba(255,255,255,.5); margin-bottom: .5rem; }
+  .epilogue h2 { font-size: 1.6rem; font-weight: normal;
+                 color: rgba(255,255,255,.95); margin-bottom: 1.5rem; }
+  .cascade { display: flex; flex-direction: column; gap: 0; margin: 1.5rem 0; }
+  .cascade-item { display: flex; gap: 1rem; padding: .6rem 0;
+                  border-bottom: 1px solid rgba(255,255,255,.1);
+                  align-items: baseline; }
+  .cascade-item:last-child { border-bottom: none; }
+  .cascade-label { font-family: Arial, sans-serif; font-weight: bold;
+                   font-size: .88rem; color: rgba(200,230,218,1);
+                   min-width: 180px; flex-shrink: 0; }
+  .cascade-arrow { color: rgba(255,255,255,.3); flex-shrink: 0; }
+  .cascade-text { font-size: .93rem; color: rgba(255,255,255,.8); line-height: 1.6; }
+  .conclusion-bloc { background: rgba(255,255,255,.08); border-left: 4px solid var(--vert-md);
+                     padding: 1.25rem 1.5rem; margin-top: 1.75rem; border-radius: 0 6px 6px 0; }
+  .conclusion-bloc strong { color: rgba(200,230,218,1); font-size: 1.05rem;
+                             line-height: 1.6; display: block; margin-bottom: .6rem; }
+  .conclusion-bloc p { font-size: .92rem; color: rgba(255,255,255,.75); line-height: 1.7; }
+
+  /* NOTE */
+  .note { background: var(--gris-cl); border-radius: 6px; padding: 1.25rem 1.5rem;
+          margin: 2rem 0; font-family: Arial, sans-serif; font-size: .8rem;
+          color: #888; line-height: 1.6; border: 1px solid var(--border); }
+
+  /* PDF + PRINT */
+  .print-hint { background: var(--vert-cl); padding: .7rem 1.2rem;
+                font-family: Arial, sans-serif; font-size: .8rem;
+                color: var(--vert-dk); display: flex; align-items: center;
+                gap: 1rem; flex-wrap: wrap; border-bottom: 1px solid var(--border); }
+  .print-hint a { color: var(--vert); font-weight: 600; text-decoration: none; }
+  @media print {
+    nav, .print-hint { display: none !important; }
+    body { background: white; }
+    header { background: var(--vert-dk) !important; -webkit-print-color-adjust: exact; }
+    .epilogue { background: var(--vert-dk) !important; -webkit-print-color-adjust: exact; }
+  }
+  @media (max-width: 600px) {
+    header { padding: 2.5rem 1rem 2rem; }
+    .container { padding: 0 1rem; }
+    .cascade-label { min-width: 130px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="back" href="https://resilience2045.fr">← Retour au site</a>
+  <span class="sep">›</span>
+  <a class="docs" href="https://resilience2045.fr/documents-liste.html">Documents</a>
+  <span class="sep">›</span>
+  <span style="color:rgba(255,255,255,.6);font-family:Arial,sans-serif;font-size:.8rem;">Genèse du projet</span>
+</nav>
+
+<div class="print-hint">
+  <span>📖 Histoire du Projet Résilience — genèse en 11 étapes</span>
+  <a href="https://resilience2045.fr/Histoire_Projet_Resilience.pdf" target="_blank" rel="noopener">↓ Télécharger le PDF</a>
+  <span style="margin-left:auto;opacity:.7;">Document optimisé pour impression — Ctrl+P / ⌘+P</span>
+</div>
+
+<header>
+  <div class="surtitre">Programme Résilience 2045 · Genèse du projet</div>
+  <h1>L'histoire du Projet Résilience</h1>
+  <p class="sous">De la transition énergétique à une architecture de résilience</p>
+  <p class="meta">Une histoire reconstruite à partir du corpus du projet, analysée par cinq intelligences artificielles · Août 2026</p>
+</header>
+
+<main>
+<div class="container">
+
+  <div class="intro-bloc">
+    <p>Le Projet Résilience n'est pas né d'une théorie préétablie. Il est né d'un constat. À force d'examiner les trajectoires énergétiques proposées pour les prochaines décennies, une contradiction apparaissait de plus en plus nettement : on cherchait à remplacer les énergies fossiles par de l'électricité décarbonée, mais on raisonnait essentiellement en TWh, alors que le fonctionnement réel d'un pays industriel dépend aussi, et parfois surtout, des puissances instantanées, des infrastructures, du stockage, des transports, des matières premières et de la capacité à faire face aux situations extrêmes.</p>
+    <p style="margin-top:.8rem">La question n'était donc plus simplement : <em>Comment décarboner la France ?</em> Elle devenait : <em>Comment maintenir une société industrielle fonctionnelle dans un monde où le climat se dégrade, où les ressources sont contraintes et où l'on ne peut pas électrifier physiquement tous les usages ?</em></p>
+  </div>
+
+  <!-- CHAPITRES -->
+  <div class="chapitre">
+    <div class="chap-num">1 ·</div>
+    <h2>Regarder l'énergie telle qu'elle fonctionne réellement</h2>
+    <p>La France consomme aujourd'hui environ 1 600 TWh d'énergie sous différentes formes, avec une très forte dépendance au pétrole et au gaz. Or une grande partie des scénarios de transition tendent à transformer cette consommation en demande électrique.</p>
+    <p>Cette approche semblait insuffisante. Il fallait être capable de fournir la bonne puissance au bon moment, de transporter cette énergie, de la stocker lorsque nécessaire et surtout de disposer de vecteurs énergétiques adaptés à chaque usage.</p>
+    <p>C'est là qu'est apparue une première idée structurante : l'électricité ne doit pas nécessairement remplacer toutes les molécules fossiles. Certains secteurs — transport lourd, longue distance, aviation, procédés industriels, stockage saisonnier — ont besoin de molécules énergétiques à haute densité.</p>
+    <p>La résilience, telle qu'elle s'est dégagée progressivement de ces analyses, concerne finalement <strong>quatre contraintes simultanées</strong> : l'énergie (les TWh disponibles), la puissance (les GW mobilisables au bon moment), les matières (les ressources et matériaux nécessaires) et le carbone (le bilan atmosphérique à long terme). Aucun scénario de transition ne peut être sérieux s'il répond à l'une sans traiter les autres.</p>
+  </div>
+
+  <div class="chapitre">
+    <div class="chap-num">2 ·</div>
+    <h2>La recherche de la molécule complémentaire à l'électricité</h2>
+    <p>La réflexion ne s'est pas orientée immédiatement vers le biométhane. Plusieurs familles de solutions ont été examinées : hydrogène, carburants de synthèse, biocarburants, méthanol, SAF. Chacun apportait des avantages dans certains secteurs, mais aussi des limitations en termes de rendement énergétique, de disponibilité ou de coûts.</p>
+    <p>Ce n'est pas l'hydrogène ni les SAF qui ont été "rejetés" — ils restent pertinents dans certains usages. Mais lorsqu'on regarde simultanément les ressources disponibles, les rendements de conversion, les volumes nécessaires et les nouvelles dépendances infrastructurelles ou matérielles que chaque option crée, le méthane renouvelable est progressivement apparu comme le meilleur compromis global. La question posée n'était pas <em>"quelle molécule est la meilleure ?"</em> mais <em>"quelle molécule peut compléter l'électricité sans gaspiller démesurément l'énergie primaire et sans créer de nouvelles dépendances ?"</em> C'est la seule molécule qui cochait simultanément toutes les cases : mobilité légère et lourde, maritime, stockage massif saisonnier, valorisation des surplus électriques, utilisation des infrastructures existantes, production à partir de biomasse, production de biochar en parallèle, et concentration du CO₂ biogénique pour séquestration géologique.</p>
+    <p>Le méthane renouvelable n'est pas seulement un carburant de substitution. Il est devenu progressivement la colonne vertébrale reliant énergie, carbone, biomasse et résilience territoriale.</p>
+  </div>
+
+  <div class="chapitre">
+    <div class="chap-num">3 ·</div>
+    <h2>La mobilité : le révélateur du problème des puissances</h2>
+    <p>Si plusieurs dizaines de millions de véhicules doivent recharger leurs batteries, la question n'est plus seulement la quantité annuelle d'électricité consommée. C'est la puissance appelée simultanément.</p>
+    <p>L'EREV n'est pas arrivé parce qu'il cherchait à sauver le moteur thermique. Il est arrivé pour résoudre simultanément trois problèmes : électrifier la majorité des kilomètres parcourus ; éviter les batteries surdimensionnées nécessaires pour les rares longs trajets ; et éviter que la recharge simultanée de dizaines de millions de véhicules crée une pointe électrique démesurée sur le réseau. Le concept d'EREV — véhicule électrique à prolongateur d'autonomie bio-GNV — est donc né d'une recherche d'architecture système, pas d'une préférence technologique. Un parc de 33 millions d'EREV pourrait effacer une puissance moyenne de 40 GW lors des pointes. Le véhicule devient un outil de pilotage du système énergétique autant qu'un moyen de transport.</p>
+  </div>
+
+  <div class="chapitre">
+    <div class="chap-num">4 ·</div>
+    <h2>La découverte du véritable sujet : le carbone</h2>
+    <p>Substituer les fossiles suffit-il réellement à résoudre le problème climatique ? La réponse est non. Éviter une tonne de CO₂ est indispensable — mais cela ne retire pas de l'atmosphère le CO₂ déjà accumulé. Cette distinction entre <em>éviter les émissions futures</em> et <em>retirer durablement du carbone déjà présent</em> est devenue progressivement centrale.</p>
+    <p>C'est à ce moment que le biochar a pris une importance beaucoup plus grande.</p>
+  </div>
+
+  <div class="chapitre">
+    <div class="chap-num">5 ·</div>
+    <h2>Le biochar : de sous-produit à élément stratégique</h2>
+    <p>La pyrogazéification permet de transformer une partie du carbone de la biomasse en gaz utilisables énergétiquement, et une autre en carbone solide stable. Le biochar possède deux fonctions : restaurer les sols et maintenir une fraction du carbone hors de l'atmosphère pendant des durées très longues, lorsque ses caractéristiques et ses conditions de production et d'usage permettent d'assurer une stabilité durable.</p>
+    <p>La biomasse cessait d'être une simple source d'énergie. Elle devenait un vecteur de transfert du carbone atmosphérique vers des formes potentiellement durables.</p>
+  </div>
+
+  <div class="chapitre">
+    <div class="chap-num">6 ·</div>
+    <h2>La forêt et les incendies entrent dans le système</h2>
+    <p>Le carbone qu'une forêt contient circule entre végétation, sol, atmosphère et matière morte. Les incendies peuvent remettre en quelques semaines dans l'atmosphère une fraction du carbone accumulé sur des décennies. Les méga-incendies de ces dernières années — et les événements de l'été 2026 en France et autour de la Méditerranée — montrent que le risque n'est plus théorique : des massifs entiers peuvent basculer en quelques semaines de puits à sources nettes de CO₂.</p>
+    <p>La biomasse forestière peut être perçue simultanément comme un risque lorsqu'elle s'accumule dans des zones vulnérables, et comme une ressource — énergétique, matière première pour le biochar, outil de restauration territoriale. La prévention des incendies cesse d'être uniquement une dépense publique. Elle peut devenir une composante d'une économie territoriale.</p>
+  </div>
+
+  <div class="chapitre">
+    <div class="chap-num">7 ·</div>
+    <h2>Les territoires deviennent les laboratoires du projet</h2>
+    <p>Les démonstrateurs — Gard, Pyrénées-Orientales, Landes, Massif Central, Normandie — associent prévention des incendies, gestion forestière, mobilisation de biomasse, pyrogazéification, production de gaz renouvelable, production de biochar et restauration des sols. Ces premiers territoires doivent permettre de tester l'architecture à l'échelle réelle, de valider les rendements, de qualifier les fournisseurs et de générer les données nécessaires avant d'envisager un déploiement à l'échelle nationale.</p>
+  </div>
+
+  <div class="chapitre">
+    <div class="chap-num">8 ·</div>
+    <h2>L'agriculture et les sols entrent dans la boucle</h2>
+    <p>Le biochar restaure les sols. Les digestats issus de la méthanisation valorisent les nutriments. Des surfaces marginales — garrigues, friches, anciens vignobles — fournissent une biomasse supplémentaire sans entrer en concurrence directe avec les grandes cultures. La biomasse devient un élément de gestion intégrée du territoire.</p>
+  </div>
+
+  <div class="chapitre">
+    <div class="chap-num">9 ·</div>
+    <h2>La souveraineté et les matériaux critiques</h2>
+    <p>Un parc EREV avec une batterie de 25 kWh réduit fortement la quantité de matériaux nécessaires à la batterie embarquée — lithium, cuivre, nickel selon les chimies — comparé à un parc Tout-BEV dimensionné pour les mêmes usages. La France, qui dispose de ses propres ressources en biomasse, de son réseau gazier amorti de 200 000 km et de ses cavités de stockage souterrain, peut produire localement son vecteur moléculaire complémentaire — sans dépendance d'importation.</p>
+    <p>La résilience n'est plus seulement climatique. Elle est industrielle et stratégique.</p>
+  </div>
+
+  <div class="chapitre">
+    <div class="chap-num">10 ·</div>
+    <h2>La question économique</h2>
+    <p>Les estimations travaillées dans le projet placent les investissements du scénario Résilience dans une enveloppe de l'ordre de 540 à 690 milliards d'euros, contre environ 794 à 1 096 milliards pour le scénario Tout-BEV. Ces chiffres sont des ordres de grandeur prospectifs destinés à comparer des architectures — pas des devis.</p>
+    <p>La résilience pourrait être non seulement une stratégie climatique, mais aussi une stratégie économiquement rationnelle.</p>
+  </div>
+
+  <div class="chapitre">
+    <div class="chap-num">11 ·</div>
+    <h2>Ce que le projet est devenu</h2>
+    <p>Vu de l'extérieur, on pourrait encore présenter Résilience comme "un scénario énergétique français à l'horizon 2045". Mais cette définition est trop étroite.</p>
+    <p>C'est une tentative de construire une <strong>architecture nationale de résilience climatique, énergétique, territoriale et carbonée</strong>, dans laquelle la production d'énergie, la prévention des risques, la restauration des sols et la séquestration du carbone sont conçues comme les différentes fonctions d'un même système.</p>
+    <p>L'électricité y reste fondamentale. Le gaz renouvelable n'est pas son concurrent — c'est son complément pour ce qu'elle ne peut pas faire seule. Et les territoires deviennent les endroits où cette architecture doit réellement être démontrée.</p>
+  </div>
+
+  <!-- ÉPILOGUE -->
+  <div class="epilogue">
+    <div class="ep-titre">Épilogue</div>
+    <h2>Ce que j'ai vu naître</h2>
+    <div class="cascade">
+      <div class="cascade-item"><span class="cascade-label">Au départ</span><span class="cascade-arrow">→</span><span class="cascade-text">une solution au problème énergétique.</span></div>
+      <div class="cascade-item"><span class="cascade-label">Un constat</span><span class="cascade-arrow">→</span><span class="cascade-text">l'électrification généralisée pose des problèmes de puissance et de vecteurs.</span></div>
+      <div class="cascade-item"><span class="cascade-label">Une recherche</span><span class="cascade-arrow">→</span><span class="cascade-text">une place pour les molécules renouvelables.</span></div>
+      <div class="cascade-item"><span class="cascade-label">La mobilité</span><span class="cascade-arrow">→</span><span class="cascade-text">l'EREV.</span></div>
+      <div class="cascade-item"><span class="cascade-label">La biomasse</span><span class="cascade-arrow">→</span><span class="cascade-text">le biométhane et la pyrogazéification.</span></div>
+      <div class="cascade-item"><span class="cascade-label">La pyrogazéification</span><span class="cascade-arrow">→</span><span class="cascade-text">le biochar.</span></div>
+      <div class="cascade-item"><span class="cascade-label">Le biochar</span><span class="cascade-arrow">→</span><span class="cascade-text">la question du carbone.</span></div>
+      <div class="cascade-item"><span class="cascade-label">Le carbone</span><span class="cascade-arrow">→</span><span class="cascade-text">la forêt et les sols.</span></div>
+      <div class="cascade-item"><span class="cascade-label">La forêt</span><span class="cascade-arrow">→</span><span class="cascade-text">les incendies.</span></div>
+      <div class="cascade-item"><span class="cascade-label">Les incendies</span><span class="cascade-arrow">→</span><span class="cascade-text">la prévention territoriale.</span></div>
+      <div class="cascade-item"><span class="cascade-label">La prévention</span><span class="cascade-arrow">→</span><span class="cascade-text">les démonstrateurs.</span></div>
+      <div class="cascade-item"><span class="cascade-label">La souveraineté</span><span class="cascade-arrow">→</span><span class="cascade-text">l'avantage stratégique des ressources locales et des matériaux.</span></div>
+      <div class="cascade-item"><span class="cascade-label">L'ensemble</span><span class="cascade-arrow">→</span><span class="cascade-text">une idée beaucoup plus large.</span></div>
+    </div>
+    <div class="conclusion-bloc">
+      <strong>Il ne suffit peut-être pas de décarboner le système existant.<br>Il faut reconstruire un système capable de fonctionner dans les conditions climatiques, énergétiques et matérielles du monde qui vient.</strong>
+      <p>C'est le véritable passage du projet initial au Projet Résilience. Il ne traite plus d'une technologie, ni même de l'énergie seule, mais de l'organisation d'un système capable de rester viable sous contrainte climatique.</p>
+    </div>
+  </div>
+
+  <div class="note">
+    <strong>Note :</strong> Ce document est une narration synthétique de la genèse du Projet Résilience, reconstruite à partir du corpus complet du programme et analysée de manière croisée par cinq intelligences artificielles (Claude, ChatGPT, Gemini, Copilot, Mistral). Il ne constitue pas un document technique — le corpus complet est disponible sur <strong>resilience2045.fr</strong>.
+  </div>
+
+</div>
+</main>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll('a[href]').forEach(function(a) {
+    if ((a.getAttribute('href') || '').match(/\.pdf(\?.*)?$/i)) {
+      a.target = '_blank'; a.rel = 'noopener';
+    }
+  });
+});
+</script>
+
+</body>
+</html>
