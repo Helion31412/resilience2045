@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contrainte hydrique et puissance estivale garantie 2045 · Programme Résilience V11</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --noir:#0a0f0d;--foret:#0d1f17;--vert-vif:#52b788;--vert-clair:#95d5b2;
+  --ambre:#e9c46a;--rouge:#FF4D1A;--rouge-cl:#FF7040;--bleu:#2980b9;
+  --blanc:#f0f4f1;--gris:#8a9e93;
+  --serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--noir);color:var(--blanc);font-family:var(--sans);font-weight:300;line-height:1.7;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:.9rem 2.5rem;background:rgba(10,15,13,.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(82,183,136,.12)}
+.nav-logo{font-family:var(--serif);font-size:1.15rem;font-weight:600;color:var(--vert-vif);text-decoration:none}
+.nav-back{color:var(--gris);text-decoration:none;font-size:.72rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;transition:color .3s}.nav-back:hover{color:var(--vert-vif)}
+.nav-tag{font-size:.65rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--ambre);background:rgba(233,196,106,.12);border:1px solid rgba(233,196,106,.25);padding:.2rem .7rem}
+#hero{min-height:46vh;display:flex;align-items:center;padding:8rem 3rem 4rem;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 55% 60% at 25% 50%,rgba(41,128,185,.12) 0%,transparent 70%),linear-gradient(135deg,#0a0f0d 0%,#0a1520 50%,#060e09 100%)}
+.hero-grid{position:absolute;inset:0;opacity:.03;background-image:linear-gradient(var(--bleu) 1px,transparent 1px),linear-gradient(90deg,var(--bleu) 1px,transparent 1px);background-size:55px 55px}
+.hero-content{position:relative;z-index:1;max-width:820px}
+.hero-tag{display:inline-block;border:1px solid rgba(41,128,185,.5);color:rgba(116,185,232,.8);font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;padding:.3rem .85rem;margin-bottom:1.4rem}
+h1{font-family:var(--serif);font-size:clamp(2rem,4.5vw,3.6rem);font-weight:300;line-height:1.1;margin-bottom:1rem}
+h1 em{font-style:italic;color:#74b9e8}
+.hero-sub{font-size:.95rem;color:rgba(240,244,241,.65);max-width:680px;line-height:1.85;margin-top:.8rem}
+.metho-bar{background:rgba(41,128,185,.07);border:1px solid rgba(41,128,185,.2);border-left:4px solid var(--bleu);padding:1.2rem 2rem}
+.metho-bar p{font-size:.83rem;color:rgba(240,244,241,.65);line-height:1.7}.metho-bar strong{color:#74b9e8}
+section{padding:4.5rem 3rem}.container{max-width:1060px;margin:0 auto}.alt{background:var(--foret)}
+.stag{font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#74b9e8;margin-bottom:.6rem}
+h2{font-family:var(--serif);font-size:clamp(1.6rem,2.8vw,2.3rem);font-weight:300;line-height:1.15;margin-bottom:.9rem}
+h2 em{font-style:italic;color:#74b9e8}
+h3{font-family:var(--serif);font-size:1.15rem;font-weight:400;color:#74b9e8;margin:1.8rem 0 .5rem}
+.lead{font-size:.95rem;color:rgba(240,244,241,.68);max-width:720px;line-height:1.85;margin-bottom:1.2rem}
+p.body{font-size:.88rem;color:rgba(240,244,241,.65);line-height:1.85;margin-bottom:.8rem;max-width:860px}
+p.italic{font-size:.9rem;color:rgba(240,244,241,.6);line-height:1.85;font-style:italic;margin:.6rem 0 .6rem 1.4rem;border-left:3px solid rgba(116,185,232,.3);padding-left:1rem}
+ul.lst{list-style:none;padding:0;margin:.8rem 0 1rem 0}
+ul.lst li{font-size:.88rem;color:rgba(240,244,241,.65);line-height:1.75;padding:.25rem 0 .25rem 1.4rem;position:relative}
+ul.lst li::before{content:'—';position:absolute;left:0;color:#74b9e8;font-weight:400}
+.tbl-wrap{overflow-x:auto;margin:1.8rem 0}
+table{width:100%;border-collapse:collapse;font-size:.8rem}
+thead tr{background:rgba(15,35,60,.9)}
+thead th{padding:.8rem 1rem;text-align:left;color:#74b9e8;font-weight:500;letter-spacing:.07em;font-size:.72rem;text-transform:uppercase;border-bottom:2px solid var(--bleu)}
+tbody tr{border-bottom:1px solid rgba(41,128,185,.08)}
+tbody td{padding:.7rem 1rem;color:rgba(240,244,241,.72);vertical-align:top;line-height:1.5}
+tbody td:first-child{color:var(--blanc);font-weight:400}
+.tr-alt td{background:rgba(15,35,60,.25)}
+.td-g{color:var(--vert-vif)!important;font-weight:500}
+.td-r{color:#FF5500!important;font-weight:500}
+.td-a{color:var(--ambre)!important;font-weight:500}
+.td-b{color:#74b9e8!important;font-weight:500}
+.td-gr{color:var(--gris)!important}
+.tr-total td{background:rgba(15,35,60,.5)!important;font-weight:600;border-top:2px solid var(--bleu)}
+.box{padding:1.2rem 1.6rem;margin:1.5rem 0;font-size:.86rem;line-height:1.75}
+.box-bleu{background:rgba(41,128,185,.07);border:1px solid rgba(41,128,185,.25);border-left:4px solid var(--bleu);color:rgba(240,244,241,.82)}.box-bleu strong{color:#74b9e8}
+.box-rouge{background:rgba(255,77,26,.07);border:1px solid rgba(255,77,26,.28);border-left:4px solid var(--rouge);color:rgba(240,244,241,.82)}.box-rouge strong{color:var(--rouge-cl)}
+.box-ambre{background:rgba(233,196,106,.06);border:1px solid rgba(233,196,106,.22);border-left:4px solid var(--ambre);color:rgba(240,244,241,.78)}.box-ambre strong{color:var(--ambre)}
+.box-vert{background:rgba(29,58,40,.35);border:1px solid rgba(82,183,136,.22);border-left:4px solid var(--vert-vif);color:rgba(240,244,241,.82)}.box-vert strong{color:var(--vert-vif)}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem;margin:1.8rem 0}
+.card{padding:1.4rem;border:1px solid rgba(41,128,185,.18);background:rgba(10,15,13,.5);position:relative}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--bleu),#74b9e8)}
+.card-rouge::before{background:linear-gradient(90deg,#FF4D1A,#FF7040)}
+.card-ambre::before{background:linear-gradient(90deg,var(--ambre),#f4d03f)}
+.card-vert::before{background:linear-gradient(90deg,var(--vert-vif),var(--vert-clair))}
+.card h3{margin-top:0;margin-bottom:.6rem;font-size:.95rem;color:#74b9e8}.card p{font-size:.82rem;color:rgba(240,244,241,.62);line-height:1.6}
+.num{font-family:var(--serif);font-size:2rem;font-weight:300;line-height:1;margin-bottom:.35rem}
+.num-b{color:#74b9e8}.num-r{color:#FF5500}.num-v{color:var(--vert-vif)}.num-a{color:var(--ambre)}
+.concl-list{list-style:none;padding:0;counter-reset:concl}
+.concl-list li{counter-increment:concl;padding:.8rem 1rem .8rem 3.2rem;position:relative;font-size:.88rem;color:rgba(240,244,241,.78);line-height:1.75;border-bottom:1px solid rgba(41,128,185,.1)}
+.concl-list li::before{content:counter(concl);position:absolute;left:.8rem;top:.85rem;width:1.6rem;height:1.6rem;background:var(--bleu);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:600;text-align:center;line-height:1.6rem}
+.pdf-btn{display:inline-flex;align-items:center;gap:.6rem;padding:.85rem 1.8rem;background:rgba(41,128,185,.15);border:1px solid rgba(41,128,185,.4);color:#74b9e8;text-decoration:none;font-size:.76rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;transition:all .3s;margin-top:1rem}
+.pdf-btn:hover{background:rgba(41,128,185,.28);border-color:var(--bleu)}
+.btn{display:inline-block;padding:.7rem 1.5rem;font-family:var(--sans);font-size:.76rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:all .3s}
+.btn-outline{background:transparent;color:var(--blanc);border:1px solid rgba(240,244,241,.28)}.btn-outline:hover{border-color:#74b9e8;color:#74b9e8}
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s ease}.reveal.visible{opacity:1;transform:none}
+footer{background:#050a07;padding:2.5rem 3rem;text-align:center;border-top:1px solid rgba(82,183,136,.08)}
+.footer-logo{font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--vert-vif);margin-bottom:.4rem}
+footer p{font-size:.76rem;color:var(--gris);max-width:620px;margin:.3rem auto;line-height:1.7}
+@media(max-width:700px){nav{padding:.85rem 1.3rem}section{padding:3rem 1.3rem}h1{font-size:2rem}.nav-tag{display:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Programme Résilience V11</a>
+  <div style="display:flex;align-items:center;gap:1.2rem">
+    <span class="nav-tag">Contrainte hydrique · Puissance garantie · 2045</span>
+    <a href="index.html" class="nav-back">← Retour</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div><div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Programme Résilience V11 — Constats &amp; Fondements · Août 2026</div>
+    <h1>Résilience énergétique 2045 —<br><em>la contrainte hydrique et le risque de puissance estivale garantie</em></h1>
+    <p class="hero-sub">Le changement climatique ne menace pas la production annuelle du nucléaire. Il introduit une variable que les scénarios officiels n'intègrent pas : la disponibilité estivale des moyens thermiques dépendants de l'eau. Ce document analyse ce risque — et ses conséquences pour le dimensionnement du système énergétique 2045.</p>
+  </div>
+</section>
+
+<div class="metho-bar"><div class="container">
+  <p><strong>Statut épistémique :</strong> les projections à l'horizon 2045 sont formulées au conditionnel et constituent des estimations de travail, non des prévisions officielles. Les faits établis (épisode ASN 2022, données EDF, vieillissement du parc, recul glaciaire mesuré) sont à l'indicatif. Les chiffres EPR2 s'appuient sur les objectifs gouvernementaux documentés. Les paramètres FRC sont issus d'un simulateur physique indépendant, pas des données publiées par Helion.</p>
+</div></div>
+
+<!-- 01 PARADOXE -->
+<section class="alt">
+<div class="container">
+  <div class="stag reveal">01 · Le paradoxe fondamental</div>
+  <h2 class="reveal">Une contrainte physique que<br><em>le changement climatique aggrave</em></h2>
+  <p class="lead reveal">Toute centrale thermique rejette environ deux tiers de son énergie primaire sous forme de chaleur. Cette chaleur doit être absorbée par un fluide caloporteur. Pour la majorité du parc nucléaire français, ce fluide est l'eau d'un fleuve ou de la mer.</p>
+  <p class="body reveal">Le changement climatique ne menace pas directement la capacité de production annuelle du nucléaire. Il introduit une variable que les scénarios énergétiques officiels n'intègrent pas explicitement : la disponibilité estivale des moyens thermiques dépendants de l'eau devient une variable climatique, susceptible de se dégrader précisément lors des épisodes où la demande électrique atteint son maximum.</p>
+  <div class="box box-bleu reveal">
+    <strong>Démonstration expérimentale :</strong> en 2022, l'ASN a dû autoriser le maintien en fonctionnement de cinq réacteurs en modifiant temporairement leurs prescriptions de rejets thermiques. Cet épisode n'est pas une preuve que les centrales fluviales seront indisponibles en 2045. C'est la démonstration que la contrainte climatique peut déjà modifier les conditions réglementaires d'exploitation du parc — et que cette contrainte s'aggravera vraisemblablement. L'IRSN reconnaît explicitement que canicule et sécheresse peuvent conduire à l'étiage, imposer des contraintes d'exploitation et affecter les capacités de refroidissement.
+  </div>
+
+  <h3 class="reveal">La disparition progressive du soutien glaciaire</h3>
+  <p class="body reveal">Le régime hydrologique du Rhône résulte de plusieurs composantes : précipitations, enneigement, fonte glaciaire, affluents, barrages. La composante glaciaire joue un rôle de régulation estivale significatif : en période de faibles précipitations, la fonte des glaciers alpins maintenait historiquement un débit minimal dans le Rhône et ses affluents.</p>
+  <p class="body reveal">Cette composante se réduit structurellement : les glaciers alpins français ont perdu environ 50 % de leur volume depuis 1850, avec une accélération marquée depuis 2000. La diminution de cette contribution réduit progressivement un mécanisme naturel de soutien des débits estivaux, au moment même où l'évapotranspiration augmente et où les besoins en eau concurrents s'intensifient. La Loire n'a jamais bénéficié de soutien glaciaire significatif — elle est déjà en stress hydrologique lors de certains étés.</p>
+
+  <h3 class="reveal">Le piège des tours aéroréfrigérantes</h3>
+  <p class="body reveal">La réponse réglementaire au stress thermique des fleuves a été d'imposer des tours aéroréfrigérantes. Elles réduisent efficacement l'échauffement du fleuve, mais introduisent une contrainte différente : elles fonctionnent par évaporation et consomment définitivement l'eau prélevée. Il faut distinguer soigneusement prélèvement, restitution et consommation nette.</p>
+  <p class="body reveal">EDF indique une consommation nette de l'ordre de 12 à 22 millions de m³/an par réacteur en circuit fermé. Pour une centrale de quatre réacteurs, la consommation nette atteindrait 50 à 90 millions de m³/an — volume prélevé définitivement dans le bassin versant. En situation d'étiage sévère, les tours aggravent le stress hydrique qu'elles sont censées compenser. La réduction progressive du soutien glaciaire réduit la marge disponible pour absorber cette double pression.</p>
+</div>
+</section>
+
+<!-- 02 PUISSANCE GARANTIE -->
+<section>
+<div class="container">
+  <div class="stag reveal">02 · La question centrale</div>
+  <h2 class="reveal">Puissance garantie —<br><em>pas production annuelle</em></h2>
+  <p class="lead reveal">La question pertinente n'est pas « combien de TWh le parc nucléaire produira-t-il en 2045 ? » mais « quelle puissance nucléaire pourrait être considérée comme garantie pendant les épisodes estivaux combinant forte demande, températures élevées et faibles débits ? »</p>
+
+  <div class="box box-rouge reveal">
+    <strong>La corrélation climatique des risques :</strong> une canicule est un événement unique qui dégraderait simultanément plusieurs paramètres du système électrique — demande de climatisation ↑, température des fleuves ↑ et débits ↓, contraintes d'exploitation des centrales fluviales ↑, production hydroélectrique potentiellement ↓, rendement des panneaux photovoltaïques légèrement ↓. Ce n'est pas cinq petits risques séparés. C'est potentiellement un même événement climatique qui dégraderait simultanément plusieurs moyens de production au moment où la demande atteint son maximum. C'est précisément ce type de corrélation que les scénarios raisonnant en production annuelle moyenne ne capturent pas.
+  </div>
+
+  <h3 class="reveal">La fenêtre critique : 19h–22h en canicule</h3>
+  <p class="body reveal">L'épisode le plus tendu n'est pas la journée ensoleillée de juin à 25 °C. C'est la canicule de fin juillet à 38 °C, et plus précisément sa soirée :</p>
+  <ul class="lst reveal">
+    <li>14h–18h : le solaire produit, mais à rendement dégradé (−12 à 25 % à 65–75 °C de température de cellule) ; la climatisation est à son pic ; la couverture est partielle</li>
+    <li>19h–21h : la production solaire s'effondre en une à deux heures</li>
+    <li>19h–23h : la chaleur accumulée dans les bâtiments maintient la demande de climatisation à son maximum encore deux à quatre heures après le coucher du soleil</li>
+    <li>Simultanément dans le scénario tout-BEV : les véhicules rentrent du travail et se branchent massivement, ajoutant une demande de recharge de 3 à 11 kW par véhicule au moment précis où le réseau est le plus tendu</li>
+  </ul>
+  <p class="body reveal">Le relais doit être assuré instantanément par le nucléaire. Mais ce nucléaire est précisément celui qui serait potentiellement contraint ce même jour — étiage, température de fleuve élevée, dérogations réglementaires en cours. Et un réacteur fluvial déjà en dérogation thermique à puissance réduite pendant la journée se trouverait face à deux injonctions contradictoires simultanées : monter en puissance pour compenser la chute du solaire, et maintenir ses contraintes de rejet thermique dans un fleuve encore chaud. Ces deux exigences peuvent être physiquement incompatibles le même soir, sur un réacteur qui aurait en 2045 soixante ans d'âge.</p>
+
+  <div class="box box-vert reveal">
+    <strong>La réponse Résilience — demande évitée passive par l'ÉREV :</strong> le véhicule ÉREV apporte une réponse structurellement différente dans cette même fenêtre. Le Rex se déclenche automatiquement sous le seuil de charge de la batterie : la voiture produit localement son électricité de bord sans prélever sur le réseau. À l'échelle d'un parc significatif de véhicules ÉREV, le mécanisme représente une demande évitée passive de l'ordre de plusieurs dizaines de GW — non pas de l'énergie injectée en V2G, mais simplement de la puissance non prélevée sur un réseau déjà au bord de la rupture. C'est le même événement qui cumule chute du solaire, climatisation maintenue, nucléaire fluvial contraint et recharge BEV massive. Résilience répond à trois de ces quatre facteurs simultanément.
+  </div>
+
+  <p class="body reveal" style="font-size:.82rem;color:rgba(240,244,241,.45);margin-top:-.4rem">Note : les défenseurs du tout-solaire avancent à juste titre que la dégradation thermique du rendement PV en été est compensée en production annuelle par l'allongement des jours. Le bilan en TWh/an reste cohérent. Mais c'est la puissance instantanée — pas la production annuelle — qui détermine si le réseau tient lors d'un épisode critique. L'argument TWh est juste ; l'argument puissance ne l'est pas.</p>
+</div>
+</section>
+
+<!-- 03 PARC ET EPR2 -->
+<section class="alt">
+<div class="container">
+  <div class="stag reveal">03 · Parc existant et renouvellement EPR2</div>
+  <h2 class="reveal">Une pyramide d'âge critique —<br><em>et un renouvellement qui ne supprime pas la contrainte</em></h2>
+
+  <p class="body reveal">Le parc nucléaire français comprend 56 réacteurs répartis sur 18 sites, dont 32 réacteurs du palier 900 MWe représentant 28,8 GW, les autres appartenant aux paliers 1 300 et 1 450 MWe. L'ensemble représente environ 61 GW installés, Flamanville 3 inclus.</p>
+  <p class="body reveal">Le premier programme s'est déployé rapidement : 18 réacteurs étaient en service avant 1981. En 2045, ces 18 réacteurs auraient 64 à 68 ans. L'ensemble des 900 MWe aurait entre 55 et 68 ans. Une fraction importante de la puissance historique aurait dépassé 60 ans, alors même que la planification repose simultanément sur la prolongation du parc existant et sur l'arrivée progressive des EPR2.</p>
+
+  <h3 class="reveal">Vulnérabilité hydrique et âge des sites à l'horizon 2045</h3>
+  <div class="tbl-wrap reveal">
+    <table>
+      <thead><tr><th>Site</th><th>Palier</th><th>Source froide</th><th>Âge en 2045</th><th>Vulnérabilité hydrique</th></tr></thead>
+      <tbody>
+        <tr><td>Gravelines</td><td>900 MW</td><td>Mer du Nord</td><td>60–65 ans</td><td class="td-g">Faible</td></tr>
+        <tr class="tr-alt"><td>Paluel, Penly, Flamanville</td><td>1 300–1 450 MW</td><td>Manche</td><td>40–55 ans</td><td class="td-g">Faible</td></tr>
+        <tr><td>Blayais</td><td>900 MW</td><td>Gironde estuaire</td><td>~65 ans</td><td class="td-a">Modérée</td></tr>
+        <tr class="tr-alt"><td>Cruas</td><td>900 MW</td><td>Rhône aval</td><td>~60 ans</td><td class="td-a">Croissante</td></tr>
+        <tr><td>Tricastin</td><td>900 MW</td><td>Rhône</td><td>~64 ans</td><td class="td-r">Significative</td></tr>
+        <tr class="tr-alt"><td>Bugey</td><td>900 MW</td><td>Rhône/Ain</td><td>66–67 ans</td><td class="td-r">Significative</td></tr>
+        <tr><td>Cattenom</td><td>1 300 MW</td><td>Moselle</td><td>~45 ans</td><td class="td-b">À évaluer</td></tr>
+        <tr class="tr-alt"><td>Chinon, Saint-Laurent, Dampierre, Belleville</td><td>900 MW</td><td>Loire</td><td>60–65 ans</td><td class="td-r">Élevée</td></tr>
+        <tr><td>Golfech</td><td>1 300 MW</td><td>Garonne</td><td>~40 ans</td><td class="td-r">Élevée</td></tr>
+        <tr class="tr-alt"><td>Penly EPR2</td><td>EPR2</td><td>Manche</td><td>Neuf en 2038</td><td class="td-g">Faible</td></tr>
+        <tr><td>Gravelines EPR2</td><td>EPR2</td><td>Mer du Nord</td><td>Neuf</td><td class="td-g">Faible</td></tr>
+        <tr class="tr-alt"><td>Bugey EPR2</td><td>EPR2</td><td>Rhône</td><td>Neuf en 2038</td><td class="td-b">À surveiller</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="body reveal">Ce tableau révèle la double contrainte : les réacteurs qui arrivent en fin de vie sont en partie ceux implantés sur les fleuves les plus vulnérables. Et le renouvellement ne règle pas automatiquement la situation — Bugey est reconduit avec deux EPR2 sur le Rhône, héritant de la contrainte hydrique du bassin alpin dont le soutien glaciaire disparaît.</p>
+  <p class="body reveal">Par ailleurs, huit EPR2 supplémentaires font l'objet d'études de faisabilité sans localisation définitive. La contrainte hydrique conduit logiquement à une préférence de localisation côtière pour ces unités. Cette question ne semble pas posée dans le débat public actuel — elle mériterait de l'être.</p>
+</div>
+</section>
+
+<!-- 04 BILAN PUISSANCE -->
+<section>
+<div class="container">
+  <div class="stag reveal">04 · Bilan de puissance 2045</div>
+  <h2 class="reveal">Ce que les chiffres suggèrent —<br><em>dans les hypothèses du Programme V11</em></h2>
+
+  <p class="body reveal">En intégrant le vieillissement du parc, les incertitudes de prolongation au-delà de 60 ans et la dégradation probable de la disponibilité estivale des sites fluviaux, le Programme Résilience V11 retient comme hypothèse de travail une puissance nucléaire garantie d'environ <strong style="color:#74b9e8">30 GW en 2045</strong> pour l'ensemble du parc historique tous paliers confondus. Ce chiffre est une estimation conservative construite sur la puissance garantie en situation de contrainte simultanée — pas sur la production annuelle moyenne — et non une prévision technique officielle.</p>
+
+  <p class="body reveal">Le programme actuel prévoit 6 EPR2 représentant environ 9 GW supplémentaires, soit ~39 GW de puissance nucléaire garantie en 2045. Dans les hypothèses V11, deux scénarios conduisent à des besoins très différents :</p>
+
+  <div class="tbl-wrap reveal">
+    <table>
+      <thead><tr><th>Scénario</th><th>EPR2</th><th>Puissance nucléaire requise</th><th>Statut</th></tr></thead>
+      <tbody>
+        <tr><td>Tout-BEV</td><td class="td-r">21 EPR2</td><td class="td-r">~61,5 GW</td><td class="td-gr">Besoin calculé V11</td></tr>
+        <tr class="tr-alt"><td>Résilience V11</td><td class="td-g">14 EPR2</td><td class="td-g">~51 GW</td><td class="td-b">Objectif gouvernemental documenté</td></tr>
+        <tr><td><strong>Programme engagé</strong></td><td class="td-a"><strong>6 EPR2</strong></td><td class="td-a"><strong>~39 GW</strong></td><td class="td-gr">Décision actuelle EDF</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="body reveal">Les 14 EPR2 du scénario Résilience correspondent à l'objectif gouvernemental de long terme documenté : 6 EPR2 actuellement engagés, auxquels s'ajouteraient 8 EPR2 d'un second palier prévu dans la stratégie énergie-climat. Ce n'est pas un chiffre calculé par Résilience — c'est la cible officielle que Résilience intègre dans son scénario.</p>
+
+  <div class="tbl-wrap reveal">
+    <table>
+      <thead><tr><th>Scénario avec 14 EPR2</th><th>Puissance disponible</th><th>Besoin estimé V11</th><th>Résultat</th></tr></thead>
+      <tbody>
+        <tr><td>Tout-BEV + 14 EPR2</td><td class="td-b">~51 GW</td><td class="td-r">~61,5 GW</td><td class="td-r">Déficit ~10 GW → fossile probable</td></tr>
+        <tr class="tr-alt"><td>Résilience + 14 EPR2</td><td class="td-b">~51 GW</td><td class="td-g">~51 GW</td><td class="td-g">Couverture cohérente</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="box box-ambre reveal">
+    <strong>Ce que Résilience changerait dans l'équation :</strong> Résilience ne réduirait pas le nombre d'EPR2 construits — il s'alignerait sur l'objectif gouvernemental. Il réduirait le <em>besoin</em> en puissance électrique en couvrant par bio-CH₄ les usages que l'électrification ne pourrait structurellement pas atteindre : mobilité lourde longue distance (~170 TWh), aviation tous segments (~110 TWh), industrie haute température (~25 TWh), tracteurs ÉREV (~12 TWh). Ce faisant, il libérerait la puissance électrique disponible pour les usages où elle est irremplaçable.
+  </div>
+</div>
+</section>
+
+<!-- 05 SMR ET PROSPECTIVE -->
+<section class="alt">
+<div class="container">
+  <div class="stag reveal">05 · SMR et prospective fusion</div>
+  <h2 class="reveal">Flexibilité de localisation —<br><em>et rupture potentielle sur la contrainte hydrique</em></h2>
+
+  <h3 class="reveal">Les SMR : flexibilité réelle, contrainte thermique déplacée</h3>
+  <p class="body reveal">Les SMR sont présentés comme déployables près des usages — datacenters, chauffage urbain, sites industriels isolés. Cette flexibilité est réelle sur le plan électrique. Elle ne supprimerait pas la contrainte thermique : elle en déplacerait l'impact vers des territoires souvent plus vulnérables. Un SMR de 300 MWe devrait évacuer en permanence 550 à 600 MWth. Installé en zone continentale pour alimenter un datacenter — qui a lui-même une consommation d'eau importante — un SMR entrerait en compétition directe avec les usages agricoles et domestiques dans des territoires où cette compétition est déjà vive.</p>
+
+  <h3 class="reveal">Prospective — La fusion FRC : une rupture potentielle</h3>
+  <p class="body reveal">La fusion par confinement à champ renversé (FRC), développée notamment par Helion Energy, pourrait modifier structurellement la contrainte hydrique — non par une meilleure ingénierie du refroidissement, mais par la nature même du cycle énergétique. Si une fraction majoritaire de l'énergie de fusion pouvait être convertie directement en électricité sans passer par un cycle vapeur-turbine, la chaleur résiduelle à évacuer serait sensiblement inférieure à celle d'une centrale thermique conventionnelle. La configuration FRC génère son propre champ magnétique interne (β ~ 1), ce qui réduit significativement le champ nécessaire aux bobines externes.</p>
+  <p class="body reveal">Un simulateur physique indépendant, basé sur les équations de la fusion FRC D-He³, suggère une consommation eau de l'ordre de 58 m³/h pour une machine de 140 MW nets — contre 200 à 400 m³/h pour une centrale nucléaire thermique équivalente, soit un avantage hydrique potentiel d'un facteur 3 à 7. Ces chiffres sont les prédictions du simulateur, pas les données publiées par Helion. Trois conditions resteraient à démontrer expérimentalement : le confinement plasma à la durée nécessaire, la tenue des matériaux de la cavité dans des cycles répétés, et la conversion directe à haut rendement. Si ces verrous étaient levés avant 2032–2035, la fusion FRC constituerait potentiellement la seule technologie de production dense décarbonée structurellement affranchie de la contrainte hydrique continentale.</p>
+</div>
+</section>
+
+<!-- 06 CONCLUSION -->
+<section>
+<div class="container">
+  <div class="stag reveal">06 · Conclusion</div>
+  <h2 class="reveal">Ce que ce raisonnement<br><em>conduit à penser</em></h2>
+
+  <p class="lead reveal">Le changement climatique ne condamnerait pas le nucléaire. Il contraindrait vraisemblablement sa localisation, réduirait sa disponibilité estivale garantie sur les sites continentaux, et plafonnerait son déploiement à un niveau qui, dans les hypothèses V11, semblerait insuffisant pour couvrir seul les besoins d'une économie décarbonée.</p>
+
+  <ol class="concl-list reveal">
+    <li>La puissance nucléaire garantie en 2045 serait vraisemblablement significativement inférieure à la puissance installée actuelle — du fait du vieillissement du parc (18 réacteurs auraient 64 à 68 ans) et de la dégradation probable de la disponibilité estivale des sites fluviaux.</li>
+    <li>Dans les hypothèses V11, les 6 EPR2 actuellement engagés ne sembleraient pas suffire — le déficit serait de l'ordre de 8 unités dans le scénario Résilience, de 15 dans le scénario tout-BEV.</li>
+    <li>Le scénario tout-BEV nécessiterait 7 EPR2 de plus que l'objectif gouvernemental actuel, dans des conditions industrielles et hydriques potentiellement contraignantes — son déficit résiduel serait vraisemblablement comblé par du fossile non décarbonné.</li>
+    <li>Dans les hypothèses retenues par le Programme Résilience V11, Résilience apparaît comme le scénario permettant de rester compatible avec l'objectif gouvernemental de 14 EPR2, les contraintes hydriques de localisation et une décarbonation complète.</li>
+  </ol>
+
+  <div class="box box-bleu reveal" style="margin-top:2rem">
+    <strong>Le critère de résilience :</strong> un système énergétique résilient ne se dimensionnerait pas sur son rendement moyen annuel. Il se dimensionnerait sur sa capacité à maintenir une puissance disponible lorsque plusieurs contraintes physiques surviennent simultanément — ce que la corrélation climatique des risques rend particulièrement critique à l'horizon 2045.
+  </div>
+
+  <div style="margin-top:2.5rem;display:flex;gap:.8rem;flex-wrap:wrap" class="reveal">
+    <a href="resilience_contrainte_hydrique_v4.pdf" target="_blank" class="pdf-btn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+      Télécharger la note complète PDF →
+    </a>
+    <a href="mix-energetique.html" class="btn btn-outline">Mix énergétique 2045 →</a>
+    <a href="fondements.html" class="btn btn-outline">Fondements →</a>
+  </div>
+</div>
+</section>
+
+<footer>
+  <div class="footer-logo">Résilience 2045</div>
+  <p>Contrainte hydrique et puissance estivale garantie · Programme Résilience V11 · Août 2026</p>
+  <p style="font-size:.7rem;color:#3a5044;margin-top:.4rem">Estimations 2045 soumises à validation sectorielle indépendante · Paramètres FRC issus d'un simulateur physique indépendant · Chiffres EPR2 issus des objectifs gouvernementaux documentés · Diffusion libre</p>
+</footer>
+
+<script>
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
