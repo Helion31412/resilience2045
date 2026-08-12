@@ -147,7 +147,7 @@ footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;li
       <div class="chain-arr">→</div>
       <div class="chain-step"><div class="lab">Moteur élec.</div><div class="val">93 %</div><div class="pct">SPMSM</div></div>
       <div class="chain-arr">→</div>
-      <div class="chain-step" style="border-color:var(--vert-vif)"><div class="lab">Traction</div><div class="val">~40–44 %</div><div class="pct">puits-à-roue</div></div>
+      <div class="chain-step" style="border-color:var(--vert-vif)"><div class="lab">Traction</div><div class="val">~32–38 %</div><div class="pct">réservoir→roue</div></div>
     </div>
 
     <div class="tbl-wrap reveal">
@@ -158,9 +158,9 @@ footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;li
           <tr><td>Autonomie électrique quotidienne</td><td class="td-g">110–130 km</td><td>Couvre 90–95 % des trajets quotidiens FR (moyenne 42 km/j) <span class="bq b-ok">✅ INSEE mobilité</span></td></tr>
           <tr><td>Rex Atkinson rendement <span class="bq b-tg">🎯</span></td><td class="td-a">44–48 % actuel · 50–55 % visé 2035</td><td>44–48 % : validé sur architectures série actuelles · 50–55 % : objectif optimisation · Supérieur diesel 38–42 % car régime fixe <span class="bq b-ok">✅ Mécanisme physique</span></td></tr>
           <tr><td>Boîte de vitesses</td><td>2 vitesses</td><td>Élargit la plage de rendement optimal · Différenciateur vs Rex 1 vitesse <span class="bq b-est">🔬</span></td></tr>
-          <tr><td>Émissions NOx</td><td class="td-g">Euro 7 natif</td><td>Combustion CH4 propre · Pas de suies · NOx très bas à température contrôlée · Pas de FAP/SCR <span class="bq b-ok">✅</span></td></tr>
-          <tr><td>Réservoir GNV</td><td>100–120 L · 250 bar</td><td>~19–23 kg bio-CH4 · Autonomie Rex ~490 km · Densité 2,64 kWh/L <span class="bq b-ok">✅ Physique</span></td></tr>
-          <tr><td>Autonomie totale</td><td class="td-g">&gt; 600 km</td><td>Électrique + Rex sans contrainte · Comparable à un thermique actuel <span class="bq b-ok">✅</span></td></tr>
+          <tr><td>Émissions NOx</td><td class="td-a">Euro 7 avec traitement V2.0 / natif V2.2</td><td>V2.0/V2.1 : NOx 0,12–0,15 g/km sans traitement → catalyseur méthane Pd-Rh (~300 €) ou leviers EGR/timing suffisants pour passer sous 0,06 g/km · V2.2 : Euro 7 natif sans SCR ni AdBlue · Zéro particules (pas de FAP) <span class="bq b-est">🔬</span></td></tr>
+          <tr><td>Réservoir GNV</td><td>111–124 L · 250 bar · 7 bouteilles Ø 150 mm</td><td>Berline : 111 L (7 × 0,90 m) · SUV : 124 L (7 × 1,00 m) · ~22–25 kg bio-CH₄ · Intégration sous plancher — analogue skateboard BEV · Autonomie Rex : ~510 km autoroute / ~810 km mixte <span class="bq b-ok">✅ Physique</span> <span class="bq b-est">🔬 Dimensionnement Partie 3bis</span></td></tr>
+          <tr><td>Autonomie totale</td><td class="td-g">~510 km autoroute · ~810 km mixte</td><td>Berline V2.0 · base homogène réservoir→roue · ~510 km à 130 km/h (27 kWh/100 km) · ~810 km usage mixte (17 kWh/100 km) · + 78 km électrique pur inclus · Dépasse le FCEV Mirai dans les deux bases <span class="bq b-ok">✅ Calcul physique</span> <span class="bq b-est">🔬 Tests ADAC Mirai</span></td></tr>
         </tbody>
       </table>
     </div>
@@ -176,9 +176,9 @@ footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;li
       <table>
         <thead><tr><th>Critère</th><th>Thermique diesel</th><th>BEV 60–100 kWh</th><th>ÉREV Bio-GNV</th></tr></thead>
         <tbody>
-          <tr><td>Autonomie</td><td class="td-g">&gt; 600 km</td><td class="td-a">400–600 km (dégradé froid/autoroute)</td><td class="td-g">&gt; 600 km</td></tr>
+          <tr><td>Autonomie</td><td class="td-g">&gt; 600 km</td><td class="td-a">~380–450 km WLTP · ~210–270 km autoroute 130 km/h (réel)</td><td class="td-g">&gt; 600 km</td></tr>
           <tr><td>Recharge/remplissage</td><td class="td-g">3 min</td><td class="td-r">30–90 min (DC rapide)</td><td class="td-g">GNV 3 min · Élec nocturne 2–3 kW (lent, gratuit)</td></tr>
-          <tr><td>CO₂ usage</td><td class="td-r">~130 g/km</td><td>0 (local) · ~50 g/km si mix FR inclus</td><td class="td-g">~10–30 g/km (bio-GNV neutre carbone)</td></tr>
+          <tr><td>CO₂ usage</td><td class="td-r">~130 g/km</td><td>0 (local) · <span class="td-a">+10 à +40 g/km en ACV complète (mix FR 2025, recharge incluse)</span> <span class="bq b-est">🔬</span></td><td class="td-g">~10–30 g/km (bio-GNV neutre carbone)</td></tr>
           <tr><td>Rôle réseau électrique</td><td>Aucun</td><td class="td-r">Appels de puissance massifs aux pics</td><td class="td-g">−40 GW effacés passivement aux pics <span class="bq b-est">🔬</span></td></tr>
           <tr><td>Métaux critiques</td><td class="td-g">Très faibles</td><td class="td-r">Li, Co, Ni élevés · Dépendance Chine</td><td class="td-g">−70–75 % vs BEV</td></tr>
           <tr><td>Infrastructure requise</td><td>Réseau stations existant</td><td class="td-r">Bornes DC 150 kW autoroutières · 30–50 Md€</td><td class="td-g">Réseau GNV existant + prise 2–3 kW nocturne</td></tr>
@@ -233,7 +233,7 @@ footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;li
       <div class="card">
         <div class="num" style="font-size:1.4rem">10–20 h</div>
         <h3>Autonomie en mode groupe</h3>
-        <p>Le réservoir bio-GNV de l'ÉREV (150 L utiles) permet d'alimenter une maison pendant 10 à 20 heures à pleine charge, sans recharge électrique. En hiver, lors d'une coupure réseau, c'est une sécurité énergétique réelle. <span class="bq b-est">🔬 Estimation selon consommation maison</span></p>
+        <p>Le réservoir bio-GNV de l'ÉREV (111–124 L selon gabarit) permet d'alimenter une maison pendant 10 à 20 heures à pleine charge, sans recharge électrique. En hiver, lors d'une coupure réseau, c'est une sécurité énergétique réelle. <span class="bq b-est">🔬 Estimation selon consommation maison</span></p>
       </div>
       <div class="card">
         <div class="num" style="font-size:1.4rem">0 €</div>
@@ -258,7 +258,7 @@ footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;li
     <div class="annexe-ref reveal">
       <strong>Spécifications techniques détaillées — Annexe du Programme Résilience V11 :</strong> les spécifications complètes du moteur Rex (V2.1, V2.2), du système auto-réparable (nettoyage EGR 25 min, bouchon ¼ de tour), des réservoirs Type IV 250 bar, du système de gestion batterie et des courbes de rendement Atkinson sont documentées dans l'Annexe ÉREV V11. Ce document couvre la voiture particulière, le camion et les applications agricoles.
       <a href="Annexe_EREV_V11.pdf" target="_blank" download class="btn btn-outline" style="font-size:.76rem;padding:.6rem 1.4rem;margin-top:.8rem;display:inline-block">⬇ Télécharger l'Annexe ÉREV V11 (PDF)</a>
-      <a href="EREV_Rendements_Comparatif_V2.pdf" target="_blank" download class="btn btn-outline" style="font-size:.76rem;padding:.6rem 1.4rem;margin-top:.8rem;display:inline-block">⬇ Rendements réels &amp; comparatif 5 technologies (PDF)</a>
+      <a href="EREV_Rendements_Comparatif_V5.pdf" target="_blank" download class="btn btn-outline" style="font-size:.76rem;padding:.6rem 1.4rem;margin-top:.8rem;display:inline-block">⬇ Rendements réels &amp; comparatif 5 technologies (PDF)</a>
     </div>
 
     <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap" class="reveal">
