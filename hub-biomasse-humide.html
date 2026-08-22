@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hub Territorial ÉREV — Filière biomasse humide · Programme Résilience</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --noir:#0a0f0d;--foret:#0d1f17;--vert-prof:#1a3a28;--vert-med:#2d6a4f;
+  --vert-vif:#52b788;--vert-clair:#95d5b2;--terre:#a0522d;--ambre:#e9c46a;
+  --rouge:#c0392b;--bleu:#2980b9;--blanc:#f0f4f1;--gris:#8a9e93;
+  --serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--noir);color:var(--blanc);font-family:var(--sans);font-weight:300;line-height:1.7;overflow-x:hidden}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:.9rem 2.5rem;background:rgba(10,15,13,.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(82,183,136,.12)}
+.nav-logo{font-family:var(--serif);font-size:1.15rem;font-weight:600;color:var(--vert-vif);text-decoration:none}
+.nav-tag{font-size:.66rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--gris);border:1px solid rgba(82,183,136,.2);padding:.25rem .75rem}
+.nav-back{font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gris);text-decoration:none;transition:color .3s}
+.nav-back:hover{color:var(--vert-vif)}
+
+section{padding:5.5rem 3rem}
+.container{max-width:1100px;margin:0 auto}
+.stag{font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--vert-vif);margin-bottom:.7rem}
+h1{font-family:var(--serif);font-size:clamp(2.4rem,5vw,4.2rem);font-weight:300;line-height:1.08;margin-bottom:1.2rem}
+h1 em{font-style:italic;color:var(--vert-vif)}
+h2{font-family:var(--serif);font-size:clamp(1.7rem,3vw,2.5rem);font-weight:300;line-height:1.15;margin-bottom:1rem}
+h2 em{font-style:italic;color:var(--vert-vif)}
+h3{font-family:var(--serif);font-size:1.2rem;font-weight:400;margin-bottom:.5rem}
+.lead{font-size:.97rem;color:rgba(240,244,241,.7);max-width:680px;line-height:1.85;margin-bottom:1.8rem}
+.body-text{font-size:.9rem;color:rgba(240,244,241,.7);line-height:1.85;margin-bottom:1rem}
+
+/* HERO */
+#hero{min-height:80vh;display:flex;align-items:center;padding:8rem 3rem 5rem;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 30% 50%,rgba(29,90,54,.32) 0%,transparent 70%),linear-gradient(135deg,#0a0f0d 0%,#0d1f17 50%,#060e09 100%)}
+.hero-grid{position:absolute;inset:0;opacity:.04;background-image:linear-gradient(var(--vert-vif) 1px,transparent 1px),linear-gradient(90deg,var(--vert-vif) 1px,transparent 1px);background-size:55px 55px}
+.hero-content{position:relative;z-index:1;max-width:820px}
+.hero-tag{display:inline-block;border:1px solid var(--ambre);color:var(--ambre);font-size:.67rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:.3rem .85rem;margin-bottom:1.5rem}
+.hero-sub{font-size:.97rem;color:rgba(240,244,241,.65);max-width:620px;line-height:1.85;margin-bottom:2rem}
+.btn{display:inline-block;padding:.72rem 1.6rem;font-family:var(--sans);font-size:.76rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:all .3s}
+.btn-primary{background:var(--vert-vif);color:var(--noir)}
+.btn-primary:hover{background:var(--vert-clair);transform:translateY(-2px)}
+.btn-outline{background:transparent;color:var(--blanc);border:1px solid rgba(240,244,241,.28)}
+.btn-outline:hover{border-color:var(--vert-vif);color:var(--vert-vif);transform:translateY(-2px)}
+.hero-cta{display:flex;gap:.9rem;flex-wrap:wrap}
+.kpi-row{display:flex;gap:3rem;margin-top:3rem;flex-wrap:wrap}
+.kpi{border-left:2px solid var(--vert-vif);padding-left:1.1rem}
+.kpi-num{font-family:var(--serif);font-size:2rem;font-weight:300;color:var(--vert-vif);line-height:1}
+.kpi-lbl{font-size:.68rem;color:var(--gris);letter-spacing:.1em;text-transform:uppercase;margin-top:.2rem}
+
+/* PHILOSOPHIE */
+#philosophie{background:var(--foret)}
+.phil-box{border:1px solid var(--vert-vif);background:rgba(29,58,40,.25);padding:2rem 2.5rem;margin-top:2rem}
+.phil-box h3{font-family:var(--serif);font-size:1.5rem;color:var(--vert-vif);margin-bottom:.9rem}
+.phil-box p{font-size:.9rem;color:rgba(240,244,241,.75);line-height:1.85;margin-bottom:.7rem}
+.phil-box p strong{color:var(--ambre)}
+.phil-chain{margin-top:1.5rem;padding:1.4rem 1.8rem;background:rgba(10,15,13,.5);border-left:3px solid var(--vert-vif)}
+.phil-chain p{font-size:.85rem;color:rgba(240,244,241,.65);line-height:2;font-style:italic}
+
+/* SCHÉMA */
+#schema{background:var(--noir)}
+.schema-wrap{margin-top:2.5rem;border:1px solid rgba(82,183,136,.15);background:rgba(10,15,13,.7);padding:0}
+.schema-header{padding:1rem 1.6rem;background:rgba(29,58,40,.4);border-bottom:1px solid rgba(82,183,136,.12);font-size:.68rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--vert-clair)}
+.schema-body{padding:2rem 2rem}
+.schema-svg-wrap{display:flex;gap:3rem;align-items:flex-start;flex-wrap:wrap}
+.schema-flow{flex:1;min-width:280px}
+.flow-node{display:flex;align-items:stretch;margin-bottom:.4rem}
+.flow-label{flex:1;padding:.7rem 1.1rem;font-size:.82rem;line-height:1.45;color:rgba(240,244,241,.8)}
+.flow-label strong{color:var(--vert-clair);display:block;font-size:.75rem;letter-spacing:.06em;font-weight:500;margin-bottom:.15rem}
+.flow-node.src .flow-label{background:rgba(29,58,40,.5);border:1px solid rgba(82,183,136,.2);border-left:3px solid var(--vert-vif)}
+.flow-node.sep .flow-label{background:rgba(41,128,185,.08);border:1px solid rgba(41,128,185,.2);border-left:3px solid var(--bleu)}
+.flow-node.ch4 .flow-label{background:rgba(82,183,136,.07);border:1px solid rgba(82,183,136,.18);border-left:3px solid var(--vert-vif)}
+.flow-node.co2 .flow-label{background:rgba(149,213,178,.06);border:1px solid rgba(149,213,178,.15);border-left:3px solid var(--vert-clair)}
+.flow-node.bat .flow-label{background:rgba(233,196,106,.07);border:1px solid rgba(233,196,106,.2);border-left:3px solid var(--ambre)}
+.flow-node.out .flow-label{background:rgba(10,15,13,.5);border:1px solid rgba(82,183,136,.1)}
+.flow-arrow{font-size:.8rem;color:var(--vert-vif);padding:.5rem .3rem;display:flex;align-items:center;justify-content:center;min-width:1.4rem}
+.flow-split{display:flex;gap:1rem;margin:.4rem 0}
+.flow-split .flow-node{flex:1}
+.schema-note{margin-top:1.8rem;padding:1rem 1.4rem;background:rgba(233,196,106,.06);border:1px solid rgba(233,196,106,.18);border-left:3px solid var(--ambre)}
+.schema-note p{font-size:.8rem;color:rgba(240,244,241,.65);line-height:1.65}
+.schema-note p strong{color:var(--ambre)}
+
+/* BILAN */
+#bilan{background:var(--foret)}
+.bilan-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;margin-top:2rem;border:1px solid rgba(82,183,136,.1);background:rgba(82,183,136,.1)}
+.bilan-card{padding:1.6rem 1.4rem;background:var(--foret)}
+.bilan-num{font-family:var(--serif);font-size:1.9rem;font-weight:300;line-height:1;margin-bottom:.35rem}
+.bilan-lbl{font-size:.75rem;color:rgba(240,244,241,.55);line-height:1.5;text-transform:uppercase;letter-spacing:.08em}
+.bilan-note{font-size:.72rem;color:var(--gris);margin-top:.4rem;font-style:italic}
+
+/* CO2 HIÉRARCHIE */
+#co2{background:var(--noir)}
+.co2-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem}
+.co2-card{padding:1.8rem 1.6rem;border:1px solid rgba(82,183,136,.12);position:relative}
+.co2-card.prio1{border-color:rgba(82,183,136,.3);background:rgba(29,58,40,.25)}
+.co2-card.prio2{background:rgba(10,15,13,.5)}
+.co2-badge{display:inline-block;font-size:.63rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;padding:.2rem .6rem;margin-bottom:.9rem}
+.prio1 .co2-badge{background:rgba(82,183,136,.15);color:var(--vert-vif);border:1px solid rgba(82,183,136,.3)}
+.prio2 .co2-badge{background:rgba(149,213,178,.08);color:var(--vert-clair);border:1px solid rgba(149,213,178,.2)}
+.co2-card h3{font-size:1rem;color:var(--blanc);margin-bottom:.55rem}
+.co2-card p{font-size:.82rem;color:rgba(240,244,241,.6);line-height:1.65}
+.co2-card ul{list-style:none;margin-top:.7rem}
+.co2-card ul li{font-size:.8rem;color:rgba(240,244,241,.55);padding-left:1.1rem;position:relative;line-height:1.6;margin-bottom:.3rem}
+.co2-card ul li::before{content:'→';position:absolute;left:0;color:var(--vert-vif);font-size:.7rem}
+.co2-annual{margin-top:2rem;border:1px solid rgba(82,183,136,.15);background:rgba(10,15,13,.6);padding:1.6rem 2rem}
+.co2-annual-title{font-size:.68rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--vert-clair);margin-bottom:1.2rem}
+.co2-row{display:flex;align-items:center;gap:1.2rem;margin-bottom:.9rem;padding-bottom:.9rem;border-bottom:1px solid rgba(82,183,136,.07)}
+.co2-row:last-child{border-bottom:none;margin-bottom:0}
+.co2-val{font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--vert-vif);min-width:90px}
+.co2-desc{font-size:.8rem;color:rgba(240,244,241,.6);line-height:1.5}
+.co2-desc strong{color:var(--blanc);font-weight:500}
+.co2-partial{margin-top:1.5rem;padding:1rem 1.4rem;background:rgba(233,196,106,.06);border-left:3px solid var(--ambre);font-size:.8rem;color:rgba(240,244,241,.65);line-height:1.65}
+.co2-partial strong{color:var(--ambre)}
+
+/* ÉCONOMIE */
+#economie{background:var(--foret)}
+.eco-cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.2rem;margin-top:2rem}
+.eco-cat{padding:1.6rem 1.4rem;border:1px solid rgba(82,183,136,.12);background:rgba(10,15,13,.45)}
+.eco-cat-lbl{font-size:.62rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;margin-bottom:.8rem}
+.cat-a .eco-cat-lbl{color:var(--vert-vif)}
+.cat-b .eco-cat-lbl{color:var(--ambre)}
+.cat-d .eco-cat-lbl{color:var(--bleu)}
+.eco-cat-item{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.5rem;padding-bottom:.5rem;border-bottom:1px solid rgba(82,183,136,.07)}
+.eco-cat-item:last-child{border-bottom:none;margin-bottom:0}
+.eco-item-lbl{font-size:.8rem;color:rgba(240,244,241,.6)}
+.eco-item-val{font-family:var(--serif);font-size:1.05rem;font-weight:300;color:var(--vert-clair);white-space:nowrap}
+.eco-total{margin-top:2rem;padding:1.8rem 2rem;border:1px solid rgba(82,183,136,.25);background:rgba(29,58,40,.3)}
+.eco-total-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.9rem}
+.eco-total-row:last-child{margin-bottom:0;padding-top:.9rem;border-top:1px solid rgba(82,183,136,.2)}
+.eco-total-lbl{font-size:.82rem;color:rgba(240,244,241,.65)}
+.eco-total-val{font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--vert-vif)}
+.eco-opex-warn{margin-top:1.5rem;padding:1rem 1.4rem;background:rgba(233,196,106,.06);border-left:3px solid var(--ambre);font-size:.8rem;color:rgba(240,244,241,.6);line-height:1.65}
+.eco-opex-warn strong{color:var(--ambre)}
+
+/* COHÉRENCE */
+#coherence{background:var(--noir)}
+.coh-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2rem}
+.coh-box{padding:1.8rem 1.6rem;border:1px solid rgba(82,183,136,.12)}
+.coh-box.cahier{background:rgba(10,15,13,.6);border-color:rgba(82,183,136,.2)}
+.coh-box.hub{background:rgba(29,58,40,.25);border-color:rgba(82,183,136,.35)}
+.coh-tag{font-size:.63rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--gris);margin-bottom:.9rem}
+.coh-box h3{font-size:1.1rem;color:var(--blanc);margin-bottom:.7rem}
+.coh-box ul{list-style:none}
+.coh-box ul li{font-size:.82rem;color:rgba(240,244,241,.6);padding-left:1.1rem;position:relative;line-height:1.65;margin-bottom:.4rem}
+.coh-box ul li::before{content:'✓';position:absolute;left:0;color:var(--vert-vif);font-size:.7rem}
+.coh-link{margin-top:2rem;padding:1.4rem 1.8rem;border:1px solid rgba(82,183,136,.15);background:rgba(10,15,13,.5);display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.coh-link p{font-size:.85rem;color:rgba(240,244,241,.65);line-height:1.6;max-width:600px}
+.coh-link p strong{color:var(--vert-vif)}
+
+/* DÉMONSTRATEUR */
+#demonstrateur{background:var(--foret)}
+.demo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.2rem;margin-top:2rem}
+.demo-card{padding:1.4rem;border:1px solid rgba(82,183,136,.1);background:rgba(10,15,13,.5)}
+.demo-card h3{font-size:.88rem;color:var(--vert-clair);margin-bottom:.45rem}
+.demo-card p{font-size:.78rem;color:rgba(240,244,241,.55);line-height:1.6}
+
+/* DOCUMENT */
+#document{background:var(--noir)}
+.doc-hero{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;margin-top:2rem}
+.doc-cover{background:rgba(10,15,13,.7);border:1px solid rgba(82,183,136,.2);padding:3rem 2.5rem;text-align:center}
+.doc-cover-title{font-family:var(--serif);font-size:1.6rem;font-weight:300;color:var(--blanc);line-height:1.2;margin-bottom:.5rem}
+.doc-cover-sub{font-size:.8rem;color:var(--gris);margin-bottom:2rem;line-height:1.6}
+.doc-meta{display:flex;flex-direction:column;gap:.5rem;margin-bottom:2rem;text-align:left}
+.doc-meta-row{display:flex;gap:1rem;font-size:.78rem}
+.doc-meta-lbl{color:var(--gris);min-width:90px}
+.doc-meta-val{color:var(--blanc)}
+.doc-info p{font-size:.88rem;color:rgba(240,244,241,.68);line-height:1.85;margin-bottom:1rem}
+.doc-info ul{list-style:none;margin-bottom:1.5rem}
+.doc-info ul li{font-size:.84rem;color:rgba(240,244,241,.65);line-height:1.7;padding-left:1.2rem;position:relative;margin-bottom:.3rem}
+.doc-info ul li::before{content:'→';position:absolute;left:0;color:var(--vert-vif);font-size:.75rem}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+.reveal.visible{opacity:1;transform:none}
+
+footer{background:#050a07;padding:2.5rem 3rem;text-align:center;border-top:1px solid rgba(82,183,136,.08)}
+.footer-logo{font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--vert-vif);margin-bottom:.4rem}
+footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;line-height:1.7}
+
+@media(max-width:700px){
+  nav{padding:.85rem 1.3rem}
+  section{padding:3.5rem 1.4rem}
+  h1{font-size:2.1rem}
+  .co2-grid,.coh-grid,.doc-hero{grid-template-columns:1fr}
+  .flow-split{flex-direction:column}
+}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1J0GBHR98B"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-1J0GBHR98B');
+</script>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo" title="Retour à l'accueil">⌂ Résilience 2045</a>
+  <div style="display:flex;align-items:center;gap:1.2rem">
+    <a href="index.html" style="font-size:.68rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(82,183,136,.6);text-decoration:none;border:1px solid rgba(82,183,136,.2);padding:.2rem .6rem;transition:color .3s" onmouseover="this.style.color='#52b788'" onmouseout="this.style.color='rgba(82,183,136,.6)'">⌂ Accueil</a>
+    <a href="methanisation-reforme.html" style="font-size:.68rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(82,183,136,.6);text-decoration:none;border:1px solid rgba(82,183,136,.2);padding:.2rem .6rem;transition:color .3s" onmouseover="this.style.color='#52b788'" onmouseout="this.style.color='rgba(82,183,136,.6)'">⚗ Réforme filière</a>
+    <span class="nav-tag">Biomasse humide · Hub territorial</span>
+    <a href="documentation.html#documents" class="nav-back">← Retour</a>
+  </div>
+</nav>
+
+<!-- ── HERO ──────────────────────────────────────────────────────────────── -->
+<section id="hero">
+  <div class="hero-bg"></div><div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Démonstrateur · Biomasse humide · Août 2026</div>
+    <h1>Hub territorial ÉREV<br>biomasse humide<br><em>Le Rex comme cogénérateur intégré</em></h1>
+    <p class="hero-sub">Trois exploitations agricoles. Un digesteur. Un GMP ÉREV de voiture compacte reconditionnée. Une batterie. Des serres maraîchères. Chaque flux — électricité, chaleur, CO₂, biométhane, digestat — devient ressource. Aucun sous-produit perdu.</p>
+    <div class="hero-cta">
+      <a href="Hub_Serre_EREV_Biogaz_V84.pdf" class="btn btn-primary" download>⬇ Télécharger le dossier V8.4</a>
+      <a href="#schema" class="btn btn-outline">Voir l'architecture →</a>
+    </div>
+    <div class="kpi-row">
+      <div class="kpi">
+        <div class="kpi-num">~740 k€</div>
+        <div class="kpi-lbl">CAPEX Hub complet · 5 serres</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-num">~247 k€</div>
+        <div class="kpi-lbl">Par exploitant (÷3) · BPI 15 ans</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-num">~114–133 k€</div>
+        <div class="kpi-lbl">Revenus A+B+D / an avant OPEX</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-num">~168 t/an</div>
+        <div class="kpi-lbl">CO₂ biogénique disponible</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PHILOSOPHIE ────────────────────────────────────────────────────────── -->
+<section id="philosophie">
+  <div class="container">
+    <div class="stag reveal">Philosophie fondatrice</div>
+    <h2 class="reveal">Le Hub ne dimensionne pas son énergie<br>sur son ambition agricole —<br><em>il dimensionne son agriculture sur l'énergie produite par son territoire</em></h2>
+
+    <div class="phil-box reveal">
+      <h3>La cascade de valorisation</h3>
+      <p>Le biogaz détermine les quantités de CH₄ et de CO₂ disponibles. Le CH₄ alimente prioritairement le GMP ÉREV lorsque l'énergie est nécessaire. La batterie permet au GMP de fonctionner dans sa zone optimale de rendement. <strong>Le Rex fournit simultanément électricité, chaleur et CO₂ biogénique — c'est un cogénérateur intégré, pas un simple groupe électrogène.</strong></p>
+      <p>Le CO₂ séparé en amont complète cette production et assure la continuité lorsque le Rex est arrêté. Les excédents de CH₄ et de CO₂ peuvent être valorisés à l'extérieur du Hub — cette commercialisation est une possibilité, pas une condition de viabilité.</p>
+      <div class="phil-chain">
+        <p>Biomasse humide → Méthanisation → Séparation CH₄/CO₂<br>
+        → CH₄ pur : GMP ÉREV (cogénération) → électricité + chaleur + CO₂<br>
+        → CO₂ pur : serres (appoint) — excédent commercialisé<br>
+        → CH₄ surplus printemps/été : réseau GRDF (biométhane qualifié)<br>
+        → Digestat : fertilisant certifié (ISE) → cultures → cycle fermé</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SCHÉMA ─────────────────────────────────────────────────────────────── -->
+<section id="schema">
+  <div class="container">
+    <div class="stag reveal">Architecture — schéma fonctionnel</div>
+    <h2 class="reveal">Un système piloté<br><em>par la batterie, pas par l'ambition</em></h2>
+    <p class="lead reveal">Le Rex est esclave de la batterie. Lorsque le SoC descend sous ~20 %, il démarre à régime fixe optimal. Lorsqu'il dépasse ~80-90 %, il s'arrête. C'est le principe ÉREV transposé au stationnaire.</p>
+
+    <div class="schema-wrap reveal">
+      <div class="schema-header">Flux de matière et d'énergie — Hub 3 exploitations · ~180 UGB · 91 000 Nm³/an biogaz</div>
+      <div class="schema-body">
+        <div class="schema-svg-wrap">
+          <div class="schema-flow">
+
+            <div class="flow-node src">
+              <div class="flow-label"><strong>Biomasse humide</strong>1 680 t/an lisier + fumier · 3 exploitations</div>
+            </div>
+            <div class="flow-arrow">↓</div>
+
+            <div class="flow-node src">
+              <div class="flow-label"><strong>Méthaniseur 400 m³</strong>~91 000 Nm³/an biogaz brut · continu 24h/24</div>
+            </div>
+            <div class="flow-arrow">↓</div>
+
+            <div class="flow-node sep">
+              <div class="flow-label"><strong>Désulfuration H₂S + Séparation CO₂/CH₄</strong>Traitement unique en amont · membrane ou PSA · ~30–60 k€</div>
+            </div>
+            <div class="flow-arrow">↓</div>
+
+            <div class="flow-split">
+              <div>
+                <div class="flow-node ch4">
+                  <div class="flow-label"><strong>CH₄ &gt; 97 %</strong>~54 600 Nm³/an · 546 MWh PCI</div>
+                </div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-node ch4">
+                  <div class="flow-label"><strong>GMP ÉREV — Rex 40-45 kW</strong>Voiture compacte reconditionnée · 15–25 k€ · ~4 400 h/an actif</div>
+                </div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-node bat">
+                  <div class="flow-label"><strong>Batterie 40-45 kWh</strong>Bus électrique Hub · SoC 20-80 % · découple Rex des charges variables</div>
+                </div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-node out">
+                  <div class="flow-label"><strong>LED serres</strong>18,6 MWhe/an · hiver nuit</div>
+                </div>
+                <div class="flow-node out">
+                  <div class="flow-label"><strong>PAC + systèmes</strong>~157 MWhe/an · chaleur serres ~40 MWhth/an</div>
+                </div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-node out">
+                  <div class="flow-label"><strong>CO₂ fumées Rex (prioritaire)</strong>~22 kg/h quand Rex actif · ~97 t/an · vers serres d'abord</div>
+                </div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-node out" style="border-left-color:var(--ambre);border-color:rgba(233,196,106,.2);background:rgba(233,196,106,.05)">
+                  <div class="flow-label"><strong style="color:var(--ambre)">CH₄ surplus → réseau GRDF</strong>Scénario ~11 700 Nm³/an printemps/été · ~8 200 €/an (à mesurer)</div>
+                </div>
+              </div>
+              <div>
+                <div class="flow-node co2">
+                  <div class="flow-label"><strong>CO₂ biogénique pur</strong>~36 400 Nm³/an · ~71 t/an · continu 24h/24</div>
+                </div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-node co2">
+                  <div class="flow-label"><strong>Serres — appoint CO₂</strong>Quand Rex arrêté ou pointe surface · enrichissement partiel printemps/été (~544 m² vs 800 m²)</div>
+                </div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-node out" style="border-left-color:var(--ambre);border-color:rgba(233,196,106,.2);background:rgba(233,196,106,.05)">
+                  <div class="flow-label"><strong style="color:var(--ambre)">CO₂ excédent → commercial</strong>Scénario ~60 t/an (hiver + intermédiaire Rex actif) · ~9–12 k€/an (à mesurer)</div>
+                </div>
+                <div class="flow-arrow" style="margin-top:1.5rem">↓</div>
+                <div class="flow-node out">
+                  <div class="flow-label"><strong>Digestat traité</strong>~1 600–1 800 t/an · ISE ~400 t équiv. engrais/an · ~48 k€/an</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="schema-note">
+          <p><strong>Boucle de pilotage :</strong> SoC batterie &lt; 20 % → Rex démarre · SoC &gt; 80–90 % → Rex s'arrête. Ce principe, directement issu de l'architecture ÉREV automobile, dissocie la puissance instantanée demandée par le Hub de la puissance optimale du moteur — c'est l'un des principaux intérêts du transfert de l'architecture ÉREV vers le Hub territorial. La contrainte électrique instantanée de V7.0 ("somme kWe ≤ Rex max") disparaît.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── BILAN ──────────────────────────────────────────────────────────────── -->
+<section id="bilan">
+  <div class="container">
+    <div class="stag reveal">Bilan énergétique — fermé et vérifié</div>
+    <h2 class="reveal">546 MWh CH₄ =<br><em>429 MWh Rex + 117 MWh réseau (scénario)</em></h2>
+    <p class="lead reveal">PCI CH₄ pur = 10 kWh/Nm³ (constante physique). Rex consomme 9,76 Nm³/h × 4 400 h = 42 900 Nm³ = 429 MWh. Électricité 176 MWhe + chaleur 176 MWhth + pertes 77 MWh = 429 ✓</p>
+
+    <div class="bilan-grid reveal">
+      <div class="bilan-card">
+        <div class="bilan-num" style="color:var(--vert-vif)">546 MWh</div>
+        <div class="bilan-lbl">PCI CH₄ disponible après séparation</div>
+        <div class="bilan-note">54 600 Nm³ × 10 kWh/Nm³</div>
+      </div>
+      <div class="bilan-card">
+        <div class="bilan-num" style="color:var(--vert-clair)">176 MWhe</div>
+        <div class="bilan-lbl">Électricité Rex / an · rendement 41 %</div>
+        <div class="bilan-note">40 kWe × 4 400 h</div>
+      </div>
+      <div class="bilan-card">
+        <div class="bilan-num" style="color:var(--vert-clair)">176 MWhth</div>
+        <div class="bilan-lbl">Chaleur récupérable Rex / an</div>
+        <div class="bilan-note">40 kWth × 4 400 h · vers PAC + serres</div>
+      </div>
+      <div class="bilan-card">
+        <div class="bilan-num" style="color:var(--ambre)">4 400 h</div>
+        <div class="bilan-lbl">Heures Rex actif / an</div>
+        <div class="bilan-note">Hiver dominant · quasi à l'arrêt été</div>
+      </div>
+      <div class="bilan-card">
+        <div class="bilan-num" style="color:var(--vert-vif)">~89 t/an</div>
+        <div class="bilan-lbl">CO₂ absorbé serres (bilan saisonnier)</div>
+        <div class="bilan-note">53 t Rex actif + 18 t Rex arrêté + 18 t intermédiaire</div>
+      </div>
+      <div class="bilan-card">
+        <div class="bilan-num" style="color:var(--ambre)">~60 t/an</div>
+        <div class="bilan-lbl">CO₂ excédentaire commercialisable</div>
+        <div class="bilan-note">Scénario hiver + intermédiaire · à mesurer</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CO₂ HIÉRARCHIE ──────────────────────────────────────────────────────── -->
+<section id="co2">
+  <div class="container">
+    <div class="stag reveal">Hiérarchie des sources CO₂</div>
+    <h2 class="reveal">Deux sources complémentaires —<br><em>continuité de l'enrichissement assurée</em></h2>
+    <p class="lead reveal">Le CO₂ des fumées Rex est prioritaire — c'est un co-produit direct de la cogénération. Le CO₂ séparé en amont est la ressource continue — disponible 24h/24 indépendamment du Rex.</p>
+
+    <div class="co2-grid reveal">
+      <div class="co2-card prio1">
+        <div class="co2-badge">Priorité 1 — Fumées Rex</div>
+        <h3>CO₂ combustion CH₄ pur</h3>
+        <p>Disponible quand Rex actif (~4 400 h/an). Après SCR/DOC GMP et refroidissement. Conformité ICPE assurée par la chaîne intégrée au GMP automobile.</p>
+        <ul>
+          <li>~22 kg/h quand Rex tourne</li>
+          <li>Couvre les 800 m² actifs (12 kg/h) + excédent</li>
+          <li>Validation injection serre en Phase 0/FEED</li>
+          <li>V2.2 (2030+) : émissions très réduites nativement</li>
+        </ul>
+      </div>
+      <div class="co2-card prio2">
+        <div class="co2-badge">Priorité 2 — Séparation amont</div>
+        <h3>CO₂ biogénique pur</h3>
+        <p>Disponible en continu 24h/24 — le méthaniseur tourne en permanence, indépendamment du Rex. Sans NOx, CO ni hydrocarbures résiduels.</p>
+        <ul>
+          <li>~8,2 kg/h en continu (36 400 Nm³/an)</li>
+          <li>Appoint Rex actif — seule source Rex arrêté</li>
+          <li>Enrichissement partiel printemps/été si Rex arrêté (~544 m² vs 800 m²)</li>
+          <li>Excédent → commercialisé (serres voisines, liquéfaction)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="co2-annual reveal">
+      <div class="co2-annual-title">Bilan CO₂ saisonnier V8.4</div>
+      <div class="co2-row">
+        <div class="co2-val">97 t/an</div>
+        <div class="co2-desc"><strong>CO₂ Rex disponible</strong> · 22 kg/h × 4 400 h · prioritaire serres</div>
+      </div>
+      <div class="co2-row">
+        <div class="co2-val">71 t/an</div>
+        <div class="co2-desc"><strong>CO₂ séparation disponible</strong> · 8,2 kg/h continu · appoint Rex + seule source Rex arrêté</div>
+      </div>
+      <div class="co2-row">
+        <div class="co2-val">~89 t/an</div>
+        <div class="co2-desc"><strong>Absorbé serres</strong> · Rex actif 53 t + Rex arrêté 18 t + intermédiaire 18 t</div>
+      </div>
+      <div class="co2-row">
+        <div class="co2-val" style="color:var(--ambre)">~60 t/an</div>
+        <div class="co2-desc"><strong>Excédent commercialisable (scénario)</strong> · hiver + intermédiaire Rex actif · 18,2 kg/h × ~3 300 h · à mesurer démonstrateur</div>
+      </div>
+    </div>
+
+    <div class="co2-partial reveal">
+      <strong>CO₂ biogénique ≠ séquestration.</strong> Le CO₂ fourni à la serre est biogénique (cycle court du carbone). Il évite une émission fossile équivalente — bénéfice réel comptabilisé dans l'ICB. Ce n'est pas une séquestration au sens Puro.earth/EBC. Cette distinction est maintenue dans tous les documents institutionnels du Programme Résilience.
+    </div>
+  </div>
+</section>
+
+<!-- ── ÉCONOMIE ───────────────────────────────────────────────────────────── -->
+<section id="economie">
+  <div class="container">
+    <div class="stag reveal">Bilan économique</div>
+    <h2 class="reveal">4 catégories de revenus —<br><em>le Hub viable sans vente des excédents</em></h2>
+    <p class="lead reveal">Les catégories A et B constituent la base du dossier financier. La catégorie D (flux commerciaux CH₄ et CO₂) est un levier nouveau — sa valeur sera mesurée sur démonstrateur.</p>
+
+    <div class="eco-cats reveal">
+      <div class="eco-cat cat-a">
+        <div class="eco-cat-lbl">A — Contractualisable</div>
+        <div class="eco-cat-item">
+          <div class="eco-item-lbl">A1 — Digestat ISE</div>
+          <div class="eco-item-val">48 000 €</div>
+        </div>
+        <div class="eco-cat-item">
+          <div class="eco-item-lbl">A2 — CO₂ serres voisines</div>
+          <div class="eco-item-val">≤ 17 400 €</div>
+        </div>
+        <div class="eco-cat-item" style="border-bottom:none">
+          <div class="eco-item-lbl" style="font-weight:500;color:var(--blanc)">Sous-total A</div>
+          <div class="eco-item-val" style="color:var(--vert-vif)">48–65 k€/an</div>
+        </div>
+      </div>
+      <div class="eco-cat cat-b">
+        <div class="eco-cat-lbl">B — Économies mesurables</div>
+        <div class="eco-cat-item">
+          <div class="eco-item-lbl">B1 — Électricité autoconsommée</div>
+          <div class="eco-item-val">35 200 €</div>
+        </div>
+        <div class="eco-cat-item">
+          <div class="eco-item-lbl">B2 — Chaleur substituée</div>
+          <div class="eco-item-val">3 200 €</div>
+        </div>
+        <div class="eco-cat-item">
+          <div class="eco-item-lbl">B3 — CO₂ liquide évité</div>
+          <div class="eco-item-val">10 400 €</div>
+        </div>
+        <div class="eco-cat-item" style="border-bottom:none">
+          <div class="eco-item-lbl" style="font-weight:500;color:var(--blanc)">Sous-total B</div>
+          <div class="eco-item-val" style="color:var(--ambre)">48 800 €/an</div>
+        </div>
+      </div>
+      <div class="eco-cat cat-d">
+        <div class="eco-cat-lbl">D — Flux commerciaux V8.4 (scénarios)</div>
+        <div class="eco-cat-item">
+          <div class="eco-item-lbl">D1 — CH₄ réseau GRDF</div>
+          <div class="eco-item-val">~8 200 €</div>
+        </div>
+        <div class="eco-cat-item">
+          <div class="eco-item-lbl">D2 — CO₂ excédent (~60 t/an)</div>
+          <div class="eco-item-val">~9–12 k€</div>
+        </div>
+        <div class="eco-cat-item" style="border-bottom:none">
+          <div class="eco-item-lbl" style="font-weight:500;color:var(--blanc)">Sous-total D</div>
+          <div class="eco-item-val" style="color:#2980b9">~17–20 k€/an</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="eco-total reveal">
+      <div class="eco-total-row">
+        <div class="eco-total-lbl">TOTAL A + B + D avant OPEX</div>
+        <div class="eco-total-val">~114–133 k€/an</div>
+      </div>
+      <div class="eco-total-row">
+        <div class="eco-total-lbl">CAPEX Hub complet (5 serres)</div>
+        <div class="eco-total-val">~740 k€</div>
+      </div>
+      <div class="eco-total-row">
+        <div class="eco-total-lbl">Retour brut (avant OPEX)</div>
+        <div class="eco-total-val">~6,9 ans</div>
+      </div>
+      <div class="eco-total-row" style="padding-top:1rem;border-top:1px solid rgba(82,183,136,.2)">
+        <div class="eco-total-lbl" style="color:rgba(240,244,241,.5);font-size:.78rem">Production maraîchère</div>
+        <div style="font-size:.82rem;color:var(--gris);font-style:italic">Levier principal non chiffré — étude agronomique spécifique requise</div>
+      </div>
+    </div>
+
+    <div class="eco-opex-warn reveal">
+      <strong>OPEX non déduit — TRI réel à calculer en phase FEED.</strong> Maintenance Rex, charbon actif H₂S, entretien PAC, assurance multirisque : ~9 500–17 000 €/an. Personnel RE (1 ETP) : ~35 000–50 000 €/an. Total OPEX avec RE : ~44 500–67 000 €/an, soit 35–60 % des revenus A+B+D. Le temps de retour est un indicateur de capacité de remboursement, non un TRI.
+    </div>
+  </div>
+</section>
+
+<!-- ── COHÉRENCE CAHIER DES CHARGES ──────────────────────────────────────── -->
+<section id="coherence">
+  <div class="container">
+    <div class="stag reveal">Cohérence avec le cahier des charges filière</div>
+    <h2 class="reveal">Hub territorial et réforme de la filière —<br><em>deux documents d'un même ensemble</em></h2>
+    <p class="lead reveal">Le Hub V8.4 et le Cahier des charges V2.3 (réforme sans subventions directes) sont complémentaires. Le Hub est le démonstrateur concret du paradigme que le cahier des charges établit à l'échelle nationale.</p>
+
+    <div class="coh-grid reveal">
+      <div class="coh-box cahier">
+        <div class="coh-tag">Cahier des charges V2.3 — cadre national</div>
+        <h3>Ce que la réforme exige</h3>
+        <ul>
+          <li>ICB ≥ 0,85 à 5 ans — valoriser tous les flux</li>
+          <li>CO₂ biogénique tracé en C₂ — plus de rejet systématique</li>
+          <li>Digestat traité — ISE publié annuellement</li>
+          <li>Chaleur valorisée — synergie territoriale contractualisée</li>
+          <li>Hub territorial mutualisé — section 6.2bis</li>
+          <li>RE dédié qualifié CS RUMA — astreinte documentée</li>
+        </ul>
+      </div>
+      <div class="coh-box hub">
+        <div class="coh-tag">Hub V8.4 — démonstrateur territorial</div>
+        <h3>Ce que le Hub démontre</h3>
+        <ul>
+          <li>ICB ~0,92–0,96 (scénario 100 % valorisé) — tous les flux tracés</li>
+          <li>CO₂ valorisé serre (89 t/an) + excédent commercial (~60 t/an)</li>
+          <li>Digestat ~400 t équiv. engrais/an — ~48 k€/an contractualisable</li>
+          <li>Chaleur Rex + PAC → serres + aérotherme été</li>
+          <li>Groupement 3 exploitations — 1 RE dédié — 33–48 h/semaine</li>
+          <li>Eligible BPI bonification +0,5 pt (6 critères à confirmer Phase 0)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="coh-link reveal">
+      <p>Le Hub est la mise en œuvre concrète du changement de paradigme défendu par le Cahier des charges : <strong>la méthanisation comme outil de gestion territoriale des flux organiques</strong>, non comme filière de production d'énergie. Chaque flux produit par le Hub (CH₄, CO₂, chaleur, digestat) est valorisé et tracé — aucun sous-produit rejeté.</p>
+      <a href="methanisation-reforme.html" class="btn btn-outline" style="white-space:nowrap">Lire le cahier des charges →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── DÉMONSTRATEUR ──────────────────────────────────────────────────────── -->
+<section id="demonstrateur">
+  <div class="container">
+    <div class="stag reveal">Rôle du démonstrateur</div>
+    <h2 class="reveal">Valider l'intégration,<br><em>pas le principe</em></h2>
+    <p class="lead reveal">Les briques technologiques existent indépendamment. Le démonstrateur détermine expérimentalement les performances de leur intégration territoriale.</p>
+
+    <div class="demo-grid reveal">
+      <div class="demo-card">
+        <h3>🌾 Gisement réel</h3>
+        <p>Production réelle et saisonnalité du biogaz selon qualité de la biomasse locale.</p>
+      </div>
+      <div class="demo-card">
+        <h3>⚗ Séparation CH₄/CO₂</h3>
+        <p>Performances membrane ou PSA à ~91 000 Nm³/an — débit, qualité, coût réel.</p>
+      </div>
+      <div class="demo-card">
+        <h3>🔧 GMP ÉREV au CH₄</h3>
+        <p>Rendement réel du GMP automobile en conditions stationnaires au CH₄ pur.</p>
+      </div>
+      <div class="demo-card">
+        <h3>🔋 Couple Rex-batterie</h3>
+        <p>Simulation dynamique à valider — cycles charge/décharge réels selon profil Hub.</p>
+      </div>
+      <div class="demo-card">
+        <h3>♨ Récupération thermique</h3>
+        <p>Chaleur récupérable réelle selon profil de charge et saison.</p>
+      </div>
+      <div class="demo-card">
+        <h3>💨 CO₂ fumées Rex</h3>
+        <p>Qualité et disponibilité réelles en conditions stationnaires — validation injection serre.</p>
+      </div>
+      <div class="demo-card">
+        <h3>🌿 Complémentarité CO₂</h3>
+        <p>Fonctionnement opérationnel CO₂ Rex + CO₂ séparation — enrichissement partiel printemps/été.</p>
+      </div>
+      <div class="demo-card">
+        <h3>🥬 Serres réelles</h3>
+        <p>Besoins T°C, CO₂, LED, chaleur selon cultures et saisons — calibrage du modèle.</p>
+      </div>
+      <div class="demo-card">
+        <h3>🌱 Digestat</h3>
+        <p>ISE réel mesuré, qualité, acceptabilité agronomique sur sol normand.</p>
+      </div>
+      <div class="demo-card">
+        <h3>⛽ Débouchés CH₄/CO₂</h3>
+        <p>Conditions GRDF injection discontinue · contacts commerciaux CO₂ · prix réels.</p>
+      </div>
+      <div class="demo-card">
+        <h3>🏗 Coûts réels</h3>
+        <p>CAPEX et OPEX mesurés — GMP reconditionné, séparation, intégration stationnaire.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── DOCUMENT ───────────────────────────────────────────────────────────── -->
+<section id="document">
+  <div class="container">
+    <div class="stag reveal">Documents de référence</div>
+    <h2 class="reveal">Dossier technique complet<br><em>Version 8.4 — Août 2026</em></h2>
+
+    <div class="doc-hero reveal">
+      <div class="doc-cover">
+        <div class="doc-cover-title">Hub Territorial Résilience<br>Module Serres</div>
+        <div class="doc-cover-sub">Biomasse → GMP ÉREV → Batterie → PAC + LED → Serres → Digestat<br>Bilan CH₄ pur · CO₂ saisonnier · 4 catégories économiques</div>
+        <div class="doc-meta">
+          <div class="doc-meta-row"><div class="doc-meta-lbl">Version</div><div class="doc-meta-val">V8.4 — Août 2026</div></div>
+          <div class="doc-meta-row"><div class="doc-meta-lbl">Pages</div><div class="doc-meta-val">13 pages · 7 parties</div></div>
+          <div class="doc-meta-row"><div class="doc-meta-lbl">Revues</div><div class="doc-meta-val">GPT + Gemini · 12 corrections intégrées</div></div>
+          <div class="doc-meta-row"><div class="doc-meta-lbl">Statut</div><div class="doc-meta-val">Document de travail · Programme Résilience V11</div></div>
+        </div>
+        <a href="Hub_Serre_EREV_Biogaz_V84.pdf" class="btn btn-primary" download style="display:block;text-align:center">⬇ Télécharger V8.4 (PDF)</a>
+      </div>
+      <div class="doc-info">
+        <p>Le dossier V8.4 est le document de référence consolidé du Hub territorial biomasse humide. Il intègre les corrections de la revue multi-IA (GPT + Gemini) et le bilan CO₂ saisonnier complet.</p>
+        <ul>
+          <li>Partie 1 — Bilan de conservation énergétique CH₄ pur (PCI 10 kWh/Nm³)</li>
+          <li>Partie 2 — Réemploi du GMP ÉREV automobile · Rex esclave batterie</li>
+          <li>Partie 3 — Traitement des gaz et hiérarchie CO₂ serre (bilan saisonnier)</li>
+          <li>Partie 4 — Serres modulaires en rotation · 3 règles de pilotage</li>
+          <li>Partie 5 — CO₂ biogénique, digestat et valorisation · ICB</li>
+          <li>Partie 6 — Organisation RE, tableau de bord, sécurité SDIS</li>
+          <li>Partie 7 — Bilan économique 4 catégories · comparaison V7.0/V8.4</li>
+        </ul>
+        <p style="margin-top:1.5rem">Le Hub V8.4 est conçu en cohérence avec le <a href="methanisation-reforme.html" style="color:var(--vert-vif)">Cahier des charges filière V2.3</a> et l'Addendum 6.2bis (Hub territorial sécurisé). Il constitue la filière biomasse humide du Programme Résilience, complémentaire de la filière biomasse sèche (pyrogazification + Sabatier).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Résilience 2045</div>
+  <p>Programme de transition énergétique — Filière biomasse humide · Hub territorial ÉREV</p>
+  <p style="margin-top:.5rem">Document de travail non commercial · V8.4 · Août 2026 · Programme Résilience V11</p>
+  <p style="margin-top:.8rem"><a href="index.html" style="color:var(--vert-vif);text-decoration:none">← Retour à l'accueil</a> · <a href="methanisation-reforme.html" style="color:var(--vert-vif);text-decoration:none">Réforme filière →</a> · <a href="documentation.html" style="color:var(--vert-vif);text-decoration:none">Documentation →</a></p>
+</footer>
+
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, {threshold:.12});
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
