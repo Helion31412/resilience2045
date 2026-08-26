@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agriculture, mosaïque & biodiversité — Programme Résilience 2045</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<!-- Google tag -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1J0GBHR98B"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-1J0GBHR98B');</script>
+<style>
+:root{
+  --noir:#0a0f0d;--foret:#0d1f17;--vert-vif:#52b788;--vert-clair:#95d5b2;
+  --ambre:#e9c46a;--rouge:#c0392b;--bleu:#2980b9;--blanc:#f0f4f1;--gris:#8a9e93;
+  --serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--noir);color:var(--blanc);font-family:var(--sans);font-weight:300;line-height:1.7;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:.9rem 2.5rem;background:rgba(10,15,13,.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(82,183,136,.12)}
+.nav-logo{font-family:var(--serif);font-size:1.15rem;font-weight:600;color:var(--vert-vif);text-decoration:none}
+.nav-back{font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gris);text-decoration:none;transition:color .3s}.nav-back:hover{color:var(--vert-vif)}
+.nav-tag{font-size:.66rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--gris);border:1px solid rgba(82,183,136,.2);padding:.25rem .75rem}
+
+/* SECTIONS */
+section{padding:5.5rem 3rem}
+.container{max-width:1100px;margin:0 auto}
+.stag{font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--vert-vif);margin-bottom:.7rem}
+h1{font-family:var(--serif);font-size:clamp(2.2rem,4.5vw,3.6rem);font-weight:300;line-height:1.08;margin-bottom:1.2rem}
+h1 em{font-style:italic;color:var(--vert-vif)}
+h2{font-family:var(--serif);font-size:clamp(1.5rem,2.8vw,2.2rem);font-weight:300;line-height:1.15;margin-bottom:1rem}
+h2 em{font-style:italic;color:var(--vert-vif)}
+.lead{font-size:.97rem;color:rgba(240,244,241,.7);max-width:700px;line-height:1.85;margin-bottom:1.8rem}
+p{font-size:.9rem;color:rgba(240,244,241,.72);line-height:1.85;margin-bottom:1rem}
+strong{color:var(--blanc);font-weight:500}
+
+/* BOUTONS */
+.btn{display:inline-block;padding:.72rem 1.6rem;font-family:var(--sans);font-size:.76rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:all .3s}
+.btn-primary{background:var(--vert-vif);color:var(--noir)}.btn-primary:hover{background:var(--vert-clair);transform:translateY(-2px)}
+.btn-outline{background:transparent;color:var(--blanc);border:1px solid rgba(240,244,241,.28)}.btn-outline:hover{border-color:var(--vert-vif);color:var(--vert-vif);transform:translateY(-2px)}
+.btn-row{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.2rem}
+
+/* HERO */
+#hero{min-height:75vh;display:flex;align-items:center;padding:8rem 3rem 5rem;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 65% 55% at 30% 50%,rgba(29,90,54,.35) 0%,transparent 70%),linear-gradient(135deg,#0a0f0d 0%,#0d1f17 50%,#060e09 100%)}
+.hero-grid{position:absolute;inset:0;opacity:.04;background-image:linear-gradient(var(--vert-vif) 1px,transparent 1px),linear-gradient(90deg,var(--vert-vif) 1px,transparent 1px);background-size:55px 55px}
+.kpi-row{display:flex;gap:2.5rem;margin-top:2.5rem;flex-wrap:wrap}
+.kpi{border-left:2px solid var(--rouge);padding-left:1rem}
+.kpi.a{border-color:var(--ambre)}
+.kpi.g{border-color:var(--vert-vif)}
+.kpi-num{font-family:var(--serif);font-size:1.9rem;color:var(--rouge);line-height:1}
+.kpi.a .kpi-num{color:var(--ambre)}
+.kpi.g .kpi-num{color:var(--vert-vif);font-size:1.1rem;line-height:1.3}
+.kpi-lbl{font-size:.68rem;color:var(--gris);text-transform:uppercase;letter-spacing:.1em;margin-top:.2rem}
+
+/* ENCART THESE */
+.these-box{border-left:4px solid var(--vert-vif);background:rgba(29,58,40,.22);border:1px solid rgba(82,183,136,.2);border-left:4px solid var(--vert-vif);padding:1.8rem 2.2rem;margin:2rem 0}
+.these-box p{font-family:var(--serif);font-size:1.15rem;font-weight:400;color:var(--blanc);line-height:1.7;font-style:italic;margin:0}
+
+/* GRILLE MILIEUX */
+.milieux-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:2rem}
+.milieu-card{padding:1.8rem;border:1px solid rgba(82,183,136,.14);background:rgba(13,31,23,.6);position:relative}
+.milieu-card.rouge{border-color:rgba(192,57,43,.3);background:rgba(192,57,43,.06)}
+.milieu-card.ambre{border-color:rgba(233,196,106,.3);background:rgba(233,196,106,.05)}
+.milieu-card.vert{border-color:rgba(82,183,136,.3);background:rgba(29,58,40,.25)}
+.milieu-icon{font-size:2rem;margin-bottom:.7rem}
+.milieu-card h3{font-family:var(--serif);font-size:1.05rem;margin-bottom:.5rem}
+.milieu-card.rouge h3{color:#f1948a}
+.milieu-card.ambre h3{color:var(--ambre)}
+.milieu-card.vert h3{color:var(--vert-clair)}
+.milieu-stat{font-family:var(--serif);font-size:1.6rem;font-weight:300;line-height:1;margin:-.2rem 0 .5rem}
+.milieu-card.rouge .milieu-stat{color:var(--rouge)}
+.milieu-card.ambre .milieu-stat{color:var(--ambre)}
+.milieu-card.vert .milieu-stat{color:var(--vert-vif)}
+.milieu-card p{font-size:.82rem;color:rgba(240,244,241,.6);line-height:1.65;margin:0}
+.milieu-cause{margin-top:.85rem;font-size:.72rem;padding:.3rem .85rem;border-radius:20px;display:inline-block;font-weight:500}
+.milieu-card.rouge .milieu-cause{background:rgba(192,57,43,.2);color:#f1948a;border:1px solid rgba(192,57,43,.4)}
+.milieu-card.ambre .milieu-cause{background:rgba(233,196,106,.15);color:var(--ambre);border:1px solid rgba(233,196,106,.35)}
+.milieu-card.vert .milieu-cause{background:rgba(82,183,136,.15);color:var(--vert-vif);border:1px solid rgba(82,183,136,.35)}
+
+/* ÉTUDES */
+.etudes-list{margin-top:1.5rem;display:flex;flex-direction:column;gap:.9rem}
+.etude-item{display:flex;gap:1.2rem;align-items:flex-start;padding:.9rem 1.1rem;border:1px solid rgba(82,183,136,.1);background:rgba(13,31,23,.5)}
+.etude-badge{flex-shrink:0;font-size:.62rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:.3rem .7rem;border-radius:2px;background:rgba(82,183,136,.15);color:var(--vert-vif);border:1px solid rgba(82,183,136,.25);white-space:nowrap;align-self:flex-start;margin-top:.15rem}
+.etude-badge.r{background:rgba(192,57,43,.15);color:#f1948a;border-color:rgba(192,57,43,.3)}
+.etude-badge.a{background:rgba(233,196,106,.12);color:var(--ambre);border-color:rgba(233,196,106,.3)}
+.etude-text{font-size:.84rem;color:rgba(240,244,241,.7);line-height:1.7;margin:0}
+.etude-text strong{color:var(--blanc)}
+
+/* CAUSES 2 COLONNES */
+.causes-layout{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:2rem;align-items:start}
+.cause-col h3{font-family:var(--serif);font-size:1.1rem;margin-bottom:1rem;padding-bottom:.5rem;border-bottom:2px solid}
+.cause-col.rouge h3{color:var(--rouge);border-color:var(--rouge)}
+.cause-col.vert h3{color:var(--vert-vif);border-color:var(--vert-vif)}
+.cause-item{display:flex;gap:.8rem;margin-bottom:.85rem;align-items:flex-start}
+.cause-dot{width:6px;height:6px;border-radius:50%;margin-top:.55rem;flex-shrink:0}
+.rouge .cause-dot{background:var(--rouge)}
+.vert .cause-dot{background:var(--vert-vif)}
+.cause-item p{font-size:.84rem;color:rgba(240,244,241,.65);line-height:1.65;margin:0}
+.cause-item p strong{color:var(--blanc);font-weight:500}
+
+/* BOUCLE RÉSILIENCE */
+.boucle{display:flex;align-items:center;flex-wrap:wrap;gap:0;margin:2rem 0}
+.boucle-step{flex:1;min-width:120px;text-align:center;padding:1.2rem .8rem;border:1px solid rgba(82,183,136,.2);background:rgba(13,31,23,.7);position:relative}
+.boucle-step .b-icon{font-size:1.6rem;margin-bottom:.4rem}
+.boucle-step .b-label{font-size:.72rem;color:var(--vert-clair);font-weight:500;line-height:1.3}
+.boucle-step .b-sub{font-size:.66rem;color:var(--gris);margin-top:.25rem;line-height:1.3}
+.boucle-arrow{font-size:1.2rem;color:rgba(82,183,136,.5);padding:0 .2rem;flex-shrink:0;align-self:center}
+
+/* SOURCES BIOMASSE */
+.sources-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-top:1.5rem}
+.source-item{padding:1.2rem 1.4rem;border:1px solid rgba(82,183,136,.14);background:rgba(13,31,23,.55);display:flex;gap:.9rem;align-items:flex-start}
+.source-icon{font-size:1.3rem;flex-shrink:0;margin-top:.1rem}
+.source-text h4{font-family:var(--serif);font-size:.95rem;color:var(--vert-clair);margin-bottom:.3rem}
+.source-text p{font-size:.78rem;color:rgba(240,244,241,.55);line-height:1.6;margin:0}
+
+/* ENCART RÈGLE */
+.regle-box{border:1px solid var(--ambre);background:rgba(233,196,106,.06);padding:1.8rem 2.2rem;margin:2rem 0}
+.regle-box h3{font-family:var(--serif);font-size:1.15rem;color:var(--ambre);margin-bottom:.8rem}
+.regle-box p{font-size:.88rem;color:rgba(240,244,241,.72);line-height:1.85;margin:0}
+.regle-box p strong{color:var(--ambre)}
+
+/* CONCLUSION */
+.concl-box{margin-top:2rem;padding:2rem 2.4rem;border-left:4px solid var(--vert-vif);background:rgba(29,58,40,.22);border:1px solid rgba(82,183,136,.2);border-left:4px solid var(--vert-vif)}
+.concl-box h3{font-family:var(--serif);font-size:1.2rem;color:var(--vert-vif);margin-bottom:.8rem}
+.concl-box p{font-size:.9rem;color:rgba(240,244,241,.75);line-height:1.9;margin-bottom:.7rem}
+.concl-box p:last-child{margin:0}
+.concl-final{font-family:var(--serif);font-size:1.25rem;font-style:italic;color:var(--vert-clair);line-height:1.55;margin-top:1.2rem!important;padding-top:1rem;border-top:1px solid rgba(82,183,136,.2)}
+
+/* DOC BOX */
+.doc-box{display:grid;grid-template-columns:1fr 2fr;gap:2.5rem;align-items:center;margin-top:2.5rem;padding:2rem;border:1px solid rgba(82,183,136,.2);background:rgba(13,31,23,.5)}
+.doc-cover{background:rgba(10,15,13,.7);border:1px solid rgba(82,183,136,.25);padding:2rem 1.5rem;text-align:center}
+.doc-title{font-family:var(--serif);font-size:1.1rem;font-weight:300;color:var(--blanc);line-height:1.35;margin-bottom:.4rem}
+.doc-sub{font-size:.74rem;color:var(--gris);margin-bottom:1.5rem;line-height:1.5}
+.doc-info h3{font-family:var(--serif);font-size:1.25rem;color:var(--vert-clair);margin-bottom:.8rem}
+.doc-info p{font-size:.88rem;color:rgba(240,244,241,.65);line-height:1.8;margin-bottom:.8rem}
+
+/* REFS */
+.refs-list{margin-top:1.5rem;display:flex;flex-direction:column;gap:.5rem}
+.ref-item{font-size:.78rem;color:rgba(240,244,241,.45);line-height:1.6;padding-left:1rem;position:relative}
+.ref-item::before{content:'·';position:absolute;left:0;color:var(--vert-vif)}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+.reveal.visible{opacity:1;transform:none}
+
+/* FOOTER */
+footer{background:#050a07;padding:2rem 3rem;text-align:center;border-top:1px solid rgba(82,183,136,.08)}
+.footer-logo{font-family:var(--serif);font-size:1.4rem;font-weight:300;color:var(--vert-vif);margin-bottom:.3rem}
+footer p{font-size:.75rem;color:var(--gris);max-width:600px;margin:.3rem auto}
+
+/* RESPONSIVE */
+@media(max-width:700px){
+  nav{padding:.85rem 1.3rem}
+  section{padding:3.5rem 1.4rem}
+  .milieux-grid{grid-template-columns:1fr}
+  .causes-layout{grid-template-columns:1fr}
+  .doc-box{grid-template-columns:1fr}
+  .boucle{flex-direction:column;align-items:stretch}
+  .boucle-arrow{transform:rotate(90deg);text-align:center}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo" title="Retour à l'accueil">⌂ Résilience 2045</a>
+  <div style="display:flex;align-items:center;gap:1.2rem">
+    <a href="index.html" style="font-size:.68rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(82,183,136,.6);text-decoration:none;border:1px solid rgba(82,183,136,.2);padding:.2rem .6rem;transition:color .3s" onmouseover="this.style.color='#52b788'" onmouseout="this.style.color='rgba(82,183,136,.6)'">⌂ Accueil</a>
+    <span class="nav-tag">Agriculture & Biodiversité</span>
+    <a href="biodiversite.html" class="nav-back">← Biodiversité & Climat</a>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section id="hero">
+  <div class="hero-bg"></div><div class="hero-grid"></div>
+  <div class="container" style="position:relative;z-index:1">
+    <div style="display:inline-block;border:1px solid rgba(82,183,136,.4);color:var(--vert-vif);font-size:.67rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:.3rem .85rem;margin-bottom:1.5rem">Synthèse scientifique · Août 2026</div>
+    <h1>La biodiversité agricole :<br><em>victime de l'intensification,<br>victime de l'abandon</em><br>— et si la solution était ailleurs ?</h1>
+    <p class="lead">Ni l'agriculture intensive ni le retrait de l'activité humaine ne constituent des voies crédibles pour restaurer la biodiversité des paysages agricoles. La solution passe par la reconstitution d'une mosaïque hétérogène gérée — et par la création d'une valeur économique qui rende cet entretien rationnel.</p>
+    <div style="display:flex;gap:.9rem;flex-wrap:wrap">
+      <a href="#diagnostic" class="btn btn-primary">Lire l'analyse →</a>
+      <a href="biodiversite_resilience_v3.pdf" class="btn btn-outline" target="_blank" download>⬇ Télécharger le document PDF</a>
+    </div>
+    <div class="kpi-row">
+      <div class="kpi"><div class="kpi-num">−27 %</div><div class="kpi-lbl">oiseaux des milieux agricoles<br>en Europe (1990–2019)</div></div>
+      <div class="kpi"><div class="kpi-num">−25 %</div><div class="kpi-lbl">papillons de prairie<br>en Europe (1990–2019)</div></div>
+      <div class="kpi a"><div class="kpi-num">30 %</div><div class="kpi-lbl">terres agricoles UE classées<br>à haute valeur naturelle (HNV)</div></div>
+      <div class="kpi g"><div class="kpi-num">L'homogénéisation<br>des milieux</div><div class="kpi-lbl">est l'ennemi — pas<br>l'activité agricole elle-même</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== THÈSE CENTRALE ===== -->
+<section id="these" style="background:var(--foret)">
+  <div class="container">
+    <div class="stag reveal">Le fil directeur</div>
+    <h2 class="reveal">Une observation qui devient<br><em>une question scientifique</em></h2>
+    <p class="lead reveal">Dans les campagnes françaises des années 1950–1970, les prairies, les haies, les bosquets, les cultures et les zones ouvertes se succédaient en une mosaïque dense et variée. Les papillons, les oiseaux et les insectes y étaient abondants. Ce souvenir n'est pas une preuve scientifique — mais il pose une question qui, elle, peut être étudiée rigoureusement.</p>
+
+    <div class="these-box reveal">
+      <p>Quelles caractéristiques de ces paysages permettaient à une biodiversité aussi abondante d'exister ? Et pourquoi leur transformation — par l'intensification d'un côté, par l'abandon de l'autre — a-t-elle accompagné le déclin de nombreuses espèces ?</p>
+    </div>
+
+    <p class="reveal">La littérature scientifique apporte des éléments convergents : la diversité biologique des territoires agricoles dépend fortement de l'<strong>hétérogénéité des habitats</strong> et de la présence d'une <strong>mosaïque de milieux</strong>. C'est cette hétérogénéité — et non l'absence d'activité humaine — qui produit la richesse biologique.</p>
+  </div>
+</section>
+
+<!-- ===== DIAGNOSTIC : LES DEUX EXTRÊMES ===== -->
+<section id="diagnostic" style="background:var(--noir)">
+  <div class="container">
+    <div class="stag reveal">Première partie — Diagnostic</div>
+    <h2 class="reveal">L'échec des deux extrêmes —<br><em>intensification et abandon</em></h2>
+
+    <div class="milieux-grid reveal">
+      <div class="milieu-card rouge">
+        <div class="milieu-icon">🌾</div>
+        <h3>L'intensification agricole</h3>
+        <div class="milieu-stat">−27 % oiseaux</div>
+        <p>Arrachage des haies, drainage des zones humides, remembrement, pesticides, spécialisation des exploitations. Chacune de ces évolutions a réduit l'hétérogénéité des milieux. Les déclins ne s'expliquent pas par l'activité agricole en elle-même, mais par l'<strong>homogénéisation des paysages</strong> qu'elle a produite.</p>
+        <span class="milieu-cause">Cause : homogénéisation par uniformisation</span>
+      </div>
+      <div class="milieu-card rouge">
+        <div class="milieu-icon">🌿</div>
+        <h3>Le retrait de l'activité humaine</h3>
+        <div class="milieu-stat">−25 % papillons</div>
+        <p>La fermeture progressive des milieux ouverts favorise les espèces forestières mais détruit les espèces des milieux ouverts et semi-ouverts — souvent les plus rares. L'abandon favorise également l'installation des plantes invasives et réduit la richesse spécifique globale.</p>
+        <span class="milieu-cause">Cause : homogénéisation par fermeture</span>
+      </div>
+      <div class="milieu-card ambre">
+        <div class="milieu-icon">📋</div>
+        <h3>Les mesures agro-environnementales</h3>
+        <div class="milieu-stat">3 décennies</div>
+        <p>Introduites pour compenser l'entretien du paysage par des subventions. Résultat partiel : elles apportent une compensation sans modifier la logique économique fondamentale de l'exploitation. <strong>L'entretien demeure un coût supporté, pas une ressource valorisée.</strong></p>
+        <span class="milieu-cause">Limite : compensation sans changement de logique</span>
+      </div>
+      <div class="milieu-card vert">
+        <div class="milieu-icon">🗺️</div>
+        <h3>La mosaïque hétérogène gérée</h3>
+        <div class="milieu-stat">HNV : 30 % UE</div>
+        <p>Les terres agricoles à haute valeur naturelle (HNV farmland) — où l'agriculture extensive maintient une mosaïque de milieux — sont parmi les plus riches en espèces du continent. C'est la structure du milieu, sa <strong>diversité interne</strong>, qui détermine la richesse spécifique.</p>
+        <span class="milieu-cause">Solution : hétérogénéité active</span>
+      </div>
+    </div>
+
+    <!-- Études -->
+    <div class="stag reveal" style="margin-top:3rem">Ce que les études montrent</div>
+    <div class="etudes-list reveal">
+      <div class="etude-item">
+        <span class="etude-badge">Bignal & McCracken 2000</span>
+        <p class="etude-text">Les systèmes agricoles traditionnels européens à faible intensité comptent parmi les milieux les plus riches en espèces du continent — grâce à la mosaïque de milieux ouverts, semi-ouverts et de lisières.</p>
+      </div>
+      <div class="etude-item">
+        <span class="etude-badge r">AEE 1990–2019</span>
+        <p class="etude-text"><strong>−27 %</strong> pour les oiseaux des milieux agricoles, <strong>+5 %</strong> pour les oiseaux forestiers sur la même période. <strong>−25 %</strong> pour les papillons de prairie dans 17 pays européens.</p>
+      </div>
+      <div class="etude-item">
+        <span class="etude-badge r">Env. Conservation 2015</span>
+        <p class="etude-text">Les espèces associées aux milieux ouverts enregistrent les déclins les plus marqués lors de la fermeture progressive des paysages, tandis que les espèces forestières progressent. La richesse spécifique globale diminue.</p>
+      </div>
+      <div class="etude-item">
+        <span class="etude-badge r">Landscape Ecology 2025</span>
+        <p class="etude-text">La fermeture des milieux est fortement associée à l'installation d'espèces végétales exotiques, susceptible de réduire significativement les bénéfices attendus pour la biodiversité locale.</p>
+      </div>
+      <div class="etude-item">
+        <span class="etude-badge a">Scientific Reports 2019</span>
+        <p class="etude-text">En Espagne, la perte de 1,1 million d'hectares de jachères en 15 ans est directement corrélée à l'effondrement des oiseaux céréaliers dont l'outarde canepetière.</p>
+      </div>
+      <div class="etude-item">
+        <span class="etude-badge">INRAE / Nature Ecol. & Evol. 2024</span>
+        <p class="etude-text">Analyse de 263 espèces d'oiseaux et 144 espèces de papillons sur 20 000+ sites dans 26 pays : les politiques actuelles — même les plus ambitieuses — ne suffisent pas à enrayer les déclins projetés d'ici 2050. La pression combinée des deux extrêmes persiste.</p>
+      </div>
+    </div>
+
+    <div class="these-box reveal" style="margin-top:2.5rem">
+      <p>L'ennemi de la biodiversité agricole est l'homogénéisation des milieux — qu'elle soit produite par l'intensification ou par la fermeture progressive des espaces ouverts. Pas l'activité agricole en elle-même.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== IMPASSE ÉCONOMIQUE ===== -->
+<section id="impasse" style="background:var(--foret)">
+  <div class="container">
+    <div class="stag reveal">Le nœud du problème</div>
+    <h2 class="reveal">Pourquoi l'agriculture traditionnelle<br><em>entretenait la mosaïque</em></h2>
+    <p class="lead reveal">L'agriculture traditionnelle n'était pas animée d'une conscience écologique avant la lettre. Elle produisait une mosaïque remarquable parce que chacun de ses éléments avait une <strong>valeur productive directe et immédiate</strong>.</p>
+
+    <div class="causes-layout reveal">
+      <div class="cause-col vert">
+        <h3>Ce que chaque élément produisait</h3>
+        <div class="cause-item"><div class="cause-dot"></div><p><strong>La haie</strong> — bois de chauffage et de taille, protection du bétail contre le vent, régulation des ruissellements, délimitation des parcours.</p></div>
+        <div class="cause-item"><div class="cause-dot"></div><p><strong>La prairie permanente</strong> — substrat de l'élevage extensif, foin de qualité issu d'une fauche tardive qui laissait aux espèces le temps de se reproduire.</p></div>
+        <div class="cause-item"><div class="cause-dot"></div><p><strong>La jachère tournante</strong> — reconstruction de la fertilité des sols sans intrant chimique, habitat temporaire à une faune abondante.</p></div>
+        <div class="cause-item"><div class="cause-dot"></div><p><strong>Le taillis et les lisières boisées</strong> — matériaux de construction, litière pour les animaux, régulation thermique des bâtiments.</p></div>
+        <div class="cause-item"><div class="cause-dot"></div><p style="font-style:italic;color:rgba(240,244,241,.85)"><strong>L'entretien était rémunéré par l'usage.</strong> Ce n'était pas un coût — c'était une production. La biodiversité en était le sous-produit abondant.</p></div>
+      </div>
+      <div class="cause-col rouge">
+        <h3>Ce que la modernisation a supprimé</h3>
+        <div class="cause-item"><div class="cause-dot"></div><p><strong>La haie</strong> — sans bétail, elle gêne les engins. Sans valeur de bois, elle est un coût pur. L'arrachage devient rationnel.</p></div>
+        <div class="cause-item"><div class="cause-dot"></div><p><strong>La jachère</strong> — la fertilité chimique la rend inutile, donc coûteuse en surface non productive. Elle disparaît.</p></div>
+        <div class="cause-item"><div class="cause-dot"></div><p><strong>Le bois de haie</strong> — le chauffage au fioul supprime sa valeur marchande. L'entretien des taillis devient une charge pure.</p></div>
+        <div class="cause-item"><div class="cause-dot"></div><p><strong>La main-d'œuvre</strong> — 2 millions d'exploitations dans les années 1960, moins de 400 000 aujourd'hui. Cette démographie ne reviendra pas.</p></div>
+        <div class="cause-item"><div class="cause-dot"></div><p style="color:rgba(240,244,241,.85)"><strong>Les MAE</strong> tentent de compenser ce coût par des subventions. Trois décennies après, le résultat est partiel : la logique économique n'est pas modifiée.</p></div>
+      </div>
+    </div>
+
+    <div class="regle-box reveal" style="margin-top:2.5rem">
+      <h3>La question centrale</h3>
+      <p>Comment recréer les conditions économiques dans lesquelles l'entretien de la mosaïque paysagère redevient rationnel pour un agriculteur moderne — <strong>sans reconstituer une structure d'exploitation du passé</strong> ?</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LA RUPTURE RÉSILIENCE ===== -->
+<section id="resilience" style="background:var(--noir)">
+  <div class="container">
+    <div class="stag reveal">Deuxième partie — La solution</div>
+    <h2 class="reveal">Résilience 2045 : réintroduire<br><em>une valeur économique à l'entretien du territoire</em></h2>
+    <p class="lead reveal">La valorisation de la biomasse résiduelle par pyrogazéification modifie la logique économique de l'entretien du territoire. Elle transforme une dépense en ressource valorisable — au service d'un objectif premier : la restauration du système climatique par décarbonation de l'énergie et séquestration durable du carbone.</p>
+
+    <p class="reveal">Les éléments constitutifs de la mosaïque paysagère — haies, taillis de lisière, résidus de fauche tardive, bandes enherbées, rémanents, bois de taille — sont précisément la <strong>biomasse résiduelle disponible sur l'exploitation agricole</strong>, jusqu'alors sans débouché économique viable.</p>
+
+    <p class="reveal">L'agriculteur qui entretient ses haies, gère ses bandes enherbées et réalise une fauche tardive de ses prairies ne le fait plus à perte. Il produit une biomasse valorisable économiquement dans un circuit local. <strong>L'entretien du paysage redevient une activité productive.</strong></p>
+
+    <!-- Boucle -->
+    <div class="stag reveal" style="margin-top:3rem">La boucle complète</div>
+    <div class="boucle reveal">
+      <div class="boucle-step">
+        <div class="b-icon">🌿</div>
+        <div class="b-label">Entretien du territoire</div>
+        <div class="b-sub">haies · prairies · lisières · taillis</div>
+      </div>
+      <div class="boucle-arrow">→</div>
+      <div class="boucle-step">
+        <div class="b-icon">🌾</div>
+        <div class="b-label">Biomasse résiduelle</div>
+        <div class="b-sub">bois de taille · fauche · rémanents</div>
+      </div>
+      <div class="boucle-arrow">→</div>
+      <div class="boucle-step" style="border-color:rgba(82,183,136,.35);background:rgba(29,58,40,.35)">
+        <div class="b-icon">⚙️</div>
+        <div class="b-label">Pyrogazéification</div>
+        <div class="b-sub">syngas → Sabatier</div>
+      </div>
+      <div class="boucle-arrow">→</div>
+      <div class="boucle-step">
+        <div class="b-icon">🔥</div>
+        <div class="b-label">Bio-CH₄</div>
+        <div class="b-sub">énergie décarbonée · réseau ou GNV</div>
+      </div>
+      <div class="boucle-arrow">+</div>
+      <div class="boucle-step">
+        <div class="b-icon">⬛</div>
+        <div class="b-label">Biochar</div>
+        <div class="b-sub">séquestration · 2,5–3,1 t CO₂eq/t</div>
+      </div>
+      <div class="boucle-arrow">→</div>
+      <div class="boucle-step" style="border-color:rgba(82,183,136,.35);background:rgba(29,58,40,.35)">
+        <div class="b-icon">🌱</div>
+        <div class="b-label">Retour au sol</div>
+        <div class="b-sub">fertilité · rétention hydrique · résilience sécheresse</div>
+      </div>
+      <div class="boucle-arrow">→</div>
+      <div class="boucle-step" style="border-color:rgba(82,183,136,.4);background:rgba(29,58,40,.45)">
+        <div class="b-icon">♻️</div>
+        <div class="b-label">Incitation renforcée</div>
+        <div class="b-sub">à entretenir le territoire</div>
+      </div>
+    </div>
+
+    <!-- Règle fondamentale -->
+    <div class="regle-box reveal">
+      <h3>⚠ La règle fondamentale</h3>
+      <p>La valorisation énergétique ne doit en aucun cas conduire à intensifier les prélèvements au détriment de la biodiversité. <strong>La logique est exactement inverse</strong> : c'est la biodiversité et la durabilité de la ressource qui fixent les règles de prélèvement ; la valorisation économique permet de financer cet entretien. C'est une condition de cohérence, pas une contrainte externe.</p>
+    </div>
+
+    <!-- Sources biomasse -->
+    <div class="stag reveal" style="margin-top:2.5rem">Les sources de biomasse mobilisables</div>
+    <div class="sources-grid reveal">
+      <div class="source-item">
+        <div class="source-icon">🌳</div>
+        <div class="source-text">
+          <h4>Entretien raisonné des haies</h4>
+          <p>Taille en rotation sur plusieurs années, préservant les zones de nidification — la haie n'est pas coupée rase mais gérée en cycle.</p>
+        </div>
+      </div>
+      <div class="source-item">
+        <div class="source-icon">🌲</div>
+        <div class="source-text">
+          <h4>Lisières et taillis</h4>
+          <p>Coupes en rotation compatible avec les cycles biologiques — renouvellement qui maintient la structure de lisière.</p>
+        </div>
+      </div>
+      <div class="source-item">
+        <div class="source-icon">🍂</div>
+        <div class="source-text">
+          <h4>Rémanents forestiers</h4>
+          <p>Sous-produits déjà mobilisés, sans création de prélèvements supplémentaires sur les peuplements en place.</p>
+        </div>
+      </div>
+      <div class="source-item">
+        <div class="source-icon">🔥</div>
+        <div class="source-text">
+          <h4>Débroussaillement & prévention incendies</h4>
+          <p>Biomasse qui serait de toute façon prélevée pour réduire le risque — la valorisation ne crée pas le prélèvement, elle le rémunère.</p>
+        </div>
+      </div>
+      <div class="source-item">
+        <div class="source-icon">🌾</div>
+        <div class="source-text">
+          <h4>Fauches compatibles</h4>
+          <p>Dates, modalités et surfaces maintenues conformes aux cycles biologiques des espèces présentes — pas de fauche précoce généralisée.</p>
+        </div>
+      </div>
+      <div class="source-item">
+        <div class="source-icon">♻️</div>
+        <div class="source-text">
+          <h4>Résidus agricoles</h4>
+          <p>Pailles non exportées, sous-produits ne trouvant pas actuellement de valorisation pertinente dans le circuit de l'exploitation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONCLUSION ===== -->
+<section id="conclusion" style="background:var(--foret)">
+  <div class="container">
+    <div class="stag reveal">Conclusion</div>
+    <h2 class="reveal">Un modèle économique<br><em>dans lequel l'entretien du territoire redevient une activité valorisée</em></h2>
+    <p class="lead reveal">Programme Résilience 2045 articule dans un même système cohérent : agriculture viable, entretien du territoire, production d'énergie décarbonée, séquestration carbone et prévention des incendies.</p>
+
+    <div class="concl-box reveal">
+      <h3>Ce que Résilience 2045 rend possible</h3>
+      <p>La reconstitution d'une biodiversité agricole active est le co-produit cohérent de la valorisation de la biomasse — non une fin en soi, mais la conséquence naturelle d'un entretien du territoire conduit dans la durée, à des échelles compatibles avec la pérennité de la ressource et les cycles biologiques des milieux traversés.</p>
+      <p>Ce n'est pas un programme énergétique qui intègre la biodiversité en supplément. C'est un <strong>modèle d'entretien du territoire qui produit de l'énergie comme conséquence de cet entretien</strong> — au service d'un objectif premier de restauration climatique.</p>
+      <p>C'est précisément ce que l'agriculture traditionnelle faisait, sans le savoir, depuis des siècles : produire de la biodiversité parce que la biodiversité était utile. Résilience 2045 reconstruit cette utilité dans le contexte de l'agriculture du XXIe siècle.</p>
+      <p class="concl-final">La question n'est pas de choisir entre produire et protéger la nature. Elle est de reconstruire un modèle économique dans lequel l'entretien du territoire redevient lui-même une activité valorisée.</p>
+    </div>
+
+    <!-- Document -->
+    <div class="doc-box reveal">
+      <div class="doc-cover">
+        <div style="font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gris);margin-bottom:.6rem">Document complet</div>
+        <div class="doc-title">La biodiversité agricole : victime de l'intensification, victime de l'abandon — et si la solution était ailleurs ?</div>
+        <div class="doc-sub">De l'agriculture traditionnelle à Résilience 2045 · Synthèse avec références scientifiques · Août 2026</div>
+        <a href="biodiversite_resilience_v3.pdf" class="btn btn-primary" target="_blank" download style="width:100%;text-align:center;font-size:.7rem;display:block">⬇ Télécharger le PDF</a>
+      </div>
+      <div class="doc-info">
+        <h3>Le document en dix sections</h3>
+        <p>Diagnostic scientifique de l'échec des deux extrêmes · Le concept HNV farmland · Les études sur la fermeture des milieux · L'impasse économique de l'agriculture moderne · La rupture conceptuelle de la valorisation biomasse · La règle fondamentale du prélèvement durable · La boucle biochar/sol/résilience agronomique · Le cadre d'une agriculture traditionnelle révisée.</p>
+        <div class="btn-row">
+          <a href="biodiversite.html" class="btn btn-outline" style="font-size:.72rem">← Biodiversité & Climat</a>
+          <a href="biochar.html" class="btn btn-outline" style="font-size:.72rem">Biochar & sols →</a>
+          <a href="gestion-forets.html" class="btn btn-outline" style="font-size:.72rem">Gestion des forêts →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Références -->
+    <div class="stag reveal" style="margin-top:3rem">Références scientifiques</div>
+    <div class="refs-list reveal">
+      <div class="ref-item">Bignal, E.M. & McCracken, D.I. (2000). The nature conservation value of European traditional farming systems. <em>Environmental Reviews</em>, 8(3), 149–171.</div>
+      <div class="ref-item">Lomba, A. et al. (2015). Reconciling nature conservation and traditional farming practices. <em>Ecology and Evolution</em>. DOI: 10.1002/ece3.1415.</div>
+      <div class="ref-item">European Environment Agency (2021). Abundance and distribution of selected species in Europe — oiseaux agricoles −27 %, papillons de prairie −25 % (1990–2019).</div>
+      <div class="ref-item">Herrando, S. et al. (2015). Assessing impacts of land abandonment on Mediterranean biodiversity. <em>Environmental Conservation</em>, Cambridge.</div>
+      <div class="ref-item">Zakkak, S. et al. (2015). Assessing the effect of agricultural land abandonment on bird communities in south-eastern Europe. <em>Journal of Nature Conservation</em>.</div>
+      <div class="ref-item">Rigal, S. et al. (2024). Even biodiversity-friendly policies may not halt declines in Europe's common birds and butterflies by 2050. <em>Nature Ecology & Evolution</em> / INRAE-BioAgora.</div>
+      <div class="ref-item">Landscape Ecology / Springer (2025). Biological invasions limit the effectiveness of land abandonment as a conservation strategy.</div>
+      <div class="ref-item">González, M. et al. (2019). The decline of farmland birds in Spain is strongly associated to the loss of fallowland. <em>Scientific Reports</em> (Nature).</div>
+      <div class="ref-item">INRAE / CNRS (2018). Des mosaïques de cultures plus complexes pour une plus grande biodiversité dans les paysages agricoles. <em>PNAS</em>.</div>
+      <div class="ref-item">Ecology & Society (2025). A review of high nature value farming systems in Europe — biodiversity, ecosystem services, drivers.</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Programme Résilience 2045</div>
+  <p>Agriculture, mosaïque & biodiversité · Synthèse scientifique · Août 2026 · Diffusion libre</p>
+  <p style="margin-top:.5rem"><a href="index.html" style="color:var(--vert-vif);text-decoration:none">← Retour à l'accueil</a></p>
+</footer>
+
+<script>
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach((el, i) => {
+    if (el.isIntersecting) {
+      setTimeout(() => el.target.classList.add('visible'), i * 65);
+      obs.unobserve(el.target);
+    }
+  });
+}, { threshold: 0.07 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
