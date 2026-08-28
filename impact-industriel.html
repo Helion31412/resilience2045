@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cartographie industrielle — Programme Résilience 2045</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Source+Sans+3:wght@400;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<!-- Google tag -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1J0GBHR98B"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-1J0GBHR98B');</script>
+<style>
+:root{
+  --navy:#0B2A52;--navy-2:#16345A;--blue:#1566A8;--blue-tint:#E8F1FA;
+  --green:#3A6E2F;--green-tint:#EAF3E6;
+  --amber:#B87225;--amber-tint:#F6EBD9;
+  --purple:#5C509A;--purple-tint:#EDEAF7;
+  --teal:#1A6B72;--teal-tint:#E2F2F3;
+  --brown:#7A5230;--brown-tint:#F0E4D6;
+  --red:#B5241C;--red-tint:#FAEAE9;
+  --ink:#1E2E24;--ink-soft:#5A6A72;--line:#DDE3E8;--white:#FFF;--off:#F4F6F8;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--white);color:var(--ink);font-family:'Source Sans 3',sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:600;margin:0;letter-spacing:-0.01em;}
+a{color:inherit;text-decoration:none;}
+.wrap{max-width:1160px;margin:0 auto;padding:0 28px;}
+.reveal{opacity:0;transform:translateY(10px);transition:opacity .55s ease,transform .55s ease;}
+.reveal.in{opacity:1;transform:none;}
+
+/* TOPBAR */
+.topbar{position:sticky;top:0;z-index:20;background:rgba(11,42,82,0.97);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.08);padding:12px 0;}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.brand{display:flex;align-items:center;gap:10px;}
+.brand-text{font-family:'Fraunces',serif;font-size:17px;font-weight:600;color:#fff;line-height:1.1;}
+.brand-text small{display:block;font-family:'Source Sans 3',sans-serif;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-top:2px;}
+.back-link{font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.68);padding:5px 10px;transition:background .15s,color .15s;}
+.back-link:hover{color:#fff;}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,var(--navy) 0%,var(--purple) 100%);padding:64px 0 56px;color:#fff;}
+.hero-tag{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:14px;}
+.hero h1{font-size:clamp(1.9rem,4vw,2.9rem);color:#fff;margin-bottom:18px;line-height:1.08;}
+.hero h1 em{font-style:italic;color:#B8AFE6;}
+.hero-lead{font-size:1.08rem;color:rgba(255,255,255,.75);max-width:700px;line-height:1.75;margin-bottom:28px;}
+.hero-kpis{display:flex;gap:28px;flex-wrap:wrap;margin-bottom:32px;}
+.kpi{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);padding:16px 22px;}
+.kpi-v{font-family:'Fraunces',serif;font-size:1.7rem;font-weight:600;color:#B8AFE6;line-height:1;}
+.kpi-l{font-size:.78rem;color:rgba(255,255,255,.55);margin-top:4px;line-height:1.35;}
+.btn-dl{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:#fff;padding:11px 22px;font-size:.85rem;font-weight:600;letter-spacing:.04em;transition:background .2s;}
+.btn-dl:hover{background:rgba(255,255,255,.2);}
+
+/* AVERTISSEMENT */
+.avert{background:#FEF9F0;border-left:4px solid var(--amber);padding:14px 20px;margin-bottom:32px;}
+.avert p{margin:0;font-size:.85rem;color:#7A5230;line-height:1.6;}
+.avert strong{color:#B87225;}
+
+/* SECTIONS */
+.section{padding:52px 0;}
+.section:nth-child(even){background:var(--off);}
+.section-label{font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--purple);margin-bottom:10px;}
+.section h2{font-size:1.55rem;margin-bottom:8px;}
+.section-intro{font-size:.95rem;color:var(--ink-soft);max-width:760px;line-height:1.75;margin-bottom:32px;}
+
+/* PRINCIPE */
+.principe{background:linear-gradient(135deg,var(--blue-tint),var(--purple-tint));border:1px solid #C5D8F0;padding:28px 32px;margin-bottom:36px;}
+.principe h3{font-size:1rem;color:var(--navy);margin-bottom:10px;}
+.principe p{margin:0;font-size:.9rem;color:var(--ink-soft);line-height:1.75;}
+
+/* LÉGENDE */
+.legende{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px;}
+.leg-item{display:flex;align-items:center;gap:7px;font-size:.8rem;color:var(--ink-soft);background:var(--white);border:1px solid var(--line);padding:6px 12px;}
+.leg-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+.vert{background:#22863a;}.jaune{background:#B87225;}.orange{background:#D64E12;}.rouge{background:#B5241C;}
+
+/* COUCHES */
+.couche{margin-bottom:44px;}
+.couche-header{display:flex;align-items:center;gap:14px;margin-bottom:20px;padding-bottom:14px;border-bottom:2px solid var(--purple);}
+.couche-num{width:40px;height:40px;background:var(--purple);color:#fff;font-family:'Fraunces',serif;font-size:1.1rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.couche-header h3{font-size:1.2rem;color:var(--purple);margin:0;}
+.couche-header .couche-desc{font-size:.82rem;color:var(--ink-soft);margin-top:2px;}
+
+/* MODÈLES D'EXPLOITATION */
+.modele{background:var(--white);border:1px solid var(--line);padding:18px 22px;margin-bottom:12px;}
+.modele h4{font-size:.95rem;color:var(--navy);margin-bottom:6px;}
+.modele p{margin:0;font-size:.85rem;color:var(--ink-soft);line-height:1.65;}
+
+/* ACTEURS */
+.acteurs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px;margin-top:14px;}
+.acteur{background:var(--white);border:1px solid var(--line);padding:12px 16px;display:flex;gap:10px;align-items:flex-start;}
+.acteur.fr{border-left:3px solid var(--blue);}
+.acteur.eu{border-left:3px solid var(--green);}
+.acteur.opp{border-left:3px solid var(--amber);background:#FEF9F0;}
+.acteur.alerte{border-left:3px solid var(--red);background:var(--red-tint);}
+.acteur-flag{font-size:1.1rem;flex-shrink:0;margin-top:1px;}
+.acteur-text strong{display:block;font-size:.83rem;color:var(--ink);font-weight:600;}
+.acteur-text span{font-size:.78rem;color:var(--ink-soft);line-height:1.5;}
+
+/* VERROU */
+.verrou-box{background:linear-gradient(135deg,#FEF3EC,#FAEAE9);border:1px solid #F0A07A;border-left:5px solid var(--red);padding:20px 24px;margin:18px 0;}
+.verrou-box h4{font-size:.9rem;color:var(--red);font-family:'Fraunces',serif;margin-bottom:6px;}
+.verrou-box p{margin:0;font-size:.85rem;color:#7A3020;line-height:1.65;}
+
+/* ENCART BLEU */
+.encart-bleu{background:var(--blue-tint);border:1px solid #B8D4EE;border-left:5px solid var(--blue);padding:20px 24px;margin:18px 0;}
+.encart-bleu h4{font-size:.9rem;color:var(--navy);font-family:'Fraunces',serif;margin-bottom:6px;}
+.encart-bleu p{margin:0;font-size:.85rem;color:var(--ink-soft);line-height:1.65;}
+
+/* ENCART CONCESSION */
+.encart-concession{background:#EAF3E6;border:1px solid #B2D4A8;border-left:5px solid var(--green);padding:22px 26px;margin:22px 0;}
+.encart-concession h4{font-size:1rem;color:var(--green);font-family:'Fraunces',serif;margin-bottom:10px;}
+.encart-concession p{margin:0;font-size:.88rem;color:#2E4A28;line-height:1.75;}
+
+/* ALERTE ROUGE */
+.alerte-rouge{background:var(--red-tint);border:1px solid #F0A0A0;border-left:5px solid var(--red);padding:18px 22px;margin:18px 0;}
+.alerte-rouge h4{font-size:.9rem;color:var(--red);font-family:'Fraunces',serif;margin-bottom:8px;}
+.alerte-rouge ul{margin:0;padding-left:18px;font-size:.85rem;color:#7A1010;line-height:1.9;}
+
+/* TABLEAU SYNTHÈSE */
+.synth-table{width:100%;border-collapse:collapse;font-size:.82rem;margin-top:24px;}
+.synth-table th{background:var(--purple);color:#fff;padding:10px 14px;text-align:left;font-weight:600;font-family:'Fraunces',serif;}
+.synth-table td{padding:9px 14px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.5;}
+.synth-table tr:nth-child(even) td{background:#F8F6FD;}
+.synth-table td:first-child{font-weight:600;color:var(--purple);white-space:nowrap;}
+.tag-vert{background:#E3F5EB;color:#1A6B3A;padding:2px 8px;border-radius:2px;font-size:.72rem;font-weight:700;white-space:nowrap;}
+.tag-jaune{background:var(--amber-tint);color:var(--amber);padding:2px 8px;border-radius:2px;font-size:.72rem;font-weight:700;white-space:nowrap;}
+.tag-orange{background:#FDF0E6;color:#C04010;padding:2px 8px;border-radius:2px;font-size:.72rem;font-weight:700;white-space:nowrap;}
+
+/* ANALYSE ÉCONOMIQUE */
+.eco-section{background:var(--navy);color:#fff;padding:52px 0;}
+.eco-section h2{color:#fff;}
+.eco-section .section-intro{color:rgba(255,255,255,.65);}
+.arg{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-left:4px solid #B8AFE6;padding:20px 24px;margin-bottom:16px;}
+.arg h3{font-size:1rem;color:#B8AFE6;margin-bottom:8px;}
+.arg p{margin:0;font-size:.88rem;color:rgba(255,255,255,.72);line-height:1.75;}
+.arg .kpi-inline{font-family:'IBM Plex Mono',monospace;font-size:.82rem;background:rgba(255,255,255,.08);padding:8px 14px;margin-top:10px;display:inline-block;color:#D4E4FF;}
+
+/* TABLEAU COMPARAISON */
+.comp-table{width:100%;border-collapse:collapse;font-size:.82rem;margin-top:28px;}
+.comp-table th{background:rgba(255,255,255,.1);color:rgba(255,255,255,.9);padding:10px 14px;text-align:left;font-family:'Fraunces',serif;}
+.comp-table td{padding:9px 14px;border-bottom:1px solid rgba(255,255,255,.08);vertical-align:top;line-height:1.5;color:rgba(255,255,255,.7);}
+.comp-table td:first-child{color:rgba(255,255,255,.5);font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;font-weight:700;}
+.comp-table td:nth-child(2){color:#A8D8A8;}
+.comp-table tr:nth-child(even) td{background:rgba(255,255,255,.03);}
+
+/* ANNEXE */
+.annexe{background:linear-gradient(135deg,#EEF2FA,#F4F0FC);border-top:4px solid var(--purple);padding:52px 0;}
+.annexe h2{color:var(--purple);}
+.decret-box{background:#fff;border:2px solid var(--purple);padding:24px 28px;margin:24px 0;font-size:.85rem;color:var(--ink);line-height:1.85;}
+.decret-box h4{font-family:'Fraunces',serif;font-size:1rem;color:var(--purple);margin-bottom:14px;}
+.cal-table{width:100%;border-collapse:collapse;font-size:.82rem;margin-top:20px;}
+.cal-table th{background:var(--purple);color:#fff;padding:9px 14px;text-align:left;font-family:'Fraunces',serif;}
+.cal-table td{padding:8px 14px;border-bottom:1px solid var(--line);vertical-align:top;}
+.cal-table tr:nth-child(even) td{background:var(--purple-tint);}
+
+/* PDF CTA */
+.pdf-cta{background:var(--white);border:1px solid var(--line);padding:20px 24px;display:flex;align-items:center;gap:18px;margin-bottom:28px;}
+.pdf-icon{font-size:2rem;flex-shrink:0;}
+.pdf-info strong{display:block;font-size:.95rem;color:var(--ink);margin-bottom:3px;}
+.pdf-info span{font-size:.82rem;color:var(--ink-soft);}
+.btn-pdf{display:inline-flex;align-items:center;gap:6px;background:var(--purple);color:#fff;padding:10px 20px;font-size:.82rem;font-weight:600;letter-spacing:.03em;transition:background .2s;white-space:nowrap;flex-shrink:0;}
+.btn-pdf:hover{background:var(--navy);}
+
+/* FOOTER */
+footer{background:var(--navy);padding:28px 0;text-align:center;}
+footer p{font-size:.8rem;color:rgba(255,255,255,.4);margin:0;}
+footer a{color:rgba(255,255,255,.5);}
+
+@media(max-width:700px){
+  .hero-kpis{gap:12px;}
+  .acteurs-grid{grid-template-columns:1fr;}
+  .synth-table,.comp-table,.cal-table{font-size:.75rem;}
+  .synth-table th,.comp-table th,.cal-table th,.synth-table td,.comp-table td,.cal-table td{padding:7px 9px;}
+  .pdf-cta{flex-direction:column;align-items:flex-start;}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <a href="index.html" class="brand">
+      <div class="brand-text">Résilience 2045<small>Énergie · Climat · Territoires</small></div>
+    </a>
+    <a href="index.html" class="back-link">← Accueil</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="wrap">
+    <div class="hero-tag">Économie · Souveraineté · Industrie</div>
+    <h1>Cartographie industrielle<br><em>De la technologie aux territoires</em></h1>
+    <p class="hero-lead">Acteurs, compétences, verrous industriels et conditions de déploiement. Programme Résilience 2045 n'est pas seulement une architecture énergétique — c'est un programme de réindustrialisation mobilisant 8 couches de l'écosystème industriel français.</p>
+    <div class="hero-kpis">
+      <div class="kpi"><div class="kpi-v">8 couches</div><div class="kpi-l">de l'écosystème industriel<br>maîtres d'ouvrage → formateurs</div></div>
+      <div class="kpi"><div class="kpi-v">4 500–7 500</div><div class="kpi-l">emplois directs non délocalisables<br>exploitation des 150 sites</div></div>
+      <div class="kpi"><div class="kpi-v">~315 Md€</div><div class="kpi-l">avantage CAPEX estimé<br>vs scénario tout-électrique</div></div>
+      <div class="kpi"><div class="kpi-v">20–23 Mt</div><div class="kpi-l">CO₂/an séquestrés<br>via biochar (V11)</div></div>
+    </div>
+    <a href="impact_industriel_v8.pdf" class="btn-dl" target="_blank" download>⬇ Télécharger le document complet (PDF)</a>
+  </div>
+</div>
+
+<!-- SECTION PRINCIPE -->
+<div class="section">
+  <div class="wrap">
+    <div class="avert reveal">
+      <p><strong>Avertissement :</strong> Les entreprises et organismes cités sont identifiés comme acteurs industriels potentiellement pertinents. Leur présence ne constitue ni un engagement de leur part, ni un partenariat avec le Programme Résilience 2045.</p>
+    </div>
+
+    <div class="principe reveal">
+      <h3>Principe directeur — logique d'industrialisation progressive</h3>
+      <p>Un programme industriel à l'horizon 2045 ne peut exiger que toutes ses solutions soient déjà démontrées en 2026. Il doit s'appuyer sur des technologies existantes ou sur des extrapolations réalistes, identifier les quelques verrous majeurs et engager dès maintenant les travaux permettant de les lever. Résilience adopte cette logique : les éventuels écarts constatés lors des démonstrateurs conduiront à des ajustements — non à remettre en cause le principe du programme. Cette règle s'applique également aux scénarios concurrents.</p>
+    </div>
+
+    <div class="legende reveal">
+      <div class="leg-item"><div class="leg-dot vert"></div>Disponible et déployable</div>
+      <div class="leg-item"><div class="leg-dot jaune"></div>Adaptation ou montée en puissance</div>
+      <div class="leg-item"><div class="leg-dot orange"></div>Verrou industriel — démonstrateur nécessaire</div>
+      <div class="leg-item"><div class="leg-dot rouge"></div>Étude spécifique requise</div>
+      <div class="leg-item">🇫🇷 Acteur français</div>
+      <div class="leg-item">🇪🇺 Acteur européen</div>
+      <div class="leg-item">⚡ Opportunité à développer</div>
+    </div>
+
+    <div class="verrou-box reveal">
+      <h4>Les deux verrous industriels majeurs identifiés à ce stade</h4>
+      <p><strong>1. Verrou technologique :</strong> intégration industrielle de la chaîne complète pyrogazéification + épuration + méthanation Sabatier avec biomasse hétérogène et syngas de composition variable — objet des sites pilotes 100–200 t/j.<br><br><strong>2. Verrou industriel et économique :</strong> démonstration que cette chaîne peut être dimensionnée, construite et répliquée à 1 000 t/j avec une économie viable.<br><br>Les autres difficultés identifiées relèvent principalement de l'industrialisation, de l'intégration, de la logistique, de la réglementation et de la montée en compétence des acteurs.</p>
+    </div>
+  </div>
+</div>
+
+<!-- COUCHES 1 À 4 -->
+<div class="section" style="background:var(--off);">
+  <div class="wrap">
+    <div class="section-label">Couches 1 à 4</div>
+    <h2 class="reveal">Maîtres d'ouvrage, ingénierie, équipements, intégration</h2>
+    <p class="section-intro reveal">Ces quatre couches forment la chaîne amont du programme — de celui qui porte la responsabilité globale du site jusqu'à celui qui livre la chaîne complète en ordre de marche.</p>
+
+    <!-- COUCHE 1 -->
+    <div class="couche reveal">
+      <div class="couche-header">
+        <div class="couche-num">1</div>
+        <div>
+          <h3>Maîtres d'ouvrage et développeurs de projets</h3>
+          <div class="couche-desc">Porter le projet de A à Z, financer, obtenir les autorisations, être responsable sur toute la durée de vie</div>
+        </div>
+      </div>
+      <p style="font-size:.88rem;color:var(--ink-soft);margin-bottom:18px;">C'est la couche la plus critique — et celle qui n'existe pas encore sous la forme requise par Résilience. Quatre modèles sont envisageables, non exclusifs.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;">
+        <div class="modele"><h4>Modèle A — Grand groupe énergétique</h4><p>TotalEnergies, Engie, EDF Renouvelables — expérience concessions EnR et biogaz.</p></div>
+        <div class="modele"><h4>Modèle B — Coopérative + opérateur délégué</h4><p>InVivo, Terrena, Agrial — propriétaires du site et de la biomasse, délèguent l'exploitation. Modèle le plus cohérent avec la logique territoriale.</p></div>
+        <div class="modele"><h4>Modèle C — SPV (Société de Projet)</h4><p>Idex Energies, Dalkia — modèle éprouvé pour attirer des capitaux privés. Accélérateur immédiat pour les pilotes.</p></div>
+        <div class="modele" style="border-color:var(--amber);background:var(--amber-tint);"><h4>Modèle D — Opérateur national dédié ⚡</h4><p>À créer — analogue à GRTgaz pour le gaz. Cible de consolidation à 2030–2035 après validation sur les pilotes.</p></div>
+      </div>
+    </div>
+
+    <!-- COUCHE 2 -->
+    <div class="couche reveal">
+      <div class="couche-header">
+        <div class="couche-num">2</div>
+        <div>
+          <h3>Ingénierie, bureaux d'études et conception des ensembles</h3>
+          <div class="couche-desc">Concevoir la chaîne complète, obtenir les autorisations, caractériser les gisements biomasse</div>
+        </div>
+      </div>
+      <div class="acteurs-grid">
+        <div class="acteur fr"><span class="acteur-flag">🇫🇷</span><div class="acteur-text"><strong>Technip Energies (Paris)</strong><span>Ingénierie de procédés industriels complexes, parmi les acteurs français disposant des capacités EPC les plus directement pertinentes</span></div></div>
+        <div class="acteur fr"><span class="acteur-flag">🇫🇷</span><div class="acteur-text"><strong>Axens / IFP Energies nouvelles (92)</strong><span>Procédés, licences, catalyseurs, recherche appliquée</span></div></div>
+        <div class="acteur fr"><span class="acteur-flag">🇫🇷</span><div class="acteur-text"><strong>Assystem (92)</strong><span>Ingénierie industrielle, accompagnement projets complexes</span></div></div>
+        <div class="acteur fr"><span class="acteur-flag">🇫🇷</span><div class="acteur-text"><strong>Artelia (38)</strong><span>Ingénierie multi-technique, projets industriels et territoriaux</span></div></div>
+        <div class="acteur fr"><span class="acteur-flag">🇫🇷</span><div class="acteur-text"><strong>Solagro (31)</strong><span>Bureau d'études biomasse et agro-environnement</span></div></div>
+        <div class="acteur fr"><span class="acteur-flag">🇫🇷</span><div class="acteur-text"><strong>Burgeap (75)</strong><span>Bureau d'études ICPE, acteur français de référence</span></div></div>
+        <div class="acteur opp"><span class="acteur-flag">⚡</span><div class="acteur-text"><strong>Ingénieur de gisement biomasse 1 000 t/j</strong><span>Ce métier n'existe pas encore — à créer dès la phase pilote</span></div></div>
+      </div>
+    </div>
+
+    <!-- COUCHE 3 — Équipements -->
+    <div class="couche reveal">
+      <div class="couche-header">
+        <div class="couche-num">3</div>
+        <div>
+          <h3>Fournisseurs d'équipements — filière française en premier</h3>
+          <div class="couche-desc">Récolte biomasse · Séchage · Pyrogazéification · Sabatier · Distribution · Mobilité ÉREV</div>
+        </div>
+      </div>
+
+      <h4 style="font-size:.9rem;color:var(--navy);margin:0 0 10px;border-bottom:1px solid var(--line);padding-bottom:8px;">Récolte et broyage</h4>
+      <div class="acteurs-grid" style="margin-bottom:18px;">
+        <div class="acteur fr"><span class="acteur-flag">🇫🇷</span><div class="acteur-text"><strong>Rousseau (79)</strong><span>Leader français broyeurs latéraux et débroussailleuses</span></div></div>
+        <div class="acteur fr"><span class="acteur-flag">🇫🇷</span><div class="acteur-text"><strong>Denis / Bugnot (51)</strong><span>Équipements forestiers sur pelle</span></div></div>
+        <div class="acteur fr"><span class="acteur-flag">🇫🇷</span><div class="acteur-text"><strong>Kuhn (67)</strong><span>Siège mondial en France, leader faucheuses-conditionneuses</span></div></div>
+        <div class="acteur fr"><span class="acteur-flag">🇫🇷</span><div class="acteur-text"><strong>Claas France (78)</strong><span>Ensileuses et presses, forte présence française</span></div></div>
+        <div class="acteur opp"><span class="acteur-flag">⚡</span><div class="acteur-text"><strong>Déchiqueteuses grande capacité</strong><span>Filière française peu présente — opportunité de développement. Acteurs EU : Jenz, Doppstadt</span></div></div>
+      </div>
+
+      <h4 style="font-size:.9rem;color:var(--navy);margin:0 0 10px;border-bottom:1px solid var(--line);padding-bottom:8px;">Séchage</h4>
+      <div class="acteurs-grid" style="margin-bottom:18px;">
+        <div class="acteur fr"><span class="acteur-flag">🇫🇷</span><div class="acteur-text"><strong>Maguin (88)</strong><span>Séchoirs agro-industriels, acteur français de référence</span></div></div>
+        <div class="acteur fr"><span class="acteur-flag">🇫🇷</span><div class="acteur-text"><strong>Idex Energies (92)</strong><span>Intégration thermique chaleur fatale → séchage</span></div></div>
+      </div>
+
+      <h4 style="font-size:.9rem;color:var(--navy);margin:0 0 10px;border-bottom:1px solid var(--line);padding-bottom:8px;">Pyrogazéification — Verrou N°1</h4>
+      <div class="verrou-box" style="margin-bottom:12px;">
+        <h4>🟠 Industrialisation à grande échelle</h4>
+        <p>La pyrogazéification existe à petite et moyenne échelle. L'objectif 150 sites × 1 000 t/j constitue un changement d'échelle de ×45 vs Charwood (22 t/j, plus grand lauréat GRDF AAP 2026). La faisabilité est retenue comme hypothèse industrielle. Les pilotes optimisent, ne décident pas.</p>
+      </div>
+      <div class="acteurs-grid" style="margin-bottom:18px;">
+        <div class="acteur fr"><span class="acteur-flag">🇫🇷</span><div class="acteur-text"><strong>Haffner Energy (Vitry-le-François, 51)</strong><span>Pyrogazéification biomasse, acteur français coté en bourse, référence nationale directe</span></div></div>
+        <div class="acteur fr"><span class="acteur-flag">🇫🇷</span><div class="acteur-text"><strong>Axens / IFP Energies nouvelles (92)</strong><span>R&D procédés thermochimiques</span></div></div>
+        <div class="acteur eu"><span class="acteur-flag">🇪🇺</span><div class="acteur-text"><strong>Valmet (Finlande), Babcock & Wilcox (USA)</strong><span>Réacteurs industriels de référence</span></div></div>
+      </div>
+
+      <h4 style="font-size:.9rem;color:var(--navy);margin:0 0 10px;border-bottom:1px solid var(--line);padding-bottom:8px;">Méthanation Sabatier — Verrou N°2</h4>
+      <div class="verrou-box" style="margin-bottom:12px;">
+        <h4>🟠 Technologie connue — intégration avec syngas biomasse à optimiser</h4>
+        <p>La réaction Sabatier est parfaitement connue. La spécificité de Résilience : son couplage avec un syngas issu d'une biomasse hétérogène. La faisabilité est retenue comme hypothèse. Les pilotes optimisent l'épuration, les catalyseurs et les rendements.</p>
+      </div>
+      <div class="acteurs-grid" style="margin-bottom:18px;">
+        <div class="acteur fr"><span class="acteur-flag">🇫🇷</span><div class="acteur-text"><strong>Technip Energies (75)</strong><span>Conception et intégration procédés méthanation</span></div></div>
+        <div class="acteur fr"><span class="acteur-flag">🇫🇷</span><div class="acteur-text"><strong>Axens / IFP (92)</strong><span>Catalyseurs et licences — acteur français direct</span></div></div>
+        <div class="acteur fr"><span class="acteur-flag">🇫🇷</span><div class="acteur-text"><strong>Elogen / Suez (91)</strong><span>Électrolyseurs PEM H₂ complémentaire</span></div></div>
+        <div class="acteur fr"><span class="acteur-flag">🇫🇷</span><div class="acteur-text"><strong>McPhy Energy (38)</strong><span>Électrolyseurs alcalins, coté en bourse</span></div></div>
+      </div>
+
+      <h4 style="font-size:.9rem;color:var(--navy);margin:0 0 10px;border-bottom:1px solid var(--line);padding-bottom:8px;">Distribution bio-CH₄ — filière 100 % française</h4>
+      <div class="acteurs-grid" style="margin-bottom:18px;">
+        <div class="acteur fr"><span class="acteur-flag">🇫🇷</span><div class="acteur-text"><strong>GRDF (75)</strong><span>Gestionnaire réseau distribution — acteur 100 % français</span></div></div>
+        <div class="acteur fr"><span class="acteur-flag">🇫🇷</span><div class="acteur-text"><strong>GRTgaz (75)</strong><span>Gestionnaire réseau transport — acteur 100 % français</span></div></div>
+        <div class="acteur fr"><span class="acteur-flag">🇫🇷</span><div class="acteur-text"><strong>Cryo Pur (93)</strong><span>Liquéfaction bio-GNL décentralisée, technologie française</span></div></div>
+        <div class="acteur fr"><span class="acteur-flag">🇫🇷</span><div class="acteur-text"><strong>Ben.e.bel (59)</strong><span>Stations GNV, acteur français du déploiement</span></div></div>
+      </div>
+
+      <h4 style="font-size:.9rem;color:var(--navy);margin:0 0 10px;border-bottom:1px solid var(--line);padding-bottom:8px;">Mobilité ÉREV</h4>
+      <div class="acteurs-grid">
+        <div class="acteur fr"><span class="acteur-flag">🇫🇷</span><div class="acteur-text"><strong>Stellantis (75)</strong><span>GMP thermique et hybride — intégrateur naturel voiture ÉREV</span></div></div>
+        <div class="acteur fr"><span class="acteur-flag">🇫🇷</span><div class="acteur-text"><strong>ACC / Billy-Berclau (62)</strong><span>Batteries LFP françaises — joint-venture Stellantis/TotalEnergies</span></div></div>
+        <div class="acteur fr"><span class="acteur-flag">🇫🇷</span><div class="acteur-text"><strong>Verkor (38)</strong><span>Gigafactory LFP en développement</span></div></div>
+        <div class="acteur fr"><span class="acteur-flag">🇫🇷</span><div class="acteur-text"><strong>Schneider Electric (38)</strong><span>Électronique de puissance, onduleurs V2H</span></div></div>
+        <div class="acteur fr"><span class="acteur-flag">🇫🇷</span><div class="acteur-text"><strong>Iveco France</strong><span>Camions GNV, expérience pertinente ÉREV lourd</span></div></div>
+      </div>
+    </div>
+
+    <!-- COUCHE 4 -->
+    <div class="couche reveal">
+      <div class="couche-header">
+        <div class="couche-num">4</div>
+        <div>
+          <h3>Intégrateurs de systèmes</h3>
+          <div class="couche-desc">Assembler les composants de différents fournisseurs, garantir les interfaces, tester la chaîne complète</div>
+        </div>
+      </div>
+      <div class="encart-bleu">
+        <h4>L'intégrateur ≠ le fournisseur d'équipements</h4>
+        <p>L'intégrateur de systèmes est le responsable de la chaîne complète. Il assure les interfaces entre les briques, teste le fonctionnement d'ensemble et livre le site en ordre de marche. C'est un métier d'ingénieur de système, distinct du constructeur de machines. L'intégration de la chaîne pyrogazéification + épuration + Sabatier à grande échelle n'a jamais été réalisée — c'est précisément l'objet des deux sites pilotes 100–200 t/j.</p>
+      </div>
+      <div class="acteurs-grid">
+        <div class="acteur fr"><span class="acteur-flag">🇫🇷</span><div class="acteur-text"><strong>Technip Energies (75)</strong><span>Parmi les acteurs disposant des capacités EPC les plus pertinentes — binôme envisageable avec TotalEnergies pour les pilotes</span></div></div>
+        <div class="acteur opp"><span class="acteur-flag">⚡</span><div class="acteur-text"><strong>Intégrateur logistique biomasse</strong><span>Fonction inexistante à 1 000 t/j — à créer dans le cadre des pilotes (Solagro + opérateur logistique)</span></div></div>
+        <div class="acteur fr"><span class="acteur-flag">🇫🇷</span><div class="acteur-text"><strong>Stellantis / CNH / AGCO France</strong><span>Intégrateurs naturels pour la filière ÉREV Rex — programme industriel dédié à lancer</span></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- COUCHE 5 — EXPLOITATION -->
+<div class="section">
+  <div class="wrap">
+    <div class="section-label">Couche 5 — La plus critique</div>
+    <h2 class="reveal">Exploitation et opération des sites</h2>
+    <p class="section-intro reveal">C'est la couche qui fait la différence entre un programme industriel sérieux et la répétition des erreurs de la méthanisation mal encadrée.</p>
+
+    <div class="alerte-rouge reveal">
+      <h4>La leçon de la méthanisation mal maîtrisée — à ne pas reproduire</h4>
+      <ul>
+        <li>L'exploitant achète une installation, le fournisseur passe à autre chose, les problèmes arrivent.</li>
+        <li>Odeurs, pannes, voisinage hostile, recours contentieux — l'exploitant seul face à des procédés qu'il ne maîtrise pas.</li>
+        <li>Appliqué à la pyrogazéification à 1 000 t/j : syngas combustible et toxique (CO/H₂), T° &gt; 800°C, atmosphères contrôlées, catalyseurs sensibles, classement ICPE et, selon les caractéristiques et quantités de substances présentes, éventuelle application SEVESO.</li>
+        <li><strong>Le modèle « petit exploitant indépendant qui achète clé en main » est incompatible avec cette échelle.</strong></li>
+      </ul>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin:24px 0;" class="reveal">
+      <div class="encart-bleu" style="margin:0;">
+        <h4>Principe 1 — Engagement contractuel long terme</h4>
+        <p>LTSA (Long Term Service Agreement) liant le concepteur-intégrateur et les fournisseurs d'équipements critiques sur 20–25 ans : garanties de performance, maintenance, fourniture de pièces, assistance technique.</p>
+      </div>
+      <div class="encart-bleu" style="margin:0;">
+        <h4>Principe 2 — Exploitant qualifié certifié</h4>
+        <p>Jamais un particulier isolé. Entité industrielle avec compétences ICPE, habilitations ATEX et surface financière. Dalkia (EDF), Idex Energies, Engie Cofely — à qualifier pour la pyrogazéification.</p>
+      </div>
+      <div class="encart-bleu" style="margin:0;">
+        <h4>Principe 3 — Supervision nationale centralisée</h4>
+        <p>SCADA centralisé supervisant les 150 sites à distance. Équipe d'intervention rapide (&lt; 24h sur tout site). Modèle : GRTgaz pour le transport du gaz. Schneider Electric — SCADA industriel.</p>
+      </div>
+    </div>
+
+    <div class="encart-concession reveal">
+      <h4>Le modèle recommandé : la concession industrielle</h4>
+      <p>La collectivité ou la coopérative agricole est propriétaire du foncier et de la biomasse. Un opérateur industriel qualifié exploite le site dans le cadre d'un contrat de concession de 20–25 ans, avec obligations contractuelles de performance, pénalités en cas de dérive et obligation de maintien en compétence. L'opérateur national assure la supervision à distance et l'intervention rapide. C'est le modèle des concessions d'eau et autoroutières en France — il évite précisément les dérives observées dans la méthanisation mal encadrée.</p>
+    </div>
+  </div>
+</div>
+
+<!-- COUCHES 6-8 -->
+<div class="section" style="background:var(--off);">
+  <div class="wrap">
+    <div class="section-label">Couches 6, 7 et 8</div>
+    <h2 class="reveal">Maintenance, financement et formation</h2>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;" class="reveal">
+      <div>
+        <div class="couche-header" style="border-color:var(--teal);">
+          <div class="couche-num" style="background:var(--teal);">6</div>
+          <div><h3 style="color:var(--teal);">Maintenance industrielle</h3></div>
+        </div>
+        <div class="acteur fr" style="margin-bottom:8px;"><span class="acteur-flag">🇫🇷</span><div class="acteur-text"><strong>Boccard (69)</strong><span>Chaudronnerie industrielle, maintenance procédés</span></div></div>
+        <div class="acteur fr" style="margin-bottom:8px;"><span class="acteur-flag">🇫🇷</span><div class="acteur-text"><strong>Axens / IFP (92)</strong><span>Régénération catalyseurs Sabatier (cycle ~8 000 h)</span></div></div>
+        <div class="acteur fr" style="margin-bottom:8px;"><span class="acteur-flag">🇫🇷</span><div class="acteur-text"><strong>Bureau Veritas (92)</strong><span>Inspection réglementaire ICPE</span></div></div>
+        <div class="acteur fr"><span class="acteur-flag">🇫🇷</span><div class="acteur-text"><strong>Apave (75), Socotec (78)</strong><span>Contrôle technique et certification industrielle</span></div></div>
+      </div>
+      <div>
+        <div class="couche-header" style="border-color:var(--amber);">
+          <div class="couche-num" style="background:var(--amber);">7</div>
+          <div><h3 style="color:var(--amber);">Financement et garanties</h3></div>
+        </div>
+        <div class="acteur fr" style="margin-bottom:8px;"><span class="acteur-flag">🇫🇷</span><div class="acteur-text"><strong>Bpifrance (75)</strong><span>Financement innovation et pilotes</span></div></div>
+        <div class="acteur fr" style="margin-bottom:8px;"><span class="acteur-flag">🇫🇷</span><div class="acteur-text"><strong>CDC / ADEME (75)</strong><span>Financement long terme et avances remboursables</span></div></div>
+        <div class="acteur fr" style="margin-bottom:8px;"><span class="acteur-flag">🇫🇷</span><div class="acteur-text"><strong>Meridiam, Ardian (75)</strong><span>Fonds d'infrastructure, transition énergétique</span></div></div>
+        <div class="acteur fr"><span class="acteur-flag">🇫🇷</span><div class="acteur-text"><strong>AXA XL (75)</strong><span>Assurance grands risques industriels</span></div></div>
+      </div>
+      <div>
+        <div class="couche-header" style="border-color:var(--green);">
+          <div class="couche-num" style="background:var(--green);">8</div>
+          <div><h3 style="color:var(--green);">Formation et R&D</h3></div>
+        </div>
+        <div class="acteur fr" style="margin-bottom:8px;"><span class="acteur-flag">🇫🇷</span><div class="acteur-text"><strong>IFP Training (69)</strong><span>Formation procédés industriels énergétiques</span></div></div>
+        <div class="acteur fr" style="margin-bottom:8px;"><span class="acteur-flag">🇫🇷</span><div class="acteur-text"><strong>IFPEN / IFP (92)</strong><span>R&D procédés thermochimiques, catalyse</span></div></div>
+        <div class="acteur fr" style="margin-bottom:8px;"><span class="acteur-flag">🇫🇷</span><div class="acteur-text"><strong>CEA (91), CNRS</strong><span>R&D énergie, LRGP Nancy, LGC Toulouse</span></div></div>
+        <div class="acteur opp"><span class="acteur-flag">⚡</span><div class="acteur-text"><strong>Formation pyrogazéification/Sabatier</strong><span>Filière inexistante — à créer dès la phase pilote</span></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TABLEAU SYNTHÈSE -->
+<div class="section">
+  <div class="wrap">
+    <div class="section-label">Synthèse</div>
+    <h2 class="reveal">Les 8 couches de l'écosystème industriel</h2>
+    <div class="reveal" style="overflow-x:auto;">
+      <table class="synth-table">
+        <thead><tr><th>Couche</th><th>Fonction</th><th>Acteurs français prioritaires</th><th>Chantiers à ouvrir</th><th>Statut</th></tr></thead>
+        <tbody>
+          <tr><td>1 — Maîtres d'ouvrage</td><td>Porter, financer, être responsable</td><td>TotalEnergies, Engie, EDF Renouvelables, InVivo, Terrena, Agrial</td><td>Modèle concession industrielle, SPV, opérateur national dédié</td><td><span class="tag-jaune">À structurer</span></td></tr>
+          <tr><td>2 — Ingénierie</td><td>Concevoir les ensembles, autorisations, gisements</td><td>Technip Energies, Axens/IFP, Assystem, Solagro, Burgeap</td><td>Ingénieur de gisement 1 000 t/j — métier inexistant</td><td><span class="tag-jaune">À développer</span></td></tr>
+          <tr><td>3 — Équipements récolte</td><td>Fournir les équipements de collecte biomasse</td><td>Rousseau (79), Denis (51), Kuhn (67), Claas France, Maguin (88)</td><td>Déchiqueteuses françaises grande capacité</td><td><span class="tag-vert">Largement disponible</span></td></tr>
+          <tr><td>3 — Équipements procédés</td><td>Fournir réacteurs, Sabatier, épuration</td><td>Haffner Energy (51), Technip (75), Axens/IFP (92), Elogen (91), McPhy (38)</td><td>Réacteurs 1 000 t/j, catalyseurs français, chaîne intégrée</td><td><span class="tag-orange">Verrous 1 et 2</span></td></tr>
+          <tr><td>3 — Distribution énergie</td><td>Injection réseau, GNL, GNV, microstations</td><td>GRDF (75), GRTgaz (75), Cryo Pur (93), Ben.e.bel (59)</td><td>Microstations ferme — déploiement à planifier</td><td><span class="tag-vert">Disponible</span></td></tr>
+          <tr><td>3 — Mobilité ÉREV</td><td>Fabriquer voitures, tracteurs, camions ÉREV</td><td>Stellantis (75), ACC (62), Verkor (38), Iveco France</td><td>Programme industriel ÉREV Rex — constructeur chef de file</td><td><span class="tag-jaune">À lancer</span></td></tr>
+          <tr><td>4 — Intégrateurs</td><td>Assembler les systèmes, les tester, les livrer</td><td>Technip Energies (75) — binôme envisageable avec TotalEnergies</td><td>Intégrateur logistique biomasse, intégrateur ÉREV Rex</td><td><span class="tag-orange">Objet des pilotes</span></td></tr>
+          <tr><td>5 — Exploitants</td><td>Faire fonctionner les sites 24h/24</td><td>Dalkia (EDF), Idex Energies, Engie Cofely — à qualifier</td><td>Opérateur certifié, supervision nationale, LTSA, concession</td><td><span class="tag-orange">Modèle à créer</span></td></tr>
+          <tr><td>6 — Maintenanciers</td><td>Maintenir, inspecter, régénérer catalyseurs</td><td>Boccard (69), Cegelec/Vinci, Axens/IFP, Bureau Veritas, Apave</td><td>LTSA 150 sites, régénération catalyseurs Sabatier</td><td><span class="tag-jaune">À structurer</span></td></tr>
+          <tr><td>7 — Financeurs</td><td>Capitaux, garanties, assurances</td><td>Bpifrance, CDC, ADEME, Meridiam, Ardian, AXA XL</td><td>Montage financier SPV post-pilotes, garanties publiques</td><td><span class="tag-jaune">Post-pilotes</span></td></tr>
+          <tr><td>8 — Formateurs / R&D</td><td>Former les compétences, conduire la R&D</td><td>IFP Training (69), IFPEN (92), CEA, CNRS, INRAE</td><td>Formation pyrogazéification/Sabatier — filière inexistante</td><td><span class="tag-orange">À engager maintenant</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="pdf-cta reveal" style="margin-top:32px;">
+      <div class="pdf-icon">📄</div>
+      <div class="pdf-info">
+        <strong>Document complet — Cartographie industrielle et économique V8</strong>
+        <span>8 couches · Analyse économique comparative · Annexe réglementaire R.446-105 · Août 2026</span>
+      </div>
+      <a href="impact_industriel_v8.pdf" class="btn-pdf" target="_blank" download>⬇ Télécharger le PDF</a>
+    </div>
+  </div>
+</div>
+
+<!-- ANALYSE ÉCONOMIQUE -->
+<div class="eco-section">
+  <div class="wrap">
+    <div class="section-label" style="color:#B8AFE6;">Analyse économique</div>
+    <h2 class="reveal" style="color:#fff;margin-bottom:8px;">Résilience 2045 — Avantages comparatifs</h2>
+    <p class="section-intro reveal">Comparaison avec le scénario tout-électrique à périmètre énergétique complet</p>
+
+    <div class="arg reveal">
+      <h3>1 — Avantage CAPEX estimé vs scénario concurrent</h3>
+      <p>Les fourchettes V11 donnent un avantage de l'ordre de 104 à 556 Md€ selon les hypothèses, avec un écart central de ~315 Md€ en faveur de Résilience — à vérifier par la PPE à périmètre identique.</p>
+      <div class="kpi-inline">CAPEX Résilience : ~540–690 Md€ · CAPEX BEV : ~794–1 096 Md€ · Écart central : ~315 Md€</div>
+    </div>
+
+    <div class="arg reveal">
+      <h3>2 — Programme de réindustrialisation</h3>
+      <p>4 500 à 7 500 emplois directs non délocalisables, ruraux, durables sur 20–30 ans. La cartographie montre que la grande majorité des acteurs mobilisés sont français — Technip Energies, Axens/IFP, Haffner Energy, GRDF, GRTgaz, Cryo Pur, Elogen, McPhy, Schneider Electric, Boccard, Eiffage, Vinci, Stellantis, IFP Training. Résilience est un programme de réindustrialisation autant qu'un programme énergétique.</p>
+    </div>
+
+    <div class="arg reveal">
+      <h3>3 — Structure économique à plusieurs flux de valeur</h3>
+      <p>Sur la base des rendements V11 (~1,75 TWh bio-CH₄/an/site à valider sur les pilotes) et d'une valeur de vente de 40–50 €/MWh, l'ordre de grandeur du chiffre d'affaires brut est de 70–87 M€/an par site. Ce CA brut ne constitue pas un retour sur investissement — il ne tient pas compte de l'OPEX complet. Il s'y ajoute la valorisation du biochar (200–500 €/t) et la valorisation carbone potentielle des crédits de séquestration.</p>
+    </div>
+
+    <div class="arg reveal">
+      <h3>4 — Coûts systémiques du BEV absents des comparaisons</h3>
+      <p>Infrastructure de charge, renforcement réseau basse tension, impact sur la pointe réseau (~40 GW de puissance moyenne potentiellement non appelée par les ÉREV — effet réel sur la pointe à établir par simulation), dépendance aux métaux critiques (Li, Co, Ni, terres rares), filières de recyclage batteries inexistantes à l'échelle nécessaire.</p>
+    </div>
+
+    <div class="arg reveal">
+      <h3>5 — Résilience couvre ce que le BEV ne peut pas couvrir</h3>
+      <p>Mobilité lourde longue distance, aviation, stockage saisonnier de l'énergie, résilience systémique du réseau. La vraie comparaison est « BEV seul » vs « BEV + Résilience » — la seconde option couvre 100 % des usages et maintient la diversité des deux réseaux indépendants.</p>
+    </div>
+
+    <div class="arg reveal">
+      <h3>6 — Résilience produit de l'énergie ET séquestre du carbone</h3>
+      <p>Le BEV décarbone la mobilité. Résilience décarbone la mobilité ET séquestre du carbone de façon permanente ET restaure la fertilité des sols ET reconstitue la mosaïque paysagère agricole — quatre effets simultanés qu'aucun autre programme énergétique ne produit. Séquestration biochar V11 : 20–23 Mt CO₂/an. Avec leviers complémentaires (séquestration géologique + cultures dédiées) : bilan net pouvant atteindre −60 à −80 Mt CO₂/an à horizon 2045.</p>
+    </div>
+
+    <div class="arg reveal">
+      <h3>7 — Les démonstrateurs sont la première étape de l'industrialisation</h3>
+      <p>Les démonstrateurs ne constituent pas un préalable pour décider si Résilience doit exister. Ils constituent la première étape de son industrialisation — et le moment de tester le procédé, le modèle d'exploitation, le modèle financier et la concession qui éviteront les dérives de la méthanisation mal encadrée.</p>
+    </div>
+
+    <h3 style="color:#B8AFE6;font-size:1.2rem;margin:36px 0 16px;" class="reveal">Grille de comparaison systémique</h3>
+    <div class="reveal" style="overflow-x:auto;">
+      <table class="comp-table">
+        <thead><tr><th>Critère</th><th>Résilience 2045</th><th>Scénario tout-BEV</th></tr></thead>
+        <tbody>
+          <tr><td>CAPEX total estimé</td><td>~540–690 Md€</td><td>~794–1 096 Md€ — à vérifier à périmètre identique</td></tr>
+          <tr><td>EPR2 nécessaires</td><td>14 (hypothèse RTE la plus ambitieuse à 2050)</td><td>21 — hypothèse à expliciter industriellement</td></tr>
+          <tr><td>Impact réseau électrique</td><td>~40 GW de puissance moyenne potentiellement non appelée par usage du Rex</td><td>Renforcement réseau BT + absorption pointe supplémentaire</td></tr>
+          <tr><td>Stockage saisonnier énergie</td><td>Bio-CH₄ dans réseau gaz existant</td><td>Solution non définie à 2045</td></tr>
+          <tr><td>Mobilité lourde longue distance</td><td>ÉREV Rex GNL / GNV — solution complémentaire</td><td>Contraintes fortes masse, autonomie, recharge</td></tr>
+          <tr><td>Emplois directs</td><td>4 500–7 500 non délocalisables — filière française</td><td>Majoritairement hors France</td></tr>
+          <tr><td>Ancrage industriel français</td><td>Fort — 8 couches écosystème français</td><td>Faible — batteries et panneaux importés</td></tr>
+          <tr><td>Dépendance matières premières</td><td>Différente — Li, Co, Ni absents de la chaîne principale</td><td>Forte — Li, Co, Ni, terres rares</td></tr>
+          <tr><td>Séquestration carbone</td><td>20–23 Mt CO₂/an via biochar (V11) — bilan net −60/−80 Mt avec leviers</td><td>Néant — décarbonation sans retrait net</td></tr>
+          <tr><td>Modèle d'exploitation</td><td>Concession industrielle qualifiée, supervision nationale</td><td>Décentralisé — risques locaux non traités</td></tr>
+          <tr><td>Première étape industrielle</td><td>Pilotes 100–200 t/j — démarrage 2026–2027</td><td>Déploiement sans démonstration intégrée préalable</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ANNEXE RÉGLEMENTAIRE -->
+<div class="annexe">
+  <div class="wrap">
+    <div class="section-label">Annexe réglementaire</div>
+    <h2 class="reveal">Adaptation du cadre réglementaire</h2>
+    <p class="section-intro reveal">Article R.446-105 du Code de l'énergie — éligibilité de la pyrogazéification aux certificats de production de biogaz</p>
+
+    <div class="principe reveal">
+      <h3>Contexte — une exclusion par omission, non par décision</h3>
+      <p>L'article R.446-105, tel que modifié par le décret n°2026-400 du 22 mai 2026, limite l'éligibilité aux CPB (certificats de production de biogaz) aux installations de méthanisation ou de stockage de déchets. Ce cadre n'intègre pas la pyrogazéification — non parce qu'elle a été délibérément exclue, mais parce qu'elle n'était pas encore industrialisée à grande échelle lors de la rédaction des textes. La demande n'est pas de supprimer l'article R.446-105 mais de l'adapter pour intégrer une technologie qui n'y figure pas encore, en cohérence avec le règlement européen CRCF (acte délégué biochar, 3 février 2026).</p>
+    </div>
+
+    <div class="encart-bleu reveal">
+      <h4>Le Gouvernement a déjà ouvert la porte</h4>
+      <p>La réponse ministérielle du 11 juin 2026 (JO Sénat, question n°08518 du Sénateur Piednoir) indique qu'une modification de l'article R.446-105 est à l'étude afin d'intégrer notamment la pyrogazéification au dispositif des CPB. Cette proposition a donc pour objet de nourrir et d'accélérer ce processus déjà ouvert, en fournissant un contenu réglementaire précis et des conditions de durabilité testables.</p>
+    </div>
+
+    <div class="decret-box reveal">
+      <h4>Proposition d'article R.446-105-1 (ou extension de R.446-105)</h4>
+      <p><em>La modification pourrait prendre la forme d'une extension de l'article R.446-105 ou, si le choix de rédaction le justifie, d'un article R.446-105-1 nouveau. Le contenu recherché — et non l'architecture juridique définitive, qui appartient au Conseil d'État — est le suivant :</em></p>
+      <p style="margin-top:16px;">« Sont également éligibles aux certificats de production de biogaz mentionnés à l'article R.446-105, les installations de production de biométhane par pyrogazéification de biomasse lignocellulosique résiduelle non dangereuse, sous réserve du respect des conditions cumulatives suivantes :</p>
+      <p>1° Les intrants sont exclusivement constitués de biomasse lignocellulosique résiduelle non dangereuse telle que définie à l'article L.541-1-1 du Code de l'environnement, à l'exclusion de toute biomasse cultivée à cet effet sur des terres arables pouvant être affectées à la production alimentaire ;</p>
+      <p>2° L'installation ne recourt pas à des combustibles fossiles pour le chauffage du procédé de pyrogazéification ;</p>
+      <p>3° Le rendement énergétique de conversion de la biomasse en biométhane injecté dans le réseau est égal ou supérieur à un seuil fixé par arrêté du ministre chargé de l'énergie, après avis de la Commission de régulation de l'énergie ;</p>
+      <p>4° La fraction carbonée solide (biochar) issue du procédé est valorisée selon des modalités garantissant sa stabilité carbone, conformément aux normes EBC (European Biochar Certificate) ou équivalentes reconnues par arrêté ministériel. »</p>
+    </div>
+
+    <div class="reveal" style="overflow-x:auto;">
+      <table class="cal-table">
+        <thead><tr><th>Étape</th><th>Calendrier proposé</th><th>Acteurs</th></tr></thead>
+        <tbody>
+          <tr><td>Saisine ministère chargé de l'énergie</td><td>Automne 2026</td><td>Programme Résilience + OPECST (Sénateur Piednoir)</td></tr>
+          <tr><td>Consultation CRE</td><td>Hiver 2026–2027</td><td>Direction générale de l'énergie et du climat (DGEC)</td></tr>
+          <tr><td>Avis Conseil d'État</td><td>Printemps 2027</td><td>Section des travaux publics</td></tr>
+          <tr><td>Publication décret modificatif</td><td>Été 2027</td><td>Journal Officiel de la République française</td></tr>
+          <tr><td>Arrêté ministériel (seuil rendement)</td><td>Automne 2027</td><td>Après premiers résultats sites pilotes Phase 0</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>Programme Résilience 2045 · <a href="index.html">resilience2045.fr</a> · Cartographie industrielle V8 · Août 2026 · Diffusion libre</p>
+</footer>
+
+<script>
+const io = new IntersectionObserver(entries => {
+  entries.forEach((e,i) => {
+    if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('in'), i*50); io.unobserve(e.target); }
+  });
+},{threshold:0.06});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
