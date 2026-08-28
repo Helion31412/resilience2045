@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le miscanthus dans Résilience 2045 — Culture de transition · Boucle territoriale</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --noir:#0a0f0d;--foret:#0d1f17;--vert-vif:#52b788;--vert-clair:#95d5b2;
+  --ambre:#e9c46a;--rouge:#c0392b;--rouge-light:#fadbd8;
+  --bleu:#2980b9;--blanc:#f0f4f1;--gris:#8a9e93;
+  --serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--noir);color:var(--blanc);font-family:var(--sans);font-weight:300;line-height:1.7;overflow-x:hidden}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:.9rem 2.5rem;background:rgba(10,15,13,.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(82,183,136,.12)}
+.nav-logo{font-family:var(--serif);font-size:1.15rem;font-weight:600;color:var(--vert-vif);text-decoration:none}
+.nav-back{font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gris);text-decoration:none;transition:color .3s}.nav-back:hover{color:var(--vert-vif)}
+.nav-tag{font-size:.66rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--gris);border:1px solid rgba(82,183,136,.2);padding:.25rem .75rem}
+
+/* HERO */
+#hero{min-height:78vh;display:flex;align-items:center;padding:8rem 3rem 5rem;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 35% 50%,rgba(29,90,54,.35) 0%,transparent 70%),linear-gradient(135deg,#0a0f0d 0%,#0d1f17 50%,#060e09 100%)}
+.hero-grid{position:absolute;inset:0;opacity:.04;background-image:linear-gradient(var(--vert-vif) 1px,transparent 1px),linear-gradient(90deg,var(--vert-vif) 1px,transparent 1px);background-size:55px 55px}
+.hero-content{position:relative;z-index:2;max-width:900px}
+.stag{font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--vert-vif);margin-bottom:.7rem}
+h1{font-family:var(--serif);font-size:clamp(2.2rem,5vw,3.8rem);font-weight:300;line-height:1.08;margin-bottom:1.2rem}
+h1 em{font-style:italic;color:var(--vert-vif)}
+.lead{font-size:.97rem;color:rgba(240,244,241,.7);max-width:720px;line-height:1.85;margin-bottom:2rem}
+.kpi-row{display:flex;gap:2.5rem;margin-top:2rem;flex-wrap:wrap}
+.kpi{border-left:2px solid var(--vert-vif);padding-left:1rem}
+.kpi.a{border-color:var(--ambre)}
+.kpi-num{font-family:var(--serif);font-size:1.8rem;color:var(--vert-vif);line-height:1}
+.kpi.a .kpi-num{color:var(--ambre)}
+.kpi-lbl{font-size:.68rem;color:var(--gris);text-transform:uppercase;letter-spacing:.1em;margin-top:.2rem}
+.btn{display:inline-block;padding:.72rem 1.6rem;font-family:var(--sans);font-size:.76rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:all .3s}
+.btn-primary{background:var(--vert-vif);color:var(--noir)}.btn-primary:hover{background:var(--vert-clair);transform:translateY(-2px)}
+.btn-outline{background:transparent;color:var(--blanc);border:1px solid rgba(240,244,241,.28)}.btn-outline:hover{border-color:var(--vert-vif);color:var(--vert-vif)}
+
+/* SECTIONS */
+section{padding:5rem 3rem}
+.container{max-width:1100px;margin:0 auto}
+.section-dark{background:var(--foret)}
+.section-darker{background:#080f0b}
+h2{font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.4rem);font-weight:300;line-height:1.15;margin-bottom:1rem}
+h2 em{font-style:italic;color:var(--vert-vif)}
+h3{font-family:var(--serif);font-size:1.2rem;font-weight:600;margin-bottom:.6rem}
+p{font-size:.9rem;color:rgba(240,244,241,.72);line-height:1.85}
+.sec-tag{font-size:.66rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--vert-vif);margin-bottom:.6rem}
+
+/* ENCART PRÉALABLE — BLEU */
+.prereq{border:1px solid rgba(41,128,185,.4);border-left:4px solid var(--bleu);background:rgba(41,128,185,.08);padding:2rem 2.4rem;margin-bottom:2.5rem}
+.prereq h3{color:#7EC8E3;font-size:1.05rem;margin-bottom:1rem}
+.prereq ol{padding-left:1.2rem}
+.prereq ol li{font-size:.88rem;color:rgba(240,244,241,.75);line-height:1.8;margin-bottom:.6rem}
+.prereq ol li strong{color:#7EC8E3}
+
+/* FONCTIONS GRID */
+.fonctions-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;margin-top:1.8rem}
+.fonction-card{padding:1.4rem 1.6rem;border:1px solid rgba(82,183,136,.18);background:rgba(13,31,23,.6)}
+.fonction-icon{font-size:1.5rem;margin-bottom:.5rem}
+.fonction-card h4{font-family:var(--serif);font-size:.95rem;color:var(--vert-clair);margin-bottom:.4rem}
+.fonction-card p{font-size:.78rem;color:rgba(240,244,241,.55);line-height:1.6}
+
+/* ENCARTS */
+.encart-vert{padding:1.8rem 2.2rem;border:1px solid rgba(82,183,136,.25);border-left:4px solid var(--vert-vif);background:rgba(29,58,40,.25);margin:1.8rem 0}
+.encart-vert h3{color:var(--vert-vif);margin-bottom:.7rem;font-size:1rem}
+.encart-vert p{font-size:.87rem}
+.encart-ambre{padding:1.8rem 2.2rem;border:1px solid rgba(233,196,106,.3);border-left:4px solid var(--ambre);background:rgba(233,196,106,.06);margin:1.8rem 0}
+.encart-ambre h3{color:var(--ambre);margin-bottom:.7rem;font-size:1rem}
+.encart-ambre p{font-size:.87rem}
+.encart-rouge{padding:1.8rem 2.2rem;border:1px solid rgba(192,57,43,.4);border-left:4px solid var(--rouge);background:rgba(192,57,43,.08);margin:1.8rem 0}
+.encart-rouge h3{color:#f1948a;margin-bottom:.7rem;font-size:1rem}
+.encart-rouge p{font-size:.87rem}
+.encart-rouge ul{padding-left:1.2rem;margin-top:.6rem}
+.encart-rouge ul li{font-size:.85rem;color:rgba(240,244,241,.68);line-height:1.75;margin-bottom:.4rem}
+
+/* ALERTE */
+.alerte{display:flex;gap:1rem;align-items:flex-start;padding:1.2rem 1.6rem;background:rgba(192,57,43,.1);border:1px solid rgba(192,57,43,.3);margin:1.4rem 0}
+.alerte-icon{font-size:1.2rem;flex-shrink:0;margin-top:.1rem}
+.alerte p{font-size:.83rem;color:rgba(240,244,241,.7);line-height:1.75}
+.alerte p strong{color:#f1948a}
+
+/* REMARQUE */
+.remarque{display:flex;gap:.8rem;align-items:flex-start;padding:1rem 1.4rem;background:rgba(41,128,185,.08);border-left:3px solid var(--bleu);margin:1.2rem 0}
+.remarque p{font-size:.82rem;color:rgba(240,244,241,.65);line-height:1.75;font-style:italic}
+
+/* BULLETS */
+.bullets{list-style:none;margin:1rem 0}
+.bullets li{display:flex;gap:.8rem;align-items:flex-start;font-size:.87rem;color:rgba(240,244,241,.68);line-height:1.7;margin-bottom:.5rem;padding-bottom:.5rem;border-bottom:1px solid rgba(82,183,136,.07)}
+.bullets li:last-child{border-bottom:none}
+.bullets li::before{content:'▸';color:var(--vert-vif);font-size:.8rem;margin-top:.25rem;flex-shrink:0}
+
+/* BOUCLE TERRITORIALE */
+.boucle{border:1px solid rgba(82,183,136,.2);background:rgba(13,31,23,.7);padding:2.5rem;margin:2rem 0}
+.boucle-title{font-family:var(--serif);font-size:.8rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--vert-vif);margin-bottom:1.8rem;text-align:center}
+.boucle-steps{display:flex;flex-direction:column;gap:0;align-items:stretch;max-width:700px;margin:0 auto}
+.boucle-step{padding:1rem 1.4rem;border:1px solid rgba(82,183,136,.18);background:rgba(29,58,40,.3)}
+.boucle-step.start,.boucle-step.end{background:rgba(29,58,40,.6);border-color:rgba(82,183,136,.4)}
+.boucle-step p{font-size:.85rem;color:rgba(240,244,241,.78);line-height:1.6;margin:0}
+.boucle-step.start p,.boucle-step.end p{color:var(--vert-clair);font-weight:500}
+.boucle-arrow{text-align:center;color:var(--vert-vif);font-size:1.3rem;padding:.3rem 0;opacity:.7}
+
+/* TRAJECTOIRE */
+.traj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.2rem;margin-top:1.8rem}
+.traj-card{padding:1.6rem;border:1px solid rgba(82,183,136,.14);background:rgba(10,15,13,.55);position:relative}
+.traj-period{font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ambre);margin-bottom:.6rem}
+.traj-card h3{font-family:var(--serif);font-size:1.05rem;color:var(--vert-clair);margin-bottom:.7rem}
+.traj-card p{font-size:.82rem;line-height:1.7}
+
+/* MULTIFONCTIONNALITÉ */
+.multi-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:rgba(82,183,136,.15);margin:1.8rem 0;border:1px solid rgba(82,183,136,.15)}
+.multi-cell{background:rgba(13,31,23,.8);padding:1.2rem 1.4rem}
+.multi-cell h4{font-family:var(--serif);font-size:.88rem;color:var(--vert-clair);margin-bottom:.3rem}
+.multi-cell span{font-size:.72rem;color:rgba(82,183,136,.6);font-style:italic}
+.multi-bottom{grid-column:1/-1;background:rgba(29,58,40,.5);text-align:center;padding:1rem}
+.multi-bottom p{font-size:.9rem;color:var(--vert-clair);font-family:var(--serif);margin:0}
+
+/* CONCLUSION */
+.concl-box{margin-top:2rem;padding:2.2rem 2.6rem;border:1px solid rgba(82,183,136,.22);border-left:4px solid var(--vert-vif);background:rgba(29,58,40,.2)}
+.concl-box h3{font-family:var(--serif);font-size:1.3rem;color:var(--vert-vif);margin-bottom:.9rem}
+.concl-box p{font-size:.9rem;color:rgba(240,244,241,.72);line-height:1.9}
+.concl-box p + p{margin-top:.8rem}
+
+/* DOC CTA */
+.doc-cta{display:flex;align-items:center;gap:2rem;padding:1.8rem 2rem;border:1px solid rgba(82,183,136,.2);background:rgba(13,31,23,.5);margin-top:2.5rem;flex-wrap:wrap}
+.doc-icon{font-size:2.2rem;flex-shrink:0}
+.doc-info strong{display:block;font-family:var(--serif);font-size:1.05rem;color:var(--blanc);margin-bottom:.3rem}
+.doc-info span{font-size:.78rem;color:var(--gris)}
+
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+.reveal.visible{opacity:1;transform:none}
+
+footer{background:#050a07;padding:2rem 3rem;text-align:center;border-top:1px solid rgba(82,183,136,.08)}
+.footer-logo{font-family:var(--serif);font-size:1.4rem;font-weight:300;color:var(--vert-vif);margin-bottom:.3rem}
+footer p{font-size:.75rem;color:var(--gris);max-width:600px;margin:.3rem auto}
+
+@media(max-width:700px){
+  nav{padding:.85rem 1.3rem}
+  section{padding:3.5rem 1.4rem}
+  .multi-grid{grid-template-columns:1fr}
+  .traj-grid{grid-template-columns:1fr}
+  .kpi-row{gap:1.5rem}
+  .doc-cta{flex-direction:column;align-items:flex-start}
+}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1J0GBHR98B"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-1J0GBHR98B');</script>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Résilience 2045</a>
+  <span class="nav-tag">Forêts · Territoires · Biomasse</span>
+  <a href="index.html" class="nav-back">← Accueil</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content reveal">
+    <div class="stag">Programme Résilience 2045 · Biomasse & Territoires</div>
+    <h1>Le miscanthus<br>dans le modèle <em>Résilience</em></h1>
+    <p class="lead">Culture de transition, financement sylvicole, stabilisation de la biomasse, boucle territoriale intégrée. Dans le cadre du Programme Résilience 2045 — et uniquement dans ce cadre — le miscanthus transforme une période de transition en une période économiquement productive et protectrice.</p>
+    <div class="kpi-row">
+      <div class="kpi"><div class="kpi-num">300–500 €</div><div class="kpi-lbl">marge/ha/an à vérifier sur pilotes</div></div>
+      <div class="kpi"><div class="kpi-num">~7,2 t</div><div class="kpi-lbl">CO₂eq/ha/an — potentiel théorique biochar</div></div>
+      <div class="kpi a"><div class="kpi-num">15–20 ans</div><div class="kpi-lbl">cycle agronomique — option, non trajectoire irréversible</div></div>
+      <div class="kpi"><div class="kpi-num">7 fonctions</div><div class="kpi-lbl">combinées dans le cadre Résilience</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONDITION PRÉALABLE -->
+<section class="section-darker">
+  <div class="container">
+    <div class="prereq reveal">
+      <h3>⚠ Condition préalable — Ce document s'inscrit exclusivement dans le cadre du Programme Résilience 2045</h3>
+      <ol>
+        <li><strong>Une valorisation locale assurée</strong> — l'unité de pyrogazéification est implantée à proximité, le débouché est contractualisé sur longue durée. Sans cette valorisation locale contractualisée, le miscanthus redevient une culture énergétique ordinaire, soumise à l'incertitude des marchés et des coûts logistiques.</li>
+        <li><strong>Une gestion conforme aux préconisations Résilience</strong> — calendrier de récolte, rotation des parcelles, suivi agronomique, bilan carbone effectif vérifié par les démonstrateurs.</li>
+        <li><strong>Des coupures entretenues imposées dès la conception</strong> — des coupures de largeur définie en coordination avec les services DFCI isolent chaque parcelle de miscanthus de ses voisines. Ces coupures sont une condition non négociable, non un accessoire optionnel. Leur entretien régulier fait partie du cahier des charges du contrat territorial Résilience.</li>
+      </ol>
+      <p style="margin-top:1rem;font-size:.8rem;color:rgba(240,244,241,.45);font-style:italic;">En dehors de ce cadre intégré, les observations de ce document ne valent pas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- LE PROBLÈME -->
+<section>
+  <div class="container">
+    <div class="sec-tag reveal">1 — Le problème</div>
+    <h2 class="reveal">Financer le temps <em>de la transition</em></h2>
+    <p class="reveal">Les incendies majeurs, les sécheresses répétées et l'évolution des conditions climatiques mettent en évidence un verrou structurel commun à la forêt et à l'agriculture : comment financer la période de transition entre un territoire devenu plus vulnérable et le territoire résilient que l'on souhaite reconstruire ?</p>
+    <p class="reveal" style="margin-top:.8rem;">Une forêt détruite par un incendie peut nécessiter plusieurs décennies avant de retrouver un fonctionnement écologique et économique complet. Des terres agricoles peuvent devenir progressivement moins adaptées aux cultures historiques. Dans les deux cas, la difficulté est économique et temporelle — il faut financer simultanément :</p>
+    <ul class="bullets reveal" style="margin-top:1.2rem;">
+      <li>l'entretien des terres et la prévention des incendies ;</li>
+      <li>la reconstruction forestière et la protection des jeunes peuplements ;</li>
+      <li>la reconversion agricole et l'adaptation aux nouvelles conditions climatiques ;</li>
+      <li>la production de biomasse et les investissements de transformation.</li>
+    </ul>
+    <div class="encart-vert reveal">
+      <h3>La réponse Résilience</h3>
+      <p>Résilience propose d'utiliser le miscanthus comme l'un des instruments permettant de financer cette période de transition. L'objectif n'est pas d'en faire une monoculture généralisée, mais de l'intégrer dans une mosaïque territoriale — là où ses caractéristiques agronomiques, économiques et énergétiques sont pertinentes, et là où l'unité de pyrogazéification locale assure un débouché contractualisé.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 7 FONCTIONS -->
+<section class="section-dark">
+  <div class="container">
+    <div class="sec-tag reveal">2 — Multifonctionnalité</div>
+    <h2 class="reveal">Sept fonctions <em>combinées</em><br>dans le cadre Résilience</h2>
+    <p class="reveal">Le miscanthus tel que décrit ici n'est pertinent que parce qu'il s'inscrit dans une chaîne de valorisation complète et locale. Sans l'unité de pyrogazéification et sans le contrat pluriannuel, les calculs économiques présentés ne s'appliquent pas.</p>
+    <div class="fonctions-grid reveal">
+      <div class="fonction-card">
+        <div class="fonction-icon">🌾</div>
+        <h4>Revenu agricole stable</h4>
+        <p>Contractualisé avec l'unité Résilience, indépendant de la volatilité des marchés</p>
+      </div>
+      <div class="fonction-card">
+        <div class="fonction-icon">🏭</div>
+        <h4>Biomasse locale assurée</h4>
+        <p>Débouché garanti — faible humidité, composition homogène, granulométrie maîtrisable</p>
+      </div>
+      <div class="fonction-card">
+        <div class="fonction-icon">🌲</div>
+        <h4>Financement sylvicole</h4>
+        <p>Revenu pendant le creux entre incendie et reconstitution forestière (20–40 ans)</p>
+      </div>
+      <div class="fonction-card">
+        <div class="fonction-icon">🔄</div>
+        <h4>Reconversion agricole</h4>
+        <p>Culture de transition sur terres fragilisées par le déficit hydrique ou le changement climatique</p>
+      </div>
+      <div class="fonction-card">
+        <div class="fonction-icon">🔥</div>
+        <h4>Gestion du risque incendie</h4>
+        <p>Sous conditions strictes d'implantation et de coupures entretenues — non intrinsèquement coupe-feu</p>
+      </div>
+      <div class="fonction-card">
+        <div class="fonction-icon">🌍</div>
+        <h4>Séquestration carbone</h4>
+        <p>~7,2 t CO₂eq/ha/an via biochar restitué au sol — potentiel théorique à vérifier sur pilotes</p>
+      </div>
+      <div class="fonction-card">
+        <div class="fonction-icon">🤝</div>
+        <h4>Entretien territorial autofinancé</h4>
+        <p>L'unité Résilience comme opérateur de service d'entretien du territoire — financé par la vente d'énergie et de biochar</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVENU & IMPLANTATION -->
+<section>
+  <div class="container">
+    <div class="sec-tag reveal">3 — Économie</div>
+    <h2 class="reveal">Un revenu pendant la <em>reconstruction</em></h2>
+    <p class="reveal">Dans les conditions adaptées, le miscanthus peut entrer en production dès les premières années suivant son implantation. Le modèle économique retenu dans les démonstrateurs Résilience vise une marge de l'ordre de 300 à 500 €/ha/an à maturité de production.</p>
+    <div class="remarque reveal"><p>Ces valeurs constituent des hypothèses économiques de travail à vérifier par les démonstrateurs territoriaux Résilience — non des résultats acquis. Elles ne s'appliquent que dans le cadre d'un débouché contractualisé avec l'unité de pyrogazéification locale.</p></div>
+
+    <div class="encart-ambre reveal">
+      <h3>⚡ Point de vigilance — financement de l'implantation</h3>
+      <p>Une plantation de miscanthus représente un coût d'implantation de l'ordre de 1 500 à 2 500 €/ha, avec une période de 2 à 3 ans avant la première récolte commerciale. Sans mécanisme de financement de l'implantation, même une marge de 400 €/ha/an reste inaccessible pour un agriculteur en difficulté. Les démonstrateurs Résilience devront tester les mécanismes adaptés : PCAE, aides régionales, avances de la coopérative-opérateur ou préfinancement via les contrats de long terme avec l'unité.</p>
+    </div>
+
+    <div class="sec-tag reveal" style="margin-top:2.5rem;">4 — Reconstruction forestière</div>
+    <h2 class="reveal">La culture <em>relais</em> après incendie</h2>
+    <p class="reveal">Après un incendie majeur, la reconstitution d'une forêt représente des dépenses pendant de nombreuses années alors que les recettes forestières sont très éloignées dans le temps. Le miscanthus — valorisé dans le cadre Résilience — contribue à résoudre ce décalage temporel en finançant les travaux sylvicoles pendant la phase de reconstruction.</p>
+    <p class="reveal" style="margin-top:.8rem;">À l'issue de son cycle de 15–20 ans, l'exploitant conserve la liberté de reconvertir la parcelle — le sol ayant été régénéré par la litière et le biochar — ou de renouveler la culture selon les besoins du territoire. C'est une <em>option de transition</em>, non une trajectoire irréversible.</p>
+  </div>
+</section>
+
+<!-- INCENDIES -->
+<section class="section-dark">
+  <div class="container">
+    <div class="sec-tag reveal">6 — Risque incendie</div>
+    <h2 class="reveal">Conditions strictes <em>d'implantation</em> Résilience</h2>
+
+    <div class="encart-rouge reveal">
+      <h3>Principe non négociable — coupures obligatoires dès la conception</h3>
+      <p>Chaque parcelle de miscanthus implantée dans le cadre du Programme Résilience doit être isolée de ses voisines — forêt, garrigues, autres plantations, habitations — par des coupures entretenues dont la largeur et les modalités sont définies en coordination avec les services DFCI locaux <strong>avant toute implantation</strong>.</p>
+      <ul>
+        <li>Les coupures ne sont pas un accessoire optionnel — elles sont une condition d'implantation.</li>
+        <li>Leur entretien régulier fait partie du cahier des charges du contrat territorial Résilience.</li>
+        <li>Leur absence transforme une parcelle de miscanthus en charge combustible dangereuse.</li>
+      </ul>
+    </div>
+
+    <p class="reveal">Une parcelle de miscanthus régulièrement récoltée, correctement isolée et intégrée dans une mosaïque gérée, peut contribuer à la stratégie de prévention incendie :</p>
+    <ul class="bullets reveal">
+      <li>interruption de la continuité des combustibles entre les peuplements voisins ;</li>
+      <li>création d'interfaces actives entre forêt et espace agricole ;</li>
+      <li>facilitation de l'accès des moyens de surveillance et d'intervention ;</li>
+      <li>organisation d'une mosaïque de végétation moins continue que la forêt non entretenue.</li>
+    </ul>
+
+    <div class="alerte reveal">
+      <div class="alerte-icon">⚠</div>
+      <p><strong>Le miscanthus sur pied, non récolté en période sèche, est une charge combustible sèche et fortement inflammable.</strong> Sans les coupures préconisées par Résilience, une parcelle peut propager un incendie au lieu de le ralentir. Le calendrier de récolte et la gestion des reliquats sont des paramètres critiques à définir avec le SDIS et la DFCI locale. Ces éléments sont intégrés au cahier des charges des démonstrateurs Résilience.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CARBONE & BIOCHAR -->
+<section>
+  <div class="container">
+    <div class="sec-tag reveal">10 — Carbone</div>
+    <h2 class="reveal">De la culture <em>au biochar</em></h2>
+    <p class="reveal">En associant la culture du miscanthus à la pyrogazéification Résilience et à la restitution du biochar au sol, le modèle affiche un potentiel théorique de bilan carbone global d'environ 7,2 t CO₂eq/ha/an :</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin:1.8rem 0;" class="reveal">
+      <div style="padding:1.6rem;border:1px solid rgba(82,183,136,.25);background:rgba(29,58,40,.3);">
+        <div style="font-family:var(--serif);font-size:2rem;color:var(--vert-vif);line-height:1;margin-bottom:.4rem;">~6,2 t</div>
+        <div style="font-size:.8rem;color:var(--gris);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.6rem;">CO₂eq/ha/an</div>
+        <p style="font-size:.83rem;">Carbone durablement séquestré sous forme de biochar stable (ratio H/C ≤ 0,4, stabilité millénaire)</p>
+      </div>
+      <div style="padding:1.6rem;border:1px solid rgba(82,183,136,.15);background:rgba(13,31,23,.5);">
+        <div style="font-family:var(--serif);font-size:2rem;color:var(--vert-clair);line-height:1;margin-bottom:.4rem;">~1,0 t</div>
+        <div style="font-size:.8rem;color:var(--gris);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.6rem;">CO₂eq/ha/an</div>
+        <p style="font-size:.83rem;">Stockage temporaire dans le sol et les rhizomes</p>
+      </div>
+    </div>
+    <div class="remarque reveal"><p>Ces chiffres constituent le potentiel théorique de la filière miscanthus → pyrogazéification → biochar → sol dans le cadre Résilience. Ils seront mesurés et consolidés par les démonstrateurs avant toute intégration au bilan carbone officiel du programme.</p></div>
+  </div>
+</section>
+
+<!-- BOUCLE TERRITORIALE -->
+<section class="section-darker">
+  <div class="container">
+    <div class="sec-tag reveal">11–12 — Boucle territoriale</div>
+    <h2 class="reveal">L'unité Résilience comme <em>opérateur territorial</em></h2>
+    <p class="reveal">Au-delà de sa propre récolte, le miscanthus dans le cadre Résilience permet de structurer un nouveau modèle économique : l'économie de l'entretien autofinancé. Les rémanents et résidus de débroussaillement deviennent des intrants secondaires pour la pyrogazéification. La vente d'énergie et de biochar finance les opérations d'entretien du territoire.</p>
+
+    <div class="boucle reveal">
+      <div class="boucle-title">La boucle territoriale intégrée Résilience</div>
+      <div class="boucle-steps">
+        <div class="boucle-step start"><p>🌍 Terre fragilisée / Zone à risque incendie</p></div>
+        <div class="boucle-arrow">↓</div>
+        <div class="boucle-step"><p>🌱 Implantation du miscanthus avec coupures entretenues (préconisations Résilience + DFCI) + contrats d'entretien des espaces voisins</p></div>
+        <div class="boucle-arrow">↓</div>
+        <div class="boucle-step"><p>🚜 Production de biomasse stable contractualisée avec l'unité de pyrogazéification Résilience + collecte des résidus de débroussaillement</p></div>
+        <div class="boucle-arrow">↓</div>
+        <div class="boucle-step"><p>💶 Revenu pour l'exploitant + entretien autofinancé des coupures, cultures et forêts voisines</p></div>
+        <div class="boucle-arrow">↓</div>
+        <div class="boucle-step"><p>🏭 Pyrogazéification Résilience → Bio-CH₄ injecté réseau + Biochar</p></div>
+        <div class="boucle-arrow">↓</div>
+        <div class="boucle-step"><p>🌿 Retour du biochar au sol → Séquestration carbone permanente + amélioration agronomique</p></div>
+        <div class="boucle-arrow">↓</div>
+        <div class="boucle-step end"><p>🌲 Revenus réinjectés dans la reconstruction forestière et la reconversion agricole du territoire</p></div>
+      </div>
+    </div>
+
+    <div class="encart-vert reveal">
+      <h3>L'idée centrale du modèle Résilience</h3>
+      <p>En sécurisant le gisement de base via le miscanthus contractualisé, l'infrastructure de transformation Résilience devient pérenne. Elle peut alors proposer des contrats d'entretien aux exploitants et forestiers voisins — transformant un coût public récurrent en un service économique viable, autofinancé par la vente d'énergie et de biochar. L'unité ne vend plus seulement de l'énergie : elle fournit un <em>service d'intérêt général autofinancé</em>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TRAJECTOIRE 30 ANS -->
+<section>
+  <div class="container">
+    <div class="sec-tag reveal">14 — Trajectoire</div>
+    <h2 class="reveal">Une trajectoire <em>sur 30 ans</em></h2>
+    <div class="traj-grid reveal">
+      <div class="traj-card">
+        <div class="traj-period">Années 0–3</div>
+        <h3>Installation & transition</h3>
+        <p>Diagnostic territorial, définition des coupures avec les services DFCI, préparation des sols, implantation des rhizomes, contractualisation avec l'unité de pyrogazéification Résilience. Mobilisation des financements d'implantation.</p>
+      </div>
+      <div class="traj-card">
+        <div class="traj-period">Années 3–15</div>
+        <h3>Phase productive & gestion</h3>
+        <p>Production régulière à maturité, alimentation continue de l'unité Résilience. Entretien rigoureux des coupures. Génération de biochar restitué au sol. Financement des travaux sylvicoles. Accumulation des données réelles pour les démonstrateurs.</p>
+      </div>
+      <div class="traj-card">
+        <div class="traj-period">Années 10–30</div>
+        <h3>Évolution du territoire</h3>
+        <p>Choix selon la maturité des espaces et les données des démonstrateurs Résilience : poursuite de la culture, reconversion vers une forêt feuillue adaptée, diversification agricole sur sol régénéré, ou extension à de nouvelles parcelles.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MULTIFONCTIONNALITÉ -->
+<section class="section-dark">
+  <div class="container">
+    <div class="sec-tag reveal">15 — Synthèse</div>
+    <h2 class="reveal">Une approche <em>différente</em> d'une simple culture énergétique</h2>
+    <p class="reveal">La force du modèle Résilience réside dans la multifonctionnalité croisée de ses effets — à la condition que valorisation, gestion et entretien suivent le cahier des charges Résilience.</p>
+    <div class="multi-grid reveal">
+      <div class="multi-cell">
+        <h4>Revenu agricole stable</h4>
+        <span>contractualisé Résilience</span>
+      </div>
+      <div class="multi-cell">
+        <h4>Biomasse homogène</h4>
+        <span>débouché local assuré</span>
+      </div>
+      <div class="multi-cell">
+        <h4>Contractualisation pluriannuelle</h4>
+        <span>prix garanti long terme</span>
+      </div>
+      <div class="multi-cell">
+        <h4>Biochar & carbone</h4>
+        <span>bilan vérifié démonstrateurs</span>
+      </div>
+      <div class="multi-cell">
+        <h4>Gestion du risque incendie</h4>
+        <span>coupures entretenues Résilience obligatoires</span>
+      </div>
+      <div class="multi-cell">
+        <h4>Financement de la transition</h4>
+        <span>forestière et agricole</span>
+      </div>
+      <div class="multi-bottom">
+        <p>Service d'entretien territorial autofinancé par la vente d'énergie et de biochar Résilience</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONCLUSION -->
+<section>
+  <div class="container">
+    <div class="sec-tag reveal">Conclusion stratégique</div>
+    <div class="concl-box reveal">
+      <h3>Faire financer la résilience future d'un territoire par l'exploitation intelligente de sa transition</h3>
+      <p>Le miscanthus n'est pas présenté dans Résilience comme une solution universelle ni comme une monoculture de substitution. Dans le cadre du Programme Résilience 2045 — et uniquement dans ce cadre, avec valorisation locale assurée, gestion conforme aux préconisations et entretien des coupures imposé — c'est un instrument économique, climatique et territorial qui permet d'acheter du temps.</p>
+      <p>Hors de ce cadre intégré, les propriétés décrites dans ce document ne sont pas garanties. C'est précisément pourquoi les démonstrateurs Résilience testent simultanément la valorisation, la gestion, l'entretien des coupures et le bilan carbone effectif — non séparément.</p>
+    </div>
+
+    <div style="margin-top:2rem;padding:1.8rem 2.2rem;border:1px solid rgba(82,183,136,.2);background:rgba(13,31,23,.5);" class="reveal">
+      <h3 style="font-size:1rem;color:var(--vert-clair);margin-bottom:1rem;">Les trois hypothèses à vérifier par les démonstrateurs Résilience</h3>
+      <ol style="padding-left:1.2rem;">
+        <li style="font-size:.87rem;color:rgba(240,244,241,.68);line-height:1.8;margin-bottom:.6rem;">La marge nette de 300–500 €/ha/an est effectivement atteignable avec le débouché contractualisé de l'unité Résilience dans les conditions locales (Landes, zones méditerranéennes).</li>
+        <li style="font-size:.87rem;color:rgba(240,244,241,.68);line-height:1.8;margin-bottom:.6rem;">Le modèle de contrat territorial — exploitant · coopérative-opérateur · unité de pyrogazéification Résilience — est juridiquement et économiquement viable, avec les coupures entretenues intégrées dans le cahier des charges.</li>
+        <li style="font-size:.87rem;color:rgba(240,244,241,.68);line-height:1.8;">Le bilan carbone effectif (~7,2 t CO₂eq/ha/an théorique) est confirmé par les mesures réelles sur les sites pilotes Résilience.</li>
+      </ol>
+    </div>
+
+    <div class="doc-cta reveal">
+      <div class="doc-icon">📄</div>
+      <div class="doc-info">
+        <strong>Document complet — Le miscanthus dans le modèle Résilience V2</strong>
+        <span>15 sections · Conditions d'implantation · Trajectoire 30 ans · Boucle territoriale · Août 2026</span>
+      </div>
+      <a href="miscanthus_resilience_v2.pdf" class="btn btn-primary" target="_blank" download style="flex-shrink:0;">⬇ Télécharger le PDF</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Résilience 2045</div>
+  <p><a href="index.html">resilience2045.fr</a> · Biomasse & Territoires · Le miscanthus dans Résilience · Août 2026 · Diffusion libre</p>
+</footer>
+
+<script>
+const io = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 60);
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.07 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
