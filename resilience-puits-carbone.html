@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pourquoi les puits naturels ne peuvent pas porter seuls la stratégie climatique de 2045 — Résilience 2045</title>
+<style>
+  :root {
+    --vert-fonce: #1A4731;
+    --vert-moyen: #2D6A4F;
+    --vert-clair: #D4EDDA;
+    --ambre: #856404;
+    --ambre-bg: #FFF3CD;
+    --gris-bg: #F8F9FA;
+    --gris-bord: #DEE2E6;
+    --texte: #212529;
+    --texte-leger: #6C757D;
+    --blanc: #FFFFFF;
+    --max-w: 860px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Georgia', serif;
+    font-size: 17px;
+    line-height: 1.75;
+    color: var(--texte);
+    background: var(--blanc);
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--vert-fonce);
+    color: var(--blanc);
+    padding: 48px 24px 40px;
+  }
+  .header-inner { max-width: var(--max-w); margin: 0 auto; }
+  .programme-label {
+    font-family: 'Arial', sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 16px;
+  }
+  header h1 {
+    font-size: clamp(22px, 4vw, 32px);
+    font-weight: normal;
+    line-height: 1.3;
+    color: var(--blanc);
+    margin-bottom: 20px;
+    border-bottom: 2px solid rgba(255,255,255,0.25);
+    padding-bottom: 20px;
+  }
+  .meta {
+    font-family: 'Arial', sans-serif;
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.6;
+  }
+
+  /* ── NAV ── */
+  nav {
+    background: var(--vert-moyen);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 3px solid var(--vert-fonce);
+  }
+  .nav-inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .nav-inner::-webkit-scrollbar { display: none; }
+  nav a {
+    font-family: 'Arial', sans-serif;
+    font-size: 13px;
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    padding: 14px 16px;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -3px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  nav a:hover { color: var(--blanc); border-color: rgba(255,255,255,0.5); }
+
+  /* ── MAIN ── */
+  main { max-width: var(--max-w); margin: 0 auto; padding: 48px 24px 80px; }
+
+  /* ── RÉSUMÉ ── */
+  .resume {
+    background: var(--vert-clair);
+    border-top: 4px solid var(--vert-moyen);
+    padding: 28px 32px;
+    margin-bottom: 48px;
+    border-radius: 0 0 4px 4px;
+  }
+  .resume-label {
+    font-family: 'Arial', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--vert-fonce);
+    font-weight: bold;
+    margin-bottom: 12px;
+  }
+  .resume p { font-size: 16px; line-height: 1.8; color: var(--vert-fonce); }
+
+  /* ── SECTIONS ── */
+  section { margin-bottom: 56px; }
+  h2 {
+    font-size: 22px;
+    font-weight: normal;
+    color: var(--vert-fonce);
+    border-bottom: 2px solid var(--vert-moyen);
+    padding-bottom: 10px;
+    margin-bottom: 24px;
+    margin-top: 48px;
+  }
+  h2:first-child { margin-top: 0; }
+  h3 {
+    font-size: 17px;
+    font-weight: bold;
+    color: var(--vert-moyen);
+    margin: 32px 0 12px;
+  }
+  p { margin-bottom: 16px; text-align: justify; }
+
+  /* ── ENCADRÉS ── */
+  .box {
+    padding: 22px 26px;
+    margin: 28px 0;
+    border-radius: 2px;
+  }
+  .box-label {
+    font-family: 'Arial', sans-serif;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  .box-vert { background: var(--vert-clair); border-top: 4px solid var(--vert-moyen); }
+  .box-vert .box-label { color: var(--vert-fonce); }
+  .box-vert p { color: var(--vert-fonce); }
+  .box-ambre { background: var(--ambre-bg); border-top: 4px solid #FFC107; }
+  .box-ambre .box-label { color: var(--ambre); }
+  .box-ambre p { color: #533F03; }
+  .box-gris { background: var(--gris-bg); border-left: 4px solid var(--gris-bord); padding-left: 22px; }
+
+  /* ── TABLEAUX ── */
+  .table-wrap { overflow-x: auto; margin: 24px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 15px; }
+  thead tr { background: var(--vert-moyen); }
+  thead th {
+    color: var(--blanc);
+    font-family: 'Arial', sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 12px 14px;
+    text-align: left;
+  }
+  tbody tr:nth-child(odd) { background: var(--blanc); }
+  tbody tr:nth-child(even) { background: var(--gris-bg); }
+  tbody tr:last-child { font-weight: bold; background: #E8F4EE; }
+  td { padding: 11px 14px; vertical-align: top; line-height: 1.55; }
+  td:first-child { font-weight: 600; color: var(--vert-fonce); width: 30%; }
+
+  /* ── BULLETS ── */
+  ul.doc-list { list-style: none; padding: 0; margin: 16px 0 20px; }
+  ul.doc-list li {
+    padding: 6px 0 6px 22px;
+    position: relative;
+    border-bottom: 1px solid var(--gris-bg);
+  }
+  ul.doc-list li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--vert-moyen);
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 1.4;
+  }
+
+  /* ── PHASES ── */
+  .phases { display: flex; flex-direction: column; gap: 16px; margin: 24px 0; }
+  .phase {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 0;
+    border: 1px solid var(--gris-bord);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .phase-label {
+    background: var(--vert-fonce);
+    color: var(--blanc);
+    padding: 16px 14px;
+    font-family: 'Arial', sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 1.4;
+  }
+  .phase-content { padding: 16px; font-size: 15px; line-height: 1.6; }
+  .phase-content .seq {
+    font-family: 'Arial', sans-serif;
+    font-size: 12px;
+    color: var(--vert-moyen);
+    font-weight: bold;
+    margin-top: 6px;
+  }
+
+  /* ── OBJECTIONS ── */
+  .objection {
+    border: 1px solid var(--gris-bord);
+    border-radius: 4px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .obj-q {
+    background: var(--gris-bg);
+    padding: 14px 18px;
+    font-style: italic;
+    color: var(--vert-fonce);
+    font-weight: bold;
+    border-bottom: 1px solid var(--gris-bord);
+    font-size: 16px;
+  }
+  .obj-r { padding: 16px 18px; font-size: 15px; line-height: 1.7; }
+
+  /* ── CONCLUSION ── */
+  .conclusion-box {
+    background: var(--vert-fonce);
+    color: var(--blanc);
+    padding: 32px 36px;
+    margin: 40px 0;
+    border-radius: 4px;
+  }
+  .conclusion-box .box-label { color: rgba(255,255,255,0.6); margin-bottom: 14px; }
+  .conclusion-box p { color: var(--blanc); text-align: left; }
+
+  /* ── CTA PDF ── */
+  .cta-pdf {
+    background: var(--vert-clair);
+    border: 2px solid var(--vert-moyen);
+    border-radius: 6px;
+    padding: 32px 36px;
+    margin: 48px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .cta-pdf-text h3 { color: var(--vert-fonce); margin: 0 0 8px; font-size: 18px; }
+  .cta-pdf-text p { color: var(--vert-moyen); margin: 0; font-size: 15px; font-family: 'Arial', sans-serif; }
+  .btn-pdf {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--vert-fonce);
+    color: var(--blanc);
+    text-decoration: none;
+    padding: 14px 28px;
+    border-radius: 4px;
+    font-family: 'Arial', sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    white-space: nowrap;
+    transition: background 0.2s;
+  }
+  .btn-pdf:hover { background: var(--vert-moyen); }
+  .btn-pdf svg { flex-shrink: 0; }
+
+  /* ── SOURCES ── */
+  .sources {
+    border-top: 2px solid var(--gris-bord);
+    padding-top: 28px;
+    margin-top: 48px;
+  }
+  .sources h3 { font-size: 14px; font-family: 'Arial', sans-serif; color: var(--texte-leger); margin-bottom: 12px; }
+  .sources p { font-size: 13px; color: var(--texte-leger); line-height: 1.7; font-family: 'Arial', sans-serif; }
+  .sources a { color: var(--vert-moyen); }
+
+  /* ── DIVIDER ── */
+  hr { border: none; border-top: 1px solid var(--gris-bord); margin: 40px 0; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    .phase { grid-template-columns: 1fr; }
+    .phase-label { padding: 10px 14px; }
+    .cta-pdf { flex-direction: column; align-items: flex-start; }
+    td:first-child { width: auto; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <p class="programme-label">Programme Résilience 2045 · Note de positionnement stratégique · Version 5 · Août 2026</p>
+    <h1>Pourquoi les puits naturels ne peuvent pas porter seuls la stratégie climatique de 2045 — et comment Résilience crée un puits carbone territorial supplémentaire, mesurable et souverain</h1>
+    <p class="meta">
+      Sources : IGN IFN 2025 · GIEC AR6 · Pascual et al., <em>Science</em> 2026 (DOI:10.1126/science.adz8554) · Global Carbon Budget 2025 · CRCF UE (3 fév. 2026) · Programme Résilience V11
+    </p>
+  </div>
+</header>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#resume">Résumé</a>
+    <a href="#diagnostic">1. Diagnostic</a>
+    <a href="#giec">2. GIEC</a>
+    <a href="#resilience">3. Résilience</a>
+    <a href="#objections">4. Objections</a>
+    <a href="#conclusion">5. Conclusion</a>
+    <a href="#pdf">↓ PDF</a>
+  </div>
+</nav>
+
+<main>
+
+  <!-- RÉSUMÉ -->
+  <div class="resume" id="resume">
+    <p class="resume-label">Résumé exécutif</p>
+    <p>Les politiques climatiques française et européenne reposent sur deux hypothèses fragilisées par les données scientifiques les plus récentes : (1) les puits forestiers constitueront un flux annuel de retrait supplémentaire garanti et croissant jusqu'en 2045 ; (2) ce qu'ils n'absorbent pas peut être compensé par des crédits carbone externes. Or les forêts constituent des stocks de carbone considérables et peuvent continuer à être des puits nets — mais leur capacité de retrait supplémentaire n'est ni illimitée ni garantie dans le temps. Et les forêts africaines ou amazoniennes vers lesquelles l'Europe envisage d'externaliser sont soumises aux mêmes perturbations climatiques croissantes, hors contrôle européen.</p>
+    <p>Le Programme Résilience propose une troisième voie : transformer les flux de biomasse renouvelable du territoire en séquestration carbone permanente par pyrogazéification et biochar, complétée par la valorisation du CO₂ biogénique concentré produit sur chaque site. Le CRCF (UE, 3 février 2026) reconnaît explicitement le biochar comme <em>Permanent Carbon Removal</em> certifiable.</p>
+  </div>
+
+  <hr>
+
+  <!-- §1 DIAGNOSTIC -->
+  <section id="diagnostic">
+    <h2>1. Le diagnostic — Ce que les données disent réellement</h2>
+
+    <h3>1.1 Le puits forestier est en déclin — miser sur sa stabilité serait imprudent</h3>
+    <p>Le rapport IGN 2025 (Mémento forestier) dresse un constat sans appel : en France, la mortalité des arbres a augmenté de 125 % en dix ans. La surface forestière s'étend, mais les forêts dépérissent. La production biologique chute, la régénération stagne, les jeunes peuplements souffrent de la pression du gibier et des sécheresses successives.</p>
+    <p>Ce puits net est aujourd'hui en déclin, alors même que les besoins de retrait de CO₂ augmentent. Il serait donc imprudent de construire la stratégie climatique de 2045 sur l'hypothèse de sa stabilité ou de son augmentation — indépendamment de la valeur comptable actuelle du bilan LULUCF.</p>
+    <p>Une étude publiée dans <em>Science</em> le 19 mars 2026 (Pascual et al., Lund University / Stanford University, DOI : 10.1126/science.adz8554) apporte une démonstration décisive sur les forêts suédoises boréales.</p>
+
+    <div class="box box-ambre">
+      <p class="box-label">Résultat clé — Pascual et al., Science 2026</p>
+      <p>Les forêts primaires étudiées en Suède contiennent <strong>83 % de carbone de plus</strong> que les forêts gérées équivalentes. Mais l'essentiel de cet écart ne se trouve pas dans les arbres — il se trouve dans les <strong>sols</strong>, constitué au fil de plusieurs siècles d'accumulation lente. Dans les 60 premiers centimètres de sol d'une forêt primaire, on trouve autant de carbone que dans l'ensemble des arbres, bois morts et sol d'une forêt gérée comparable. Ce stock historique ne doit pas être confondu avec un flux annuel de retrait supplémentaire.</p>
+    </div>
+
+    <p>Ce résultat conduit à une distinction fondamentale pour la politique climatique :</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Concept</th><th>Ce que cela signifie</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>Stock historique de carbone</td>
+            <td>Carbone accumulé sur des siècles dans les arbres et les sols. Patrimoine carbone essentiel à préserver. Ne constitue pas automatiquement un flux annuel net supplémentaire — une forêt ancienne peut contenir énormément de carbone sans être pour autant un puits net important.</td>
+          </tr>
+          <tr>
+            <td>Capacité de retrait annuel net</td>
+            <td>Les forêts constituent des stocks considérables et peuvent continuer à être des puits nets. Mais cette capacité n'est ni illimitée ni garantie dans le temps, notamment sous l'effet des perturbations climatiques. C'est ce flux net — et sa trajectoire — qui importe pour la stratégie 2045.</td>
+          </tr>
+          <tr>
+            <td>Implication politique</td>
+            <td>Il serait imprudent de faire reposer la stratégie climatique sur l'hypothèse que les forêts retireront davantage de CO₂ dans les décennies futures qu'elles ne le font aujourd'hui — alors même que les données récentes montrent un déclin de ce flux.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Pourquoi l'écart de 83 % ne signifie pas ce qu'on croit souvent</h3>
+    <p>Trois causes distinctes expliquent cet écart — et leur distinction est essentielle pour ne pas mal interpréter l'étude :</p>
+    <ul class="doc-list">
+      <li><strong>L'âge et le temps d'accumulation</strong> — une forêt primaire suédoise a des siècles devant elle pour accumuler du carbone dans ses sols. Une forêt en rotation courte (30–80 ans) n'a simplement pas eu le temps. Ce n'est pas la gestion qui détruit le stock : c'est la jeunesse relative du peuplement.</li>
+      <li><strong>Le compactage des sols par les engins lourds</strong> — les auteurs l'identifient comme hypothèse centrale : les machines lourdes perturbent la structure du sol, réduisent l'activité microbienne et limitent le transfert du carbone vers les horizons profonds. C'est un effet mécanique de la gestion industrielle intensive — distinct de l'entretien léger.</li>
+      <li><strong>Le retrait de biomasse aérienne</strong> — couper de grands arbres réduit temporairement le stock aérien. Mais une jeune forêt en croissance absorbe du CO₂ plus vite qu'une forêt mature proche de l'équilibre. Le stock aérien baisse à la coupe, mais la dynamique de croissance peut être plus favorable à moyen terme.</li>
+    </ul>
+
+    <div class="box box-vert">
+      <p class="box-label">Implication directe pour Résilience</p>
+      <p>Résilience utilise exclusivement des engins légers décarbonés (tracteur ÉREV, porteurs câbles) qui évitent précisément le compactage des sols identifié comme l'une des causes principales du déficit carbone dans les forêts gérées industriellement. Ce n'est pas un détail technique — c'est une garantie écologique.</p>
+    </div>
+
+    <h3>1.2 Les compensations externes ne sont pas une garantie de permanence</h3>
+    <p>Face aux limites des puits domestiques, l'Union européenne envisage de recourir à des crédits carbone provenant de projets forestiers situés hors du territoire européen. Un crédit carbone forestier n'a de valeur que si le stock qu'il représente est permanent. Or cette permanence dépend de facteurs que l'Europe ne contrôle pas.</p>
+
+    <div class="box box-ambre">
+      <p class="box-label">Le cas amazonien — un avertissement concret</p>
+      <p>Plusieurs études convergentes montrent que l'Amazonie brésilienne est devenue source nette de carbone lors des extrêmes climatiques récents. Rosan et al. (<em>Communications Earth &amp; Environment</em>, 2024, DOI:10.1038/s43247-024-01205-0) confirment que l'Amazonie du sud-est constitue une source nette sur la période 2010–2020, et que la forêt ancienne réduit son absorption pendant les sécheresses. Ce qui était un puits devient, certaines années, une source nette. Le problème climatique qui fragilise ces puits ne s'arrête pas aux frontières européennes.</p>
+    </div>
+
+    <p>Par ailleurs, le règlement européen sur la déforestation importée tarde à entrer en vigueur. Les États membres ont refusé un monitoring des forêts par satellite. Dans ce contexte, externaliser la responsabilité du stockage carbone vers des écosystèmes que l'Europe ne surveille pas constitue un risque stratégique.</p>
+    <ul class="doc-list">
+      <li>La permanence du stock n'est pas garantie hors territoire européen</li>
+      <li>L'absence de destruction par incendie ne peut être assurée</li>
+      <li>La gouvernance locale est hors contrôle européen</li>
+      <li>Le monitoring est insuffisant — refus du satellite au niveau des États membres</li>
+      <li>Le double comptage reste un risque réel dans les registres actuels</li>
+    </ul>
+  </section>
+
+  <hr>
+
+  <!-- §2 GIEC -->
+  <section id="giec">
+    <h2>2. Ce que le GIEC reconnaît — et ce que la traduction politique retient</h2>
+    <p>Le message scientifique complet de l'AR6 du GIEC est : réduire très fortement les émissions ET déployer des retraits durables de CO₂ pour compenser les émissions résiduelles difficiles à éliminer.</p>
+
+    <div class="box box-vert">
+      <p class="box-label">GIEC AR6 WG3 — Citation directe</p>
+      <p><em>« The deployment of CDR to counterbalance hard-to-abate residual emissions is unavoidable if net zero CO₂ or GHG emissions are to be achieved. »</em></p>
+    </div>
+
+    <p>Dans le débat public, ce message devient souvent « il faut sortir des fossiles ». Ce n'est pas faux — mais c'est incomplet. L'AR6 signale également que différentes méthodes de CDR présentent des niveaux de permanence très différents.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Type de stockage</th><th>Caractéristiques et permanence</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>Stockage réversible (forêts, sols)</td>
+            <td>Stock dynamique, utile et à préserver. Ne doit pas être assimilé à une séquestration permanente sur des siècles. Vulnérabilité aux incendies, sécheresses et maladies reconnue par le GIEC.</td>
+          </tr>
+          <tr>
+            <td>Séquestration par biochar certifié (EBC, H/Corg ≤ 0,4)</td>
+            <td>Carbone pyrogénique produit dans des conditions contrôlées (température ≥ 550°C). Permanence démontrée par caractérisation analytique et protocole de suivi — pas postulée a priori. Reconnu par le CRCF UE (3 fév. 2026) comme <em>Permanent Carbon Removal</em>.</td>
+          </tr>
+          <tr>
+            <td>Séquestration géologique (minéralisation, CarbFix)</td>
+            <td>Carbone minéralisé dans la roche basaltique ou stocké en formation géologique. Permanence plurimillénaire. Complémentaire du biochar pour le CO₂ biogénique concentré produit sur les sites Résilience.</td>
+          </tr>
+          <tr>
+            <td>Avantage décisif de Résilience</td>
+            <td>La pyrogazéification territoriale est un mécanisme de CDR dont la permanence (biochar certifié EBC), la traçabilité (monitoring par site) et la gouvernance (territoire français, cadre CRCF) sont pleinement maîtrisables par l'Europe — ce qu'aucune compensation externe ne peut garantir.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- §3 RÉSILIENCE -->
+  <section id="resilience">
+    <h2>3. Ce que Résilience apporte de structurellement différent</h2>
+
+    <h3>3.1 La logique de base — ne pas confondre stock et flux</h3>
+    <p>Résilience ne propose pas de remplacer la forêt ni de l'exploiter davantage. Il part d'un constat différent : les biomasses que le territoire produit ou doit retirer pour des raisons sylvicoles, agricoles ou de prévention incendie se décomposent actuellement en libérant leur carbone dans l'atmosphère en quelques décennies. La pyrogazéification transforme une partie de ce carbone en biochar stable — créant un retrait net durable.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Scénario</th><th>Bilan carbone et valeur produite</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>Forêt laissée en libre évolution</td>
+            <td>La biomasse fine non récoltée se décompose et libère son carbone sur quelques décennies — bilan neutre sur ce cycle court. Le flux net supplémentaire d'une forêt à biomasse stabilisée est faible, même si la forêt conserve un stock considérable et peut rester un puits net à long terme.</td>
+          </tr>
+          <tr>
+            <td>Entretien actif + pyrogazéification (biomasse fine &lt; 10–12 cm uniquement)</td>
+            <td>Biochar stable dont la permanence est démontrée par caractérisation EBC (H/Corg ≤ 0,4). Bilan négatif. Les gros bois morts (> 20–30 cm) sont préservés intégralement. Engins légers décarbonés — pas de compactage des sols.</td>
+          </tr>
+          <tr>
+            <td>Triple flux de valeur par site</td>
+            <td>1. Biométhane → carburant ÉREV et flexibilité réseau &nbsp;·&nbsp; 2. Biochar → séquestration certifiable + amendement sols agricoles (rétention eau, fertilité) &nbsp;·&nbsp; 3. CO₂ biogénique concentré → valorisation industrielle, serres et séquestration géologique</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>3.2 Le CO₂ biogénique concentré — la troisième voie</h3>
+    <p>Chaque site produit, au-delà du biométhane et du biochar, un flux de CO₂ biogénique pur et concentré — environ 35 Mt CO₂/an pour 150 sites selon les estimations V11. Son bénéfice carbone net dépend de sa destination :</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Destination</th><th>Usage</th><th>Bénéfice carbone</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>Serres et agriculture sous abri</td>
+            <td>Substitution du CO₂ fossile pour la fertilisation carbonique</td>
+            <td>Réduction d'émissions</td>
+          </tr>
+          <tr>
+            <td>Industries et chimie verte</td>
+            <td>Boissons, chimie verte, Sabatier (carburants synthétiques)</td>
+            <td>Réduction d'émissions — stockage temporaire</td>
+          </tr>
+          <tr>
+            <td>Séquestration géologique (CarbFix)</td>
+            <td>Injection en formations basaltiques ou salines profondes — minéralisation permanente</td>
+            <td>Séquestration permanente additionnelle</td>
+          </tr>
+          <tr>
+            <td>Bilan combiné (150 sites)</td>
+            <td>23 Mt CO₂/an (biochar, permanent certifié) + fraction CO₂ biogénique vers séquestration géologique + réduction d'émissions par substitution</td>
+            <td>Retrait permanent + réduction + séquestration additionnelle — sans dépendre d'aucun écosystème étranger</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>3.3 La boucle économique territoriale</h3>
+    <p>La dimension la plus originale de Résilience n'est pas technologique — elle est économique. La pyrogazéification crée une valeur économique pour les biomasses d'entretien qui, sans débouché, restent une charge. Le contrat peut porter sur le <strong>service d'entretien lui-même</strong>, pas seulement sur la livraison de matière.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Dimension</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>Modèle actuel</td>
+            <td>Entretien des bordures, inter-rangs, interfaces forestières, bandes DFCI → COÛT pour l'exploitant. 73 % des propriétaires forestiers privés français sans document de gestion agréé (source CNPF), faute de débouché économique pour les petites coupes.</td>
+          </tr>
+          <tr>
+            <td>Modèle Résilience</td>
+            <td>Entretien → biomasse collectée → pyrogazéification → énergie + biochar + CO₂ concentré → valeur économique → financement de l'entretien. L'entretien devient partiellement une activité productive.</td>
+          </tr>
+          <tr>
+            <td>Bénéfices simultanés</td>
+            <td>Réduction de la concurrence hydrique · réduction de la charge combustible · amélioration de la régénération · revenus stables pour l'exploitant · séquestration certifiable.</td>
+          </tr>
+          <tr>
+            <td>Zone C — méditerranéen</td>
+            <td>Le site paie le propriétaire pour enlever la biomasse combustible DFCI. La sylviculture préventive — aujourd'hui subventionnée à 60–80 % — devient économiquement rationnelle sans subvention.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>3.4 Les trois niveaux de gisement</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Niveau</th><th>Contenu</th><th>Potentiel estimé</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>1 — Biomasses résiduelles (priorité absolue)</td>
+            <td>Rémanents forestiers &lt; 10–12 cm, résidus agricoles, déchets verts, biodéchets, boues STEP, CIVE, pailles. Gisements documentés (IGN, FCBA, GRDF, ADEME). Mobilisables immédiatement.</td>
+            <td>~220–242 TWh/an</td>
+          </tr>
+          <tr>
+            <td>2 — Biomasses d'entretien territorial</td>
+            <td>Bordures, interfaces forestières, bandes DFCI, haies bocagères, reconversion viticole (64 000 ha arrachés sans débouché).</td>
+            <td>~30–60 TWh/an</td>
+          </tr>
+          <tr>
+            <td>3 — Cultures de transition (terres marginales)</td>
+            <td>Miscanthus sur terres en déprise ou ex-vignes hors usage alimentaire. Biomasse socle sur contrats 15 ans. Sans pesticides ni herbicides après implantation.</td>
+            <td>~18–58 TWh/an (optionnel)</td>
+          </tr>
+          <tr>
+            <td>Plafond crédible 2045</td>
+            <td>Niveaux 1+2. Le niveau 3 est une marge de sécurité optionnelle, non nécessaire pour atteindre 295 TWh.</td>
+            <td>~310–380 TWh/an</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>3.5 Trajectoire de déploiement</h3>
+    <div class="phases">
+      <div class="phase">
+        <div class="phase-label">Phase 0<br>2025–2028</div>
+        <div class="phase-content">Validation technologique (craquage des goudrons, caractérisation biochar, bilan CO₂ biogénique). Sites pilotes : Normandie (Zone A) et Gard (Zone C — double mission DFCI).<div class="seq">Séquestration : —</div></div>
+      </div>
+      <div class="phase">
+        <div class="phase-label">Phase 1<br>2029–2033</div>
+        <div class="phase-content">35 sites en Zone A (Grand Ouest bocager, Grand Est forestier, Massif Central). Risque logistique minimal, gisement multi-sources éprouvé. Validation industrielle avant déploiement élargi.<div class="seq">Séquestration estimée : ~5 Mt CO₂/an (biochar) + CO₂ biogénique valorisé</div></div>
+      </div>
+      <div class="phase">
+        <div class="phase-label">Phase 2<br>2034–2040</div>
+        <div class="phase-content">115 sites supplémentaires en Zones A, B et C. Intégration zones méditerranéennes (DFCI), reconversion viticole et agricole, miscanthus sur terres marginales.<div class="seq">Séquestration estimée : ~23 Mt CO₂/an (biochar) + séquestration géologique additionnelle</div></div>
+      </div>
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- §4 OBJECTIONS -->
+  <section id="objections">
+    <h2>4. Réponses aux objections prévisibles</h2>
+
+    <div class="objection">
+      <div class="obj-q">« La forêt gérée stocke moins de carbone que la forêt naturelle »</div>
+      <div class="obj-r">
+        <p>Cette objection repose sur une confusion entre deux activités catégoriquement différentes : <strong>exploiter</strong> et <strong>entretenir</strong>.</p>
+        <p>L'étude Pascual et al. (Science, 2026) compare des forêts primaires à des forêts soumises à des coupes commerciales régulières. C'est dans ce contexte que la forêt gérée stocke moins de carbone — notamment dans les sols, en partie à cause du compactage par les engins lourds. Ce constat est fondé et Résilience ne le conteste pas.</p>
+        <p>Mais Résilience ne propose pas d'exploitation supplémentaire. Il propose l'entretien de la biomasse fine (rémanents, bois mort récent diffus, broussailles) qui sans intervention se décompose en libérant son carbone sur quelques décennies. Ces deux activités ont des effets radicalement différents : l'exploitation sort du carbone ; l'entretien retire ce qui aurait de toute façon émis. Et l'utilisation d'engins légers décarbonés évite précisément le compactage des sols. Ce n'est pas de la sylviculture d'exploitation — c'est du soin forestier.</p>
+      </div>
+    </div>
+
+    <div class="objection">
+      <div class="obj-q">« La ressource biomasse est insuffisante pour 150 sites »</div>
+      <div class="obj-r">Le gisement central de 262 TWh repose sur des flux résiduels documentés (IGN, FCBA, GRDF, ADEME). Les gisements de niveau 1 couvrent seuls plus de 30 % de l'objectif. Les niveaux 1 et 2 combinés atteignent 80–90 %. La reconversion viticole (64 000 ha arrachés sans débouché) et le débroussaillage DFCI (3 à 5 Mt MS/an actuellement abandonnés dans les zones méditerranéennes) constituent des gisements existants non valorisés — pas des ressources à créer.</div>
+    </div>
+
+    <div class="objection">
+      <div class="obj-q">« C'est concurrent de la politique forestière »</div>
+      <div class="obj-r">La logique est inverse. Sans débouché économique pour la biomasse fine d'entretien, 73 % des propriétaires forestiers privés n'ont pas de plan de gestion agréé (source CNPF). Un site de pyrogazéification crée la boucle économique qui rend l'entretien viable. La régénération est facilitée. La gestion active est une condition de la résilience forestière — pas son ennemi.</div>
+    </div>
+
+    <div class="objection">
+      <div class="obj-q">« Le biochar ne dure pas 5 000 ans »</div>
+      <div class="obj-r">Résilience ne postule pas une durée universelle. La permanence est démontrée par caractérisation analytique : rapport H/Corg ≤ 0,4 (critères EBC Premium), température de pyrolyse ≥ 550°C, propriétés mesurées sur chaque lot. Le CRCF européen (3 février 2026) reconnaît explicitement le biochar produit selon ces critères comme <em>Permanent Carbon Removal</em> certifiable. C'est un cadre de certification fondé sur des mesures — pas une hypothèse.</div>
+    </div>
+
+    <div class="objection">
+      <div class="obj-q">« Les volumes de séquestration sont insuffisants »</div>
+      <div class="obj-r">Les 23 Mt CO₂/an de séquestration biochar s'additionnent au potentiel de séquestration du CO₂ biogénique concentré produit sur les mêmes sites — sans infrastructure de capture supplémentaire. Le programme apporte ce qu'aucune autre politique ne fournit aujourd'hui : une séquestration permanente, certifiable et maîtrisable à l'échelle du territoire national, en complément indispensable de la réduction des émissions fossiles — exactement ce que le GIEC AR6 désigne comme inévitable.</div>
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- §5 CONCLUSION -->
+  <section id="conclusion">
+    <h2>5. Conclusion — L'apport spécifique de Résilience</h2>
+    <p>Le changement climatique impose de revoir la manière dont nous considérons les puits de carbone. Les forêts constituent des stocks essentiels et doivent être préservées. Mais leur capacité à fournir un retrait net croissant de CO₂ ne peut être considérée comme garantie — les données montrent qu'elle se dégrade. Les compensations externes exposent la stratégie européenne à des risques géopolitiques et climatiques hors contrôle.</p>
+    <p>Résilience introduit quatre changements de logique :</p>
+    <ul class="doc-list">
+      <li><strong>Ne plus confondre stock et puits</strong> — une forêt peut contenir énormément de carbone sans constituer un flux annuel de retrait supplémentaire garanti</li>
+      <li><strong>Ne plus confondre émission évitée et retrait durable</strong> — remplacer les fossiles est utile, mais ne se substitue pas à une séquestration permanente certifiable</li>
+      <li><strong>Ne pas faire dépendre toute la stratégie climatique des puits naturels</strong> — leur capacité future est exposée aux mêmes dérèglements que nous cherchons à combattre</li>
+      <li><strong>Créer des puits supplémentaires à partir des flux territoriaux</strong> — biomasses résiduelles, d'entretien et de transition transformées en énergie, biochar et CO₂ biogénique valorisable</li>
+    </ul>
+
+    <div class="conclusion-box">
+      <p class="box-label">Position de Résilience</p>
+      <p>Résilience ne cherche pas à remplacer le puits forestier — il cherche à éviter que la stratégie climatique française et européenne en dépende exclusivement. La pyrogazéification territoriale est un mécanisme de CDR dont la permanence (biochar certifié EBC), la traçabilité (monitoring par site) et la gouvernance (territoire français, cadre CRCF) sont pleinement maîtrisables par l'Europe — ce qu'aucune compensation externe ne peut garantir. Elle produit simultanément de l'énergie renouvelable, finance l'entretien du territoire, réduit le risque incendie et améliore la résilience agronomique des sols. C'est cette convergence — énergie + carbone + territoire + souveraineté — qui rend le modèle structurellement différent des politiques carbone classiques.</p>
+    </div>
+  </section>
+
+  <!-- CTA PDF -->
+  <div class="cta-pdf" id="pdf">
+    <div class="cta-pdf-text">
+      <h3>Télécharger la note complète</h3>
+      <p>Version 5 · Août 2026 · 7 pages · Format Word / PDF · Usage institutionnel</p>
+    </div>
+    <a href="Note_Positionnement_Resilience_V5.pdf" class="btn-pdf" download>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+      </svg>
+      Télécharger le PDF
+    </a>
+  </div>
+
+  <!-- SOURCES -->
+  <div class="sources">
+    <h3>Sources et documents de référence</h3>
+    <p>GIEC AR6 WG1 (2021) — SPM, ch.5 (cycle du carbone) · AR6 WG3 ch.3 : CDR inévitable pour les secteurs difficiles à décarboner · Global Carbon Budget 2025 (Friedlingstein et al.) · Pascual et al., <em>Science</em> 391(6791):1256–1261, 19 mars 2026 — <a href="https://doi.org/10.1126/science.adz8554" target="_blank">DOI:10.1126/science.adz8554</a> · IGN — Mémento de l'inventaire forestier 2025 · Gatti et al., <em>Nature</em> 2021 — <a href="https://doi.org/10.1038/s41586-021-03629-6" target="_blank">DOI:10.1038/s41586-021-03629-6</a> · Rosan et al., <em>Communications Earth &amp; Environment</em> 2024 — <a href="https://doi.org/10.1038/s43247-024-01205-0" target="_blank">DOI:10.1038/s43247-024-01205-0</a> · CRCF UE — Règlement certification absorptions carbone (3 fév. 2026) · EBC — European Biochar Certificate Premium · Programme Résilience V11 (mai 2026) · Gisement national net V3 (juin 2026) · Note biomasse V4 (juillet 2026) · Positionnement 150 sites V1 (juin 2026) · Cadre gestion écologique active V11 · <a href="https://resilience2045.fr" target="_blank">resilience2045.fr</a></p>
+  </div>
+
+</main>
+
+</body>
+</html>
