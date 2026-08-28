@@ -1,0 +1,1389 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PPE Résilience 2045 — Besoins, moyens, mix électrique optimisé</title>
+<style>
+:root {
+  --navy: #0B1F3A;
+  --navy-2: #142843;
+  --blue: #1A5F9C;
+  --blue-light: #D6E8F7;
+  --green: #2A6B3C;
+  --green-light: #E3F2E8;
+  --amber: #B8750A;
+  --amber-light: #FBF0DC;
+  --red: #B03A2E;
+  --red-light: #FDECEA;
+  --ink: #1C2B3A;
+  --ink-soft: #5A6B78;
+  --line: #DDE3EA;
+  --off: #F5F7FA;
+  --white: #FFFFFF;
+  --max: 900px;
+  --mono: 'Courier New', monospace;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Georgia', serif;
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--ink);
+  background: var(--white);
+}
+
+/* ── HEADER ── */
+header {
+  background: var(--navy);
+  padding: 56px 24px 48px;
+  border-bottom: 4px solid var(--blue);
+}
+.header-inner { max-width: var(--max); margin: 0 auto; }
+.prog-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 20px;
+}
+header h1 {
+  font-size: clamp(20px, 3.5vw, 30px);
+  font-weight: normal;
+  line-height: 1.25;
+  color: var(--white);
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+.header-meta {
+  font-family: 'Arial', sans-serif;
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.6;
+}
+
+/* ── NAV ── */
+nav {
+  background: var(--navy-2);
+  position: sticky; top: 0; z-index: 50;
+  border-bottom: 2px solid rgba(255,255,255,0.08);
+}
+.nav-scroll {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+  gap: 0;
+}
+.nav-scroll::-webkit-scrollbar { display: none; }
+nav a {
+  font-family: 'Arial', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  padding: 14px 16px;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+nav a:hover { color: var(--white); border-color: rgba(255,255,255,0.4); }
+
+/* ── MAIN ── */
+main { max-width: var(--max); margin: 0 auto; padding: 56px 24px 80px; }
+
+/* ── SECTIONS ── */
+section { margin-bottom: 64px; }
+.section-tag {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 8px;
+}
+h2 {
+  font-size: clamp(18px, 2.5vw, 24px);
+  font-weight: normal;
+  color: var(--navy);
+  line-height: 1.25;
+  border-bottom: 2px solid var(--navy);
+  padding-bottom: 12px;
+  margin-bottom: 28px;
+}
+h3 {
+  font-size: 16px;
+  font-weight: bold;
+  font-family: 'Arial', sans-serif;
+  color: var(--blue);
+  margin: 32px 0 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 13px;
+}
+p { margin-bottom: 16px; text-align: justify; }
+
+/* ── ENCADRÉS ── */
+.box {
+  padding: 20px 24px;
+  margin: 24px 0;
+  border-left: 4px solid;
+}
+.box-navy { border-color: var(--navy); background: var(--off); }
+.box-green { border-color: var(--green); background: var(--green-light); }
+.box-amber { border-color: var(--amber); background: var(--amber-light); }
+.box-red { border-color: var(--red); background: var(--red-light); }
+.box-label {
+  font-family: 'Arial', sans-serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.box-navy .box-label { color: var(--navy); }
+.box-green .box-label { color: var(--green); }
+.box-amber .box-label { color: var(--amber); }
+.box-red .box-label { color: var(--red); }
+.box p { margin-bottom: 8px; font-size: 15px; }
+.box p:last-child { margin-bottom: 0; }
+
+/* ── TABLEAUX ── */
+.tw { overflow-x: auto; margin: 24px 0; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+thead tr { background: var(--navy); }
+thead th {
+  color: var(--white);
+  font-family: 'Arial', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 11px 13px;
+  text-align: left;
+  letter-spacing: 0.03em;
+}
+tbody tr:nth-child(odd) { background: var(--white); }
+tbody tr:nth-child(even) { background: var(--off); }
+tbody tr.total-row { background: var(--navy-2); }
+tbody tr.total-row td { color: var(--white); font-weight: bold; }
+tbody tr.subtotal { background: #DDE3EA; }
+tbody tr.subtotal td { font-weight: bold; }
+td { padding: 10px 13px; vertical-align: top; line-height: 1.5; }
+td.num { text-align: right; font-family: var(--mono); font-size: 13px; white-space: nowrap; }
+td.label { font-weight: 600; color: var(--navy); }
+.tag-vert { color: var(--green); font-weight: bold; }
+.tag-ambre { color: var(--amber); font-weight: bold; }
+.tag-rouge { color: var(--red); font-weight: bold; }
+
+/* ── COMPARAISON COLONNES ── */
+.compare-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin: 24px 0;
+}
+.compare-col {
+  border: 2px solid var(--line);
+  padding: 20px;
+}
+.compare-col.bev { border-color: var(--amber); }
+.compare-col.res { border-color: var(--green); }
+.compare-col-head {
+  font-family: 'Arial', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+  border-bottom: 2px solid var(--line);
+}
+.compare-col.bev .compare-col-head { color: var(--amber); }
+.compare-col.res .compare-col-head { color: var(--green); }
+.stat-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 7px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 14px;
+  gap: 8px;
+}
+.stat-line:last-child { border-bottom: none; }
+.stat-val {
+  font-family: var(--mono);
+  font-size: 15px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+.stat-val.green { color: var(--green); }
+.stat-val.amber { color: var(--amber); }
+
+/* ── PPE TIMELINE ── */
+.ppe-phases {
+  margin: 28px 0;
+  border-left: 3px solid var(--navy);
+  padding-left: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.ppe-phase { position: relative; }
+.ppe-phase::before {
+  content: '';
+  position: absolute;
+  left: -31px;
+  top: 6px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--navy);
+  border: 3px solid var(--white);
+  box-shadow: 0 0 0 2px var(--navy);
+}
+.ppe-period {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 4px;
+}
+.ppe-title {
+  font-family: 'Arial', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+.ppe-content { font-size: 14px; line-height: 1.65; }
+.ppe-invest {
+  display: inline-block;
+  background: var(--navy);
+  color: var(--white);
+  font-family: var(--mono);
+  font-size: 13px;
+  padding: 3px 10px;
+  margin-top: 6px;
+}
+
+/* ── MIX ÉLECTRIQUE ── */
+.mix-bar-wrap { margin: 28px 0; }
+.mix-source {
+  display: grid;
+  grid-template-columns: 160px 1fr 80px;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.mix-label {
+  font-family: 'Arial', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--navy);
+}
+.mix-bar-bg {
+  background: var(--line);
+  height: 28px;
+  border-radius: 2px;
+  overflow: hidden;
+}
+.mix-bar-fill {
+  height: 100%;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  padding-left: 8px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--white);
+  font-weight: bold;
+  min-width: 4px;
+  transition: width 0.8s ease;
+}
+.mix-twh {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--ink-soft);
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* ── DIVIDER ── */
+hr { border: none; border-top: 1px solid var(--line); margin: 48px 0; }
+
+/* ── LISTE ── */
+ul.doc-list { list-style: none; padding: 0; margin: 12px 0 20px; }
+ul.doc-list li {
+  padding: 6px 0 6px 20px;
+  position: relative;
+  border-bottom: 1px solid var(--off);
+  font-size: 15px;
+}
+ul.doc-list li::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: var(--blue);
+}
+
+/* ── CTA ── */
+.cta-pdf {
+  background: var(--green-light);
+  border: 2px solid var(--green);
+  padding: 28px 32px;
+  margin: 48px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.cta-pdf-text h3 { color: var(--green); margin: 0 0 6px; font-size: 17px; font-family: 'Arial', sans-serif; text-transform: none; letter-spacing: 0; }
+.cta-pdf-text p { color: var(--green); margin: 0; font-size: 14px; font-family: 'Arial', sans-serif; }
+.btn-pdf {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--green);
+  color: var(--white);
+  text-decoration: none;
+  padding: 12px 24px;
+  font-family: 'Arial', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.btn-pdf:hover { background: var(--navy); }
+
+/* ── SOURCES ── */
+.sources { border-top: 2px solid var(--line); padding-top: 24px; margin-top: 48px; }
+.sources h4 { font-size: 12px; font-family: 'Arial', sans-serif; color: var(--ink-soft); margin-bottom: 10px; letter-spacing: 0.05em; text-transform: uppercase; }
+.sources p { font-size: 12px; color: var(--ink-soft); font-family: 'Arial', sans-serif; line-height: 1.7; }
+.sources a { color: var(--blue); }
+
+/* ── RESPONSIVE ── */
+@media (max-width:620px) {
+  .compare-grid { grid-template-columns: 1fr; }
+  .mix-source { grid-template-columns: 120px 1fr 60px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <p class="prog-label">Programme Résilience 2045 · Note PPE stratégique · Août 2026</p>
+    <h1>Besoins énergétiques 2045, comparaison des trajectoires et programmation pluriannuelle des investissements — Scénario Résilience</h1>
+    <p class="header-meta">Données : Programme Résilience V11 (mai 2026) · Note de cadrage système énergétique V11 · Tableau énergie V4 · RTE Bilan prévisionnel 2023 · ADEME · GRTgaz/GRDF</p>
+    <div style="margin-top:20px;padding:16px 20px;border-left:3px solid rgba(255,255,255,0.25);background:rgba(255,255,255,0.05);">
+      <p style="font-family:Arial,sans-serif;font-size:13px;color:rgba(255,255,255,0.7);line-height:1.7;margin:0;">
+        <strong style="color:rgba(255,255,255,0.9);letter-spacing:0.03em;">DOCUMENT DE SYNTHÈSE</strong> — Ce document résume les grandes lignes du Programme Résilience 2045, dont chaque sujet a fait l'objet d'une analyse approfondie et documentée. L'ensemble constitue un corpus de plus de 50 documents techniques, économiques, territoriaux et géopolitiques, disponibles sur <a href="https://resilience2045.fr" target="_blank" style="color:rgba(255,255,255,0.8);text-decoration:underline;">resilience2045.fr</a>. Une analyse industrielle a également été conduite pour identifier les acteurs nationaux — constructeurs, opérateurs énergétiques, équipementiers, filières agricoles et forestières — susceptibles d'intervenir dans le déploiement des filières biomasse, pyrogazéification, méthanisation et bio-GNV. Ces éléments sont détaillés dans les documents sectoriels du site.
+      </p>
+    </div>
+  </div>
+</header>
+
+<nav>
+  <div class="nav-scroll">
+    <a href="#besoins">1. Besoins</a>
+    <a href="#comparaison">2. Comparaison</a>
+    <a href="#mix">3. Mix électrique</a>
+    <a href="#ppe">4. PPE</a>
+    <a href="#conclusion">5. Bilan</a>
+    <a href="#climat">6. Climat</a>
+  </div>
+</nav>
+
+<main>
+
+<!-- ══ DÉCISION POLITIQUE ══════════════════════════════════ -->
+<div style="background:var(--navy);color:var(--white);padding:36px 40px;margin-bottom:48px;border-left:6px solid var(--blue);">
+  <p style="font-family:var(--mono);font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:14px;">Proposition politique — À lire en premier</p>
+  <h2 style="font-size:clamp(17px,2.5vw,22px);font-weight:normal;color:var(--white);border:none;padding:0;margin-bottom:20px;line-height:1.3;">La décision politique proposée</h2>
+  <p style="font-size:15px;line-height:1.8;color:rgba(255,255,255,0.88);margin-bottom:18px;">Résilience propose à la France de retenir une <strong style="color:var(--white);">architecture énergétique duale</strong> : une électrification massive, complétée par un vecteur méthane renouvelable national réservé aux usages nécessitant stockage, autonomie, forte densité énergétique ou puissance pilotable.</p>
+  <p style="font-size:14px;color:rgba(255,255,255,0.65);margin-bottom:12px;font-family:Arial,sans-serif;letter-spacing:0.05em;text-transform:uppercase;font-weight:700;">Cette orientation conduit à programmer simultanément :</p>
+  <ul style="list-style:none;padding:0;margin:0 0 20px;display:grid;grid-template-columns:1fr 1fr;gap:8px 24px;">
+    <li style="padding:7px 0 7px 18px;position:relative;border-bottom:1px solid rgba(255,255,255,0.1);font-size:14px;color:rgba(255,255,255,0.82);line-height:1.5;"><span style="position:absolute;left:0;color:var(--blue);font-weight:bold;">▸</span>Un parc nucléaire renforcé (14 EPR2) en baseload permanent</li>
+    <li style="padding:7px 0 7px 18px;position:relative;border-bottom:1px solid rgba(255,255,255,0.1);font-size:14px;color:rgba(255,255,255,0.82);line-height:1.5;"><span style="position:absolute;left:0;color:var(--blue);font-weight:bold;">▸</span>Un développement ciblé des ENR (offshore prioritaire, solaire limité à ~90 GW)</li>
+    <li style="padding:7px 0 7px 18px;position:relative;border-bottom:1px solid rgba(255,255,255,0.1);font-size:14px;color:rgba(255,255,255,0.82);line-height:1.5;"><span style="position:absolute;left:0;color:var(--blue);font-weight:bold;">▸</span>Un réseau électrique dimensionné pour les usages directs — sans surdimensionnement</li>
+    <li style="padding:7px 0 7px 18px;position:relative;border-bottom:1px solid rgba(255,255,255,0.1);font-size:14px;color:rgba(255,255,255,0.82);line-height:1.5;"><span style="position:absolute;left:0;color:var(--blue);font-weight:bold;">▸</span>La conservation et conversion progressive du réseau gazier vers le bio-CH₄</li>
+    <li style="padding:7px 0 7px 18px;position:relative;border-bottom:1px solid rgba(255,255,255,0.1);font-size:14px;color:rgba(255,255,255,0.82);line-height:1.5;"><span style="position:absolute;left:0;color:var(--blue);font-weight:bold;">▸</span>Le développement d'une filière nationale de pyrogazéification et de méthanisation</li>
+    <li style="padding:7px 0 7px 18px;position:relative;border-bottom:1px solid rgba(255,255,255,0.1);font-size:14px;color:rgba(255,255,255,0.82);line-height:1.5;"><span style="position:absolute;left:0;color:var(--blue);font-weight:bold;">▸</span>Une mobilité légère principalement électrique, complétée par l'ÉREV bio-GNV</li>
+    <li style="padding:7px 0 7px 18px;position:relative;border-bottom:1px solid rgba(255,255,255,0.1);font-size:14px;color:rgba(255,255,255,0.82);line-height:1.5;"><span style="position:absolute;left:0;color:var(--blue);font-weight:bold;">▸</span>Le bio-CH₄ / bio-GNL pour les usages lourds et difficiles à électrifier</li>
+    <li style="padding:7px 0 7px 18px;position:relative;border-bottom:1px solid rgba(255,255,255,0.1);font-size:14px;color:rgba(255,255,255,0.82);line-height:1.5;"><span style="position:absolute;left:0;color:var(--blue);font-weight:bold;">▸</span>Une production massive de biochar permettant un retrait durable de carbone atmosphérique</li>
+  </ul>
+  <p style="font-size:15px;line-height:1.8;color:rgba(255,255,255,0.88);margin-bottom:16px;border-top:1px solid rgba(255,255,255,0.15);padding-top:16px;"><strong style="color:var(--white);">La décision proposée n'est donc pas de choisir entre électricité et gaz.</strong> Elle consiste à attribuer à chaque vecteur les usages pour lesquels il est techniquement, énergétiquement et économiquement le plus pertinent.</p>
+  <p style="font-size:13px;line-height:1.7;color:rgba(255,255,255,0.55);font-family:Arial,sans-serif;margin:0;">Cette architecture constitue la proposition politique. Les hypothèses, calculs, dimensionnements et technologies qui la sous-tendent sont développés dans les études détaillées du Programme Résilience disponibles sur <a href="https://resilience2045.fr" target="_blank" style="color:rgba(255,255,255,0.7);">resilience2045.fr</a> (plus de 50 documents). Ils peuvent être soumis à une expertise indépendante contradictoire avant décision.</p>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<section id="besoins">
+  <p class="section-tag">Partie 1</p>
+  <h2>Les besoins énergétiques de la France en 2045</h2>
+
+  <p>La France consomme aujourd'hui entre 1 350 et 1 600 TWh d'énergie finale selon le périmètre retenu. Le Programme Résilience V11 travaille sur <strong>1 600 TWh</strong> comme objectif-système 2045, intégrant les marges de sécurité stratégiques, la réindustrialisation partielle, les data centers et la production de carburants renouvelables.</p>
+
+  <div class="box box-navy">
+    <p class="box-label">Point de départ — La réalité actuelle</p>
+    <p>Seulement <strong>32 % de l'énergie finale française est électrique</strong>. Les 68 % restants sont couverts par des énergies stockées (pétrole, gaz, bois) dont la grande force est leur pilotabilité et leur stockage distribué. Toute trajectoire 2045 doit commencer par reconnaître ce fait : l'électrification massive supprime ce coussin de flexibilité.</p>
+  </div>
+
+  <h3>Décomposition des besoins par secteur — Aujourd'hui et 2045</h3>
+
+  <div class="tw">
+    <table>
+      <thead>
+        <tr>
+          <th>Secteur</th>
+          <th class="num">Aujourd'hui (TWh)</th>
+          <th class="num">Tout-BEV 2045 — Élec.</th>
+          <th class="num">Résilience 2045 — Élec.</th>
+          <th class="num">Résilience 2045 — Bio-CH₄</th>
+          <th class="num">Résilience 2045 — Therm.</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="label">Logements + tertiaire</td>
+          <td class="num">500</td>
+          <td class="num">250</td>
+          <td class="num">250</td>
+          <td class="num">—</td>
+          <td class="num">30</td>
+        </tr>
+        <tr>
+          <td class="label">Industrie</td>
+          <td class="num">350</td>
+          <td class="num">200</td>
+          <td class="num">200</td>
+          <td class="num">10</td>
+          <td class="num">10</td>
+        </tr>
+        <tr>
+          <td class="label">VL + VU + Bus (ÉREV)</td>
+          <td class="num">300</td>
+          <td class="num">150</td>
+          <td class="num">120</td>
+          <td class="num">75</td>
+          <td class="num">—</td>
+        </tr>
+        <tr>
+          <td class="label">Poids lourds longue distance</td>
+          <td class="num">250</td>
+          <td class="num">100</td>
+          <td class="num">30</td>
+          <td class="num">170</td>
+          <td class="num">—</td>
+        </tr>
+        <tr>
+          <td class="label">Aviation (court + long-courrier)</td>
+          <td class="num">150 (kéro)</td>
+          <td class="num">150 (kéro ✗)</td>
+          <td class="num">25</td>
+          <td class="num">50 (bio-GNL)</td>
+          <td class="num">—</td>
+        </tr>
+        <tr>
+          <td class="label">Agriculture + autres</td>
+          <td class="num">50</td>
+          <td class="num">40</td>
+          <td class="num">40</td>
+          <td class="num">—</td>
+          <td class="num">10</td>
+        </tr>
+        <tr class="total-row">
+          <td>TOTAL</td>
+          <td class="num">1 600 TWh</td>
+          <td class="num">~740 TWh + 150 kéro</td>
+          <td class="num">665 TWh</td>
+          <td class="num">295 TWh</td>
+          <td class="num">50 TWh</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="box box-amber">
+    <p class="box-label">Angle mort du tout-BEV</p>
+    <p>Le scénario Tout-BEV conserve 150 TWh de kérosène pour l'aviation — soit la totalité des besoins actuels — faute de solution alternative crédible. Il n'est donc pas un scénario zéro fossile. Le scénario Résilience couvre l'aviation par bio-GNL (long-courrier) et électrique (court-courrier).</p>
+  </div>
+
+  <h3>Les cinq situations critiques à couvrir</h3>
+  <p>Le problème de 2045 n'est pas l'énergie annuelle — c'est la puissance instantanée lors des événements extrêmes. Ces cinq situations définissent le dimensionnement réel du système :</p>
+
+  <div class="tw">
+    <table>
+      <thead>
+        <tr>
+          <th>Situation</th>
+          <th class="num">Déficit BEV (GW)</th>
+          <th class="num">Déficit Résilience (GW)</th>
+          <th>Mécanisme Résilience</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="label">Grand froid hivernal (jan, −5 à −10°C)</td>
+          <td class="num tag-rouge">−65 à −80</td>
+          <td class="num tag-ambre">−10 à −20</td>
+          <td>Hydraulique activé en première ligne · ÉREV thermique −40 GW · électrolyseurs stoppés +50 GW libérés · bio-CH₄ pilotable en appoint</td>
+        </tr>
+        <tr>
+          <td class="label">Anticyclone hivernal (3–5 jours sans vent)</td>
+          <td class="num tag-rouge">−55 à −65</td>
+          <td class="num tag-vert">−5 à −15</td>
+          <td>Stockage GRDF 130 TWh couvre 3–5 jours · bio-CH₄ météo-indépendant</td>
+        </tr>
+        <tr>
+          <td class="label">Canicule estivale (35–40°C)</td>
+          <td class="num tag-rouge">−40 à −55</td>
+          <td class="num tag-vert">−5 à −15</td>
+          <td>Solaire fort en journée · ÉREV limite recharge soirée</td>
+        </tr>
+        <tr>
+          <td class="label">Grands départs estivaux</td>
+          <td class="num tag-rouge">−70 à −90</td>
+          <td class="num tag-vert">−10 à −20</td>
+          <td>ÉREV autonomie GNV 500 km sans borne · zéro saturation</td>
+        </tr>
+        <tr>
+          <td class="label">Chassé-croisé (vendredi 18h)</td>
+          <td class="num tag-rouge">−84 à −116</td>
+          <td class="num tag-vert">−8 à −30</td>
+          <td>ÉREV bio-GNV pendant trajet + recharge lente nocturne</td>
+        </tr>
+        <tr class="total-row">
+          <td>Bilan</td>
+          <td class="num">Rupture 5/5</td>
+          <td class="num">Gérable 5/5</td>
+          <td>Réduction −70 à −90 % · mécanisme passif sans smart grid</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<section id="comparaison">
+  <p class="section-tag">Partie 2</p>
+  <h2>Comparaison des trajectoires — Tout-BEV vs Résilience</h2>
+
+  <div class="box box-navy" style="margin-bottom:28px;">
+    <p class="box-label">Architecture fondamentale — À lire avant toute comparaison</p>
+    <p>Le Programme Résilience n'est pas un programme bio-méthane. C'est un programme <strong>électrique complété par le bio-méthane</strong>.</p>
+    <p><strong>L'électricité reste le vecteur de base</strong> : efficace, propre, directement utilisable pour l'immense majorité des usages — chauffage par PAC, véhicules légers en usage quotidien, industrie de process, tertiaire. Elle couvre ~65 % des besoins finaux 2045.</p>
+    <p><strong>Le bio-CH₄ intervient là où l'électricité seule présente des difficultés structurelles</strong>, dans trois rôles complémentaires :</p>
+    <ul class="doc-list" style="margin:8px 0;">
+      <li><strong>Sécurisation du réseau</strong> — le réseau GRDF (200 000 km) et ses 24 stockages souterrains (130 TWh) constituent un coussin de flexibilité massif et immédiatement disponible, sans CAPEX supplémentaire. Les électrolyseurs Sabatier absorbent les surplus ENR et les restituent lors des pointes. Le réseau gaz amorti évite des dizaines de milliards de renforcement électrique.</li>
+      <li><strong>Optimisation des investissements</strong> — en absorbant les situations critiques (grand froid, anticyclone, chassés-croisés), le bio-CH₄ réduit le dimensionnement du parc électrique de 7 EPR2 et 37 GW de puissance installée — soit 84 Md€ évités sur le seul poste nucléaire.</li>
+      <li><strong>Complément sur les secteurs difficiles à électrifier</strong> — mobilité lourde longue distance (poids lourds 44t, 800–1 000 km), transport maritime (bio-GNL), aviation commerciale (bio-GNL long-courrier), industrie haute température (&gt; 500°C). Ces secteurs représentent ~295 TWh bio-CH₄ — irremplaçables par batterie ou hydrogène dans les délais et coûts requis.</li>
+    </ul>
+    <p style="margin-bottom:0;"><strong>Résumé</strong> : électricité + bio-CH₄ forment un système complet. Séparément, chacun a ses angles morts. Le bio-CH₄ valorise ce qui existe déjà (réseau GRDF, stocks, biomasses résiduelles) pour couvrir ce que l'électricité ne peut pas faire seule — sans le remplacer.</p>
+  </div>
+
+  <p>La comparaison ne porte pas sur les objectifs climatiques — les deux trajectoires visent la décarbonation complète. Elle porte sur les moyens nécessaires, les risques de pilotage et les investissements requis.</p>
+
+  <div class="compare-grid">
+    <div class="compare-col bev">
+      <div class="compare-col-head">Tout-BEV 2045</div>
+      <div class="stat-line"><span>Consommation électrique</span><span class="stat-val amber">~740 TWh/an</span></div>
+      <div class="stat-line"><span>Nucléaire installé</span><span class="stat-val amber">64,65 GW</span></div>
+      <div class="stat-line"><span>EPR2 à construire</span><span class="stat-val amber">21 unités</span></div>
+      <div class="stat-line"><span>Solaire</span><span class="stat-val">105 GW</span></div>
+      <div class="stat-line"><span>Éolien terrestre</span><span class="stat-val">26,6 GW</span></div>
+      <div class="stat-line"><span>Éolien offshore</span><span class="stat-val">38,1 GW</span></div>
+      <div class="stat-line"><span>Puissance installée totale</span><span class="stat-val amber">261 GW</span></div>
+      <div class="stat-line"><span>Déficit janv. (anticyclone)</span><span class="stat-val amber">−60 GW</span></div>
+      <div class="stat-line"><span>Stockage saisonnier</span><span class="stat-val amber">Non résolu</span></div>
+      <div class="stat-line"><span>Aviation</span><span class="stat-val amber">150 TWh kéro ✗</span></div>
+      <div class="stat-line"><span>CAPEX transition</span><span class="stat-val amber">794–1 096 Md€</span></div>
+      <div class="stat-line"><span>FC nucléaire</span><span class="stat-val amber">75,9 %</span></div>
+    </div>
+    <div class="compare-col res">
+      <div class="compare-col-head">Résilience 2045</div>
+      <div class="stat-line"><span>Consommation électrique</span><span class="stat-val green">665 TWh/an</span></div>
+      <div class="stat-line"><span>Nucléaire installé</span><span class="stat-val green">53,1 GW</span></div>
+      <div class="stat-line"><span>EPR2 à construire</span><span class="stat-val green">14 unités</span></div>
+      <div class="stat-line"><span>Solaire</span><span class="stat-val">90,4 GW</span></div>
+      <div class="stat-line"><span>Éolien terrestre</span><span class="stat-val">25,1 GW</span></div>
+      <div class="stat-line"><span>Éolien offshore</span><span class="stat-val">29,3 GW</span></div>
+      <div class="stat-line"><span>Puissance installée totale</span><span class="stat-val green">224 GW</span></div>
+      <div class="stat-line"><span>Déficit janv. (anticyclone)</span><span class="stat-val green">−10 GW</span></div>
+      <div class="stat-line"><span>Stockage saisonnier</span><span class="stat-val green">130 TWh GRDF ✓</span></div>
+      <div class="stat-line"><span>Aviation</span><span class="stat-val green">75 TWh bio ✓</span></div>
+      <div class="stat-line"><span>CAPEX transition</span><span class="stat-val green">540–690 Md€</span></div>
+      <div class="stat-line"><span>FC nucléaire</span><span class="stat-val green">85,9 %</span></div>
+    </div>
+  </div>
+
+  <div class="box box-green">
+    <p class="box-label">L'économie Sabatier — le mécanisme clé du FC nucléaire</p>
+    <p>Les électrolyseurs PEM (50 GW) absorbent instantanément les surplus ENR qui seraient sinon curtailés. Le nucléaire peut ainsi fonctionner en baseload pur (FC 85,9 % vs 75,9 % en Tout-BEV), économisant l'équivalent de 7 EPR2 — soit 84 Md€ à 12 Md€/unité. Le surplus ENR ne se perd plus : il devient du méthane de synthèse stocké dans le réseau GRDF.</p>
+  </div>
+
+  <h3>Pourquoi H₂, carburants de synthèse et SAF ont été écartés</h3>
+
+  <div class="tw">
+    <table>
+      <thead>
+        <tr>
+          <th>Vecteur</th>
+          <th>Rendement puits→usage</th>
+          <th>Stockage saisonnier</th>
+          <th>Infrastructure</th>
+          <th>Verdict</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="label">Hydrogène H₂</td>
+          <td>~25–35 %</td>
+          <td>Très difficile (700 bar)</td>
+          <td>Tout à créer</td>
+          <td class="tag-rouge">Écarté — coût + géologie</td>
+        </tr>
+        <tr>
+          <td class="label">Carburants de synthèse (e-fuels)</td>
+          <td>~15–25 %</td>
+          <td>Oui (liquide)</td>
+          <td>Partielle</td>
+          <td class="tag-rouge">Écarté — rendement trop faible</td>
+        </tr>
+        <tr>
+          <td class="label">SAF (aviation)</td>
+          <td>Variable</td>
+          <td>Oui</td>
+          <td>Partielle</td>
+          <td class="tag-rouge">Écarté — 0,6 % de la conso actuelle en 2025, ×80 impossible d'ici 2035</td>
+        </tr>
+        <tr>
+          <td class="label">Bio-CH₄ (Résilience)</td>
+          <td>~60–70 %</td>
+          <td>GRDF 130 TWh ✓</td>
+          <td>200 000 km existants</td>
+          <td class="tag-vert">Retenu — seul vecteur combinant stockage + co-bénéfices + infrastructure</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<section id="mix">
+  <p class="section-tag">Partie 3</p>
+  <h2>Le mix électrique Résilience — optimisation par disponibilité temporelle</h2>
+
+  <p>L'objectif est de maximiser la puissance électrique disponible à tout moment, quelles que soient les conditions climatiques, afin de minimiser le recours au bio-CH₄ à un rôle de <strong>complément structurel</strong> (mobilité lourde, aviation, industrie HT, pics critiques) et non de secours variable coûteux.</p>
+
+  <div class="box box-navy">
+    <p class="box-label">Principe d'optimisation</p>
+    <p>Chaque source est caractérisée par sa disponibilité temporelle réelle — pas son seul facteur de charge annuel. Le nucléaire est disponible 24h/24, l'éolien offshore est fort en hiver (quand le solaire est faible), le solaire est fort en été (quand l'éolien faiblit). L'optimisation consiste à construire une combinaison dont les creux ne se superposent pas.</p>
+  </div>
+
+  <h3>Disponibilité temporelle par source — Matrice de complémentarité</h3>
+
+  <div class="tw">
+    <table>
+      <thead>
+        <tr>
+          <th>Source</th>
+          <th>FC annuel réel</th>
+          <th>Hiver (déc–fév)</th>
+          <th>Été (juin–août)</th>
+          <th>Anticyclone (0 vent)</th>
+          <th>Nuit</th>
+          <th>Rôle dans le mix</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="label">Nucléaire (baseload)</td>
+          <td class="num tag-vert">85,9 %*</td>
+          <td class="tag-vert">Fort ✓</td>
+          <td class="tag-vert">Fort ✓</td>
+          <td class="tag-vert">Fort ✓</td>
+          <td class="tag-vert">Fort ✓</td>
+          <td>Colonne vertébrale — couvre la base en permanence</td>
+        </tr>
+        <tr>
+          <td class="label">Éolien offshore</td>
+          <td class="num">35–40 %</td>
+          <td class="tag-vert">Très fort ✓</td>
+          <td class="tag-ambre">Modéré ≈</td>
+          <td class="tag-rouge">Nul ✗</td>
+          <td class="tag-vert">Fort ✓</td>
+          <td>Complément hiver — critique pour la Dunkelflaute*</td>
+        </tr>
+        <tr>
+          <td class="label">Éolien terrestre</td>
+          <td class="num">25–30 %</td>
+          <td class="tag-vert">Bon ✓</td>
+          <td class="tag-ambre">Faible ≈</td>
+          <td class="tag-rouge">Nul ✗</td>
+          <td class="tag-vert">Bon ✓</td>
+          <td>Complément diffus — répartition géographique large</td>
+        </tr>
+        <tr>
+          <td class="label">Solaire PV</td>
+          <td class="num">14–16 %</td>
+          <td class="tag-rouge">Très faible ✗</td>
+          <td class="tag-vert">Très fort ✓</td>
+          <td class="tag-vert">Fort ✓</td>
+          <td class="tag-rouge">Nul ✗</td>
+          <td>Complément été — aide la canicule, inutile en Dunkelflaute</td>
+        </tr>
+        <tr>
+          <td class="label">Hydraulique (barrages + STEP)</td>
+          <td class="num">~25 %*</td>
+          <td class="tag-vert">Disponible ✓</td>
+          <td class="tag-ambre">Réservoirs bas ≈</td>
+          <td class="tag-vert">Disponible ✓</td>
+          <td class="tag-vert">Disponible ✓</td>
+          <td><strong>Secours pilotable immédiat</strong> — démarrage en minutes · atout français unique · ~25 GW installés · complément naturel des ENR variables</td>
+        </tr>
+        <tr>
+          <td class="label">Sabatier (stockage Sabatier)</td>
+          <td class="num">Variable</td>
+          <td class="tag-vert">Absorbe surplus ✓</td>
+          <td class="tag-vert">Absorbe surplus ✓</td>
+          <td class="tag-vert">Désactivé ✓</td>
+          <td class="tag-vert">Absorbe surplus ✓</td>
+          <td>Régulateur — transforme les surplus ENR en CH₄ stocké</td>
+        </tr>
+        <tr>
+          <td class="label">Bio-CH₄ (secours pilotable)</td>
+          <td class="num">À la demande</td>
+          <td class="tag-vert">Disponible ✓</td>
+          <td class="tag-vert">Disponible ✓</td>
+          <td class="tag-vert">Disponible ✓</td>
+          <td class="tag-vert">Disponible ✓</td>
+          <td>Dernier recours + mobilité lourde + aviation — météo-indépendant</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:13px;color:var(--ink-soft);margin-top:-16px;">*FC 85,9 % avec Sabatier vs 75,9 % sans (Tout-BEV). Dunkelflaute = période anticyclonique prolongée, vent faible, solaire minimal — le scénario critique hivernal. FC hydraulique ~25 % en moyenne annuelle mais usage en réserve de puissance : les barrages sont retenus pour les pointes critiques, pas pour la production de base. L'hydraulique constitue la première ligne de secours pilotable avant recours au bio-CH₄.</p>
+
+  <h3>Mix électrique Résilience — Répartition cible 2045 (665 TWh/an)</h3>
+
+  <div class="mix-bar-wrap">
+    <div class="mix-source">
+      <span class="mix-label">Nucléaire</span>
+      <div class="mix-bar-bg">
+        <div class="mix-bar-fill" style="width:57%;background:#0B1F3A;">~380 TWh</div>
+      </div>
+      <span class="mix-twh">~380 TWh</span>
+    </div>
+    <div class="mix-source">
+      <span class="mix-label">Éolien offshore</span>
+      <div class="mix-bar-bg">
+        <div class="mix-bar-fill" style="width:15%;background:#1A5F9C;">~100 TWh</div>
+      </div>
+      <span class="mix-twh">~100 TWh</span>
+    </div>
+    <div class="mix-source">
+      <span class="mix-label">Éolien terrestre</span>
+      <div class="mix-bar-bg">
+        <div class="mix-bar-fill" style="width:9%;background:#2980B9;">~60 TWh</div>
+      </div>
+      <span class="mix-twh">~60 TWh</span>
+    </div>
+    <div class="mix-source">
+      <span class="mix-label">Solaire PV</span>
+      <div class="mix-bar-bg">
+        <div class="mix-bar-fill" style="width:15%;background:#F39C12;">~100 TWh</div>
+      </div>
+      <span class="mix-twh">~100 TWh</span>
+    </div>
+    <div class="mix-source">
+      <span class="mix-label">Hydraulique</span>
+      <div class="mix-bar-bg">
+        <div class="mix-bar-fill" style="width:10%;background:#1A5F9C;">~65 TWh</div>
+      </div>
+      <span class="mix-twh">~65 TWh</span>
+    </div>
+    <div class="mix-source">
+      <span class="mix-label">TOTAL ÉLECTRIQUE</span>
+      <div class="mix-bar-bg">
+        <div class="mix-bar-fill" style="width:100%;background:#2A6B3C;">665 TWh</div>
+      </div>
+      <span class="mix-twh">665 TWh</span>
+    </div>
+  </div>
+
+  <div class="box box-green">
+    <p class="box-label">Logique d'optimisation — Pourquoi ces proportions</p>
+    <p><strong>Nucléaire dominant (~400 TWh / 60 %)</strong> : seule source pilotable, disponible 24h/24 quelles que soient les conditions. Avec Sabatier, le FC passe à 85,9 % — le nucléaire produit en permanence et les surplus sont stockés. Pas de gaspillage, pas de curtailment.</p>
+    <p><strong>Éolien offshore prioritaire sur terrestre (~100 TWh)</strong> : meilleure disponibilité hivernale, complémentaire au nucléaire pour les périodes de forte demande froide. L'offshore a un FC annuel réel 35–40 % contre 25–30 % pour le terrestre.</p>
+    <p><strong>Hydraulique (~65 TWh / réserve de puissance)</strong> : atout français unique — ~25 GW de puissance pilotable, démarrable en quelques minutes. Les barrages ne sont pas utilisés en production de base continue mais <strong>conservés comme première ligne de secours</strong> pour les situations critiques, avant tout recours au bio-CH₄. En Dunkelflaute ou grand froid, ils constituent le tampon immédiat qui laisse le temps d'activer les centrales bio-CH₄. Les STEP (stations de pompage-turbinage) stockent par ailleurs les surplus ENR estivaux pour les restituer en hiver.</p>
+    <p><strong>Solaire limité (~100 TWh)</strong> : utile en été et pour la canicule. Inutile en Dunkelflaute. Au-delà de ~90 GW, les surplus estivaux deviennent difficiles à absorber même avec Sabatier — investissement marginal décroissant.</p>
+    <p><strong>Bio-CH₄ en complément structurel (~295 TWh)</strong> : pas un secours aléatoire mais un vecteur dédié à la mobilité lourde (170 TWh PL), l'aviation (50 TWh), et la réserve de puissance pour les 5 situations critiques résiduelles (~75 TWh ÉREV VL).</p>
+  </div>
+</section>
+
+<hr>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<section id="ppe">
+  <p class="section-tag">Partie 4</p>
+  <h2>Programmation Pluriannuelle de l'Énergie — Scénario Résilience</h2>
+
+  <p>La PPE Résilience est construite sur un principe simple : <strong>investir ce qui est nécessaire et suffisant, dans l'ordre qui maximise la disponibilité à chaque étape</strong>. Elle évite les dépenses erratiques qui caractérisent la politique énergétique actuelle — projets abandonnés, surdimensionnements, curtailments coûteux, conflits d'usage non résolus.</p>
+
+  <h3>Tableau de synthèse des investissements — 2025–2045</h3>
+
+  <div class="tw">
+    <table>
+      <thead>
+        <tr>
+          <th>Poste</th>
+          <th class="num">Capacité cible</th>
+          <th class="num">CAPEX estimé</th>
+          <th>Qualif.</th>
+          <th>Priorité / Logique</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="5" style="background:#E8F1FA;font-weight:bold;font-family:Arial,sans-serif;font-size:12px;letter-spacing:0.05em;text-transform:uppercase;color:var(--blue);">A — Production électrique</td>
+        </tr>
+        <tr>
+          <td class="label">Nucléaire — EPR2 (14 unités)</td>
+          <td class="num">+23,1 GW</td>
+          <td class="num">168 Md€</td>
+          <td class="tag-vert">✓ Robuste</td>
+          <td>Baseload permanent · 14 unités = maximum industriellement faisable d'ici 2045</td>
+        </tr>
+        <tr>
+          <td class="label">Éolien offshore (+18–22 GW)</td>
+          <td class="num">~29 GW total</td>
+          <td class="num">58–84 Md€</td>
+          <td class="tag-vert">✓ Robuste</td>
+          <td>Priorité sur terrestre · meilleure disponibilité hivernale · FC 35–40 %</td>
+        </tr>
+        <tr>
+          <td class="label">Éolien terrestre (+7–8 GW)</td>
+          <td class="num">~25 GW total</td>
+          <td class="num">8–12 Md€</td>
+          <td class="tag-vert">✓ Robuste</td>
+          <td>Complémentarité géographique · répartition nationale · limité pour éviter les conflits d'usage</td>
+        </tr>
+        <tr>
+          <td class="label">Solaire PV (+65–70 GW)</td>
+          <td class="num">~90 GW total</td>
+          <td class="num">49–60 Md€</td>
+          <td class="tag-vert">✓ Robuste</td>
+          <td>Limité à ~90 GW · au-delà les surplus estivaux sont absorbés par Sabatier mais rendement marginal décroissant</td>
+        </tr>
+        <tr class="subtotal">
+          <td>Sous-total production électrique</td>
+          <td class="num">—</td>
+          <td class="num">283–324 Md€</td>
+          <td>—</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td colspan="5" style="background:#E8F1FA;font-weight:bold;font-family:Arial,sans-serif;font-size:12px;letter-spacing:0.05em;text-transform:uppercase;color:var(--blue);">B — Infrastructure et réseau</td>
+        </tr>
+        <tr>
+          <td class="label">Hydraulique — maintien et optimisation STEP</td>
+          <td class="num">~25 GW existants</td>
+          <td class="num">5–10 Md€</td>
+          <td class="tag-vert">✓ Existant</td>
+          <td>Parc existant amorti · investissement de modernisation et nouvelles STEP · réserve de puissance pilotable · complémentarité naturelle avec ENR variables · atout souverain non délocalisable</td>
+        </tr>
+        <tr>
+          <td class="label">Réseau RTE — renforcement ciblé</td>
+          <td class="num">—</td>
+          <td class="num">50–70 Md€</td>
+          <td class="tag-vert">✓</td>
+          <td>Renforcement ciblé (offshore + ÉREV) · −40 à −50 Md€ vs Tout-BEV grâce à GRDF existant</td>
+        </tr>
+        <tr>
+          <td class="label">Stations bio-GNV (3 500–4 000 VL + 700–800 PL)</td>
+          <td class="num">~4 700 stations</td>
+          <td class="num">4,5–11 Md€</td>
+          <td class="tag-vert">✓</td>
+          <td>Réseau autoroutier d'abord · coût unitaire 1–2 M€ vs 5 M€ borne DC 150 kW (poste Enedis inclus)</td>
+        </tr>
+        <tr>
+          <td class="label">Électrolyseurs PEM Sabatier (50 GW)</td>
+          <td class="num">50 GW</td>
+          <td class="num">35 Md€</td>
+          <td class="tag-ambre">Plausible TRL 7–8</td>
+          <td>Absorbe les 67 TWh ENR curtailés · améliore FC nucléaire à 85,9 % · économie 7 EPR2 = 84 Md€</td>
+        </tr>
+        <tr>
+          <td class="label">Valorisation CO₂ biogénique (CCS + serres + minéralisation)</td>
+          <td class="num">~35 Mt CO₂/an</td>
+          <td class="num">8–10 Md€</td>
+          <td class="tag-ambre">Plausible</td>
+          <td>ROI 7–9 ans · séquestration géologique additionnelle + substitution CO₂ fossile industriel</td>
+        </tr>
+        <tr class="subtotal">
+          <td>Sous-total infrastructure</td>
+          <td class="num">—</td>
+          <td class="num">98–126 Md€</td>
+          <td>—</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td colspan="5" style="background:#E3F2E8;font-weight:bold;font-family:Arial,sans-serif;font-size:12px;letter-spacing:0.05em;text-transform:uppercase;color:var(--green);">C — Filières bio-CH₄ (couche Résilience)</td>
+        </tr>
+        <tr>
+          <td class="label">Pyrogazéification — 150 sites × 1 000 t/j</td>
+          <td class="num">~144–172 TWh CH₄</td>
+          <td class="num">69 Md€</td>
+          <td class="tag-vert">✓ Autofinancé 5–8 ans</td>
+          <td>Actif productif · revenus ~35 Md€/an à plein régime · payback 5–8 ans (prudent)</td>
+        </tr>
+        <tr>
+          <td class="label">Méthanisation biomasse humide (boost H₂)</td>
+          <td class="num">~58–82 TWh CH₄</td>
+          <td class="num">18 Md€</td>
+          <td class="tag-vert">✓</td>
+          <td>Filière existante à structurer · CIVE + effluents + boues · retour matière organique via digestat</td>
+        </tr>
+        <tr>
+          <td class="label">R&D ÉREV + certifications</td>
+          <td class="num">—</td>
+          <td class="num">4,5 Md€</td>
+          <td class="tag-vert">✓</td>
+          <td>Certification RED III · exemption règlement 2035 · partenariats Renault/Stellantis</td>
+        </tr>
+        <tr class="subtotal">
+          <td>Sous-total filières bio-CH₄</td>
+          <td class="num">~262 TWh CH₄</td>
+          <td class="num">91,5 Md€ brut</td>
+          <td>Autofinancé à partir de ~2035</td>
+          <td>Revenus cumulés ~700 Md€ sur 20 ans</td>
+        </tr>
+        <tr>
+          <td colspan="5" style="background:#DDE3EA;font-weight:bold;font-family:Arial,sans-serif;font-size:12px;letter-spacing:0.05em;text-transform:uppercase;color:var(--ink);">D — Véhicules (surcoût transition 33 M)</td>
+        </tr>
+        <tr>
+          <td class="label">Surcoût véhicules ÉREV vs diesel</td>
+          <td class="num">33 M véhicules</td>
+          <td class="num">80–140 Md€</td>
+          <td class="tag-ambre">Plausible</td>
+          <td>Batterie 20 kWh vs 50–80 kWh BEV · surcoût unitaire ~2–4 k€ compensé par économies carburant</td>
+        </tr>
+        <tr class="total-row">
+          <td>TOTAL CAPEX TRANSITION 2025–2045</td>
+          <td class="num">—</td>
+          <td class="num">540–690 Md€</td>
+          <td>vs 794–1 096 Md€ BEV</td>
+          <td>Économie centrale ~315 Md€ · dont ~700 Md€ revenus nets sur 20 ans (filières bio-CH₄)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Séquençage temporel — Ce qu'on fait, dans quel ordre</h3>
+
+  <div class="ppe-phases">
+
+    <div class="ppe-phase">
+      <p class="ppe-period">2025–2027 · Phase réglementaire</p>
+      <p class="ppe-title">Poser le cadre juridique et les signaux économiques</p>
+      <div class="ppe-content">
+        <ul class="doc-list">
+          <li>Loi bio-CH₄ : contrats CfD 15 ans · injection prioritaire GRDF · tarifs garantis phase 1</li>
+          <li>Mandat flottes captives GNV : bus, bennes, PL longue distance</li>
+          <li>Exemption ÉREV dans règlement 2035 (RED III) — même logique que e-fuels art. 10a</li>
+          <li>Lancement appel d'offres éolien offshore accéléré (50 parcs autorisés à accélérer)</li>
+          <li>Signal R&D ÉREV : partenariats Renault/Stellantis pour certification</li>
+          <li>Décision construction Penly 1+2 confirmée + Gravelines 1+2 lancée</li>
+        </ul>
+        <span class="ppe-invest">CAPEX ÉTAT : ~2–5 Md€ (R&D + garanties) · Investissements privés déclenchés : ~30–50 Md€</span>
+      </div>
+    </div>
+
+    <div class="ppe-phase">
+      <p class="ppe-period">2027–2030 · Phase 0 — Validation industrielle</p>
+      <p class="ppe-title">Démonstrateurs pyrogazéification + accélération ENR</p>
+      <div class="ppe-content">
+        <ul class="doc-list">
+          <li>5 sites pilotes pyrogazéification (Normandie, Gard, Massif Central, Landes, Pyrénées-Orientales) · 1 000 t/j chacun · validation traitement goudrons · certification biochar EBC</li>
+          <li>500 stations bio-GNV autoroutières · premiers ÉREV certifiés commercialisés</li>
+          <li>Éolien offshore : 8–10 GW supplémentaires (parcs Manche et Atlantique phase 1)</li>
+          <li>Solaire : accélération agrivoltaïsme + toitures industrielles (~15 GW)</li>
+          <li>Formation : 5 000 techniciens pyrogazéification + opérateurs sites</li>
+          <li>Sans validation Phase 0 → pas de Phase 1 (clause de déclenchement conditionnelle)</li>
+          <li><strong>Acteurs industriels nationaux identifiés</strong> — constructeurs ÉREV (Renault, Stellantis) · opérateurs bio-CH₄ (TotalEnergies, Engie, Air Liquide) · équipementiers pyrogazéification (Suez, Idex, Axens) · réseaux de distribution (GRDF, TotalEnergies Marketing) · filières agricoles et forestières (coopératives céréalières, CUMA bocagères, ONF, FCBA) · financement (BPI France, CDC, BEI). Une analyse sectorielle détaillée est disponible sur resilience2045.fr.</li>
+        </ul>
+        <span class="ppe-invest">CAPEX : ~2,5–3 Md€ pyrogaz. · ~25–35 Md€ ENR offshore · ~5 Md€ stations GNV</span>
+      </div>
+    </div>
+
+    <div class="ppe-phase">
+      <p class="ppe-period">2029–2033 · Phase 1 — Déploiement accéléré</p>
+      <p class="ppe-title">75 sites bio-CH₄ + montée en puissance électrique</p>
+      <div class="ppe-content">
+        <ul class="doc-list">
+          <li>75 sites pyrogazéification Zone A uniquement (gisement éprouvé, risque minimal)</li>
+          <li>Garantie souveraine BPI+CDC+BEI sur 20 premiers sites · financement marché ensuite</li>
+          <li>3 M ÉREV en circulation · 2 000 stations bio-GNV · réduction visible des pics chassés-croisés</li>
+          <li>Éolien offshore : 18–22 GW total · premier offshore flottant (pilotes Méditerranée)</li>
+          <li>Solaire : ~65–70 GW total · electrolyseurs Sabatier premiers 15 GW</li>
+          <li>Penly 1+2 opérationnels (~2037 si délais tenus) · construction Bugey 1+2 lancée</li>
+          <li>Formation cumulée : 15 000 techniciens filière bio-CH₄ + nucléaire</li>
+        </ul>
+        <span class="ppe-invest">CAPEX : ~35 Md€ pyrogaz. · ~60–80 Md€ ENR · ~5 Md€ Sabatier phase 1 · ~120 Md€ EPR2 (Penly+Gravelines)</span>
+      </div>
+    </div>
+
+    <div class="ppe-phase">
+      <p class="ppe-period">2033–2040 · Phase 2 — Maturité industrielle</p>
+      <p class="ppe-title">150 sites + mix électrique complet + bascule système</p>
+      <div class="ppe-content">
+        <ul class="doc-list">
+          <li>150 sites pyrogazéification · financement marché (IRR > 10 % démontré) · 262 TWh/an bio-CH₄</li>
+          <li>8–12 M ÉREV · 80–100 TWh/an bio-CH₄ mobilité · déficit hivernal résiduel &lt; 15 GW</li>
+          <li>Mix électrique quasi-complet : ~90 GW solaire · ~25 GW éolien terrestre · ~29 GW offshore · ~53 GW nucléaire</li>
+          <li>Sabatier 50 GW opérationnel · FC nucléaire 85,9 %</li>
+          <li>Séquestration biochar : ~23 Mt CO₂/an certifiés EBC · CO₂ biogénique valorisé</li>
+          <li>Export technologie pyrogazéification (Italie, Pologne, Roumanie) · France exportatrice</li>
+          <li>Formation cumulée : 20 000 techniciens</li>
+        </ul>
+        <span class="ppe-invest">CAPEX : ~35 Md€ pyrogaz. phase 2 · ~30 Md€ ENR · ~30 Md€ Sabatier final · ~48 Md€ EPR2 Bugey+suite</span>
+      </div>
+    </div>
+
+    <div class="ppe-phase">
+      <p class="ppe-period">2040–2045 · Phase 3 — Régime établi</p>
+      <p class="ppe-title">Plein régime · ajustements · options complémentaires</p>
+      <div class="ppe-content">
+        <ul class="doc-list">
+          <li>Système complet : 665 TWh électrique + 295 TWh bio-CH₄ + 50 TWh chaleur · zéro fossile</li>
+          <li>~20 M ÉREV + BEV urbains · filière bio-CH₄ autofinancée · 200 000+ emplois non délocalisables</li>
+          <li>Éolien flottant Méditerranée/Atlantique profond si TRL validé (~5–10 GW optionnel)</li>
+          <li>SMR NUWARD premiers sites industriels si programme tient les délais (option, non dans scénario central)</li>
+          <li>Retrofit SOEC 75 sites : +12 TWh bio-CH₄ bonus (conditionnel TRL 9)</li>
+          <li>Bilan carbone : −55 à −80 Mt CO₂eq/an · France contribue à la restauration du climat</li>
+        </ul>
+        <span class="ppe-invest">CAPEX : ~20–30 Md€ (ajustements + options) · Revenus bio-CH₄ : ~35 Md€/an · Autofinancement complet</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<section id="conclusion">
+  <p class="section-tag">Partie 5</p>
+  <h2>Bilan — Ce que la PPE Résilience évite et ce qu'elle garantit</h2>
+
+  <h3>Ce qu'elle évite — Les dépenses erratiques actuelles</h3>
+
+  <div class="tw">
+    <table>
+      <thead>
+        <tr>
+          <th>Problème actuel</th>
+          <th>Coût erratique</th>
+          <th>Comment Résilience l'élimine</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="label">Curtailment ENR (éolien/solaire stoppés faute de débouché)</td>
+          <td>Milliards€/an perdus</td>
+          <td>Sabatier absorbe instantanément tous les surplus → méthane stocké GRDF</td>
+        </tr>
+        <tr>
+          <td class="label">Surdimensionnement nucléaire (21 EPR2 vs 14 nécessaires)</td>
+          <td>+84 Md€</td>
+          <td>FC 85,9 % avec Sabatier → 7 EPR2 évités → économie 84 Md€</td>
+        </tr>
+        <tr>
+          <td class="label">Renforcement réseau RTE pour pics BEV (bornes 150 kW)</td>
+          <td>+40–50 Md€ réseau + 5 M€/borne poste HTB</td>
+          <td>ÉREV décale la demande + GRDF absorbe la pointe sans CAPEX réseau</td>
+        </tr>
+        <tr>
+          <td class="label">Dépréciation actifs GRDF (200 000 km réseau)</td>
+          <td>100–200 Md€ perte patrimoniale</td>
+          <td>GRDF devient vecteur central bio-CH₄ → actif valorisé, pas déprécié</td>
+        </tr>
+        <tr>
+          <td class="label">Aviation non traitée (150 TWh kérosène fossile résiduel)</td>
+          <td>Objectif climatique non atteint</td>
+          <td>Bio-GNL long-courrier + électrique court-courrier → zéro fossile aviation</td>
+        </tr>
+        <tr>
+          <td class="label">Pari H₂ infrastructure (coût géologique + rendement 25–35 %)</td>
+          <td>+100–200 Md€ si erreur</td>
+          <td>Bio-CH₄ sur GRDF existant · H₂ réservé aux usages industriels spécifiques</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Ce qu'elle garantit</h3>
+
+  <div class="compare-grid" style="margin-top:20px;">
+    <div class="compare-col res">
+      <div class="compare-col-head">Sécurité d'approvisionnement</div>
+      <div class="stat-line"><span>Situations critiques couvertes</span><span class="stat-val green">5 / 5</span></div>
+      <div class="stat-line"><span>Stockage saisonnier</span><span class="stat-val green">130 TWh</span></div>
+      <div class="stat-line"><span>Dépendance imports énergie</span><span class="stat-val green">Quasi zéro</span></div>
+      <div class="stat-line"><span>Résilience aux aléas climatiques</span><span class="stat-val green">Haute</span></div>
+    </div>
+    <div class="compare-col res">
+      <div class="compare-col-head">Bilan climatique</div>
+      <div class="stat-line"><span>Fossiles résiduels</span><span class="stat-val green">Zéro</span></div>
+      <div class="stat-line"><span>Séquestration biochar</span><span class="stat-val green">23 Mt CO₂/an</span></div>
+      <div class="stat-line"><span>Bilan carbone 2045</span><span class="stat-val green">−55 à −80 Mt/an</span></div>
+      <div class="stat-line"><span>Aviation décarbonée</span><span class="stat-val green">Oui ✓</span></div>
+    </div>
+    <div class="compare-col res">
+      <div class="compare-col-head">Économie</div>
+      <div class="stat-line"><span>CAPEX total</span><span class="stat-val green">540–690 Md€</span></div>
+      <div class="stat-line"><span>Économie vs Tout-BEV</span><span class="stat-val green">~315 Md€</span></div>
+      <div class="stat-line"><span>Revenus filières bio-CH₄</span><span class="stat-val green">~700 Md€/20 ans</span></div>
+      <div class="stat-line"><span>Emplois non délocalisables</span><span class="stat-val green">200 000+</span></div>
+    </div>
+    <div class="compare-col res">
+      <div class="compare-col-head">Investissements évités</div>
+      <div class="stat-line"><span>EPR2 évités (vs BEV)</span><span class="stat-val green">7 unités</span></div>
+      <div class="stat-line"><span>Économie nucléaire</span><span class="stat-val green">84 Md€</span></div>
+      <div class="stat-line"><span>Économie réseau RTE</span><span class="stat-val green">40–50 Md€</span></div>
+      <div class="stat-line"><span>Actifs GRDF préservés</span><span class="stat-val green">100–200 Md€</span></div>
+    </div>
+  </div>
+
+  <div class="box box-navy" style="margin-top:28px;">
+    <p class="box-label">Pour aller plus loin — Le corpus Résilience</p>
+    <p>Ce document est une synthèse. Chacun des sujets abordés — gisements biomasse, logistique territoriale, économie par site, comparaison CAPEX détaillée, modèle fiscal et réglementaire, géopolitique européenne, acteurs industriels, trajectoire CO₂ — a fait l'objet d'analyses approfondies disponibles dans le corpus complet de plus de 50 documents sur <a href="https://resilience2045.fr" target="_blank" style="color:var(--blue);">resilience2045.fr</a>. Une analyse industrielle sectorielle identifie les acteurs français capables d'intervenir dès la Phase 0 dans chaque maillon de la chaîne : production de biomasse, transport, pyrogazéification, méthanisation, injection réseau, biochar, stations GNV, ÉREV.</p>
+  </div>
+
+  <div class="box box-green" style="margin-top:28px;">
+    <p class="box-label">Message central</p>
+    <p>La PPE Résilience n'est pas un scénario de remplacement de l'électrification. C'est une <strong>programmation précise de ce que l'électricité peut faire seule et de ce qu'elle ne peut pas faire</strong> — et l'attribution de la filière bio-CH₄ exactement aux secteurs où elle est irremplaçable. Cette clarté évite les arbitrages politiques erratiques, les surdimensionnements coûteux et les angles morts climatiques. Elle définit un signal d'investissement stable sur 20 ans.</p>
+  </div>
+
+<hr>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<section id="climat">
+  <p class="section-tag">Partie 6</p>
+  <h2>Engagements climatiques — Comment la France les respecte et va au-delà</h2>
+
+  <p>La trajectoire Résilience ne se contente pas de décarboner l'énergie. Elle produit un bilan carbone <strong>durablement négatif</strong> à partir de 2040 — c'est-à-dire qu'elle retire plus de CO₂ de l'atmosphère qu'elle n'en émet. C'est la différence entre neutralité carbone et restauration climatique.</p>
+
+  <div class="box box-green">
+    <p class="box-label">Principe — Au-delà de la neutralité</p>
+    <p>Stopper les émissions fossiles stabilise la concentration de CO₂ à ~424 ppm — elle ne la réduit pas. Pour <em>améliorer</em> le climat, il faut retirer du CO₂ déjà accumulé. Résilience est le seul scénario de transition énergétique qui intègre un mécanisme de retrait net à grande échelle, certifiable et maîtrisable sur sol français.</p>
+  </div>
+
+  <h3>Les quatre mécanismes de contribution climatique de Résilience</h3>
+
+  <div class="tw">
+    <table>
+      <thead>
+        <tr>
+          <th>Mécanisme</th>
+          <th class="num">Volume estimé</th>
+          <th>Nature du bénéfice</th>
+          <th>Permanence</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="label">1. Substitution fossile (énergie)</td>
+          <td class="num">~300–350 Mt CO₂/an évités</td>
+          <td>Réduction d'émissions — transport, chauffage, industrie</td>
+          <td>Tant que les fossiles sont substitués</td>
+        </tr>
+        <tr>
+          <td class="label">2. Séquestration biochar (EBC certifié)</td>
+          <td class="num">~20–23 Mt CO₂/an</td>
+          <td>Retrait durable certifiable · carbone stable 500–1 000 ans · critères H/Corg ≤ 0,4 · CRCF UE (3 fév. 2026)</td>
+          <td>Permanente — reconnu CDR par l'UE</td>
+        </tr>
+        <tr>
+          <td class="label">3. CO₂ biogénique concentré (séquestration géologique)</td>
+          <td class="num">Fraction de ~35 Mt/an disponibles</td>
+          <td>Retrait additionnel · minéralisation CarbFix ou stockage géologique · complément du biochar sur sites à sous-sol favorable</td>
+          <td>Permanente — plurimillénaire</td>
+        </tr>
+        <tr>
+          <td class="label">4. CO₂ biogénique valorisé (substitution industrielle)</td>
+          <td class="num">Fraction de ~35 Mt/an</td>
+          <td>Substitution CO₂ fossile (serres, industrie alimentaire, chimie verte) · réduction d'émissions fossiles locales</td>
+          <td>Temporaire — stockage en produit</td>
+        </tr>
+        <tr class="total-row">
+          <td>Bilan carbone total 2045</td>
+          <td class="num">−55 à −80 Mt CO₂eq/an</td>
+          <td>Bilan net négatif — France contribue à la restauration du climat</td>
+          <td>Croissant avec le déploiement</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Trajectoire de séquestration — Montée en puissance 2028–2045</h3>
+
+  <div class="mix-bar-wrap">
+    <div class="mix-source">
+      <span class="mix-label">2028 (5 sites)</span>
+      <div class="mix-bar-bg">
+        <div class="mix-bar-fill" style="width:3%;background:#2A6B3C;">~0,7 Mt</div>
+      </div>
+      <span class="mix-twh">~0,7 Mt CO₂/an</span>
+    </div>
+    <div class="mix-source">
+      <span class="mix-label">2033 (35 sites)</span>
+      <div class="mix-bar-bg">
+        <div class="mix-bar-fill" style="width:22%;background:#2A6B3C;">~5 Mt</div>
+      </div>
+      <span class="mix-twh">~5 Mt CO₂/an</span>
+    </div>
+    <div class="mix-source">
+      <span class="mix-label">2038 (100 sites)</span>
+      <div class="mix-bar-bg">
+        <div class="mix-bar-fill" style="width:65%;background:#2A6B3C;">~15 Mt</div>
+      </div>
+      <span class="mix-twh">~15 Mt CO₂/an</span>
+    </div>
+    <div class="mix-source">
+      <span class="mix-label">2045 (150 sites)</span>
+      <div class="mix-bar-bg">
+        <div class="mix-bar-fill" style="width:100%;background:#2A6B3C;">23 Mt</div>
+      </div>
+      <span class="mix-twh">~23 Mt CO₂/an</span>
+    </div>
+  </div>
+
+  <h3>Conformité aux engagements européens et internationaux</h3>
+
+  <div class="tw">
+    <table>
+      <thead>
+        <tr>
+          <th>Engagement / Cadre</th>
+          <th>Exigence</th>
+          <th>Réponse Résilience</th>
+          <th>Statut</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="label">Règlement LULUCF (puits terrestres)</td>
+          <td>Maintien et amélioration des puits naturels</td>
+          <td>Entretien forestier financé par boucle bio-CH₄ · gros bois préservés · régénération améliorée · forêts privées gérées (73 % actuellement sans plan)</td>
+          <td class="tag-vert">✓ Conforme et au-delà</td>
+        </tr>
+        <tr>
+          <td class="label">CRCF UE — Carbon Removal Certification Framework (3 fév. 2026)</td>
+          <td>Permanent Carbon Removal certifiable</td>
+          <td>Biochar EBC Premium (H/Corg ≤ 0,4 · T° ≥ 550°C) reconnu explicitement comme CDR permanent · monitoring par site · traçabilité complète</td>
+          <td class="tag-vert">✓ Reconnaissance obtenue</td>
+        </tr>
+        <tr>
+          <td class="label">Objectif neutralité carbone 2050 (Accord de Paris)</td>
+          <td>Émissions nettes = 0 avant 2050</td>
+          <td>Bilan net négatif atteint dès ~2042 en scénario central · France contribue à la réduction du CO₂ atmosphérique</td>
+          <td class="tag-vert">✓ Atteint avec avance</td>
+        </tr>
+        <tr>
+          <td class="label">Règlement 2035 — fin des moteurs thermiques</td>
+          <td>Zéro émission tailpipe en 2035</td>
+          <td>ÉREV bio-GNV = zéro émission tailpipe (carbone biogénique neutre cycle court) · exemption à demander art. 10a RED III · même logique que e-fuels déjà accordée</td>
+          <td class="tag-ambre">⚠ Exemption à sécuriser</td>
+        </tr>
+        <tr>
+          <td class="label">REPowerEU — Indépendance énergétique</td>
+          <td>Réduire dépendance aux importations fossiles</td>
+          <td>Bio-CH₄ 100 % national · non délocalisable · non embargable · valorise ressources françaises exclusivement</td>
+          <td class="tag-vert">✓ Souveraineté totale</td>
+        </tr>
+        <tr>
+          <td class="label">Stratégie UE sur les forêts (2030)</td>
+          <td>Préserver et restaurer les forêts</td>
+          <td>Entretien actif ≠ exploitation · gros bois morts préservés (seuil 20–30 m³/ha) · boucle économique permettant la gestion de 73 % des forêts privées actuellement abandonnées</td>
+          <td class="tag-vert">✓ Complémentaire</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Ce que Résilience apporte que les autres scénarios n'ont pas</h3>
+
+  <div class="compare-grid">
+    <div class="compare-col bev">
+      <div class="compare-col-head">Tout-BEV — Bilan climatique</div>
+      <div class="stat-line"><span>Émissions fossiles résiduelles</span><span class="stat-val amber">150 TWh kérosène</span></div>
+      <div class="stat-line"><span>Séquestration active</span><span class="stat-val amber">Zéro</span></div>
+      <div class="stat-line"><span>CO₂ atmosphérique</span><span class="stat-val amber">Stabilisé à 424 ppm</span></div>
+      <div class="stat-line"><span>Aviation décarbonée</span><span class="stat-val amber">Non</span></div>
+      <div class="stat-line"><span>Bilan net 2045</span><span class="stat-val amber">~−35 Mt (hors kéro)</span></div>
+      <div class="stat-line"><span>Restauration climatique</span><span class="stat-val amber">Non</span></div>
+    </div>
+    <div class="compare-col res">
+      <div class="compare-col-head">Résilience — Bilan climatique</div>
+      <div class="stat-line"><span>Émissions fossiles résiduelles</span><span class="stat-val green">Zéro</span></div>
+      <div class="stat-line"><span>Séquestration active (biochar)</span><span class="stat-val green">23 Mt CO₂/an</span></div>
+      <div class="stat-line"><span>CO₂ atmosphérique</span><span class="stat-val green">En baisse active</span></div>
+      <div class="stat-line"><span>Aviation décarbonée</span><span class="stat-val green">Oui (bio-GNL)</span></div>
+      <div class="stat-line"><span>Bilan net 2045</span><span class="stat-val green">−55 à −80 Mt/an</span></div>
+      <div class="stat-line"><span>Restauration climatique</span><span class="stat-val green">Oui — actif</span></div>
+    </div>
+  </div>
+
+  <h3>Miscanthus et reconstruction des territoires dégradés — Un levier complémentaire</h3>
+
+  <p>Les zones forestières brûlées, les friches climatiques et les terres agricoles en déprise constituent un défi territorial croissant en France. Le Programme Résilience identifie dans la combinaison <strong>miscanthus + pyrogazéification</strong> un outil économique de reconstruction de ces mosaïques paysagères.</p>
+
+  <p>Le miscanthus, cultivé prioritairement sur terres en déprise, terres marginales ou ex-vignes hors usage alimentaire, joue un double rôle dans ce contexte : il constitue une <strong>biomasse socle régulière</strong> qui sécurise l'activité des sites de pyrogazéification entre deux apports de biomasses résiduelles variables — et il permet simultanément de <strong>préparer économiquement la reconstruction forestière</strong> sur les zones brûlées ou dégradées, en générant un revenu de transition pendant les 15 à 20 ans nécessaires à la reconstitution d'un couvert forestier adulte.</p>
+
+  <div class="box box-green">
+    <p class="box-label">La boucle miscanthus → pyrogazéification → reconstruction forestière</p>
+    <p><strong>Sur une zone incendiée ou dégradée</strong> : le miscanthus s'implante rapidement (2–3 ans), ne nécessite ni pesticide ni herbicide après implantation, maintient le sol vivant, réduit l'érosion et fournit une biomasse contractualisable sur 15 ans. Les revenus de la pyrogazéification financent l'entretien du territoire et les replantations progressives. Quand la forêt reconstituée prend le relais, le miscanthus peut être retiré progressivement — le site de pyrogazéification se tournant alors vers les rémanents forestiers comme source principale.</p>
+    <p>C'est un exemple concret de la boucle économique territoriale qui distingue Résilience des politiques de subvention directe : <strong>l'entretien et la reconstruction deviennent une activité productive plutôt qu'une dépense publique.</strong></p>
+  </div>
+
+  <p style="font-size:14px;color:var(--ink-soft);font-family:Arial,sans-serif;">→ Pour le détail sur la distinction stock/puits forestier, les trois niveaux de gisement biomasse et la logique de séquestration par biochar : <a href="resilience-puits-carbone.html" style="color:var(--blue);">Pourquoi les puits naturels ne peuvent pas porter seuls la stratégie climatique de 2045</a> — note de positionnement stratégique V5, août 2026.</p>
+
+  <div class="box box-green" style="margin-top:28px;">
+    <p class="box-label">Conclusion climatique</p>
+    <p>La France avec Résilience ne se contente pas de respecter ses engagements — elle les dépasse. En produisant un bilan carbone durablement négatif, elle contribue activement à la réduction du CO₂ atmosphérique accumulé depuis deux siècles. C'est la différence entre <strong>neutralité</strong> (arrêter de dégrader) et <strong>restauration</strong> (réparer). Aucun autre scénario de transition énergétique disponible aujourd'hui ne propose ce mécanisme à cette échelle, à ce coût et sur territoire souverain.</p>
+  </div>
+</section>
+
+  <div class="cta-pdf" id="pdf">
+    <div class="cta-pdf-text">
+      <h3>Télécharger la note en PDF</h3>
+      <p>Version août 2026 · Document de travail · Programme Résilience V11</p>
+    </div>
+    <a href="PPE_Resilience_2045_V1.pdf" class="btn-pdf" download>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Télécharger PDF
+    </a>
+  </div>
+
+  <div class="sources">
+    <h4>Sources</h4>
+    <p>Programme Résilience V11 — Document consolidé (mai 2026) · Note de cadrage système énergétique V11 · Tableau énergie Résilience V4 (juillet 2026) · Synthèse décideurs V3 (juillet 2026) · Souveraineté énergétique V11 (mai 2026) · RTE — Bilan prévisionnel 2023 · ADEME · GRTgaz/GRDF · IEA WEO 2024 · Cour des Comptes rapport EPR 2022 · EDF NP 2023 · BloombergNEF 2024 · BEI 2024 · <a href="https://resilience2045.fr" target="_blank">resilience2045.fr</a></p>
+  </div>
+</section>
+
+</main>
+</body>
+</html>
