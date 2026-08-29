@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notes de position — Séquestration, droit et transition | Résilience 2045</title>
+  <meta name="description"
+        content="Trois notes de position du Programme Résilience V11 : biomasse forestière et droit environnemental, architecture juridique anti-blocage, et arguments systémiques pour les décideurs.">
+
+  <!-- Google Fonts — aligné sur le reste du site Résilience -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Serif+4:ital,wght@0,300;0,600;1,300&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Tokens ───────────────────────────────────────────────────── */
+    :root {
+      --vert:       #2D6A4F;
+      --vert-m:     #40916C;
+      --vert-l:     #74C69D;
+      --vert-xl:    #D8F3DC;
+      --vert-xxl:   #F0FBF3;
+      --orange:     #E76F51;
+      --orange-l:   #FFF0EB;
+      --gris-900:   #1A202C;
+      --gris-700:   #4A5568;
+      --gris-500:   #718096;
+      --gris-200:   #EDF2F7;
+      --gris-100:   #F7FAFC;
+      --blanc:      #FFFFFF;
+      --radius:     8px;
+      --radius-l:   14px;
+      --ombre:      0 2px 8px rgba(0,0,0,.07), 0 1px 2px rgba(0,0,0,.05);
+      --ombre-hover:0 6px 20px rgba(45,106,79,.15), 0 2px 6px rgba(0,0,0,.08);
+      --transition: .22s ease;
+    }
+
+    /* ── Reset & base ─────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--gris-700);
+      background: var(--blanc);
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    /* ── Navigation stub (cohérence avec le site) ─────────────────── */
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,.97);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--gris-200);
+    }
+    .nav-inner {
+      max-width: 1120px; margin: 0 auto;
+      padding: 0 2rem;
+      display: flex; align-items: center; gap: 2rem;
+      height: 56px;
+    }
+    .nav-logo {
+      font-weight: 700; font-size: .9rem; letter-spacing: .04em;
+      color: var(--vert); text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .nav-logo span { color: var(--gris-500); font-weight: 400; }
+    .nav-links {
+      display: flex; gap: 1.4rem; list-style: none;
+      font-size: .875rem; color: var(--gris-700);
+      margin-left: auto;
+    }
+    .nav-links a:hover { color: var(--vert); }
+    .nav-links a.active { color: var(--vert); font-weight: 600; }
+
+    /* ── Hero ─────────────────────────────────────────────────────── */
+    .hero {
+      background: linear-gradient(135deg, var(--vert) 0%, #1B4332 100%);
+      padding: 5rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    .hero-inner {
+      max-width: 860px; margin: 0 auto;
+      position: relative; z-index: 1;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: .6rem;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 100px;
+      padding: .35rem 1rem;
+      font-size: .8rem; font-weight: 500; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--vert-l);
+      margin-bottom: 1.5rem;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--vert-l);
+      flex-shrink: 0;
+    }
+    .hero h1 {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-weight: 600; font-size: clamp(1.8rem, 4vw, 2.8rem);
+      line-height: 1.2; color: var(--blanc);
+      margin-bottom: 1.2rem;
+    }
+    .hero-sub {
+      font-size: 1.05rem; line-height: 1.7;
+      color: rgba(255,255,255,.78);
+      max-width: 680px;
+      margin-bottom: 2rem;
+    }
+    .hero-meta {
+      display: flex; flex-wrap: wrap; gap: .8rem;
+      font-size: .82rem; color: rgba(255,255,255,.55);
+    }
+    .hero-meta span {
+      display: flex; align-items: center; gap: .4rem;
+    }
+    .hero-meta svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+    /* ── Intro bloc ───────────────────────────────────────────────── */
+    .intro {
+      max-width: 860px; margin: 3.5rem auto 0;
+      padding: 0 2rem;
+    }
+    .intro p {
+      font-size: 1rem; line-height: 1.75;
+      color: var(--gris-700);
+    }
+    .intro strong { color: var(--gris-900); }
+
+    /* ── Contexte encadré ─────────────────────────────────────────── */
+    .contexte {
+      max-width: 860px; margin: 2.5rem auto;
+      padding: 0 2rem;
+    }
+    .contexte-box {
+      background: var(--orange-l);
+      border-left: 4px solid var(--orange);
+      border-radius: var(--radius);
+      padding: 1.4rem 1.6rem;
+    }
+    .contexte-box p {
+      font-size: .95rem; line-height: 1.7;
+      color: var(--gris-900);
+    }
+    .contexte-box strong { color: var(--orange); }
+
+    /* ── Section principale — 3 notes ─────────────────────────────── */
+    .notes-section {
+      max-width: 860px; margin: 0 auto;
+      padding: 0 2rem 5rem;
+    }
+    .section-titre {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-weight: 600; font-size: 1.5rem;
+      color: var(--vert); margin-bottom: 2rem;
+      padding-bottom: .8rem;
+      border-bottom: 2px solid var(--vert-xl);
+    }
+
+    /* ── Card note ────────────────────────────────────────────────── */
+    .note-card {
+      background: var(--blanc);
+      border: 1px solid var(--gris-200);
+      border-radius: var(--radius-l);
+      box-shadow: var(--ombre);
+      margin-bottom: 2.2rem;
+      overflow: hidden;
+      transition: box-shadow var(--transition), transform var(--transition);
+    }
+    .note-card:hover {
+      box-shadow: var(--ombre-hover);
+      transform: translateY(-2px);
+    }
+
+    /* Barre colorée en tête de carte */
+    .note-card-header {
+      display: grid;
+      grid-template-columns: 5px 1fr;
+    }
+    .note-card-stripe {
+      background: var(--vert);
+      border-radius: var(--radius-l) 0 0 0;
+    }
+    .note-card-top {
+      padding: 1.6rem 1.8rem 1.4rem;
+      display: flex; align-items: flex-start; gap: 1.2rem;
+    }
+    .note-num {
+      flex-shrink: 0;
+      width: 44px; height: 44px;
+      background: var(--vert-xxl);
+      border: 2px solid var(--vert-xl);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Source Serif 4', serif;
+      font-weight: 600; font-size: 1.15rem;
+      color: var(--vert);
+    }
+    .note-head { flex: 1; }
+    .note-tag {
+      display: inline-block;
+      font-size: .72rem; font-weight: 600; letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--vert-m);
+      background: var(--vert-xxl);
+      border: 1px solid var(--vert-xl);
+      border-radius: 100px;
+      padding: .2rem .7rem;
+      margin-bottom: .6rem;
+    }
+    .note-titre {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-weight: 600; font-size: 1.2rem; line-height: 1.3;
+      color: var(--gris-900);
+      margin-bottom: .3rem;
+    }
+    .note-version {
+      font-size: .8rem; color: var(--gris-500);
+    }
+
+    .note-card-body { padding: 0 1.8rem 1.6rem 1.8rem; }
+
+    /* Résumé */
+    .note-resume {
+      font-size: .95rem; line-height: 1.7;
+      color: var(--gris-700);
+      margin-bottom: 1.2rem;
+    }
+
+    /* Points clés */
+    .note-points {
+      list-style: none;
+      display: flex; flex-direction: column; gap: .55rem;
+      margin-bottom: 1.4rem;
+    }
+    .note-points li {
+      display: flex; align-items: flex-start; gap: .7rem;
+      font-size: .9rem; line-height: 1.55;
+      color: var(--gris-700);
+    }
+    .note-points li::before {
+      content: '';
+      flex-shrink: 0;
+      margin-top: .45em;
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--vert-m);
+    }
+
+    /* Chiffres clés inline */
+    .note-chiffres {
+      display: flex; flex-wrap: wrap; gap: .8rem;
+      margin-bottom: 1.4rem;
+    }
+    .chiffre-pill {
+      background: var(--vert-xxl);
+      border: 1px solid var(--vert-xl);
+      border-radius: var(--radius);
+      padding: .5rem .9rem;
+      font-size: .82rem;
+    }
+    .chiffre-pill strong {
+      display: block;
+      font-size: 1.1rem; font-weight: 700;
+      color: var(--vert); line-height: 1.2;
+    }
+    .chiffre-pill span {
+      color: var(--gris-500);
+    }
+
+    /* Sections couvertes */
+    .note-sections {
+      background: var(--gris-100);
+      border-radius: var(--radius);
+      padding: .9rem 1rem;
+      margin-bottom: 1.4rem;
+    }
+    .note-sections-label {
+      font-size: .75rem; font-weight: 600; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--gris-500);
+      margin-bottom: .5rem;
+    }
+    .note-sections-list {
+      display: flex; flex-wrap: wrap; gap: .4rem;
+    }
+    .section-chip {
+      font-size: .78rem; color: var(--gris-700);
+      background: var(--blanc);
+      border: 1px solid var(--gris-200);
+      border-radius: 100px;
+      padding: .2rem .7rem;
+    }
+
+    /* Footer de carte */
+    .note-card-footer {
+      border-top: 1px solid var(--gris-200);
+      padding: 1rem 1.8rem;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: .8rem;
+    }
+    .note-infos {
+      display: flex; gap: 1.4rem;
+      font-size: .8rem; color: var(--gris-500);
+      flex-wrap: wrap;
+    }
+    .note-infos span {
+      display: flex; align-items: center; gap: .35rem;
+    }
+    .note-infos svg { width: 13px; height: 13px; }
+
+    .btn-telecharger {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: var(--vert);
+      color: var(--blanc);
+      font-size: .875rem; font-weight: 600;
+      padding: .6rem 1.2rem;
+      border-radius: var(--radius);
+      transition: background var(--transition), transform var(--transition);
+    }
+    .btn-telecharger:hover {
+      background: #235c3f;
+      transform: translateY(-1px);
+    }
+    .btn-telecharger svg { width: 15px; height: 15px; flex-shrink: 0; }
+
+    /* ── Encadré "comment utiliser" ───────────────────────────────── */
+    .usage {
+      max-width: 860px; margin: 0 auto 4rem;
+      padding: 0 2rem;
+    }
+    .usage-box {
+      background: var(--vert-xxl);
+      border: 1px solid var(--vert-xl);
+      border-radius: var(--radius-l);
+      padding: 1.8rem 2rem;
+    }
+    .usage-box h3 {
+      font-size: 1rem; font-weight: 700;
+      color: var(--vert); margin-bottom: 1rem;
+    }
+    .usage-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+    .usage-item {
+      background: var(--blanc);
+      border: 1px solid var(--vert-xl);
+      border-radius: var(--radius);
+      padding: 1rem;
+    }
+    .usage-item-icon {
+      font-size: 1.4rem; margin-bottom: .5rem;
+    }
+    .usage-item h4 {
+      font-size: .88rem; font-weight: 700;
+      color: var(--gris-900); margin-bottom: .3rem;
+    }
+    .usage-item p {
+      font-size: .82rem; line-height: 1.55;
+      color: var(--gris-700);
+    }
+
+    /* ── Sources ──────────────────────────────────────────────────── */
+    .sources {
+      background: var(--gris-100);
+      border-top: 1px solid var(--gris-200);
+      padding: 2rem;
+    }
+    .sources-inner {
+      max-width: 860px; margin: 0 auto;
+    }
+    .sources-inner h3 {
+      font-size: .85rem; font-weight: 700;
+      letter-spacing: .05em; text-transform: uppercase;
+      color: var(--gris-500); margin-bottom: .8rem;
+    }
+    .sources-list {
+      display: flex; flex-wrap: wrap; gap: .5rem;
+      list-style: none;
+    }
+    .sources-list li {
+      font-size: .8rem; color: var(--gris-700);
+      background: var(--blanc);
+      border: 1px solid var(--gris-200);
+      border-radius: 100px;
+      padding: .25rem .8rem;
+    }
+
+    /* ── Footer ───────────────────────────────────────────────────── */
+    footer {
+      background: var(--vert);
+      color: rgba(255,255,255,.7);
+      text-align: center;
+      padding: 1.8rem;
+      font-size: .82rem;
+    }
+    footer a { color: rgba(255,255,255,.9); text-decoration: underline; }
+    footer strong { color: var(--blanc); }
+
+    /* ── Responsive ───────────────────────────────────────────────── */
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .hero { padding: 3.5rem 1.2rem 3rem; }
+      .intro, .contexte, .notes-section, .usage { padding: 0 1.2rem; }
+      .intro { margin-top: 2.5rem; }
+      .note-chiffres { flex-direction: column; }
+      .note-card-footer { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Navigation ────────────────────────────────────────────────────────── -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Résilience <span>2045</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="documents-liste.html">Documents</a></li>
+      <li><a href="positionnement-territorial.html">Territoires</a></li>
+      <li><a href="notes-position-sequestration-droit.html" class="active">Notes de position</a></li>
+      <li><a href="glossaire.html">Glossaire</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ── Hero ──────────────────────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Programme Résilience V11 &mdash; Août 2026</div>
+    <h1>Séquestration du carbone,<br>biomasse et droit de l'environnement</h1>
+    <p class="hero-sub">
+      Trois notes de position à l'intention des décideurs institutionnels. 
+      Les engagements climatiques de la France sont pris. Le droit applicable rend 
+      leur mise en œuvre impossible dans les délais requis. Cette contradiction doit être 
+      nommée, débattue, et résolue.
+    </p>
+    <div class="hero-meta">
+      <span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        Août 2026
+      </span>
+      <span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        3 notes — diffusion institutionnelle
+      </span>
+      <span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        Version publique — sans référence nominative
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- ── Introduction ───────────────────────────────────────────────────────── -->
+<div class="intro">
+  <p>
+    Les trois notes présentées ici constituent un corpus cohérent, conçu pour être remis 
+    à tout interlocuteur institutionnel — parlementaire, haut fonctionnaire, élu territorial, 
+    expert scientifique — qui aborde les questions de transition énergétique, de séquestration 
+    du carbone, ou de réforme du droit de l'environnement. Elles peuvent être transmises 
+    séparément ou ensemble selon le contexte.
+  </p>
+  <p style="margin-top: .9rem;">
+    <strong>Elles ne présentent aucun fait nouveau.</strong> Elles mettent en regard ce que 
+    la France a officiellement ratifié — GIEC AR6, Accords de Paris, SNBC 2024 — avec ce 
+    qu'elle applique effectivement, et posent la question de cohérence que ce décalage 
+    implique.
+  </p>
+</div>
+
+<!-- ── Contexte d'urgence ─────────────────────────────────────────────────── -->
+<div class="contexte">
+  <div class="contexte-box">
+    <p>
+      <strong>Été 2026 :</strong> 110 000 ha brûlés en France au 10 août — record absolu 
+      EFFIS depuis le début des observations satellitaires, avant même la fin de la saison 
+      des feux. Ces forêts, qui étaient des puits de carbone, sont devenues en quelques 
+      semaines des sources nettes de CO₂. Pendant ce temps, le cadre réglementaire actuel 
+      rend impossible, dans les délais nécessaires, le déploiement des filières de 
+      séquestration qui auraient pu valoriser cette biomasse avant qu'elle brûle.
+    </p>
+  </div>
+</div>
+
+<!-- ── Les 3 notes ───────────────────────────────────────────────────────── -->
+<div class="notes-section">
+  <h2 class="section-titre">Les trois notes de position</h2>
+
+  <!-- ── Note 1 ── -->
+  <article class="note-card">
+    <div class="note-card-header">
+      <div class="note-card-stripe"></div>
+      <div class="note-card-top">
+        <div class="note-num">1</div>
+        <div class="note-head">
+          <span class="note-tag">Note de position · V3</span>
+          <h2 class="note-titre">Biomasse forestière, séquestration et droit de l'environnement</h2>
+          <p class="note-version">Séquestration ou précaution : un faux dilemme, un vrai choix</p>
+        </div>
+      </div>
+    </div>
+    <div class="note-card-body">
+      <p class="note-resume">
+        Note de mise en cohérence à l'intention des décideurs. Les organismes scientifiques 
+        dont la France reconnaît l'autorité — GIEC, ADEME, INRAE, Forest Europe — ont établi 
+        les faits. La France a ratifié les engagements. Pourtant, le droit applicable rend 
+        impossible, dans les délais nécessaires, le déploiement des filières de séquestration 
+        que ces engagements impliquent. Cette contradiction n'a jamais été posée comme telle.
+      </p>
+
+      <div class="note-chiffres">
+        <div class="chiffre-pill">
+          <strong>6–10 ans</strong>
+          <span>délai procédural par site</span>
+        </div>
+        <div class="chiffre-pill">
+          <strong>2035–2050</strong>
+          <span>fenêtre climatique GIEC</span>
+        </div>
+        <div class="chiffre-pill">
+          <strong>19–28 MtCO₂/an</strong>
+          <span>séquestration estimée — 150 sites</span>
+        </div>
+      </div>
+
+      <ul class="note-points">
+        <li>Ce que le GIEC AR6, l'INRAE et Forest Europe ont établi — et que la France a ratifié</li>
+        <li>La pyrogazéification à biochar : comparaison des voies CDR selon les organismes officiels</li>
+        <li>La classification A/B/C/D de la biomasse — précision indispensable contre les amalgames</li>
+        <li>La double irréversibilité physique et industrielle : pourquoi l'attente n'est pas une option neutre</li>
+        <li>Le paradoxe du principe de précaution mal calibré — et sa correction</li>
+        <li>Cinq décisions de mise en cohérence pour les décideurs</li>
+      </ul>
+
+      <div class="note-sections">
+        <div class="note-sections-label">Sections couvertes</div>
+        <div class="note-sections-list">
+          <span class="section-chip">Engagements ratifiés</span>
+          <span class="section-chip">Voies CDR comparées</span>
+          <span class="section-chip">Gestion forestière</span>
+          <span class="section-chip">Irréversibilités physiques</span>
+          <span class="section-chip">Biodiversité et climat</span>
+          <span class="section-chip">5 décisions de mise en cohérence</span>
+        </div>
+      </div>
+    </div>
+    <div class="note-card-footer">
+      <div class="note-infos">
+        <span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          PDF · ~8 pages
+        </span>
+        <span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          Diffusion institutionnelle
+        </span>
+        <span>Sources : GIEC AR6 · SNBC 2024 · INRAE · Forest Europe</span>
+      </div>
+      <a href="Note_Position_Biomasse_Sequestration_Precaution_V3.pdf"
+         download class="btn-telecharger">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        Télécharger la note
+      </a>
+    </div>
+  </article>
+
+  <!-- ── Note 2 ── -->
+  <article class="note-card">
+    <div class="note-card-header">
+      <div class="note-card-stripe" style="background: #1B4332;"></div>
+      <div class="note-card-top">
+        <div class="note-num" style="background:#EBF8F0; border-color:#B7E4C7; color:#1B4332;">2</div>
+        <div class="note-head">
+          <span class="note-tag">Note de synthèse · V5</span>
+          <h2 class="note-titre">Architecture juridique et financière pour le déploiement des filières CDR</h2>
+          <p class="note-version">Comment le système peut fonctionner sans pouvoir être bloqué</p>
+        </div>
+      </div>
+    </div>
+    <div class="note-card-body">
+      <p class="note-resume">
+        Note technique à l'intention des juristes, parlementaires et administrateurs. 
+        L'objectif n'est pas de supprimer les recours — c'est impossible sans révision 
+        constitutionnelle et contraire à la CEDH. L'objectif est de rendre les recours 
+        inopérants comme outil de blocage, tout en préservant les droits fondamentaux. 
+        Cela s'obtient par une architecture en cinq couches combinées, toutes à portée 
+        législative ordinaire.
+      </p>
+
+      <div class="note-chiffres">
+        <div class="chiffre-pill">
+          <strong>13 mois</strong>
+          <span>délai total visé (vs 8–10 ans)</span>
+        </div>
+        <div class="chiffre-pill">
+          <strong>5 couches</strong>
+          <span>architecture anti-blocage</span>
+        </div>
+        <div class="chiffre-pill">
+          <strong>0 €</strong>
+          <span>versement MPC si le site ne produit pas</span>
+        </div>
+      </div>
+
+      <ul class="note-points">
+        <li>Les deux boucles de rétroaction climatique mesurées par observation directe</li>
+        <li>Classification A/B/C/D opérationnelle et juridiquement inattaquable</li>
+        <li>Le paradoxe Natura 2000 : des zones classées brûlées faute de débroussaillement préventif</li>
+        <li>Architecture anti-blocage : 5 couches combinées (inattaquabilité amont → loi de validation)</li>
+        <li>Tableau des 9 leviers législatifs séquencés, avec textes à modifier et délais</li>
+        <li>L'article additionnel recommandé (L. 591-4 nouveau) — voie courte sans PPL complète</li>
+        <li>Modèle de Programme Conditionnel (MPC) — 3 instruments financiers, 3 jalons de conditionnalité</li>
+      </ul>
+
+      <div class="note-sections">
+        <div class="note-sections-label">Sections couvertes</div>
+        <div class="note-sections-list">
+          <span class="section-chip">Rétroactions climatiques</span>
+          <span class="section-chip">Classification biomasse</span>
+          <span class="section-chip">Architecture juridique 5 couches</span>
+          <span class="section-chip">9 leviers législatifs</span>
+          <span class="section-chip">Article additionnel L.591-4</span>
+          <span class="section-chip">MPC — ingénierie financière</span>
+          <span class="section-chip">Démonstrateurs Gard / PO</span>
+        </div>
+      </div>
+    </div>
+    <div class="note-card-footer">
+      <div class="note-infos">
+        <span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          PDF · ~18 pages
+        </span>
+        <span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          Usage institutionnel — juristes et parlementaires
+        </span>
+        <span>Sources : CJA · CRCF UE 2024/3012 · Conseil d'État 2025</span>
+      </div>
+      <a href="Note_Architecture_Juridique_Deploiement_CDR_V5.pdf"
+         download class="btn-telecharger">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        Télécharger la note
+      </a>
+    </div>
+  </article>
+
+  <!-- ── Note 3 ── -->
+  <article class="note-card">
+    <div class="note-card-header">
+      <div class="note-card-stripe" style="background: var(--orange);"></div>
+      <div class="note-card-top">
+        <div class="note-num" style="background:#FFF0EB; border-color:#FDCDB9; color:var(--orange);">3</div>
+        <div class="note-head">
+          <span class="note-tag" style="color:var(--orange); background:#FFF0EB; border-color:#FDCDB9;">Note argumentaire · V1</span>
+          <h2 class="note-titre">Puissance réseau · Carbone-négatif · Mobilité complète</h2>
+          <p class="note-version">Trois arguments que les scénarios officiels ne traitent pas</p>
+        </div>
+      </div>
+    </div>
+    <div class="note-card-body">
+      <p class="note-resume">
+        Note d'argumentation systémique à l'intention de tout interlocuteur abordant la 
+        comparaison entre scénarios de transition. Ces trois axes — puissance réseau, 
+        bilan carbone net, mobilité non électrifiable — sont absents ou traités de façon 
+        incomplète dans les scénarios officiels PPE3, SNBC3, ADEME et NégaWatt.
+      </p>
+
+      <div class="note-chiffres">
+        <div class="chiffre-pill">
+          <strong>~40 GW</strong>
+          <span>effacés passivement par l'ÉREV</span>
+        </div>
+        <div class="chiffre-pill">
+          <strong>−60 à −80 MtCO₂/an</strong>
+          <span>bilan France ~2045</span>
+        </div>
+        <div class="chiffre-pill">
+          <strong>−7 EPR2</strong>
+          <span>à construire vs scénario BEV</span>
+        </div>
+      </div>
+
+      <ul class="note-points">
+        <li>Le problème que les TWh ne voient pas : puissance de pointe d'un parc BEV de 33 M de véhicules</li>
+        <li>Le mécanisme ÉREV : effacement passif de 40 GW — sans V2G, sans infrastructure</li>
+        <li>La redondance systémique comme argument de sécurité nationale</li>
+        <li>Pourquoi arrêter les fossiles ne suffit pas : inertie 300–1 000 ans du CO₂ atmosphérique</li>
+        <li>La France carbone-négative — un objectif que personne ne porte dans les scénarios officiels</li>
+        <li>Le SAF à 46% n'est pas une solution climatique : démonstration chiffrée</li>
+        <li>Une seule chaîne de production couvrant tous les segments de mobilité — bilan négatif sur chacun</li>
+      </ul>
+
+      <div class="note-sections">
+        <div class="note-sections-label">Sections couvertes</div>
+        <div class="note-sections-list">
+          <span class="section-chip">Puissance réseau vs TWh</span>
+          <span class="section-chip">ÉREV effacement passif</span>
+          <span class="section-chip">Souveraineté énergétique</span>
+          <span class="section-chip">Biochar puits structurel</span>
+          <span class="section-chip">Mobilité légère bio-GNV</span>
+          <span class="section-chip">Transport lourd bio-GNL</span>
+          <span class="section-chip">Maritime et aviation</span>
+          <span class="section-chip">Demande d'évaluation indépendante</span>
+        </div>
+      </div>
+    </div>
+    <div class="note-card-footer">
+      <div class="note-infos">
+        <span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          PDF · ~10 pages
+        </span>
+        <span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          Décideurs · Journalistes · Experts
+        </span>
+        <span>Sources : Corpus V11 Résilience 2045 — estimations prospectives ~2045</span>
+      </div>
+      <a href="Note_Argumentaire_Systematique_V1.pdf"
+         download class="btn-telecharger" style="background: var(--orange);">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        Télécharger la note
+      </a>
+    </div>
+  </article>
+</div>
+
+<!-- ── Comment utiliser ce corpus ─────────────────────────────────────────── -->
+<div class="usage">
+  <div class="usage-box">
+    <h3>Comment utiliser ce corpus</h3>
+    <div class="usage-grid">
+      <div class="usage-item">
+        <div class="usage-item-icon">📋</div>
+        <h4>Décideurs et élus</h4>
+        <p>Commencer par la <strong>Note 1</strong> (position scientifique et politique) puis 
+           la <strong>Note 2</strong> (architecture juridique) pour les interlocuteurs 
+           qui souhaitent aller vers l'action concrète.</p>
+      </div>
+      <div class="usage-item">
+        <div class="usage-item-icon">⚖️</div>
+        <h4>Juristes et administrateurs</h4>
+        <p>La <strong>Note 2</strong> détaille l'architecture juridique complète — 
+           5 couches, 9 leviers législatifs, article additionnel prêt à l'emploi, 
+           et modèle de financement conditionnel.</p>
+      </div>
+      <div class="usage-item">
+        <div class="usage-item-icon">📊</div>
+        <h4>Experts et journalistes</h4>
+        <p>La <strong>Note 3</strong> présente les trois arguments systémiques 
+           (puissance réseau, carbone-négatif, mobilité complète) avec les chiffres 
+           comparatifs et les lacunes des scénarios officiels.</p>
+      </div>
+      <div class="usage-item">
+        <div class="usage-item-icon">🌿</div>
+        <h4>Corpus complet</h4>
+        <p>Les trois notes forment un ensemble cohérent. Le corpus V11 complet, 
+           incluant les annexes techniques et les démonstrateurs territoriaux, 
+           est disponible sur <a href="documents-liste.html">la page Documents</a>.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── Sources ────────────────────────────────────────────────────────────── -->
+<div class="sources">
+  <div class="sources-inner">
+    <h3>Sources scientifiques et institutionnelles</h3>
+    <ul class="sources-list">
+      <li>GIEC AR6 Synthèse (mars 2023) — §B.4, §C.2, §C.3</li>
+      <li>Accords de Paris (2015) — Art. 4</li>
+      <li>SNBC révisée 2024</li>
+      <li>ADEME Prospective Transition(s) 2050</li>
+      <li>INRAE — Rapport forêts et changement climatique (2020)</li>
+      <li>Forest Europe — State of Europe's Forests (2020)</li>
+      <li>Ministère de l'Agriculture — Stratégie Nationale Forêt-Bois 2023</li>
+      <li>Conseil d'État — Rapport contentieux environnemental (2025)</li>
+      <li>CRCF — Règlement UE 2024/3012 (en vigueur)</li>
+      <li>EBC — European Biochar Certificate (standards permanence)</li>
+      <li>Copernicus/ESA — Données surface glace arctique</li>
+      <li>ETH Zurich — Nature Climate Change (sept. 2025) puits océanique</li>
+      <li>EFFIS — Données incendies été 2026</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ── Footer ─────────────────────────────────────────────────────────────── -->
+<footer>
+  <strong>Programme Résilience 2045</strong> · Document de travail · Diffusion institutionnelle · Août 2026<br>
+  <a href="resilience2045.fr">resilience2045.fr</a> · 
+  <a href="documents-liste.html">Catalogue de documents</a>
+</footer>
+
+</body>
+</html>
