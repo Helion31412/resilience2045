@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bilan environnemental comparé — ÉREV bio-CH₄ · ÉREV GNC · Hybride · BEV | Résilience 2045</title>
+  <meta name="description" content="Comparaison environnementale de quatre architectures de véhicule : ÉREV bio-CH₄, ÉREV GNC fossile, hybride essence, BEV. CO₂, métaux critiques, NOx, stratégie de déploiement.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Source+Serif+4:ital,wght@0,300;0,600;1,300&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --vert:     #2D6A4F;
+      --vert-m:   #40916C;
+      --vert-l:   #74C69D;
+      --vert-xl:  #D8F3DC;
+      --vert-xxl: #F0FBF3;
+      --orange:   #E76F51;
+      --orange-l: #FFF0EB;
+      --bleu:     #1A6B72;
+      --bleu-l:   #E1F5EE;
+      --ambre:    #E9C46A;
+      --ambre-l:  #FFFBEB;
+      --g900:     #1A202C;
+      --g700:     #4A5568;
+      --g500:     #718096;
+      --g200:     #EDF2F7;
+      --g100:     #F7FAFC;
+      --blanc:    #FFFFFF;
+      --r:        8px;
+      --r-l:      14px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 15px; line-height: 1.65;
+      color: var(--g700); background: var(--blanc);
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* Nav */
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,.97);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--g200);
+    }
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto;
+      padding: 0 2rem;
+      display: flex; align-items: center; gap: 2rem; height: 54px;
+    }
+    .nav-logo { font-weight: 700; font-size: .85rem; letter-spacing: .04em;
+      color: var(--vert); text-transform: uppercase; white-space: nowrap; }
+    .nav-logo span { color: var(--g500); font-weight: 400; }
+    .nav-links { display: flex; gap: 1.4rem; list-style: none; font-size: .85rem;
+      color: var(--g700); margin-left: auto; }
+    .nav-links a:hover { color: var(--vert); }
+    .nav-links a.active { color: var(--vert); font-weight: 600; }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, #1A4332 0%, #0D2B1F 100%);
+      padding: 4.5rem 2rem 3.5rem;
+    }
+    .hero-inner { max-width: 860px; margin: 0 auto; }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.18);
+      border-radius: 100px; padding: .3rem .9rem;
+      font-size: .75rem; font-weight: 500; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--vert-l); margin-bottom: 1.4rem;
+    }
+    .hero h1 {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-weight: 600; font-size: clamp(1.7rem, 3.5vw, 2.6rem);
+      line-height: 1.2; color: var(--blanc); margin-bottom: 1rem;
+    }
+    .hero-sub { font-size: 1rem; line-height: 1.7; color: rgba(255,255,255,.72);
+      max-width: 660px; margin-bottom: 1.8rem; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: .8rem;
+      font-size: .8rem; color: rgba(255,255,255,.5); }
+    .hero-meta span { display: flex; align-items: center; gap: .4rem; }
+
+    /* Sections */
+    .wrap { max-width: 920px; margin: 0 auto; padding: 0 2rem; }
+    section { padding: 3.5rem 0; }
+    section + section { border-top: 1px solid var(--g200); }
+    .sec-label {
+      font-size: .72rem; font-weight: 600; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--vert-m); margin-bottom: .7rem;
+    }
+    h2 {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-weight: 600; font-size: 1.55rem; line-height: 1.25;
+      color: var(--g900); margin-bottom: 1rem;
+    }
+    h3 { font-size: 1rem; font-weight: 600; color: var(--g900); margin-bottom: .6rem; }
+    p { line-height: 1.75; margin-bottom: .8rem; }
+    p:last-child { margin-bottom: 0; }
+
+    /* Argument intro */
+    .arg-intro {
+      background: var(--vert-xxl); border-left: 4px solid var(--vert-m);
+      border-radius: 0 var(--r) var(--r) 0;
+      padding: 1.2rem 1.5rem; margin-bottom: 2rem;
+      font-size: .95rem; line-height: 1.75; color: var(--g900);
+    }
+    .arg-intro strong { color: var(--vert); }
+
+    /* Grille 4 véhicules */
+    .veh-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem; margin: 2rem 0;
+    }
+    .veh-card {
+      border: 1px solid var(--g200); border-radius: var(--r-l);
+      overflow: hidden; background: var(--blanc);
+      transition: box-shadow .2s, transform .2s;
+    }
+    .veh-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,.08); transform: translateY(-2px); }
+    .veh-card.best { border: 2px solid var(--vert-m); }
+    .veh-card-head {
+      padding: 1rem 1.2rem .8rem;
+      border-bottom: 1px solid var(--g200);
+    }
+    .veh-icon { font-size: 1.6rem; margin-bottom: .4rem; }
+    .veh-name { font-weight: 600; font-size: .95rem; line-height: 1.3; color: var(--g900); }
+    .veh-desc { font-size: .78rem; color: var(--g500); margin-top: .3rem; line-height: 1.4; }
+    .veh-badge {
+      display: inline-block; font-size: .7rem; font-weight: 600;
+      padding: .2rem .65rem; border-radius: 100px; margin-top: .5rem;
+    }
+    .badge-green { background: var(--vert-xl); color: var(--vert); }
+    .badge-amber { background: var(--ambre-l); color: #7A5230; }
+    .badge-blue  { background: var(--bleu-l); color: var(--bleu); }
+    .badge-best  { background: var(--vert); color: var(--blanc); }
+
+    .veh-body { padding: .9rem 1.2rem; }
+    .veh-section { font-size: .68rem; font-weight: 600; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--g500); margin: .8rem 0 .4rem; }
+    .veh-section:first-child { margin-top: 0; }
+    .veh-row { display: flex; justify-content: space-between; align-items: baseline;
+      gap: .4rem; padding: .18rem 0; font-size: .82rem; }
+    .veh-key { color: var(--g500); flex: 1; }
+    .veh-val { font-weight: 500; text-align: right; white-space: nowrap; }
+    .val-good { color: var(--vert); }
+    .val-ok   { color: #7A5230; }
+    .val-bad  { color: #9B2335; }
+    .val-neg  { color: var(--bleu); }
+    .val-best { color: var(--vert); font-weight: 700; }
+
+    .bar-bg { background: var(--g200); border-radius: 3px; height: 4px;
+      margin: .2rem 0 .4rem; overflow: hidden; }
+    .bar-fill { height: 4px; border-radius: 3px; }
+
+    /* Tableau récap */
+    .recap-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0;
+      font-size: .85rem; }
+    .recap-table th {
+      background: var(--vert); color: var(--blanc);
+      padding: .6rem .8rem; text-align: left; font-weight: 500; font-size: .8rem;
+    }
+    .recap-table td { padding: .55rem .8rem; border-bottom: 1px solid var(--g200); }
+    .recap-table tr:nth-child(even) td { background: var(--g100); }
+    .recap-table tr:last-child td { border-bottom: none; }
+    .recap-table .col-crit { font-weight: 500; color: var(--g900); }
+    .tick { color: var(--vert); font-weight: 700; }
+    .cross { color: #9B2335; }
+    .mid  { color: #7A5230; }
+
+    /* Deux temps */
+    .deux-temps {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem;
+      margin: 1.5rem 0;
+    }
+    .phase-card {
+      border-radius: var(--r-l); padding: 1.4rem 1.6rem;
+      border: 1px solid var(--g200);
+    }
+    .phase-card.p1 { background: var(--ambre-l); border-color: var(--ambre); }
+    .phase-card.p2 { background: var(--vert-xxl); border-color: var(--vert-xl); }
+    .phase-label {
+      font-size: .72rem; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; margin-bottom: .5rem;
+    }
+    .phase-card.p1 .phase-label { color: #7A5230; }
+    .phase-card.p2 .phase-label { color: var(--vert); }
+    .phase-card h3 { font-size: .95rem; margin-bottom: .6rem; }
+    .phase-card ul { list-style: none; font-size: .88rem; line-height: 1.6; }
+    .phase-card ul li { padding: .2rem 0; }
+    .phase-card ul li::before { content: '→ '; font-weight: 600; }
+    .phase-card.p1 ul li::before { color: #7A5230; }
+    .phase-card.p2 ul li::before { color: var(--vert); }
+
+    /* Encadrés */
+    .box {
+      border-radius: var(--r); padding: 1.2rem 1.5rem; margin: 1.5rem 0;
+      font-size: .93rem; line-height: 1.75;
+    }
+    .box-green { background: var(--vert-xxl); border-left: 3px solid var(--vert-m); }
+    .box-orange { background: var(--orange-l); border-left: 3px solid var(--orange); }
+    .box-bleu { background: var(--bleu-l); border-left: 3px solid var(--bleu); }
+    .box strong { font-weight: 600; }
+    .box-green strong { color: var(--vert); }
+    .box-orange strong { color: var(--orange); }
+    .box-bleu strong { color: var(--bleu); }
+    .box-label { font-size: .75rem; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase; margin-bottom: .6rem; }
+    .box-green .box-label { color: var(--vert); }
+    .box-orange .box-label { color: var(--orange); }
+    .box-bleu .box-label { color: var(--bleu); }
+
+    /* CTA PDF */
+    .cta-pdf {
+      background: var(--vert); border-radius: var(--r-l);
+      padding: 2rem 2.5rem; margin: 2rem 0;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1.2rem;
+    }
+    .cta-pdf h3 { color: var(--blanc); font-size: 1.05rem; font-weight: 600; }
+    .cta-pdf p { color: rgba(255,255,255,.72); font-size: .85rem; }
+    .btn-pdf {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: var(--blanc); color: var(--vert);
+      font-size: .85rem; font-weight: 600; padding: .7rem 1.4rem;
+      border-radius: var(--r); white-space: nowrap;
+      transition: background .2s;
+    }
+    .btn-pdf:hover { background: var(--vert-xl); }
+
+    /* Sources */
+    .sources {
+      background: var(--g100); border-top: 1px solid var(--g200);
+      padding: 2rem; font-size: .8rem; color: var(--g500);
+    }
+    .sources-inner { max-width: 920px; margin: 0 auto; }
+    .sources h4 { font-size: .75rem; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--g500); margin-bottom: .6rem; }
+    .sources-list { display: flex; flex-wrap: wrap; gap: .4rem; list-style: none; }
+    .sources-list li {
+      background: var(--blanc); border: 1px solid var(--g200);
+      border-radius: 100px; padding: .2rem .7rem; font-size: .78rem;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--vert); color: rgba(255,255,255,.7);
+      text-align: center; padding: 1.6rem; font-size: .82rem;
+    }
+    footer a { color: rgba(255,255,255,.9); text-decoration: underline; }
+
+    @media (max-width: 640px) {
+      .deux-temps { grid-template-columns: 1fr; }
+      .veh-grid { grid-template-columns: 1fr 1fr; }
+      .cta-pdf { flex-direction: column; }
+      .hero { padding: 3rem 1.2rem 2.5rem; }
+      .wrap { padding: 0 1.2rem; }
+    }
+    @media (max-width: 420px) {
+      .veh-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Résilience <span>2045</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="voiture-erev.html">Architecture ÉREV</a></li>
+      <li><a href="documents-liste.html">Documents</a></li>
+      <li><a href="bilan-environnemental-vehicules.html" class="active">Bilan environnemental</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ── Hero ── -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">Programme Résilience V11 · Août 2026</div>
+    <h1>ÉREV bio-CH₄, ÉREV GNC et hybride essence :<br>le bilan environnemental comparé</h1>
+    <p class="hero-sub">
+      L'ÉREV complète l'électrique — il ne le remplace pas. Cette page compare les architectures
+      sur le profil mixte réel pour lequel l'ÉREV a été conçu, et montre pourquoi l'ÉREV GNC
+      fossile est déjà une transition réelle avant même le déploiement du bio-CH₄.
+    </p>
+    <div class="hero-meta">
+      <span>Profil mixte : 77 % urbain + 23 % longue distance</span>
+      <span>·</span>
+      <span>15 000 km/an</span>
+      <span>·</span>
+      <span>Sources : ADEME, JEC Well-to-Wheel, EEA, EBC/Puro.earth</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── Section 1 — Argument clé ── -->
+<section>
+  <div class="wrap">
+    <p class="sec-label">Positionnement — lire en premier</p>
+    <h2>L'ÉREV complète l'électrique — il ne le remplace pas</h2>
+
+    <div class="box box-bleu">
+      <p class="box-label">Ce que cette comparaison couvre — et ce qu'elle ne couvre pas</p>
+      <p>
+        Dans le Programme Résilience, <strong>le BEV reste la solution de référence pour les trajets
+        quotidiens urbains et périurbains</strong> — soit 77 % des kilomètres annuels des Français.
+        L'ÉREV n'est pas présenté comme concurrent du BEV pour cet usage.<br><br>
+        Cette page compare les architectures sur le <strong>profil mixte réel</strong>
+        (77 % urbain sur batterie + 23 % longue distance sur Rex) — le périmètre pour lequel
+        l'ÉREV a été conçu comme complément à l'électrique : autonomie longue distance sans
+        dépendance à l'infrastructure de recharge, indépendance lors des pointes réseau,
+        et séquestration carbone via le biochar co-produit.
+      </p>
+    </div>
+
+    <div class="arg-intro" style="margin-top: 1.2rem;">
+      <strong>Le point clé :</strong> L'ÉREV GNC fossile et l'ÉREV bio-CH₄ sont
+      <strong>le même véhicule</strong> — même batterie de 25 kWh, même Rex à régime fixe,
+      même profil de conduite. La différence entre +0,7 t CO₂/an et −0,5 t CO₂/an tient
+      uniquement au carburant. La transition GNC fossile → bio-GNV se fait à la station,
+      pas dans le véhicule.
+    </div>
+
+    <p style="margin-top: 1rem;">
+      L'ÉREV GNC fossile peut être <strong>lancé maintenant</strong> sur le réseau GNV existant
+      (~500 stations en France), sans attendre la pyrogazéification. Au fur et à mesure que
+      le bio-CH₄ est produit, le même véhicule bascule progressivement vers le négatif —
+      sans aucune modification pour le conducteur ni pour l'infrastructure.
+    </p>
+  </div>
+</section>
+
+<!-- ── Section 2 — Comparatif 4 véhicules ── -->
+<section>
+  <div class="wrap">
+    <p class="sec-label">Comparatif environnemental</p>
+    <h2>ÉREV bio-CH₄, ÉREV GNC, hybride essence — et le BEV en référence</h2>
+
+    <div class="box box-bleu" style="margin-bottom: 1.5rem;">
+      <p style="font-size:.88rem;line-height:1.7;margin:0;">
+        <strong>Le BEV figure dans ce tableau comme référence</strong>, non comme concurrent de l'ÉREV.
+        Sur les trajets quotidiens, le BEV reste la solution privilégiée dans Résilience.
+        Sur le profil mixte ci-dessous (23 % longue distance), l'ÉREV couvre ce que le BEV
+        ne peut pas adresser — tout en intégrant la séquestration carbone via le biochar co-produit.
+      </p>
+    </div>
+
+    <p style="margin-bottom: 1.5rem; color: var(--g500); font-size: .9rem;">
+      Profil mixte Résilience · 77 % trajets quotidiens sur batterie · 23 % longue distance thermique · 15 000 km/an
+    </p>
+
+    <div class="veh-grid">
+
+      <!-- Hybride essence -->
+      <div class="veh-card">
+        <div class="veh-card-head">
+          <div class="veh-icon" aria-hidden="true">⛽</div>
+          <div class="veh-name">Hybride essence</div>
+          <div class="veh-desc">Toyota Prius, Renault Clio E-Tech — batterie ~1,2 kWh, non rechargeable</div>
+          <span class="veh-badge badge-amber">Référence conventionnelle</span>
+        </div>
+        <div class="veh-body">
+          <div class="veh-section">CO₂ usage</div>
+          <div class="veh-row"><span class="veh-key">À la roue (g/km)</span><span class="veh-val val-bad">95–115</span></div>
+          <div class="bar-bg"><div class="bar-fill" style="width:85%;background:#9B2335"></div></div>
+          <div class="veh-row"><span class="veh-key">Cycle de vie complet</span><span class="veh-val val-bad">120–140 gCO₂eq/km</span></div>
+
+          <div class="veh-section">Fabrication — métaux</div>
+          <div class="veh-row"><span class="veh-key">Lithium</span><span class="veh-val val-good">~1–2 kg</span></div>
+          <div class="veh-row"><span class="veh-key">Cobalt</span><span class="veh-val val-good">~1–3 kg</span></div>
+          <div class="veh-row"><span class="veh-key">CO₂ fabrication</span><span class="veh-val val-ok">~7–9 t</span></div>
+
+          <div class="veh-section">Qualité de l'air</div>
+          <div class="veh-row"><span class="veh-key">NOx (mg/km)</span><span class="veh-val val-bad">60–80</span></div>
+          <div class="veh-row"><span class="veh-key">Particules fines</span><span class="veh-val val-ok">Modérées</span></div>
+
+          <div class="veh-section">Bilan net / an</div>
+          <div class="veh-row"><span class="veh-key">Séquestration carbone</span><span class="veh-val val-bad">Aucune</span></div>
+          <div class="veh-row"><span class="veh-key">15 000 km/an</span><span class="veh-val val-bad">+1,5 à 1,8 t CO₂</span></div>
+        </div>
+      </div>
+
+      <!-- ÉREV GNC fossile -->
+      <div class="veh-card">
+        <div class="veh-card-head">
+          <div class="veh-icon" aria-hidden="true">🔋</div>
+          <div class="veh-name">ÉREV GNC fossile</div>
+          <div class="veh-desc">Batterie ~25 kWh + Rex gaz naturel comprimé fossile · déployable maintenant</div>
+          <span class="veh-badge badge-blue">Déployable immédiatement</span>
+        </div>
+        <div class="veh-body">
+          <div class="veh-section">CO₂ usage</div>
+          <div class="veh-row"><span class="veh-key">À la roue (g/km) — mixte</span><span class="veh-val val-ok">35–50</span></div>
+          <div class="bar-bg"><div class="bar-fill" style="width:40%;background:#BA7517"></div></div>
+          <div class="veh-row"><span class="veh-key">Cycle de vie complet</span><span class="veh-val val-ok">55–75 gCO₂eq/km</span></div>
+
+          <div class="veh-section">Fabrication — métaux</div>
+          <div class="veh-row"><span class="veh-key">Lithium</span><span class="veh-val val-good">~4–5 kg</span></div>
+          <div class="veh-row"><span class="veh-key">Cobalt</span><span class="veh-val val-good">~3–5 kg</span></div>
+          <div class="veh-row"><span class="veh-key">CO₂ fabrication</span><span class="veh-val val-ok">~9–12 t</span></div>
+
+          <div class="veh-section">Qualité de l'air</div>
+          <div class="veh-row"><span class="veh-key">NOx (mg/km)</span><span class="veh-val val-good">10–20</span></div>
+          <div class="veh-row"><span class="veh-key">Particules fines</span><span class="veh-val val-good">Très faibles</span></div>
+
+          <div class="veh-section">Bilan net / an</div>
+          <div class="veh-row"><span class="veh-key">Séquestration carbone</span><span class="veh-val val-bad">Aucune</span></div>
+          <div class="veh-row"><span class="veh-key">15 000 km/an</span><span class="veh-val val-ok">+0,5 à 0,9 t CO₂</span></div>
+        </div>
+      </div>
+
+      <!-- ÉREV bio-CH₄ -->
+      <div class="veh-card best">
+        <div class="veh-card-head">
+          <div class="veh-icon" aria-hidden="true">🌿</div>
+          <div class="veh-name">ÉREV bio-CH₄ Résilience</div>
+          <div class="veh-desc">Batterie ~25 kWh + Rex bio-GNV · même architecture, carburant pyrogazéification + biochar</div>
+          <span class="veh-badge badge-best">★ Meilleur bilan — carbone négatif</span>
+        </div>
+        <div class="veh-body">
+          <div class="veh-section">CO₂ usage</div>
+          <div class="veh-row"><span class="veh-key">À la roue (g/km) — mixte ¹</span><span class="veh-val val-good">0–10 (biogénique)</span></div>
+          <div class="bar-bg"><div class="bar-fill" style="width:8%;background:#2D6A4F"></div></div>
+          <div class="veh-row"><span class="veh-key">Cycle de vie complet</span><span class="veh-val val-neg">Négatif ¹</span></div>
+
+          <div class="veh-section">Fabrication — métaux</div>
+          <div class="veh-row"><span class="veh-key">Lithium</span><span class="veh-val val-good">~4–5 kg</span></div>
+          <div class="veh-row"><span class="veh-key">Cobalt</span><span class="veh-val val-good">~3–5 kg</span></div>
+          <div class="veh-row"><span class="veh-key">CO₂ fabrication</span><span class="veh-val val-ok">~9–12 t</span></div>
+
+          <div class="veh-section">Qualité de l'air</div>
+          <div class="veh-row"><span class="veh-key">NOx (mg/km)</span><span class="veh-val val-good">10–20</span></div>
+          <div class="veh-row"><span class="veh-key">Particules fines</span><span class="veh-val val-good">Très faibles</span></div>
+
+          <div class="veh-section">Bilan net / an</div>
+          <div class="veh-row"><span class="veh-key">Biochar co-produit</span><span class="veh-val val-best">2,5–3,1 t CO₂eq/t</span></div>
+          <div class="veh-row"><span class="veh-key">15 000 km/an ¹</span><span class="veh-val val-neg">−0,3 à −0,8 t CO₂</span></div>
+        </div>
+      </div>
+
+      <!-- BEV -->
+      <div class="veh-card">
+        <div class="veh-card-head">
+          <div class="veh-icon" aria-hidden="true">⚡</div>
+          <div class="veh-name">BEV tout électrique</div>
+          <div class="veh-desc">Batterie ~60–80 kWh · mix électrique français 2026 (~50 gCO₂/kWh)</div>
+          <span class="veh-badge badge-blue">Référence électrique</span>
+        </div>
+        <div class="veh-body">
+          <div class="veh-section">CO₂ usage</div>
+          <div class="veh-row"><span class="veh-key">À la roue (g/km)</span><span class="veh-val val-good">5–10</span></div>
+          <div class="bar-bg"><div class="bar-fill" style="width:12%;background:#185FA5"></div></div>
+          <div class="veh-row"><span class="veh-key">Cycle de vie complet</span><span class="veh-val val-good">30–45 gCO₂eq/km</span></div>
+
+          <div class="veh-section">Fabrication — métaux</div>
+          <div class="veh-row"><span class="veh-key">Lithium</span><span class="veh-val val-bad">~12–18 kg ²</span></div>
+          <div class="veh-row"><span class="veh-key">Cobalt</span><span class="veh-val val-bad">~8–15 kg ²</span></div>
+          <div class="veh-row"><span class="veh-key">CO₂ fabrication</span><span class="veh-val val-bad">~15–20 t</span></div>
+
+          <div class="veh-section">Qualité de l'air</div>
+          <div class="veh-row"><span class="veh-key">NOx (mg/km)</span><span class="veh-val val-good">0–2</span></div>
+          <div class="veh-row"><span class="veh-key">Particules fines</span><span class="veh-val val-good">Très faibles ³</span></div>
+
+          <div class="veh-section">Bilan net / an</div>
+          <div class="veh-row"><span class="veh-key">Séquestration carbone</span><span class="veh-val val-bad">Aucune</span></div>
+          <div class="veh-row"><span class="veh-key">15 000 km/an</span><span class="veh-val val-ok">+0,3 à 0,5 t CO₂ ⁴</span></div>
+        </div>
+      </div>
+
+    </div><!-- /veh-grid -->
+
+    <!-- Tableau récap -->
+    <p class="sec-label" style="margin-top: 2rem;">Synthèse comparée</p>
+    <div style="overflow-x: auto;">
+      <table class="recap-table">
+        <thead>
+          <tr>
+            <th style="width:22%">Critère</th>
+            <th>Hybride essence</th>
+            <th>ÉREV GNC fossile</th>
+            <th style="background:#235c3f">ÉREV bio-CH₄ ★</th>
+            <th>BEV électrique</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="col-crit">CO₂ à la roue</td>
+            <td class="cross">95–115 g/km</td>
+            <td class="mid">35–50 g/km</td>
+            <td class="tick">0–10 g/km ¹</td>
+            <td class="tick">5–10 g/km</td>
+          </tr>
+          <tr>
+            <td class="col-crit">Bilan cycle de vie</td>
+            <td class="cross">120–140 gCO₂eq/km</td>
+            <td class="mid">55–75 gCO₂eq/km</td>
+            <td class="tick">Négatif ¹</td>
+            <td class="tick">30–45 gCO₂eq/km</td>
+          </tr>
+          <tr>
+            <td class="col-crit">Lithium (kg)</td>
+            <td class="tick">1–2</td>
+            <td class="tick">4–5</td>
+            <td class="tick">4–5</td>
+            <td class="cross">12–18 ²</td>
+          </tr>
+          <tr>
+            <td class="col-crit">Cobalt (kg)</td>
+            <td class="tick">1–3</td>
+            <td class="tick">3–5</td>
+            <td class="tick">3–5</td>
+            <td class="cross">8–15 ²</td>
+          </tr>
+          <tr>
+            <td class="col-crit">NOx (mg/km)</td>
+            <td class="cross">60–80</td>
+            <td class="tick">10–20</td>
+            <td class="tick">10–20</td>
+            <td class="tick">0–2</td>
+          </tr>
+          <tr>
+            <td class="col-crit">Séquestration carbone</td>
+            <td class="cross">Aucune</td>
+            <td class="cross">Aucune</td>
+            <td class="tick" style="color:var(--vert);font-weight:600">Biochar certifié EBC</td>
+            <td class="cross">Aucune</td>
+          </tr>
+          <tr>
+            <td class="col-crit">Bilan net 15 000 km/an</td>
+            <td class="cross">+1,5 à +1,8 t CO₂</td>
+            <td class="mid">+0,5 à +0,9 t CO₂</td>
+            <td class="tick" style="color:var(--bleu);font-weight:600">−0,3 à −0,8 t CO₂</td>
+            <td class="mid">+0,3 à +0,5 t CO₂ ⁴</td>
+          </tr>
+          <tr>
+            <td class="col-crit">Déployable maintenant</td>
+            <td class="tick">Oui</td>
+            <td class="tick" style="color:var(--vert);font-weight:600">Oui — réseau GNV FR</td>
+            <td class="mid">Oui — dès déploiement bio-GNV</td>
+            <td class="tick">Oui</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ── Section 3 — Pourquoi l'ÉREV GNC est déjà bien meilleur ── -->
+<section>
+  <div class="wrap">
+    <p class="sec-label">Argument clé — phase 1</p>
+    <h2>Pourquoi l'ÉREV GNC fossile est déjà nettement meilleur que l'hybride essence</h2>
+    <p>
+      Sans parler de bio-CH₄, sans attendre la pyrogazéification, l'ÉREV GNC fossile présente
+      un bilan environnemental structurellement supérieur à l'hybride essence pour trois raisons physiques :
+    </p>
+
+    <div class="box box-green" style="margin-top: 1.2rem;">
+      <p class="box-label">77 % des kilomètres sans aucune combustion</p>
+      <p>
+        Les trajets quotidiens (moins de 50 km) se font intégralement sur batterie —
+        zéro carburant, zéro CO₂, zéro NOx. L'hybride essence, lui, brûle toujours
+        de l'essence même en ville, même au ralenti, même en décélération.
+        <strong>C'est la batterie de 25 kWh qui fait la différence, pas le Rex.</strong>
+      </p>
+    </div>
+
+    <div class="box box-green">
+      <p class="box-label">Le Rex GNC brûle beaucoup plus proprement que l'essence</p>
+      <p>
+        Le méthane (CH₄) est la molécule organique la plus simple qui soit. Sa combustion produit
+        essentiellement CO₂ + H₂O, avec très peu de NOx, zéro suie, zéro hydrocarbures imbrûlés.
+        L'essence est un mélange complexe d'hydrocarbures qui génère bien plus d'imbrûlés et de particules.
+        <strong>Les NOx passent de 60–80 mg/km (hybride) à 10–20 mg/km (ÉREV GNC)</strong> — une réduction de 70 %.
+      </p>
+    </div>
+
+    <div class="box box-green">
+      <p class="box-label">Le Rex tourne à régime fixe — toujours à son point optimal</p>
+      <p>
+        Contrairement au moteur essence qui subit des cycles chauds/froids permanents
+        (démarrage à froid, ralenti, accélérations), le Rex tourne à régime constant
+        (~2 500 tr/min) et atteint rapidement sa température optimale.
+        Résultat : <strong>rendement garanti 44–48 % en permanence</strong>,
+        contre 20–26 % en moyenne réelle pour un moteur à cycle variable.
+      </p>
+    </div>
+
+    <div class="box box-orange">
+      <p class="box-label">Ce que cela signifie concrètement</p>
+      <p>
+        L'ÉREV GNC fossile émet <strong>~55–75 gCO₂eq/km en cycle de vie complet</strong>,
+        contre 120–140 pour l'hybride essence. C'est une réduction de plus de 50 %
+        <em>avant même de parler de bio-CH₄</em>. Et son bilan NOx est trois à quatre fois meilleur.
+        Ce n'est pas une amélioration marginale — c'est un changement de catégorie.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ── Section 4 — Le basculement bio-CH₄ ── -->
+<section>
+  <div class="wrap">
+    <p class="sec-label">Le basculement climatique</p>
+    <h2>Quand le carburant change, le bilan bascule en négatif</h2>
+    <p>
+      Même véhicule. Même Rex. Même conduite. Le passage du GNC fossile au bio-GNV
+      transforme un bilan légèrement positif (+0,7 t/an) en bilan structurellement négatif (−0,5 t/an).
+      Ce basculement provient entièrement du <strong>biochar co-produit</strong> lors de la pyrogazéification.
+    </p>
+
+    <div class="box box-bleu" style="margin-top: 1.2rem;">
+      <p class="box-label">Le mécanisme physique du bilan négatif</p>
+      <p>
+        Le CO₂ émis à la combustion du bio-GNV est <strong>biogénique</strong> — il était dans l'atmosphère
+        il y a quelques années, pas dans le sous-sol depuis 300 millions d'ans. C'est un cycle court,
+        non cumulatif dans l'atmosphère.<br><br>
+        Pour chaque tonne de bio-CH₄ produite par pyrogazéification, la réaction génère simultanément
+        du <strong>biochar</strong> — carbone stable certifié EBC (H/Corg ≤ 0,4, température ≥ 700°C,
+        stabilité millénaire). Ce biochar séquestre <strong>2,5 à 3,1 t CO₂eq par tonne</strong>
+        dans les sols agricoles, de façon permanente et certifiable.<br><br>
+        Résultat : les émissions biogéniques à la combustion sont inférieures à la séquestration
+        du biochar co-produit. <strong>Le bilan net est négatif.</strong>
+        Ce n'est pas un artefact comptable — c'est un retrait atmosphérique physique certifiable CRCF.
+      </p>
+    </div>
+
+    <div class="box box-green">
+      <p class="box-label">Ce que l'ÉREV bio-CH₄ est le seul à offrir</p>
+      <p>
+        Le BEV est neutre au mieux — il ne séquestre rien.
+        Le FCEV hydrogène vert est neutre au mieux — physiquement incapable d'être négatif.
+        <strong>L'ÉREV bio-CH₄ est le seul véhicule à moteur thermique avec un bilan carbone
+        structurellement négatif</strong> — et le seul à pouvoir l'être par construction de la chaîne de production.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ── Section 5 — Stratégie deux temps ── -->
+<section>
+  <div class="wrap">
+    <p class="sec-label">Stratégie de déploiement</p>
+    <h2>Deux temps, un seul véhicule</h2>
+    <p style="margin-bottom: 1.5rem;">
+      L'ÉREV n'a pas besoin d'attendre le déploiement complet de la pyrogazéification
+      pour être mis sur le marché. Le réseau GNV français compte déjà
+      <strong>~500 stations</strong> — principalement sur les axes autoroutiers.
+      La transition du GNC fossile au bio-GNV se fait à la station, pas dans le véhicule.
+    </p>
+
+    <div class="deux-temps">
+      <div class="phase-card p1">
+        <p class="phase-label">Phase 1 · Maintenant → 2030</p>
+        <h3>ÉREV GNC fossile — lancer le marché</h3>
+        <ul>
+          <li>Réseau GNV existant (~500 stations France)</li>
+          <li>Déjà −50 % CO₂ vs hybride essence</li>
+          <li>NOx trois à quatre fois inférieurs</li>
+          <li>Crée le marché, forme les conducteurs</li>
+          <li>Installe les habitudes de recharge GNV</li>
+          <li>Valide l'architecture ÉREV à grande échelle</li>
+        </ul>
+      </div>
+      <div class="phase-card p2">
+        <p class="phase-label">Phase 2 · 2028 → 2035+</p>
+        <h3>ÉREV bio-GNV — basculement progressif</h3>
+        <ul>
+          <li>Sites pilotes pyrogazéification opérationnels</li>
+          <li>Bio-CH₄ injecté progressivement dans le réseau GNV</li>
+          <li>Le même véhicule passe du positif au négatif</li>
+          <li>Aucune modification du véhicule ni de l'infrastructure</li>
+          <li>Bilan négatif certifiable dès les premières tonnes de biochar</li>
+          <li>Déploiement national synchronisé avec les 150 sites</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="box box-green">
+      <p class="box-label">La logique du GNL fossile → bio-GNL pour les camions — appliquée aux voitures</p>
+      <p>
+        Cette stratégie deux temps est identique à celle retenue pour le transport lourd dans
+        Résilience V11 : les camions GNL fossiles existent aujourd'hui, roulent sur le réseau
+        d'avitaillement européen en cours de déploiement, et basculeront progressivement vers
+        le bio-GNL au fur et à mesure que la filière produit. Le conducteur, lui, ne change rien.
+        <strong>C'est le carburant qui se décarbonise, pas le véhicule qui change.</strong>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ── Section 6 — BEV — nuances ── -->
+<section>
+  <div class="wrap">
+    <p class="sec-label">Le BEV en perspective</p>
+    <h2>Le BEV en perspective — ce que l'ÉREV apporte en complément</h2>
+    <p>
+      Le BEV est la bonne réponse pour les trajets urbains et périurbains — c'est
+      l'usage dominant et Résilience le confirme comme vecteur de base (~65 % des
+      besoins finaux 2045). L'ÉREV intervient là où le BEV seul ne suffit pas.
+      Trois dimensions méritent d'être posées dans cette perspective de complémentarité :
+    </p>
+
+    <div class="box box-orange">
+      <p class="box-label">Les métaux critiques — un enjeu de souveraineté</p>
+      <p>
+        La batterie de 60–80 kWh d'un BEV nécessite <strong>12 à 18 kg de lithium</strong>
+        et <strong>8 à 15 kg de cobalt</strong> — contre 4–5 kg de lithium et 3–5 kg de cobalt
+        pour l'ÉREV (batterie de 25 kWh suffisante pour 77 % des km annuels).
+        À l'échelle d'un parc de 33 millions de véhicules, c'est une dépendance structurelle
+        à des ressources dont la France ne maîtrise ni l'extraction ni la transformation.
+      </p>
+    </div>
+
+    <div class="box box-orange">
+      <p class="box-label">La puissance de pointe — l'angle mort des scénarios officiels</p>
+      <p>
+        Un parc de 33 millions de BEV branchés simultanément en soirée peut appeler
+        <strong>30 à 50 GW de puissance supplémentaire</strong> — l'équivalent des deux tiers
+        du parc nucléaire actuel. Les scénarios officiels raisonnent en TWh annuels,
+        pas en GW instantanés. L'ÉREV résout ce problème par un mécanisme passif :
+        77 % des km quotidiens sur batterie rechargée la nuit hors des pointes —
+        sans V2G, sans smart grid, sans infrastructure de pilotage.
+      </p>
+    </div>
+
+    <div class="box box-orange">
+      <p class="box-label">Pas de séquestration — le plafond physique du BEV</p>
+      <p>
+        Même dans le meilleur scénario — réseau 100 % renouvelable, batterie fabriquée
+        avec zéro émission — le BEV est neutre en carbone. Il ne peut pas être négatif
+        par construction : il n'y a pas de mécanisme de retrait atmosphérique dans la chaîne.
+        <strong>L'ÉREV bio-CH₄ est le seul véhicule capable d'un bilan structurellement négatif.</strong>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA PDF ── -->
+<section style="border-top: none; padding: 0 0 3rem;">
+  <div class="wrap">
+    <div class="cta-pdf">
+      <div>
+        <h3>Télécharger la note en PDF</h3>
+        <p>Version août 2026 · Document de travail · Programme Résilience V11</p>
+      </div>
+      <a href="Bilan_Environnemental_Vehicules_V1.pdf" class="btn-pdf" download>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Télécharger PDF
+      </a>
+    </div>
+
+    <p style="font-size:.82rem;color:var(--g500);line-height:1.7;margin-top:1rem;">
+      ¹ <strong>Bilan négatif ÉREV bio-CH₄</strong> : les émissions biogéniques à la combustion (cycle court —
+      carbone récemment atmosphérique, non cumulatif) sont inférieures à la séquestration du biochar
+      co-produit lors de la pyrogazéification. Retrait net physique certifiable EBC/CRCF.<br>
+      ² <strong>BEV — métaux critiques</strong> : avec NMC 811 (batteries haute densité). Les chimies LFP
+      (sans cobalt) réduisent le cobalt à zéro mais maintiennent un lithium élevé (~12–15 kg).<br>
+      ³ <strong>BEV — particules fines</strong> : zéro émission échappement, mais particules de freins
+      (frein moteur dominant) et pneus (véhicule plus lourd que l'ÉREV) non nulles.<br>
+      ⁴ <strong>BEV — bilan positif résiduel</strong> : le CO₂ de fabrication de la batterie (~15–20 t)
+      est amorti sur la durée de vie (~200 000 km). À 15 000 km/an, le véhicule reste légèrement
+      émetteur pendant les premières années selon le mix électrique de fabrication.
+    </p>
+  </div>
+</section>
+
+<!-- Sources -->
+<div class="sources">
+  <div class="sources-inner">
+    <h4>Sources</h4>
+    <ul class="sources-list">
+      <li>ADEME — Bilan ACV véhicules 2024</li>
+      <li>JEC Well-to-Wheel v5 (JRC/CONCAWE/EUCAR)</li>
+      <li>EEA — Life cycle of electric vehicles</li>
+      <li>Puro.earth / EBC — Biochar certification data</li>
+      <li>CRCF UE (Règlement 2024/3012)</li>
+      <li>GRDF — Données réseau GNV France 2026</li>
+      <li>INSEE — Mobilité quotidienne des Français</li>
+      <li>Corpus Résilience V11 — ÉREV Rendements Comparatif V5</li>
+      <li>Programme Résilience V11 · resilience2045.fr</li>
+    </ul>
+  </div>
+</div>
+
+<footer>
+  <strong>Programme Résilience 2045</strong> · Bilan environnemental comparé · Août 2026<br>
+  <a href="resilience2045.fr">resilience2045.fr</a> · <a href="documents-liste.html">Catalogue de documents</a>
+</footer>
+
+</body>
+</html>
