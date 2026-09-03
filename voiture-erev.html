@@ -248,6 +248,85 @@ footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;li
 
 <section>
   <div class="container">
+    <div class="stag reveal">Sécurité active · Innovation Résilience</div>
+    <h2 class="reveal">Capteur CH₄ sur ligne commune PRD :<br><em>zéro fuite non détectée, même au parking</em></h2>
+    <p class="body reveal">Les réservoirs GNV 250 bar de l'ÉREV sont équipés de PRD (Pressure Relief Devices) thermiques — soupapes de sécurité qui s'ouvrent en cas de surpression anormale ou d'incendie. En conditions normales, ces soupapes ne s'ouvrent jamais, mais les connectiques, joints et raccords peuvent présenter des micro-fuites fugitives imperceptibles à l'odorat (le méthane pur est inodore). L'architecture Résilience V11 propose de raccorder les évacuations de toutes les bouteilles sur une <strong>nourrice commune d'évacuation PRD</strong>, et d'y placer un capteur CH₄ en continu — en particulier pour la situation la plus critique : <strong>le véhicule dans un parking fermé</strong>.</p>
+
+    <div class="grid2 reveal" style="margin-top:1.5rem">
+      <div class="card">
+        <h3 style="color:var(--ambre)">Pourquoi la ligne commune PRD</h3>
+        <p>Toutes les bouteilles GNV partagent déjà une nourrice haute pression commune (§3bis.5). La ligne commune d'évacuation PRD est son symétrique côté sécurité — elle collecte les évacuations individuelles de chaque bouteille vers un point de sortie unique sous caisse. Placer un capteur CH₄ sur cette ligne en amont du rejet extérieur permet de détecter toute fuite sur l'ensemble du circuit haute pression <strong>avant qu'elle ne se disperse dans l'habitacle ou dans un espace confiné</strong>.</p>
+      </div>
+      <div class="card">
+        <h3 style="color:var(--ambre)">Pourquoi le parking fermé est critique</h3>
+        <p>Le méthane est plus léger que l'air — il monte et se disperse rapidement en plein air. En parking souterrain ou fermé, il peut s'accumuler au plafond. La Limite Inférieure d'Explosivité (LIE) du méthane est de 5 % dans l'air. Un capteur sur la ligne PRD détecte les fuites fugitives à des concentrations de quelques dizaines de ppm — soit <strong>100 à 500 fois en dessous du seuil d'alerte</strong>, avec un temps de réaction permettant une intervention avant tout risque.</p>
+      </div>
+    </div>
+
+    <h3 class="reveal" style="color:var(--vert-clair);margin-top:2rem">Spécifications techniques — capteur et protocole d'alerte</h3>
+    <div class="tbl-wrap reveal">
+      <table>
+        <thead><tr><th>Paramètre</th><th>Spécification retenue</th><th>Justification</th><th>Qualification</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>Position du capteur</td>
+            <td>Sur la ligne commune d'évacuation PRD — entre les bouteilles et le point de sortie sous caisse</td>
+            <td>Positionné en amont du rejet extérieur : détecte toute fuite de l'ensemble du circuit HP avant dispersion</td>
+            <td><span class="bq b-ok">✅ Architecture R110</span></td>
+          </tr>
+          <tr>
+            <td>Technologie capteur</td>
+            <td>NDIR infrarouge (Non-Dispersive Infrared) — détection sélective CH₄</td>
+            <td>Seuil de détection &lt; 50 ppm vs &gt; 500 ppm pour le catalytique. Insensible aux poisons catalytiques. Durée de vie 10+ ans sans recalibrage majeur.</td>
+            <td><span class="bq b-est">🔬 Spécification à valider Phase 0</span></td>
+          </tr>
+          <tr>
+            <td>Seuil alerte niveau 1</td>
+            <td>500 ppm CH₄ (0,05 % = 1/100 de la LIE)</td>
+            <td>Notification conducteur + notification infrastructure parking (Bluetooth / OBD-II / réseau). Pas de coupure automatique — information préventive.</td>
+            <td><span class="bq b-est">🔬 À calibrer Phase 0</span></td>
+          </tr>
+          <tr>
+            <td>Seuil alerte niveau 2</td>
+            <td>5 000 ppm CH₄ (0,5 % = 1/10 de la LIE)</td>
+            <td>Coupure automatique vanne principale GNV + alarme sonore/visuelle + transmission OTA vers système parking. Évacuation parking déclenchée si intégration infrastructure.</td>
+            <td><span class="bq b-est">🔬 À calibrer Phase 0</span></td>
+          </tr>
+          <tr>
+            <td>Transmission données</td>
+            <td>OBD-II continu + OTA temps réel (V2.2) · Bluetooth local (V2.0)</td>
+            <td>Données C₅ ICB transmises à la plateforme nationale de monitoring Résilience. Chaque fuite détectée contribue au bilan massique annuel certifié du véhicule.</td>
+            <td><span class="bq b-est">🔬 V2.2 — à définir V2.0</span></td>
+          </tr>
+          <tr>
+            <td>Autonomie capteur</td>
+            <td>Actif dès que le contact est mis — et pendant 30 min après extinction si en parking fermé (détection mode parking)</td>
+            <td>La fuite peut survenir moteur éteint, notamment lors du refroidissement des réservoirs. Le mode parking maintient la surveillance active sur la période la plus critique.</td>
+            <td><span class="bq b-tg">🎯 Innov. Résilience</span></td>
+          </tr>
+          <tr class="tr-best">
+            <td><strong>Surcoût estimé</strong></td>
+            <td><strong>&lt; 80–120 € en série</strong></td>
+            <td>Capteur NDIR + câblage + intégration OBD-II. Marginal si intégré dès la conception — comparable au capteur de stationnement arrière. Déjà obligatoire R110 à minima ; cette spécification l'étend et le rend actif en continu.</td>
+            <td><span class="bq b-ok">✅ Technologie disponible</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="box box-vert reveal" style="margin-top:1.5rem">
+      <strong>Argument de réponse à l'objection fuites méthane :</strong> l'ÉREV Résilience est le seul véhicule à carburant doté d'un monitoring continu des fuites en temps réel — transmis à une plateforme nationale. Ni une voiture essence, ni une voiture diesel, ni un BEV ne disposent d'un tel dispositif. La filière bioCH₄ n'atténue pas l'objection sur les fuites — elle la retourne en avantage : <em>aucun autre carburant n'est aussi étroitement surveillé, mesuré et contractuellement encadré</em>. Toute fuite détectée au-dessus du seuil niveau 2 génère une intervention immédiate et un signalement à la plateforme ICB Résilience (fraction C₅ du bilan massique annuel certifié).
+    </div>
+
+    <div class="box box-ambre reveal">
+      <strong>Interaction avec les parkings :</strong> la norme EN 1839 fixe la LIE du méthane à 5 % dans l'air. Les parkings GNV professionnels (bus, utilitaires) disposent déjà de capteurs plafond à 10–20 % de la LIE. Le capteur sur ligne PRD de l'ÉREV opère à un niveau de détection <strong>10 à 50 fois plus sensible</strong>, permettant une alerte bien avant que la concentration dans l'espace ne devienne mesurable par les capteurs plafond. Il est donc complémentaire, et non redondant, avec les systèmes d'infrastructure de parking. Cette intégration peut faire l'objet d'un protocole de communication standardisé entre le véhicule et l'infrastructure (signal BLE ou CAN vers la centrale parking).
+    </div>
+  </div>
+</section>
+
+
+<section>
+  <div class="container">
     <div class="stag reveal">Conclusion</div>
     <h2 class="reveal">Un véhicule ordinaire,<br><em>un rôle systémique extraordinaire</em></h2>
     <div class="conclusion-box reveal">
