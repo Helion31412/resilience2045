@@ -101,6 +101,7 @@ footer p{font-size:.75rem;color:var(--gris);max-width:600px;margin:.3rem auto}
     <p class="lead">1 150 à 1 300 km d'autonomie. Rex unique 400 kWe. Bio-LCH4 à −162°C. Là où le tout-électrique perd 3 tonnes de charge utile et où l'hydrogène manque d'infrastructure — le Camion Résilience combine chaque vecteur là où il est le meilleur.</p>
     <div style="display:flex;gap:.9rem;flex-wrap:wrap">
       <a href="#specs" class="btn btn-primary">Spécifications techniques →</a>
+      <a href="#comparatif" class="btn btn-outline">Comparatif rendements →</a>
       <a href="Camion_EREV_Rex_V11.pdf" class="btn btn-outline" target="_blank" download>↓ Note PDF complète</a>
     </div>
     <div class="kpi-strip">
@@ -256,6 +257,119 @@ footer p{font-size:.75rem;color:var(--gris);max-width:600px;margin:.3rem auto}
       </table>
     </div>
     <div class="note reveal">Le Camion Résilience n'est pas la solution la plus simple (diesel) ni la plus ambitieuse (hydrogène). C'est la solution au <strong>meilleur rapport autonomie / remplissage / charge utile / décarbonation</strong>. Une coopérative de transporteurs avec méthaniseur partagé peut démarrer indépendamment de toute infrastructure nationale.</div>
+  </div>
+</section>
+
+<!-- COMPARATIF RENDEMENTS V2.3 -->
+<section id="comparatif" style="background:linear-gradient(180deg,#070e0a 0%,var(--foret) 100%)">
+  <div class="container">
+    <div class="stag reveal">Analyse technique approfondie</div>
+    <h2 class="reveal">Rendements réservoir→roue — <em>quatre niveaux, une honnêteté</em></h2>
+    <p class="lead reveal">Le Camion Résilience n'est pas meilleur en traction continue — le GNL classique y est supérieur. L'avantage est architectural : Rex éteint aux arrêts réglementaires, ZEV à 89 % de rendement, auxiliaires sur batterie à 3× l'efficacité d'un APU thermique.</p>
+
+    <!-- Quatre niveaux -->
+    <div class="stag reveal" style="margin-top:2.5rem">Les quatre niveaux — ne pas les confondre</div>
+    <div style="overflow-x:auto" class="reveal">
+      <table class="tbl">
+        <thead><tr><th>Niv.</th><th>Nom exact</th><th>Périmètre</th><th>EREV V2.0</th><th>GNL classique</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Rendement thermique Rex (cycle seul)</td><td>Moteur Rex — banc</td><td class="td-g">44–48 %</td><td>42–46 %</td></tr>
+          <tr><td>2</td><td>Rendement gaz→roues traction continue</td><td>Chaîne complète — traction seule</td><td class="td-r">32–36 %</td><td class="td-g">36–40 %</td></tr>
+          <tr><td>3</td><td>Efficience cycle opérationnel Rex + arrêts</td><td>Multi-sources sans ZEV réseau · scén. B</td><td class="td-g">~45 %</td><td>~38 %</td></tr>
+          <tr class="hl"><td>3b</td><td>Efficience cycle complet (ZEV + Rex + ZEV)</td><td>Énergies externes uniquement · Convention A</td><td class="td-g">~54–57 %</td><td>~38 %</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note reveal"><strong>Constat Niveau 2 assumé :</strong> sur banc de traction continue, le GNL classique est supérieur (36–40 % vs 32–36 %). Ce constat est reconnu explicitement. L'avantage du Camion Résilience n'est pas dans son rendement de traction — il est dans son architecture multi-sources et ses comportements aux arrêts réglementaires.</div>
+
+    <!-- Arrêts réglementaires -->
+    <div class="stag reveal" style="margin-top:3rem">Arrêts réglementaires CE 561/2006 — le gain le plus massif</div>
+    <p class="lead reveal" style="font-size:.88rem">Les deux architectures ont des besoins auxiliaires identiques à l'arrêt (~40–60 kWh utiles / 11h). La différence n'est pas dans le besoin — elle est dans le rendement de la source.</p>
+    <div class="grid3 reveal" style="grid-template-columns:repeat(3,1fr)">
+      <div class="grid3-cell" style="border-top:2px solid #c0392b">
+        <div class="cell-tag" style="color:#e07070">APU GNL — scén. référence</div>
+        <div class="cell-val" style="color:#e07070;font-size:1.6rem">130–260 kWh th.</div>
+        <div class="cell-sub">Groupe auxiliaire 5–10 kW · 2–4 L/h GNL<br>Rendement ~25–30 %<br>Pour le même service : 40–60 kWh utiles</div>
+      </div>
+      <div class="grid3-cell" style="border-top:2px solid var(--vert-vif)">
+        <div class="cell-tag" style="color:var(--vert-vif)">Batterie EREV (Rex éteint)</div>
+        <div class="cell-val" style="color:var(--vert-vif);font-size:1.6rem">47–71 kWh él.</div>
+        <div class="cell-sub">Batterie LFP · Rex à l'arrêt complet<br>Rendement ~85–90 %<br>Même service : 40–60 kWh utiles</div>
+      </div>
+      <div class="grid3-cell" style="border-top:2px solid var(--ambre);background:rgba(26,18,2,.7)">
+        <div class="cell-tag" style="color:var(--ambre)">Gain de rendement de source</div>
+        <div class="cell-val" style="color:var(--ambre);font-size:1.6rem">Facteur 2,5–3,5×</div>
+        <div class="cell-sub">Ce n'est pas une suppression des besoins<br>C'est un gain de rendement<br>Batterie vs APU thermique</div>
+      </div>
+    </div>
+    <div class="note reveal"><strong>Hiver froid (−10°C) :</strong> les auxiliaires nuit peuvent dépasser 55–88 kWh, réduisant la réserve ZEV du lendemain à ~80 km. Solution : borne de recharge 11 kW au dépôt (77 kWh sur 7h) — couvre tous les scénarios thermiques et préserve le ZEV complet.</div>
+
+    <!-- Bilan énergie finale -->
+    <div class="stag reveal" style="margin-top:3rem">Bilan énergie finale 800 km — frontières homogènes</div>
+    <div style="overflow-x:auto" class="reveal">
+      <table class="tbl">
+        <thead><tr><th>Poste énergie finale (kWh)</th><th>GNL classique</th><th>EREV V2.0</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr class="sec"><td colspan="4">Traction</td></tr>
+          <tr><td>Traction autoroute brute</td><td>1 520 kWh th.</td><td>1 200 kWh th.</td><td>Données constructeurs Volvo FH LNG / Scania Super</td></tr>
+          <tr><td>Récupération freinage</td><td>0</td><td class="td-g">−80 kWh</td><td>Déduite de la consommation Rex nette</td></tr>
+          <tr class="hl"><td>Traction — consommation NETTE</td><td>1 520 kWh th.</td><td class="td-g">1 120 kWh th.</td><td>Base additive du bilan</td></tr>
+          <tr class="sec"><td colspan="4">Arrêts (même service, sources différentes)</td></tr>
+          <tr><td>Arrêt nuit 11h — source auxiliaires (scén. B)</td><td class="td-r">+195 kWh th. GNL (APU)</td><td class="td-g">+59 kWh él. (batterie)</td><td>APU 25–30 % vs batterie 85–90 %</td></tr>
+          <tr><td>Pause 45 min — source auxiliaires</td><td class="td-r">+40 kWh th. GNL</td><td class="td-g">+9 kWh él. (batterie)</td><td>~5 kWh utiles · même calcul rendement</td></tr>
+          <tr class="sec"><td colspan="4">ZEV et recharge</td></tr>
+          <tr><td>Électricité réseau ZEV départ</td><td>0</td><td>+225 kWh él.</td><td>225 kWh réseau → 200 kWh batterie (rendement 89 %)</td></tr>
+          <tr><td>Recharge dépôt nuit (AC · cas nominal)</td><td>0</td><td>+50 kWh él.</td><td>7 kW × 7h · 11 kW recommandé hiver</td></tr>
+        </tbody>
+        <tfoot>
+          <tr><td>TOTAL énergie finale entrante</td><td>1 755 kWh</td><td class="td-g">1 463 kWh</td><td>Vérif. GNL : 1 520+195+40 = 1 755 ✅ · EREV : 1 120+59+9+225+50 = 1 463 ✅</td></tr>
+          <tr><td>Énergie aux roues</td><td>~665 kWh</td><td>~665 kWh</td><td>Identique par construction</td></tr>
+          <tr><td>EFFICIENCE CYCLE OPÉRATIONNEL (Niv. 3)</td><td>~38 %</td><td class="td-g">~45 %</td><td>Gain −17 % · auxiliaires inclus · frontières homogènes</td></tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <!-- Cycle complet -->
+    <div class="stag reveal" style="margin-top:3rem">Cycle complet 1 150 km avec ZEV réseau (Niv. 3b)</div>
+    <div style="overflow-x:auto" class="reveal">
+      <table class="tbl">
+        <thead><tr><th>Phase</th><th>km</th><th>Énergie entrante externe</th><th>Efficience</th><th>Énergie aux roues</th></tr></thead>
+        <tbody>
+          <tr><td>ZEV départ (réseau)</td><td>120 km</td><td>225 kWh él. réseau</td><td class="td-g">~89 %</td><td>~200 kWh</td></tr>
+          <tr><td>Autoroute Rex + arrêts + auxiliaires</td><td>950 km</td><td>1 120 kWh th. net + 68 kWh él.</td><td>~46 %</td><td>~538 kWh</td></tr>
+          <tr><td>ZEV livraison finale (surplus Rex interne)</td><td>80 km</td><td class="warn">0 kWh externe — flux interne déjà compté</td><td class="td-g">~89 %</td><td>~64 kWh</td></tr>
+        </tbody>
+        <tfoot>
+          <tr><td>TOTAL Convention A</td><td>1 150 km</td><td>1 413 kWh énergie externe</td><td class="td-g">~54–57 %</td><td>~802 kWh</td></tr>
+          <tr><td>GNL classique (référence)</td><td>1 150 km</td><td>~2 130 kWh</td><td>~38 %</td><td>~802 kWh</td></tr>
+          <tr><td>Gain cycle complet</td><td>—</td><td class="td-g">−34 % énergie externe</td><td class="td-g">+16–19 pts</td><td>—</td></tr>
+        </tfoot>
+      </table>
+    </div>
+    <div class="note reveal"><strong>Convention A :</strong> seules les énergies entrant dans le véhicule depuis l'extérieur sont comptabilisées. Le surplus Rex utilisé pour la phase ZEV livraison est un flux interne déjà comptabilisé dans les 1 120 kWh Rex net. Fourchette ~54–57 % à confirmer sur cycle normalisé définitif.</div>
+
+    <!-- CO2 fossile vs bio -->
+    <div class="stag reveal" style="margin-top:3rem">Gain CO₂ — deux effets indépendants</div>
+    <div class="grid3 reveal" style="grid-template-columns:repeat(2,1fr)">
+      <div class="grid3-cell" style="border-top:2px solid var(--vert-vif)">
+        <div class="cell-tag" style="color:var(--vert-vif)">Gain d'architecture (fossile vs fossile)</div>
+        <div class="cell-val" style="color:var(--vert-vif);font-size:1.5rem">−31 % CO₂</div>
+        <div class="cell-sub">~440 g/km GNL fossile → ~305 g/km EREV fossile<br>Gain par architecture seule, indépendant du carburant<br>S'applique identiquement en bio</div>
+      </div>
+      <div class="grid3-cell" style="border-top:2px solid var(--ambre)">
+        <div class="cell-tag" style="color:var(--ambre)">Gain de carburant (fossile → bio)</div>
+        <div class="cell-val" style="color:var(--ambre);font-size:1.5rem">~0 g fossile/km</div>
+        <div class="cell-sub">Les ~305 g/km restants disparaissent avec le bio-LCH4<br>Identique pour GNL bio et EREV bio à l'usage<br>Le différenciateur devient alors la filière Résilience : biochar + fuites ≤1 %</div>
+      </div>
+    </div>
+    <div class="encadre reveal">
+      <p><strong>ACV indépendante nécessaire</strong> pour figer le bilan CO₂e complet : émissions amont production + liquéfaction, fuites CH4 (≤1 % contractuelles V11), crédit biochar certifiable EBC/Puro.earth (−50 à −100 g CO₂e/km estimé, non acquis). Le "~0 g fossile/km" désigne strictement les émissions de combustion.</p>
+    </div>
+
+    <!-- Lien PDF -->
+    <div class="reveal" style="margin-top:2.5rem;display:flex;gap:1rem;flex-wrap:wrap">
+      <a href="Comparatif_Rendements_EREV_vs_GNL_V2_3.pdf" class="btn btn-outline" target="_blank" download>↓ Comparatif complet V2.3 (PDF)</a>
+    </div>
   </div>
 </section>
 
