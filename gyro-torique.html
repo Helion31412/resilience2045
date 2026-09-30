@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gyro-Torique Bio-GNL — Programme Résilience 2045</title>
+<meta name="description" content="Gyro-Torique Bio-GNL : concept d'appareil à ventilateurs carénés et chaîne électrique Bio-GNL pour le SAMU et l'hélitreuillage. Pourquoi, pour quelles missions, avantages et limites face au H135.">
+<style>
+  :root{
+    --bleu:#0b3d91; --bleu2:#1f5fbf; --bleu-clair:#e8f0fb; --texte:#1c2430; --gris:#5a6472;
+    --fond:#f7f9fc; --carte:#ffffff; --bord:#d6deea; --vert:#1d7a46; --orange:#b35c00; --rouge:#a42323;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--texte);background:var(--fond);line-height:1.6}
+  a{color:var(--bleu2)}
+  header{background:linear-gradient(135deg,var(--bleu),var(--bleu2));color:#fff;padding:48px 16px 40px}
+  .wrap{max-width:980px;margin:0 auto;padding:0 16px}
+  header .wrap{padding:0}
+  .retour{color:#cfe0ff;text-decoration:none;font-size:.9rem}
+  h1{font-size:clamp(1.8rem,4vw,2.6rem);margin:12px 0 6px;line-height:1.15}
+  .sous-titre{font-size:1.1rem;opacity:.95;margin:0}
+  .badges{margin-top:18px;display:flex;flex-wrap:wrap;gap:8px}
+  .badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:4px 12px;font-size:.85rem}
+  main{padding:32px 0 48px}
+  section{margin:0 0 40px}
+  h2{color:var(--bleu);font-size:1.5rem;margin:0 0 14px;padding-bottom:6px;border-bottom:2px solid var(--bleu-clair)}
+  h3{color:var(--bleu2);font-size:1.1rem;margin:22px 0 8px}
+  .statut{background:#fff8ec;border-left:4px solid var(--orange);padding:14px 18px;border-radius:6px;margin-bottom:32px}
+  .statut strong{color:var(--orange)}
+  .grille{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+  .carte{background:var(--carte);border:1px solid var(--bord);border-radius:10px;padding:16px 18px}
+  .carte h3{margin-top:0}
+  .carte p{margin:0}
+  table{width:100%;border-collapse:collapse;background:var(--carte);font-size:.95rem}
+  th,td{border:1px solid var(--bord);padding:8px 10px;text-align:left;vertical-align:top}
+  th{background:var(--bleu-clair);color:var(--bleu)}
+  .table-scroll{overflow-x:auto;border-radius:8px}
+  .av-gt{color:var(--vert);font-weight:600}
+  .av-h135{color:var(--rouge);font-weight:600}
+  .av-eq{color:var(--gris);font-weight:600}
+  .schema{display:grid;grid-template-columns:minmax(260px,420px) 1fr;gap:24px;align-items:start}
+  @media (max-width:720px){.schema{grid-template-columns:1fr}}
+  .schema svg{width:100%;height:auto;background:#fff;border:1px solid var(--bord);border-radius:10px}
+  .legende{font-size:.92rem}
+  .legende li{margin-bottom:6px}
+  .note{font-size:.88rem;color:var(--gris)}
+  .limites{background:#fdf1f1;border-left:4px solid var(--rouge);padding:14px 18px;border-radius:6px}
+  .contact{background:var(--bleu);color:#fff;border-radius:12px;padding:24px}
+  .contact h2{color:#fff;border-bottom-color:rgba(255,255,255,.3)}
+  .contact a{color:#fff;font-weight:600}
+  footer{text-align:center;font-size:.85rem;color:var(--gris);padding:24px 16px;border-top:1px solid var(--bord)}
+  ul{padding-left:20px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="retour" href="index.html">← Programme Résilience 2045</a>
+    <h1>Gyro-Torique Bio-GNL</h1>
+    <p class="sous-titre">Un appareil à ventilateurs carénés et propulsion électrique Bio-GNL pour le SAMU et l'hélitreuillage</p>
+    <div class="badges">
+      <span class="badge">Concept – avant-projet</span>
+      <span class="badge">Version V12.3 · septembre 2026</span>
+      <span class="badge">SAMU · Hélitreuillage · Transport express urbain</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="statut">
+    <strong>Statut du projet.</strong> Le Gyro-Torique est un concept d'avant-projet. Les chiffres présentés sont des estimations (±20 à 30 %) issues d'un dimensionnement analytique. Ils n'ont pas encore été revus par un bureau d'études aéronautique ni validés par CFD, soufflerie ou essais. Cette page présente la démarche, les missions visées, les avantages attendus et les points qui restent à démontrer.
+  </div>
+
+  <!-- 1. POURQUOI -->
+  <section id="pourquoi">
+    <h2>1. Pourquoi le Gyro-Torique ?</h2>
+    <p>Les missions assurées aujourd'hui par hélicoptère (secours médical, hélitreuillage, liaisons rapides) n'ont pas de solution de décarbonation à la fois <strong>réelle</strong> et <strong>économiquement supportable</strong>. Les pistes habituelles ont chacune une limite forte :</p>
+    <div class="grille">
+      <div class="carte">
+        <h3>Kérosène de synthèse (SAF)</h3>
+        <p>Il garde la turbine et son rendement modeste (~25 % pour une turbine légère). Il coûte 2,5 à 4 fois le kérosène fossile.</p>
+      </div>
+      <div class="carte">
+        <h3>Tout-batterie</h3>
+        <p>La densité énergétique des batteries ne permet pas aujourd'hui une mission de 250 km de rayon avec un long stationnaire sur zone.</p>
+      </div>
+      <div class="carte">
+        <h3>Hydrogène</h3>
+        <p>Le stockage liquide à −253 °C impose des volumes de réservoirs et une cryogénie bien plus lourds à intégrer. Il faut aussi une infrastructure entièrement nouvelle.</p>
+      </div>
+    </div>
+
+    <h3>La démarche Résilience : électrique + Bio-GNL</h3>
+    <p>Dans l'esprit du programme Résilience, nous avons cherché une architecture qui combine les <strong>moteurs électriques</strong> et le <strong>bio-méthane liquéfié (Bio-GNL)</strong>, produit en France à partir de déchets organiques et de résidus agricoles.</p>
+    <ul>
+      <li><strong>Des groupes électrogènes EREV à haut rendement</strong> (objectif ~45 %, contre ~25 % pour une turbine légère). Le passage par l'électricité coûte quelques pour cent de pertes (rendement électrique ~0,93), mais le gain de rendement du moteur le compense largement.</li>
+      <li><strong>Une turbine d'appoint légère</strong> fournit le complément de puissance nécessaire au stationnaire. <strong>Une batterie de 45 kWh</strong> absorbe les pointes et sert au posé d'urgence.</li>
+      <li><strong>Le Bio-GNL</strong> contient 16 % d'énergie de plus par kilo que le kérosène, mais 39 % de moins par litre. Il demande donc des réservoirs plus volumineux, mais sans commune mesure avec les contraintes de l'hydrogène. Ces réservoirs sont intégrés dans la structure même de l'appareil.</li>
+      <li><strong>Des ventilateurs carénés de type drone</strong> remplacent le rotor exposé. La puissance est distribuée à 8 moteurs électriques, ce qui améliore la sécurité autour de l'appareil et supprime la boîte de transmission principale.</li>
+    </ul>
+    <p>Les analyses et le dimensionnement effectués montrent qu'un tel appareil est <strong>physiquement envisageable</strong>, avec des avantages réels pour les missions SAMU et d'hélitreuillage, sous réserve de lever plusieurs verrous techniques (section 5).</p>
+  </section>
+
+  <!-- 2. MISSIONS -->
+  <section id="missions">
+    <h2>2. Pour quelles missions ?</h2>
+    <p>Le Gyro-Torique vise un créneau précis, où l'accès, la sécurité et la précision comptent plus que la vitesse :</p>
+    <div class="grille">
+      <div class="carte"><h3>SAMU / secours médical</h3><p>Transport d'un patient allongé avec 2 soignants debout de part et d'autre de la civière. Poses sur toits d'hôpitaux et hélistations urbaines.</p></div>
+      <div class="carte"><h3>Hélitreuillage</h3><p>Treuil dans l'axe du centre de gravité, par une trappe de plancher (barquette à plat), avec l'opérateur dans la cabine.</p></div>
+      <div class="carte"><h3>Transport express urbain</h3><p>Liaisons rapides entre sites proches (hôpitaux, plateaux techniques).</p></div>
+    </div>
+    <p><strong>Mission de référence :</strong> rayon de 250 km à 180 km/h, 25 min de stationnaire sur zone, 20 min de réserve, 600 kg de charge utile, par temps chaud (ISA+20, ~35 °C).</p>
+    <p class="note">Le Gyro-Torique n'est ni un appareil cargo, ni un remplaçant universel du H135 : il est optimisé pour ces missions uniquement.</p>
+  </section>
+
+  <!-- 3. ARCHITECTURE -->
+  <section id="architecture">
+    <h2>3. Une architecture intégrée</h2>
+    <div class="schema">
+      <svg viewBox="0 0 400 430" role="img" aria-label="Vue de dessus à l'échelle du Gyro-Torique V12.3">
+        <defs>
+          <g id="fan">
+            <circle r="45.75" fill="#e8f0fb" stroke="#0b3d91" stroke-width="1.5"/>
+            <circle r="42.75" fill="#ffffff" stroke="#1f5fbf" stroke-width="1"/>
+            <g stroke="#9fb4d6" stroke-width="1.2">
+              <line x1="0" y1="-40" x2="0" y2="40"/>
+              <line x1="-40" y1="0" x2="40" y2="0"/>
+              <line x1="-28" y1="-28" x2="28" y2="28"/>
+              <line x1="-28" y1="28" x2="28" y2="-28"/>
+            </g>
+            <circle r="8" fill="#0b3d91"/>
+          </g>
+        </defs>
+        <text x="200" y="20" text-anchor="middle" font-size="13" font-weight="700" fill="#0b3d91">▲ AVANT</text>
+        <!-- jante Ø 11,0 m -->
+        <circle cx="200" cy="200" r="165" fill="#f4f7fb" stroke="#0b3d91" stroke-width="2.5"/>
+        <!-- ventilateurs : cercle d'axes r = 3,975 m ; échelle 30 px/m -->
+        <use href="#fan" x="245.64" y="89.83"/>
+        <use href="#fan" x="310.17" y="154.36"/>
+        <use href="#fan" x="310.17" y="245.64"/>
+        <use href="#fan" x="245.64" y="310.17"/>
+        <use href="#fan" x="154.36" y="310.17"/>
+        <use href="#fan" x="89.83" y="245.64"/>
+        <use href="#fan" x="89.83" y="154.36"/>
+        <use href="#fan" x="154.36" y="89.83"/>
+        <!-- ventilateurs arrière à déflecteurs -->
+        <circle cx="245.64" cy="310.17" r="45.75" fill="none" stroke="#b35c00" stroke-width="3"/>
+        <circle cx="154.36" cy="310.17" r="45.75" fill="none" stroke="#b35c00" stroke-width="3"/>
+        <!-- tore (r 1,35–1,95 m) et dôme -->
+        <circle cx="200" cy="200" r="49.5" fill="none" stroke="#6f8fc4" stroke-width="18" opacity=".8"/>
+        <circle cx="200" cy="200" r="40.5" fill="#dfe8f6" stroke="#0b3d91" stroke-width="1"/>
+        <!-- cabine Ø 3,70 m sous le plateau -->
+        <circle cx="200" cy="200" r="55.5" fill="none" stroke="#1d7a46" stroke-width="2" stroke-dasharray="6 4"/>
+        <!-- cheminée -->
+        <circle cx="200" cy="200" r="6" fill="#333"/>
+        <!-- verrière pilote à travers la jupe du ventilateur avant +22,5° -->
+        <path d="M237.70 44.78 A45.75 45.75 0 0 1 271.88 52.35" fill="none" stroke="#00a3c4" stroke-width="6" stroke-linecap="round"/>
+        <path d="M241.65 135.41 A45.75 45.75 0 0 1 213.29 122.18" fill="none" stroke="#00a3c4" stroke-width="6" stroke-linecap="round"/>
+        <!-- porte basculante arrière (ventilateur 202,5°) -->
+        <path d="M154.36 355.92 A45.75 45.75 0 0 1 122.01 342.52" fill="none" stroke="#a42323" stroke-width="6" stroke-linecap="round"/>
+        <!-- échelle -->
+        <line x1="50" y1="400" x2="200" y2="400" stroke="#1c2430" stroke-width="2"/>
+        <line x1="50" y1="394" x2="50" y2="406" stroke="#1c2430" stroke-width="2"/>
+        <line x1="200" y1="394" x2="200" y2="406" stroke="#1c2430" stroke-width="2"/>
+        <text x="125" y="420" text-anchor="middle" font-size="12" fill="#1c2430">5 m</text>
+        <text x="330" y="420" text-anchor="middle" font-size="12" fill="#1c2430">Ø 11,0 m</text>
+      </svg>
+      <div class="legende">
+        <p><strong>Vue de dessus à l'échelle (cotes V12.3)</strong></p>
+        <ul>
+          <li><strong>Lentille biconvexe de 11,0 m</strong> à jante fixe, hauteur 3,345 m.</li>
+          <li><strong>8 ventilateurs carénés de 2,85 m</strong> (51 m²), dans des conduits jointifs à parois partagées. 6 sont sustentateurs, avec des volets fermés en croisière. <span style="color:#b35c00;font-weight:600">2 ventilateurs arrière</span> à déflecteurs assurent la sustentation au stationnaire et la propulsion en croisière.</li>
+          <li><strong>Tore structural</strong> contenant 8 réservoirs cryogéniques indépendants de Bio-GNL, posé sur le plateau au-dessus de la cabine.</li>
+          <li><strong>Baie moteurs</strong> sous le dôme : 2 groupes EREV, la turbine d'appoint et le treuil. Une <strong>cheminée</strong> d'échappement verticale centrale évite toute réaspiration.</li>
+          <li><span style="color:#1d7a46;font-weight:600">Cabine fixe</span> formant cellule de survie, sous le plateau pare-feu : Ø 3,50 m intérieur, 1,80 m sous plafond, 2,00 m au centre sur un îlot nivelant.</li>
+          <li><strong>Batterie de 45 kWh</strong> sous le plancher, ce qui abaisse le centre de gravité.</li>
+          <li><span style="color:#00a3c4;font-weight:600">Verrière panoramique</span> à travers la jupe du ventilateur avant, pour la vue directe du pilote vers l'avant et vers le bas.</li>
+          <li><span style="color:#a42323;font-weight:600">Porte basculante arrière</span> sur la jupe d'un ventilateur arrière. Elle donne accès au vestibule puis à la cabine, ventilateurs arrêtés.</li>
+        </ul>
+      </div>
+    </div>
+    <h3>Comment il vole</h3>
+    <p>Au décollage et en stationnaire, les 8 ventilateurs portent l'appareil. Entre 100 et 160 km/h, les sustentateurs se ferment progressivement et les déflecteurs arrière s'orientent vers l'arrière. Au-delà de 160 km/h, <strong>c'est le disque lui-même qui porte</strong> 100 % du poids, sustentateurs fermés, tandis que les 2 ventilateurs arrière assurent la propulsion.</p>
+  </section>
+
+  <!-- 4. AVANTAGES -->
+  <section id="avantages">
+    <h2>4. Avantages par rapport au H135 et aux autres solutions</h2>
+    <div class="grille">
+      <div class="carte"><h3>Sécurité</h3><p>Pas de pale exposée ni de boîte de transmission principale. La puissance est répartie sur 8 moteurs, avec 3 sources d'énergie et une batterie de secours. Le stationnaire est maintenu même après la perte d'un ventilateur.</p></div>
+      <div class="carte"><h3>Mobilité et précision</h3><p>Pilotage de type drone : réponse immédiate, maintien de position automatique, rotation sur place et approche par n'importe quel côté (détails ci-dessous).</p></div>
+      <div class="carte"><h3>Compacité</h3><p>Valeur D de 11,0 m contre 12,16 m pour le H135. Un contact léger de la jante fixe avec un obstacle abîme la coque, alors que le même contact serait catastrophique avec un rotor.</p></div>
+      <div class="carte"><h3>Cabine médicale</h3><p>1,80 m sous plafond (2,00 m au centre) contre ~1,26 m sur le H135. Deux soignants travaillent debout, avec accès à la tête du patient, sur un îlot nivelant qui filtre les vibrations.</p></div>
+      <div class="carte"><h3>Hélitreuillage</h3><p>Treuil dans l'axe du centre de gravité, par trappe centrale. La charge monte dans la zone calme, sans couple de roulis.</p></div>
+      <div class="carte"><h3>Intégration</h3><p>Réservoirs, ventilateurs, batterie et moteurs thermiques sont intégrés dans une structure unique : plateau, tore, baie moteurs et cellule de survie.</p></div>
+      <div class="carte"><h3>Énergie et CO₂</h3><p>Environ 46 % d'énergie en moins par mission (chaîne mixte, sous condition). CO₂ fossile quasi nul à l'usage, et aucun soufre ni aromatique.</p></div>
+      <div class="carte"><h3>Mauvais temps</h3><p>Il n'y a pas de longues pales à dégivrer : lèvres, stators et volets peuvent être chauffés électriquement. C'est un objectif à démontrer en soufflerie givrante.</p></div>
+    </div>
+
+    <h3>Mobilité, précision de positionnement et stabilité</h3>
+    <p>Le Gyro-Torique est piloté comme un drone professionnel : chacun des 8 ventilateurs est commandé individuellement par un moteur électrique, sans intermédiaire mécanique. Il n'y a ni plateau cyclique, ni boîte de transmission, ni temps de réponse de turbine. Ce principe apporte plusieurs atouts :</p>
+    <div class="grille">
+      <div class="carte"><h3>Réponse immédiate</h3><p>La poussée de chaque ventilateur varie directement avec le courant du moteur. Les corrections en tangage, en roulis et en hauteur se font par poussée différentielle sur 8 points répartis à 4 m de l'axe, ce qui donne un grand bras de levier et une commande fine.</p></div>
+      <div class="carte"><h3>Positionnement précis</h3><p>Les commandes de vol électriques maintiennent la position automatiquement en stationnaire (satellite et capteurs de proximité). L'approche et le posé sont assistés. L'appareil corrige lui-même les dérives, et le pilote désigne le point visé.</p></div>
+      <div class="carte"><h3>Mobilité omnidirectionnelle</h3><p>L'appareil étant symétrique, il pivote sur place et se déplace dans toutes les directions de la même façon. Il peut approcher un obstacle, une paroi ou une falaise par n'importe quel côté. La jante fixe tolère un contact léger, là où un rotor ne le tolère pas.</p></div>
+      <div class="carte"><h3>Pas d'anticouple</h3><p>Les ventilateurs tournent par paires en sens opposés, et le lacet se commande par différence de couple et par les déflecteurs arrière. Il n'y a pas de rotor de queue, donc pas de perte d'efficacité en lacet par vent de travers.</p></div>
+      <div class="carte"><h3>Stabilité en stationnaire</h3><p>La charge au disque est élevée (~67 kg/m², contre ~36 pour le H135), avec des jets rapides. L'appareil est donc moins sensible aux turbulences en stationnaire. Le comportement est identique quelle que soit la direction du vent (exigence : 65 km/h toutes directions).</p></div>
+      <div class="carte"><h3>Treuillage et posé</h3><p>Le treuil est dans l'axe : la charge ne crée aucun couple de roulis et monte dans la zone calme au centre. Au sol, les 4 jambes sont largement écartées et la batterie sous plancher abaisse le centre de gravité, ce qui donne une bonne assiette sur terrain irrégulier.</p></div>
+    </div>
+    <p class="note">À démontrer : la tenue en rafales d'un disque de 11 m, et la stabilité en transition et en croisière. En croisière, le disque est naturellement instable en tangage : la stabilité est assurée par les commandes de vol, comme sur les avions de combat modernes. C'est le premier verrou du programme (section 5).</p>
+
+    <h3>Comparaison sur la même mission</h3>
+    <div class="table-scroll">
+    <table>
+      <tr><th>Critère</th><th>Gyro-Torique V12.3</th><th>H135</th><th>Avantage</th></tr>
+      <tr><td>Encombrement (valeur D)</td><td>11,0 m, jante fixe</td><td>12,16 m, rotor tournant</td><td class="av-gt">Gyro-Torique</td></tr>
+      <tr><td>Pales</td><td>Carénées</td><td>Rotor exposé</td><td class="av-gt">Gyro-Torique</td></tr>
+      <tr><td>Hauteur de cabine</td><td>1,80 m (2,00 m au centre)</td><td>~1,26 m</td><td class="av-gt">Gyro-Torique</td></tr>
+      <tr><td>Treuil</td><td>Dans l'axe, par trappe</td><td>Latéral, 272 kg</td><td class="av-gt">Gyro-Torique</td></tr>
+      <tr><td>Commande en stationnaire</td><td>Poussée différentielle électrique sur 8 ventilateurs, réponse immédiate</td><td>Plateau cyclique, rotor et turbine</td><td class="av-gt">Gyro-Torique [à démontrer]</td></tr>
+      <tr><td>Précision de positionnement</td><td>Maintien de position automatique, posé assisté</td><td>Pilote, aidé par un pilote automatique</td><td class="av-gt">Gyro-Torique [à démontrer]</td></tr>
+      <tr><td>Mobilité</td><td>Pivot sur place, déplacement omnidirectionnel, approche par tout côté</td><td>Orientation imposée par le rotor de queue et le vent</td><td class="av-gt">Gyro-Torique</td></tr>
+      <tr><td>Anticouple / vent de travers</td><td>Aucun rotor de queue, comportement identique quelle que soit la direction du vent</td><td>Fenestron, sensibilité au vent de travers en lacet</td><td class="av-gt">Gyro-Torique</td></tr>
+      <tr><td>Tenue en rafales</td><td>Charge au disque élevée (moins sensible) mais grande surface de disque exposée</td><td>Éprouvée</td><td class="av-eq">À démontrer</td></tr>
+      <tr><td>Énergie par mission</td><td>~3 150 kWh (~226 kg de Bio-GNL)</td><td>~5 850 kWh (~490 kg de kérosène)</td><td class="av-gt">Gyro-Torique (−46 %, conditionnel)</td></tr>
+      <tr><td>CO₂ fossile à l'usage</td><td>Quasi nul (carbone biogénique)</td><td>~1,55 t par mission</td><td class="av-gt">Gyro-Torique</td></tr>
+      <tr><td>Coût du carburant par mission</td><td>~340–450 € (Bio-GNL)</td><td>~390–590 € (kérosène) ; ~980–1 720 € (SAF)</td><td class="av-gt">Gyro-Torique</td></tr>
+      <tr><td>Rayon (même mission)</td><td>250 km (à valider)</td><td>~210–250 km</td><td class="av-eq">Équivalent</td></tr>
+      <tr><td>Souffle au sol</td><td>~83 km/h</td><td>~87 km/h</td><td class="av-eq">Équivalent</td></tr>
+      <tr><td>Charge utile avec carburant</td><td>600 kg</td><td>~850–950 kg</td><td class="av-h135">H135</td></tr>
+      <tr><td>Vitesse de croisière</td><td>160–200 km/h</td><td>~250 km/h</td><td class="av-h135">H135</td></tr>
+      <tr><td>MTOW</td><td>~3 420 kg (3 085–3 735 kg selon la structure) ; à vérifier vis-à-vis de la masse admissible des hélistations</td><td>2 980 kg (3 100 en option)</td><td class="av-eq">À confirmer par l'étude structure</td></tr>
+      <tr><td>Chargement</td><td>Ventilateurs arrêtés, pas de rotor tournant près des équipes ; redémarrage électrique en quelques secondes, groupes électrogènes pouvant rester en marche</td><td>Rotor tournant (chargement à chaud), ou arrêt puis redémarrage long de la turbine et du rotor</td><td class="av-gt">Gyro-Torique</td></tr>
+      <tr><td>Perte totale de puissance</td><td>Pas d'autorotation : la sécurité repose sur la redondance (3 sources d'énergie, 8 ventilateurs, 8 réservoirs isolables), avec ~3,2 min de stationnaire sur batterie pour se poser</td><td>Bimoteur, avec l'autorotation comme secours ultime</td><td class="av-eq">Approches différentes</td></tr>
+      <tr><td>Maturité</td><td>Concept</td><td>Certifié, plus de 7 millions d'heures de vol</td><td class="av-h135">H135</td></tr>
+    </table>
+    </div>
+
+    <h3>Face aux autres pistes de décarbonation</h3>
+    <ul>
+      <li><strong>H135 au SAF :</strong> le SAF coûte 2,5 à 4 fois le kérosène fossile. Sa disponibilité restera limitée et sera disputée par l'aviation commerciale. La turbine garde son rendement : on brûle toujours ~490 kg de carburant par mission. Sur le plan des émissions, un kérosène mélangé à environ un tiers de SAF ne fait pas mieux qu'un GNL d'origine fossile. Même pur, le SAF reste en retrait du Bio-GNL : celui-ci peut devenir carbone-négatif grâce à la pyrogazéification et au biochar stocké, et sa combustion ne produit quasiment pas de particules.</li>
+      <li><strong>Gyro-Torique à turbogénérateur seul</strong> (solution de repli avec la technologie actuelle) : il consomme environ 12 % d'énergie de moins que le H135. L'essentiel du gain vient donc du groupe EREV à haut rendement.</li>
+      <li><strong>eVTOL tout-batterie :</strong> ils sont adaptés aux trajets courts, mais pas à une mission de 500 km aller-retour avec 25 min de stationnaire.</li>
+      <li><strong>Hydrogène :</strong> la cryogénie à −253 °C, le volume des réservoirs et une infrastructure nouvelle le rendent difficile à intégrer. Le Bio-GNL s'appuie au contraire sur le réseau gazier et la filière française de méthanisation et de pyrogazéification.</li>
+    </ul>
+  </section>
+
+  <!-- 5. LIMITES -->
+  <section id="limites">
+    <h2>5. Limites et verrous à lever</h2>
+    <div class="limites">
+      <p>Le Gyro-Torique est <strong>réalisable</strong> : chaque élément sait se fabriquer et rien ne va contre la physique. Sa <strong>viabilité</strong> est plausible, mais elle n'est pas démontrée. Les points suivants décident :</p>
+      <ul>
+        <li><strong>Tangage et transition</strong> (verrou principal) : le centre de portance d'un disque est très en avant. La stabilité doit venir des commandes de vol et être démontrée de 0 à 160 km/h.</li>
+        <li><strong>Portance réelle du disque</strong> en croisière : elle doit être validée par CFD puis en soufflerie.</li>
+        <li><strong>Groupe EREV aviation à ~45 %</strong> et ~0,9 kW/kg : il n'existe pas encore. Avec un rendement de 42 %, la masse maximale passe de ~3 420 à ~3 720 kg.</li>
+        <li><strong>Masse de structure</strong> d'un disque de 11 m sans bras : elle doit être consolidée par un bureau d'études.</li>
+        <li><strong>Pas d'autorotation</strong> : en cas de perte totale de production, la batterie donne ~3,2 min de stationnaire pour se poser. C'est un danger majeur, à traiter comme tel.</li>
+        <li><strong>Visibilité du pilote</strong> et certification (EASA SC-VTOL, catégorie Enhanced).</li>
+      </ul>
+    </div>
+    <h3>Programme de validation proposé</h3>
+    <p>La première étape consiste à figer le cahier des charges avec les utilisateurs (SAMU, SDIS). Vient ensuite une <strong>maquette volante au 1/8</strong> (Ø ~1,4 m), à réaliser avec une école d'ingénieurs pour quelques milliers d'euros : elle teste directement le verrou le plus risqué (stationnaire, transition, tangage, panne simulée). Les étapes suivantes sont la revue indépendante des calculs et la CFD, les bancs d'essais (ventilateur caréné, groupe EREV, batterie, réservoir), puis un démonstrateur au 1/2. L'ordre de grandeur d'un développement complet est de plusieurs centaines de millions d'euros sur 10 à 15 ans.</p>
+  </section>
+
+  <!-- 6. CHIFFRES CLÉS -->
+  <section id="chiffres">
+    <h2>6. Chiffres clés (V12.3, estimations d'avant-projet)</h2>
+    <div class="table-scroll">
+    <table>
+      <tr><th>Paramètre</th><th>Valeur</th></tr>
+      <tr><td>Diamètre / hauteur</td><td>11,0 m / 3,345 m (~3,65 m au sol)</td></tr>
+      <tr><td>Ventilateurs</td><td>8 × Ø 2,85 m (51,0 m²), conduits à parois partagées</td></tr>
+      <tr><td>Masse maximale (MTOW)</td><td>~3 420 kg (3 085–3 735 kg selon la structure)</td></tr>
+      <tr><td>Charge utile SAMU</td><td>600 kg</td></tr>
+      <tr><td>Mission de référence</td><td>Rayon 250 km + 25 min de stationnaire + 20 min de réserve</td></tr>
+      <tr><td>Croisière</td><td>160–200 km/h ; ~60 kg/h de Bio-GNL à 180 km/h</td></tr>
+      <tr><td>Stationnaire (ISA+20)</td><td>~657 kWe requis / ~748 kWe installés (marge de 10 % + auxiliaires)</td></tr>
+      <tr><td>Chaîne énergétique</td><td>2 groupes EREV 2 × ~217 kWe + turbine d'appoint ~313 kWe + batterie 45 kWh</td></tr>
+      <tr><td>Cabine</td><td>Ø 3,50 m intérieur, 1,80 m ; zone centrale Ø 2,40 m à 2,00 m</td></tr>
+      <tr><td>Treuil</td><td>272 kg (objectif 300 kg), câble ≥ 90 m, trappe de 2,20 × 0,75 m</td></tr>
+    </table>
+    </div>
+  </section>
+
+  <!-- 7. CONTACT -->
+  <section id="etude" class="contact">
+    <h2>7. L'étude complète est disponible sur demande</h2>
+    <p>Le dossier de conception V12.3 peut être transmis sur demande, notamment aux services de secours (SAMU, SDIS), aux écoles d'ingénieurs, aux bureaux d'études et aux institutions. Il comprend le cahier des charges fonctionnel chiffré, l'architecture, le bilan de puissance et de masse, les performances, la comparaison avec le H135 et le programme de validation. Le modèle de dimensionnement est également disponible.</p>
+    <p>Les critiques et relectures techniques sont les bienvenues : elles font partie de la démarche.</p>
+    <!-- À ADAPTER : remplacer le lien ci-dessous par la page ou l'adresse de contact du site -->
+    <p><a href="contact.html">→ Demander l'étude</a></p>
+  </section>
+
+</main>
+
+<footer>
+  Programme Résilience 2045 — travail indépendant et non commercial · Gyro-Torique Bio-GNL V12.3, septembre 2026 · Concept d'avant-projet
+</footer>
+
+</body>
+</html>
