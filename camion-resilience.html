@@ -102,14 +102,14 @@ footer p{font-size:.75rem;color:var(--gris);max-width:600px;margin:.3rem auto}
     <div style="display:flex;gap:.9rem;flex-wrap:wrap">
       <a href="#specs" class="btn btn-primary">Spécifications techniques →</a>
       <a href="#comparatif" class="btn btn-outline">Comparatif rendements →</a>
-      <a href="Camion_EREV_Rex_V11.pdf" class="btn btn-outline" target="_blank" download>↓ Note PDF complète</a>
+      <a href="Camion_EREV_Rex_V11.1.pdf" class="btn btn-outline" target="_blank" download>↓ Note PDF complète</a>
     </div>
     <div class="kpi-strip">
       <div class="kpi"><div class="kpi-val">1 150–1 300 km</div><div class="kpi-lbl">Autonomie totale</div></div>
       <div class="kpi"><div class="kpi-val">400 kWe</div><div class="kpi-lbl">Rex unique continu</div></div>
       <div class="kpi am"><div class="kpi-val">~25 t</div><div class="kpi-lbl">Charge utile préservée</div></div>
-      <div class="kpi am"><div class="kpi-val">11–45 €/100 km</div><div class="kpi-lbl">Coût énergie selon approv.</div></div>
-      <div class="kpi ac"><div class="kpi-val">+36–73 k€</div><div class="kpi-lbl">Économie vs diesel 15 ans</div></div>
+      <div class="kpi am"><div class="kpi-val">13–46 €/100 km</div><div class="kpi-lbl">GNL fossile → 100 % bio-GNL</div></div>
+      <div class="kpi ac"><div class="kpi-val">+24–62 k€</div><div class="kpi-lbl">Économie vs diesel 15 ans (GNL fossile)</div></div>
     </div>
   </div>
 </section>
@@ -126,11 +126,11 @@ footer p{font-size:.75rem;color:var(--gris);max-width:600px;margin:.3rem auto}
       </div>
       <div class="grid3-cell" style="background:rgba(20,15,5,.7);border-top:2px solid rgba(233,196,106,.5)">
         <div class="cell-tag" style="color:var(--ambre)">⚠ GNV comprimé 250 bar</div>
-        <div style="font-size:.85rem;color:rgba(240,244,241,.68);line-height:1.65">Densité 2,64 kWh/L. Pour 1 000 km : <strong style="color:var(--blanc)">2 700 L de réservoirs</strong> — physiquement impossible sous châssis 44t.</div>
+        <div style="font-size:.85rem;color:rgba(240,244,241,.68);line-height:1.65">Densité 2,64 kWh/L. Pour 1 000 km : <strong style="color:var(--blanc)">~2 000 L de gaz (~2 700 L d'encombrement)</strong> — physiquement impossible sous châssis 44t.</div>
       </div>
       <div class="grid3-cell" style="background:rgba(13,31,23,.7);border-top:2px solid var(--vert-vif)">
         <div class="cell-tag" style="color:var(--vert-vif)">✓ Bio-LCH4 −162°C</div>
-        <div style="font-size:.85rem;color:rgba(240,244,241,.68);line-height:1.65">Densité <strong style="color:var(--blanc)">5,86 kWh/L</strong>. 900 L suffisent. Standard Volvo FH LNG / Scania Super — technologie de série.</div>
+        <div style="font-size:.85rem;color:rgba(240,244,241,.68);line-height:1.65">Densité <strong style="color:var(--blanc)">5,86 kWh/L</strong>. 900 L suffisent. Camions GNL Volvo, Scania, Iveco — technologie de série.</div>
       </div>
     </div>
     <div class="note reveal"><strong>Rex unique vs double :</strong> moteur 15 L à régime fixe 1 800 tr/min, sans boîte de vitesses, sans cycles thermiques variables = durée de vie estimée >2 millions de km. La batterie 200 kWh fournit 110–130 km en cas de panne. La redondance double Rex ajoute 18 000 € pour une complexité non justifiée dans 90 % des usages.</div>
@@ -147,16 +147,16 @@ footer p{font-size:.75rem;color:var(--gris);max-width:600px;margin:.3rem auto}
         <thead><tr><th>Composant</th><th>Spécification</th><th>Valeur</th><th>Note</th></tr></thead>
         <tbody>
           <tr class="sec"><td colspan="4">Groupe électrique</td></tr>
-          <tr><td>Moteurs traction</td><td>2 × SPMSM 250 kW</td><td class="td-g">500 kW pic / 280 kW continu</td><td>Grade 5 % à 80 km/h · Palier 90 km/h pleine charge</td></tr>
+          <tr><td>Moteurs traction</td><td>2 × SPMSM 250 kW</td><td class="td-g">500 kW pic / 280 kW continu</td><td>Rampe 5 % : ~65–70 km/h en pointe, ~40–45 km/h en continu (comme un diesel 460 ch) · Palier 90 km/h pleine charge</td></tr>
           <tr class="sec"><td colspan="4">Batterie tampon</td></tr>
           <tr><td>Pack LFP</td><td>200 kWh net · 3 000 cycles</td><td class="td-g">~110–130 km ZEV réel</td><td>Zones portuaires ZEV + sécurité panne Rex · LFP >80 % à 800 000 km</td></tr>
           <tr class="sec"><td colspan="4">Range Extender (Rex unique)</td></tr>
-          <tr><td>Moteur Rex</td><td>15 L GNV · 6 cyl. Miller-Atkinson · EGR 15 % · 1 800 tr/min fixe</td><td class="td-g">400 kWe continu</td><td>Réf. Cummins ISX15N / Volvo D16 / MAN D3876 · >2 M km estimé</td></tr>
-          <tr><td>Rendement Rex</td><td>Cycle Atkinson régime fixe</td><td class="td-a">48–52 %</td><td class="warn">Objectif industriel — non acquis sur prototype · À confirmer sur banc d'essai</td></tr>
+          <tr><td>Moteur Rex</td><td>15 L GNV · 6 cyl. Miller-Atkinson · EGR 15 % · 1 800 tr/min fixe</td><td class="td-g">400 kWe continu</td><td>Réf. moteurs gaz 13–15 L : Cummins X15N, Iveco Cursor 13 NG, Scania OC13 · >2 M km estimé</td></tr>
+          <tr><td>Rendement Rex</td><td>Cycle Atkinson régime fixe</td><td class="td-a">48–52 %</td><td class="warn">Objectif industriel — moteurs gaz actuels ~40–42 % en pointe ; grosse cylindrée à régime fixe + turbocompound (Annexe ÉREV, Partie 2bis) · À confirmer sur banc d'essai</td></tr>
           <tr><td>Fréquence générateur</td><td>1 800 tr/min × 4 pôles</td><td class="td-g">60 Hz natif</td><td>Compatible remorques frigo Carrier/Thermo King · Variante 1 500 tr/min (50 Hz EU) disponible</td></tr>
-          <tr><td>Émissions NOx</td><td>Euro VII</td><td class="td-g">≤0,06 g/km</td><td>EGR + refroidissement · Sans SCR/AdBlue · Sans suies · Sans FAP</td></tr>
+          <tr><td>Émissions NOx</td><td>Euro 7 poids lourds</td><td class="td-g">≤ 200 mg/kWh (WHTC)</td><td>Stœchiométrique + catalyseur 3 voies + EGR · Sans SCR/AdBlue · Sans suies · Sans FAP</td></tr>
           <tr class="sec"><td colspan="4">Réservoirs Bio-LCH4</td></tr>
-          <tr><td>Réservoirs cryogéniques</td><td>2 × 450 L · −162°C · 3–5 bar</td><td class="td-g">~378 kg bio-CH₄ embarqués</td><td>5,86 kWh/L vs 2,64 kWh/L GNV · GNV nécessiterait 2 700 L</td></tr>
+          <tr><td>Réservoirs cryogéniques</td><td>2 × 450 L · −162°C · 3–5 bar</td><td class="td-g">~378 kg bio-CH₄ embarqués</td><td>5,86 kWh/L vs 2,64 kWh/L GNV · GNV nécessiterait ~2 000 L</td></tr>
           <tr><td>Gestion boil-off (BOG)</td><td>0,1–0,3 %/jour</td><td>0,38–1,13 kg/j</td><td>BOG vers Rex en marche · Micro-brûleur catalytique à l'arrêt · Vidange si arrêt >5 jours</td></tr>
         </tbody>
       </table>
@@ -173,23 +173,23 @@ footer p{font-size:.75rem;color:var(--gris);max-width:600px;margin:.3rem auto}
       <div class="grid3-cell">
         <div class="cell-tag" style="color:var(--vert-vif)">Phase 1 — ZEV urbaine</div>
         <div class="cell-val">110–130 km</div>
-        <div class="cell-sub">Batterie 200 kWh · ~130 kWh/100 km<br>Marge opérationnelle 10–15 % intégrée</div>
+        <div class="cell-sub">Batterie 200 kWh · ~125–140 kWh/100 km<br>Marge opérationnelle 10–15 % intégrée</div>
       </div>
       <div class="grid3-cell">
         <div class="cell-tag" style="color:var(--vert-vif)">Phase 2 — Rex croisière</div>
-        <div class="cell-val">~950 km</div>
-        <div class="cell-sub">Bio-LCH4 Rex 400 kWe · 32 kg/100 km<br>Conforme Volvo FH / Scania Super GNL</div>
+        <div class="cell-val">~1 050 km</div>
+        <div class="cell-sub">Bio-LCH4 Rex 400 kWe · 32 kg/100 km (prudent) · 90 % du réservoir<br>Ordre de grandeur des camions GNL actuels</div>
       </div>
       <div class="grid3-cell">
-        <div class="cell-tag" style="color:var(--ambre)">Phase 3 — Réserve batterie</div>
-        <div class="cell-val">100–150 km</div>
-        <div class="cell-sub">Rex surplus → batterie<br>Énergie récupérée en descente</div>
+        <div class="cell-tag" style="color:var(--ambre)">Phase 3 — Récupération</div>
+        <div class="cell-val">50–100 km</div>
+        <div class="cell-sub">Freinage régénératif et descentes<br>Le méthane n'est compté qu'une fois</div>
       </div>
     </div>
     <div class="cell-total reveal">
       <div class="cell-tag" style="color:var(--vert-vif)">Autonomie totale</div>
       <div class="cell-val" style="font-size:2.4rem;color:var(--vert-vif)">1 150–1 300 km</div>
-      <div class="cell-sub" style="margin-top:.3rem">Objectif 1 000–1 200 km atteint avec marges · Cohérent données constructeurs Volvo FH / Scania Super</div>
+      <div class="cell-sub" style="margin-top:.3rem">Objectif 1 000–1 200 km atteint avec marges · ~1 600 km avec la consommation objectif ÉREV (~23 kg/100 km)</div>
     </div>
   </div>
 </section>
@@ -198,26 +198,46 @@ footer p{font-size:.75rem;color:var(--gris);max-width:600px;margin:.3rem auto}
 <section style="background:var(--foret)">
   <div class="container">
     <div class="stag reveal">Économie d'exploitation</div>
-    <h2 class="reveal">Trois scénarios d'approvisionnement — <em>une variable décisive</em></h2>
+    <h2 class="reveal">Coût du carburant — <em>filière contre filière</em></h2>
     <div class="grid3 reveal">
       <div class="grid3-cell" style="border-top:2px solid var(--vert-vif)">
-        <div class="cell-tag" style="color:var(--vert-vif)">Auto-produit</div>
-        <div class="cell-val" style="color:var(--vert-vif)">11–16 €/100 km</div>
-        <div class="cell-sub">0,35–0,50 €/kg · Coopérative de transporteurs avec méthaniseur mutualisé · Modèle agri-transport Programme Résilience</div>
+        <div class="cell-tag" style="color:var(--vert-vif)">GNL fossile — lancement</div>
+        <div class="cell-val" style="color:var(--vert-vif)">13–19 €/100 km</div>
+        <div class="cell-sub">0,56–0,83 €/kg · Stations GNL publiques existantes · CO₂ −25 % par MJ vs gazole</div>
       </div>
       <div class="grid3-cell" style="border-top:2px solid var(--ambre)">
-        <div class="cell-tag" style="color:var(--ambre)">Coopératif régional</div>
-        <div class="cell-val" style="color:var(--ambre)">19–27 €/100 km</div>
-        <div class="cell-sub">0,60–0,85 €/kg · Dépôts régionaux biométhane mutualisés</div>
+        <div class="cell-tag" style="color:var(--ambre)">Mélange 50 % bio-GNL</div>
+        <div class="cell-val" style="color:var(--ambre)">23–32 €/100 km</div>
+        <div class="cell-sub">~1,0–1,4 €/kg · Montée progressive de la part bio sans changer le camion</div>
       </div>
       <div class="grid3-cell" style="border-top:2px solid rgba(192,57,43,.6)">
-        <div class="cell-tag" style="color:#e07070">Marché — station publique</div>
-        <div class="cell-val" style="color:#e07070">32–45 €/100 km</div>
-        <div class="cell-sub">1,00–1,40 €/kg · Stations GNL publiques · Avantage fiscal bio certifié RED III</div>
+        <div class="cell-tag" style="color:#e07070">100 % bio-GNL — filière Résilience</div>
+        <div class="cell-val" style="color:#e07070">35–46 €/100 km</div>
+        <div class="cell-sub">1,5–2,0 €/kg (coût de production, 0,11–0,14 €/kWh) · Déchets et résidus · Avantage fiscal RED III non compté</div>
       </div>
     </div>
     <div class="encadre reveal">
-      <p><strong>Référence diesel : 43 €/100 km</strong> (1,35 €/L hors TVA récup.). L'avantage Camion Résilience est certain en scénario auto-produit ou coopératif (11–27 €/100 km vs 43 €). En scénario marché, l'avantage s'atténue mais reste positif avec la détaxe partielle RED III. Le véhicule est le plus intéressant couplé à une filière biméthane intégrée — c'est la même logique que pour le tracteur ÉREV.</p>
+      <p><strong>Références : gazole 43 €/100 km</strong> (1,35 €/L hors TVA récup., ~32 L/100 km) · <strong>gazole + HVO 100 % : ~48–54 €/100 km</strong>. Consommation ÉREV retenue : ~23 kg/100 km (objectif). Au lancement, le GNL fossile coûte nettement moins cher que le gazole. À part renouvelable égale, le bio-GNL reste moins cher que le gazole + HVO — et surtout, les deux carburants renouvelables ne se valent pas pour l'environnement (tableau ci-dessous).</p>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--foret);padding-top:0">
+  <div class="container">
+    <div class="stag reveal">Bio-GNL et HVO</div>
+    <h2 class="reveal">Deux carburants renouvelables <em>qui ne se valent pas</em></h2>
+    <div style="overflow-x:auto" class="reveal">
+      <table class="tbl">
+        <thead><tr><th>Critère</th><th>Gazole + HVO</th><th>Bio-GNL (filière Résilience)</th></tr></thead>
+        <tbody>
+          <tr><td>Matière première</td><td class="td-r">Huiles végétales (colza ; palme et soja en recul sous RED III) ou déchets gras (huiles usagées, graisses animales)</td><td class="td-g">Déchets et résidus : effluents d'élevage, résidus de cultures, biodéchets, bois de rebut</td></tr>
+          <tr><td>Disponibilité</td><td class="td-r">Gisement de déchets gras limité et largement importé (fraudes signalées sur les huiles usagées)</td><td class="td-g">Gisement national de déchets et résidus</td></tr>
+          <tr><td>Concurrence d'usage</td><td class="td-r">Même matière que le SAF HEFA : la route retire du carburant à l'aviation · concurrence alimentaire pour les huiles de culture</td><td class="td-g">Aucune concurrence alimentaire · l'aviation ne prélève que ~7–12 % du gisement</td></tr>
+          <tr><td>CO₂ cycle de vie</td><td>−50 à −90 % selon la matière première</td><td class="td-g">Neutre à négatif avec le biochar co-produit</td></tr>
+          <tr><td>NOx et particules</td><td class="td-r">Proches du gazole · SCR/AdBlue et FAP maintenus</td><td class="td-g">Catalyseur 3 voies · sans AdBlue · quasi sans suies</td></tr>
+          <tr><td>Co-produits</td><td>Aucun stockage de carbone</td><td class="td-g">Digestat (engrais) et biochar (carbone stocké dans les sols)</td></tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </section>
@@ -225,24 +245,26 @@ footer p{font-size:.75rem;color:var(--gris);max-width:600px;margin:.3rem auto}
 <!-- COMPARATIF & TCO -->
 <section style="background:var(--noir)">
   <div class="container">
-    <div class="stag reveal">Comparatif & TCO 15 ans / 800 000 km</div>
-    <h2 class="reveal">+36 000 à +73 000 € économisés vs diesel</h2>
+    <div class="stag reveal">Comparatif & TCO 15 ans / 300 000 km</div>
+    <h2 class="reveal">+24 000 à +62 000 € économisés vs diesel au GNL fossile — <em>parité avec le diesel + HVO en 100 % bio</em></h2>
     <div style="overflow-x:auto" class="reveal">
       <table class="tbl">
         <thead><tr><th>Poste</th><th>Diesel 44t</th><th>BEV 44t</th><th>PHEV 44t</th><th>Camion Résilience</th></tr></thead>
         <tbody>
           <tr><td>Prix achat</td><td>120 000 €</td><td>280 000 €</td><td>200 000 €</td><td class="td-a">~155–175 000 € <span class="warn">(cible volume)</span></td></tr>
-          <tr><td>Carburant / énergie 15 ans</td><td>156 000 €</td><td>72 000 €</td><td>110 000 €</td><td class="td-g">35–72 000 €</td></tr>
+          <tr><td>Carburant / énergie 15 ans</td><td>129 000 €</td><td>72 000 €</td><td>110 000 €</td><td class="td-g">39–57 000 € (GNL fossile) · 104–138 000 € (100 % bio)</td></tr>
           <tr><td>Maintenance 15 ans</td><td>63 000 €</td><td>42 000 €</td><td>82 000 €</td><td class="td-g">42 000 € <span style="color:var(--gris);font-size:.75rem">(Rex fixe, pas boîte, pas FAP)</span></td></tr>
           <tr><td>Remplacement batterie</td><td>0 €</td><td>80 000 €</td><td>35 000 €</td><td>28 000 € <span style="color:var(--gris);font-size:.75rem">(LFP 3 000 cycles)</span></td></tr>
           <tr><td>Valeur résiduelle</td><td>−8 000 €</td><td>−15 000 €</td><td>−10 000 €</td><td class="td-g">−22 000 € <span style="color:var(--gris);font-size:.75rem">(Rex faible usure)</span></td></tr>
         </tbody>
         <tfoot>
-          <tr><td>Coût total net</td><td>331 000 €</td><td>459 000 €</td><td>417 000 €</td><td class="td-g">258–295 000 €</td></tr>
-          <tr><td>Économie vs diesel</td><td>—</td><td class="td-r">−128 000 €</td><td class="td-r">−86 000 €</td><td class="td-g">+36 à +73 000 €</td></tr>
+          <tr><td>Coût total net</td><td>304 000 €</td><td>459 000 €</td><td>417 000 €</td><td class="td-g">242–280 000 € (fossile) · 307–361 000 € (bio)</td></tr>
+          <tr><td>Économie vs diesel</td><td>—</td><td class="td-r">−155 000 €</td><td class="td-r">−113 000 €</td><td class="td-g">+24 à +62 000 € (GNL fossile)</td></tr>
         </tfoot>
       </table>
     </div>
+
+    <div class="note reveal">Filière contre filière : un diesel roulant au HVO 100 % coûterait ~320–340 k€ sur 15 ans ; le Camion Résilience en 100 % bio-GNL est à parité (~307–361 k€), avec les avantages environnementaux ci-dessus en plus. La taxe carbone sur les carburants routiers (ETS2, prévue à partir de 2027–2028), qui pénalise le gazole fossile, n'est pas comptée.</div>
 
     <div class="stag reveal" style="margin-top:3rem">Tableau de synthèse décideurs</div>
     <div style="overflow-x:auto" class="reveal">
@@ -273,7 +295,7 @@ footer p{font-size:.75rem;color:var(--gris);max-width:600px;margin:.3rem auto}
       <table class="tbl">
         <thead><tr><th>Niv.</th><th>Nom exact</th><th>Périmètre</th><th>EREV V2.0</th><th>GNL classique</th></tr></thead>
         <tbody>
-          <tr><td>1</td><td>Rendement thermique Rex (cycle seul)</td><td>Moteur Rex — banc</td><td class="td-g">44–48 %</td><td>42–46 %</td></tr>
+          <tr><td>1</td><td>Rendement thermique Rex (cycle seul)</td><td>Moteur Rex — banc</td><td class="td-g">44–48 % (objectif 48–52 % avec turbocompound)</td><td>42–46 %</td></tr>
           <tr><td>2</td><td>Rendement gaz→roues traction continue</td><td>Chaîne complète — traction seule</td><td class="td-r">32–36 %</td><td class="td-g">36–40 %</td></tr>
           <tr><td>3</td><td>Efficience cycle opérationnel Rex + arrêts</td><td>Multi-sources sans ZEV réseau · scén. B</td><td class="td-g">~45 %</td><td>~38 %</td></tr>
           <tr class="hl"><td>3b</td><td>Efficience cycle complet (ZEV + Rex + ZEV)</td><td>Énergies externes uniquement · Convention A</td><td class="td-g">~54–57 %</td><td>~38 %</td></tr>
@@ -368,7 +390,7 @@ footer p{font-size:.75rem;color:var(--gris);max-width:600px;margin:.3rem auto}
 
     <!-- Lien PDF -->
     <div class="reveal" style="margin-top:2.5rem;display:flex;gap:1rem;flex-wrap:wrap">
-      <a href="Comparatif_Rendements_EREV_vs_GNL_V2_3.pdf" class="btn btn-outline" target="_blank" download>↓ Comparatif complet V2.3 (PDF)</a>
+      <a href="Comparatif_Rendements_EREV_vs_GNL_V2.3.pdf" class="btn btn-outline" target="_blank" download>↓ Comparatif complet V2.3 (PDF)</a>
     </div>
   </div>
 </section>
@@ -413,8 +435,8 @@ footer p{font-size:.75rem;color:var(--gris);max-width:600px;margin:.3rem auto}
 
 <footer>
   <div class="footer-logo">Programme Résilience V11</div>
-  <p>Camion Résilience 44t · ÉREV Rex unique Bio-LCH4 · Mai 2026 · Diffusion libre</p>
-  <p style="margin-top:.4rem">Sources : Volvo FH LNG · Scania Super LNG · Cummins ISX15N · Directive RED III · ADEME · IRU 2024</p>
+  <p>Camion Résilience 44t · ÉREV Rex unique Bio-LCH4 · Octobre 2026 · Diffusion libre</p>
+  <p style="margin-top:.4rem">Sources : Volvo FH LNG · Scania LNG · Cummins X15N · Iveco Cursor 13 NG · Euro 7 (UE) 2024/1257 · Directive RED III · ADEME · IRU 2024</p>
 </footer>
 <script>
 const obs=new IntersectionObserver((e)=>{e.forEach((el,i)=>{if(el.isIntersecting){setTimeout(()=>el.target.classList.add('visible'),i*65);obs.unobserve(el.target)}})},{threshold:0.07});
