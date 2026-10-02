@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Trajectoires CO₂ 1873–2200 — Programme Résilience V5</title>
+<title>Trajectoires CO₂ 1873–2200 — Programme Résilience V5.1</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <style>
   :root {
@@ -260,12 +260,12 @@ document.addEventListener("DOMContentLoaded", function () {
 </nav>
 
 <header>
-  <div class="header-label">Programme Résilience — Analyse climatique V5</div>
+  <div class="header-label">Programme Résilience — Analyse climatique V5.1</div>
   <h1>CO<sub>2</sub> atmosphérique et températures<br>Trajectoires 1873–2200</h1>
   <p class="header-sub">Données observées depuis 1873 · Cinq scénarios futurs · Distinction physique rigoureuse entre séquestration permanente et absorption cyclique</p>
   <div class="header-badges">
-    <span class="header-badge">Niveau actuel 2026 : 424 ppm — +1,3°C vs préindustriel</span>
-    <span class="header-badge badge-new">V5 — modèle physique corrigé · août 2026</span>
+    <span class="header-badge">Niveau 2026 : ~429 ppm (Mauna Loa) — +1,3°C observé vs préindustriel</span>
+    <span class="header-badge badge-new">V5.1 — modèle paramétrique · octobre 2026</span>
   </div>
 </header>
 
@@ -290,6 +290,10 @@ document.addEventListener("DOMContentLoaded", function () {
       et non des constantes physiques. Leur objectif est d'examiner la sensibilité des résultats
       aux différentes hypothèses et de dégager des <strong>tendances robustes</strong> —
       non de reproduire avec précision les modèles climatiques complets utilisés par le GIEC.
+      Les puits naturels (océans, végétation) y réagissent à l'excès de CO₂ dans l'atmosphère,
+      selon la réponse impulsionnelle de référence du cycle du carbone (Joos et al., 2013),
+      calée sur les concentrations mesurées depuis 1850 ; les rétroactions (permafrost, incendies)
+      et la séquestration active s'y ajoutent.
     </p>
     <p style="font-size:.9rem;line-height:1.65;margin-bottom:.6rem;">
       Les chiffres clés — <em>0,4 Gt/an</em> de séquestration naturelle durable,
@@ -302,7 +306,7 @@ document.addEventListener("DOMContentLoaded", function () {
     <p style="font-size:.9rem;line-height:1.65;font-style:italic;border-top:1px solid rgba(46,117,182,.2);padding-top:.6rem;margin-top:.4rem;">
       <strong>Les orientations des scénarios restent cohérentes avec la réalité même si les paramètres
       varient significativement :</strong> quelle que soit la précision exacte des chiffres,
-      la trajectoire statu quo monte, l'électrification seule ne fait pas redescendre le CO₂,
+      la trajectoire statu quo monte, l'électrification seule ne fait pas redescendre le CO₂ sous le niveau actuel,
       et seule une séquestration durable active à grande échelle peut inverser la tendance.
       Ce sont des conclusions de structure — pas de valeur numérique précise.
     </p>
@@ -310,7 +314,7 @@ document.addEventListener("DOMContentLoaded", function () {
       <strong>Ce modèle ne conteste pas les scénarios climatiques du GIEC.</strong>
       Il examine une question complémentaire, que le GIEC lui-même pose dans l'AR6 :
       le retrait durable du CO₂ (CDR) y est reconnu comme inévitable pour compenser les émissions
-      résiduelles difficiles à éliminer. Le modèle V5 s'inscrit dans la même logique paramétrique
+      résiduelles difficiles à éliminer. Le modèle V5.1 s'inscrit dans la même logique paramétrique
       que les trajectoires SSP, avec deux extensions : horizon prolongé jusqu'en 2200 et
       scénario de séquestration active à grande échelle que les SSP ne modélisent pas encore
       explicitement. L'AR6 reconnaît que certaines rétroactions — incendies, permafrost —
@@ -334,8 +338,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   <div class="message-central">
     <h2>Deux problèmes simultanés — deux phases d'action</h2>
-    <p><strong>Phase 1 — Arrêter la montée du CO₂ :</strong> réduire les émissions fossiles jusqu'à ce que les retraits compensent au minimum les émissions et les rétroactions. Électrifier ce qui peut l'être. Mais même à émissions quasi-nulles, le CO₂ ne redescend pas seul — il se stabilise à un niveau élevé.</p>
-    <p><strong>Phase 2 — Faire redescendre la concentration :</strong> cela exige, en plus de la réduction des émissions, des retraits nets et <em>durables</em> du CO₂ atmosphérique. Un puits naturel net (forêts, océans) ne doit pas être confondu avec une élimination permanente : ce carbone est réémis à 97–98 % en quelques décennies. Seule une séquestration active et durable — biochar millénaire, minéralisation géologique — agit sur le stock.</p>
+    <p><strong>Phase 1 — Arrêter la montée du CO₂ :</strong> réduire les émissions fossiles jusqu'à ce que les retraits compensent au minimum les émissions et les rétroactions. Électrifier ce qui peut l'être. Mais même à émissions fossiles nulles, le CO₂ ne redescend que très lentement — de l'ordre de 390 ppm en 2200 dans le modèle, loin des 350 ppm.</p>
+    <p><strong>Phase 2 — Faire redescendre la concentration :</strong> cela exige, en plus de la réduction des émissions, des retraits nets et <em>durables</em> du CO₂ atmosphérique. Un puits naturel net (forêts, océans) ne doit pas être confondu avec une élimination permanente : il stocke le carbone de façon réversible (biomasse, sols superficiels, océan de surface et intermédiaire), il s'affaiblit quand les émissions baissent et peut restituer une partie de ce carbone lorsque la concentration diminue ou que le climat se réchauffe. Seule une séquestration active et durable — biochar millénaire, minéralisation géologique — agit sur le stock.</p>
     <p><strong>Le temps n'est pas neutre :</strong> réchauffement → dégradation des puits naturels → émissions supplémentaires (incendies, permafrost) → concentration plus élevée → réchauffement amplifié. Chaque année de retard rend la Phase 2 plus difficile et plus coûteuse. C'est précisément là que l'architecture Résilience — zéro fossile résiduel + 7 Gt/an de séquestration durable — constitue une rupture de nature, pas simplement une amélioration de degré.</p>
   </div>
 
@@ -346,7 +350,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     <p>La courbe noire retrace les données mesurées : analyses de carottes glaciaires pour la période 1873–1957, puis mesures continues de l'observatoire de Mauna Loa (Keeling curve) depuis 1958, et station Île Amsterdam (réseau ICOS-France) pour la France. Le <em>genou</em> visible vers 1980–1990 marque l'accélération nette — la concentration augmentait de 0,8 ppm/an dans les années 1960, elle dépasse 3,5 ppm/an en 2024.</p>
 
-    <p>Les cinq scénarios futurs partent tous du même point (424 ppm en 2026) et divergent selon leur bilan de flux permanents nets — émissions fossiles moins séquestration millénaire réelle.</p>
+    <p>Les cinq scénarios futurs partent tous du même point (~429 ppm en 2026) et divergent selon leurs émissions, les rétroactions et la séquestration active. Les puits naturels absorbent une partie de l'excès de CO₂, mais restituent une partie du carbone lorsque la concentration baisse : retirer une tonne de l'atmosphère ne la fait pas baisser d'autant à long terme.</p>
 
     <div class="chart-tabs">
       <button class="chart-tab active" onclick="switchView('co2',this)">CO₂ atmosphérique (ppm)</button>
@@ -362,7 +366,7 @@ document.addEventListener("DOMContentLoaded", function () {
         <canvas id="mainChart" role="img" aria-label="Trajectoires CO2 atmosphérique 1873-2200, cinq scénarios"></canvas>
       </div>
       <div class="chart-legend">
-        <div class="legend-item"><div class="legend-line" style="background:#2C3E50;"></div>Observé 1873–2026</div>
+        <div class="legend-item"><div class="legend-line" style="background:#2C3E50;"></div>Observé 1873–2025 (CO₂ mesuré ; température modélisée)</div>
         <div class="legend-item"><div class="legend-line" style="background:#C0392B;"></div>Statu quo fossile</div>
         <div class="legend-item"><div class="legend-line legend-dashed" style="border-color:#7B1F1F;"></div>Statu quo + incendies aggravés</div>
         <div class="legend-item"><div class="legend-line legend-dashed" style="border-color:#D68910;"></div>−50% fossiles 2050</div>
@@ -375,21 +379,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
     <div class="cards" id="cardsValues"></div>
 
-    <!-- Tableau comparatif V4 vs V5 -->
-    <div class="section-label" style="margin-top:1.5rem;">Comparaison avec la version précédente</div>
-    <h2 style="font-size:1.1rem;">Écarts V4 → V5 en 2100 (correction modèle)</h2>
+    <!-- Tableau effet du scénario incendies aggravés -->
+    <div class="section-label" style="margin-top:1.5rem;">Sensibilité aux puits naturels</div>
+    <h2 style="font-size:1.1rem;">Effet du scénario « incendies aggravés » (+2,2 Gt/an d'ici 2080)</h2>
     <table class="diff-table" id="diffTable">
       <tr>
         <th>Scénario</th>
-        <th>V4 — 2100 (ppm)</th>
-        <th>V5 corrigé — 2100 (ppm)</th>
-        <th>Écart</th>
-        <th>+ Incendies aggravés</th>
-        <th>Écart supplémentaire</th>
+        <th>Base — 2100 (ppm)</th>
+        <th>+ Incendies — 2100 (ppm)</th>
+        <th>Base — 2200 (ppm)</th>
+        <th>+ Incendies — 2200 (ppm)</th>
+        <th>Écart 2200</th>
       </tr>
     </table>
     <p style="font-size:.8rem;color:#888;font-family:Arial,sans-serif;margin-top:.5rem;">
-      La V4 sous-estimait l'accumulation pour tous les scénarios non-Résilience car elle confondait les flux cycliques bruts et la séquestration permanente nette. La V5 corrige ce biais physique fondamental.
+      Le scénario « incendies aggravés » ajoute dans l'atmosphère un flux progressif atteignant 2,2 Gt CO₂/an en 2080 (≈20 % du puits terrestre), maintenu ensuite. L'écart est du même ordre pour toutes les trajectoires (~+20 ppm en 2200) ; l'électrification maximale repart alors à la hausse, la trajectoire Résilience continue de baisser.
     </p>
 
     <div class="encadre encadre-warning" style="margin-top:1.5rem;">
@@ -398,9 +402,9 @@ document.addEventListener("DOMContentLoaded", function () {
         <li><strong>Canada 2023 :</strong> 18,4 Mha brûlés — plus grande saison d'incendies jamais enregistrée, émission estimée ~1,8 Gt CO₂ en quelques mois, transformant temporairement les forêts canadiennes en source nette.</li>
         <li><strong>Sibérie (récurrent) :</strong> tourbières et forêts boréales brûlent chaque été, libérant du CO₂ et du CH₄ millénaire accumulé — feedback non linéaire avec le réchauffement.</li>
         <li><strong>Méditerranée (Grèce, Portugal, Algérie) :</strong> saisons d'incendies de plus en plus longues, zones brûlées 3× supérieures à la moyenne 1980–2000.</li>
-        <li><strong>Amazonie :</strong> combinaison sécheresses record + déforestation — basculement partiel de puits à source nette documenté sur 2015–2020 (Science, Gatti et al., 2021).</li>
-        <li><strong>France — été 2026 :</strong> <span style="color:#e74c3c;font-weight:600">110 000 ha brûlés au 10 août 2026</span> — record absolu EFFIS depuis le début des observations satellitaires, dépassant le précédent record annuel avant même la fin de la saison estivale. Émissions estimées 5,5 à 16,5 Mt CO₂ selon le type de végétation (garrigue : 50–80 t/ha, pinèdes : 80–130 t/ha). Bilan définitif attendu fin septembre 2026 (EFFIS/Prométhée). Ce résultat confirme l'hypothèse du scénario « incendies aggravés » : la France méditerranéenne bascule structurellement vers des saisons d'incendies d'une ampleur auparavant exceptionnelle. Source : EFFIS — European Forest Fire Information System, août 2026.</li>
-        <li>Si cette tendance se poursuit, la capacité d'absorption terrestre (~11 Gt/an) pourrait perdre <strong>−50% à l'horizon 2080</strong> au lieu des −30% du scénario de base, soit ~5,5 Gt/an supplémentaires qui s'accumulent dans l'atmosphère. Le modèle V5 intègre ce mécanisme correctement : les forêts passent de puits à <strong>sources nettes</strong>, ce qui ajoute +80 à +150 ppm sur le statu quo et l'électrification à l'horizon 2200. Résilience reste quasi-insensible : ses 7 Gt/an de séquestration active compensent largement ce déficit.</li>
+        <li><strong>Amazonie :</strong> combinaison sécheresses record + déforestation — basculement partiel de puits à source nette documenté sur 2015–2020 (Nature, Gatti et al., 2021).</li>
+        <li><strong>France — été 2026 :</strong> <span style="color:#e74c3c;font-weight:600">près de 98 000 ha brûlés fin septembre 2026</span> — record depuis 1976, très au-delà de 2022 (année record de la période satellitaire). Émissions de l'ordre de 5 à 13 Mt CO₂ selon le type de végétation (garrigue : 50–80 t/ha, pinèdes : 80–130 t/ha). Ce résultat confirme l'hypothèse du scénario « incendies aggravés » : la France méditerranéenne bascule structurellement vers des saisons d'incendies d'une ampleur auparavant exceptionnelle. Sources : ministère de l'Intérieur (septembre 2026) · EFFIS — European Forest Fire Information System.</li>
+        <li>Si cette tendance se poursuit, le puits terrestre (~11 Gt/an) pourrait perdre <strong>~20 % de sa capacité d'ici 2080</strong>, soit ~2,2 Gt/an supplémentaires qui s'accumulent dans l'atmosphère. Le modèle V5.1 teste ce mécanisme : il ajoute <strong>~+20 ppm en 2200</strong> à chaque trajectoire (une partie du surplus est réabsorbée par l'océan). Statu quo et −50 % montent plus vite, l'électrification maximale ne se maintient plus sur son plateau et remonte (~440 ppm en 2200). Résilience continue de baisser (~343 ppm au lieu de ~323 ppm en 2200) : ses 7 Gt/an de séquestration active ne dépendent pas des puits naturels.</li>
       </ul>
     </div>
   </div>
@@ -410,15 +414,15 @@ document.addEventListener("DOMContentLoaded", function () {
     <div class="section-label">Fondements physiques</div>
     <h2>Puits naturels : absorption cyclique ≠ élimination permanente</h2>
 
-    <p>Les écosystèmes terrestres et océaniques sont traversés par des flux naturels de carbone très supérieurs à leur puits net vis-à-vis des émissions anthropiques — c'est le terme de « puits de carbone » au sens du Global Carbon Budget, terme scientifiquement établi. Mais une grande partie du carbone échangé annuellement relève de cycles rapides réémis en quelques décennies. <strong>Un puits naturel net ne doit pas être confondu avec une élimination permanente du CO₂ atmosphérique.</strong> Ce carbone entre dans un cycle rapide dont le temps de résidence est de quelques décennies : il est réémis à 97–98 % par respiration, décomposition et perturbations. En outre, dans un climat qui se réchauffe, la capacité de ces puits peut se dégrader, voire devenir localement une source nette.</p>
+    <p>Les écosystèmes terrestres et océaniques sont traversés par des flux naturels de carbone très supérieurs à leur puits net vis-à-vis des émissions anthropiques — c'est le terme de « puits de carbone » au sens du Global Carbon Budget, terme scientifiquement établi. Mais une grande partie du carbone échangé annuellement relève de cycles rapides réémis en quelques décennies. <strong>Un puits naturel net ne doit pas être confondu avec une élimination permanente du CO₂ atmosphérique.</strong> L'essentiel du carbone fixé chaque année par la végétation est réémis en quelques années à quelques décennies par respiration, décomposition et perturbations ; seule une faible fraction rejoint des réservoirs millénaires. En outre, dans un climat qui se réchauffe, la capacité de ces puits peut se dégrader, voire devenir localement une source nette.</p>
 
     <div class="encadre encadre-warning">
       <h3>⚠ Ce qu'un puits naturel net ne fait pas — distinction essentielle</h3>
       <ul>
         <li><strong>Forêts :</strong> le carbone fixé par photosynthèse retourne à l'atmosphère par respiration des arbres (~50%), décomposition de la litière (~40%), incendies et perturbations. Seul ~2–3% s'accumule dans l'humus profond ou les sédiments sur des millénaires.</li>
-        <li><strong>Océans :</strong> le CO₂ dissous dans les eaux de surface est réémis quand les eaux froides remontent ou que la température augmente. La solubilité du CO₂ diminue avec la température — les océans chauds absorbent moins. Seule la fraction qui atteint les sédiments profonds (~0,1 Gt/an) est permanente.</li>
+        <li><strong>Océans :</strong> le CO₂ dissous dans les eaux de surface est réémis quand les eaux froides remontent ou que la température augmente. La solubilité du CO₂ diminue avec la température — les océans chauds absorbent moins. Le CO₂ transféré vers l'océan profond y reste plusieurs siècles, mais une partie dégaze à nouveau lorsque la concentration atmosphérique baisse ; seule la fraction qui atteint les sédiments (~0,1 Gt/an) est stockée à l'échelle millénaire.</li>
         <li><strong>Dégradation avec le réchauffement :</strong> au-delà de +2°C local, les puits terrestres peuvent basculer en sources nettes — déjà observé sur des zones amazoniennes et boréales.</li>
-        <li><strong>Hypothèse de séquestration durable de scénario :</strong> ~0,4 Gt/an (ordre de grandeur — fourchette littérature 0,2–0,6 Gt/an) est la fraction qui s'accumule réellement dans l'humus profond et les carbonates marins profonds sur des échelles millénaires. Ce paramètre de scénario est 45× inférieur à l'absorption brute cyclique affichée dans les bilans courants.</li>
+        <li><strong>Hypothèse de séquestration durable de scénario :</strong> ~0,4 Gt/an (ordre de grandeur — fourchette littérature 0,2–0,6 Gt/an) est la fraction qui s'accumule réellement dans l'humus profond et les carbonates marins profonds sur des échelles millénaires. Ce paramètre de scénario est environ 50 fois inférieur au puits net affiché dans les bilans courants (~20 Gt CO₂/an, terres + océans), dont l'essentiel est stocké de façon réversible.</li>
       </ul>
     </div>
 
@@ -435,7 +439,7 @@ document.addEventListener("DOMContentLoaded", function () {
     <div class="encadre encadre-orange">
       <h3>⚡ Électrification maximale — les émissions résiduelles difficiles à supprimer</h3>
       <p>Même en électrifiant tout ce qui est électrifiable (logements, industrie basse T°, véhicules légers), le bilan V11 identifie ~390 TWh fossiles structurellement irremplaçables par l'électricité seule : aviation long-courrier (kérosène), poids lourds longue distance, industrie haute température (&gt;500°C), agriculture hors réseau. À l'échelle mondiale (en proportion), ce résidu représente ~2,3 Gt CO₂/an dans le scénario retenu pour l'électrification maximale.</p>
-      <p style="margin-top:.75rem"><strong>Avec des puits naturels dégradés (−30% à −50% d'ici 2080), cette accumulation résiduelle suffit à maintenir le CO₂ en hausse lente et permanente.</strong> Dans les scénarios étudiés, avec un résidu fossile de 2,3 Gt/an et des puits naturels dégradés, les mécanismes naturels ne suffisent pas à faire basculer le bilan atmosphérique en négatif sans extraction active supplémentaire.</p>
+      <p style="margin-top:.75rem"><strong>Ce résidu, ajouté aux rétroactions, maintient le CO₂ sur un plateau élevé : ~420 ppm, soit le niveau actuel, jusqu'en 2200.</strong> Si les puits naturels se dégradent, il remonte lentement (~440 ppm en 2200). Dans les scénarios étudiés, les mécanismes naturels ne suffisent pas à ramener le CO₂ sous le niveau actuel sans extraction active supplémentaire.</p>
     </div>
   </div>
 
@@ -443,7 +447,7 @@ document.addEventListener("DOMContentLoaded", function () {
   <div class="section">
     <div class="section-label">Référence physique</div>
     <h2>Correspondances CO₂ / température</h2>
-    <p>Relation logarithmique : chaque doublement de CO₂ par rapport au niveau préindustriel (280 ppm) entraîne +3°C (ECS médiane GIEC AR6, fourchette 2,5–4,0°C). La température affichée dans les graphiques intègre un décalage de 30 ans dû à l'inertie thermique des océans.</p>
+    <p>Relation logarithmique : chaque doublement de CO₂ par rapport au niveau préindustriel (280 ppm) entraîne +3°C (ECS médiane GIEC AR6, fourchette 2,5–4,0°C). La température affichée dans les graphiques intègre un décalage de 20 ans dû à l'inertie thermique des océans, calibré pour reproduire l'anomalie observée (~+1,3 °C en 2025).</p>
 
     <table class="temp-table">
       <thead>
@@ -451,28 +455,33 @@ document.addEventListener("DOMContentLoaded", function () {
       </thead>
       <tbody>
         <tr><td>280 ppm</td><td>0°C</td><td>Niveau préindustriel — objectif Résilience à long terme</td></tr>
-        <tr><td>300 ppm</td><td>+0,27°C</td><td>Objectif intermédiaire Résilience ~2180</td></tr>
-        <tr><td>350 ppm</td><td>+0,65°C</td><td>Objectif climatique sûr (Hansen/NASA)</td></tr>
-        <tr class="actuel"><td>424 ppm</td><td>+1,80°C éq. / +1,3°C observé</td><td>⬅ Niveau actuel 2026 · T° équilibre non encore atteinte (inertie thermique)</td></tr>
+        <tr><td>323 ppm</td><td>+0,62°C</td><td>Résilience V11 en 2200 (objectif de déploiement)</td></tr>
+        <tr><td>350 ppm</td><td>+0,97°C</td><td>Objectif climatique sûr (Hansen/NASA) — franchi par Résilience vers 2145</td></tr>
+        <tr><td>376 ppm</td><td>+1,28°C</td><td>Résilience V11 en 2100</td></tr>
+        <tr><td>389 ppm</td><td>+1,42°C</td><td>Zéro fossile dès 2045, sans séquestration active, en 2200</td></tr>
+        <tr><td>421 ppm</td><td>+1,76°C</td><td>Électrification max en 2200 (plateau)</td></tr>
+        <tr class="actuel"><td>429 ppm</td><td>+1,85°C éq. / +1,3°C observé</td><td>⬅ Niveau 2026 · T° équilibre non encore atteinte (inertie thermique)</td></tr>
+        <tr><td>441 ppm</td><td>+1,97°C</td><td>Électrification max + incendies aggravés en 2200</td></tr>
         <tr><td>444 ppm</td><td>+2,00°C</td><td>Seuil Accord de Paris — +2°C à l'équilibre (ECS=3°C)</td></tr>
-        <tr><td>450 ppm</td><td>+2,05°C</td><td>Légèrement au-delà du seuil +2°C</td></tr>
-        <tr><td>560 ppm</td><td>+3,0°C</td><td>Doublement préindustriel — seuil critique</td></tr>
-        <tr><td>660 ppm</td><td>+3,5°C</td><td>Électrification max + incendies aggravés, 2200</td></tr>
-        <tr><td>740 ppm</td><td>+3,7°C</td><td>Statu quo fossile en 2200</td></tr>
-        <tr><td>840 ppm</td><td>+4,0°C</td><td>Statu quo + incendies aggravés en 2200</td></tr>
+        <tr><td>537 ppm</td><td>+2,82°C</td><td>−50 % fossiles en 2200 (toujours en hausse)</td></tr>
+        <tr><td>560 ppm</td><td>+3,00°C</td><td>Doublement préindustriel — seuil critique</td></tr>
+        <tr><td>604 ppm</td><td>+3,33°C</td><td>Statu quo fossile en 2100</td></tr>
+        <tr><td>788 ppm</td><td>+4,48°C</td><td>Statu quo fossile en 2200</td></tr>
+        <tr><td>808 ppm</td><td>+4,59°C</td><td>Statu quo + incendies aggravés en 2200</td></tr>
       </tbody>
     </table>
-    <p style="font-size:.8rem;color:#888;font-family:Arial,sans-serif;margin-top:.5rem;">Note : les températures d'équilibre ci-dessus sont des correspondances physiques directes (ECS = 3,0°C/doublement, médiane AR6). Les températures ressenties dans les graphiques intègrent un décalage de 30 ans — elles sont inférieures à l'équilibre pour toute année en cours de transition.</p>
+    <p style="font-size:.8rem;color:#888;font-family:Arial,sans-serif;margin-top:.5rem;">Note : les températures d'équilibre ci-dessus sont des correspondances physiques directes (ECS = 3,0°C/doublement, médiane AR6). Les températures modélisées dans les graphiques intègrent un décalage de 20 ans — elles sont inférieures à l'équilibre pour toute année en cours de transition.</p>
 
     <div class="encadre encadre-info">
-      <h3>⚠ Incertitudes de la modélisation V5</h3>
+      <h3>⚠ Incertitudes de la modélisation V5.1</h3>
       <ul>
-        <li><strong>ECS :</strong> fourchette AR6 = 2,5–4,0°C/doublement. Ce document utilise 3,0°C (médiane). Un ECS à 4°C aggraverait toutes les trajectoires d'environ +33%.</li>
+        <li><strong>ECS :</strong> fourchette AR6 = 2,5–4,0°C/doublement. Ce document utilise 3,0°C (médiane). Un ECS à 4°C augmenterait toutes les températures d'environ +33 %.</li>
         <li><strong>Permafrost :</strong> estimations AR6 = 50 à 200 Gt CO₂eq d'ici 2100. Ce document utilise ~100 Gt (médiane), modulé par la T° locale dans chaque scénario.</li>
-        <li><strong>Séquestration naturelle permanente :</strong> estimée à ~0,4 Gt/an (fourchette littérature : 0,2–0,6 Gt/an). Ce paramètre clé est peu discuté dans les modèles grand public qui confondent flux cyclique et séquestration permanente.</li>
-        <li><strong>Potentiel séquestration Résilience :</strong> 7 Gt/an est l'estimation centrale (biochar 5 + géologique 2). À 400 Mha au lieu de 800 Mha, le potentiel biochar est ~2,5 Gt/an — la descente du CO₂ est ralentie mais reste qualitativement différente de l'électrification.</li>
-        <li><strong>Incendies aggravés :</strong> paramètre de dégradation −50% à 2080 est un scénario pessimiste plausible, non une médiane. La médiane de base utilise −30%.</li>
-        <li>Ces trajectoires sont des projections paramétriques cohérentes avec AR6, non des modèles de circulation générale (GCM).</li>
+        <li><strong>Puits naturels :</strong> réponse impulsionnelle moyenne multi-modèles (Joos et al., 2013), calée sur les concentrations mesurées. Elle ne représente pas explicitement l'affaiblissement des puits par le réchauffement (−20 % déjà mesuré par le Global Carbon Budget 2025) : c'est l'objet des rétroactions et du scénario « incendies aggravés ».</li>
+        <li><strong>Séquestration naturelle permanente :</strong> estimée à ~0,4 Gt/an (fourchette littérature : 0,2–0,6 Gt/an). Paramètre de scénario, non une estimation indépendante.</li>
+        <li><strong>Potentiel séquestration Résilience :</strong> 7 Gt/an est l'estimation centrale (biochar 5 + géologique 2). À 400 Mha au lieu de 800 Mha (séquestration ~3,5 Gt/an), la descente du CO₂ est ralentie (~356 ppm en 2200 au lieu de ~323) mais reste qualitativement différente de l'électrification.</li>
+        <li><strong>Incendies aggravés :</strong> +2,2 Gt/an d'ici 2080 (≈20 % du puits terrestre) est un stress-test pessimiste plausible, non une médiane. Le scénario de base ne suppose pas de dégradation supplémentaire.</li>
+        <li>Ces trajectoires sont des projections paramétriques construites dans la logique des SSP de l'AR6, non des modèles de circulation générale (GCM).</li>
       </ul>
     </div>
   </div>
@@ -485,38 +494,38 @@ document.addEventListener("DOMContentLoaded", function () {
     <p>Il met en évidence trois résultats qui se tiennent quelle que soit la précision des paramètres :</p>
     <div class="encadre encadre-warning">
       <h3>1 · Réduire les émissions ne suffit pas à faire baisser le CO₂</h3>
-      <p>Même avec −50 % des fossiles, même avec une électrification maximale laissant ~2,3 Gt/an d'émissions résiduelles dans le scénario retenu, le bilan net reste positif : le CO₂ continue de monter, plus lentement. <strong>Électrifier ≠ supprimer les émissions ≠ faire baisser le CO₂ atmosphérique.</strong> C'est une distinction de nature, pas de degré.</p>
+      <p>Avec −50 % des fossiles, le CO₂ continue de monter (~540 ppm en 2200). Avec une électrification maximale laissant ~2,3 Gt/an d'émissions résiduelles, il plafonne vers 440 ppm puis reste sur un plateau proche du niveau actuel (~420 ppm) pendant deux siècles. <strong>Électrifier ≠ supprimer les émissions ≠ faire baisser le CO₂ atmosphérique.</strong> C'est une distinction de nature, pas de degré.</p>
     </div>
     <div class="encadre encadre-warning" style="margin-top:.8rem;">
       <h3>2 · Même zéro émission fossile ne suffit pas nécessairement à faire redescendre rapidement le CO₂</h3>
-      <p>Si le système terrestre continue à subir incendies, sécheresses, dégel du permafrost et dégradation des forêts, le bilan net atmosphère–biosphère–océan peut rester positif ou quasi-nul même après l'arrêt total des fossiles. Le CO₂ se stabilise à un niveau élevé mais ne redescend pas.</p>
+      <p>Si le système terrestre continue à subir incendies, sécheresses, dégel du permafrost et dégradation des forêts, le bilan net atmosphère–biosphère–océan peut rester positif ou quasi-nul même après l'arrêt total des fossiles. Même sans dégradation des puits, l'arrêt total des fossiles en 2045 ne ramène le CO₂ qu'à ~405 ppm en 2100 et ~390 ppm en 2200 : la baisse est lente, car l'océan restitue une partie du carbone absorbé à mesure que la concentration diminue.</p>
     </div>
     <div class="encadre encadre-success" style="margin-top:.8rem;">
       <h3>3 · La séquestration durable active est la seule voie pour inverser la trajectoire</h3>
-      <p>L'objectif de 7 Gt/an de séquestration Résilience ne doit pas être lu comme une prédiction mais comme <strong>la capacité qu'il faudrait construire</strong> pour non seulement arrêter la croissance du CO₂ mais inverser la trajectoire à l'échelle du siècle. Le modèle matérialise cette montée progressive de 2030 à 2065. Plus le déploiement tarde, plus la Phase 2 — faire redescendre — devient difficile, car entre-temps le système climatique dégrade les puits naturels et réduit les marges de manœuvre.</p>
+      <p>L'objectif de 7 Gt/an de séquestration Résilience ne doit pas être lu comme une prédiction mais comme <strong>la capacité qu'il faudrait construire</strong> pour non seulement arrêter la croissance du CO₂ mais inverser la trajectoire à l'échelle du siècle. Le modèle matérialise cette montée progressive de 2030 à 2065 : le CO₂ passe sous 350 ppm vers 2145 et atteint ~320 ppm en 2200 ; le retour à 280 ppm demande de prolonger l'effort au-delà de 2200. Plus le déploiement tarde, plus la Phase 2 — faire redescendre — devient difficile, car entre-temps le système climatique dégrade les puits naturels et réduit les marges de manœuvre.</p>
     </div>
   </div>
 
   <!-- TÉLÉCHARGEMENTS -->
   <div class="download-box">
     <div>
-      <h3>Note de synthèse complète — CO₂ atmosphérique et températures V5</h3>
-      <p>Modèle physique corrigé · Séquestration permanente vs cyclique · Scénario incendies aggravés · Données 1873–2200<br>Programme Résilience V11 · Août 2026 — <span style="color:#e9c46a">Mis à jour septembre 2026 : France été 2026 — 110 000 ha (record EFFIS)</span></p>
+      <h3>Note de synthèse complète — CO₂ atmosphérique et températures V5.1</h3>
+      <p>Modèle paramétrique · Séquestration permanente vs cyclique · Scénario incendies aggravés · Données 1873–2200<br>Programme Résilience V11 · Octobre 2026</p>
     </div>
-    <a href="Note_CO2_Temperatures_V5.pdf" class="btn-download" target="_blank" rel="noopener">Télécharger le PDF V5</a>
+    <a href="Note_CO2_Temperatures_V5.1.pdf" class="btn-download" target="_blank" rel="noopener">Télécharger le PDF V5.1</a>
   </div>
 
   <div class="download-box" style="background:#7B4DB7;">
     <div>
       <h3>Note complémentaire — Pourquoi la nature seule ne suffira pas</h3>
-      <p>Puits naturels réversibles, limites physiques, incendies et séquestration active — fondements de la V5</p>
+      <p>Puits naturels réversibles, limites physiques, incendies et séquestration active — fondements du modèle</p>
     </div>
     <a href="Note_Limites_Puits_Carbone_Naturels_V2.pdf" class="btn-download" style="color:#7B4DB7;" target="_blank" rel="noopener">Télécharger le PDF</a>
   </div>
 
   <div class="sources">
     <div class="container">
-      <strong>Sources :</strong> GIEC AR6 WG1 (2021) · SSP3-7.0, SSP1-2.6, SSP5-8.5 · ECS = 3,0°C/doublement CO₂ (médiane AR6, fourchette 2,5–4,0°C) · Inertie thermique océanique : décalage 30 ans · 1 ppm = 7,8 Gt CO₂ · Séquestration naturelle permanente nette : ~0,4 Gt/an (LSCE, Ciais et al.) · Programme Résilience V11 (mai 2026) : séquestration biochar 5 Gt/an + géologique 2 Gt/an · Carbone Résilience Mobilité Mondiale (V11) · Données historiques : NOAA/Mauna Loa · ICOS-France (Île Amsterdam) · Météo-France (Paris-Montsouris 1873–2026) · Carottes glaciaires EPICA/Vostok · Incendies : Global Fire Emissions Database (GFED5) · Canada 2023 : Natural Resources Canada · France 2026 : EFFIS (European Forest Fire Information System), 110 000 ha au 10/08/2026 — bilan définitif fin septembre 2026 · Amazonie puits→source : Gatti et al., Science 2021 · CarbFix (Islande) : minéralisation basaltique · Règlement CRCF UE (acte délégué biochar, 3 févr. 2026) · Note OPECST n°48 (Piednoir, oct. 2025)
+      <strong>Sources :</strong> GIEC AR6 WG1 (2021) · SSP3-7.0, SSP1-2.6, SSP5-8.5 · ECS = 3,0°C/doublement CO₂ (médiane AR6, fourchette 2,5–4,0°C) · Inertie thermique océanique : décalage 20 ans (calibré sur l'anomalie observée) · Réponse impulsionnelle du cycle du carbone : Joos et al., Atmos. Chem. Phys. 2013 · 1 ppm = 7,8 Gt CO₂ · Séquestration naturelle permanente nette : ~0,4 Gt/an (paramètre de scénario, fourchette 0,2–0,6 Gt/an) · Programme Résilience V11 (mai 2026) : séquestration biochar 5 Gt/an + géologique 2 Gt/an · Carbone Résilience Mobilité Mondiale (V11) · Données historiques : NOAA/Mauna Loa · ICOS-France (Île Amsterdam) · Météo-France (Paris-Montsouris 1873–2026) · Carottes glaciaires EPICA/Vostok · Incendies : Global Fire Emissions Database (GFED5) · Canada 2023 : Natural Resources Canada · France 2026 : ministère de l'Intérieur, ~98 000 ha fin septembre 2026 · EFFIS · Global Carbon Budget 2025 (Friedlingstein et al.) · Met Office, prévision CO₂ Mauna Loa 2026 (429,4 ppm) · Amazonie puits→source : Gatti et al., Nature 2021 · CarbFix (Islande) : minéralisation basaltique · Règlement CRCF UE (acte délégué biochar, 3 févr. 2026) · Note OPECST n°48 (Piednoir, oct. 2025)
     </div>
   </div>
 
@@ -527,182 +536,74 @@ document.addEventListener("DOMContentLoaded", function () {
   <div style="margin-bottom:1.5rem;">
     <a href="index.html" style="display:inline-block;padding:.65rem 1.8rem;background:#1F4E79;color:white;border-radius:5px;text-decoration:none;font-family:Arial,sans-serif;font-size:.85rem;font-weight:bold;border:1px solid rgba(255,255,255,.2);">← Retour au Programme Résilience V11</a>
   </div>
-  <a href="index.html">Programme Résilience V11</a> · <a href="https://resilience2045.fr">resilience2045.fr</a> · Version V5 — Août 2026
+  <a href="index.html">Programme Résilience V11</a> · <a href="https://resilience2045.fr">resilience2045.fr</a> · Version V5.1 — Octobre 2026
 </footer>
 
 <script>
 // ═══════════════════════════════════════════════════════════════════
-// CONSTANTES PHYSIQUES
-// ═══════════════════════════════════════════════════════════════════
-const ECS    = 3.0;   // °C par doublement CO2 (médiane AR6)
-const DELAY  = 30;    // ans — inertie thermique océanique
-const GT_PPM = 1/7.8; // 1 Gt CO2 = 1/7.8 ppm
-
-function co2ToTemp(ppm) {
-  if (ppm <= 280) return 0;
-  return ECS * Math.log2(Math.max(ppm, 281) / 280);
-}
-
-// ═══════════════════════════════════════════════════════════════════
-// DONNÉES HISTORIQUES 1873–2025
+// DONNÉES HISTORIQUES AFFICHÉES 1873–2025
 // Sources : carottes glaciaires + Mauna Loa + ICOS-France
 // ═══════════════════════════════════════════════════════════════════
 const HY = [1873,1880,1890,1900,1910,1920,1930,1940,1950,1958,1965,1970,1975,1980,1985,1990,1995,2000,2005,2010,2015,2020,2025];
-const HC = [290, 291, 293, 296, 300, 304, 308, 311, 315, 315, 320, 325, 332, 339, 346, 354, 362, 370, 380, 390, 401, 413, 424];
+const HC = [290, 291, 293, 296, 300, 304, 308, 311, 312, 315, 320, 325, 331, 339, 346, 354, 361, 369, 380, 390, 401, 414, 427];
 const NH = HY.length;
 
-// Années futures
-const FY = [];
-for (let y = 2026; y <= 2200; y++) FY.push(y);
+// ═══ MODÈLE V5.1 — puits naturels dépendant de la concentration (réponse impulsionnelle Joos et al. 2013) ═══
+const ECS = 3.0, DELAY = 20, GT_PPM = 1/7.8, C0 = 285;
+function co2ToTemp(ppm){ return ppm<=280?0:ECS*Math.log2(ppm/280); }
+const IRF_A=[0.2173,0.2240,0.2824,0.2763], IRF_T=[0,394.4,36.54,4.304];
+function irf(t){ return IRF_A[0]+IRF_A[1]*Math.exp(-t/IRF_T[1])+IRF_A[2]*Math.exp(-t/IRF_T[2])+IRF_A[3]*Math.exp(-t/IRF_T[3]); }
+const IRFT=[]; for(let t=0;t<=400;t++) IRFT.push(irf(t));
+// Données observées
+const MHY=[1850,1873,1880,1890,1900,1910,1920,1930,1940,1950,1958,1965,1970,1975,1980,1985,1990,1995,2000,2005,2010,2015,2020,2025];
+const MHC=[285,290,291,293,296,300,304,308,311,312,315,320,325,331,339,346,354,361,369,380,390,401,414,427];
+function interpH(y){ if(y<=MHY[0]) return MHC[0]; for(let i=0;i<MHY.length-1;i++){ if(y>=MHY[i]&&y<=MHY[i+1]){const t=(y-MHY[i])/(MHY[i+1]-MHY[i]);return MHC[i]*(1-t)+MHC[i+1]*t;} } return MHC[MHC.length-1]; }
+const YH=[]; for(let y=1850;y<=2025;y++) YH.push(y);
+// Émissions nettes implicites (déconvolution des concentrations observées)
+const EH=[];
+YH.forEach((y,i)=>{ let s=0; for(let j=0;j<i;j++) s+=EH[j]*IRFT[i-j]; EH.push(((interpH(y)-C0)/GT_PPM - s)/IRFT[0]); });
+// lissage 5 ans
+const EHs=EH.map((_,i)=>{let a=0,n=0;for(let k=Math.max(0,i-2);k<=Math.min(EH.length-1,i+2);k++){a+=EH[k];n++}return a/n;});
+const E2025=EHs.slice(-5).reduce((a,b)=>a+b)/5;
+// Scénarios (émissions anthropiques, Gt CO2/an, normalisées au niveau 2025)
+function emis(y,sc){
+  let b;
+  if(sc==='stq'){ b = y<=2035? 37+0.28*(y-2026) : y<=2070? 39.5 : y<=2120? 39.5-0.07*(y-2070) : 36.0; }
+  else if(sc==='50f'){ b = y<=2050? 37-18.5*(y-2026)/24 : y<=2080? 18.5-6.5*(y-2050)/30 : 12.0; }
+  else if(sc==='elc'){ b = y<=2045? Math.max(37-34.7*(y-2026)/19,2.3) : 2.3; }
+  else { b = y<=2045? Math.max(37-37*(y-2026)/19,0) : 0; }
+  return b*E2025/37;
+}
+function seqResilience(y){ if(y<2030)return 0; return (y<=2060?5*(y-2030)/30:5)+(y<2035?0:(y<=2065?2*(y-2035)/30:2)); }
+function fireExtraFlux(y,g){ if(!g||y<=2022)return 0; return g*Math.min((y-2022)/58,1); }
+function seqNatPerm(ppm){ return Math.max(0,0.40-Math.max(0,(co2ToTemp(ppm)-1.0)*0.08)); }
+function pfeedback(y,ppm,scale){ if(y<2040)return 0; const w=co2ToTemp(ppm); return Math.min((y-2040)*0.055*scale*Math.min(w/1.5,1.5),3.5*scale); }
+const FY=[]; for(let y=2026;y<=2200;y++) FY.push(y);
+const PFS={stq:1.0,'50f':0.65,elc:0.40,res:0.12};
+function run(sc,fireGt,opts={}){
+  const E=EHs.slice(); const out=[]; let c=427;
+  FY.forEach(y=>{
+    let e=emis(y,sc)+pfeedback(y,c,PFS[sc])+fireExtraFlux(y,fireGt)-seqNatPerm(c);
+    if(sc==='res'||opts.seq) e-=seqResilience(y)*(opts.seqScale ?? 1);
+    E.push(e); const n=E.length-1; let s=0; for(let j=0;j<=n;j++) s+=E[j]*IRFT[Math.min(n-j,400)];
+    c=Math.max(C0+s*GT_PPM,270); out.push(+c.toFixed(1));
+  });
+  return out;
+}
+function simulate(g){ return {STQ:run('stq',g),F50:run('50f',g),ELC:run('elc',g),RES:run('res',g)}; }
+const BASE=simulate(0), FIRE=simulate(2.2);
+// Température modélisée : équilibre du CO2 de l'année y−20 (calibré sur ~+1,3 °C observé en 2025)
+function concAt(series,y){ return y<=2025? interpH(y) : series[y-2026]; }
+function tempSeries(series,years){ return years.map(y=>+co2ToTemp(concAt(series,y-DELAY)).toFixed(2)); }
+
 const NF = FY.length;
 const ALL = [...HY, ...FY];
 
 // ═══════════════════════════════════════════════════════════════════
-// FONCTIONS PHYSIQUES — ARCHITECTURE CORRECTE
+// TEMPÉRATURES (décalage 20 ans, calibré sur l'anomalie observée 2025)
 // ═══════════════════════════════════════════════════════════════════
-//
-// Le modèle travaille sur des ÉMISSIONS NETTES :
-//   Δppm/an = (émissions_nettes + permafrost + fire_extra − séq_permanente − séq_résilience) / 7.8
-//
-// Émissions nettes = émissions brutes × 0.50
-// (les flux cycliques bruts compensent ~50% des émissions brutes en termes nets — déjà intégré)
-//
-// Séquestration naturelle permanente : ~0,4 Gt/an seulement (humus + carbonates marins profonds)
-//
-// Incendies aggravés (fireGt) : flux ADDITIONNEL entrant car les forêts absorbent moins
-//   BASE (fireGt=0) : puits fonctionnent normalement
-//   FIRE (fireGt=2.2) : 2,2 Gt/an de perte additionnelle (20% des ~11 Gt terrestres)
-//   progressive de 2022 à 2080
-
-function seqNatPerm(y, ppm) {
-  const seqPerm = 0.40; // Gt/an — séquestration millénaire permanente réelle
-  const warm = co2ToTemp(ppm);
-  return Math.max(0, seqPerm - Math.max(0, (warm - 1.0) * 0.08));
-}
-
-function fireExtraFlux(y, fireGt) {
-  // Flux additionnel entrant dû à la perte d'absorption forestière (au-delà du baseline)
-  if (fireGt === 0 || y <= 2022) return 0;
-  return fireGt * Math.min((y - 2022) / 58, 1.0); // rampe 2022→2080
-}
-
-function pfeedback(y, ppm, scale) {
-  if (y < 2040) return 0;
-  const warm = co2ToTemp(ppm);
-  return Math.min((y - 2040) * 0.055 * scale * Math.min(warm / 1.5, 1.5), 3.5 * scale);
-}
-
-function seqResilience(y) {
-  // Séquestration permanente active : biochar 5 Gt/an + géologique 2 Gt/an = 7 Gt/an
-  if (y < 2030) return 0;
-  const biochar = y <= 2060 ? 5.0 * (y - 2030) / 30 : 5.0;
-  const geo     = y < 2035 ? 0 : (y <= 2065 ? 2.0 * (y - 2035) / 30 : 2.0);
-  return biochar + geo;
-}
-
-function emNettes(y, sc) {
-  // Émissions NETTES = brutes × 50% (l'absorption cyclique est déjà soustraite)
-  let brut = 0;
-  if (sc === 'stq') {
-    if (y <= 2035) brut = 37 + 0.28 * (y - 2026);
-    else if (y <= 2070) brut = 39.5;
-    else if (y <= 2120) brut = 39.5 - 0.07 * (y - 2070);
-    else brut = 36.0;
-  } else if (sc === '50f') {
-    if (y <= 2050) brut = 37 - 18.5 * (y - 2026) / 24;
-    else if (y <= 2080) brut = 18.5 - 6.5 * (y - 2050) / 30;
-    else brut = 12.0;
-  } else if (sc === 'elc') {
-    brut = y <= 2045 ? Math.max(37 - 34.7 * (y - 2026) / 19, 2.3) : 2.3;
-  } else if (sc === 'res') {
-    brut = y <= 2045 ? Math.max(37 - 37 * (y - 2026) / 19, 0) : 0;
-  }
-  return brut * 0.50; // 50% absorbé par les puits cycliques (déjà dans le baseline)
-}
-
-// ═══════════════════════════════════════════════════════════════════
-// SIMULATION — BASE (fireGt=0) et AGGRAVÉ (fireGt=2.2 Gt/an)
-// ═══════════════════════════════════════════════════════════════════
-function simulate(fireGt) {
-  const STQ = [], F50 = [], ELC = [], RES = [];
-  let ps = 424, pf = 424, pe = 424, pr = 424;
-
-  for (let i = 0; i < NF; i++) {
-    const y  = FY[i];
-    const fx = fireExtraFlux(y, fireGt); // Gt/an supplémentaire dans l'atm. (0 en BASE)
-
-    // Statu quo
-    { const en = emNettes(y,'stq');
-      const pf_ = pfeedback(y, ps, 1.0);
-      const sq  = seqNatPerm(y, ps);
-      ps += (en + pf_ - sq + fx) * GT_PPM;
-      STQ.push(parseFloat(ps.toFixed(1))); }
-
-    // −50% fossiles
-    { const en = emNettes(y,'50f');
-      const pf_ = pfeedback(y, pf, 0.65);
-      const sq  = seqNatPerm(y, pf);
-      pf += (en + pf_ - sq + fx) * GT_PPM;
-      F50.push(parseFloat(pf.toFixed(1))); }
-
-    // Électrification max
-    { const en = emNettes(y,'elc');
-      const pf_ = pfeedback(y, pe, 0.40);
-      const sq  = seqNatPerm(y, pe);
-      pe += (en + pf_ - sq + fx) * GT_PPM;
-      ELC.push(parseFloat(pe.toFixed(1))); }
-
-    // Résilience (7 Gt/an active compense le flux incendies même en FIRE)
-    { const en  = emNettes(y,'res');
-      const pf_ = pfeedback(y, pr, 0.12);
-      const sq  = seqNatPerm(y, pr);
-      const sqA = seqResilience(y);
-      pr += (en + pf_ - sq + fx - sqA) * GT_PPM;
-      pr = Math.max(pr, 270);
-      RES.push(parseFloat(pr.toFixed(1))); }
-  }
-  return { STQ, F50, ELC, RES };
-}
-
-const BASE = simulate(0);     // BASE : puits fonctionnent normalement
-const FIRE = simulate(2.2);   // FIRE : −20% absorption terrestre additionnelle → +2,2 Gt/an dans atm.
-
-// ═══════════════════════════════════════════════════════════════════
-// MODÈLE V4 ORIGINAL (reproduction exacte pour comparaison)
-// ═══════════════════════════════════════════════════════════════════
-const anc1 = {2026:420,2030:425,2040:445,2050:468,2060:492,2070:515,2080:535,2090:558,2100:578,2120:618,2150:668,2200:720};
-const anc2 = {2026:420,2030:428,2040:447,2050:455,2060:452,2070:447,2080:440,2090:432,2100:422,2120:410,2150:395,2200:378};
-function interpAnc(a, y) {
-  const ks = Object.keys(a).map(Number).sort((x,z) => x-z);
-  for (let i = 0; i < ks.length-1; i++) {
-    const y0=ks[i], y1=ks[i+1];
-    if (y >= y0 && y <= y1) { const t=(y-y0)/(y1-y0); return a[y0]*(1-t)+a[y1]*t; }
-  }
-  return y < ks[0] ? a[ks[0]] : a[ks[ks.length-1]];
-}
-function resSinkV4(y) { if(y<2030)return 0; if(y<=2060)return 5.94*(y-2030)/30; return 5.94; }
-function pfV4(y,sc=1) { if(y<2040)return 0; return Math.min((1+Math.min(y-2040,60)*0.04)*sc,3.5*sc); }
-
-const V4_STQ=[], V4_ELEC=[], V4_RES=[];
-let v4_pe=420, v4_pr=420, v4_p2prev=420;
-for (let i = 0; i < NF; i++) {
-  const y = FY[i];
-  V4_STQ.push(interpAnc(anc1, y));
-  const p2 = interpAnc(anc2, y); V4_ELEC.push(p2);
-  const dp2 = p2 - v4_p2prev;
-  const dp4i = dp2 + pfV4(y,0.05)*GT_PPM + (y>=2070?1.5*GT_PPM:0) - resSinkV4(y)*GT_PPM;
-  v4_pr = Math.max(v4_pr + dp4i, 278); V4_RES.push(v4_pr);
-  v4_p2prev = p2;
-}
-
-// ═══════════════════════════════════════════════════════════════════
-// TEMPÉRATURES (décalage 30 ans)
-// ═══════════════════════════════════════════════════════════════════
-function delayedTemp(series) {
-  const buf = [...Array(DELAY).fill(series[0]), ...series];
-  return series.map((_, i) => parseFloat(co2ToTemp(buf[i]).toFixed(2)));
-}
-const TH = HC.map(v => parseFloat(co2ToTemp(v).toFixed(2)));
+function delayedTemp(series) { return tempSeries(series, FY); }
+const TH = HY.map(y => +co2ToTemp(interpH(y - DELAY)).toFixed(2));
 
 // ═══════════════════════════════════════════════════════════════════
 // DATASETS
@@ -723,7 +624,7 @@ const DS_CO2 = [
 ];
 
 const DS_TEMP = [
-  {label:'Observé',                             data:pH(TH),                      borderColor:'#2C3E50', borderWidth:2.5, pointRadius:2,   tension:0.35, fill:false, borderDash:[]},
+  {label:'Modélisé (CO₂ observé, décalage 20 ans)', data:pH(TH),                      borderColor:'#2C3E50', borderWidth:2.5, pointRadius:2,   tension:0.35, fill:false, borderDash:[]},
   {label:'Statu quo',                           data:pFt(delayedTemp(BASE.STQ)),  borderColor:'#C0392B', borderWidth:2.2, pointRadius:0,   tension:0.35, fill:false, borderDash:[]},
   {label:'Statu quo + incendies',               data:pFt(delayedTemp(FIRE.STQ)),  borderColor:'#7B1F1F', borderWidth:1.5, pointRadius:0,   tension:0.35, fill:false, borderDash:[3,3]},
   {label:'−50% fossiles',                       data:pFt(delayedTemp(BASE.F50)),  borderColor:'#D68910', borderWidth:1.8, pointRadius:0,   tension:0.35, fill:false, borderDash:[7,4]},
@@ -739,7 +640,7 @@ const DS_TEMP = [
 const THRESH_CO2 = [
   {v:280, c:'#1baf7a', l:'280 ppm — préindustriel'},
   {v:350, c:'#2a78d6', l:'350 ppm — objectif sûr'},
-  {v:424, c:'#888',    l:'424 ppm — 2026'},
+  {v:429, c:'#888',    l:'429 ppm — 2026'},
   {v:450, c:'#D68910', l:'450 ppm → +2°C éq.'},
   {v:560, c:'#C0392B', l:'560 ppm → +3°C éq.'},
 ];
@@ -815,7 +716,7 @@ function buildChart(datasets, isTemp) {
       scales: {
         x: { ticks: { color:tc, font:{size:10}, maxTicksLimit:16, autoSkip:true,
                        callback:(v,i) => ALL[i] }, grid: { color:gc } },
-        y: { min: isTemp?0:270, max: isTemp?5.0:810,
+        y: { min: isTemp?0:270, max: isTemp?5.0:840,
              ticks: { color:tc, font:{size:10},
                       callback: v => isTemp ? (v>=0?'+':'')+v.toFixed(1)+'°C' : v+' ppm' },
              grid: { color:gc } }
@@ -838,10 +739,10 @@ const VIEW_FILTERS = {
 };
 const VIEW_TITLES = {
   co2:  'CO₂ atmosphérique (ppm) — données observées 1873–2026 · cinq scénarios 2026–2200',
-  temp: 'Anomalie de température modélisée (°C) — décalage 30 ans (inertie thermique océanique)',
+  temp: 'Anomalie de température modélisée (°C) — décalage 20 ans (inertie thermique océanique)',
   elec: 'Focus électrification — pourquoi le CO₂ continue de monter même à émissions quasi-nulles',
   res:  'Focus Résilience V11 — séquestration permanente biochar + géologique',
-  fire: 'Scénario incendies aggravés — impact de la dégradation des puits terrestres (−50% à 2080)',
+  fire: 'Scénario incendies aggravés — impact de la dégradation des puits terrestres (+2,2 Gt/an d\'ici 2080)',
 };
 
 function switchView(view, btn) {
@@ -881,28 +782,26 @@ function buildCards() {
 }
 
 // ═══════════════════════════════════════════════════════════════════
-// TABLEAU COMPARATIF V4 vs V5
+// TABLEAU EFFET INCENDIES AGGRAVÉS
 // ═══════════════════════════════════════════════════════════════════
 function buildDiffTable() {
-  const i100 = ALL.indexOf(2100);
+  const i100 = ALL.indexOf(2100) - NH, i200 = ALL.indexOf(2200) - NH;
   const rows = [
-    { l:'Statu quo',       v4:Math.round(V4_STQ[i100-NH]),  b:Math.round(BASE.STQ[i100-NH]), f:Math.round(FIRE.STQ[i100-NH]) },
-    { l:'Électrif. max',   v4:Math.round(V4_ELEC[i100-NH]), b:Math.round(BASE.ELC[i100-NH]), f:Math.round(FIRE.ELC[i100-NH]) },
-    { l:'Résilience V11',  v4:Math.round(V4_RES[i100-NH]),  b:Math.round(BASE.RES[i100-NH]), f:Math.round(FIRE.RES[i100-NH]) },
+    { l:'Statu quo',       b:BASE.STQ, f:FIRE.STQ },
+    { l:'−50 % fossiles',  b:BASE.F50, f:FIRE.F50 },
+    { l:'Électrif. max',   b:BASE.ELC, f:FIRE.ELC },
+    { l:'Résilience V11',  b:BASE.RES, f:FIRE.RES },
   ];
   let html = '';
   rows.forEach(r => {
-    const d1 = r.b - r.v4;
-    const d2 = r.f - r.b;
-    const c1 = d1 > 0 ? 'pos' : d1 < 0 ? 'neg' : '';
-    const c2 = d2 > 0 ? 'pos' : d2 < 0 ? 'neg' : '';
+    const d = Math.round(r.f[i200]) - Math.round(r.b[i200]);
     html += `<tr>
       <td><strong>${r.l}</strong></td>
-      <td>${r.v4} ppm</td>
-      <td>${r.b} ppm</td>
-      <td class="${c1}">${d1>0?'+':''}${d1} ppm</td>
-      <td>${r.f} ppm</td>
-      <td class="${c2}">${d2>0?'+':''}${d2} ppm</td>
+      <td>${Math.round(r.b[i100])} ppm</td>
+      <td>${Math.round(r.f[i100])} ppm</td>
+      <td>${Math.round(r.b[i200])} ppm</td>
+      <td>${Math.round(r.f[i200])} ppm</td>
+      <td class="${d>0?'pos':''}">${d>0?'+':''}${d} ppm</td>
     </tr>`;
   });
   document.getElementById('diffTable').innerHTML += html;
