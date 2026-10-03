@@ -238,6 +238,7 @@
     .chart-canvas { height: 300px; }
     .download-box { flex-direction: column; }
   }
+  @media (max-width:600px){ .diff-table{display:block;overflow-x:auto;} }
 </style>
 
 <script>
@@ -435,6 +436,72 @@ document.addEventListener("DOMContentLoaded", function () {
         <li><strong>Immunité aux incendies :</strong> la séquestration active Résilience ne dépend pas des puits naturels — elle les <em>remplace et dépasse</em>. Même si les forêts basculent en sources nettes, le bilan Résilience reste fortement négatif.</li>
       </ul>
     </div>
+
+    <figure style="margin:1.5rem 0;background:#fff;border:1px solid var(--border);border-radius:10px;padding:1rem;">
+      <p style="margin:0 0 .8rem">Le schéma ci-dessous résume cette distinction : les puits naturels font des allers-retours avec l'atmosphère, la séquestration Résilience est un aller simple. C'est pourquoi les ~20 Gt CO₂/an de puits naturels et les ~6 Gt CO₂/an de séquestration durable ne se placent pas dans le même panier — et pourquoi la conclusion de structure des scénarios reste valable même si les valeurs précises en ppm comportent des incertitudes.</p>
+      <svg style="display:block;max-width:100%;height:auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 700" width="100%" role="img" aria-label="Où va le carbone retiré de l’atmosphère : puits naturels réversibles contre séquestration durable Résilience">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="context-stroke"/></marker><marker id="ahb" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F4E79"/></marker><marker id="ahg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0F6E56"/></marker><marker id="ahr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#B03A2E"/></marker></defs>
+<rect width="960" height="700" fill="#FFFFFF"/>
+<text x="480.0" y="30" font-family="Arial,Helvetica,sans-serif" font-size="20" font-weight="bold" fill="#1F2D3D" text-anchor="middle">Où va le carbone retiré de l'atmosphère ?</text>
+<rect x="20" y="46" width="920" height="60" rx="10" fill="#E9EEF3" stroke="#8A9BAE" stroke-width="1.5"/>
+<text x="480.0" y="72" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="bold" fill="#2E3E50" text-anchor="middle">ATMOSPHÈRE</text>
+<text x="480.0" y="94" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="normal" fill="#4A5A6A" text-anchor="middle">~429 ppm en 2026 · environ 910 milliards de tonnes de carbone (≈ 3 300 Gt CO₂)</text>
+<rect x="20" y="150" width="450" height="56" rx="10" fill="#1F4E79" stroke="#1F4E79" stroke-width="1.5"/>
+<text x="245.0" y="173" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="bold" fill="#FFFFFF" text-anchor="middle">PUITS NATURELS — stockage réversible</text>
+<text x="245.0" y="194" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="normal" fill="#DCE8F4" text-anchor="middle">~20 Gt CO₂/an aujourd'hui (terres + océans)</text>
+<rect x="490" y="150" width="450" height="56" rx="10" fill="#0F6E56" stroke="#0F6E56" stroke-width="1.5"/>
+<text x="715.0" y="173" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="bold" fill="#FFFFFF" text-anchor="middle">SÉQUESTRATION RÉSILIENCE — stockage durable</text>
+<text x="715.0" y="194" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="normal" fill="#DDF2E8" text-anchor="middle">~5,94 Gt CO₂/an (objectif 2060–2065)</text>
+<line x1="245.0" y1="110" x2="245.0" y2="146" stroke="#1F4E79" stroke-width="3" marker-start="url(#ahb)" marker-end="url(#ahb)"/>
+<text x="259.0" y="133" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="bold" fill="#1F4E79" text-anchor="start" font-style="italic">aller-retour</text>
+<line x1="715.0" y1="110" x2="715.0" y2="146" stroke="#0F6E56" stroke-width="3" marker-end="url(#ahg)"/>
+<text x="729.0" y="133" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="bold" fill="#0F6E56" text-anchor="start" font-style="italic">aller simple</text>
+<rect x="20" y="222" width="450" height="96" rx="10" fill="#EEF4FA" stroke="#9DB6CF" stroke-width="1.5"/>
+<line x1="50" y1="244" x2="50" y2="296" stroke="#1F4E79" stroke-width="2.5" marker-start="url(#ahb)" marker-end="url(#ahb)"/>
+<text x="76" y="248" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="bold" fill="#1F4E79" text-anchor="start">Végétation et sols</text>
+<text x="76" y="271" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="normal" fill="#333" text-anchor="start">Absorbe par photosynthèse, restitue par respiration,</text>
+<text x="76" y="290" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="normal" fill="#333" text-anchor="start">décomposition et incendies.</text>
+<text x="76" y="309" font-family="Arial,Helvetica,sans-serif" font-size="12.5" font-weight="bold" fill="#1F4E79" text-anchor="start" font-style="italic">Retour à l'atmosphère : années à décennies</text>
+<rect x="20" y="330" width="450" height="96" rx="10" fill="#EEF4FA" stroke="#9DB6CF" stroke-width="1.5"/>
+<line x1="50" y1="352" x2="50" y2="404" stroke="#1F4E79" stroke-width="2.5" marker-start="url(#ahb)" marker-end="url(#ahb)"/>
+<text x="76" y="356" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="bold" fill="#1F4E79" text-anchor="start">Océan</text>
+<text x="76" y="379" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="normal" fill="#333" text-anchor="start">Dissout le CO₂, mais dégaze quand le CO₂ de l'air baisse</text>
+<text x="76" y="398" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="normal" fill="#333" text-anchor="start">et absorbe moins quand l'eau se réchauffe.</text>
+<text x="76" y="417" font-family="Arial,Helvetica,sans-serif" font-size="12.5" font-weight="bold" fill="#1F4E79" text-anchor="start" font-style="italic">Séjour : décennies à siècles</text>
+<rect x="20" y="438" width="450" height="96" rx="10" fill="#FBEDEB" stroke="#D9A39C" stroke-width="1.5"/>
+<line x1="50" y1="514" x2="50" y2="460" stroke="#B03A2E" stroke-width="2.5" marker-end="url(#ahr)"/>
+<text x="76" y="464" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="bold" fill="#B03A2E" text-anchor="start">Permafrost arctique</text>
+<text x="76" y="487" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="normal" fill="#333" text-anchor="start">~1 500 milliards de tonnes de carbone gelé.</text>
+<text x="76" y="506" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="normal" fill="#333" text-anchor="start">Le dégel libère du CO₂ et du méthane (CH₄).</text>
+<text x="76" y="525" font-family="Arial,Helvetica,sans-serif" font-size="12.5" font-weight="bold" fill="#B03A2E" text-anchor="start" font-style="italic">Source possible, non pilotable</text>
+<rect x="490" y="222" width="450" height="96" rx="10" fill="#EAF6EF" stroke="#8CC5AC" stroke-width="1.5"/>
+<line x1="520" y1="244" x2="520" y2="296" stroke="#0F6E56" stroke-width="2.5" marker-end="url(#ahg)"/>
+<text x="546" y="248" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="bold" fill="#0F6E56" text-anchor="start">Biochar stable (H/C < 0,4)</text>
+<text x="546" y="271" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="normal" fill="#333" text-anchor="start">~4,7 Gt CO₂/an, carbone solide enfoui</text>
+<text x="546" y="290" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="normal" fill="#333" text-anchor="start">dans les sols agricoles.</text>
+<text x="546" y="309" font-family="Arial,Helvetica,sans-serif" font-size="12.5" font-weight="bold" fill="#0F6E56" text-anchor="start" font-style="italic">Siècles à millénaires · insensible aux incendies</text>
+<rect x="490" y="330" width="450" height="96" rx="10" fill="#EAF6EF" stroke="#8CC5AC" stroke-width="1.5"/>
+<line x1="520" y1="352" x2="520" y2="404" stroke="#0F6E56" stroke-width="2.5" marker-end="url(#ahg)"/>
+<text x="546" y="356" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="bold" fill="#0F6E56" text-anchor="start">Stockage géologique et carbonatation</text>
+<text x="546" y="379" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="normal" fill="#333" text-anchor="start">~0,7 Gt CO₂/an de CO₂ biogénique concentré,</text>
+<text x="546" y="398" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="normal" fill="#333" text-anchor="start">injecté ou minéralisé dans la roche.</text>
+<text x="546" y="417" font-family="Arial,Helvetica,sans-serif" font-size="12.5" font-weight="bold" fill="#0F6E56" text-anchor="start" font-style="italic">Plus de 10 000 ans</text>
+<rect x="490" y="438" width="450" height="96" rx="10" fill="#F6FAF7" stroke="#8CC5AC" stroke-width="1.5" stroke-dasharray="6 4"/>
+<line x1="520" y1="460" x2="520" y2="512" stroke="#0F6E56" stroke-width="2.5" marker-end="url(#ahg)"/>
+<text x="546" y="464" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="bold" fill="#0F6E56" text-anchor="start">Sols enrichis</text>
+<text x="546" y="487" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="normal" fill="#333" text-anchor="start">~0,5 Gt CO₂/an (rhizomes, matière organique).</text>
+<text x="546" y="506" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="normal" fill="#333" text-anchor="start">Moins permanent : à entretenir dans la durée.</text>
+<text x="546" y="525" font-family="Arial,Helvetica,sans-serif" font-size="12.5" font-weight="bold" fill="#0F6E56" text-anchor="start" font-style="italic">Décennies à siècles</text>
+<text x="245.0" y="560" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="bold" fill="#1F4E79" text-anchor="middle">Fraction réellement durable : ~0,4 Gt CO₂/an</text>
+<text x="245.0" y="578" font-family="Arial,Helvetica,sans-serif" font-size="12.5" font-weight="normal" fill="#4A5A6A" text-anchor="middle">(humus profond, sédiments, carbonates marins)</text>
+<text x="715.0" y="560" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="bold" fill="#0F6E56" text-anchor="middle">Pas de retour vers l'atmosphère</text>
+<text x="715.0" y="578" font-family="Arial,Helvetica,sans-serif" font-size="12.5" font-weight="normal" fill="#4A5A6A" text-anchor="middle">à l'échelle du siècle (sauf sols, à entretenir)</text>
+<rect x="20" y="600" width="920" height="80" rx="10" fill="#FFF8E6" stroke="#D68910" stroke-width="1.5"/>
+<text x="480.0" y="630" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="bold" fill="#7A4A00" text-anchor="middle">~20 Gt/an réversibles ≠ ~6 Gt/an durables</text>
+<text x="480.0" y="656" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="normal" fill="#5A3A00" text-anchor="middle">Les puits naturels ralentissent la hausse ; seul un flux durable fait baisser nettement le stock de CO₂ et le garde hors de l'atmosphère.</text>
+</svg>
+      <figcaption style="font-family:Arial,sans-serif;font-size:.78rem;color:#777;text-align:center;margin-top:.6rem;font-style:italic">Où va le carbone retiré de l'atmosphère ? Puits naturels : stockage réversible (~20 Gt CO₂/an, dont ~0,4 Gt/an réellement durable). Séquestration Résilience : stockage durable (~5,94 Gt CO₂/an visés en 2060–2065).</figcaption>
+    </figure>
 
     <div class="encadre encadre-orange">
       <h3>⚡ Électrification maximale — les émissions résiduelles difficiles à supprimer</h3>
