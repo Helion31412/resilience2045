@@ -185,7 +185,7 @@ td.label { font-weight: 600; color: var(--navy); }
 /* ── COMPARAISON COLONNES ── */
 .compare-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0,1fr) minmax(0,1fr);
   gap: 20px;
   margin: 24px 0;
 }
@@ -221,8 +221,11 @@ td.label { font-weight: 600; color: var(--navy); }
   font-family: var(--mono);
   font-size: 15px;
   font-weight: bold;
-  white-space: nowrap;
+  white-space: normal;
+  text-align: right;
+  min-width: 0;
 }
+.stat-line > span:first-child { flex: 0 0 auto; max-width: 48%; }
 .stat-val.green { color: var(--green); }
 .stat-val.amber { color: var(--amber); }
 
@@ -374,6 +377,8 @@ ul.doc-list li::before {
   .compare-grid { grid-template-columns: 1fr; }
   .mix-source { grid-template-columns: 120px 1fr 60px; }
 }
+
+@media (max-width:600px){ .btn-pdf{ white-space:normal; } .cta-pdf{ padding:22px 18px; } .mix-source{ grid-template-columns: 92px minmax(0,1fr) 74px !important; } .mix-source > *{ min-width:0; } .mix-label, .mix-twh{ font-size:12px; white-space:normal; overflow-wrap:anywhere; } }
 </style>
 </head>
 <body>
@@ -618,7 +623,7 @@ ul.doc-list li::before {
       <div class="stat-line"><span>Puissance installée totale</span><span class="stat-val amber">261 GW</span></div>
       <div class="stat-line"><span>Déficit janv. (anticyclone)</span><span class="stat-val amber">−60 GW</span></div>
       <div class="stat-line"><span>Stockage saisonnier</span><span class="stat-val amber">Non résolu</span></div>
-      <div class="stat-line"><span>Aviation (~75 TWh besoin actuel)</span><span class="stat-val amber">~75 TWh kérosène fossile — aucune solution ✗</span></div>
+      <div class="stat-line"><span>Aviation (~75 TWh besoin actuel)</span><span class="stat-val amber">~75 TWh kérosène fossile ✗</span></div>
       <div class="stat-line"><span>CAPEX transition</span><span class="stat-val amber">794–1 096 Md€</span></div>
       <div class="stat-line"><span>FC nucléaire</span><span class="stat-val amber">75,9 %</span></div>
     </div>
@@ -632,8 +637,8 @@ ul.doc-list li::before {
       <div class="stat-line"><span>Éolien offshore</span><span class="stat-val">29,3 GW</span></div>
       <div class="stat-line"><span>Puissance installée totale</span><span class="stat-val green">224 GW</span></div>
       <div class="stat-line"><span>Déficit janv. (anticyclone)</span><span class="stat-val green">−10 GW</span></div>
-      <div class="stat-line"><span>Stockage saisonnier</span><span class="stat-val green">~130 TWh souterrains (Storengy, Teréga) ✓</span></div>
-      <div class="stat-line"><span>Aviation — décarbonée</span><span class="stat-val green">~10 TWh élec. (VTOL + court-courrier) + ~80 TWh bio-CH₄ (régionaux, moyen et long-courrier) ✓</span></div>
+      <div class="stat-line"><span>Stockage saisonnier</span><span class="stat-val green">~130 TWh souterrains ✓</span></div>
+      <div class="stat-line"><span>Aviation — décarbonée</span><span class="stat-val green">~10 TWh élec. + ~80 TWh bio-CH₄ ✓</span></div>
       <div class="stat-line"><span>CAPEX transition</span><span class="stat-val green">540–690 Md€</span></div>
       <div class="stat-line"><span>FC nucléaire</span><span class="stat-val green">85,9 %</span></div>
     </div>
