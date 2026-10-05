@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trajectoire 2025 → 2045 — Synthèse, argumentaire et chantiers réglementaires</title>
+<meta name="description" content="Programme Résilience 2045 : trajectoire de la France énergétique de 2025 à 2045 — synthèse décideurs, argumentaire en dix points et chantiers réglementaires.">
+<style>
+:root {
+  --navy: #0B1F3A;
+  --navy-2: #142843;
+  --blue: #1A5F9C;
+  --blue-light: #D6E8F7;
+  --green: #2A6B3C;
+  --green-light: #E3F2E8;
+  --amber: #B8750A;
+  --amber-light: #FBF0DC;
+  --red: #B03A2E;
+  --red-light: #FDECEA;
+  --ink: #1C2B3A;
+  --ink-soft: #5A6B78;
+  --line: #DDE3EA;
+  --off: #F5F7FA;
+  --white: #FFFFFF;
+  --max: 900px;
+  --mono: 'Courier New', monospace;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Georgia', serif;
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--ink);
+  background: var(--white);
+}
+
+/* ── HEADER ── */
+header {
+  background: var(--navy);
+  padding: 56px 24px 48px;
+  border-bottom: 4px solid var(--blue);
+}
+.header-inner { max-width: var(--max); margin: 0 auto; }
+.prog-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 20px;
+}
+header h1 {
+  font-size: clamp(20px, 3.5vw, 30px);
+  font-weight: normal;
+  line-height: 1.25;
+  color: var(--white);
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+.header-meta {
+  font-family: 'Arial', sans-serif;
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.6;
+}
+
+/* ── NAV ── */
+nav {
+  background: var(--navy-2);
+  position: sticky; top: 0; z-index: 50;
+  border-bottom: 2px solid rgba(255,255,255,0.08);
+}
+.nav-scroll {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+  gap: 0;
+}
+.nav-scroll::-webkit-scrollbar { display: none; }
+nav a {
+  font-family: 'Arial', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  padding: 14px 16px;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+nav a:hover { color: var(--white); border-color: rgba(255,255,255,0.4); }
+
+/* ── MAIN ── */
+main { max-width: var(--max); margin: 0 auto; padding: 56px 24px 80px; }
+
+/* ── SECTIONS ── */
+section { margin-bottom: 64px; }
+.section-tag {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 8px;
+}
+h2 {
+  font-size: clamp(18px, 2.5vw, 24px);
+  font-weight: normal;
+  color: var(--navy);
+  line-height: 1.25;
+  border-bottom: 2px solid var(--navy);
+  padding-bottom: 12px;
+  margin-bottom: 28px;
+}
+h3 {
+  font-size: 16px;
+  font-weight: bold;
+  font-family: 'Arial', sans-serif;
+  color: var(--blue);
+  margin: 32px 0 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 13px;
+}
+p { margin-bottom: 16px; text-align: justify; }
+
+/* ── ENCADRÉS ── */
+.box {
+  padding: 20px 24px;
+  margin: 24px 0;
+  border-left: 4px solid;
+}
+.box-navy { border-color: var(--navy); background: var(--off); }
+.box-green { border-color: var(--green); background: var(--green-light); }
+.box-amber { border-color: var(--amber); background: var(--amber-light); }
+.box-red { border-color: var(--red); background: var(--red-light); }
+.box-label {
+  font-family: 'Arial', sans-serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.box-navy .box-label { color: var(--navy); }
+.box-green .box-label { color: var(--green); }
+.box-amber .box-label { color: var(--amber); }
+.box-red .box-label { color: var(--red); }
+.box p { margin-bottom: 8px; font-size: 15px; }
+.box p:last-child { margin-bottom: 0; }
+
+/* ── TABLEAUX ── */
+.tw { overflow-x: auto; margin: 24px 0; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+thead tr { background: var(--navy); }
+thead th {
+  color: var(--white);
+  font-family: 'Arial', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 11px 13px;
+  text-align: left;
+  letter-spacing: 0.03em;
+}
+tbody tr:nth-child(odd) { background: var(--white); }
+tbody tr:nth-child(even) { background: var(--off); }
+tbody tr.total-row { background: var(--navy-2); }
+tbody tr.total-row td { color: var(--white); font-weight: bold; }
+tbody tr.subtotal { background: #DDE3EA; }
+tbody tr.subtotal td { font-weight: bold; }
+td { padding: 10px 13px; vertical-align: top; line-height: 1.5; }
+td.num { text-align: right; font-family: var(--mono); font-size: 13px; white-space: nowrap; }
+td.label { font-weight: 600; color: var(--navy); }
+.tag-vert { color: var(--green); font-weight: bold; }
+.tag-ambre { color: var(--amber); font-weight: bold; }
+.tag-rouge { color: var(--red); font-weight: bold; }
+
+/* ── COMPARAISON COLONNES ── */
+.compare-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin: 24px 0;
+}
+.compare-col {
+  border: 2px solid var(--line);
+  padding: 20px;
+}
+.compare-col.bev { border-color: var(--amber); }
+.compare-col.res { border-color: var(--green); }
+.compare-col-head {
+  font-family: 'Arial', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+  border-bottom: 2px solid var(--line);
+}
+.compare-col.bev .compare-col-head { color: var(--amber); }
+.compare-col.res .compare-col-head { color: var(--green); }
+.stat-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 7px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 14px;
+  gap: 8px;
+}
+.stat-line:last-child { border-bottom: none; }
+.stat-val {
+  font-family: var(--mono);
+  font-size: 15px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+.stat-val.green { color: var(--green); }
+.stat-val.amber { color: var(--amber); }
+
+/* ── PPE TIMELINE ── */
+.ppe-phases {
+  margin: 28px 0;
+  border-left: 3px solid var(--navy);
+  padding-left: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.ppe-phase { position: relative; }
+.ppe-phase::before {
+  content: '';
+  position: absolute;
+  left: -31px;
+  top: 6px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--navy);
+  border: 3px solid var(--white);
+  box-shadow: 0 0 0 2px var(--navy);
+}
+.ppe-period {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 4px;
+}
+.ppe-title {
+  font-family: 'Arial', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+.ppe-content { font-size: 14px; line-height: 1.65; }
+.ppe-invest {
+  display: inline-block;
+  background: var(--navy);
+  color: var(--white);
+  font-family: var(--mono);
+  font-size: 13px;
+  padding: 3px 10px;
+  margin-top: 6px;
+}
+
+/* ── MIX ÉLECTRIQUE ── */
+.mix-bar-wrap { margin: 28px 0; }
+.mix-source {
+  display: grid;
+  grid-template-columns: 160px 1fr 80px;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.mix-label {
+  font-family: 'Arial', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--navy);
+}
+.mix-bar-bg {
+  background: var(--line);
+  height: 28px;
+  border-radius: 2px;
+  overflow: hidden;
+}
+.mix-bar-fill {
+  height: 100%;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  padding-left: 8px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--white);
+  font-weight: bold;
+  min-width: 4px;
+  transition: width 0.8s ease;
+}
+.mix-twh {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--ink-soft);
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* ── DIVIDER ── */
+hr { border: none; border-top: 1px solid var(--line); margin: 48px 0; }
+
+/* ── LISTE ── */
+ul.doc-list { list-style: none; padding: 0; margin: 12px 0 20px; }
+ul.doc-list li {
+  padding: 6px 0 6px 20px;
+  position: relative;
+  border-bottom: 1px solid var(--off);
+  font-size: 15px;
+}
+ul.doc-list li::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: var(--blue);
+}
+
+/* ── CTA ── */
+.cta-pdf {
+  background: var(--green-light);
+  border: 2px solid var(--green);
+  padding: 28px 32px;
+  margin: 48px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.cta-pdf-text h3 { color: var(--green); margin: 0 0 6px; font-size: 17px; font-family: 'Arial', sans-serif; text-transform: none; letter-spacing: 0; }
+.cta-pdf-text p { color: var(--green); margin: 0; font-size: 14px; font-family: 'Arial', sans-serif; }
+.btn-pdf {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--green);
+  color: var(--white);
+  text-decoration: none;
+  padding: 12px 24px;
+  font-family: 'Arial', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.btn-pdf:hover { background: var(--navy); }
+
+/* ── SOURCES ── */
+.sources { border-top: 2px solid var(--line); padding-top: 24px; margin-top: 48px; }
+.sources h4 { font-size: 12px; font-family: 'Arial', sans-serif; color: var(--ink-soft); margin-bottom: 10px; letter-spacing: 0.05em; text-transform: uppercase; }
+.sources p { font-size: 12px; color: var(--ink-soft); font-family: 'Arial', sans-serif; line-height: 1.7; }
+.sources a { color: var(--blue); }
+
+/* ── RESPONSIVE ── */
+@media (max-width:620px) {
+  .compare-grid { grid-template-columns: 1fr; }
+  .mix-source { grid-template-columns: 120px 1fr 60px; }
+}
+
+/* ── TRAJECTOIRE ── */
+h3 { font-family:'Arial',sans-serif; font-size:16px; color:var(--navy); margin:36px 0 14px; letter-spacing:.01em; }
+.note { font-family:'Arial',sans-serif; font-size:12.5px; color:var(--ink-soft); line-height:1.6; margin:-12px 0 20px; }
+.reader-guide { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:0 0 56px; }
+.rg-card { display:flex; flex-direction:column; gap:6px; padding:18px 18px 16px; border:1px solid var(--line); border-top:4px solid var(--blue); background:var(--off); text-decoration:none; color:var(--ink); transition:border-color .2s, background .2s; }
+.rg-card:hover { border-top-color:var(--green); background:var(--white); }
+.rg-n { font-family:var(--mono); font-size:12px; color:var(--blue); letter-spacing:2px; }
+.rg-t { font-family:'Arial',sans-serif; font-size:16px; font-weight:700; color:var(--navy); }
+.rg-d { font-size:14px; line-height:1.55; }
+.rg-who { font-family:'Arial',sans-serif; font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft); margin-top:auto; padding-top:6px; }
+.kpi-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin:28px 0; }
+.kpi { background:var(--navy); color:var(--white); padding:18px 16px; display:flex; flex-direction:column; gap:8px; }
+.kpi-v { font-family:'Arial',sans-serif; font-size:22px; font-weight:700; color:#fff; white-space:nowrap; }
+.kpi-l { font-family:'Arial',sans-serif; font-size:12.5px; line-height:1.5; color:rgba(255,255,255,.72); }
+.levers { display:grid; gap:10px; margin:12px 0 8px; }
+.lever { display:flex; gap:16px; align-items:flex-start; padding:14px 18px; background:var(--off); border-left:4px solid var(--blue); font-size:15px; line-height:1.6; }
+.lever-k { font-family:'Arial',sans-serif; font-weight:700; font-size:20px; color:var(--blue); min-width:20px; }
+.ladder { display:grid; gap:6px; margin:18px 0 20px; }
+.rung { display:grid; grid-template-columns:190px 1fr; gap:16px; align-items:center; padding:12px 16px; font-size:14.5px; line-height:1.5; }
+.rung-v { font-family:'Arial',sans-serif; font-weight:700; font-size:16px; white-space:nowrap; }
+.rung-head { background:var(--navy); padding:10px 16px; }
+.rung-head .rung-v, .rung-head .rung-t { color:#fff; font-family:'Arial',sans-serif; font-size:12.5px; font-weight:700; letter-spacing:.02em; white-space:normal; }
+.r1 { background:var(--green-light); border-left:4px solid var(--green); } .r1 .rung-v { color:var(--green); }
+.r2 { background:#EEF6F0; border-left:4px solid var(--green); } .r2 .rung-v { color:var(--green); }
+.r3 { background:var(--blue-light); border-left:4px solid var(--blue); } .r3 .rung-v { color:var(--blue); }
+.r4 { background:var(--amber-light); border-left:4px solid var(--amber); } .r4 .rung-v { color:var(--amber); }
+.args { display:grid; gap:14px; }
+.arg { display:grid; grid-template-columns:64px 1fr; border:1px solid var(--line); background:var(--white); }
+.arg-n { background:var(--navy); color:#fff; font-family:var(--mono); font-size:20px; display:flex; align-items:flex-start; justify-content:center; padding-top:18px; }
+.arg-b { padding:16px 20px; }
+.arg-b h4 { font-family:'Arial',sans-serif; font-size:16px; color:var(--navy); margin-bottom:6px; }
+.arg-b p { font-size:15px; line-height:1.6; margin-bottom:8px; }
+.arg-b p.obj { font-size:14px; background:var(--off); padding:10px 12px; margin:0; border-left:3px solid var(--amber); }
+.obj span { font-family:'Arial',sans-serif; font-size:10.5px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--amber); }
+.obj span + span, .obj span:nth-of-type(2) { color:var(--green); }
+.regs { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:24px; }
+.reg { border:1px solid var(--line); border-top:4px solid var(--navy); padding:16px 18px; background:var(--white); }
+.reg-h { display:flex; justify-content:space-between; gap:8px; margin-bottom:8px; }
+.reg-tag { font-family:'Arial',sans-serif; font-size:10.5px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--blue); }
+.reg-hz { font-family:var(--mono); font-size:11px; color:var(--ink-soft); white-space:nowrap; }
+.reg h4 { font-family:'Arial',sans-serif; font-size:15px; color:var(--navy); line-height:1.35; margin-bottom:10px; }
+.reg dl { font-size:13.5px; line-height:1.55; }
+.reg dt { font-family:'Arial',sans-serif; font-size:10.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft); margin-top:8px; }
+.reg dd { margin:2px 0 0; }
+.reg dt:last-of-type { color:var(--green); }
+.vecs { display:grid; gap:12px; margin:24px 0; }
+.vec { padding:16px 20px; background:var(--off); border-left:4px solid var(--blue); }
+.vec h4 { font-family:'Arial',sans-serif; font-size:15.5px; color:var(--navy); margin-bottom:6px; }
+.vec p { font-size:15px; line-height:1.65; margin:0; }
+.v-el { border-color:var(--blue); } .v-ch4 { border-color:var(--green); background:var(--green-light); }
+.v-h2 { border-color:var(--ink-soft); } .v-ef { border-color:var(--ink-soft); }
+.xref { font-family:'Arial',sans-serif; font-size:13.5px; background:var(--off); border-left:3px solid var(--blue); padding:10px 14px; margin:-8px 0 24px; }
+.xref a { color:var(--navy); font-weight:700; }
+@media (max-width:760px){
+  .reader-guide, .regs { grid-template-columns:1fr; }
+  .kpi-grid { grid-template-columns:1fr 1fr; }
+  .rung { grid-template-columns:1fr; gap:4px; }
+  .arg { grid-template-columns:44px 1fr; }
+  .kpi-v { font-size:19px; white-space:normal; }
+}
+
+@media (max-width:600px){ .btn-pdf{ white-space:normal; } .cta-pdf{ padding:22px 18px; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <p class="prog-label">Programme Résilience 2045 · Note de trajectoire · Octobre 2026</p>
+    <h1>De la France énergétique de 2025 au système Résilience 2045 — trajectoire, argumentaire et chantiers réglementaires</h1>
+    <p class="header-meta">Trois lectures d'un même document : la synthèse pour décider, l'argumentaire pour convaincre, les chantiers réglementaires pour agir. Données : SDES · RTE Bilan électrique 2024 · Citepa · GIEC AR6 · PPE Résilience 2045 V1.1 · Mix énergétique 2045 V11.1</p>
+  </div>
+</header>
+
+<div style="background:rgba(11,31,58,0.97);border-bottom:1px solid rgba(255,255,255,0.08);padding:8px 0;">
+  <div style="max-width:900px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
+    <a href="index.html" style="display:inline-flex;align-items:center;gap:8px;font-family:Arial,sans-serif;font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.55);text-decoration:none;">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      Accueil — resilience2045.fr
+    </a>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;">
+      <a href="documents-liste.html" style="font-family:Arial,sans-serif;font-size:12px;color:rgba(255,255,255,0.45);text-decoration:none;letter-spacing:0.05em;">Tous les documents →</a>
+      <a href="ppe-resilience-2045.html" style="font-family:Arial,sans-serif;font-size:12px;color:rgba(255,255,255,0.45);text-decoration:none;letter-spacing:0.05em;">PPE Résilience 2045 →</a>
+    </div>
+  </div>
+</div>
+
+<nav>
+  <div class="nav-scroll">
+    <a href="#preambule">Préambule</a>
+    <a href="#synthese">1. Synthèse décideurs</a>
+    <a href="#argumentaire">2. Argumentaire</a>
+    <a href="#reglementaire">3. Chantiers réglementaires</a>
+    <a href="#document">Document complet</a>
+  </div>
+</nav>
+
+<main>
+
+<section id="preambule" style="margin-bottom:48px;">
+  <p class="section-tag">Préambule</p>
+  <h2>Pourquoi le binôme électricité – bio-méthane ?</h2>
+  <p>Un système énergétique doit remplir quatre fonctions à la fois : fournir l'énergie avec le meilleur rendement, garantir la puissance à chaque instant, stocker sur des jours et des semaines, et embarquer une énergie dense là où il n'y a pas de réseau. Aucun vecteur ne les remplit seul.</p>
+  <div class="vecs">
+    <div class="vec v-el">
+      <h4>Électricité — le vecteur de base</h4>
+      <p>Usage direct très efficace : une pompe à chaleur restitue 3 à 4 kWh de chaleur par kWh consommé, un moteur électrique convertit plus de 90 % de l'énergie reçue en mouvement, et de nombreux procédés industriels s'électrifient. Production française déjà largement décarbonée par le nucléaire et les renouvelables. Ses limites : un stockage massif et durable difficile — les batteries couvrent des heures, pas des semaines — et un réseau qui doit être dimensionné pour la pointe hivernale la plus froide et la moins ventée. <strong>Dans Résilience : environ deux tiers des besoins en 2045.</strong></p>
+    </div>
+    <div class="vec v-ch4">
+      <h4>Bio-méthane — le complément stockable</h4>
+      <p>Une molécule simple et stable, stockable en masse (~130 TWh de stockages souterrains existants), transportée par un réseau déjà construit, suffisamment dense pour être embarquée. Elle se retransforme en électricité au moment et à l'endroit voulus, avec un moteur qui travaille dans sa zone de rendement optimisée. Sa production à partir de résidus coproduit du biochar, qui stocke durablement du carbone. Ses limites : une biomasse disponible limitée, qui impose de la réserver aux usages où la molécule apporte un avantage réel, et des fuites de méthane à maîtriser strictement sur toute la chaîne. <strong>Dans Résilience : mobilité lourde, ÉREV, aviation, haute température et secours du réseau.</strong></p>
+    </div>
+    <div class="vec v-h2">
+      <h4>Hydrogène — une molécule pour l'industrie, pas un vecteur généraliste</h4>
+      <p>Un rendement global faible, issu d'un procédé de production très électrivore (électrolyse). Une densité énergétique volumique très faible et une diffusivité très élevée, qui compliquent son confinement et son utilisation. Des conditions de stockage extrêmes : très haute pression (350 à 700 bar) ou liquéfaction à −253 °C, énergivore et complexe. Pas d'infrastructure de transport et de distribution : tout est à créer. <strong>Dans Résilience : réservé aux procédés où la molécule H₂ est irremplaçable</strong> (chimie, engrais, réduction directe du fer).</p>
+    </div>
+    <div class="vec v-ef">
+      <h4>Carburants de synthèse — utiles, mais à réserver</h4>
+      <p>Des liquides denses, compatibles avec les moteurs et les infrastructures existants. Mais une chaîne de fabrication longue — électricité, hydrogène, captage de CO₂, synthèse, raffinage — dont chaque étape cumule des pertes : il faut plusieurs kWh d'électricité pour chaque kWh de carburant obtenu, avec des coûts de production élevés. <strong>Dans Résilience : usages de niche</strong> difficiles à traiter autrement.</p>
+    </div>
+  </div>
+  <div class="box box-green">
+    <p class="box-label">Un avantage qu'aucun autre complément n'offre : le stockage de carbone</p>
+    <p>Parmi les vecteurs envisagés pour compléter l'électricité, <strong>seule la filière bio-méthane permet de retirer durablement du carbone de l'atmosphère</strong>, grâce au biochar et au CO₂ biogénique concentré issus de la pyrogazéification. L'hydrogène et les carburants de synthèse, même produits sans émission, ne font que cesser d'émettre.</p>
+    <p>Or l'amélioration du climat a besoin de ces retraits : pour compenser les émissions résiduelles que l'on ne sait pas supprimer, notamment agricoles, puis pour faire baisser la concentration de CO₂ dans l'atmosphère. Sans eux, on peut au mieux stabiliser ; avec eux, on peut commencer à réparer.</p>
+  </div>
+  <p>L'électricité et le bio-méthane se complètent fonction par fonction. L'hydrogène reste indispensable pour certaines industries et les carburants de synthèse pour quelques usages de niche, mais aucun des deux n'apporte un avantage décisif comme vecteur généraliste. D'où la règle du programme : <strong>l'électricité partout où l'électron est le meilleur vecteur, le bio-méthane là où la molécule apporte un avantage réel.</strong></p>
+</section>
+
+<div class="reader-guide">
+  <a href="#synthese" class="rg-card">
+    <span class="rg-n">1</span>
+    <span class="rg-t">Synthèse décideurs</span>
+    <span class="rg-d">Le message en chiffres : économie de ~315 Md€, trajectoire 2025 → 2045, bilan carbone et calendrier.</span>
+    <span class="rg-who">Élus · cabinets · directions générales</span>
+  </a>
+  <a href="#argumentaire" class="rg-card">
+    <span class="rg-n">2</span>
+    <span class="rg-t">Argumentaire</span>
+    <span class="rg-d">Dix points clés et les réponses aux objections les plus fréquentes, prêts pour une réunion ou une audition.</span>
+    <span class="rg-who">Auditions · réunions de travail</span>
+  </a>
+  <a href="#reglementaire" class="rg-card">
+    <span class="rg-n">3</span>
+    <span class="rg-t">Chantiers réglementaires</span>
+    <span class="rg-d">Ce qu'il faut faire évoluer, au service de l'objectif : ÉREV, biochar, biométhane, méthane, tarification carbone.</span>
+    <span class="rg-who">Administrations · syndicats d'énergie · industriels</span>
+  </a>
+</div>
+
+<!-- ══════════════ 1. SYNTHÈSE ══════════════ -->
+<section id="synthese">
+  <p class="section-tag">Partie 1 · Synthèse décideurs</p>
+  <h2>Ne pas opposer l'électricité au gaz renouvelable : utiliser chacun là où il est le plus efficace</h2>
+
+  <p>La France part en 2025 d'un système électrique déjà largement décarboné, mais d'une consommation encore dominée par les combustibles fossiles : ~700 TWh de produits pétroliers, ~360–380 TWh de gaz naturel, ~46 TWh de charbon. Le Programme Résilience organise une trajectoire de vingt ans qui conduit à l'optimum du système en 2045, en menant <strong>en parallèle</strong> trois transformations qui prennent des temps différents. Cette note décrit le <strong>chemin</strong> ; le <strong>système cible</strong> et ses chiffres détaillés font l'objet de la <a href="ppe-resilience-2045.html">PPE Résilience 2045</a>.</p>
+
+  <div class="kpi-grid">
+    <div class="kpi"><span class="kpi-v">~315 Md€</span><span class="kpi-l">d'investissements évités par rapport au tout-électrique (540–690 Md€ contre 794–1 096 Md€)</span></div>
+    <div class="kpi"><span class="kpi-v">665 TWh</span><span class="kpi-l">d'électricité consommée en 2045, contre ~720 TWh en tout-électrique, soit ~7 EPR2 évités</span></div>
+    <div class="kpi"><span class="kpi-v">~262–290 TWh</span><span class="kpi-l">de bio-CH₄ national pour la mobilité lourde, l'ÉREV, l'aviation et la haute température</span></div>
+    <div class="kpi"><span class="kpi-v">40–50 Mt</span><span class="kpi-l">de CO₂ de combustion évitables par le seul changement de combustible (plafond théorique)</span></div>
+  </div>
+
+  <h3>Trois leviers simultanés</h3>
+  <div class="levers">
+    <div class="lever"><span class="lever-k">1</span><div><strong>Pétrole et charbon → méthane</strong><br>pour les usages qui ne peuvent pas être électrifiés immédiatement. Réduction des émissions dès les premières années.</div></div>
+    <div class="lever"><span class="lever-k">2</span><div><strong>Pétrole et gaz → électricité</strong><br>chaque fois que l'électron est le meilleur vecteur : pompes à chaleur, moteurs électriques, ÉREV.</div></div>
+    <div class="lever"><span class="lever-k">3</span><div><strong>Méthane fossile → biométhane</strong><br>au rythme de la montée en puissance de la méthanisation, de la pyrogazéification et de la méthanation.</div></div>
+  </div>
+
+  <div class="box box-navy">
+    <p class="box-label">Le gaz fossile : une souplesse de transition, plafonnée</p>
+    <p>Le gaz fossile permet de réduire le CO₂ sans attendre. Son niveau actuel (~360–380 TWh) constitue un <strong>plafond, pas une cible</strong> : la consommation réelle dépendra du rythme de déploiement des éléments du programme — pompes à chaleur, ÉREV, sites de pyrogazéification et de méthanisation. Plus ce déploiement est rapide, moins il faut de gaz fossile. Dans tous les cas, <strong>le CO₂ émis décroît</strong> à chaque étape.</p>
+    <p> Le gaz libéré par l'électrification du chauffage est réaffecté aux usages qui quittent le pétrole et le charbon, puis le biométhane prend le relais. Ni dépendance supplémentaire aux importations, ni enfermement dans le fossile.</p>
+  </div>
+
+  <h3>Trajectoire indicative 2025 → 2045 : consommations et émissions</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Consommation d'énergie (TWh/an)</th><th>2025</th><th>2030</th><th>2035</th><th>2040</th><th>2045</th></tr></thead>
+    <tbody>
+      <tr><td class="label">Électricité consommée</td><td class="num">~450</td><td class="num">~500</td><td class="num">~560</td><td class="num">~620</td><td class="num">665</td></tr>
+      <tr><td class="label">Produits pétroliers</td><td class="num">~700</td><td class="num">~580</td><td class="num">~400</td><td class="num">~200</td><td class="num">~75*</td></tr>
+      <tr><td class="label">Charbon</td><td class="num">~46</td><td class="num">~30</td><td class="num">~15</td><td class="num">~5</td><td class="num">0</td></tr>
+      <tr><td class="label">Gaz fossile (plafond)</td><td class="num">~360</td><td class="num">~380</td><td class="num">~300</td><td class="num">~150</td><td class="num">0–30</td></tr>
+      <tr><td class="label">Bio-CH₄</td><td class="num">~13</td><td class="num">~50</td><td class="num">~120</td><td class="num">~210</td><td class="num">~262–290</td></tr>
+      <tr class="subtotal"><td colspan="6">Émissions qui en résultent</td></tr>
+      <tr class="total-row"><td>CO₂ émis par la combustion des énergies fossiles (Mt CO₂/an)</td><td class="num">~275</td><td class="num">~245</td><td class="num">~170</td><td class="num">~85</td><td class="num">~5</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">* Usages non énergétiques (chimie, plastiques, bitumes), biosourcés à terme. Gaz fossile : valeurs maximales — la consommation réelle dépend du rythme de déploiement du programme, et le CO₂ émis décroît dans tous les cas ; en 2045, secours limité à 0–30 TWh. Trajectoire indicative, affinée à chaque jalon du programme.</p>
+
+  <h3>L'essentiel de la comparaison avec le tout-électrique</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Indicateur</th><th>Tout-électrique</th><th>Résilience 2045</th></tr></thead>
+    <tbody>
+      <tr><td class="label">Nucléaire neuf</td><td>21 EPR2</td><td>14 EPR2 (~84 Md€ évités)</td></tr>
+      <tr><td class="label">Aviation</td><td>~75 TWh de kérosène fossile conservés</td><td>~10 TWh élec. + ~80 TWh de bio-CH₄</td></tr>
+      <tr><td class="label">Véhicules légers</td><td>Batterie 50–80 kWh, recharge rapide généralisée</td><td>ÉREV : batterie ~20 kWh + prolongateur bio-GNV</td></tr>
+      <tr><td class="label">Poids lourds</td><td>~50 TWh élec. : camions à batteries de plusieurs centaines de kWh, recharge à très haute puissance sur les grands axes</td><td>~15 TWh élec. + ~75 TWh de bio-GNV (70 % des km) sur un réseau de stations existant et extensible</td></tr>
+      <tr><td class="label">Transport maritime</td><td>Pas de solution électrique en haute mer : fioul lourd et GNL fossile conservés</td><td>Bio-GNL sur les navires GNL, compatibles sans modification ; électrique à quai et sur les courtes liaisons</td></tr>
+      <tr class="total-row"><td>Investissements 2025–2045</td><td>794–1 096 Md€</td><td>540–690 Md€</td></tr>
+    </tbody>
+  </table></div>
+  <p class="xref">Le système cible en détail — besoins par secteur, mix électrique, programmation des investissements : <a href="ppe-resilience-2045.html">PPE Résilience 2045 →</a></p>
+
+  <h3>Le bouclage carbone : biochar et CRCF</h3>
+  <p>La pyrogazéification de biomasse sèche produit à la fois du gaz renouvelable, du biochar et du CO₂ biogénique concentré. Le bilan du système énergétique se construit par étapes. Chaque étape suppose un levier supplémentaire :</p>
+  <div class="ladder">
+    <div class="rung rung-head"><span class="rung-v">Bilan net annuel<br>(Mt CO₂/an)</span><span class="rung-t">Configuration du système en 2045 — chiffre négatif = le système retire plus de CO₂ de l'atmosphère qu'il n'en émet</span></div>
+    <div class="rung r1"><span class="rung-v">~−5 à −17 Mt CO₂/an</span><span class="rung-t"><strong>Socle robuste</strong> · 262 TWh de bio-CH₄ issus de biomasse résiduelle + biochar (8 à 23 Mt de CO₂ stockées par an selon les rendements)</span></div>
+    <div class="rung r2"><span class="rung-v">~−6 à −21 Mt CO₂/an</span><span class="rung-t"><strong>+ méthanation maximisée</strong> · ~282 TWh, gaz fossile résiduel ramené à ~10 TWh</span></div>
+    <div class="rung r3"><span class="rung-v">~−35 à −56 Mt CO₂/an</span><span class="rung-t"><strong>+ séquestration géologique</strong> du CO₂ biogénique concentré (~25–35 Mt/an) · infrastructures CO₂ à développer</span></div>
+    <div class="rung r4"><span class="rung-v">~−55 à −88 Mt CO₂/an</span><span class="rung-t"><strong>+ cultures dédiées</strong> (miscanthus sur ~1 Mha de terres marginales) · bio-CH₄ au-delà de 300 TWh · potentiel, pas scénario de référence</span></div>
+  </div>
+  <p class="note">Périmètre : système énergétique. Les émissions agricoles de CH₄ et N₂O (~70–80 MtCO₂e) relèvent d'autres leviers. Une tonne de CO₂ utilisée par la méthanation n'est pas comptée comme séquestrée.</p>
+  <p>Le cadre européen de certification des absorptions de carbone (CRCF, règlement 2024/3012), dont les méthodologies applicables au biochar ont été adoptées en 2026, permet désormais de démontrer et de valoriser ces stockages durables.</p>
+
+  <h3>Calendrier</h3>
+  <div class="ppe-phases">
+    <div class="ppe-phase"><div class="ppe-period">2026–2027</div><div class="ppe-title">Cadre</div><div class="ppe-content">Positions françaises sur la révision du règlement CO₂ des véhicules (ÉREV) · contrats de long terme biométhane · application du règlement méthane · méthodologies CRCF biochar.</div></div>
+    <div class="ppe-phase"><div class="ppe-period">2027–2030</div><div class="ppe-title">Phase 0 — Validation</div><div class="ppe-content">5 sites pilotes de pyrogazéification · 500 stations bio-GNV · premiers ÉREV · offshore accéléré. Pas de Phase 1 sans validation.</div></div>
+    <div class="ppe-phase"><div class="ppe-period">2029–2035</div><div class="ppe-title">Phase 1 — Déploiement</div><div class="ppe-content">75 sites de pyrogazéification · 3 M d'ÉREV · substitution pétrole → méthane dans la mobilité lourde et l'industrie · ETS2 dès 2028.</div></div>
+    <div class="ppe-phase"><div class="ppe-period">2035–2045</div><div class="ppe-title">Phases 2 et 3 — Maturité</div><div class="ppe-content">150 sites · méthanation 50 GW · mix électrique complet · gaz fossile réduit à un secours · bilan carbone net négatif.</div></div>
+  </div>
+</section>
+
+<!-- ══════════════ 2. ARGUMENTAIRE ══════════════ -->
+<section id="argumentaire">
+  <p class="section-tag">Partie 2 · Argumentaire</p>
+  <h2>Dix points pour présenter la trajectoire — et répondre aux objections</h2>
+
+  <div class="args">
+    <div class="arg"><div class="arg-n">01</div><div class="arg-b">
+      <h4>Le méthane émet moins de CO₂ que le pétrole et le charbon</h4>
+      <p>~204 g CO₂/kWh pour le méthane, contre ~255 pour l'essence, ~267 pour le gazole et ~340 pour le charbon. À énergie égale, le seul changement de combustible évite 40 à 50 Mt de CO₂ par an.</p>
+      <p class="obj"><span>Objection</span> « C'est encore du fossile. » — <span>Réponse</span> Oui au départ, et c'est assumé : le gain est immédiat, puis le biométhane remplace progressivement le gaz fossile sur les mêmes équipements.</p>
+    </div></div>
+
+    <div class="arg"><div class="arg-n">02</div><div class="arg-b">
+      <h4>Le gaz fossile ne monte pas : il se redéploie</h4>
+      <p>La consommation de gaz fossile reste sous son niveau actuel (~360–380 TWh). Ce que l'électrification libère dans le chauffage sert aux usages qui quittent le pétrole.</p>
+      <p class="obj"><span>Objection</span> « Vous allez augmenter les importations. » — <span>Réponse</span> Non : le plafond est la règle de la trajectoire, et le bio-CH₄ est 100 % national.</p>
+    </div></div>
+
+    <div class="arg"><div class="arg-n">03</div><div class="arg-b">
+      <h4>Les fuites de méthane sont la condition de réussite</h4>
+      <p>1 % de fuite sur 940 TWh annulerait le gain sur 20 ans. L'objectif est un taux de fuite inférieur à 0,2–0,3 %, avec détection et réparation systématiques (règlement UE 2024/1787).</p>
+      <p>Il faut aussi regarder d'où vient le biométhane : effluents d'élevage, biodéchets, boues d'épuration, résidus agricoles et forestiers. Ces matières se décomposent déjà aujourd'hui et rejettent dans l'atmosphère du CO₂, mais aussi du méthane — en particulier les effluents stockés et les déchets en décharge. Les valoriser en unité fermée capte ce méthane au lieu de le laisser s'échapper : <strong>la filière biométhane réduit les émissions de méthane existantes</strong>, à condition que ses propres installations soient étanches.</p>
+      <p class="obj"><span>Objection</span> « Le méthane est un gaz à effet de serre puissant. » — <span>Réponse</span> C'est pourquoi la maîtrise des fuites est inscrite comme une exigence, au même titre que la sûreté pour le nucléaire. Et le biométhane capte une partie du méthane que les déchets et effluents émettent déjà aujourd'hui.</p>
+    </div></div>
+
+    <div class="arg"><div class="arg-n">04</div><div class="arg-b">
+      <h4>L'électricité reste la base du système</h4>
+      <p>665 TWh d'électricité en 2045, soit +50 à 60 % par rapport à aujourd'hui. Pompes à chaleur, moteurs électriques et procédés industriels sont électrifiés partout où l'électron est le meilleur vecteur.</p>
+      <p class="obj"><span>Objection</span> « C'est un programme gazier. » — <span>Réponse</span> Non : l'électricité couvre environ deux tiers des besoins ; le méthane renouvelable complète là où la molécule apporte un avantage réel.</p>
+    </div></div>
+
+    <div class="arg"><div class="arg-n">05</div><div class="arg-b">
+      <h4>Le tout-électrique coûte plus cher et laisse l'aviation au fossile</h4>
+      <p>~720 TWh d'électricité, 21 EPR2, un réseau surdimensionné pour les pointes — et ~75 TWh de kérosène fossile conservés. Résilience économise ~315 Md€ et traite l'aviation.</p>
+      <p class="obj"><span>Objection</span> « Un seul vecteur, c'est plus simple. » — <span>Réponse</span> Plus simple sur le papier, plus fragile en hiver sans vent et plus coûteux à dimensionner.</p>
+    </div></div>
+
+    <div class="arg"><div class="arg-n">06</div><div class="arg-b">
+      <h4>L'ÉREV réduit les coûts et la pression sur le réseau</h4>
+      <p>Le méthane n'est pas seulement stockable : il transforme une énergie chimique stockée en électricité, au moment et à l'endroit où elle est nécessaire, avec un moteur qui travaille en permanence dans sa zone de rendement optimisée.</p>
+      <p>Une batterie d'~20 kWh couvre les trajets quotidiens ; le prolongateur bio-GNV fonctionne à régime optimal (41–46 % de rendement) pour les longs trajets. Moins de batteries, moins de métaux critiques, moins de recharge rapide.</p>
+      <p class="obj"><span>Objection</span> « Le règlement européen interdit les moteurs thermiques en 2035. » — <span>Réponse</span> Sa révision est en cours et ouvre une voie aux carburants neutres en CO₂ : c'est un chantier réglementaire identifié (partie 3).</p>
+    </div></div>
+
+    <div class="arg"><div class="arg-n">07</div><div class="arg-b">
+      <h4>La biomasse est limitée — le programme la traite comme telle</h4>
+      <p>Les 262 TWh de base viennent de biomasse résiduelle documentée : résidus de culture, bois mort et rémanents, effluents, biodéchets. Pas de concurrence avec l'alimentation.</p>
+      <p class="obj"><span>Objection</span> « Il n'y aura jamais assez de biomasse. » — <span>Réponse</span> Le bio-CH₄ ne remplace pas 940 TWh : il couvre ~265–290 TWh d'usages ciblés, l'électricité fait le reste.</p>
+    </div></div>
+
+    <div class="arg"><div class="arg-n">08</div><div class="arg-b">
+      <h4>L'hydrogène reste à sa place</h4>
+      <p>Indispensable pour certaines industries, l'hydrogène est un mauvais vecteur généraliste : faible densité volumique, liquéfaction à −253 °C, rendement électricité → H₂ → électricité de 25 à 35 %.</p>
+      <p class="obj"><span>Objection</span> « L'hydrogène est l'avenir. » — <span>Réponse</span> Pour la chimie et la sidérurgie, oui. Pour la mobilité et le stockage de masse, le méthane fait mieux avec l'infrastructure existante.</p>
+    </div></div>
+
+    <div class="arg"><div class="arg-n">09</div><div class="arg-b">
+      <h4>Le bilan carbone devient négatif, par étapes vérifiables</h4>
+      <p>Avec le biochar seul, le système énergétique est déjà neutre à légèrement négatif (~−5 à −17 Mt). Avec la séquestration géologique du CO₂ biogénique, ~−55 Mt. Au-delà, avec des cultures dédiées.</p>
+      <p class="obj"><span>Objection</span> « Ces chiffres sont invérifiables. » — <span>Réponse</span> Chaque étape est conditionnée à un levier identifié, et le cadre CRCF permet de certifier les stockages.</p>
+    </div></div>
+
+    <div class="arg"><div class="arg-n">10</div><div class="arg-b">
+      <h4>La décarbonation commence maintenant, pas en 2045</h4>
+      <p>Attendre que chaque transformation soit achevée avant de lancer la suivante ferait perdre vingt ans de réductions. La transition parallèle réduit les émissions dès 2030 (~−30 Mt sur la combustion fossile).</p>
+      <p class="obj"><span>Objection</span> « C'est trop ambitieux. » — <span>Réponse</span> Le programme est phasé : rien n'est déployé sans validation de la Phase 0.</p>
+    </div></div>
+  </div>
+</section>
+
+<!-- ══════════════ 3. RÉGLEMENTAIRE ══════════════ -->
+<section id="reglementaire">
+  <p class="section-tag">Partie 3 · Chantiers réglementaires</p>
+  <h2>Adapter la réglementation à l'objectif, pas l'inverse</h2>
+
+  <p>L'objectif du programme n'est pas de respecter une réglementation existante : il est d'assurer un fonctionnement optimum de notre société, en préservant la planète et le vivant. La réglementation est un outil au service de cet objectif. Lorsqu'elle ne le sert pas, elle doit évoluer — et plusieurs évolutions sont déjà engagées au niveau européen.</p>
+
+  <div class="regs">
+    <div class="reg">
+      <div class="reg-h"><span class="reg-tag">Mobilité légère</span><span class="reg-hz">2026–2030</span></div>
+      <h4>Reconnaître l'ÉREV au bio-GNV dans le règlement CO₂ des véhicules</h4>
+      <dl>
+        <dt>Cadre actuel</dt><dd>Règlement (UE) 2019/631 : objectif de zéro émission à l'échappement pour les voitures neuves en 2035.</dd>
+        <dt>Ce qui évolue</dt><dd>La proposition de révision de décembre 2025 ouvre une voie aux véhicules fonctionnant aux carburants neutres en CO₂ (art. 5a).</dd>
+        <dt>Demande Résilience</dt><dd>Que le biométhane certifié entre dans cette voie, et que l'ÉREV bio-GNV y soit explicitement éligible.</dd>
+        <dt>Le fond du sujet : la méthode de mesure</dt><dd>L'homologation actuelle ne mesure que les émissions <strong>à l'échappement</strong> (« du réservoir à la roue »), ce qui donne zéro à tout véhicule électrique et ignore l'origine du carburant. Une mesure <strong>du puits à la roue</strong>, ou en analyse de cycle de vie complète (fabrication de la batterie comprise), place l'ÉREV au bio-GNV au niveau des véhicules 100 % électriques, avec une batterie trois à quatre fois plus petite. Le règlement prévoit déjà une méthode européenne d'analyse de cycle de vie pour un suivi volontaire (art. 7a) : la demande est d'en faire un critère de conformité.</dd>
+      </dl>
+    </div>
+
+    <div class="reg">
+      <div class="reg-h"><span class="reg-tag">Poids lourds</span><span class="reg-hz">2026–2027</span></div>
+      <h4>Prendre en compte le bio-GNV dans les normes CO₂ des poids lourds</h4>
+      <dl>
+        <dt>Cadre actuel</dt><dd>Règlement (UE) 2024/1610 : −45 % en 2030, −65 % en 2035, −90 % en 2040, mesurés à l'échappement.</dd>
+        <dt>Ce qui évolue</dt><dd>Le règlement prévoit une clause de réexamen, d'ici 2027, sur le rôle des carburants neutres en CO₂.</dd>
+        <dt>Demande Résilience</dt><dd>Une méthode de comptabilisation reconnaissant le bio-GNV pour la mobilité lourde longue distance.</dd>
+      </dl>
+    </div>
+
+    <div class="reg">
+      <div class="reg-h"><span class="reg-tag">Biochar</span><span class="reg-hz">2026–2032</span></div>
+      <h4>Certifier et valoriser le carbone stocké</h4>
+      <dl>
+        <dt>Cadre actuel</dt><dd>Règlement (UE) 2024/3012 (CRCF) ; méthodologies pour le biochar adoptées en 2026. Le biochar ne génère pas de quotas dans le marché carbone européen (ETS).</dd>
+        <dt>Ce qui évolue</dt><dd>Mise en place des organismes de certification et des registres ; débat européen sur l'intégration des absorptions dans les objectifs 2040.</dd>
+        <dt>Demande Résilience</dt><dd>Inscrire le biochar et la séquestration du CO₂ biogénique dans la révision de la <strong>stratégie nationale bas-carbone (SNBC 3)</strong>, avec un objectif chiffré d'absorptions permanentes certifiées CRCF, et créer un mécanisme de rémunération des tonnes stockées (contrats carbone). C'est la suite logique de l'ancrage européen : le CRCF certifie, la SNBC doit compter et programmer.</dd>
+      </dl>
+    </div>
+
+    <div class="reg">
+      <div class="reg-h"><span class="reg-tag">Biométhane</span><span class="reg-hz">2026–2030</span></div>
+      <h4>Soutenir et injecter le biométhane, y compris de pyrogazéification</h4>
+      <dl>
+        <dt>Cadre actuel</dt><dd>Droit à l'injection, tarifs d'achat et appels d'offres centrés sur la méthanisation ; certificats de production de biogaz créés par la loi Climat et Résilience.</dd>
+        <dt>Ce qui évolue</dt><dd>Montée en puissance des certificats de production de biogaz ; objectif PPE3 de 44 TWh de biométhane injecté en 2030.</dd>
+        <dt>Demande Résilience</dt><dd>Contrats de long terme (type CfD sur 15 ans) ; éligibilité pleine de la pyrogazéification ; prescriptions d'injection adaptées au gaz de synthèse épuré.</dd>
+      </dl>
+    </div>
+
+    <div class="reg">
+      <div class="reg-h"><span class="reg-tag">Méthane</span><span class="reg-hz">Dès 2026</span></div>
+      <h4>Maîtriser les fuites sur toute la chaîne</h4>
+      <dl>
+        <dt>Cadre actuel</dt><dd>Règlement (UE) 2024/1787 : détection et réparation des fuites, exigences étendues progressivement aux importations.</dd>
+        <dt>Demande Résilience</dt><dd>Un objectif national chiffré (fuites &lt; 0,2–0,3 %) appliqué aussi aux unités de biométhane et aux usages.</dd>
+      </dl>
+    </div>
+
+    <div class="reg">
+      <div class="reg-h"><span class="reg-tag">Équipements</span><span class="reg-hz">2026–2035</span></div>
+      <h4>Garantir la compatibilité biométhane des équipements de transition</h4>
+      <dl>
+        <dt>Cadre actuel</dt><dd>Les règles de construction (RE2020) excluent de fait le chauffage au gaz dans le logement neuf ; aucune exigence de compatibilité biométhane ailleurs.</dd>
+        <dt>Demande Résilience</dt><dd>Que tout équipement gaz installé pendant la transition (mobilité lourde, industrie, maritime) soit compatible avec le biométhane, pour éviter les actifs inutilisables.</dd>
+      </dl>
+    </div>
+
+    <div class="reg">
+      <div class="reg-h"><span class="reg-tag">Tarification carbone</span><span class="reg-hz">2028</span></div>
+      <h4>Le marché carbone ETS2 va dans le sens de la trajectoire</h4>
+      <dl>
+        <dt>Cadre actuel</dt><dd>Le système d'échange de quotas pour les carburants et le chauffage (ETS2) entre en vigueur en 2028.</dd>
+        <dt>Lecture Résilience</dt><dd>Il renchérit d'abord le pétrole et le charbon, puis le gaz fossile : il renforce l'intérêt économique de chaque étape de la trajectoire.</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ DOCUMENT ══════════════ -->
+<section id="document">
+  <p class="section-tag">Document complet</p>
+  <h2>La note de trajectoire en 18 chapitres</h2>
+  <p>La note complète développe le raisonnement pas à pas : pourquoi conserver plusieurs vecteurs, l'expérience de pensée « tout-méthane », la condition des fuites, la trajectoire chiffrée, la biomasse, le bilan carbone par étapes, l'économie et les chantiers réglementaires.</p>
+  <ul class="doc-list">
+    <li>Préambule — Pourquoi conserver plusieurs vecteurs énergétiques ? (électricité, hydrogène, carburants de synthèse, méthane, biométhane)</li>
+    <li>1 à 5 — Le point de départ 2025 et l'expérience de pensée : 940 TWh, 40 à 50 Mt de CO₂ de combustion</li>
+    <li>6 — Une condition impérative : la maîtrise du méthane sur toute la chaîne</li>
+    <li>7 à 11 — La stratégie à deux vecteurs, le gaz fossile plafonné, la trajectoire 2025 → 2045</li>
+    <li>12 et 13 — La biomasse, ressource limitée ; du bilan neutre au bilan net négatif</li>
+    <li>14 à 18 — Économie, transition immédiate, chantiers techniques et réglementaires, conclusion</li>
+  </ul>
+
+  <div class="cta-pdf">
+    <div class="cta-pdf-text">
+      <h3>Télécharger la note de trajectoire en PDF</h3>
+      <p>Version octobre 2026 · 14 pages · Programme Résilience 2045</p>
+    </div>
+    <a href="Trajectoire_2025_2045_Resilience_V1.pdf" class="btn-pdf" download>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Télécharger (PDF)
+    </a>
+  </div>
+
+  <div class="sources">
+    <h4>Sources</h4>
+    <p>SDES, Bilan énergétique de la France · RTE, Bilan électrique 2024 · Citepa, inventaire national · GIEC AR6 · Règlements (UE) 2019/631, 2024/1610, 2024/1787, 2024/3012 · Programme Résilience 2045 : <a href="ppe-resilience-2045.html">PPE Résilience 2045 V1.1</a>, <a href="mix-energetique.html">Mix énergétique 2045 V11.1</a>, <a href="systeme-energetique.html">Note de cadrage système énergétique V11.1</a>, <a href="documents-liste.html">tous les documents</a>.</p>
+  </div>
+</section>
+
+</main>
+<div style="background:var(--navy);border-top:2px solid rgba(255,255,255,0.08);padding:24px;margin-top:0;">
+  <div style="max-width:900px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
+    <a href="index.html" style="display:inline-flex;align-items:center;gap:8px;font-family:Arial,sans-serif;font-size:13px;font-weight:700;color:rgba(255,255,255,0.75);text-decoration:none;">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      Retour à l'accueil — resilience2045.fr
+    </a>
+    <div style="display:flex;gap:16px;flex-wrap:wrap;">
+      <a href="documents-liste.html" style="font-family:Arial,sans-serif;font-size:13px;color:rgba(255,255,255,0.5);text-decoration:none;">Tous les documents</a>
+      <a href="ppe-resilience-2045.html" style="font-family:Arial,sans-serif;font-size:13px;color:rgba(255,255,255,0.5);text-decoration:none;">PPE Résilience 2045</a>
+      <a href="Trajectoire_2025_2045_Resilience_V1.pdf" target="_blank" style="font-family:Arial,sans-serif;font-size:13px;color:rgba(255,255,255,0.5);text-decoration:none;">Télécharger PDF ↓</a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
