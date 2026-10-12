@@ -111,6 +111,7 @@ p{font-size:.9rem;color:rgba(240,244,241,.72);line-height:1.85}
 .traj-period{font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ambre);margin-bottom:.6rem}
 .traj-card h3{font-family:var(--serif);font-size:1.05rem;color:var(--vert-clair);margin-bottom:.7rem}
 .traj-card p{font-size:.82rem;line-height:1.7}
+.ciblage-grid{grid-template-columns:1fr 1fr}
 
 /* MULTIFONCTIONNALITÉ */
 .multi-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:rgba(82,183,136,.15);margin:1.8rem 0;border:1px solid rgba(82,183,136,.15)}
@@ -143,7 +144,7 @@ footer p{font-size:.75rem;color:var(--gris);max-width:600px;margin:.3rem auto}
   nav{padding:.85rem 1.3rem}
   section{padding:3.5rem 1.4rem}
   .multi-grid{grid-template-columns:1fr}
-  .traj-grid{grid-template-columns:1fr}
+  .traj-grid,.ciblage-grid{grid-template-columns:1fr}
   .kpi-row{gap:1.5rem}
   .doc-cta{flex-direction:column;align-items:flex-start}
 }
@@ -308,6 +309,40 @@ footer p{font-size:.75rem;color:var(--gris);max-width:600px;margin:.3rem auto}
   </div>
 </section>
 
+<!-- CIBLAGE TERRITORIAL -->
+<section class="section-darker">
+  <div class="container">
+    <div class="sec-tag reveal">7bis — Exemples territoriaux</div>
+    <h2 class="reveal">Un ciblage <em>sans préjudice alimentaire</em></h2>
+    <p class="reveal">L'absence de concurrence avec la production alimentaire n'est pas une propriété générale du miscanthus : c'est le résultat d'un ciblage parcellaire. Deux types de territoires, très différents, illustrent la démarche.</p>
+
+    <div class="traj-grid ciblage-grid reveal">
+      <div class="traj-card">
+        <div class="traj-period">Plaines du Centre</div>
+        <h3>Beauce et Champagne berrichonne</h3>
+        <p>Les terres profondes de Beauce comptent parmi les meilleures terres céréalières d'Europe. Y substituer du miscanthus en plein champ retirerait des surfaces à la production alimentaire. Le ciblage porte donc sur des niches où la culture ajoute un service sans rien retirer :</p>
+        <ul class="bullets" style="margin-top:.8rem;">
+          <li>les aires d'alimentation des captages d'eau potable : une fois installé, le miscanthus ne demande ni fertilisation azotée ni traitement, et protège les nappes des nitrates et des pesticides — un service rémunérable par les collectivités et les agences de l'eau ;</li>
+          <li>les sols superficiels et caillouteux de la Champagne berrichonne, aux rendements céréaliers faibles et irréguliers ;</li>
+          <li>les bandes le long des cours d'eau, les parcelles en pointe, enclavées ou mal desservies.</li>
+        </ul>
+      </div>
+      <div class="traj-card">
+        <div class="traj-period">Sud de Brive</div>
+        <h3>Lot et Aveyron</h3>
+        <p>Ces territoires connaissent une forte déprise agricole et de nombreuses parcelles s'enfrichent : sur ces terres abandonnées, le préjudice alimentaire est nul. La contrainte y est hydrique :</p>
+        <ul class="bullets" style="margin-top:.8rem;">
+          <li>sur les causses, les sols calcaires sont minces et les étés de plus en plus secs. L'année d'installation est la plus vulnérable — une sécheresse comparable à celle de 2022 peut compromettre une plantation — et les rendements y seront nettement inférieurs aux références : ils devront être mesurés par les démonstrateurs ;</li>
+          <li>le Ségala et les vallées, mieux arrosés et aux sols plus profonds, offrent des conditions plus favorables ;</li>
+          <li>les parcours d'élevage, ovins notamment, restent des surfaces alimentaires même lorsqu'ils paraissent pauvres : la cible est la friche, pas le parcours.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="remarque reveal"><p>Règle de ciblage Résilience : friches et terres en déprise, aires de captage, sols superficiels à faible rendement — et non les bonnes terres céréalières en plein champ ni les parcours d'élevage. Dans tous les cas, la récolte de fin d'hiver ne concurrence pas le calendrier des cultures alimentaires, et le revenu contractualisé apporte une diversification à l'exploitation.</p></div>
+  </div>
+</section>
+
 <!-- CARBONE & BIOCHAR -->
 <section>
   <div class="container">
@@ -439,7 +474,7 @@ footer p{font-size:.75rem;color:var(--gris);max-width:600px;margin:.3rem auto}
     <div style="margin-top:2rem;padding:1.8rem 2.2rem;border:1px solid rgba(82,183,136,.2);background:rgba(13,31,23,.5);" class="reveal">
       <h3 style="font-size:1rem;color:var(--vert-clair);margin-bottom:1rem;">Les trois hypothèses à vérifier par les démonstrateurs Résilience</h3>
       <ol style="padding-left:1.2rem;">
-        <li style="font-size:.87rem;color:rgba(240,244,241,.68);line-height:1.8;margin-bottom:.6rem;">La marge nette de 300–500 €/ha/an est effectivement atteignable avec le débouché contractualisé de l'unité Résilience dans les conditions locales (Landes, zones méditerranéennes).</li>
+        <li style="font-size:.87rem;color:rgba(240,244,241,.68);line-height:1.8;margin-bottom:.6rem;">La marge nette de 300–500 €/ha/an est effectivement atteignable avec le débouché contractualisé de l'unité Résilience dans les conditions locales (Landes, zones méditerranéennes, plaines du Centre, Lot et Aveyron).</li>
         <li style="font-size:.87rem;color:rgba(240,244,241,.68);line-height:1.8;margin-bottom:.6rem;">Le modèle de contrat territorial — exploitant · coopérative-opérateur · unité de pyrogazéification Résilience — est juridiquement et économiquement viable, avec les coupures entretenues intégrées dans le cahier des charges.</li>
         <li style="font-size:.87rem;color:rgba(240,244,241,.68);line-height:1.8;">Le bilan carbone effectif (~7,2 t CO₂eq/ha/an théorique) est confirmé par les mesures réelles sur les sites pilotes Résilience.</li>
       </ol>
@@ -449,7 +484,7 @@ footer p{font-size:.75rem;color:var(--gris);max-width:600px;margin:.3rem auto}
       <div class="doc-icon">📄</div>
       <div class="doc-info">
         <strong>Document complet — Le miscanthus dans le modèle Résilience V2</strong>
-        <span>15 sections · Conditions d'implantation · Trajectoire 30 ans · Boucle territoriale · Août 2026</span>
+        <span>15 sections + 7bis · Conditions d'implantation · Ciblage territorial · Trajectoire 30 ans · Boucle territoriale · Août 2026, mis à jour octobre 2026</span>
       </div>
       <a href="miscanthus_resilience_v2.pdf" class="btn btn-primary" target="_blank" download style="flex-shrink:0;">⬇ Télécharger le PDF</a>
     </div>
@@ -458,7 +493,7 @@ footer p{font-size:.75rem;color:var(--gris);max-width:600px;margin:.3rem auto}
 
 <footer>
   <div class="footer-logo">Résilience 2045</div>
-  <p><a href="index.html">resilience2045.fr</a> · Biomasse & Territoires · Le miscanthus dans Résilience · Août 2026 · Diffusion libre</p>
+  <p><a href="index.html">resilience2045.fr</a> · Biomasse & Territoires · Le miscanthus dans Résilience · Août 2026, mis à jour octobre 2026 · Diffusion libre</p>
 </footer>
 
 <script>
