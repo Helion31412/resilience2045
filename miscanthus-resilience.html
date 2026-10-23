@@ -133,6 +133,20 @@ p{font-size:.9rem;color:rgba(240,244,241,.72);line-height:1.85}
 .doc-info strong{display:block;font-family:var(--serif);font-size:1.05rem;color:var(--blanc);margin-bottom:.3rem}
 .doc-info span{font-size:.78rem;color:var(--gris)}
 
+/* TABLEAUX HECTARE */
+.ha-wrap{overflow-x:auto;margin:1.4rem 0 .6rem}
+.ha-table{width:100%;border-collapse:collapse;font-size:.82rem;min-width:620px}
+.ha-table th{background:rgba(82,183,136,.18);color:var(--vert-clair);font-weight:500;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;padding:.7rem .8rem;text-align:center;border-bottom:1px solid rgba(82,183,136,.3)}
+.ha-table th:first-child{text-align:left}
+.ha-table td{padding:.6rem .8rem;border-bottom:1px solid rgba(82,183,136,.08);color:rgba(240,244,241,.72);text-align:center}
+.ha-table td:first-child{text-align:left;color:rgba(240,244,241,.85)}
+.ha-table tr.res td{background:rgba(29,58,40,.45);color:var(--vert-clair);font-weight:500}
+.ha-note{font-size:.75rem;color:var(--gris);font-style:italic;line-height:1.6}
+.cond-list{list-style:none;counter-reset:c;margin-top:.4rem}
+.cond-list li{counter-increment:c;font-size:.86rem;color:rgba(240,244,241,.72);line-height:1.75;margin-bottom:.55rem;padding-left:1.8rem;position:relative}
+.cond-list li::before{content:counter(c);position:absolute;left:0;top:.05rem;width:1.25rem;height:1.25rem;border:1px solid var(--vert-vif);color:var(--vert-vif);font-size:.7rem;display:flex;align-items:center;justify-content:center}
+.cond-list li strong{color:var(--vert-clair);font-weight:500}
+
 .reveal{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
 .reveal.visible{opacity:1;transform:none}
 
@@ -343,6 +357,70 @@ footer p{font-size:.75rem;color:var(--gris);max-width:600px;margin:.3rem auto}
   </div>
 </section>
 
+<!-- 7TER — CE QUE RAPPORTE UN HECTARE -->
+<section>
+  <div class="container">
+    <div class="sec-tag reveal">7ter — Économie à l'hectare</div>
+    <h2 class="reveal">Ce que rapporte un hectare : <em>deux exploitations types</em></h2>
+    <p class="reveal">Toutes charges comptées — engrais, semences, traitements, mécanisation, main-d'œuvre, implantation — et en tenant compte de ce que le système Résilience valorise. Il ne s'agit pas de comparer une culture isolée à une autre : dans Résilience, l'hectare de blé et l'hectare de miscanthus alimentent tous deux l'unité de pyrogazéification, le premier par sa paille, le second par sa biomasse.</p>
+
+    <div class="encart-vert reveal">
+      <h3>Conditions à fixer au départ</h3>
+      <ol class="cond-list">
+        <li><strong>La place du miscanthus</strong> — endroits stratégiques : parcelles pauvres, superficielles ou mal exposées, bandes anti-ruissellement sur les pentes et en fonds de vallon, bords de cours d'eau, aires de captage, parcelles enclavées. Pas en plein champ sur les bonnes terres.</li>
+        <li><strong>La paille</strong> — la pyrogazéification valorise aussi les pailles : part exportée et retour du biochar et des cendres sur les parcelles d'origine.</li>
+        <li><strong>La valorisation des produits du site</strong> — le prix payé pour la paille et le miscanthus dépend de la valeur obtenue pour le biométhane, le CO₂ et le biochar ; il gagne à être indexé sur le biométhane.</li>
+        <li><strong>Le partage du carbone</strong> — part des crédits carbone du biochar reversée à l'exploitant, inscrite au contrat.</li>
+        <li><strong>Le financement de l'implantation</strong> — avance de l'unité, de la coopérative-opérateur ou aides publiques : sans cela, deux années presque sans recette bloquent l'engagement.</li>
+      </ol>
+    </div>
+
+    <h3 class="reveal" style="margin-top:2.2rem;color:var(--vert-clair)">Exemple 1 — Exploitation céréalière en Beauce</h3>
+    <p class="reveal" style="font-size:.84rem">Blé ~215 €/t à la ferme (234,50 €/t rendu Rouen, sept. 2026) · 80 q/ha sur bonne terre, 55 q/ha sur sol superficiel · charges complètes ~1 400 €/ha · paille vers le site ~25 €/t net. Miscanthus : implantation ~3 000 €/ha sur 20 ans, aucun azote, 1 à 2 h/ha de main-d'œuvre, biomasse payée 80 €/t rendue au site. Fermage et aides PAC, comparables, laissés de côté.</p>
+    <div class="ha-wrap reveal">
+      <table class="ha-table">
+        <thead><tr><th>€/ha/an</th><th>Blé bonne terre<br>80 q + paille</th><th>Miscanthus bonne terre<br>13,5 t MS</th><th>Blé sol superficiel<br>55 q + paille</th><th>Miscanthus sol superficiel<br>10 t MS</th></tr></thead>
+        <tbody>
+          <tr><td>Recettes</td><td>~1 795</td><td>~1 080</td><td>~1 235</td><td>~800</td></tr>
+          <tr><td>Charges complètes</td><td>~1 400</td><td>~730</td><td>~1 300</td><td>~680</td></tr>
+          <tr class="res"><td>Résultat — biomasse seule</td><td>~+400</td><td>~+350</td><td>~−70</td><td>~+120</td></tr>
+          <tr><td>Biomasse payée 100 €/t</td><td>—</td><td>~+620</td><td>—</td><td>~+320</td></tr>
+          <tr><td>Part carbone du biochar, si reversée</td><td>—</td><td>+170 à +510</td><td>—</td><td>+130 à +380</td></tr>
+          <tr><td>Service « eau » (aire de captage)</td><td>—</td><td>—</td><td>—</td><td>+150 à +300</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ul class="bullets reveal">
+      <li>Sur bonne terre, le blé reste la référence ; sa paille, valorisée par la pyrogazéification, ajoute ~60 à 90 €/ha. Le miscanthus ne prend l'avantage qu'avec une part du carbone — d'où la règle : pas de miscanthus en plein champ sur les bonnes terres.</li>
+      <li>Sur sol superficiel, le blé perd de l'argent ; le miscanthus reste positif dès 80 €/t, nettement plus avec le carbone ou le service « eau ».</li>
+      <li>Pour 10 à 15 ha implantés sur les moins bonnes parcelles d'une exploitation de 150 ha : un revenu garanti 15 à 20 ans, indépendant du cours du blé (±300 €/ha d'une année à l'autre), une récolte de fin d'hiver, 4 fois moins de main-d'œuvre, aucun achat d'azote : une diversification de l'exploitation.</li>
+    </ul>
+
+    <h3 class="reveal" style="margin-top:2.2rem;color:var(--vert-clair)">Exemple 2 — Terres en reconversion, sans culture riche</h3>
+    <p class="reveal" style="font-size:.84rem">Friches et terres en déprise (sud de Brive, Lot, Aveyron), vignes arrachées, sols superficiels : la référence n'est plus le blé mais la friche, qui coûte à son propriétaire ~100 €/ha/an (broyage, débroussaillement obligatoire, taxe foncière). Miscanthus : implantation ~3 500 €/ha avec remise en état ; rendements prudents à mesurer — ~8 t MS/ha sur causse sec, ~11 t MS/ha en vallée ou sur ex-vigne ; biomasse payée 80 €/t.</p>
+    <div class="ha-wrap reveal">
+      <table class="ha-table">
+        <thead><tr><th>€/ha/an</th><th>Friche entretenue</th><th>Miscanthus causse sec<br>~8 t MS</th><th>Miscanthus vallée / ex-vigne<br>~11 t MS</th></tr></thead>
+        <tbody>
+          <tr><td>Recettes biomasse</td><td>0</td><td>~640</td><td>~880</td></tr>
+          <tr><td>Charges complètes</td><td>~100</td><td>~690</td><td>~735</td></tr>
+          <tr><td>Résultat — biomasse seule</td><td>~−100</td><td>~−50</td><td>~+145</td></tr>
+          <tr class="res"><td>Gain par rapport à la friche</td><td>—</td><td>~+50</td><td>~+245</td></tr>
+          <tr><td>Biomasse payée 100 €/t</td><td>—</td><td>~+110</td><td>~+365</td></tr>
+          <tr><td>Part carbone du biochar, si reversée</td><td>—</td><td>+100 à +300</td><td>+140 à +410</td></tr>
+          <tr><td>Contrat d'entretien territorial (§ 11)</td><td>—</td><td>selon contrat</td><td>selon contrat</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ul class="bullets reveal">
+      <li>Sur ces terres, la biomasse seule n'atteint pas la marge visée de 300 à 500 €/ha/an : il faut y ajouter une part du carbone du biochar et, en zone à risque, le contrat d'entretien territorial — c'est ce que doivent vérifier les démonstrateurs.</li>
+      <li>Le préjudice alimentaire est nul : le gain se mesure par rapport à une friche qui coûte, avec en prime une réduction du risque incendie lorsque les coupures sont entretenues.</li>
+      <li>Le financement de l'implantation est décisif : l'exploitant d'une terre en déprise n'a en général pas la trésorerie pour avancer 3 500 €/ha et attendre deux ans.</li>
+    </ul>
+    <p class="ha-note reveal">Ordres de grandeur à vérifier par les démonstrateurs. Carbone : 0,16 à 0,47 t CO₂ par tonne de matière sèche (hypothèse prudente 8–13 Mt/an ou objectif de conception 20–23,5 Mt/an du Budget carbone V10.1), valorisé 80 €/t CO₂. Sources : Réussir (marché des céréales, sept. 2026 ; Arvalis 2025), Agreste (moisson 2026), Chambre d'agriculture d'Île-de-France (fiche filière miscanthus).</p>
+  </div>
+</section>
+
 <!-- CARBONE & BIOCHAR -->
 <section>
   <div class="container">
@@ -484,7 +562,7 @@ footer p{font-size:.75rem;color:var(--gris);max-width:600px;margin:.3rem auto}
       <div class="doc-icon">📄</div>
       <div class="doc-info">
         <strong>Document complet — Le miscanthus dans le modèle Résilience V2</strong>
-        <span>15 sections + 7bis · Conditions d'implantation · Ciblage territorial · Trajectoire 30 ans · Boucle territoriale · Août 2026, mis à jour octobre 2026</span>
+        <span>15 sections + 7bis et 7ter · Conditions d'implantation · Ce que rapporte un hectare · Ciblage territorial · Trajectoire 30 ans · Boucle territoriale · Août 2026, mis à jour octobre 2026</span>
       </div>
       <a href="miscanthus_resilience_v2.pdf" class="btn btn-primary" target="_blank" download style="flex-shrink:0;">⬇ Télécharger le PDF</a>
     </div>
