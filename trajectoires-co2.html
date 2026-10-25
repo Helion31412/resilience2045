@@ -542,7 +542,7 @@ document.addEventListener("DOMContentLoaded", function () {
     <div class="encadre encadre-info">
       <h3>⚠ Incertitudes de la modélisation V5.1</h3>
       <ul>
-        <li><strong>ECS :</strong> fourchette AR6 = 2,5–4,0°C/doublement. Ce document utilise 3,0°C (médiane). Un ECS à 4°C augmenterait toutes les températures d'environ +33 %.</li>
+        <li><strong>ECS :</strong> fourchette AR6 = 2,5–4,0°C/doublement. Ce document utilise 3,0°C (médiane). Un ECS à 4°C augmenterait toutes les températures d'environ +33 % — et, par les boucles carbone, le CO₂ lui-même (voir <a href="#boucles">le complément « Boucles d'amplification »</a> ci-dessous).</li>
         <li><strong>Permafrost :</strong> estimations AR6 = 50 à 200 Gt CO₂eq d'ici 2100. Ce document utilise ~100 Gt (médiane), modulé par la T° locale dans chaque scénario.</li>
         <li><strong>Puits naturels :</strong> réponse impulsionnelle moyenne multi-modèles (Joos et al., 2013), calée sur les concentrations mesurées. Elle ne représente pas explicitement l'affaiblissement des puits par le réchauffement (−20 % déjà mesuré par le Global Carbon Budget 2025) : c'est l'objet des rétroactions et du scénario « incendies aggravés ».</li>
         <li><strong>Séquestration naturelle permanente :</strong> estimée à ~0,4 Gt/an (fourchette littérature : 0,2–0,6 Gt/an). Paramètre de scénario, non une estimation indépendante.</li>
@@ -571,6 +571,80 @@ document.addEventListener("DOMContentLoaded", function () {
       <h3>3 · La séquestration durable active est la seule voie pour inverser la trajectoire</h3>
       <p>L'objectif de ~6 Gt/an de séquestration Résilience ne doit pas être lu comme une prédiction mais comme <strong>la capacité qu'il faudrait construire</strong> pour non seulement arrêter la croissance du CO₂ mais inverser la trajectoire à l'échelle du siècle. Le modèle matérialise cette montée progressive de 2030 à 2065 : le CO₂ passe sous 350 ppm vers 2160 et atteint ~332 ppm en 2200 ; le retour à 280 ppm demande de prolonger l'effort au-delà de 2200. Plus le déploiement tarde, plus la Phase 2 — faire redescendre — devient difficile, car entre-temps le système climatique dégrade les puits naturels et réduit les marges de manœuvre.</p>
     </div>
+  </div>
+
+  <!-- SECTION COMPLÉMENT : BOUCLES D'AMPLIFICATION (note V1, octobre 2026) -->
+  <div class="section" id="boucles">
+    <div class="section-label">Complément · Boucles d'amplification climatique · note V1 · octobre 2026</div>
+    <h2>Pourquoi un plateau de CO₂ n'est pas une stabilité</h2>
+    <p>Les trajectoires ci-dessus suivent la méthode et les valeurs de référence du GIEC : elles restent la base. Elles intègrent le permafrost et un stress-test « incendies aggravés », mais pas l'enchaînement des rétroactions entre elles — la note V5.1 le signale elle-même. Or le CO₂ déjà présent (~429 ppm) a enclenché une <strong>boucle d'amplification en quatre étages</strong> : la neige et la glace reculent, les sols s'assèchent, la végétation absorbe moins, et les réservoirs lents (permafrost, tourbières) commencent à libérer leur carbone. Chaque étage aggrave le suivant, et le dernier renvoie au premier.</p>
+
+    <div class="chart-wrap">
+      <img src="boucles-schema.png" alt="Schéma : boucle d'amplification en quatre étages — neige et glace, sols secs, végétation, réservoirs lents — et retour vers le CO₂" style="width:100%;max-width:760px;display:block;margin:0 auto;" loading="lazy">
+    </div>
+
+    <div class="cards">
+      <div class="card bleu"><div class="card-label">Étage 1 · Arctique</div><div class="card-val">25–44 %</div><div class="card-unit">de l'effet direct du CO₂ ajoutés par la perte de réflectivité (banquise, puis banquise + neige)</div></div>
+      <div class="card orange"><div class="card-label">Étage 2 · Canicules européennes</div><div class="card-val">+1,5 à 3 °C</div><div class="card-unit">par degré de réchauffement mondial — les sols secs en sont la cause principale</div></div>
+      <div class="card vert"><div class="card-label">Étage 3 · Forêt française</div><div class="card-val">63 → 39</div><div class="card-unit">Mt CO₂/an absorbés (2005–2013 → 2014–2022) ; mortalité doublée</div></div>
+      <div class="card rouge"><div class="card-label">Étage 4 · Permafrost</div><div class="card-val">~0,7–1 Gt</div><div class="card-unit">CO₂/an pendant ~3 siècles, même à température stabilisée à 1,5–2 °C</div></div>
+    </div>
+
+    <div class="encadre encadre-warning">
+      <h3>Un plateau de concentration n'est pas un plateau des dégâts</h3>
+      <p>Arrêter les émissions fossiles stabilise à peu près la température (GIEC AR6). Mais au niveau actuel, les compartiments lents continuent de se dégrader :</p>
+      <ul>
+        <li>les glaciers poursuivent leur fonte vers un nouvel équilibre : ~39 % de la masse mondiale de 2020 déjà engagée, même à +1,2 °C ;</li>
+        <li>le permafrost continue de libérer son carbone pendant des siècles ;</li>
+        <li>les tourbières asséchées et les forêts dépérissantes restent des sources tant que les sols ne sont pas réhumidifiés ;</li>
+        <li>les canicules s'intensifient plus vite que la moyenne mondiale.</li>
+      </ul>
+      <p style="margin-top:.6rem;">Ces flux doivent être compensés chaque année ; sinon, le plateau de l'électrification devient une lente remontée.</p>
+    </div>
+
+    <div class="encadre encadre-orange">
+      <h3>Une fenêtre qui se referme : la séquestration dépend elle aussi de la végétation</h3>
+      <p>La chaîne biomasse → pyrogazéification → biochar + CO₂ biogénique ne peut retirer que le carbone que les plantes ont d'abord capté. Or la sortie des fossiles prendra des décennies, pendant lesquelles la température monte et la végétation s'affaiblit : la croissance des forêts françaises a déjà reculé de 4 % en dix ans. À court terme, la boucle produit de la biomasse (bois mort, biomasse brûlée) ; à long terme, elle érode la base productive. <strong>Plus on attend, moins on peut retirer : la séquestration doit être construite pendant la décarbonation, et non après.</strong></p>
+    </div>
+
+    <div class="section-label" style="margin-top:1.75rem;">Chiffrage avec le modèle de la note V5.1</div>
+    <h2 style="font-size:1.1rem;">Impact des boucles carbone sur les cinq trajectoires</h2>
+    <p>Le modèle paramétrique de la V5.1 a été reconstruit selon la même méthode (il retrouve les valeurs publiées à ±10 ppm près), puis complété par l'affaiblissement des puits avec la température (ordres de grandeur du Global Carbon Budget 2025) et par l'érosion de la biomasse disponible pour la séquestration. Les boucles « température » ne sont pas ajoutées une seconde fois : elles sont déjà incluses dans la sensibilité climatique de 3 °C.</p>
+
+    <div class="chart-wrap">
+      <img src="boucles-impact-trajectoires.png" alt="Trajectoires de CO₂ de la note V5.1 et avec boucles carbone, et surplus de CO₂ en 2200 par scénario" style="width:100%;display:block;" loading="lazy">
+    </div>
+
+    <table class="diff-table">
+      <thead>
+        <tr><th>Scénario</th><th>CO₂ 2100 : V5.1 → avec boucles</th><th>CO₂ 2200 : V5.1 → avec boucles (fourchette)</th><th>Écart de température en 2200</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Statu quo</td><td>604 → ~633 ppm</td><td>788 → ~1 040 ppm (890–1 270)</td><td class="pos">+0,9 °C</td></tr>
+        <tr><td>−50 % fossiles</td><td>485 → ~501 ppm</td><td>537 → ~605 ppm (567–659)</td><td class="pos">+0,4 °C</td></tr>
+        <tr><td>Électrification maximale</td><td>420 → ~429 ppm</td><td>420 → ~438 ppm (428–451)</td><td class="pos">+0,17 °C</td></tr>
+        <tr><td>Zéro fossile dès 2045</td><td>405 → ~413 ppm</td><td>389 → ~402 ppm (395–411)</td><td class="pos">+0,13 °C</td></tr>
+        <tr><td>Résilience V11</td><td>380 → ~387 ppm</td><td>332 → ~339 ppm (335–344)</td><td class="pos">+0,09 °C</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:.8rem;color:#888;font-family:Arial,sans-serif;margin-top:.5rem;">Valeur centrale ; entre parenthèses, hypothèses basse à haute. Résilience V11 : passage sous 350 ppm vers ~2175 au lieu de ~2160. Tourbières et dégel abrupt du permafrost non inclus : l'effet réel est plutôt sous-estimé.</p>
+
+    <div class="encadre encadre-info">
+      <h3>Volet température — et si les boucles rapides étaient plus fortes que prévu ?</h3>
+      <p>Les boucles neige-glace, nuages et sols agissent d'abord sur la température, en quelques années, puis sur le CO₂. Plusieurs signaux récents justifient de tester une sensibilité plus élevée que la valeur de référence : réflectivité arctique en recul plus rapide que dans les modèles, réflectivité de la planète au plus bas en 2023, déséquilibre énergétique doublé entre 2005 et 2019. Deux stress-tests font monter la sensibilité au-delà du réchauffement actuel, jusqu'à 3,5 °C (H1) et 4 °C (H2, borne haute du GIEC), sans changer le réchauffement observé aujourd'hui.</p>
+      <img src="boucles-volet-temperature.png" alt="Température et CO₂ pour Résilience V11, l'électrification maximale et un scénario de 10 ans de retard, selon trois hypothèses de sensibilité" style="width:100%;max-width:700px;display:block;margin:1rem auto;" loading="lazy">
+      <ul>
+        <li>Le pic de réchauffement des trajectoires ambitieuses passe de ~2 °C à ~2,2–2,4 °C ; avec 10 ans de retard, il approche ~2,8 °C.</li>
+        <li>Le CO₂ suit ensuite : permafrost jusqu'à +40 % d'ici 2100, puits plus affaiblis, biomasse de séquestration réduite.</li>
+        <li>Sans retrait actif, l'électrification maximale et le zéro fossile voient température et CO₂ remonter après 2100.</li>
+      </ul>
+    </div>
+
+    <div class="encadre encadre-success">
+      <h3>Ce que les boucles changent — et ce qu'elles ne changent pas</h3>
+      <p>Les boucles pèsent d'autant plus que la température reste haute : en 2200, elles ajoutent ~+7 ppm à Résilience V11 et ~+250 ppm au statu quo. <strong>Résilience reste la seule trajectoire qui redescend dans tous les cas</strong>, précisément parce qu'elle fait baisser la température. Mais elle perd sa marge : si boucles rapides et boucles carbone sont fortes, ou si le déploiement prend 10 ans de retard, le passage sous 350 ppm sort de l'horizon 2200. Le retrait durable doit donc être dimensionné avec une réserve, et lancé tôt.</p>
+    </div>
+
   </div>
 
   <!-- TÉLÉCHARGEMENTS -->
