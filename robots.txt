@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://resilience2045.fr/sitemap.xml
