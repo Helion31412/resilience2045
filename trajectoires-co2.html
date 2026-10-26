@@ -273,6 +273,29 @@ document.addEventListener("DOMContentLoaded", function () {
 <main>
 <div class="container">
 
+  <div style="background:#EBF2FA;border:1px solid rgba(31,78,121,.25);border-radius:8px;padding:1.1rem 1.25rem;margin-bottom:1.5rem;">
+    <div style="font-family:Arial,sans-serif;font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#1F4E79;font-weight:bold;margin-bottom:.4rem;">Parcours de lecture · trois notes complémentaires</div>
+    <p style="font-size:.9rem;line-height:1.6;margin:0 0 .8rem;">Cette page rassemble trois notes qui se lisent ensemble : la première dit <strong>pourquoi</strong> il faut retirer du CO₂, la deuxième <strong>combien</strong>, la troisième <strong>ce qui peut aggraver</strong> la situation.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.75rem;">
+      <a href="#bilan" style="display:block;background:#fff;border-left:4px solid #1F4E79;border-radius:5px;padding:.75rem .9rem;text-decoration:none;color:inherit;">
+        <div style="font-family:Arial,sans-serif;font-size:.72rem;color:#1F4E79;font-weight:bold;">1 · POURQUOI AGIR</div>
+        <div style="font-weight:bold;margin:.2rem 0;font-size:.92rem;">Du bilan historique du carbone à la nécessité d'un retrait durable</div>
+        <div style="font-size:.82rem;line-height:1.5;color:#444;">~750 GtC déplacés depuis 1850, des puits que le climat affaiblit, des incertitudes qui justifient d'agir — et la réponse de Résilience.</div>
+      </a>
+      <a href="#trajectoires" style="display:block;background:#fff;border-left:4px solid #1566A8;border-radius:5px;padding:.75rem .9rem;text-decoration:none;color:inherit;">
+        <div style="font-family:Arial,sans-serif;font-size:.72rem;color:#1566A8;font-weight:bold;">2 · COMBIEN</div>
+        <div style="font-weight:bold;margin:.2rem 0;font-size:.92rem;">CO₂ atmosphérique et températures V5.1</div>
+        <div style="font-size:.82rem;line-height:1.5;color:#444;">Cinq trajectoires jusqu'en 2200 dans le cadre du GIEC : seule une trajectoire avec retrait durable fait redescendre le CO₂.</div>
+      </a>
+      <a href="#boucles" style="display:block;background:#fff;border-left:4px solid #A32D2D;border-radius:5px;padding:.75rem .9rem;text-decoration:none;color:inherit;">
+        <div style="font-family:Arial,sans-serif;font-size:.72rem;color:#A32D2D;font-weight:bold;">3 · CE QUI PEUT AGGRAVER</div>
+        <div style="font-weight:bold;margin:.2rem 0;font-size:.92rem;">Boucles d'amplification climatique V1</div>
+        <div style="font-size:.82rem;line-height:1.5;color:#444;">Glace, sols, végétation, permafrost, tourbières : pourquoi même la neutralité n'est pas un équilibre stable.</div>
+      </a>
+    </div>
+    <p style="font-size:.8rem;margin:.75rem 0 0;color:#555;">Les PDF des trois notes, la synthèse en une page et l'annexe chiffrée « Bilan du carbone depuis 1850 » sont en <a href="#telechargements">bas de page</a>.</p>
+  </div>
+
   <div class="encadre encadre-info" style="margin-bottom:1.5rem;">
     <h3>📐 Statut de ce modèle — à lire en premier</h3>
     <p style="font-size:.9rem;line-height:1.65;margin-bottom:.6rem;">
@@ -337,15 +360,54 @@ document.addEventListener("DOMContentLoaded", function () {
     </p>
   </div>
 
+  <div class="section" id="bilan">
+    <div class="section-label">1 · Pourquoi agir · Synthèse « Du bilan historique du carbone à la nécessité d'un retrait durable » · octobre 2026</div>
+    <h2>Le bilan du carbone depuis 1850</h2>
+    <p>Depuis 1850, l'humanité a déplacé environ <strong>750 milliards de tonnes de carbone (GtC)</strong> : ~503 extraits du sous-sol et brûlés, ~248 perdus par la végétation et les sols (déboisement, mise en culture). Ce carbone a quitté un réservoir stable, le sous-sol, pour des réservoirs qui échangent avec l'atmosphère.</p>
+    <table class="diff-table">
+      <thead><tr><th>Réservoir</th><th>Vers 1850 (GtC)</th><th>Variation 1850–2024</th><th>Aujourd'hui (GtC)</th></tr></thead>
+      <tbody>
+        <tr><td>Atmosphère</td><td>~605 (285 ppm)</td><td class="pos">+292</td><td>~897 (423 ppm)</td></tr>
+        <tr><td>Océan</td><td>~38 600</td><td class="pos">+200</td><td>~38 800</td></tr>
+        <tr><td>Végétation + sols (hors permafrost)</td><td>~1 950 à 3 050</td><td><strong>−75</strong> (+173 absorbés, −248 perdus)</td><td>~1 875 à 2 975</td></tr>
+        <tr><td>Béton, plastiques, bitume</td><td>0</td><td>+16 à 21</td><td>~16 à 21</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:.8rem;color:#888;font-family:Arial,sans-serif;margin-top:.5rem;">Stocks de 1850 : GIEC AR5/AR6. Variations : Global Carbon Budget 2025. Écart non attribué du bilan : ~80 GtC (incertitudes).</p>
+
+    <div class="cards">
+      <div class="card rouge"><div class="card-label">Les terres</div><div class="card-val">−75 GtC</div><div class="card-unit">bilan net depuis 1850 : leurs pertes ont dépassé leurs absorptions</div></div>
+      <div class="card bleu"><div class="card-label">L'océan</div><div class="card-val">27 %</div><div class="card-unit">des émissions reçues, alors qu'il contient ~90 % du carbone mobile : seule sa surface échange vite</div></div>
+      <div class="card orange"><div class="card-label">Le climat affaiblit les puits</div><div class="card-val">+8 ppm</div><div class="card-unit">de CO₂ depuis 1960 dus à la baisse d'efficacité des puits (Global Carbon Budget 2025)</div></div>
+      <div class="card vert"><div class="card-label">Retrait durable aujourd'hui</div><div class="card-val">~2 Mt</div><div class="card-unit">CO₂/an dans le monde, face à un retard de plus de 5 Gt/an sur le besoin de 2050 (State of CDR 2026)</div></div>
+    </div>
+
+    <div class="encadre encadre-info">
+      <h3>Un océan qui absorbe, mais de moins en moins efficacement</h3>
+      <p>Le carbone descend vers les profondeurs avec les eaux de surface qui plongent, et par la pompe biologique. Le réchauffement agit sur les deux termes : une eau plus chaude dissout moins de CO₂ (la <strong>teneur</strong> baisse), et, plus légère, elle se mélange moins avec les eaux profondes (le <strong>débit</strong> baisse ; le GIEC juge très probable un affaiblissement de la circulation atlantique au XXIe siècle). L'océan continue d'absorber, mais moins qu'il ne l'aurait fait dans un climat moins chaud.</p>
+    </div>
+
+    <div class="encadre encadre-orange">
+      <h3>Permafrost et tourbières : des réservoirs considérables dont la réponse reste difficile à maîtriser</h3>
+      <p>~1 400 à 1 700 GtC dans les sols gelés du Nord — près de deux fois le carbone de l'atmosphère — et ~500 à 600 GtC dans les tourbières. Une partie peut être libérée en CO₂ et en méthane (~80 fois plus réchauffant que le CO₂ sur vingt ans). Pour le seul permafrost, le GIEC estime ~18 GtC par degré d'ici 2100, dans une fourchette de 3 à 41 GtC ; la plupart des modèles du système Terre n'incluent pas ce carbone. Ce n'est pas une incertitude marginale : c'est un risque supplémentaire, dont il faut tenir compte sans prétendre en connaître précisément l'ampleur.</p>
+    </div>
+
+    <div class="encadre encadre-success">
+      <h3>Ce que ce bilan implique</h3>
+      <p><strong>Les puits naturels ont absorbé environ la moitié de nos émissions ; le GIEC conclut qu'ils en absorberont une part décroissante à mesure que le climat se réchauffe.</strong> Compter sur eux pour faire redescendre le CO₂ est un pari ; construire dès maintenant des capacités de retrait durable, en parallèle de la réduction des émissions, est une assurance. Les incertitudes portent sur l'ampleur et le calendrier des rétroactions : elles ne justifient pas d'attendre.</p>
+      <p style="margin-top:.5rem;"><a href="Synthese_Bilan_Carbone_Retrait_Durable_V1.pdf" target="_blank" rel="noopener" style="color:#0F6E56;font-weight:bold;">Lire la synthèse complète (PDF) →</a> · <a href="Note_Bilan_Carbone_1850_2024.pdf" target="_blank" rel="noopener" style="color:#0F6E56;">Annexe chiffrée : bilan du carbone depuis 1850 (PDF) →</a></p>
+    </div>
+  </div>
+
   <div class="message-central">
     <h2>Deux problèmes simultanés — deux phases d'action</h2>
-    <p><strong>Phase 1 — Arrêter la montée du CO₂ :</strong> réduire les émissions fossiles jusqu'à ce que les retraits compensent au minimum les émissions et les rétroactions. Électrifier ce qui peut l'être. Mais même à émissions fossiles nulles, le CO₂ ne redescend que très lentement — de l'ordre de 390 ppm en 2200 dans le modèle, loin des 350 ppm.</p>
+    <p><strong>Phase 1 — Arrêter la montée du CO₂ :</strong> réduire les émissions fossiles jusqu'à ce que les retraits compensent au minimum les émissions et les rétroactions. Électrifier ce qui peut l'être. Mais même à émissions fossiles nulles, le CO₂ ne redescend que très lentement — de l'ordre de 390 ppm en 2200 dans le modèle, loin des 350 ppm — et les <a href="#boucles">boucles d'amplification</a> peuvent ralentir, annuler, voire inverser cette baisse.</p>
     <p><strong>Phase 2 — Faire redescendre la concentration :</strong> cela exige, en plus de la réduction des émissions, des retraits nets et <em>durables</em> du CO₂ atmosphérique. Un puits naturel net (forêts, océans) ne doit pas être confondu avec une élimination permanente : il stocke le carbone de façon réversible (biomasse, sols superficiels, océan de surface et intermédiaire), il s'affaiblit quand les émissions baissent et peut restituer une partie de ce carbone lorsque la concentration diminue ou que le climat se réchauffe. Seule une séquestration active et durable — biochar millénaire, minéralisation géologique — agit sur le stock.</p>
     <p><strong>Le temps n'est pas neutre :</strong> réchauffement → dégradation des puits naturels → émissions supplémentaires (incendies, permafrost) → concentration plus élevée → réchauffement amplifié. Chaque année de retard rend la Phase 2 plus difficile et plus coûteuse. C'est précisément là que l'architecture Résilience — zéro fossile résiduel + ~6 Gt/an de séquestration durable — constitue une rupture de nature, pas simplement une amélioration de degré.</p>
   </div>
 
   <!-- SECTION 1 : DONNÉES HISTORIQUES + SCÉNARIOS FUTURS -->
-  <div class="section">
+  <div class="section" id="trajectoires">
     <div class="section-label">Données observées 1873–2026 · Projections 2026–2200</div>
     <h2>Trajectoires complètes — CO₂ et températures</h2>
 
@@ -648,17 +710,26 @@ document.addEventListener("DOMContentLoaded", function () {
   </div>
 
   <!-- TÉLÉCHARGEMENTS -->
+  <div id="telechargements"></div>
+  <div class="download-box" style="background:#1F4E79;">
+    <div>
+      <h3>1 · Pourquoi agir — Du bilan historique du carbone à la nécessité d'un retrait durable</h3>
+      <p>Bilan 1850–2024, puits naturels affaiblis par le climat, permafrost et tourbières, ce qu'impliquent les incertitudes, où stocker durablement le carbone, et pourquoi Résilience 2045 · Annexe chiffrée : <a href="Note_Bilan_Carbone_1850_2024.pdf" target="_blank" rel="noopener" style="color:#fff;text-decoration:underline;">Bilan du carbone depuis 1850</a><br>Programme Résilience V11 · Octobre 2026</p>
+    </div>
+    <a href="Synthese_Bilan_Carbone_Retrait_Durable_V1.pdf" class="btn-download" style="color:#1F4E79;" target="_blank" rel="noopener">Télécharger la synthèse</a>
+  </div>
+
   <div class="download-box" style="background:#0F6E56;">
     <div>
-      <h3>Synthèse en une page — CO₂, températures et boucles d'amplification</h3>
-      <p>Les deux notes en une lecture : la stabilisation apparente du cadre GIEC (V5.1), ce que les boucles d'amplification y changent, et la conclusion — la neutralité arrête l'aggravation, seul un retrait durable fait redescendre le CO₂<br>Programme Résilience V11 · Octobre 2026</p>
+      <h3>En une page — CO₂, températures et boucles d'amplification (notes 2 et 3)</h3>
+      <p>L'essentiel en une page, pour un lecteur non spécialiste : ce que donne le calcul classique selon les méthodes du GIEC, ce que les boucles d'amplification y changent, et ce qu'il faut en retenir — sortir des fossiles stabilise au mieux le climat ; seul un retrait durable fait redescendre le CO₂<br>Programme Résilience V11 · Octobre 2026</p>
     </div>
     <a href="Synthese_CO2_Boucles_2notes.pdf" class="btn-download" style="color:#0F6E56;" target="_blank" rel="noopener">Télécharger la synthèse</a>
   </div>
 
   <div class="download-box">
     <div>
-      <h3>Note de synthèse complète — CO₂ atmosphérique et températures V5.1</h3>
+      <h3>2 · Combien — Note CO₂ atmosphérique et températures V5.1</h3>
       <p>Modèle paramétrique · Séquestration permanente vs cyclique · Scénario incendies aggravés · Données 1873–2200<br>Programme Résilience V11 · Octobre 2026</p>
     </div>
     <a href="Note_CO2_Temperatures_V5.1.pdf" class="btn-download" target="_blank" rel="noopener">Télécharger le PDF V5.1</a>
@@ -674,7 +745,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   <div class="download-box" style="background:#A32D2D;">
     <div>
-      <h3>Note complémentaire — Boucles d'amplification climatique</h3>
+      <h3>3 · Ce qui peut aggraver — Note Boucles d'amplification climatique</h3>
       <p>Neige et glace, sols, végétation, permafrost, tourbières · Impact des boucles sur les cinq trajectoires de la V5.1 · Volet température : et si les boucles rapides étaient plus fortes que prévu ?<br>Programme Résilience V11 · Octobre 2026</p>
     </div>
     <a href="Note_Boucles_Amplification_Climat_V1.pdf" class="btn-download" style="color:#A32D2D;" target="_blank" rel="noopener">Télécharger le PDF</a>
@@ -682,7 +753,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   <div class="sources">
     <div class="container">
-      <strong>Sources :</strong> GIEC AR6 WG1 (2021) · SSP3-7.0, SSP1-2.6, SSP5-8.5 · ECS = 3,0°C/doublement CO₂ (médiane AR6, fourchette 2,5–4,0°C) · Inertie thermique océanique : décalage 20 ans (calibré sur l'anomalie observée) · Réponse impulsionnelle du cycle du carbone : Joos et al., Atmos. Chem. Phys. 2013 · 1 ppm = 7,8 Gt CO₂ · Séquestration naturelle permanente nette : ~0,4 Gt/an (paramètre de scénario, fourchette 0,2–0,6 Gt/an) · Programme Résilience V11 (mai 2026) : séquestration ~5,9 Gt/an (biochar, sols, géologie et carbonatation) · Carbone Résilience Mobilité Mondiale (V11) · Données historiques : NOAA/Mauna Loa · ICOS-France (Île Amsterdam) · Météo-France (Paris-Montsouris 1873–2026) · Carottes glaciaires EPICA/Vostok · Incendies : Global Fire Emissions Database (GFED5) · Canada 2023 : Natural Resources Canada · France 2026 : ministère de l'Intérieur, ~98 000 ha fin septembre 2026 · EFFIS · Global Carbon Budget 2025 (Friedlingstein et al.) · Met Office, prévision CO₂ Mauna Loa 2026 (429,4 ppm) · Amazonie puits→source : Gatti et al., Nature 2021 · CarbFix (Islande) : minéralisation basaltique · Règlement CRCF UE (acte délégué biochar, 3 févr. 2026) · Note OPECST n°48 (Piednoir, oct. 2025)
+      <strong>Sources :</strong> GIEC AR6 WG1 (2021) · SSP3-7.0, SSP1-2.6, SSP5-8.5 · ECS = 3,0°C/doublement CO₂ (médiane AR6, fourchette 2,5–4,0°C) · Inertie thermique océanique : décalage 20 ans (calibré sur l'anomalie observée) · Réponse impulsionnelle du cycle du carbone : Joos et al., Atmos. Chem. Phys. 2013 · 1 ppm = 7,8 Gt CO₂ · Séquestration naturelle permanente nette : ~0,4 Gt/an (paramètre de scénario, fourchette 0,2–0,6 Gt/an) · Programme Résilience V11 (mai 2026) : séquestration ~5,9 Gt/an (biochar, sols, géologie et carbonatation) · Carbone Résilience Mobilité Mondiale (V11) · Données historiques : NOAA/Mauna Loa · ICOS-France (Île Amsterdam) · Météo-France (Paris-Montsouris 1873–2026) · Carottes glaciaires EPICA/Vostok · Incendies : Global Fire Emissions Database (GFED5) · Canada 2023 : Natural Resources Canada · France 2026 : ministère de l'Intérieur, ~98 000 ha fin septembre 2026 · EFFIS · Global Carbon Budget 2025 (Friedlingstein et al.) · Met Office, prévision CO₂ Mauna Loa 2026 (429,4 ppm) · Amazonie puits→source : Gatti et al., Nature 2021 · CarbFix (Islande) : minéralisation basaltique · Règlement CRCF UE (acte délégué biochar, 3 févr. 2026) · Note OPECST n°48 (Piednoir, oct. 2025) · Permafrost : Schuur et al., Nature 2015 · Tourbières : Yu et al., GRL 2010 · Inventaire forestier national (IGN 2024) · The State of Carbon Dioxide Removal (2026)
     </div>
   </div>
 
