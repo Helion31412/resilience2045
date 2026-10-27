@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CO₂ et climat : l’enchaînement des phénomènes, du bilan au retrait durable | Résilience 2045</title>
+  <meta name="description" content="D’où vient le CO₂ ajouté, pourquoi il reste dans l’air, ce qui aggrave la situation (boucles d’amplification), ce que donnent les trajectoires jusqu’en 2200 et pourquoi un retrait durable est nécessaire : toutes les notes CO₂ de Résilience 2045 réunies.">
+
+  <!-- Google Fonts — aligné sur le reste du site Résilience -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Serif+4:ital,wght@0,300;0,600;1,300&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Tokens ───────────────────────────────────────────────────── */
+    :root {
+      --vert:       #2D6A4F;
+      --vert-m:     #40916C;
+      --vert-l:     #74C69D;
+      --vert-xl:    #D8F3DC;
+      --vert-xxl:   #F0FBF3;
+      --orange:     #E76F51;
+      --orange-l:   #FFF0EB;
+      --gris-900:   #1A202C;
+      --gris-700:   #4A5568;
+      --gris-500:   #718096;
+      --gris-200:   #EDF2F7;
+      --gris-100:   #F7FAFC;
+      --blanc:      #FFFFFF;
+      --radius:     8px;
+      --radius-l:   14px;
+      --ombre:      0 2px 8px rgba(0,0,0,.07), 0 1px 2px rgba(0,0,0,.05);
+      --ombre-hover:0 6px 20px rgba(45,106,79,.15), 0 2px 6px rgba(0,0,0,.08);
+      --transition: .22s ease;
+    }
+
+    /* ── Reset & base ─────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--gris-700);
+      background: var(--blanc);
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    /* ── Navigation stub (cohérence avec le site) ─────────────────── */
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,.97);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--gris-200);
+    }
+    .nav-inner {
+      max-width: 1120px; margin: 0 auto;
+      padding: 0 2rem;
+      display: flex; align-items: center; gap: 2rem;
+      height: 56px;
+    }
+    .nav-logo {
+      font-weight: 700; font-size: .9rem; letter-spacing: .04em;
+      color: var(--vert); text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .nav-logo span { color: var(--gris-500); font-weight: 400; }
+    .nav-links {
+      display: flex; gap: 1.4rem; list-style: none;
+      font-size: .875rem; color: var(--gris-700);
+      margin-left: auto;
+    }
+    .nav-links a:hover { color: var(--vert); }
+    .nav-links a.active { color: var(--vert); font-weight: 600; }
+
+    /* ── Hero ─────────────────────────────────────────────────────── */
+    .hero {
+      background: linear-gradient(135deg, var(--vert) 0%, #1B4332 100%);
+      padding: 5rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    .hero-inner {
+      max-width: 860px; margin: 0 auto;
+      position: relative; z-index: 1;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: .6rem;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 100px;
+      padding: .35rem 1rem;
+      font-size: .8rem; font-weight: 500; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--vert-l);
+      margin-bottom: 1.5rem;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--vert-l);
+      flex-shrink: 0;
+    }
+    .hero h1 {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-weight: 600; font-size: clamp(1.8rem, 4vw, 2.8rem);
+      line-height: 1.2; color: var(--blanc);
+      margin-bottom: 1.2rem;
+    }
+    .hero-sub {
+      font-size: 1.05rem; line-height: 1.7;
+      color: rgba(255,255,255,.78);
+      max-width: 680px;
+      margin-bottom: 2rem;
+    }
+    .hero-meta {
+      display: flex; flex-wrap: wrap; gap: .8rem;
+      font-size: .82rem; color: rgba(255,255,255,.55);
+    }
+    .hero-meta span {
+      display: flex; align-items: center; gap: .4rem;
+    }
+    .hero-meta svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+    /* ── Intro bloc ───────────────────────────────────────────────── */
+    .intro {
+      max-width: 860px; margin: 3.5rem auto 0;
+      padding: 0 2rem;
+    }
+    .intro p {
+      font-size: 1rem; line-height: 1.75;
+      color: var(--gris-700);
+    }
+    .intro strong { color: var(--gris-900); }
+
+    /* ── Contexte encadré ─────────────────────────────────────────── */
+    .contexte {
+      max-width: 860px; margin: 2.5rem auto;
+      padding: 0 2rem;
+    }
+    .contexte-box {
+      background: var(--orange-l);
+      border-left: 4px solid var(--orange);
+      border-radius: var(--radius);
+      padding: 1.4rem 1.6rem;
+    }
+    .contexte-box p {
+      font-size: .95rem; line-height: 1.7;
+      color: var(--gris-900);
+    }
+    .contexte-box strong { color: var(--orange); }
+
+    /* ── Section principale — 3 notes ─────────────────────────────── */
+    .notes-section {
+      max-width: 860px; margin: 0 auto;
+      padding: 0 2rem 5rem;
+    }
+    .section-titre {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-weight: 600; font-size: 1.5rem;
+      color: var(--vert); margin-bottom: 2rem;
+      padding-bottom: .8rem;
+      border-bottom: 2px solid var(--vert-xl);
+    }
+
+    .groupe-titre { font-family:'Source Serif 4', Georgia, serif; font-weight:600; font-size:1.25rem; color:var(--vert); margin:2.8rem 0 .4rem; padding-bottom:.6rem; border-bottom:2px solid var(--vert-xl); scroll-margin-top:80px; }
+    .groupe-intro { font-size:.92rem; line-height:1.65; color:#444; margin:0 0 1.2rem; }
+    .mini-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:.9rem; margin-bottom:1.5rem; }
+    .mini-card { display:block; background:#fff; border:1px solid #DDE7E0; border-left:4px solid var(--vert-m); border-radius:8px; padding:.9rem 1rem; text-decoration:none; color:inherit; }
+    .mini-card:hover { border-color:var(--vert-m); }
+    .mini-card .mini-tag { font-size:.7rem; letter-spacing:.06em; text-transform:uppercase; color:var(--vert-m); font-weight:700; }
+    .mini-card .mini-titre { font-weight:700; margin:.25rem 0 .35rem; font-size:.95rem; line-height:1.35; }
+    .mini-card .mini-txt { font-size:.83rem; line-height:1.5; color:#555; }
+    .mini-card .mini-pdf { display:inline-block; margin-top:.5rem; font-size:.75rem; font-weight:700; color:var(--vert); }
+    .chaine { max-width:860px; margin:2.5rem auto 0; padding:0 2rem; }
+    .chaine-grid { display:flex; flex-wrap:wrap; gap:.5rem; align-items:stretch; }
+    .chaine-etape { flex:1 1 0; min-width:0; display:block; text-decoration:none; color:inherit; background:#fff; border:1px solid #DDE7E0; border-top:4px solid var(--c); border-radius:8px; padding:.75rem .8rem; }
+    .chaine-etape:hover { border-color:var(--c); }
+    .chaine-num { font-size:.72rem; font-weight:700; letter-spacing:.06em; color:var(--c); text-transform:uppercase; }
+    .chaine-titre { font-weight:700; font-size:.9rem; line-height:1.3; margin:.2rem 0; }
+    .chaine-txt { font-size:.78rem; line-height:1.45; color:#555; }
+    .chaine-fleche { flex:0 0 auto; align-self:center; color:#9AB; font-size:1.2rem; }
+    @media (max-width:700px){ .chaine-fleche{ display:none; } .chaine-etape{ flex:1 1 100%; } .chaine{ padding:0 1.2rem; } }
+    .retenir { background:#F5F8F6; border-left:4px solid var(--c, var(--vert)); border-radius:6px; padding:.8rem 1rem; font-size:.9rem; line-height:1.6; margin:0 0 1.1rem; }
+    .retenir strong { color:#1B4332; }
+    /* ── Card note ────────────────────────────────────────────────── */
+    .note-card {
+      background: var(--blanc);
+      border: 1px solid var(--gris-200);
+      border-radius: var(--radius-l);
+      box-shadow: var(--ombre);
+      margin-bottom: 2.2rem;
+      overflow: hidden;
+      transition: box-shadow var(--transition), transform var(--transition);
+    }
+    .note-card:hover {
+      box-shadow: var(--ombre-hover);
+      transform: translateY(-2px);
+    }
+
+    /* Barre colorée en tête de carte */
+    .note-card-header {
+      display: grid;
+      grid-template-columns: 5px 1fr;
+    }
+    .note-card-stripe {
+      background: var(--vert);
+      border-radius: var(--radius-l) 0 0 0;
+    }
+    .note-card-top {
+      padding: 1.6rem 1.8rem 1.4rem;
+      display: flex; align-items: flex-start; gap: 1.2rem;
+    }
+    .note-num {
+      flex-shrink: 0;
+      width: 44px; height: 44px;
+      background: var(--vert-xxl);
+      border: 2px solid var(--vert-xl);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Source Serif 4', serif;
+      font-weight: 600; font-size: 1.15rem;
+      color: var(--vert);
+    }
+    .note-head { flex: 1; }
+    .note-tag {
+      display: inline-block;
+      font-size: .72rem; font-weight: 600; letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--vert-m);
+      background: var(--vert-xxl);
+      border: 1px solid var(--vert-xl);
+      border-radius: 100px;
+      padding: .2rem .7rem;
+      margin-bottom: .6rem;
+    }
+    .note-titre {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-weight: 600; font-size: 1.2rem; line-height: 1.3;
+      color: var(--gris-900);
+      margin-bottom: .3rem;
+    }
+    .note-version {
+      font-size: .8rem; color: var(--gris-500);
+    }
+
+    .note-card-body { padding: 0 1.8rem 1.6rem 1.8rem; }
+
+    /* Résumé */
+    .note-resume {
+      font-size: .95rem; line-height: 1.7;
+      color: var(--gris-700);
+      margin-bottom: 1.2rem;
+    }
+
+    /* Points clés */
+    .note-points {
+      list-style: none;
+      display: flex; flex-direction: column; gap: .55rem;
+      margin-bottom: 1.4rem;
+    }
+    .note-points li {
+      display: flex; align-items: flex-start; gap: .7rem;
+      font-size: .9rem; line-height: 1.55;
+      color: var(--gris-700);
+    }
+    .note-points li::before {
+      content: '';
+      flex-shrink: 0;
+      margin-top: .45em;
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--vert-m);
+    }
+
+    /* Chiffres clés inline */
+    .note-chiffres {
+      display: flex; flex-wrap: wrap; gap: .8rem;
+      margin-bottom: 1.4rem;
+    }
+    .chiffre-pill {
+      background: var(--vert-xxl);
+      border: 1px solid var(--vert-xl);
+      border-radius: var(--radius);
+      padding: .5rem .9rem;
+      font-size: .82rem;
+    }
+    .chiffre-pill strong {
+      display: block;
+      font-size: 1.1rem; font-weight: 700;
+      color: var(--vert); line-height: 1.2;
+    }
+    .chiffre-pill span {
+      color: var(--gris-500);
+    }
+
+    /* Sections couvertes */
+    .note-sections {
+      background: var(--gris-100);
+      border-radius: var(--radius);
+      padding: .9rem 1rem;
+      margin-bottom: 1.4rem;
+    }
+    .note-sections-label {
+      font-size: .75rem; font-weight: 600; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--gris-500);
+      margin-bottom: .5rem;
+    }
+    .note-sections-list {
+      display: flex; flex-wrap: wrap; gap: .4rem;
+    }
+    .section-chip {
+      font-size: .78rem; color: var(--gris-700);
+      background: var(--blanc);
+      border: 1px solid var(--gris-200);
+      border-radius: 100px;
+      padding: .2rem .7rem;
+    }
+
+    /* Footer de carte */
+    .note-card-footer {
+      border-top: 1px solid var(--gris-200);
+      padding: 1rem 1.8rem;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: .8rem;
+    }
+    .note-infos {
+      display: flex; gap: 1.4rem;
+      font-size: .8rem; color: var(--gris-500);
+      flex-wrap: wrap;
+    }
+    .note-infos span {
+      display: flex; align-items: center; gap: .35rem;
+    }
+    .note-infos svg { width: 13px; height: 13px; }
+
+    .btn-telecharger {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: var(--vert);
+      color: var(--blanc);
+      font-size: .875rem; font-weight: 600;
+      padding: .6rem 1.2rem;
+      border-radius: var(--radius);
+      transition: background var(--transition), transform var(--transition);
+    }
+    .btn-telecharger:hover {
+      background: #235c3f;
+      transform: translateY(-1px);
+    }
+    .btn-telecharger svg { width: 15px; height: 15px; flex-shrink: 0; }
+
+    /* ── Encadré "comment utiliser" ───────────────────────────────── */
+    .usage {
+      max-width: 860px; margin: 0 auto 4rem;
+      padding: 0 2rem;
+    }
+    .usage-box {
+      background: var(--vert-xxl);
+      border: 1px solid var(--vert-xl);
+      border-radius: var(--radius-l);
+      padding: 1.8rem 2rem;
+    }
+    .usage-box h3 {
+      font-size: 1rem; font-weight: 700;
+      color: var(--vert); margin-bottom: 1rem;
+    }
+    .usage-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+    .usage-item {
+      background: var(--blanc);
+      border: 1px solid var(--vert-xl);
+      border-radius: var(--radius);
+      padding: 1rem;
+    }
+    .usage-item-icon {
+      font-size: 1.4rem; margin-bottom: .5rem;
+    }
+    .usage-item h4 {
+      font-size: .88rem; font-weight: 700;
+      color: var(--gris-900); margin-bottom: .3rem;
+    }
+    .usage-item p {
+      font-size: .82rem; line-height: 1.55;
+      color: var(--gris-700);
+    }
+
+    /* ── Sources ──────────────────────────────────────────────────── */
+    .sources {
+      background: var(--gris-100);
+      border-top: 1px solid var(--gris-200);
+      padding: 2rem;
+    }
+    .sources-inner {
+      max-width: 860px; margin: 0 auto;
+    }
+    .sources-inner h3 {
+      font-size: .85rem; font-weight: 700;
+      letter-spacing: .05em; text-transform: uppercase;
+      color: var(--gris-500); margin-bottom: .8rem;
+    }
+    .sources-list {
+      display: flex; flex-wrap: wrap; gap: .5rem;
+      list-style: none;
+    }
+    .sources-list li {
+      font-size: .8rem; color: var(--gris-700);
+      background: var(--blanc);
+      border: 1px solid var(--gris-200);
+      border-radius: 100px;
+      padding: .25rem .8rem;
+    }
+
+    /* ── Footer ───────────────────────────────────────────────────── */
+    footer {
+      background: var(--vert);
+      color: rgba(255,255,255,.7);
+      text-align: center;
+      padding: 1.8rem;
+      font-size: .82rem;
+    }
+    footer a { color: rgba(255,255,255,.9); text-decoration: underline; }
+    footer strong { color: var(--blanc); }
+
+    /* ── Responsive ───────────────────────────────────────────────── */
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .hero { padding: 3.5rem 1.2rem 3rem; }
+      .intro, .contexte, .notes-section, .usage { padding: 0 1.2rem; }
+      .intro { margin-top: 2.5rem; }
+      .note-chiffres { flex-direction: column; }
+      .note-card-footer { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Navigation ────────────────────────────────────────────────────────── -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Résilience <span>2045</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="documents-liste.html">Documents</a>
+      <a href="co2-climat-enchainement.html" class="active">CO₂ et climat</a></li>
+      <li><a href="positionnement-territorial.html">Territoires</a></li>
+      <li><a href="notes-position-sequestration-droit.html">Notes de position</a></li>
+      <li><a href="lexique.html">Glossaire</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ── Hero ──────────────────────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Programme Résilience V11 &mdash; Carbone et climat &mdash; octobre 2026</div>
+    <h1>Le CO₂ et le climat :<br>l'enchaînement des phénomènes</h1>
+    <p class="hero-sub">
+      D'où vient le CO₂ ajouté, pourquoi il reste dans l'air, ce qui aggrave la situation, 
+      ce que donnent les trajectoires jusqu'en 2200 — et pourquoi il faut retirer durablement 
+      du CO₂ en plus de réduire les émissions. Toutes les notes du programme sur ces questions, 
+      rangées dans l'ordre où les phénomènes s'enchaînent.
+    </p>
+    <div class="hero-meta">
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> Notes regroupées en cinq étapes</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg> Faits mesurés · scénarios · conclusions</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── Introduction ───────────────────────────────────────────────────────── -->
+<div class="intro">
+  <p>
+    Chaque étape répond à une question et renvoie aux notes qui la développent. 
+    <strong>Pour une lecture rapide, commencez par la synthèse « Du bilan historique du carbone à la nécessité d'un retrait durable »</strong>, 
+    qui parcourt l'ensemble de la chaîne en quelques pages, ou par sa version en une page.
+  </p>
+  <p style="margin-top:.9rem;">
+    Les faits viennent des bilans publiés (Global Carbon Budget, GIEC, IGN, BRGM…) ; 
+    les trajectoires viennent d'un modèle simplifié fondé sur les méthodes du GIEC. 
+    Ces dernières montrent des tendances et des ordres de grandeur, non des prévisions.
+  </p>
+</div>
+
+<!-- ── Chaîne ────────────────────────────────────────────────────────────── -->
+<div class="chaine">
+  <div class="chaine-grid">
+      <a class="chaine-etape" href="#etape1" style="--c:#1F4E79;"><div class="chaine-num">Étape 1</div><div class="chaine-titre">D'où vient le CO₂</div><div class="chaine-txt">~750 GtC déplacés depuis 1850, du sous-sol et des forêts vers l'air et l'océan.</div></a>
+      <span class="chaine-fleche" aria-hidden="true">→</span>
+      <a class="chaine-etape" href="#etape2" style="--c:#2D6A4F;"><div class="chaine-num">Étape 2</div><div class="chaine-titre">Pourquoi il reste</div><div class="chaine-txt">Des puits naturels réversibles, qui freinent sans éliminer.</div></a>
+      <span class="chaine-fleche" aria-hidden="true">→</span>
+      <a class="chaine-etape" href="#etape3" style="--c:#A32D2D;"><div class="chaine-num">Étape 3</div><div class="chaine-titre">Ce qui s'aggrave</div><div class="chaine-txt">Glace, sols et eau, végétation, permafrost : des boucles qui s'entretiennent.</div></a>
+      <span class="chaine-fleche" aria-hidden="true">→</span>
+      <a class="chaine-etape" href="#etape4" style="--c:#1566A8;"><div class="chaine-num">Étape 4</div><div class="chaine-titre">Ce que donnent les trajectoires</div><div class="chaine-txt">Arrêter les fossiles stabilise au mieux ; le CO₂ ne redescend pas seul.</div></a>
+      <span class="chaine-fleche" aria-hidden="true">→</span>
+      <a class="chaine-etape" href="#etape5" style="--c:#0F6E56;"><div class="chaine-num">Étape 5</div><div class="chaine-titre">Ce qu'il faut faire</div><div class="chaine-txt">Un retrait durable, construit pendant la décarbonation.</div></a>
+  </div>
+</div>
+
+<div class="notes-section" style="margin-top:2.5rem;">
+  <h2 class="section-titre" id="entree">À lire en premier</h2>
+
+  <article class="note-card">
+    <div class="note-card-header">
+      <div class="note-card-stripe" style="background:#1F4E79;"></div>
+      <div class="note-card-top">
+        <div class="note-num" style="background:#EBF2FA; border-color:#BFD3EA; color:#1F4E79;">★</div>
+        <div class="note-head">
+          <span class="note-tag" style="color:#1F4E79; background:#EBF2FA; border-color:#BFD3EA;">Synthèse · V1 · Octobre 2026 · point d'entrée</span>
+          <h2 class="note-titre">Du bilan historique du carbone à la nécessité d'un retrait durable</h2>
+          <p class="note-version">Ce que montrent les bilans, ce qu'impliquent les incertitudes, et pourquoi agir dès maintenant</p>
+        </div>
+      </div>
+    </div>
+    <div class="note-card-body">
+      <p class="note-resume">
+        Les puits naturels ont absorbé environ la moitié de nos émissions. Le GIEC conclut qu'ils en 
+        absorberont une part décroissante à mesure que le climat se réchauffe, et le changement climatique 
+        réduit déjà leur efficacité. Compter sur eux pour faire redescendre le CO₂ est un pari ; construire 
+        dès maintenant des capacités de retrait durable, en parallèle de la réduction des émissions, est une assurance.
+      </p>
+      <div class="note-chiffres">
+        <div class="chiffre-pill"><strong>~750 GtC</strong><span>déplacés depuis 1850</span></div>
+        <div class="chiffre-pill"><strong>−75 GtC</strong><span>bilan net des terres</span></div>
+        <div class="chiffre-pill"><strong>~2 Mt/an</strong><span>de retrait durable aujourd'hui</span></div>
+      </div>
+    </div>
+    <div class="note-card-footer">
+      <div class="note-infos">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> PDF · 6 pages</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg> Décideurs · lecteurs non spécialistes</span>
+      </div>
+      <a href="Synthese_Bilan_Carbone_Retrait_Durable_V1.pdf" download class="btn-telecharger" style="background:#1F4E79;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Télécharger la synthèse
+      </a>
+    </div>
+  </article>
+  <div class="mini-grid">
+    <a class="mini-card" href="Synthese_CO2_Boucles_2notes.pdf" target="_blank" rel="noopener" style="border-left-color:#1F4E79;">
+      <div class="mini-tag" style="color:#1F4E79;">L'essentiel en une page</div>
+      <div class="mini-titre">CO₂, températures et boucles d'amplification</div>
+      <div class="mini-txt">Pour un lecteur non spécialiste : le calcul classique selon les méthodes du GIEC, ce que les boucles y changent, et ce qu'il faut en retenir.</div>
+      <span class="mini-pdf" style="color:#1F4E79;">PDF →</span>
+    </a>
+  </div>
+
+  <h2 class="groupe-titre" id="etape1" style="color:#1F4E79;">Étape 1 — D'où vient le CO₂ ajouté, et où il se trouve</h2>
+  <p class="retenir" style="--c:#1F4E79;"><strong>À retenir :</strong> depuis 1850, ~503 GtC ont été extraits du sous-sol et brûlés, ~248 GtC perdus par le déboisement. L'atmosphère en a gardé ~39 %, l'océan ~27 % ; les terres ont absorbé ~173 GtC mais en ont perdu ~248 : leur bilan net est négatif. Le climat dépend du stock de carbone en circulation, pas seulement des flux annuels.</p>
+  <div class="mini-grid">
+    <a class="mini-card" href="Note_Bilan_Carbone_1850_2024.pdf" target="_blank" rel="noopener" style="border-left-color:#1F4E79;">
+      <div class="mini-tag" style="color:#1F4E79;">Annexe chiffrée · Octobre 2026</div>
+      <div class="mini-titre">Bilan du carbone depuis 1850</div>
+      <div class="mini-txt">D'où vient le CO₂, où il se trouve avant et après, pourquoi l'océan ralentit et où remettre le carbone retiré.</div>
+      <span class="mini-pdf" style="color:#1F4E79;">PDF →</span>
+    </a>
+    <a class="mini-card" href="Gestion_Carbone_Confusions_Realite_Physique_V3.pdf" target="_blank" rel="noopener" style="border-left-color:#1F4E79;">
+      <div class="mini-tag" style="color:#1F4E79;">Note transversale · V3</div>
+      <div class="mini-titre">Carbone actif, carbone fossile, puits et réservoirs</div>
+      <div class="mini-txt">Guide physique pour sortir des confusions : distinguer ce qui réduit un flux de ce qui modifie durablement le stock.</div>
+      <span class="mini-pdf" style="color:#1F4E79;">PDF →</span>
+    </a>
+    <a class="mini-card" href="Carbone_Fossile_Methane_Biogenique_Elevage_V11.pdf" target="_blank" rel="noopener" style="border-left-color:#1F4E79;">
+      <div class="mini-tag" style="color:#1F4E79;">Note transversale · V11</div>
+      <div class="mini-titre">Carbone fossile, méthane biogénique et élevage</div>
+      <div class="mini-txt">Pourquoi le méthane d'un gisement et celui d'un ruminant n'ont pas le même effet physique sur le climat.</div>
+      <span class="mini-pdf" style="color:#1F4E79;">PDF →</span>
+    </a>
+  </div>
+
+  <h2 class="groupe-titre" id="etape2" style="color:#2D6A4F;">Étape 2 — Pourquoi il reste : des puits naturels réversibles et limités</h2>
+  <p class="retenir" style="--c:#2D6A4F;"><strong>À retenir :</strong> forêts et sols stockent le carbone de façon réversible — la plupart repart en CO₂ en quelques années à quelques décennies. L'océan absorbe, mais seule sa surface échange vite avec l'air. Ces puits ont freiné la hausse du CO₂, sans l'empêcher.</p>
+  <div class="mini-grid">
+    <a class="mini-card" href="Note_Limites_Puits_Carbone_Naturels_V2.1.pdf" target="_blank" rel="noopener" style="border-left-color:#2D6A4F;">
+      <div class="mini-tag" style="color:#2D6A4F;">Note technique · V2.1</div>
+      <div class="mini-titre">Pourquoi la nature seule ne suffira pas</div>
+      <div class="mini-txt">Puits naturels réversibles, limites physiques et nécessité d'une capture active.</div>
+      <span class="mini-pdf" style="color:#2D6A4F;">PDF →</span>
+    </a>
+    <a class="mini-card" href="carbone-champignons-resilience.html" style="border-left-color:#2D6A4F;">
+      <div class="mini-tag" style="color:#2D6A4F;">Page</div>
+      <div class="mini-titre">Le cycle du carbone, des champignons au biochar</div>
+      <div class="mini-txt">Comment les décomposeurs remettent le carbone en circulation, et comment Résilience en détourne une partie.</div>
+      <span class="mini-pdf" style="color:#2D6A4F;">Page →</span>
+    </a>
+    <a class="mini-card" href="sequestration.html" style="border-left-color:#2D6A4F;">
+      <div class="mini-tag" style="color:#2D6A4F;">Page</div>
+      <div class="mini-titre">Forêt ou biochar ?</div>
+      <div class="mini-txt">La forêt capte le carbone ; le biochar en rend une partie durable pendant des siècles. Deux approches complémentaires.</div>
+      <span class="mini-pdf" style="color:#2D6A4F;">Page →</span>
+    </a>
+    <a class="mini-card" href="resilience-puits-carbone.html" style="border-left-color:#2D6A4F;">
+      <div class="mini-tag" style="color:#2D6A4F;">Page et note · V5</div>
+      <div class="mini-titre">Pourquoi les puits naturels ne peuvent pas porter seuls la stratégie de 2045</div>
+      <div class="mini-txt">Puits forestier en baisse, mortalité accrue : ce qu'on ne peut plus leur confier.</div>
+      <span class="mini-pdf" style="color:#2D6A4F;">Page →</span>
+    </a>
+  </div>
+
+  <h2 class="groupe-titre" id="etape3" style="color:#A32D2D;">Étape 3 — Ce qui s'aggrave : les boucles d'amplification</h2>
+  <p class="retenir" style="--c:#A32D2D;"><strong>À retenir :</strong> la neige et la glace reculent et renvoient moins le soleil ; les sols s'assèchent, chauffent l'air et absorbent mal les pluies, qui ruissellent ; la végétation souffre et brûle davantage ; permafrost et tourbières commencent à relâcher leur carbone. Chaque étape aggrave la suivante — et elles continuent même si l'on cesse d'émettre.</p>
+  <div class="mini-grid">
+    <a class="mini-card" href="Note_Boucles_Amplification_Climat_V1.pdf" target="_blank" rel="noopener" style="border-left-color:#A32D2D;">
+      <div class="mini-tag" style="color:#A32D2D;">Note · V1 · Octobre 2026</div>
+      <div class="mini-titre">Boucles d'amplification climatique</div>
+      <div class="mini-txt">Pourquoi un plateau de CO₂ n'est pas une stabilité : glace, sols, végétation, permafrost, tourbières, et leur effet chiffré sur les trajectoires.</div>
+      <span class="mini-pdf" style="color:#A32D2D;">PDF →</span>
+    </a>
+    <a class="mini-card" href="trajectoires-co2.html#boucles" style="border-left-color:#A32D2D;">
+      <div class="mini-tag" style="color:#A32D2D;">Page · section Boucles</div>
+      <div class="mini-titre">Les boucles en images</div>
+      <div class="mini-txt">Le schéma de la boucle en quatre étages, les chiffres clés et l'impact sur les cinq trajectoires.</div>
+      <span class="mini-pdf" style="color:#A32D2D;">Page →</span>
+    </a>
+    <a class="mini-card" href="Synthese_Puits_Carbone_R2045_V3.pdf" target="_blank" rel="noopener" style="border-left-color:#A32D2D;">
+      <div class="mini-tag" style="color:#A32D2D;">Synthèse scientifique · V3</div>
+      <div class="mini-titre">Les puits naturels : effondrement simultané</div>
+      <div class="mini-txt">Puits par puits — forêts, sols, océans, permafrost — pourquoi l'hypothèse d'une absorption constante devient fausse.</div>
+      <span class="mini-pdf" style="color:#A32D2D;">PDF →</span>
+    </a>
+    <a class="mini-card" href="Gestion_Eau_Cycle_Hydrique_Resilience_V10.pdf" target="_blank" rel="noopener" style="border-left-color:#A32D2D;">
+      <div class="mini-tag" style="color:#A32D2D;">Note · V10</div>
+      <div class="mini-titre">Cycle de l'eau et ressources hydriques</div>
+      <div class="mini-txt">Sols secs, ruissellement, nappes moins rechargées : la boucle de l'eau et ce qu'elle implique.</div>
+      <span class="mini-pdf" style="color:#A32D2D;">PDF →</span>
+    </a>
+    <a class="mini-card" href="Note_Megaincendies_V6_2026.pdf" target="_blank" rel="noopener" style="border-left-color:#A32D2D;">
+      <div class="mini-tag" style="color:#A32D2D;">Note · V6</div>
+      <div class="mini-titre">Méga-incendies : repenser la prévention</div>
+      <div class="mini-txt">Quand les forêts, puits de carbone, deviennent des sources : réduire le combustible avant que le feu ne prenne.</div>
+      <span class="mini-pdf" style="color:#A32D2D;">PDF →</span>
+    </a>
+  </div>
+
+  <h2 class="groupe-titre" id="etape4" style="color:#1566A8;">Étape 4 — Ce que donnent les trajectoires jusqu'en 2200</h2>
+  <p class="retenir" style="--c:#1566A8;"><strong>À retenir :</strong> dans le cadre du GIEC, continuer comme aujourd'hui mène vers ~790 ppm en 2200 ; l'électrification maximale laisse le CO₂ au niveau actuel ; l'arrêt total des fossiles ne le fait baisser que lentement. Avec les boucles, ces plateaux deviennent des remontées. Seule une trajectoire avec retrait durable ramène le CO₂ sous 350 ppm.</p>
+  <div class="mini-grid">
+    <a class="mini-card" href="trajectoires-co2.html" style="border-left-color:#1566A8;">
+      <div class="mini-tag" style="color:#1566A8;">Page interactive</div>
+      <div class="mini-titre">Trajectoires CO₂ et températures 1873–2200</div>
+      <div class="mini-txt">Les cinq scénarios en courbes, le bilan depuis 1850, les boucles et les téléchargements.</div>
+      <span class="mini-pdf" style="color:#1566A8;">Page →</span>
+    </a>
+    <a class="mini-card" href="Note_CO2_Temperatures_V5.1.pdf" target="_blank" rel="noopener" style="border-left-color:#1566A8;">
+      <div class="mini-tag" style="color:#1566A8;">Note de référence · V5.1</div>
+      <div class="mini-titre">CO₂ atmosphérique et températures</div>
+      <div class="mini-txt">Le modèle paramétrique fondé sur les méthodes du GIEC et les cinq trajectoires jusqu'en 2200.</div>
+      <span class="mini-pdf" style="color:#1566A8;">PDF →</span>
+    </a>
+    <a class="mini-card" href="Cadrage_Arret_Fossiles_Insuffisant_V2.pdf" target="_blank" rel="noopener" style="border-left-color:#1566A8;">
+      <div class="mini-tag" style="color:#1566A8;">Note de cadrage · V2</div>
+      <div class="mini-titre">Pourquoi l'arrêt des fossiles ne suffit pas</div>
+      <div class="mini-txt">Le CO₂ excédentaire, les usages résiduels du pétrole, et pourquoi seule une extraction nette peut rétablir un climat acceptable.</div>
+      <span class="mini-pdf" style="color:#1566A8;">PDF →</span>
+    </a>
+    <a class="mini-card" href="Budget_carbone_Mondial_V10.1.pdf" target="_blank" rel="noopener" style="border-left-color:#1566A8;">
+      <div class="mini-tag" style="color:#1566A8;">Synthèse institutionnelle · V10.1</div>
+      <div class="mini-titre">Budget carbone mondial</div>
+      <div class="mini-txt">Émissions, puits et concentration : bilan 2014–2024, scénarios 2025–2050 et trois niveaux de déploiement de Résilience.</div>
+      <span class="mini-pdf" style="color:#1566A8;">PDF →</span>
+    </a>
+  </div>
+
+  <h2 class="groupe-titre" id="etape5" style="color:#0F6E56;">Étape 5 — Ce qu'il faut faire : un retrait durable, préparé dès maintenant</h2>
+  <p class="retenir" style="--c:#0F6E56;"><strong>À retenir :</strong> retirer durablement, c'est remettre le carbone sous forme géologique ou minérale — stockage souterrain, minéralisation, biochar. Il faut le construire pendant la décarbonation, tant que la biomasse est disponible, et en retirer plus que l'excès présent dans l'air, car l'océan et les terres en restituent une partie. Aujourd'hui, le retrait durable n'atteint qu'environ 2 millions de tonnes par an dans le monde.</p>
+  <div class="mini-grid">
+    <a class="mini-card" href="Note_Sequestration_Anthropique_R2045.pdf" target="_blank" rel="noopener" style="border-left-color:#0F6E56;">
+      <div class="mini-tag" style="color:#0F6E56;">Note de position · Août 2026</div>
+      <div class="mini-titre">Pourquoi il devient nécessaire d'étudier la séquestration anthropique</div>
+      <div class="mini-txt">Que se passera-t-il si les puits naturels absorbent moins ? Une question scientifique et stratégique.</div>
+      <span class="mini-pdf" style="color:#0F6E56;">PDF →</span>
+    </a>
+    <a class="mini-card" href="Note_Position_Preparer_Climat_V1.pdf" target="_blank" rel="noopener" style="border-left-color:#0F6E56;">
+      <div class="mini-tag" style="color:#0F6E56;">Note de position · Octobre 2026</div>
+      <div class="mini-titre">Se préparer avant que le climat n'impose ses choix</div>
+      <div class="mini-txt">Les mesures fortes viendront ; seules les trajectoires préparées pourront alors être choisies.</div>
+      <span class="mini-pdf" style="color:#0F6E56;">PDF →</span>
+    </a>
+    <a class="mini-card" href="carbone-mondial.html" style="border-left-color:#0F6E56;">
+      <div class="mini-tag" style="color:#0F6E56;">Page</div>
+      <div class="mini-titre">Retrait du CO₂ à l'échelle mondiale</div>
+      <div class="mini-txt">Biométhane, pyrogazéification et biochar : retirer du CO₂ tout en produisant de l'énergie.</div>
+      <span class="mini-pdf" style="color:#0F6E56;">Page →</span>
+    </a>
+    <a class="mini-card" href="biochar.html" style="border-left-color:#0F6E56;">
+      <div class="mini-tag" style="color:#0F6E56;">Page</div>
+      <div class="mini-titre">Biochar certifié EBC</div>
+      <div class="mini-txt">Pourquoi un biochar produit à haute température stocke le carbone pendant des siècles.</div>
+      <span class="mini-pdf" style="color:#0F6E56;">Page →</span>
+    </a>
+    <a class="mini-card" href="notes-position-sequestration-droit.html" style="border-left-color:#0F6E56;">
+      <div class="mini-tag" style="color:#0F6E56;">Page · notes de position</div>
+      <div class="mini-titre">Pyrogazéification et séquestration : les règles à changer</div>
+      <div class="mini-txt">Payer ce que les sites produisent, autoriser et construire, mobiliser la biomasse — et dans quel ordre.</div>
+      <span class="mini-pdf" style="color:#0F6E56;">Page →</span>
+    </a>
+  </div>
+</div>
+
+<!-- ── Footer ─────────────────────────────────────────────────────────────── -->
+<footer>
+  <strong>Programme Résilience 2045</strong> · Document de travail · Octobre 2026<br>
+  <a href="https://resilience2045.fr">resilience2045.fr</a> · 
+  <a href="documents-liste.html">Catalogue de documents</a>
+</footer>
+
+</body>
+</html>
