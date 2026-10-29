@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pourquoi ce programme : l'essentiel en quatre étapes | Résilience 2045</title>
+  <meta name="description" content="Point d'entrée pour les décideurs : pourquoi il faut retirer durablement du CO₂, pourquoi il faut payer le carbone retiré, comment le système s'autofinance, et quelles règles changer. Quatre étapes, quatre documents.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Serif+4:ital,wght@0,300;0,600;1,300&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Tokens (identiques au reste du site) ─────────────────────── */
+    :root {
+      --vert:       #2D6A4F;
+      --vert-m:     #40916C;
+      --vert-l:     #74C69D;
+      --vert-xl:    #D8F3DC;
+      --vert-xxl:   #F0FBF3;
+      --orange:     #E76F51;
+      --orange-l:   #FFF0EB;
+      --gris-900:   #1A202C;
+      --gris-700:   #4A5568;
+      --gris-500:   #718096;
+      --gris-200:   #EDF2F7;
+      --gris-100:   #F7FAFC;
+      --blanc:      #FFFFFF;
+      --radius:     8px;
+      --radius-l:   14px;
+      --ombre:      0 2px 8px rgba(0,0,0,.07), 0 1px 2px rgba(0,0,0,.05);
+      --ombre-hover:0 6px 20px rgba(45,106,79,.15), 0 2px 6px rgba(0,0,0,.08);
+      --transition: .22s ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 16px; line-height: 1.65;
+      color: var(--gris-700); background: var(--blanc);
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Navigation ───────────────────────────────────────────────── */
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,.97);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--gris-200);
+    }
+    .nav-inner {
+      max-width: 1120px; margin: 0 auto; padding: 0 2rem;
+      display: flex; align-items: center; gap: 2rem; height: 56px;
+    }
+    .nav-logo {
+      font-weight: 700; font-size: .9rem; letter-spacing: .04em;
+      color: var(--vert); text-transform: uppercase; white-space: nowrap;
+    }
+    .nav-logo span { color: var(--gris-500); font-weight: 400; }
+    .nav-links {
+      display: flex; gap: 1.4rem; list-style: none;
+      font-size: .875rem; color: var(--gris-700); margin-left: auto;
+    }
+    .nav-links a:hover { color: var(--vert); }
+    .nav-links a.active { color: var(--vert); font-weight: 600; }
+
+    /* ── Hero ─────────────────────────────────────────────────────── */
+    .hero {
+      background: linear-gradient(135deg, var(--vert) 0%, #1B4332 100%);
+      padding: 5rem 2rem 4rem; position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    .hero-inner { max-width: 860px; margin: 0 auto; position: relative; z-index: 1; }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: .6rem;
+      background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2);
+      border-radius: 100px; padding: .35rem 1rem;
+      font-size: .8rem; font-weight: 500; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--vert-l); margin-bottom: 1.5rem;
+    }
+    .hero-eyebrow::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--vert-l); flex-shrink: 0;
+    }
+    .hero h1 {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-weight: 600; font-size: clamp(1.8rem, 4vw, 2.8rem);
+      line-height: 1.2; color: var(--blanc); margin-bottom: 1.2rem;
+    }
+    .hero-sub {
+      font-size: 1.05rem; line-height: 1.7;
+      color: rgba(255,255,255,.82); max-width: 700px;
+    }
+
+    /* ── Message central ──────────────────────────────────────────── */
+    .message { max-width: 860px; margin: 3rem auto 0; padding: 0 2rem; }
+    .message-box {
+      background: var(--orange-l); border-left: 4px solid var(--orange);
+      border-radius: var(--radius); padding: 1.4rem 1.6rem;
+    }
+    .message-box p { font-size: 1rem; line-height: 1.75; color: var(--gris-900); }
+    .message-box p + p { margin-top: .7rem; }
+    .message-box strong { color: var(--orange); }
+
+    /* ── Chaîne des quatre étapes ─────────────────────────────────── */
+    .chaine { max-width: 860px; margin: 2.5rem auto 0; padding: 0 2rem; }
+    .chaine-grid { display: flex; gap: .5rem; align-items: stretch; }
+    .chaine-etape {
+      flex: 1 1 0; min-width: 0; display: block; color: inherit;
+      background: #fff; border: 1px solid #DDE7E0; border-top: 4px solid var(--c);
+      border-radius: 8px; padding: .75rem .8rem;
+    }
+    .chaine-etape:hover { border-color: var(--c); }
+    .chaine-num { font-size: .72rem; font-weight: 700; letter-spacing: .06em; color: var(--c); text-transform: uppercase; }
+    .chaine-titre { font-weight: 700; font-size: .92rem; line-height: 1.3; margin: .2rem 0; color: var(--gris-900); }
+    .chaine-txt { font-size: .8rem; line-height: 1.45; color: #555; }
+    .chaine-fleche { flex: 0 0 auto; align-self: center; color: #9AB; font-size: 1.2rem; }
+
+    /* ── Étapes ───────────────────────────────────────────────────── */
+    .etapes { max-width: 860px; margin: 0 auto; padding: 2.5rem 2rem 1rem; }
+    .etape {
+      background: var(--blanc); border: 1px solid var(--gris-200);
+      border-radius: var(--radius-l); box-shadow: var(--ombre);
+      margin-bottom: 2rem; overflow: hidden; scroll-margin-top: 80px;
+      border-top: 5px solid var(--c);
+      transition: box-shadow var(--transition), transform var(--transition);
+    }
+    .etape:hover { box-shadow: var(--ombre-hover); transform: translateY(-2px); }
+    .etape-top { padding: 1.5rem 1.8rem .4rem; display: flex; gap: 1.1rem; align-items: flex-start; }
+    .etape-num {
+      flex-shrink: 0; width: 44px; height: 44px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 1.15rem;
+      color: var(--c); background: var(--bg); border: 2px solid var(--bd);
+    }
+    .etape-question {
+      font-size: .74rem; font-weight: 600; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--c); margin-bottom: .3rem;
+    }
+    .etape-titre {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-weight: 600; font-size: 1.3rem; line-height: 1.3; color: var(--gris-900);
+    }
+    .etape-body { padding: .8rem 1.8rem 1.4rem; }
+    .etape-body p { font-size: .95rem; line-height: 1.7; margin-bottom: .8rem; }
+    .etape-body strong { color: var(--gris-900); }
+    .chiffres { display: flex; flex-wrap: wrap; gap: .7rem; margin: 1rem 0 .4rem; }
+    .chiffre-pill {
+      background: var(--bg); border: 1px solid var(--bd);
+      border-radius: var(--radius); padding: .5rem .9rem; font-size: .8rem;
+    }
+    .chiffre-pill strong { display: block; font-size: 1.05rem; font-weight: 700; color: var(--c); line-height: 1.25; }
+    .chiffre-pill span { color: var(--gris-500); }
+    .etape-footer {
+      border-top: 1px solid var(--gris-200); padding: 1rem 1.8rem;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .8rem;
+    }
+    .etape-doc { font-size: .82rem; color: var(--gris-500); }
+    .etape-doc strong { color: var(--gris-700); font-weight: 600; }
+    .btn {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: var(--c); color: var(--blanc);
+      font-size: .875rem; font-weight: 600; padding: .6rem 1.2rem;
+      border-radius: var(--radius); transition: filter var(--transition), transform var(--transition);
+    }
+    .btn:hover { filter: brightness(.9); transform: translateY(-1px); }
+    .btn svg { width: 15px; height: 15px; flex-shrink: 0; }
+
+    /* ── Décisions ────────────────────────────────────────────────── */
+    .decisions { max-width: 860px; margin: 0 auto 4rem; padding: 0 2rem; }
+    .decisions-box {
+      background: var(--vert-xxl); border: 1px solid var(--vert-xl);
+      border-radius: var(--radius-l); padding: 1.8rem 2rem;
+    }
+    .decisions-box h2 {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-weight: 600; font-size: 1.3rem; color: var(--vert); margin-bottom: 1rem;
+    }
+    .decisions-box ol { list-style: none; counter-reset: d; display: flex; flex-direction: column; gap: .8rem; }
+    .decisions-box li {
+      counter-increment: d; display: flex; gap: .9rem; align-items: flex-start;
+      background: var(--blanc); border: 1px solid var(--vert-xl);
+      border-radius: var(--radius); padding: .9rem 1rem;
+      font-size: .93rem; line-height: 1.6; color: var(--gris-700);
+    }
+    .decisions-box li::before {
+      content: counter(d); flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%;
+      background: var(--vert); color: var(--blanc); font-weight: 700; font-size: .85rem;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .decisions-box li strong { color: var(--gris-900); }
+    .decisions-note { font-size: .85rem; color: var(--gris-500); margin-top: 1.1rem; line-height: 1.6; }
+    .decisions-note a { color: var(--vert); text-decoration: underline; }
+
+    /* ── Footer ───────────────────────────────────────────────────── */
+    footer {
+      background: var(--vert); color: rgba(255,255,255,.7);
+      text-align: center; padding: 1.8rem; font-size: .82rem;
+    }
+    footer a { color: rgba(255,255,255,.9); text-decoration: underline; }
+    footer strong { color: var(--blanc); }
+
+    /* ── Responsive ───────────────────────────────────────────────── */
+    @media (max-width: 700px) {
+      .chaine-grid { flex-wrap: wrap; }
+      .chaine-fleche { display: none; }
+      .chaine-etape { flex: 1 1 100%; }
+    }
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .hero { padding: 3.5rem 1.2rem 3rem; }
+      .message, .chaine, .etapes, .decisions { padding-left: 1.2rem; padding-right: 1.2rem; }
+      .etape-top, .etape-body, .etape-footer { padding-left: 1.2rem; padding-right: 1.2rem; }
+      .etape-footer { flex-direction: column; align-items: flex-start; }
+      .decisions-box { padding: 1.4rem 1.2rem; }
+    }
+
+    /* ── Impression ───────────────────────────────────────────────── */
+    @media print {
+      .nav { display: none; }
+      .hero { padding: 2rem; }
+      .etape { box-shadow: none; break-inside: avoid; }
+      .etape:hover { transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Navigation ────────────────────────────────────────────────────────── -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Résilience <span>2045</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="l-essentiel.html" class="active">L'essentiel</a></li>
+      <li><a href="documents-liste.html">Documents</a></li>
+      <li><a href="co2-climat-enchainement.html">CO₂ et climat</a></li>
+      <li><a href="notes-position-sequestration-droit.html">Notes de position</a></li>
+      <li><a href="lexique.html">Glossaire</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ── Hero ──────────────────────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Programme Résilience 2045 &mdash; Pour les décideurs &mdash; octobre 2026</div>
+    <h1>Pourquoi ce programme :<br>l'essentiel en quatre étapes</h1>
+    <p class="hero-sub">
+      Pourquoi il faut retirer durablement du CO₂ de l'atmosphère, pourquoi ce retrait doit être payé,
+      comment le système qui le produit se finance lui-même, et quelles règles changer pour qu'il voie le jour.
+      Quatre questions, quatre documents, à lire dans cet ordre.
+    </p>
+  </div>
+</section>
+
+<!-- ── Message central ───────────────────────────────────────────────────── -->
+<div class="message">
+  <div class="message-box">
+    <p>
+      <strong>Réduire les émissions et électrifier est nécessaire, mais ne suffit pas.</strong>
+      Même une électrification maximale laisse le CO₂ au niveau actuel : seul un retrait durable le fait redescendre.
+    </p>
+    <p>
+      Aujourd'hui, aucune filière n'est payée pour le carbone qu'elle retire. Le biogaz est donc jugé comme
+      une simple énergie, kilowattheure contre kilowattheure face à l'électricité — et il perd.
+      Payer la tonne retirée, avec la participation active des acteurs des énergies fossiles appelés à se convertir
+      à cette économie du nettoyage, change l'équation <strong>sans dépense publique nette</strong>.
+    </p>
+  </div>
+</div>
+
+<!-- ── Chaîne ────────────────────────────────────────────────────────────── -->
+<div class="chaine">
+  <div class="chaine-grid">
+    <a class="chaine-etape" href="#constat" style="--c:#1F4E79;">
+      <div class="chaine-num">Étape 1 · Le constat</div>
+      <div class="chaine-titre">Pourquoi retirer du CO₂</div>
+      <div class="chaine-txt">L'arrêt des fossiles stabilise au mieux ; il ne fait pas redescendre.</div>
+    </a>
+    <span class="chaine-fleche" aria-hidden="true">→</span>
+    <a class="chaine-etape" href="#principe" style="--c:#0F6E56;">
+      <div class="chaine-num">Étape 2 · Le principe</div>
+      <div class="chaine-titre">Payer le carbone retiré</div>
+      <div class="chaine-txt">Une valeur que personne ne paie n'existe pas pour un investisseur.</div>
+    </a>
+    <span class="chaine-fleche" aria-hidden="true">→</span>
+    <a class="chaine-etape" href="#financement" style="--c:#B5651D;">
+      <div class="chaine-num">Étape 3 · Le financement</div>
+      <div class="chaine-titre">Qui paie quoi, sur quelle durée</div>
+      <div class="chaine-txt">Chaque ouvrage remboursé par ses recettes ; l'État prête et garantit.</div>
+    </a>
+    <span class="chaine-fleche" aria-hidden="true">→</span>
+    <a class="chaine-etape" href="#regles" style="--c:#2D6A4F;">
+      <div class="chaine-num">Étape 4 · Le cadre</div>
+      <div class="chaine-titre">Les règles à changer</div>
+      <div class="chaine-txt">On investit sur les règles du jour : elles doivent changer d'abord.</div>
+    </a>
+  </div>
+</div>
+
+<!-- ── Les quatre étapes ─────────────────────────────────────────────────── -->
+<div class="etapes">
+
+  <!-- Étape 1 -->
+  <article class="etape" id="constat" style="--c:#1F4E79; --bg:#EBF2FA; --bd:#BFD3EA;">
+    <div class="etape-top">
+      <div class="etape-num">1</div>
+      <div>
+        <div class="etape-question">Pourquoi agir ?</div>
+        <h2 class="etape-titre">Le CO₂ déjà présent ne redescendra pas seul</h2>
+      </div>
+    </div>
+    <div class="etape-body">
+      <p>
+        Depuis 1850, environ 750 milliards de tonnes de carbone ont été déplacées du sous-sol et des forêts
+        vers l'air et l'océan. Les puits naturels — forêts, sols, océan — en ont absorbé une partie,
+        mais de façon réversible, et ils faiblissent avec le réchauffement. Des boucles d'amplification
+        (glace, sols secs, végétation qui brûle, permafrost) aggravent la situation, et continuent même si l'on cesse d'émettre.
+      </p>
+      <p>
+        Le GIEC juge le retrait de CO₂ <strong>inévitable</strong> pour atteindre la neutralité carbone.
+        Les trajectoires montrent qu'arrêter les fossiles stabilise au mieux la concentration ;
+        <strong>seule une trajectoire avec retrait durable la ramène sous 350 ppm</strong>.
+      </p>
+      <div class="chiffres">
+        <div class="chiffre-pill"><strong>~750 GtC</strong><span>déplacés depuis 1850</span></div>
+        <div class="chiffre-pill"><strong>−25 % / −7 %</strong><span>puits terrestre / océanique affaiblis, 2015–2024</span></div>
+        <div class="chiffre-pill"><strong>&lt; 350 ppm</strong><span>seulement avec retrait durable</span></div>
+      </div>
+    </div>
+    <div class="etape-footer">
+      <div class="etape-doc"><strong>Page :</strong> CO₂ et climat — l'enchaînement des phénomènes, en cinq étapes, avec sa synthèse de six pages</div>
+      <a href="co2-climat-enchainement.html" class="btn">
+        Lire la page
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </article>
+
+  <!-- Étape 2 -->
+  <article class="etape" id="principe" style="--c:#0F6E56; --bg:#E8F6F1; --bd:#B5E0D2;">
+    <div class="etape-top">
+      <div class="etape-num">2</div>
+      <div>
+        <div class="etape-question">Qu'est-ce qui bloque ?</div>
+        <h2 class="etape-titre">Payer le carbone retiré</h2>
+      </div>
+    </div>
+    <div class="etape-body">
+      <p>
+        La filière gaz renouvelable ne vend aujourd'hui que du gaz. Ses vraies valeurs ne sont pas payées :
+        le carbone séquestré par le <strong>biochar</strong>, le <strong>CO₂ biogénique déjà concentré et prêt à stocker</strong>,
+        le méthane diffus évité, l'entretien des forêts contre l'incendie, la valorisation des déchets.
+        Tant que le carbone retiré ne rapporte rien, le climat reste secondaire pour ceux qui investissent.
+      </p>
+      <p>
+        C'est une conversion de l'économie : passer d'une économie qui pollue à une économie qui nettoie.
+        Les acteurs des énergies fossiles ont vocation à s'y convertir et à <strong>participer activement à son financement</strong>,
+        par une <strong>obligation de retrait progressive</strong>, connue à l'avance, et par des contrats de long terme sur la tonne retirée —
+        sans nouvelle taxe visible pour les ménages. Pour eux, le biochar et le stockage du CO₂ deviennent un marché et une voie de reconversion industrielle.
+      </p>
+      <p>
+        Ce n'est ni un impôt de plus ni une sanction : la contribution est <strong>entièrement affectée au retrait du carbone</strong>,
+        versée seulement pour une tonne retirée, mesurée et certifiée, et ne peut servir à rien d'autre. Le mécanisme reste neutre : c'est la tonne retirée et vérifiée qui est payée, quelle que soit la méthode.
+      </p>
+      <div class="chiffres">
+        <div class="chiffre-pill"><strong>0 €</strong><span>payé aujourd'hui pour le carbone retiré</span></div>
+        <div class="chiffre-pill"><strong>Polluer → nettoyer</strong><span>passer d'une économie de pollution à une économie de nettoyage</span></div>
+        <div class="chiffre-pill"><strong>CRCF (UE) 2024/3012</strong><span>cadre de certification existant</span></div>
+      </div>
+    </div>
+    <div class="etape-footer">
+      <div class="etape-doc"><strong>Note de position</strong> · octobre 2026 · 2 pages</div>
+      <a href="Note_Payer_Carbone_Retire_V1.pdf" target="_blank" rel="noopener" class="btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Payer le carbone retiré
+      </a>
+    </div>
+  </article>
+
+  <!-- Étape 3 -->
+  <article class="etape" id="financement" style="--c:#B5651D; --bg:#FBF1E7; --bd:#EDCFAE;">
+    <div class="etape-top">
+      <div class="etape-num">3</div>
+      <div>
+        <div class="etape-question">Est-ce soutenable ?</div>
+        <h2 class="etape-titre">Un système qui s'autofinance sur sa trajectoire</h2>
+      </div>
+    </div>
+    <div class="etape-body">
+      <p>
+        Aujourd'hui, chaque filière a son guichet : on paie des volumes plutôt que des besoins, et seuls
+        les kilowattheures sont rémunérés. Nous proposons que <strong>chaque ouvrage soit payé au coût complet,
+        sur sa durée de vie, par ceux qui en bénéficient ou qui en causent le coût</strong> ; que la construction
+        soit pilotée par le besoin ; et que l'État prête et garantisse au lieu de subventionner.
+      </p>
+      <p>
+        Pour un site de pyrogazéification, tout ce qu'il produit est valorisé : biométhane, biochar,
+        CO₂ biogénique concentré stocké ou utilisé, chaleur, traitement des déchets, entretien des forêts.
+        Le CO₂ biogénique concentré pèse autant que le biochar dans le retrait du carbone.
+      </p>
+      <div class="chiffres">
+        <div class="chiffre-pill"><strong>~44–46 €/MWh</strong><span>coût résiduel du biométhane, contre ~80 aujourd'hui</span></div>
+        <div class="chiffre-pill"><strong>~25–40 Mt CO₂/an</strong><span>CO₂ biogénique concentré, à côté de ~9–23 Mt dans le biochar</span></div>
+        <div class="chiffre-pill"><strong>~540–690 Md€</strong><span>d'investissement, contre ~794–1 096 en tout-électrique</span></div>
+        <div class="chiffre-pill"><strong>~2,5–3 Md€</strong><span>de dépense publique pour les sites pilotes, plus ~8–12 Md€ de garanties</span></div>
+      </div>
+    </div>
+    <div class="etape-footer">
+      <div class="etape-doc"><strong>Note de synthèse</strong> · octobre 2026 · ordres de grandeur à valider par une étude indépendante</div>
+      <a href="Note_Equilibre_Economique_Systeme_V1.pdf" target="_blank" rel="noopener" class="btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Qui paie quoi, sur quelle durée ?
+      </a>
+    </div>
+  </article>
+
+  <!-- Étape 4 -->
+  <article class="etape" id="regles" style="--c:#2D6A4F; --bg:#F0FBF3; --bd:#D8F3DC;">
+    <div class="etape-top">
+      <div class="etape-num">4</div>
+      <div>
+        <div class="etape-question">Que faut-il changer ?</div>
+        <h2 class="etape-titre">Les règles avant les sites</h2>
+      </div>
+    </div>
+    <div class="etape-body">
+      <p>
+        L'usine GoBiGas, en Suède, fonctionnait ; elle a fermé parce qu'elle n'était payée que pour son gaz.
+        Comme on investit sur les règles du jour, <strong>elles doivent changer avant que les sites ne soient décidés</strong> :
+        payer ce que les sites produisent, autoriser et construire dans des délais compatibles avec le climat,
+        mobiliser la biomasse à risque, ouvrir les usages.
+      </p>
+      <p>
+        Les notes de position mettent en regard ce que la France a ratifié (GIEC, Accord de Paris, SNBC)
+        et ce qu'elle applique, et proposent une architecture juridique qui raccourcit les procédures
+        sans supprimer le droit au recours.
+      </p>
+      <div class="chiffres">
+        <div class="chiffre-pill"><strong>4 familles</strong><span>de règles à faire évoluer</span></div>
+        <div class="chiffre-pill"><strong>6–10 ans</strong><span>de procédure par site aujourd'hui</span></div>
+        <div class="chiffre-pill"><strong>2027–2030</strong><span>fenêtre pour adopter l'essentiel</span></div>
+      </div>
+    </div>
+    <div class="etape-footer">
+      <div class="etape-doc"><strong>Page :</strong> notes de position — commencer par « Changer les règles avant de construire »</div>
+      <a href="notes-position-sequestration-droit.html" class="btn">
+        Les règles à changer
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </article>
+
+</div>
+
+<!-- ── Décisions ─────────────────────────────────────────────────────────── -->
+<div class="decisions">
+  <div class="decisions-box">
+    <h2>Trois décisions qui pourraient être engagées dès 2027</h2>
+    <ol>
+      <li><span>Inscrire dans une loi de programmation <strong>le principe que la tonne de carbone retirée durablement est rémunérée pour elle-même</strong>, avec un coût complet de référence par filière, des contrats longs et symétriques, et une construction pilotée par le besoin.</span></li>
+      <li><span><strong>Créer une obligation de retrait progressive</strong>, à laquelle participent les acteurs des énergies fossiles et entièrement affectée au retrait du carbone, et <strong>ouvrir à la pyrogazéification</strong> les certificats de production de biogaz (article R.446-105 du code de l'énergie).</span></li>
+      <li><span><strong>Lancer quelques sites pilotes</strong> avec biochar et stockage du CO₂ biogénique, ainsi que le contrat d'entretien forestier à l'hectare, avec des garanties publiques plutôt que des subventions.</span></li>
+    </ol>
+    <p class="decisions-note">
+      Pour aller plus loin : le corpus complet — annexes techniques, démonstrateurs territoriaux,
+      mobilité et aviation — est sur <a href="documents-liste.html">la page Documents</a>.
+    </p>
+  </div>
+</div>
+
+<!-- ── Footer ─────────────────────────────────────────────────────────────── -->
+<footer>
+  <strong>Programme Résilience 2045</strong> · Jacques Diez · Octobre 2026<br>
+  <a href="https://resilience2045.fr">resilience2045.fr</a> ·
+  <a href="documents-liste.html">Catalogue de documents</a>
+</footer>
+
+</body>
+</html>
