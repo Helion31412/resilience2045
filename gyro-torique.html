@@ -103,7 +103,7 @@
     <h3>La démarche Résilience : électrique + Bio-GNL</h3>
     <p>Dans l'esprit du programme Résilience, nous avons cherché une architecture qui combine les <strong>moteurs électriques</strong> et le <strong>bio-méthane liquéfié (Bio-GNL)</strong>, produit en France à partir de déchets organiques et de résidus agricoles.</p>
     <ul>
-      <li><strong>Des groupes électrogènes EREV à haut rendement</strong> (objectif ~45 %, contre ~25 % pour une turbine légère). Le passage par l'électricité coûte quelques pour cent de pertes (rendement électrique ~0,93), mais le gain de rendement du moteur le compense largement.</li>
+      <li><strong>Des groupes électrogènes EREV à haut rendement</strong> (objectif ~45 %, contre ~25 % pour une turbine légère). Le passage par l'électricité coûte quelques pour cent de pertes (rendement électrique ~0,93), mais le gain de rendement du moteur le compense largement. Ces groupes sont <strong>dérivés de ceux prévus pour les voitures et les camions ÉREV</strong> du programme, dans leur configuration V2.1+ : moteur à point fixe, turbocompound, injection d'eau, même électronique de contrôle et même filière industrielle. Ils en reprennent le programme <strong>« Auto-réparable »</strong> : auto-nettoyage de l'admission et injection d'eau micro-dosée, qui limitent les dépôts et les contraintes thermiques, et télémétrie embarquée qui surveille l'état de chaque groupe et déclenche l'intervention avant la panne. L'entretien suit l'état réel du moteur, ce qui augmente sa durée de vie et la disponibilité de l'appareil.</li>
       <li><strong>Une turbine d'appoint légère</strong> fournit le complément de puissance nécessaire au stationnaire. <strong>Une batterie de 45 kWh</strong> absorbe les pointes et sert au posé d'urgence.</li>
       <li><strong>Le Bio-GNL</strong> contient 16 % d'énergie de plus par kilo que le kérosène, mais 39 % de moins par litre. Il demande donc des réservoirs plus volumineux, mais sans commune mesure avec les contraintes de l'hydrogène. Ces réservoirs sont intégrés dans la structure même de l'appareil. Une variante au bio-GNV comprimé à 250 bar est également étudiée (section 6) : sans évaporation pendant l'alerte, elle pourrait se ravitailler dans de nombreuses stations aménagées du réseau national, au plus près des interventions.</li>
       <li><strong>Des ventilateurs carénés de type drone</strong> remplacent le rotor exposé. La puissance est distribuée à 8 moteurs électriques, ce qui améliore la sécurité autour de l'appareil et supprime la boîte de transmission principale.</li>
@@ -114,9 +114,9 @@
   <!-- 2. MISSIONS -->
   <section id="missions">
     <h2>2. Pour quelles missions ?</h2>
-    <p>Le Gyro-Torique vise un créneau précis, où l'accès, la sécurité et la précision comptent plus que la vitesse :</p>
+    <p>Le Gyro-Torique vise un créneau précis, où l'accès, la sécurité et la précision comptent plus que la vitesse. Sa mission première est le <strong>secours médical régional des populations éloignées des centres de soins</strong>, qui ont besoin d'un transfert rapide, de jour comme de nuit et dans un domaine météo élargi (section 4) :</p>
     <div class="grille">
-      <div class="carte"><h3>SAMU / secours médical</h3><p>Transport d'un patient allongé avec 2 soignants debout de part et d'autre de la civière. Poses sur toits d'hôpitaux et hélistations urbaines.</p></div>
+      <div class="carte"><h3>SAMU / secours médical</h3><p>Secours régional des zones éloignées : endurance de plusieurs heures et ravitaillement possible en route. Transport d'un patient allongé avec 2 soignants debout de part et d'autre de la civière. Poses sur toits d'hôpitaux, hélistations urbaines et terrains non préparés.</p></div>
       <div class="carte"><h3>Hélitreuillage</h3><p>Treuil dans l'axe du centre de gravité, par une trappe de plancher (barquette à plat), avec l'opérateur dans la cabine.</p></div>
       <div class="carte"><h3>Transport express urbain</h3><p>Liaisons rapides entre sites proches (hôpitaux, plateaux techniques).</p></div>
     </div>
@@ -202,7 +202,7 @@
       <div class="carte"><h3>Hélitreuillage</h3><p>Treuil dans l'axe du centre de gravité, par trappe centrale. La charge monte dans la zone calme, sans couple de roulis.</p></div>
       <div class="carte"><h3>Intégration</h3><p>Réservoirs, ventilateurs, batterie et moteurs thermiques sont intégrés dans une structure unique : plateau, tore, baie moteurs et cellule de survie.</p></div>
       <div class="carte"><h3>Énergie et CO₂</h3><p>Environ 46 % d'énergie en moins par mission (chaîne mixte, sous condition). CO₂ fossile quasi nul à l'usage, et aucun soufre ni aromatique.</p></div>
-      <div class="carte"><h3>Mauvais temps</h3><p>Il n'y a pas de longues pales à dégivrer : lèvres, stators et volets peuvent être chauffés électriquement. C'est un objectif à démontrer en soufflerie givrante.</p></div>
+      <div class="carte"><h3>Mauvais temps</h3><p>Capteurs fusionnés (radar, lidar, caméras thermique et visible, GPS-inertiel) pour la nuit et le brouillard. Pas de longues pales à dégivrer : lèvres, stators et volets peuvent être chauffés électriquement. Objectif à démontrer en soufflerie givrante.</p></div>
     </div>
 
     <h3>Mobilité, précision de positionnement et stabilité</h3>
@@ -217,6 +217,19 @@
     </div>
     <p class="note">À démontrer : la tenue en rafales d'un disque de 10,8 m, et la stabilité en transition et en croisière. En croisière, le disque est naturellement instable en tangage : la stabilité est assurée par les commandes de vol, comme sur les avions de combat modernes. C'est le premier verrou du programme (section 5).</p>
 
+    <h3>Vol de nuit, brouillard et zones encombrées : capteurs fusionnés</h3>
+    <p>Le Gyro-Torique est prévu fortement instrumenté. Sa suite de capteurs fusionnés lui donne un <strong>domaine de vol élargi</strong> : nuit, brouillard, posé en zone encombrée et treuillage de précision. La puissance électrique abondante des groupes EREV permet de l'alimenter sans contrainte.</p>
+    <div class="grille">
+      <div class="carte"><h3>Radar à ondes millimétriques</h3><p>Il traverse le brouillard, la pluie et la fumée. C'est le capteur clé pour détecter les obstacles et le relief quand on ne voit rien.</p></div>
+      <div class="carte"><h3>Lidar</h3><p>Cartographie 3D précise des obstacles (câbles, arbres, façades). Remarquable de nuit, il perd de la portée dans le brouillard épais.</p></div>
+      <div class="carte"><h3>Caméra thermique</h3><p>Vol de nuit et repérage des victimes. Elle passe la brume légère, mais se dégrade dans un brouillard dense.</p></div>
+      <div class="carte"><h3>Caméras visibles et GPS-inertiel</h3><p>Identification de la zone, assistance au treuillage et enregistrement de la mission ; positionnement, approches guidées et maintien de position en stationnaire.</p></div>
+    </div>
+    <p>La fusion de ces capteurs donne au pilote une <strong>vision synthétique</strong> combinée (relief, obstacles, aire de posé), même en visibilité nulle : chaque capteur couvre les faiblesses des autres. Elle complète aussi la vue vers le haut, masquée par le disque.</p>
+    <p><strong>Une synergie propre au Gyro-Torique.</strong> Trois éléments se renforcent. Les capteurs voient l'obstacle, même dans le brouillard. La poussée différentielle des 8 ventilateurs électriques tient la position avec précision, même en rafale. Le carénage tolère un contact léger qui serait fatal à un rotor ouvert. Ni les hélicoptères actuels ni les eVTOL à rotors ouverts ne réunissent ces trois points : c'est ce qui justifie le Gyro-Torique pour le treuillage et le posé en zone encombrée, de nuit et par mauvaise visibilité.</p>
+    <p><strong>Évolution : pilotage semi-autonome.</strong> À terme, cet ensemble pourra être couplé à un système de pilotage semi-autonome : stationnaire automatique, approche et posé guidés, évitement d'obstacles. Le pilote restera aux commandes et sa charge de travail sera allégée dans les phases les plus exigeantes. Cette assistance avancée sera certifiable bien avant une autonomie complète.</p>
+    <p class="note">Les capteurs rendent le vol de nuit et par mauvaise visibilité techniquement faisable et plus sûr. L'autorisation de voler dans ces conditions relève aussi de la réglementation : vol aux instruments, procédures d'approche vers les hôpitaux et les zones isolées, qualification des pilotes.</p>
+
     <h3>Comparaison sur la même mission</h3>
     <div class="table-scroll">
     <table>
@@ -228,12 +241,16 @@
       <tr><td>Treuil</td><td>Dans l'axe, par trappe</td><td>Latéral, 272 kg</td><td class="av-gt">Gyro-Torique</td></tr>
       <tr><td>Commande en stationnaire</td><td>Poussée différentielle électrique sur 8 ventilateurs, réponse immédiate</td><td>Plateau cyclique, rotor et turbine</td><td class="av-gt">Gyro-Torique [à démontrer]</td></tr>
       <tr><td>Précision de positionnement</td><td>Maintien de position automatique, posé assisté</td><td>Pilote, aidé par un pilote automatique</td><td class="av-gt">Gyro-Torique [à démontrer]</td></tr>
+      <tr><td>Nuit et visibilité réduite</td><td>Capteurs fusionnés (radar, lidar, thermique, GPS-inertiel), vision synthétique ; pilotage facilité de nuit et par brouillard : maintien de position automatique, posé guidé en zone encombrée ; pilotage semi-autonome à terme</td><td>IFR, jumelles de vision nocturne</td><td class="av-gt">Gyro-Torique [à démontrer]</td></tr>
       <tr><td>Mobilité</td><td>Pivot sur place, déplacement omnidirectionnel, approche par tout côté</td><td>Orientation imposée par le rotor de queue et le vent</td><td class="av-gt">Gyro-Torique</td></tr>
       <tr><td>Anticouple / vent de travers</td><td>Aucun rotor de queue, comportement identique quelle que soit la direction du vent</td><td>Fenestron, sensibilité au vent de travers en lacet</td><td class="av-gt">Gyro-Torique</td></tr>
       <tr><td>Tenue en rafales</td><td>Charge au disque élevée (moins sensible) mais grande surface de disque exposée</td><td>Éprouvée</td><td class="av-eq">À démontrer</td></tr>
       <tr><td>Énergie par mission</td><td>~3 150 kWh (~226 kg de Bio-GNL)</td><td>~5 850 kWh (~490 kg de kérosène)</td><td class="av-gt">Gyro-Torique (−46 %, conditionnel)</td></tr>
       <tr><td>CO₂ fossile à l'usage</td><td>Quasi nul (carbone biogénique)</td><td>~1,55 t par mission</td><td class="av-gt">Gyro-Torique</td></tr>
       <tr><td>Coût du carburant par mission</td><td>~340–450 € (Bio-GNL)</td><td>~390–590 € (kérosène) ; ~980–1 720 € (SAF)</td><td class="av-gt">Gyro-Torique</td></tr>
+      <tr><td>Coût de l'heure de vol</td><td>Carburant ~90–120 €/h en croisière (~60 kg/h de Bio-GNL), grâce au rendement de la chaîne mixte ; maintenance attendue plus faible : pas de boîte de transmission principale, groupes de série issus de la filière terrestre, entretien selon l'état ; acquisition et maintenance à chiffrer</td><td>Carburant ~160–240 €/h au kérosène (~200 kg/h) ; ~400–700 €/h au SAF ; maintenance de la turbine et de la transmission</td><td class="av-gt">Gyro-Torique (carburant ; maintenance à confirmer)</td></tr>
+      <tr><td>Maintenance et surveillance</td><td>Groupes ÉREV issus de la filière terrestre ; programme « Auto-réparable » (auto-nettoyage, injection d'eau), télémétrie, entretien selon l'état réel ; pas de boîte de transmission principale</td><td>Turbine et boîte de transmission principale à révisions programmées ; surveillance de type HUMS selon équipement</td><td class="av-gt">Gyro-Torique [à démontrer]</td></tr>
+      <tr><td>Ravitaillement</td><td>Bio-GNL sur base (stockage ou citerne). Variante bio-GNV : plein en 10–15 min sur le réseau de stations à 250 bar partagé avec les véhicules ÉREV (~4 700 stations prévues), près de la zone d'intervention, sans retour à la base</td><td>Kérosène sur base, aérodromes ou citerne mobile</td><td class="av-gt">Gyro-Torique (dans le cadre d'une politique nationale du GNV)</td></tr>
       <tr><td>Rayon (même mission)</td><td>250 km (à valider)</td><td>~210–250 km</td><td class="av-eq">Équivalent</td></tr>
       <tr><td>Souffle au sol</td><td>~84 km/h</td><td>~87 km/h</td><td class="av-eq">Équivalent</td></tr>
       <tr><td>Charge utile avec carburant</td><td>600 kg</td><td>~850–950 kg</td><td class="av-h135">H135</td></tr>
