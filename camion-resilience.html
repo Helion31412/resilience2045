@@ -203,7 +203,7 @@ footer p{font-size:.75rem;color:var(--gris);max-width:600px;margin:.3rem auto}
       <div class="grid3-cell" style="border-top:2px solid var(--vert-vif)">
         <div class="cell-tag" style="color:var(--vert-vif)">GNL fossile — lancement</div>
         <div class="cell-val" style="color:var(--vert-vif)">13–19 €/100 km</div>
-        <div class="cell-sub">0,56–0,83 €/kg · Stations GNL publiques existantes · CO₂ −25 % par MJ vs gazole</div>
+        <div class="cell-sub">0,56–0,83 €/kg · Stations GNL publiques existantes · CO₂ −28 % par MJ vs gazole</div>
       </div>
       <div class="grid3-cell" style="border-top:2px solid var(--ambre)">
         <div class="cell-tag" style="color:var(--ambre)">Mélange 50 % bio-GNL</div>
@@ -233,7 +233,7 @@ footer p{font-size:.75rem;color:var(--gris);max-width:600px;margin:.3rem auto}
           <tr><td>Matière première</td><td class="td-r">Huiles végétales (colza ; palme et soja en recul sous RED III) ou déchets gras (huiles usagées, graisses animales)</td><td class="td-g">Déchets et résidus : effluents d'élevage, résidus de cultures, biodéchets, bois de rebut</td></tr>
           <tr><td>Disponibilité</td><td class="td-r">Gisement de déchets gras limité et largement importé (fraudes signalées sur les huiles usagées)</td><td class="td-g">Gisement national de déchets et résidus</td></tr>
           <tr><td>Concurrence d'usage</td><td class="td-r">Même matière que le SAF HEFA : la route retire du carburant à l'aviation · concurrence alimentaire pour les huiles de culture</td><td class="td-g">Aucune concurrence alimentaire · l'aviation ne prélève que ~7–12 % du gisement</td></tr>
-          <tr><td>CO₂ cycle de vie</td><td>−50 à −90 % selon la matière première</td><td class="td-g">Neutre à négatif avec le biochar co-produit</td></tr>
+          <tr><td>CO₂ cycle de vie</td><td>−50 à −90 % selon la matière première</td><td class="td-g">Neutre à négatif avec le biochar co-produit (pyrogazéification) · CO₂ biogénique concentré stockable</td></tr>
           <tr><td>NOx et particules</td><td class="td-r">Proches du gazole · SCR/AdBlue et FAP maintenus</td><td class="td-g">Catalyseur 3 voies · sans AdBlue · quasi sans suies</td></tr>
           <tr><td>Co-produits</td><td>Aucun stockage de carbone</td><td class="td-g">Digestat (engrais) et biochar (carbone stocké dans les sols)</td></tr>
         </tbody>
@@ -271,7 +271,7 @@ footer p{font-size:.75rem;color:var(--gris);max-width:600px;margin:.3rem auto}
       <table class="tbl">
         <thead><tr><th>Solution</th><th>Autonomie</th><th>Remplissage</th><th>Charge utile</th><th>CO₂ usage</th><th>Robustesse</th></tr></thead>
         <tbody>
-          <tr><td>Diesel 44t</td><td>&gt;1 200 km</td><td>3–5 min</td><td>~26 t</td><td class="td-r">~700 g/km</td><td>7/10</td></tr>
+          <tr><td>Diesel 44t</td><td>&gt;1 200 km</td><td>3–5 min</td><td>~26 t</td><td class="td-r">~850 g/km</td><td>7/10</td></tr>
           <tr><td>BEV 44t</td><td>~300–500 km</td><td>45–90 min</td><td class="td-r">~23 t (−3 t)</td><td class="td-g">0 g/km local</td><td>6,5/10</td></tr>
           <tr><td>Hydrogène 44t</td><td>~600–800 km</td><td>5–10 min</td><td>~25 t</td><td class="td-g">0 g/km</td><td>5/10 · Infra absente</td></tr>
           <tr class="hl"><td>Camion Résilience</td><td class="td-g">1 150–1 300 km</td><td>5–10 min (LCH4)</td><td class="td-g">~25 t</td><td class="td-g">0 g/km · Négatif avec biochar</td><td class="td-g">8/10</td></tr>
@@ -375,23 +375,67 @@ footer p{font-size:.75rem;color:var(--gris);max-width:600px;margin:.3rem auto}
     <div class="grid3 reveal" style="grid-template-columns:repeat(2,1fr)">
       <div class="grid3-cell" style="border-top:2px solid var(--vert-vif)">
         <div class="cell-tag" style="color:var(--vert-vif)">Gain d'architecture (fossile vs fossile)</div>
-        <div class="cell-val" style="color:var(--vert-vif);font-size:1.5rem">−31 % CO₂</div>
-        <div class="cell-sub">~440 g/km GNL fossile → ~305 g/km EREV fossile<br>Gain par architecture seule, indépendant du carburant<br>S'applique identiquement en bio</div>
+        <div class="cell-val" style="color:var(--vert-vif);font-size:1.5rem">−25 à −31 % CO₂</div>
+        <div class="cell-sub">~880 g/km GNL classique fossile (32 kg/100 km) → ~605–660 g/km EREV fossile (22–24 kg/100 km)<br>Gain par architecture seule, indépendant du carburant<br>S'applique identiquement en bio</div>
       </div>
       <div class="grid3-cell" style="border-top:2px solid var(--ambre)">
         <div class="cell-tag" style="color:var(--ambre)">Gain de carburant (fossile → bio)</div>
         <div class="cell-val" style="color:var(--ambre);font-size:1.5rem">~0 g fossile/km</div>
-        <div class="cell-sub">Les ~305 g/km restants disparaissent avec le bio-LCH4<br>Identique pour GNL bio et EREV bio à l'usage<br>Le différenciateur devient alors la filière Résilience : biochar + fuites ≤1 %</div>
+        <div class="cell-sub">Les ~630 g/km restants disparaissent avec le bio-LCH4<br>Identique pour GNL bio et EREV bio à l'usage<br>Le différenciateur devient alors la filière Résilience : biochar + fuites ≤1 %</div>
       </div>
     </div>
     <div class="encadre reveal">
-      <p><strong>ACV indépendante nécessaire</strong> pour figer le bilan CO₂e complet : émissions amont production + liquéfaction, fuites CH4 (≤1 % contractuelles V11), crédit biochar certifiable EBC/Puro.earth (−50 à −100 g CO₂e/km estimé, non acquis). Le "~0 g fossile/km" désigne strictement les émissions de combustion.</p>
+      <p><strong>ACV indépendante nécessaire</strong> pour figer le bilan CO₂e complet : émissions amont production + liquéfaction, fuites CH4 (≤1 % contractuelles V11), crédit biochar certifiable EBC/Puro.earth (~−345 g CO₂/km à 23 kg/100 km, soit −1,5 kg CO₂/kg bioCH₄ — Comparatif Multi-Secteur V5.2 · conditionné à une pyrogazéification ≥ 700 °C, non acquis). Le "~0 g fossile/km" désigne strictement les émissions de combustion.</p>
     </div>
 
     <!-- Lien PDF -->
     <div class="reveal" style="margin-top:2.5rem;display:flex;gap:1rem;flex-wrap:wrap">
       <a href="Comparatif_Rendements_EREV_vs_GNL_V2.3.pdf" class="btn btn-outline" target="_blank" download>↓ Comparatif complet V2.3 (PDF)</a>
     </div>
+  </div>
+</section>
+
+<!-- BILAN ENVIRONNEMENTAL -->
+<section id="environnement" style="background:var(--noir)">
+  <div class="container">
+    <div class="stag reveal">Bilan environnemental · Objectif décarbonation</div>
+    <h2 class="reveal">L'économie est le moyen, <em>la décarbonation est le but</em></h2>
+    <p class="lead reveal">Le même camion roule au GNL fossile au lancement puis au bio-LCH4 sans modification : la trajectoire fossile → bio est intégrée dès la conception. Méthode du Comparatif Multi-Secteur V5.2 : seul le CO₂ d'origine fossile est ajouté à l'atmosphère, le CO₂ biogénique est neutre (cycle court), le crédit biochar est compté séparément.</p>
+
+    <div style="overflow-x:auto" class="reveal">
+      <table class="tbl">
+        <thead><tr><th>Par km · 44 t longue distance</th><th>Diesel Euro VI</th><th>GNL classique fossile</th><th>ÉREV fossile</th><th>ÉREV bio-LCH4 · méthanisation</th><th>ÉREV bio-LCH4 · pyrogazéification + biochar</th></tr></thead>
+        <tbody>
+          <tr><td>Consommation</td><td>~32 L/100 km</td><td>32 kg/100 km</td><td>~23 kg/100 km</td><td>~23 kg/100 km</td><td>~23 kg/100 km</td></tr>
+          <tr><td>CO₂ ajouté à l'atmosphère (fossile seul)</td><td class="td-r">~850 g/km</td><td class="td-r">~880 g/km</td><td class="td-a">~630 g/km</td><td class="td-g">0 — CO₂ biogénique, cycle court</td><td class="td-g">0</td></tr>
+          <tr><td>Crédit biochar</td><td>—</td><td>—</td><td>—</td><td>— (sauf fraction solide du digestat envoyée en pyrolyse)</td><td class="td-g">~−345 g/km (0,23 kg × −1,5 kg CO₂/kg)</td></tr>
+          <tr class="hl"><td>Bilan net</td><td class="td-r">~850 g/km</td><td class="td-r">~880 g/km</td><td class="td-a">~630 g/km</td><td class="td-g">~0</td><td class="td-g">~−345 g/km</td></tr>
+          <tr><td>Par an · 20 000 km</td><td class="td-r">~17 t CO₂</td><td class="td-r">~18 t</td><td class="td-a">~13 t</td><td class="td-g">~0</td><td class="td-g">~−7 t (retrait net)</td></tr>
+          <tr><td>Par an · 100 000 km (longue distance)</td><td class="td-r">~85 t CO₂</td><td class="td-r">~88 t</td><td class="td-a">~63 t</td><td class="td-g">~0</td><td class="td-g">~−35 t (retrait net)</td></tr>
+          <tr><td>NOx / particules</td><td class="td-r">SCR + AdBlue · FAP</td><td>Catalyseur 3 voies · sans FAP</td><td class="td-g" colspan="3">Euro 7 ≤ 200 mg/kWh sans SCR/AdBlue · sans suies · régime fixe sans transitoires · freinage régénératif = PM de friction quasi nulles · zéro soufre</td></tr>
+          <tr><td>Zones sensibles</td><td class="td-r">Émissions et bruit permanents</td><td class="td-r">Idem</td><td class="td-g" colspan="3">110–130 km ZEV (électricité réseau, ~50 g CO₂/kWh)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note reveal"><strong>Lecture :</strong> par MJ de carburant, le GNL émet 28 % de CO₂ de moins que le gazole (Comparatif V5.2 : 125 vs 174 g/MJ utile à rendement égal). Mais sur route, le moteur Otto d'un camion GNL classique tourne en moyenne loin de son optimum (29–31 % de rendement global effectif, Comparatif Camions 44t) : au kilomètre, il n'émet pas moins qu'un diesel. Le gain vient de l'architecture ÉREV (Rex à régime fixe, récupération au freinage). Valeurs Rex seul et profil mixte en g/MJ : voir Comparatif Multi-Secteur V5.2 (ÉREV V2.2 : 104 g/MJ fossile · ~96 g/MJ profil mixte · ~−48 g/MJ en bio-CH₄ 100 % + biochar).</div>
+
+    <div class="encadre reveal">
+      <p><strong>Le GNL fossile n'est pas l'objectif :</strong> c'est un carburant de lancement, qui permet de déployer la flotte et les stations pendant la montée en puissance du bio-CH₄. Camion, réservoirs et stations sont identiques : la part bio monte progressivement jusqu'à 100 %, sans nouvel investissement côté véhicule. Les coûts « GNL fossile » de la partie économique ne sont pas un scénario cible.</p>
+    </div>
+
+    <div class="grid3 reveal" style="grid-template-columns:repeat(2,1fr)">
+      <div class="grid3-cell" style="border-top:2px solid var(--vert-vif)">
+        <div class="cell-tag" style="color:var(--vert-vif)">Voie 1 · CO₂ biogénique concentré stocké</div>
+        <div class="cell-val" style="color:var(--vert-vif);font-size:1.5rem">~0,5 kg CO₂/km</div>
+        <div class="cell-sub">L'épuration du biogaz sépare ~2,3 kg de CO₂ déjà concentré par kg de bio-CH₄ produit · ~10 t/an à 20 000 km, ~50 t/an à 100 000 km · aujourd'hui rejeté, il peut être liquéfié et stocké géologiquement = retrait net · filière de collecte à organiser · estimation</div>
+      </div>
+      <div class="grid3-cell" style="border-top:2px solid var(--ambre)">
+        <div class="cell-tag" style="color:var(--ambre)">Voie 2 · Biochar</div>
+        <div class="cell-val" style="color:var(--ambre);font-size:1.5rem">~−345 g CO₂/km</div>
+        <div class="cell-sub">−1,5 kg CO₂/kg bioCH₄ (hypothèse conservatrice) · conditions : pyrogazéification ≥ 700 °C ou fraction solide du digestat pyrolysée, biochar certifié EBC H/Corg ≤ 0,4, suivi au sol</div>
+      </div>
+    </div>
+    <div class="note reveal"><strong>Points de vigilance :</strong> le méthane réchauffe ~30 fois plus que le CO₂ sur 100 ans (~80 sur 20 ans) — fuites sur toute la chaîne (production, liquéfaction, boil-off, imbrûlés) sous le seuil contractuel de 1 %, avec mesure continue. Le stockage du CO₂ biogénique suppose une filière de collecte mutualisée qui n'existe pas encore. Le crédit biochar n'est pas une propriété du biométhane : il n'existe que si la chaîne inclut une pyrolyse ou une pyrogazéification avec biochar certifié.</div>
   </div>
 </section>
 
@@ -436,7 +480,7 @@ footer p{font-size:.75rem;color:var(--gris);max-width:600px;margin:.3rem auto}
 <footer>
   <div class="footer-logo">Programme Résilience V11</div>
   <p>Camion Résilience 44t · ÉREV Rex unique Bio-LCH4 · Octobre 2026 · Diffusion libre</p>
-  <p style="margin-top:.4rem">Sources : Volvo FH LNG · Scania LNG · Cummins X15N · Iveco Cursor 13 NG · Euro 7 (UE) 2024/1257 · Directive RED III · ADEME · IRU 2024</p>
+  <p style="margin-top:.4rem">Sources : Volvo FH LNG · Scania LNG · Cummins X15N · Iveco Cursor 13 NG · Euro 7 (UE) 2024/1257 · Directive RED III · ADEME · IRU 2024 · Comparatif Multi-Secteur V5.2 · Comparatif Camions 44t V11 · GIEC AR6 · EBC / Puro.earth</p>
 </footer>
 <script>
 const obs=new IntersectionObserver((e)=>{e.forEach((el,i)=>{if(el.isIntersecting){setTimeout(()=>el.target.classList.add('visible'),i*65);obs.unobserve(el.target)}})},{threshold:0.07});
