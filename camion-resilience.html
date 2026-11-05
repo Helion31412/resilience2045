@@ -287,22 +287,39 @@ footer p{font-size:.75rem;color:var(--gris);max-width:600px;margin:.3rem auto}
   <div class="container">
     <div class="stag reveal">Analyse technique approfondie</div>
     <h2 class="reveal">Rendements réservoir→roue — <em>quatre niveaux, une honnêteté</em></h2>
-    <p class="lead reveal">Le Camion Résilience n'est pas meilleur en traction continue — le GNL classique y est supérieur. L'avantage est architectural : Rex éteint aux arrêts réglementaires, ZEV à 89 % de rendement, auxiliaires sur batterie à 3× l'efficacité d'un APU thermique.</p>
+    <p class="lead reveal">À conditions égales, le Camion Résilience est plus efficace que le GNL classique dès la traction continue, et l'écart se creuse sur cycle réel : Rex toujours à son point optimal, récupération au freinage, Rex éteint aux arrêts réglementaires, ZEV à 89 % de rendement, auxiliaires sur batterie à 3× l'efficacité d'un APU thermique. Avec le Rex V2.2, il rejoint presque la pile à combustible en rendement réservoir→roue — sans sa pénalité amont.</p>
 
     <!-- Quatre niveaux -->
     <div class="stag reveal" style="margin-top:2.5rem">Les quatre niveaux — ne pas les confondre</div>
     <div style="overflow-x:auto" class="reveal">
       <table class="tbl">
-        <thead><tr><th>Niv.</th><th>Nom exact</th><th>Périmètre</th><th>EREV V2.0</th><th>GNL classique</th></tr></thead>
+        <thead><tr><th>Niv.</th><th>Nom exact</th><th>Périmètre</th><th>ÉREV V2.0 (entrée)</th><th>ÉREV V2.2 (cible)</th><th>GNL classique</th></tr></thead>
         <tbody>
-          <tr><td>1</td><td>Rendement thermique Rex (cycle seul)</td><td>Moteur Rex — banc</td><td class="td-g">44–48 % (objectif 48–52 % avec turbocompound)</td><td>42–46 %</td></tr>
-          <tr><td>2</td><td>Rendement gaz→roues traction continue</td><td>Chaîne complète — traction seule</td><td class="td-r">32–36 %</td><td class="td-g">36–40 %</td></tr>
-          <tr><td>3</td><td>Efficience cycle opérationnel Rex + arrêts</td><td>Multi-sources sans ZEV réseau · scén. B</td><td class="td-g">~45 %</td><td>~38 %</td></tr>
-          <tr class="hl"><td>3b</td><td>Efficience cycle complet (ZEV + Rex + ZEV)</td><td>Énergies externes uniquement · Convention A</td><td class="td-g">~54–57 %</td><td>~38 %</td></tr>
+          <tr><td>1</td><td>Rendement thermique (moteur seul)</td><td>Moteur — point optimal</td><td>44–48 %</td><td class="td-g">52–55 % (turbocompound + ORC)</td><td>35–38 % au point optimal · 31–33 % en moyenne réelle (régimes variables)</td></tr>
+          <tr><td>2</td><td>Rendement gaz→roues traction continue</td><td>Vitesse stabilisée · sans freinage ni arrêts</td><td>~38–42 %</td><td class="td-g">~45–48 %</td><td>~32–35 % (boîte −8 %, au point optimal)</td></tr>
+          <tr><td>3</td><td>Efficience cycle opérationnel Rex + arrêts</td><td>Multi-sources · scén. B</td><td>~45 %</td><td class="td-g">~50 % <span class="warn">(estimation)</span></td><td>~38 %</td></tr>
+          <tr class="hl"><td>3b</td><td>Efficience cycle complet (ZEV + Rex + ZEV)</td><td>Énergies externes uniquement · Convention A</td><td>~54–57 %</td><td class="td-g">~60 % <span class="warn">(estimation)</span></td><td>~38 %</td></tr>
+          <tr><td>—</td><td>Rendement global effectif sur route</td><td>Comparatif Camions 44t (freinage inclus)</td><td>~44–46 %</td><td class="td-g">~49–52 %</td><td>~29–31 %</td></tr>
         </tbody>
       </table>
     </div>
-    <div class="note reveal"><strong>Constat Niveau 2 assumé :</strong> sur banc de traction continue, le GNL classique est supérieur (36–40 % vs 32–36 %). Ce constat est reconnu explicitement. L'avantage du Camion Résilience n'est pas dans son rendement de traction — il est dans son architecture multi-sources et ses comportements aux arrêts réglementaires.</div>
+    <div class="note reveal"><strong>Conditions égales :</strong> au niveau 2, les deux architectures sont prises à vitesse stabilisée, à leur point optimal. ÉREV : rendement du Rex × chaîne électrique en direct (génératrice 0,96 × onduleur 0,975 × moteur 0,955 × réducteur 0,97 ≈ 0,87). GNL classique : moteur Otto au point optimal × boîte de vitesses (−8 %). Même dans ce cas le plus favorable au GNL, l'ÉREV est devant : le moteur GNL classique reste pénalisé par sa compression limitée et son mélange stœchiométrique, et sur route par son papillon ; le Rex fonctionne à pleine ouverture, à point fixe, en cycle Atkinson/Miller (détente plus longue que la compression) avec EGR refroidi. Seul un moteur GNL HPDI à cycle diesel (Volvo/Westport, ~42–44 % au banc) s'en approche, mais il exige une injection pilote de gazole et ne peut donc pas fonctionner à 100 % en bio-CH₄. Les niveaux 3 et 3b de la V2.2 sont estimés en réduisant la consommation Rex nette en proportion du rendement (~−14 %).</div>
+
+    <!-- Pile à combustible : pénalité amont -->
+    <div class="stag reveal" style="margin-top:3rem">Pile à combustible — le rendement se perd en amont</div>
+    <div style="overflow-x:auto" class="reveal">
+      <table class="tbl">
+        <thead><tr><th>Rendement</th><th>ÉREV V2.2 bio-LCH4</th><th>H₂ FCEV (H₂ vert)</th><th>BEV 44t</th></tr></thead>
+        <tbody>
+          <tr><td>Réservoir → roue</td><td class="td-g">~49–52 %</td><td>50–55 %</td><td>83–87 %</td></tr>
+          <tr><td>Chaîne amont</td><td class="td-g">Liquéfaction ~2 % du PCI · le carburant vient de déchets et résidus, pas d'électricité</td><td class="td-r">Électrolyse ~70 % × compression 700 bar ~88 % · ~55 kWh d'électricité par kg d'H₂</td><td>Réseau, recharge ~90 %</td></tr>
+          <tr class="hl"><td>Source → roue</td><td class="td-g">~48–51 %</td><td class="td-r">~28–35 %</td><td>~75–80 %</td></tr>
+          <tr><td>Électricité consommée / 100 km</td><td class="td-g">Quasi nulle (hors ZEV)</td><td class="td-r">~440 kWh (8 kg H₂ × 55 kWh)</td><td>~125–140 kWh</td></tr>
+          <tr><td>Réservoir pour 1 000 km</td><td class="td-g">~550–600 L · 3–5 bar</td><td class="td-r">~4 500–5 000 L · 700 bar</td><td>Batterie ~900 kWh · −2 à −3 t de charge utile</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note reveal"><strong>Lecture :</strong> la pile à combustible est efficace dans le camion, mais l'hydrogène vert consomme ~3 fois plus d'électricité renouvelable qu'un camion électrique pour le même trajet, et cette électricité manque ailleurs. L'ÉREV V2.2 atteint presque le même rendement embarqué en partant d'un carburant issu de déchets, stockable à basse pression, distribué par le réseau gaz existant — et dont la filière retire du carbone (CO₂ biogénique concentré stocké, biochar). Source rendements H₂ et BEV : Comparatif Camions 44t V11.</div>
 
     <!-- Arrêts réglementaires -->
     <div class="stag reveal" style="margin-top:3rem">Arrêts réglementaires CE 561/2006 — le gain le plus massif</div>
@@ -327,7 +344,7 @@ footer p{font-size:.75rem;color:var(--gris);max-width:600px;margin:.3rem auto}
     <div class="note reveal"><strong>Hiver froid (−10°C) :</strong> les auxiliaires nuit peuvent dépasser 55–88 kWh, réduisant la réserve ZEV du lendemain à ~80 km. Solution : borne de recharge 11 kW au dépôt (77 kWh sur 7h) — couvre tous les scénarios thermiques et préserve le ZEV complet.</div>
 
     <!-- Bilan énergie finale -->
-    <div class="stag reveal" style="margin-top:3rem">Bilan énergie finale 800 km — frontières homogènes</div>
+    <div class="stag reveal" style="margin-top:3rem">Bilan énergie finale 800 km — frontières homogènes · ÉREV V2.0 (version d'entrée)</div>
     <div style="overflow-x:auto" class="reveal">
       <table class="tbl">
         <thead><tr><th>Poste énergie finale (kWh)</th><th>GNL classique</th><th>EREV V2.0</th><th>Note</th></tr></thead>
@@ -368,15 +385,15 @@ footer p{font-size:.75rem;color:var(--gris);max-width:600px;margin:.3rem auto}
         </tfoot>
       </table>
     </div>
-    <div class="note reveal"><strong>Convention A :</strong> seules les énergies entrant dans le véhicule depuis l'extérieur sont comptabilisées. Le surplus Rex utilisé pour la phase ZEV livraison est un flux interne déjà comptabilisé dans les 1 120 kWh Rex net. Fourchette ~54–57 % à confirmer sur cycle normalisé définitif.</div>
+    <div class="note reveal"><strong>Convention A :</strong> seules les énergies entrant dans le véhicule depuis l'extérieur sont comptabilisées. Le surplus Rex utilisé pour la phase ZEV livraison est un flux interne déjà comptabilisé dans les 1 120 kWh Rex net. Fourchette ~54–57 % à confirmer sur cycle normalisé définitif. Ces deux bilans sont établis pour la V2.0, version d'entrée prudente : en V2.2, la consommation Rex nette baisse d'environ 14 %.</div>
 
     <!-- CO2 fossile vs bio -->
     <div class="stag reveal" style="margin-top:3rem">Gain CO₂ — deux effets indépendants</div>
     <div class="grid3 reveal" style="grid-template-columns:repeat(2,1fr)">
       <div class="grid3-cell" style="border-top:2px solid var(--vert-vif)">
         <div class="cell-tag" style="color:var(--vert-vif)">Gain d'architecture (fossile vs fossile)</div>
-        <div class="cell-val" style="color:var(--vert-vif);font-size:1.5rem">−25 à −31 % CO₂</div>
-        <div class="cell-sub">~880 g/km GNL classique fossile (32 kg/100 km) → ~605–660 g/km EREV fossile (22–24 kg/100 km)<br>Gain par architecture seule, indépendant du carburant<br>S'applique identiquement en bio</div>
+        <div class="cell-val" style="color:var(--vert-vif);font-size:1.5rem">−16 à −31 % CO₂</div>
+        <div class="cell-sub">~750–810 g/km GNL classique fossile (27–29 kg/100 km) → ~630 g/km ÉREV V2.0 (−16 à −22 %) · ~560 g/km ÉREV V2.2 (−25 à −31 %)<br>Gain par architecture seule, indépendant du carburant<br>S'applique identiquement en bio</div>
       </div>
       <div class="grid3-cell" style="border-top:2px solid var(--ambre)">
         <div class="cell-tag" style="color:var(--ambre)">Gain de carburant (fossile → bio)</div>
@@ -406,18 +423,18 @@ footer p{font-size:.75rem;color:var(--gris);max-width:600px;margin:.3rem auto}
       <table class="tbl">
         <thead><tr><th>Par km · 44 t longue distance</th><th>Diesel Euro VI</th><th>GNL classique fossile</th><th>ÉREV fossile</th><th>ÉREV bio-LCH4 · méthanisation</th><th>ÉREV bio-LCH4 · pyrogazéification + biochar</th></tr></thead>
         <tbody>
-          <tr><td>Consommation</td><td>~32 L/100 km</td><td>32 kg/100 km</td><td>~23 kg/100 km</td><td>~23 kg/100 km</td><td>~23 kg/100 km</td></tr>
-          <tr><td>CO₂ ajouté à l'atmosphère (fossile seul)</td><td class="td-r">~850 g/km</td><td class="td-r">~880 g/km</td><td class="td-a">~630 g/km</td><td class="td-g">0 — CO₂ biogénique, cycle court</td><td class="td-g">0</td></tr>
+          <tr><td>Consommation</td><td>~32 L/100 km</td><td>~27–29 kg/100 km</td><td>~23 kg/100 km</td><td>~23 kg/100 km</td><td>~23 kg/100 km</td></tr>
+          <tr><td>CO₂ ajouté à l'atmosphère (fossile seul)</td><td class="td-r">~850 g/km</td><td class="td-r">~750–810 g/km</td><td class="td-a">~630 g/km</td><td class="td-g">0 — CO₂ biogénique, cycle court</td><td class="td-g">0</td></tr>
           <tr><td>Crédit biochar</td><td>—</td><td>—</td><td>—</td><td>— (sauf fraction solide du digestat envoyée en pyrolyse)</td><td class="td-g">~−345 g/km (0,23 kg × −1,5 kg CO₂/kg)</td></tr>
-          <tr class="hl"><td>Bilan net</td><td class="td-r">~850 g/km</td><td class="td-r">~880 g/km</td><td class="td-a">~630 g/km</td><td class="td-g">~0</td><td class="td-g">~−345 g/km</td></tr>
-          <tr><td>Par an · 20 000 km</td><td class="td-r">~17 t CO₂</td><td class="td-r">~18 t</td><td class="td-a">~13 t</td><td class="td-g">~0</td><td class="td-g">~−7 t (retrait net)</td></tr>
-          <tr><td>Par an · 100 000 km (longue distance)</td><td class="td-r">~85 t CO₂</td><td class="td-r">~88 t</td><td class="td-a">~63 t</td><td class="td-g">~0</td><td class="td-g">~−35 t (retrait net)</td></tr>
+          <tr class="hl"><td>Bilan net</td><td class="td-r">~850 g/km</td><td class="td-r">~750–810 g/km</td><td class="td-a">~630 g/km</td><td class="td-g">~0</td><td class="td-g">~−345 g/km</td></tr>
+          <tr><td>Par an · 20 000 km</td><td class="td-r">~17 t CO₂</td><td class="td-r">~15–16 t</td><td class="td-a">~13 t</td><td class="td-g">~0</td><td class="td-g">~−7 t (retrait net)</td></tr>
+          <tr><td>Par an · 100 000 km (longue distance)</td><td class="td-r">~85 t CO₂</td><td class="td-r">~75–81 t</td><td class="td-a">~63 t</td><td class="td-g">~0</td><td class="td-g">~−35 t (retrait net)</td></tr>
           <tr><td>NOx / particules</td><td class="td-r">SCR + AdBlue · FAP</td><td>Catalyseur 3 voies · sans FAP</td><td class="td-g" colspan="3">Euro 7 ≤ 200 mg/kWh sans SCR/AdBlue · sans suies · régime fixe sans transitoires · freinage régénératif = PM de friction quasi nulles · zéro soufre</td></tr>
           <tr><td>Zones sensibles</td><td class="td-r">Émissions et bruit permanents</td><td class="td-r">Idem</td><td class="td-g" colspan="3">110–130 km ZEV (électricité réseau, ~50 g CO₂/kWh)</td></tr>
         </tbody>
       </table>
     </div>
-    <div class="note reveal"><strong>Lecture :</strong> par MJ de carburant, le GNL émet 28 % de CO₂ de moins que le gazole (Comparatif V5.2 : 125 vs 174 g/MJ utile à rendement égal). Mais sur route, le moteur Otto d'un camion GNL classique tourne en moyenne loin de son optimum (29–31 % de rendement global effectif, Comparatif Camions 44t) : au kilomètre, il n'émet pas moins qu'un diesel. Le gain vient de l'architecture ÉREV (Rex à régime fixe, récupération au freinage). Valeurs Rex seul et profil mixte en g/MJ : voir Comparatif Multi-Secteur V5.2 (ÉREV V2.2 : 104 g/MJ fossile · ~96 g/MJ profil mixte · ~−48 g/MJ en bio-CH₄ 100 % + biochar).</div>
+    <div class="note reveal"><strong>Lecture :</strong> par MJ de carburant, le GNL émet 25–28 % de CO₂ de moins que le gazole (Comparatif V5.2 : 125 vs 174 g/MJ utile à rendement voisin, valeur d'un moteur HPDI). Mais le moteur GNL classique à allumage commandé (Scania, Iveco) est environ 15–18 % moins efficace qu'un diesel : papillon des gaz (pertes par pompage à charge partielle), compression limitée par le cliquetis (11–13:1 contre 17–20:1), mélange stœchiométrique. Au kilomètre, il n'émet donc que 5 à 12 % de CO₂ de moins qu'un diesel (mesures TNO : −3 à −5 %), et l'ICCT trouve un bilan gaz à effet de serre puits-à-roue quasi égal au diesel en comptant les fuites de méthane. Le gain vient de l'architecture ÉREV : Rex toujours à son point optimal, récupération au freinage (+3,5 à ~7 % selon les descentes), Rex éteint aux arrêts et auxiliaires sur batterie, moins de carburant à embarquer (220–240 kg au lieu de 320 kg pour 1 000 km, réservoirs ~620 kg au lieu de ~870 kg). Le tableau retient la V2.0 (~23 kg/100 km) ; avec le Rex V2.2 (~20–21 kg/100 km), le CO₂ fossile descend à ~560 g/km, soit ~−34 % vs diesel et −25 à −31 % vs GNL classique, et le crédit biochar à ~−310 g/km. Valeurs Rex seul et profil mixte en g/MJ : voir Comparatif Multi-Secteur V5.2 (ÉREV V2.2 : 104 g/MJ fossile · ~96 g/MJ profil mixte · ~−48 g/MJ en bio-CH₄ 100 % + biochar).</div>
 
     <div class="encadre reveal">
       <p><strong>Le GNL fossile n'est pas l'objectif :</strong> c'est un carburant de lancement, qui permet de déployer la flotte et les stations pendant la montée en puissance du bio-CH₄. Camion, réservoirs et stations sont identiques : la part bio monte progressivement jusqu'à 100 %, sans nouvel investissement côté véhicule. Les coûts « GNL fossile » de la partie économique ne sont pas un scénario cible.</p>
@@ -480,7 +497,7 @@ footer p{font-size:.75rem;color:var(--gris);max-width:600px;margin:.3rem auto}
 <footer>
   <div class="footer-logo">Programme Résilience V11</div>
   <p>Camion Résilience 44t · ÉREV Rex unique Bio-LCH4 · Octobre 2026 · Diffusion libre</p>
-  <p style="margin-top:.4rem">Sources : Volvo FH LNG · Scania LNG · Cummins X15N · Iveco Cursor 13 NG · Euro 7 (UE) 2024/1257 · Directive RED III · ADEME · IRU 2024 · Comparatif Multi-Secteur V5.2 · Comparatif Camions 44t V11 · GIEC AR6 · EBC / Puro.earth</p>
+  <p style="margin-top:.4rem">Sources : Volvo FH LNG · Scania LNG · Cummins X15N · Iveco Cursor 13 NG · Euro 7 (UE) 2024/1257 · Directive RED III · ADEME · IRU 2024 · TNO (essais GNL pour le gouvernement néerlandais) · ICCT / Öko-Institut — LNG in trucks (2019) · Langshaw et al., Energy Policy 2020 · Comparatif Multi-Secteur V5.2 · Comparatif Camions 44t V11 · GIEC AR6 · EBC / Puro.earth</p>
 </footer>
 <script>
 const obs=new IntersectionObserver((e)=>{e.forEach((el,i)=>{if(el.isIntersecting){setTimeout(()=>el.target.classList.add('visible'),i*65);obs.unobserve(el.target)}})},{threshold:0.07});
