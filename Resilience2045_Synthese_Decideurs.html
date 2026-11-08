@@ -32,8 +32,10 @@ body {
   padding:2rem;
 }
 
+@page { size:A4; margin:16mm 15mm; }
 @media print {
   body { max-width:100%; padding:0; font-size:11pt; }
+  svg, img, table { max-width:100%; }
   .page-break { page-break-before:always; }
   .no-break { page-break-inside:avoid; }
   .print-hint { display:none; }
