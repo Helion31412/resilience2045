@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hydrogène ou biométhane ? Comparaison chiffrée pour la mobilité, l'aviation et le stockage — Résilience 2045</title>
+<meta name="description" content="Hydrogène ou méthane ? Densité volumique, énergie de liquéfaction et de compression, réservoirs d'avion, rendements par usage, bilan carbone neutre ou négatif : la comparaison chiffrée, usage par usage.">
+<link rel="canonical" href="https://resilience2045.fr/hydrogene-ou-biomethane.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hydrogène ou biométhane ? Comparaison chiffrée par usage">
+<meta property="og:description" content="Densité, liquéfaction, réservoirs, rendements, bilan carbone : hydrogène et biométhane comparés pour la mobilité, l'aviation et le stockage — Programme Résilience 2045.">
+<meta property="og:url" content="https://resilience2045.fr/hydrogene-ou-biomethane.html">
+<meta property="og:locale" content="fr_FR">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--noir:#0a0f0d;--foret:#0d1f17;--vert-med:#2d6a4f;--vert-vif:#52b788;--vert-clair:#95d5b2;--ambre:#e9c46a;--rouge:#e8432a;--bleu:#2980b9;--blanc:#f0f4f1;--gris:#8a9e93;--serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',sans-serif;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--noir);color:var(--blanc);font-family:var(--sans);font-weight:300;line-height:1.7;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:.9rem 2.5rem;background:rgba(10,15,13,.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(82,183,136,.12)}
+.nav-logo{font-family:var(--serif);font-size:1.15rem;font-weight:600;color:var(--vert-vif);text-decoration:none}
+.nav-back{color:var(--gris);text-decoration:none;font-size:.72rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;transition:color .3s}.nav-back:hover{color:var(--vert-vif)}
+.nav-tag{font-size:.65rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--ambre);background:rgba(233,196,106,.12);border:1px solid rgba(233,196,106,.25);padding:.2rem .7rem}
+#hero{min-height:52vh;display:flex;align-items:center;padding:8rem 3rem 4rem;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 30% 50%,rgba(29,90,54,.18) 0%,transparent 70%),linear-gradient(135deg,#0a0f0d 0%,#0d1f17 50%,#060e09 100%)}
+.hero-grid{position:absolute;inset:0;opacity:.04;background-image:linear-gradient(var(--vert-vif) 1px,transparent 1px),linear-gradient(90deg,var(--vert-vif) 1px,transparent 1px);background-size:55px 55px}
+.hero-content{position:relative;z-index:1;max-width:780px}
+.hero-tag{display:inline-block;border:1px solid rgba(233,196,106,.6);color:rgba(233,196,106,.8);font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;padding:.3rem .85rem;margin-bottom:1.4rem}
+h1{font-family:var(--serif);font-size:clamp(2rem,4.5vw,3.8rem);font-weight:300;line-height:1.1;margin-bottom:1rem}
+h1 em{font-style:italic;color:var(--vert-vif)}
+.hero-sub{font-size:.95rem;color:rgba(240,244,241,.6);max-width:640px;line-height:1.85;margin-top:1rem}
+.warning-bar{background:rgba(192,57,43,.08);border-bottom:1px solid rgba(192,57,43,.25);border-top:2px solid rgba(192,57,43,.4);padding:1rem 2rem}
+.warning-bar p{font-size:.83rem;color:rgba(240,244,241,.72);line-height:1.6}.warning-bar strong{color:#e57368}
+.metho-bar{background:rgba(41,128,185,.07);border:1px solid rgba(41,128,185,.2);border-left:4px solid var(--bleu);padding:1.2rem 2rem}
+.metho-bar p{font-size:.83rem;color:rgba(240,244,241,.65);line-height:1.7}.metho-bar strong{color:#74b9e8}
+.bq{display:inline-flex;align-items:center;gap:.3rem;font-size:.62rem;font-weight:600;letter-spacing:.08em;padding:.18rem .55rem;border-radius:2px;margin-left:.35rem;vertical-align:middle;white-space:nowrap}
+.b-ok{background:rgba(82,183,136,.18);color:var(--vert-vif);border:1px solid rgba(82,183,136,.35)}
+.b-tg{background:rgba(233,196,106,.15);color:var(--ambre);border:1px solid rgba(233,196,106,.3)}
+.b-est{background:rgba(41,128,185,.15);color:#74b9e8;border:1px solid rgba(41,128,185,.3)}
+.b-hyp{background:rgba(192,57,43,.12);color:#e57368;border:1px solid rgba(192,57,43,.25)}
+section{padding:4.5rem 3rem}.container{max-width:1100px;margin:0 auto}.alt{background:var(--foret)}
+.stag{font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--vert-vif);margin-bottom:.6rem}
+h2{font-family:var(--serif);font-size:clamp(1.6rem,2.8vw,2.4rem);font-weight:300;line-height:1.15;margin-bottom:.9rem}
+h2 em{font-style:italic;color:var(--vert-vif)}
+h3{font-family:var(--serif);font-size:1.2rem;font-weight:400;color:var(--vert-clair);margin:1.6rem 0 .5rem}
+.lead{font-size:.95rem;color:rgba(240,244,241,.68);max-width:680px;line-height:1.85;margin-bottom:1.2rem}
+p.body{font-size:.88rem;color:rgba(240,244,241,.65);line-height:1.85;margin-bottom:.8rem;max-width:820px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.2rem;margin:1.8rem 0}
+.card{padding:1.4rem;border:1px solid rgba(82,183,136,.12);background:rgba(10,15,13,.5);position:relative}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--vert-vif),var(--vert-clair))}
+.card h3{margin-top:0;margin-bottom:.6rem;font-size:.95rem;color:var(--vert-clair)}.card p{font-size:.82rem;color:rgba(240,244,241,.6);line-height:1.6}
+.card .num{font-family:var(--serif);font-size:2rem;color:var(--ambre);font-weight:300;line-height:1;margin-bottom:.35rem}
+.tbl-wrap{overflow-x:auto;margin:1.8rem 0}
+table{width:100%;border-collapse:collapse;font-size:.8rem}
+thead tr{background:rgba(26,58,40,.9)}
+thead th{padding:.8rem 1rem;text-align:left;color:var(--vert-clair);font-weight:500;letter-spacing:.07em;font-size:.72rem;text-transform:uppercase;border-bottom:2px solid var(--vert-vif)}
+tbody tr{border-bottom:1px solid rgba(82,183,136,.08)}
+tbody td{padding:.7rem 1rem;color:rgba(240,244,241,.72);vertical-align:top;line-height:1.5}
+tbody td:first-child{color:var(--blanc);font-weight:400}
+.td-g{color:var(--vert-vif)!important;font-weight:500}.td-r{color:#ff5c42!important}.td-a{color:var(--ambre)!important;font-weight:500}
+.tr-best td{background:rgba(29,58,40,.35)!important}
+.box{padding:1.2rem 1.6rem;margin:1.5rem 0;font-size:.86rem;line-height:1.7}
+.box-vert{background:rgba(29,58,40,.35);border:1px solid rgba(82,183,136,.22);border-left:4px solid var(--vert-vif);color:rgba(240,244,241,.8)}.box-vert strong{color:var(--vert-vif)}
+.box-ambre{background:rgba(233,196,106,.06);border:1px solid rgba(233,196,106,.22);border-left:4px solid var(--ambre);color:rgba(240,244,241,.75)}.box-ambre strong{color:var(--ambre)}
+.box-rouge{background:rgba(232,67,42,.09);border:1px solid rgba(232,67,42,.3);border-left:4px solid var(--rouge);font-size:.83rem;color:rgba(240,244,241,.85)}.box-rouge strong{color:#ff7a65}
+.conclusion-box{background:rgba(29,58,40,.4);border:1px solid var(--vert-vif);padding:2rem 2.5rem;margin:2rem 0}
+.conclusion-box h3{color:var(--vert-vif);font-size:1.4rem;margin-top:0;margin-bottom:.8rem}
+.conclusion-box-warn{background:rgba(233,196,106,.07);border:1px solid var(--ambre);padding:2rem 2.5rem;margin:2rem 0}
+.conclusion-box-warn h3{color:var(--ambre);font-size:1.3rem;margin-top:0;margin-bottom:.8rem}
+.btn{display:inline-block;padding:.7rem 1.5rem;font-family:var(--sans);font-size:.76rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:all .3s}
+.btn-outline{background:transparent;color:var(--blanc);border:1px solid rgba(240,244,241,.28)}.btn-outline:hover{border-color:var(--vert-vif);color:var(--vert-vif)}
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s ease}.reveal.visible{opacity:1;transform:none}
+footer{background:#050a07;padding:2.5rem 3rem;text-align:center;border-top:1px solid rgba(82,183,136,.08)}
+.footer-logo{font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--vert-vif);margin-bottom:.4rem}
+footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;line-height:1.7}
+@media(max-width:700px){nav{padding:.85rem 1.3rem}section{padding:3rem 1.3rem}h1{font-size:2rem}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">Programme Résilience V11</a>
+  <div style="display:flex;align-items:center;gap:1.2rem">
+    <span class="nav-tag">Comparaison · Hydrogène / biométhane</span>
+    <a href="index.html" class="nav-back">← Retour</a>
+  </div>
+</nav>
+
+<section id="hero">
+  <div class="hero-bg"></div><div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Programme Résilience V11 — Comparaison des vecteurs</div>
+    <h1>Hydrogène ou <em>biométhane</em> ?</h1>
+    <p class="hero-sub">Les deux gaz sont présentés comme des carburants d'avenir. Pour la mobilité lourde, l'aviation et le stockage d'énergie d'une saison à l'autre, les propriétés physiques les départagent nettement : densité par litre, énergie perdue pour les stocker, rendement des chaînes et bilan carbone. Cette page rassemble les chiffres du corpus Résilience, usage par usage.</p>
+  </div>
+</section>
+
+<div class="metho-bar"><div class="container">
+  <p><strong>Niveaux de certitude :</strong>
+  <span class="bq b-ok">✅ Physique / chimie établie</span> ·
+  <span class="bq b-est">🔬 Calcul théorique cohérent</span> ·
+  <span class="bq b-hyp">⚠ Hypothèse à valider industriellement</span></p>
+</div></div>
+
+<!-- L'ESSENTIEL -->
+<section class="alt">
+  <div class="container">
+    <div class="stag reveal">L'essentiel</div>
+    <h2 class="reveal">Quatre écarts —<br><em>qui tiennent à la physique</em></h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin:1.2rem 0" class="reveal">
+      <div class="card"><div class="num">×2,5</div><h3>Énergie par litre</h3><p>Méthane liquide 21,1 MJ/L contre 8,5 MJ/L pour l'hydrogène liquide. Les réservoirs d'hydrogène sont environ trois fois plus grands que ceux de méthane pour la même énergie. <span class="bq b-ok">✅</span></p></div>
+      <div class="card"><div class="num">15–20×</div><h3>Moins d'énergie pour liquéfier</h3><p>~1,8–2,2 % de l'énergie du méthane, contre 30 à 40 % pour l'hydrogène (minimum théorique ~12 %). <span class="bq b-ok">✅</span></p></div>
+      <div class="card"><div class="num">×12</div><h3>Énergie par camion</h3><p>Un camion cryogénique de GNL transporte ~525 000 MJ ; un camion de tubes d'hydrogène à 700 bar ~42 000 MJ. <span class="bq b-est">🔬</span></p></div>
+      <div class="card"><div class="num">&lt; 0</div><h3>Bilan carbone</h3><p>L'hydrogène vert peut être neutre. Le biométhane de pyrogazéification peut être négatif : biochar et CO₂ biogénique concentré stocké. <span class="bq b-est">🔬</span></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- DENSITÉ -->
+<section>
+  <div class="container">
+    <div class="stag reveal">Densité énergétique</div>
+    <h2 class="reveal">Le kilogramme flatte l'hydrogène —<br><em>le litre le pénalise</em></h2>
+    <p class="lead reveal">Avec 120 MJ/kg, l'hydrogène semble imbattable. Mais un réservoir se dimensionne en litres, pas en kilogrammes : l'hydrogène liquide pèse 71 g par litre, le méthane liquide 422 g. Ramené au volume, le méthane liquide contient environ 2,5 fois plus d'énergie.</p>
+    <h3 class="reveal">Énergie contenue dans un litre (MJ/L)</h3>
+    <div class="reveal" style="max-width:760px;margin:1rem 0 1.6rem">
+      <div style="display:grid;grid-template-columns:150px 1fr 70px;align-items:center;gap:.7rem;margin:.45rem 0;font-size:.82rem"><span style="color:var(--blanc)">Kérosène (référence)</span><div style="height:16px;background:rgba(240,244,241,.35);width:100%"></div><span style="color:rgba(240,244,241,.75);font-weight:600">34,6</span></div><div style="display:grid;grid-template-columns:150px 1fr 70px;align-items:center;gap:.7rem;margin:.45rem 0;font-size:.82rem"><span style="color:var(--blanc)">Méthane liquide (GNL)</span><div style="height:16px;background:var(--vert-vif);width:61%"></div><span style="color:var(--vert-vif);font-weight:600">21,1</span></div><div style="display:grid;grid-template-columns:150px 1fr 70px;align-items:center;gap:.7rem;margin:.45rem 0;font-size:.82rem"><span style="color:var(--blanc)">Méthane 250 bar (GNV)</span><div style="height:16px;background:var(--vert-vif);width:27%"></div><span style="color:var(--vert-vif);font-weight:600">9,4</span></div><div style="display:grid;grid-template-columns:150px 1fr 70px;align-items:center;gap:.7rem;margin:.45rem 0;font-size:.82rem"><span style="color:var(--blanc)">Hydrogène liquide</span><div style="height:16px;background:rgba(232,67,42,.6);width:25%"></div><span style="color:#e07070;font-weight:600">8,5</span></div><div style="display:grid;grid-template-columns:150px 1fr 70px;align-items:center;gap:.7rem;margin:.45rem 0;font-size:.82rem"><span style="color:var(--blanc)">Hydrogène 700 bar</span><div style="height:16px;background:rgba(232,67,42,.6);width:14%"></div><span style="color:#e07070;font-weight:600">4,8</span></div>
+      <p style="font-size:.72rem;color:var(--gris);margin-top:.5rem">Source : Comparatif Multi-Secteur V5.2 (Programme Résilience) · NIST.</p>
+    </div>
+    <div class="tbl-wrap reveal">
+      <table>
+        <thead><tr><th>Carburant</th><th>Énergie (MJ/kg)</th><th>Densité (kg/L)</th><th>Énergie (MJ/L)</th><th>Volume de réservoir vs kérosène</th><th>Stockage</th></tr></thead>
+        <tbody>
+          <tr><td>Kérosène Jet A-1</td><td>43,2</td><td>0,800</td><td>34,6</td><td>Référence</td><td>Liquide ambiant</td></tr>
+          <tr><td>Méthane liquide (GNL)</td><td>50,0</td><td>0,422</td><td class="td-g">21,1</td><td class="td-g">×1,6</td><td>−162 °C</td></tr>
+          <tr><td>Méthane comprimé (GNV)</td><td>50,0</td><td>0,187</td><td>9,4</td><td>×3,7</td><td>250 bar</td></tr>
+          <tr><td>Hydrogène liquide</td><td>120,0</td><td>0,071</td><td class="td-r">8,5</td><td class="td-r">×4,1</td><td>−253 °C</td></tr>
+          <tr><td>Hydrogène comprimé</td><td>120,0</td><td>0,040</td><td class="td-r">4,8</td><td class="td-r">×7,2</td><td>700 bar</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- CONDITIONNEMENT -->
+<section class="alt">
+  <div class="container">
+    <div class="stag reveal">Stocker et transporter</div>
+    <h2 class="reveal">L'énergie perdue avant même<br><em>d'utiliser le carburant</em></h2>
+    <p class="lead reveal">Les comparaisons oublient souvent ce que coûte le conditionnement. Pour l'hydrogène, c'est une part importante de son énergie ; pour le méthane, presque rien.</p>
+    <div class="tbl-wrap reveal">
+      <table>
+        <thead><tr><th>Étape</th><th>Méthane</th><th>Hydrogène</th><th>Qualification</th></tr></thead>
+        <tbody>
+          <tr><td>Liquéfaction</td><td class="td-g">0,25–0,30 kWh/kg · 1,8–2,2 % de son énergie · −162 °C (111 K)</td><td class="td-r">10–13 kWh/kg en industrie · 30–40 % de son énergie · −253 °C (20 K) ; minimum théorique ~3,9 kWh/kg (~12 %)</td><td><span class="bq b-ok">✅ Thermodynamique</span></td></tr>
+          <tr><td>Compression</td><td class="td-g">250 bar : 0,12–0,25 kWh/kg · ~1 %</td><td class="td-r">700 bar : 5–7 kWh/kg · ~15 %</td><td><span class="bq b-ok">✅</span></td></tr>
+          <tr><td>Transport routier</td><td class="td-g">Camion cryogénique : ~10 500 kg de GNL ≈ 525 000 MJ</td><td class="td-r">Camion de tubes 700 bar : ~350 kg ≈ 42 000 MJ</td><td><span class="bq b-est">🔬 ×12 par rotation</span></td></tr>
+          <tr><td>Infrastructure</td><td class="td-g">Réseau gaz existant · plus de 500 méthaniers · terminaux dans plus de 50 pays · stations GNV</td><td class="td-r">Production limitée à quelques centaines de tonnes par jour dans le monde · réseau à créer</td><td><span class="bq b-ok">✅</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="box box-ambre reveal"><strong>Une limite thermodynamique, pas technologique :</strong> les procédés peuvent réduire l'énergie de liquéfaction de l'hydrogène, jamais la ramener sous ~12 % de son énergie. Même dans ce cas idéal, l'hydrogène liquide demande environ dix fois plus d'énergie de liquéfaction que le méthane.</div>
+  </div>
+</section>
+
+<!-- AVIATION -->
+<section>
+  <div class="container">
+    <div class="stag reveal">Aviation · vol Paris–New York</div>
+    <h2 class="reveal">Là où l'écart devient<br><em>décisif</em></h2>
+    <p class="lead reveal">Un long-courrier ne peut pas agrandir ses réservoirs sans limite. C'est là que la densité par litre fait la différence entre une aile redessinée et un fuselage entièrement refait.</p>
+    <div class="tbl-wrap reveal">
+      <table>
+        <thead><tr><th>Paris–New York</th><th>Kérosène</th><th>Méthane liquide</th><th>Hydrogène liquide</th></tr></thead>
+        <tbody>
+          <tr><td>Masse de carburant</td><td>~68 t</td><td class="td-g">~49 t</td><td>~24 t (même énergie que le kérosène)</td></tr>
+          <tr><td>Volume des réservoirs</td><td>~85 m³</td><td class="td-g">~115–120 m³ (+36 %)</td><td class="td-r">~350 m³ (~4×)</td></tr>
+          <tr><td>Où loger les réservoirs</td><td>Ailes</td><td class="td-g">Aile composite redessinée + mini-soute</td><td class="td-r">Fuselage, cabine réduite</td></tr>
+          <tr><td>Énergie de liquéfaction par vol</td><td>—</td><td class="td-g">~12–15 MWh</td><td class="td-r">~240–310 MWh (~150 MWh avec les meilleurs procédés)</td></tr>
+          <tr><td>Évaporation (Boeing)</td><td>—</td><td class="td-g">~1,6 %</td><td class="td-r">~12,3 %</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3 class="reveal">Part de l'énergie de départ conservée dans le carburant final (Boeing)</h3>
+    <div class="reveal" style="max-width:760px;margin:1rem 0 1.6rem">
+      <div style="display:grid;grid-template-columns:150px 1fr 70px;align-items:center;gap:.7rem;margin:.45rem 0;font-size:.82rem"><span style="color:var(--blanc)">Biométhane</span><div style="height:16px;background:var(--vert-vif);width:100%"></div><span style="color:var(--vert-vif);font-weight:600">54 %</span></div><div style="display:grid;grid-template-columns:150px 1fr 70px;align-items:center;gap:.7rem;margin:.45rem 0;font-size:.82rem"><span style="color:var(--blanc)">Hydrogène</span><div style="height:16px;background:rgba(240,244,241,.35);width:70%"></div><span style="color:rgba(240,244,241,.75);font-weight:600">38 %</span></div><div style="display:grid;grid-template-columns:150px 1fr 70px;align-items:center;gap:.7rem;margin:.45rem 0;font-size:.82rem"><span style="color:var(--blanc)">Bio-SAF</span><div style="height:16px;background:rgba(232,67,42,.6);width:56%"></div><span style="color:#e07070;font-weight:600">30 %</span></div><div style="display:grid;grid-template-columns:150px 1fr 70px;align-items:center;gap:.7rem;margin:.45rem 0;font-size:.82rem"><span style="color:var(--blanc)">e-SAF</span><div style="height:16px;background:rgba(232,67,42,.6);width:41%"></div><span style="color:#e07070;font-weight:600">22 %</span></div>
+      <p style="font-size:.72rem;color:var(--gris);margin-top:.5rem">Source : Boeing Cascade, « Is methane a viable fuel for aviation's future? », 14 juillet 2026. Pour l'hydrogène, liquéfaction, stockage et transport inclus. Boeing note aussi qu'à partir de la même électricité, l'e-méthane devance l'hydrogène une fois la logistique comptée.</p>
+    </div>
+    <div class="box box-vert reveal"><strong>La preuve par l'expérience — Tupolev Tu-155 :</strong> le seul avion cryogénique jamais construit a volé d'abord à l'hydrogène liquide (5 vols en 1988), puis au gaz naturel liquéfié à partir de janvier 1989, pour l'essentiel de ses ~100 vols. L'équipe qui a essayé les deux sur le même appareil a retenu le méthane. Le programme s'est arrêté pour des raisons financières, avec la fin de l'URSS, pas techniques.</div>
+    <div style="margin-top:1.2rem;display:flex;gap:.8rem;flex-wrap:wrap" class="reveal">
+      <a href="aviation-bio-gnl.html" class="btn btn-outline">Aviation bio-GNL — la gamme complète →</a>
+      <a href="Note_Aviation_BioGNL_V11.1.pdf" class="btn btn-outline" download>Note aviation V11.1 (PDF) ↓</a>
+      <a href="Tu155_et_Annexe_Securite_V4.pdf" class="btn btn-outline" download>Tu-155 &amp; sécurité GNL (PDF) ↓</a>
+    </div>
+  </div>
+</section>
+
+<!-- RENDEMENTS -->
+<section class="alt">
+  <div class="container">
+    <div class="stag reveal">Rendements et émissions par usage</div>
+    <h2 class="reveal">Camion longue distance :<br><em>neutre ou négatif</em></h2>
+    <p class="lead reveal">La pile à combustible a un bon rendement, et l'hydrogène n'émet pas de CO₂ à l'usage : ce sont ses vrais atouts. Mais ce rendement ne compte pas l'énergie perdue en amont pour comprimer ou liquéfier l'hydrogène, ni sa logistique. Le camion ÉREV au biométhane approche le même rendement et peut retirer du carbone.</p>
+    <div class="tbl-wrap reveal">
+      <table>
+        <thead><tr><th>Camion &gt; 26 t, longue distance</th><th>Rendement</th><th>CO₂ fossile ajouté (g/MJ utile)</th><th>Bilan net avec biochar (g/MJ)</th><th>NOx (mg/MJ)</th></tr></thead>
+        <tbody>
+          <tr><td>Diesel Euro VI (référence)</td><td>42 %</td><td>174</td><td>174</td><td>190 ± 40</td></tr>
+          <tr><td>Hydrogène, pile à combustible</td><td>55 %</td><td class="td-g">0</td><td>0</td><td>9 ± 5</td></tr>
+          <tr><td>Camion ÉREV, Rex au méthane fossile (V2.2)</td><td>53 %</td><td>104</td><td>104</td><td>25 ± 10</td></tr>
+          <tr><td>Camion ÉREV, Rex au biométhane 100 % + biochar (V2.2)</td><td>53 %</td><td class="td-g">0</td><td class="td-g"><strong>−62</strong></td><td>25 ± 10</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="body reveal" style="font-size:.8rem;color:var(--gris)">Valeurs représentatives pour comparer les carburants, pas des valeurs homologuées ; NOx en ordres de grandeur (±20–30 %). Le rendement V2.2 est un objectif de développement. Le crédit biochar suppose un biométhane issu de pyrogazéification au-delà de 700 °C. Source : Comparatif Multi-Secteur V5.2. <span class="bq b-est">🔬</span></p>
+    <div class="box box-vert reveal"><strong>Un même véhicule, du fossile au négatif :</strong> le camion ÉREV roule d'abord au méthane fossile, puis à une part croissante de biométhane, sans changer de moteur ni de station. Le camion à hydrogène, lui, attend un réseau de production et de distribution qui reste à construire.</div>
+  </div>
+</section>
+
+<!-- CARBONE -->
+<section>
+  <div class="container">
+    <div class="stag reveal">Bilan carbone</div>
+    <h2 class="reveal">Zéro ne suffit plus —<br><em>il faut retirer du carbone</em></h2>
+    <p class="lead reveal">Le Programme des Nations unies pour l'environnement estime que revenir sous 1,5 °C d'ici 2100 exigera de retirer et de stocker durablement environ 320 milliards de tonnes de CO₂ (Emissions Gap Report, 21 octobre 2026). Un carburant neutre arrête d'aggraver le problème ; il ne le fait pas reculer.</p>
+    <div class="grid2 reveal">
+      <div class="card"><h3>Hydrogène vert</h3><p>Produit par électrolyse, il n'émet pas de CO₂ à l'usage. Au mieux, son bilan est <strong>neutre</strong> : la chaîne ne retire aucun carbone de l'atmosphère.</p></div>
+      <div class="card"><h3>Biométhane de pyrogazéification</h3><p>Il valorise des résidus et des déchets, et produit en même temps du <strong>biochar</strong> (2,5 à 3,1 t de CO₂eq séquestrées par tonne) et du <strong>CO₂ biogénique concentré</strong>, stockable en géologie. Le bilan peut être <strong>négatif</strong> : de l'ordre de −60 à −68 g de CO₂ par MJ utile avec le seul biochar, selon l'usage. <span class="bq b-est">🔬</span></p></div>
+    </div>
+    <div class="box box-ambre reveal"><strong>Condition non négociable :</strong> fuites de méthane limitées à 1 % au plus sur toute la chaîne, mesurées et vérifiées. Au-delà de ~3 à 4 %, le bénéfice climatique du méthane fossile est effacé. C'est un verrou de qualité, pas une limite de la molécule.</div>
+  </div>
+</section>
+
+<!-- MATÉRIAUX ET SÉCURITÉ -->
+<section class="alt">
+  <div class="container">
+    <div class="stag reveal">Matériaux et sécurité</div>
+    <h2 class="reveal">La plus petite molécule<br><em>traverse les matériaux</em></h2>
+    <div class="tbl-wrap reveal">
+      <table>
+        <thead><tr><th>Critère</th><th>Méthane</th><th>Hydrogène</th></tr></thead>
+        <tbody>
+          <tr><td>Diffusion à travers les parois</td><td class="td-g">Molécule plus grosse (~3,8 Å) et 8 fois plus lourde : étanche dans les structures standards</td><td class="td-r">Plus petite molécule (~2,9 Å) : diffuse à travers composites, aciers et polymères</td></tr>
+          <tr><td>Fragilisation des métaux</td><td class="td-g">Aucune connue sur aciers et composites aviation</td><td class="td-r">Fragilisation des aciers à haute résistance, des soudures et de certains alliages</td></tr>
+          <tr><td>Température de stockage liquide</td><td class="td-g">−162 °C : technologie maritime maîtrisée</td><td class="td-r">−253 °C : 20 degrés au-dessus du zéro absolu</td></tr>
+          <tr><td>En cas de fuite</td><td colspan="2">Une fois leurs vapeurs froides réchauffées, les deux gaz sont plus légers que l'air et se dispersent vers le haut, contrairement au kérosène qui s'étale au sol. Le méthane liquide s'enflamme spontanément vers 540 °C, contre ~210 °C pour le kérosène.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- PLACE DE L'H2 -->
+<section>
+  <div class="container">
+    <div class="stag reveal">Ce que cette comparaison ne dit pas</div>
+    <h2 class="reveal">L'hydrogène garde<br><em>sa place</em></h2>
+    <p class="lead reveal">Cette comparaison ne condamne pas l'hydrogène. Elle montre que chaque vecteur a son domaine d'optimum.</p>
+    <div class="grid2 reveal">
+      <div class="conclusion-box"><h3>Où l'hydrogène est irremplaçable</h3><p style="font-size:.9rem;color:rgba(240,244,241,.75);line-height:1.85">La chimie et l'industrie, où sa propriété réductrice n'a pas d'équivalent, et certains usages spécifiques en pile à combustible. Dans Résilience, l'hydrogène produit avec les surplus d'électricité solaire et éolienne sert justement d'intermédiaire : par la réaction de Sabatier, il transforme du CO₂ biogénique en méthane, plus facile à stocker et à transporter.</p></div>
+      <div class="conclusion-box"><h3>Où le méthane l'emporte</h3><p style="font-size:.9rem;color:rgba(240,244,241,.75);line-height:1.85">La mobilité lourde, l'aviation, le maritime et le stockage d'énergie d'une saison à l'autre : là où comptent l'énergie par litre, le coût du conditionnement, les infrastructures existantes et, désormais, le retrait du carbone.</p></div>
+    </div>
+    <div style="margin-top:2rem" class="reveal">
+      <div style="font-size:.68rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gris);margin-bottom:.9rem">Pour aller plus loin</div>
+      <div style="display:flex;gap:.8rem;flex-wrap:wrap">
+        <a href="Comparatif_Multi_Secteur_V5_2.pdf" class="btn btn-outline" download>Comparatif multi-secteur des carburants V5.2 ↓</a>
+        <a href="aviation-bio-gnl.html" class="btn btn-outline">Aviation bio-GNL →</a>
+        <a href="bio-ch4.html" class="btn btn-outline">Le biométhane →</a>
+        <a href="biochar.html" class="btn btn-outline">Le biochar →</a>
+        <a href="camion-resilience.html" class="btn btn-outline">Camion ÉREV →</a>
+        <a href="carbone-mondial.html" class="btn btn-outline">Retrait du carbone à l'échelle mondiale →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding:2.5rem 3rem;background:rgba(5,10,7,.8)">
+  <div class="container">
+    <p style="font-size:.75rem;color:var(--gris);line-height:1.85">
+      <strong style="color:rgba(240,244,241,.5)">Sources :</strong>
+      NIST — propriétés du méthane et de l'hydrogène ·
+      IEA — liquéfaction de l'hydrogène ·
+      Boeing Cascade — « Is methane a viable fuel for aviation's future? » et « How do fugitive emissions affect the climate case for alternative fuels? » (juillet 2026) ·
+      Tupolev Tu-155 — vols H₂ (1988) puis GNL (1989–1991) ·
+      PNUE — Emissions Gap Report 2026 (21 octobre 2026) ·
+      IPCC AR6 (GWP100) · JEC Well-to-Wheel v5 · EBC / Puro.earth (biochar) ·
+      Programme Résilience V11 — Comparatif Multi-Secteur V5.2 · Note Aviation Bio-GNL V11.1 · Segment ④ Long-courrier V8.2
+    </p>
+  </div>
+</section>
+<footer>
+  <div class="footer-logo">Programme Résilience V11</div>
+  <p>Comparaison hydrogène / biométhane · Programme Résilience 2045 · Novembre 2026</p>
+  <p style="font-size:.7rem;color:#3a5044;margin-top:.4rem">Calculs théoriques bornés · Validation industrielle à construire · Diffusion libre</p>
+</footer>
+<script>
+const obs=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*60);obs.unobserve(e.target);}});},{threshold:0.06});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
