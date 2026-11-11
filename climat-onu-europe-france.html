@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Climat : ce que demande l'ONU, ce que prévoient l'Europe et la France — et comment y répondre | Résilience 2045</title>
+  <meta name="description" content="Rapport du PNUE et COP31, objectif européen 2040 et achat de retraits de carbone dans le marché carbone, SNBC 3 et puits forestier en baisse : les décisions climatiques en cours, leurs écarts, et ce que la filière biométhane peut y apporter.">
+  <link rel="canonical" href="https://resilience2045.fr/climat-onu-europe-france.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Climat : ce que demande l'ONU, ce que prévoient l'Europe et la France">
+  <meta property="og:description" content="Les décisions climatiques en cours, du PNUE à la SNBC 3, et la place du retrait durable du carbone — Programme Résilience 2045.">
+  <meta property="og:url" content="https://resilience2045.fr/climat-onu-europe-france.html">
+  <meta property="og:locale" content="fr_FR">
+  <!-- Google Fonts — aligné sur le reste du site Résilience -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Serif+4:ital,wght@0,300;0,600;1,300&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Tokens ───────────────────────────────────────────────────── */
+    :root {
+      --vert:       #2D6A4F;
+      --vert-m:     #40916C;
+      --vert-l:     #74C69D;
+      --vert-xl:    #D8F3DC;
+      --vert-xxl:   #F0FBF3;
+      --orange:     #E76F51;
+      --orange-l:   #FFF0EB;
+      --gris-900:   #1A202C;
+      --gris-700:   #4A5568;
+      --gris-500:   #718096;
+      --gris-200:   #EDF2F7;
+      --gris-100:   #F7FAFC;
+      --blanc:      #FFFFFF;
+      --radius:     8px;
+      --radius-l:   14px;
+      --ombre:      0 2px 8px rgba(0,0,0,.07), 0 1px 2px rgba(0,0,0,.05);
+      --ombre-hover:0 6px 20px rgba(45,106,79,.15), 0 2px 6px rgba(0,0,0,.08);
+      --transition: .22s ease;
+    }
+
+    /* ── Reset & base ─────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--gris-700);
+      background: var(--blanc);
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    /* ── Navigation stub (cohérence avec le site) ─────────────────── */
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,.97);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--gris-200);
+    }
+    .nav-inner {
+      max-width: 1120px; margin: 0 auto;
+      padding: 0 2rem;
+      display: flex; align-items: center; gap: 2rem;
+      height: 56px;
+    }
+    .nav-logo {
+      font-weight: 700; font-size: .9rem; letter-spacing: .04em;
+      color: var(--vert); text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .nav-logo span { color: var(--gris-500); font-weight: 400; }
+    .nav-links {
+      display: flex; gap: 1.4rem; list-style: none;
+      font-size: .875rem; color: var(--gris-700);
+      margin-left: auto;
+    }
+    .nav-links a:hover { color: var(--vert); }
+    .nav-links a.active { color: var(--vert); font-weight: 600; }
+
+    /* ── Hero ─────────────────────────────────────────────────────── */
+    .hero {
+      background: linear-gradient(135deg, var(--vert) 0%, #1B4332 100%);
+      padding: 5rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    .hero-inner {
+      max-width: 860px; margin: 0 auto;
+      position: relative; z-index: 1;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: .6rem;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 100px;
+      padding: .35rem 1rem;
+      font-size: .8rem; font-weight: 500; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--vert-l);
+      margin-bottom: 1.5rem;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--vert-l);
+      flex-shrink: 0;
+    }
+    .hero h1 {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-weight: 600; font-size: clamp(1.8rem, 4vw, 2.8rem);
+      line-height: 1.2; color: var(--blanc);
+      margin-bottom: 1.2rem;
+    }
+    .hero-sub {
+      font-size: 1.05rem; line-height: 1.7;
+      color: rgba(255,255,255,.78);
+      max-width: 680px;
+      margin-bottom: 2rem;
+    }
+    .hero-meta {
+      display: flex; flex-wrap: wrap; gap: .8rem;
+      font-size: .82rem; color: rgba(255,255,255,.55);
+    }
+    .hero-meta span {
+      display: flex; align-items: center; gap: .4rem;
+    }
+    .hero-meta svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+    /* ── Intro bloc ───────────────────────────────────────────────── */
+    .intro {
+      max-width: 860px; margin: 3.5rem auto 0;
+      padding: 0 2rem;
+    }
+    .intro p {
+      font-size: 1rem; line-height: 1.75;
+      color: var(--gris-700);
+    }
+    .intro strong { color: var(--gris-900); }
+
+    /* ── Contexte encadré ─────────────────────────────────────────── */
+    .contexte {
+      max-width: 860px; margin: 2.5rem auto;
+      padding: 0 2rem;
+    }
+    .contexte-box {
+      background: var(--orange-l);
+      border-left: 4px solid var(--orange);
+      border-radius: var(--radius);
+      padding: 1.4rem 1.6rem;
+    }
+    .contexte-box p {
+      font-size: .95rem; line-height: 1.7;
+      color: var(--gris-900);
+    }
+    .contexte-box strong { color: var(--orange); }
+
+    /* ── Section principale — 3 notes ─────────────────────────────── */
+    .notes-section {
+      max-width: 860px; margin: 0 auto;
+      padding: 0 2rem 5rem;
+    }
+    .section-titre {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-weight: 600; font-size: 1.5rem;
+      color: var(--vert); margin-bottom: 2rem;
+      padding-bottom: .8rem;
+      border-bottom: 2px solid var(--vert-xl);
+    }
+
+    .groupe-titre { font-family:'Source Serif 4', Georgia, serif; font-weight:600; font-size:1.25rem; color:var(--vert); margin:2.8rem 0 .4rem; padding-bottom:.6rem; border-bottom:2px solid var(--vert-xl); scroll-margin-top:80px; }
+    .groupe-intro { font-size:.92rem; line-height:1.65; color:#444; margin:0 0 1.2rem; }
+    .mini-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:.9rem; margin-bottom:1.5rem; }
+    .mini-card { display:block; background:#fff; border:1px solid #DDE7E0; border-left:4px solid var(--vert-m); border-radius:8px; padding:.9rem 1rem; text-decoration:none; color:inherit; }
+    .mini-card:hover { border-color:var(--vert-m); }
+    .mini-card .mini-tag { font-size:.7rem; letter-spacing:.06em; text-transform:uppercase; color:var(--vert-m); font-weight:700; }
+    .mini-card .mini-titre { font-weight:700; margin:.25rem 0 .35rem; font-size:.95rem; line-height:1.35; }
+    .mini-card .mini-txt { font-size:.83rem; line-height:1.5; color:#555; }
+    .mini-card .mini-pdf { display:inline-block; margin-top:.5rem; font-size:.75rem; font-weight:700; color:var(--vert); }
+    .chaine { max-width:860px; margin:2.5rem auto 0; padding:0 2rem; }
+    .chaine-grid { display:flex; flex-wrap:wrap; gap:.5rem; align-items:stretch; }
+    .chaine-etape { flex:1 1 0; min-width:0; display:block; text-decoration:none; color:inherit; background:#fff; border:1px solid #DDE7E0; border-top:4px solid var(--c); border-radius:8px; padding:.75rem .8rem; }
+    .chaine-etape:hover { border-color:var(--c); }
+    .chaine-num { font-size:.72rem; font-weight:700; letter-spacing:.06em; color:var(--c); text-transform:uppercase; }
+    .chaine-titre { font-weight:700; font-size:.9rem; line-height:1.3; margin:.2rem 0; }
+    .chaine-txt { font-size:.78rem; line-height:1.45; color:#555; }
+    .chaine-fleche { flex:0 0 auto; align-self:center; color:#9AB; font-size:1.2rem; }
+    @media (max-width:700px){ .chaine-fleche{ display:none; } .chaine-etape{ flex:1 1 100%; } .chaine{ padding:0 1.2rem; } }
+    .retenir { background:#F5F8F6; border-left:4px solid var(--c, var(--vert)); border-radius:6px; padding:.8rem 1rem; font-size:.9rem; line-height:1.6; margin:0 0 1.1rem; }
+    .retenir strong { color:#1B4332; }
+    /* ── Card note ────────────────────────────────────────────────── */
+    .note-card {
+      background: var(--blanc);
+      border: 1px solid var(--gris-200);
+      border-radius: var(--radius-l);
+      box-shadow: var(--ombre);
+      margin-bottom: 2.2rem;
+      overflow: hidden;
+      transition: box-shadow var(--transition), transform var(--transition);
+    }
+    .note-card:hover {
+      box-shadow: var(--ombre-hover);
+      transform: translateY(-2px);
+    }
+
+    /* Barre colorée en tête de carte */
+    .note-card-header {
+      display: grid;
+      grid-template-columns: 5px 1fr;
+    }
+    .note-card-stripe {
+      background: var(--vert);
+      border-radius: var(--radius-l) 0 0 0;
+    }
+    .note-card-top {
+      padding: 1.6rem 1.8rem 1.4rem;
+      display: flex; align-items: flex-start; gap: 1.2rem;
+    }
+    .note-num {
+      flex-shrink: 0;
+      width: 44px; height: 44px;
+      background: var(--vert-xxl);
+      border: 2px solid var(--vert-xl);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Source Serif 4', serif;
+      font-weight: 600; font-size: 1.15rem;
+      color: var(--vert);
+    }
+    .note-head { flex: 1; }
+    .note-tag {
+      display: inline-block;
+      font-size: .72rem; font-weight: 600; letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--vert-m);
+      background: var(--vert-xxl);
+      border: 1px solid var(--vert-xl);
+      border-radius: 100px;
+      padding: .2rem .7rem;
+      margin-bottom: .6rem;
+    }
+    .note-titre {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-weight: 600; font-size: 1.2rem; line-height: 1.3;
+      color: var(--gris-900);
+      margin-bottom: .3rem;
+    }
+    .note-version {
+      font-size: .8rem; color: var(--gris-500);
+    }
+
+    .note-card-body { padding: 0 1.8rem 1.6rem 1.8rem; }
+
+    /* Résumé */
+    .note-resume {
+      font-size: .95rem; line-height: 1.7;
+      color: var(--gris-700);
+      margin-bottom: 1.2rem;
+    }
+
+    /* Points clés */
+    .note-points {
+      list-style: none;
+      display: flex; flex-direction: column; gap: .55rem;
+      margin-bottom: 1.4rem;
+    }
+    .note-points li {
+      display: flex; align-items: flex-start; gap: .7rem;
+      font-size: .9rem; line-height: 1.55;
+      color: var(--gris-700);
+    }
+    .note-points li::before {
+      content: '';
+      flex-shrink: 0;
+      margin-top: .45em;
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--vert-m);
+    }
+
+    /* Chiffres clés inline */
+    .note-chiffres {
+      display: flex; flex-wrap: wrap; gap: .8rem;
+      margin-bottom: 1.4rem;
+    }
+    .chiffre-pill {
+      background: var(--vert-xxl);
+      border: 1px solid var(--vert-xl);
+      border-radius: var(--radius);
+      padding: .5rem .9rem;
+      font-size: .82rem;
+    }
+    .chiffre-pill strong {
+      display: block;
+      font-size: 1.1rem; font-weight: 700;
+      color: var(--vert); line-height: 1.2;
+    }
+    .chiffre-pill span {
+      color: var(--gris-500);
+    }
+
+    /* Sections couvertes */
+    .note-sections {
+      background: var(--gris-100);
+      border-radius: var(--radius);
+      padding: .9rem 1rem;
+      margin-bottom: 1.4rem;
+    }
+    .note-sections-label {
+      font-size: .75rem; font-weight: 600; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--gris-500);
+      margin-bottom: .5rem;
+    }
+    .note-sections-list {
+      display: flex; flex-wrap: wrap; gap: .4rem;
+    }
+    .section-chip {
+      font-size: .78rem; color: var(--gris-700);
+      background: var(--blanc);
+      border: 1px solid var(--gris-200);
+      border-radius: 100px;
+      padding: .2rem .7rem;
+    }
+
+    /* Footer de carte */
+    .note-card-footer {
+      border-top: 1px solid var(--gris-200);
+      padding: 1rem 1.8rem;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: .8rem;
+    }
+    .note-infos {
+      display: flex; gap: 1.4rem;
+      font-size: .8rem; color: var(--gris-500);
+      flex-wrap: wrap;
+    }
+    .note-infos span {
+      display: flex; align-items: center; gap: .35rem;
+    }
+    .note-infos svg { width: 13px; height: 13px; }
+
+    .btn-telecharger {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: var(--vert);
+      color: var(--blanc);
+      font-size: .875rem; font-weight: 600;
+      padding: .6rem 1.2rem;
+      border-radius: var(--radius);
+      transition: background var(--transition), transform var(--transition);
+    }
+    .btn-telecharger:hover {
+      background: #235c3f;
+      transform: translateY(-1px);
+    }
+    .btn-telecharger svg { width: 15px; height: 15px; flex-shrink: 0; }
+
+    /* ── Encadré "comment utiliser" ───────────────────────────────── */
+    .usage {
+      max-width: 860px; margin: 0 auto 4rem;
+      padding: 0 2rem;
+    }
+    .usage-box {
+      background: var(--vert-xxl);
+      border: 1px solid var(--vert-xl);
+      border-radius: var(--radius-l);
+      padding: 1.8rem 2rem;
+    }
+    .usage-box h3 {
+      font-size: 1rem; font-weight: 700;
+      color: var(--vert); margin-bottom: 1rem;
+    }
+    .usage-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+    .usage-item {
+      background: var(--blanc);
+      border: 1px solid var(--vert-xl);
+      border-radius: var(--radius);
+      padding: 1rem;
+    }
+    .usage-item-icon {
+      font-size: 1.4rem; margin-bottom: .5rem;
+    }
+    .usage-item h4 {
+      font-size: .88rem; font-weight: 700;
+      color: var(--gris-900); margin-bottom: .3rem;
+    }
+    .usage-item p {
+      font-size: .82rem; line-height: 1.55;
+      color: var(--gris-700);
+    }
+
+    /* ── Sources ──────────────────────────────────────────────────── */
+    .sources {
+      background: var(--gris-100);
+      border-top: 1px solid var(--gris-200);
+      padding: 2rem;
+    }
+    .sources-inner {
+      max-width: 860px; margin: 0 auto;
+    }
+    .sources-inner h3 {
+      font-size: .85rem; font-weight: 700;
+      letter-spacing: .05em; text-transform: uppercase;
+      color: var(--gris-500); margin-bottom: .8rem;
+    }
+    .sources-list {
+      display: flex; flex-wrap: wrap; gap: .5rem;
+      list-style: none;
+    }
+    .sources-list li {
+      font-size: .8rem; color: var(--gris-700);
+      background: var(--blanc);
+      border: 1px solid var(--gris-200);
+      border-radius: 100px;
+      padding: .25rem .8rem;
+    }
+
+    /* ── Footer ───────────────────────────────────────────────────── */
+    footer {
+      background: var(--vert);
+      color: rgba(255,255,255,.7);
+      text-align: center;
+      padding: 1.8rem;
+      font-size: .82rem;
+    }
+    footer a { color: rgba(255,255,255,.9); text-decoration: underline; }
+    footer strong { color: var(--blanc); }
+
+    /* ── Responsive ───────────────────────────────────────────────── */
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .hero { padding: 3.5rem 1.2rem 3rem; }
+      .intro, .contexte, .notes-section, .usage { padding: 0 1.2rem; }
+      .intro { margin-top: 2.5rem; }
+      .note-chiffres { flex-direction: column; }
+      .note-card-footer { flex-direction: column; align-items: flex-start; }
+    }
+  
+    /* ── Tableaux (page cadre politique) ─────────────────────────── */
+    .tbl-wrap { overflow-x:auto; margin:0 0 1.4rem; border:1px solid #DDE7E0; border-radius:8px; }
+    table.t { width:100%; border-collapse:collapse; font-size:.86rem; line-height:1.5; }
+    table.t th { background:#F0F6F2; color:#1B4332; text-align:left; font-weight:700; padding:.65rem .8rem; border-bottom:2px solid #D8F3DC; font-size:.78rem; letter-spacing:.03em; }
+    table.t td { padding:.65rem .8rem; border-bottom:1px solid #EDF2F7; vertical-align:top; color:#2D3748; }
+    table.t tr:last-child td { border-bottom:none; }
+    table.t td.cle { font-weight:700; color:#1A202C; white-space:nowrap; }
+    table.t td.res { background:#F0FBF3; color:#1B4332; }
+    .src { font-size:.75rem; color:#718096; margin:-.8rem 0 1.4rem; }
+    .src a { color:#2D6A4F; text-decoration:underline; }
+    .ecart { background:#FFF0EB; border-left:4px solid #E76F51; border-radius:6px; padding:1rem 1.2rem; margin:0 0 1.2rem; font-size:.92rem; line-height:1.65; }
+    .ecart strong { color:#9C3D24; }
+    .ecart ol { margin:.5rem 0 0 1.2rem; }
+    .ecart li { margin:.3rem 0; }
+  </style>
+  <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "TechArticle",
+   "headline": "Climat : ce que demande l'ONU, ce que prévoient l'Europe et la France — et comment y répondre",
+   "description": "Rapport du PNUE et COP31, objectif européen 2040 et achat de retraits de carbone, SNBC 3 et puits forestier en baisse : les décisions climatiques en cours, leurs écarts, et ce que la filière biométhane peut y apporter.",
+   "url": "https://resilience2045.fr/climat-onu-europe-france.html",
+   "mainEntityOfPage": "https://resilience2045.fr/climat-onu-europe-france.html",
+   "inLanguage": "fr-FR",
+   "datePublished": "2026-11-11",
+   "dateModified": "2026-11-11",
+   "author": {
+    "@type": "Organization",
+    "name": "Programme Résilience 2045",
+    "url": "https://resilience2045.fr/"
+   },
+   "publisher": {
+    "@type": "Organization",
+    "name": "Programme Résilience 2045",
+    "url": "https://resilience2045.fr/"
+   },
+   "about": [
+    "Emissions Gap Report 2026",
+    "COP31",
+    "objectif climatique européen 2040",
+    "SNBC 3",
+    "retrait de carbone",
+    "biochar",
+    "CO₂ biogénique",
+    "biométhane",
+    "pyrogazéification"
+   ],
+   "isAccessibleForFree": true
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Combien de CO₂ faut-il retirer de l'atmosphère selon l'ONU ?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Selon le rapport du PNUE d'octobre 2026, le dépassement de 1,5 °C est désormais inévitable. Pour revenir sous ce seuil d'ici 2100, il faut retirer et stocker durablement environ 320 milliards de tonnes de CO₂, soit environ huit années d'émissions mondiales de 2024, tout en réduisant les émissions de 45 % d'ici 2035."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Que prévoit l'Union européenne pour 2040 ?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "L'Union européenne a adopté en 2026 un objectif de −90 % d'émissions nettes en 2040, dont jusqu'à 5 points de crédits internationaux à partir de 2036. La Commission a proposé en juillet 2026 de mettre aux enchères 250 millions de quotas supplémentaires pour acheter des retraits de carbone certifiés (BioCCS, DACCS)."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Que prévoit la France pour la neutralité carbone en 2050 ?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "La SNBC 3, publiée par décret en juillet 2026, vise −50 % d'émissions brutes en 2030 et la neutralité en 2050. Elle compte sur ~60 Mt d'émissions négatives en 2050, dont ~37 Mt de puits naturels. Or le puits forestier est tombé à 39 Mt par an sur 2016–2024, contre 63 Mt sur 2005–2013."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Que peut apporter la filière biométhane au retrait du carbone ?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "La filière biométhane du Programme Résilience 2045 combine méthanisation et pyrogazéification de biomasse résiduelle. Elle produit du biométhane et stocke durablement du carbone sous deux formes : le biochar et le CO₂ biogénique concentré. L'objectif est un retrait de ~60 à 80 Mt de CO₂ par an en France vers 2045."
+     }
+    }
+   ]
+  }
+ ]
+}
+  </script>
+</head>
+<body>
+
+<!-- ── Navigation ────────────────────────────────────────────────────────── -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Résilience <span>2045</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="documents-liste.html">Documents</a>
+      <a href="co2-climat-enchainement.html">CO₂ et climat</a></li>
+      <li><a href="positionnement-territorial.html">Territoires</a></li>
+      <li><a href="notes-position-sequestration-droit.html">Notes de position</a></li>
+      <li><a href="lexique.html">Glossaire</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Programme Résilience V11 &mdash; Cadre politique du climat &mdash; novembre 2026</div>
+    <h1>Climat : ce que demande l'ONU,<br>ce que prévoient l'Europe et la France</h1>
+    <p class="hero-sub">
+      Les trois échelons ont fixé leurs objectifs, et tous comptent désormais sur le retrait durable
+      du carbone. Cette page rassemble les décisions en vigueur et en discussion, les écarts qui
+      subsistent entre elles, et la façon dont les propositions de Résilience peuvent y répondre.
+    </p>
+    <div class="hero-meta">
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg> État au 11 novembre 2026 · COP31 en cours à Antalya</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> Textes officiels · sources en bas de section</span>
+    </div>
+  </div>
+</section>
+
+<div class="intro">
+  <p>
+    La page <a href="co2-climat-enchainement.html" style="color:var(--vert);text-decoration:underline;">« Le CO₂ et le climat : l'enchaînement des phénomènes »</a>
+    explique la physique : d'où vient le CO₂, pourquoi il reste, pourquoi il faut le retirer.
+    <strong>Celle-ci traite des décisions</strong> : qui demande quoi, à quelle échéance, avec quels outils,
+    et où Résilience peut s'insérer. Elle décrit les textes officiels sans prendre parti entre les
+    positions politiques.
+  </p>
+</div>
+
+<div class="chaine">
+  <div class="chaine-grid">
+    <a class="chaine-etape" href="#onu" style="--c:#1F4E79;"><div class="chaine-num">1 · Monde</div><div class="chaine-titre">L'ONU</div><div class="chaine-txt">Dépassement de 1,5 °C inévitable ; ~320 Gt de CO₂ à retirer d'ici 2100.</div></a>
+    <span class="chaine-fleche" aria-hidden="true">→</span>
+    <a class="chaine-etape" href="#europe" style="--c:#1566A8;"><div class="chaine-num">2 · Union européenne</div><div class="chaine-titre">L'Europe</div><div class="chaine-txt">−90 % en 2040 ; achat de retraits permanents proposé dans le marché carbone.</div></a>
+    <span class="chaine-fleche" aria-hidden="true">→</span>
+    <a class="chaine-etape" href="#france" style="--c:#2D6A4F;"><div class="chaine-num">3 · France</div><div class="chaine-titre">La France</div><div class="chaine-txt">SNBC 3 : neutralité en 2050, avec un puits forestier en forte baisse.</div></a>
+    <span class="chaine-fleche" aria-hidden="true">→</span>
+    <a class="chaine-etape" href="#concilier" style="--c:#0F6E56;"><div class="chaine-num">4 · Réponse</div><div class="chaine-titre">Concilier</div><div class="chaine-txt">Une filière qui produit de l'énergie et retire du carbone.</div></a>
+  </div>
+</div>
+
+<div class="notes-section" style="margin-top:2.5rem;">
+
+  <h2 class="groupe-titre" id="questions" style="color:#1F4E79;">En bref : quatre questions</h2>
+  <h3 style="font-size:1.02rem;margin:1rem 0 .35rem;color:#1B4332;">Combien de CO₂ faut-il retirer de l'atmosphère selon l'ONU ?</h3>
+  <p class="retenir" style="--c:#1F4E79;">Selon le rapport du PNUE d'octobre 2026, le dépassement de 1,5 °C est désormais inévitable. Pour revenir sous ce seuil d'ici 2100, il faut retirer et stocker durablement environ 320 milliards de tonnes de CO₂, soit environ huit années d'émissions mondiales de 2024, tout en réduisant les émissions de 45 % d'ici 2035.</p>
+  <h3 style="font-size:1.02rem;margin:1rem 0 .35rem;color:#1B4332;">Que prévoit l'Union européenne pour 2040 ?</h3>
+  <p class="retenir" style="--c:#1F4E79;">L'Union européenne a adopté en 2026 un objectif de −90 % d'émissions nettes en 2040, dont jusqu'à 5 points de crédits internationaux à partir de 2036. La Commission a proposé en juillet 2026 de mettre aux enchères 250 millions de quotas supplémentaires pour acheter des retraits de carbone certifiés (BioCCS, DACCS).</p>
+  <h3 style="font-size:1.02rem;margin:1rem 0 .35rem;color:#1B4332;">Que prévoit la France pour la neutralité carbone en 2050 ?</h3>
+  <p class="retenir" style="--c:#1F4E79;">La SNBC 3, publiée par décret en juillet 2026, vise −50 % d'émissions brutes en 2030 et la neutralité en 2050. Elle compte sur ~60 Mt d'émissions négatives en 2050, dont ~37 Mt de puits naturels. Or le puits forestier est tombé à 39 Mt par an sur 2016–2024, contre 63 Mt sur 2005–2013.</p>
+  <h3 style="font-size:1.02rem;margin:1rem 0 .35rem;color:#1B4332;">Que peut apporter la filière biométhane au retrait du carbone ?</h3>
+  <p class="retenir" style="--c:#1F4E79;">La filière biométhane du Programme Résilience 2045 combine méthanisation et pyrogazéification de biomasse résiduelle. Elle produit du biométhane et stocke durablement du carbone sous deux formes : le biochar et le CO₂ biogénique concentré. L'objectif est un retrait de ~60 à 80 Mt de CO₂ par an en France vers 2045.</p>
+
+  <h2 class="groupe-titre" id="onu" style="color:#1F4E79;">1 — L'ONU : réduire vite, et retirer massivement</h2>
+  <p class="retenir" style="--c:#1F4E79;"><strong>À retenir :</strong> le Programme des Nations unies pour l'environnement admet que le dépassement de 1,5 °C est désormais inévitable. Pour revenir sous ce seuil d'ici 2100, il faut à la fois réduire très vite les émissions et retirer durablement environ 320 milliards de tonnes de CO₂. Atteindre le zéro net de CO₂ stabilise à peu près le réchauffement dû à ce gaz ; pour faire ensuite baisser sa concentration et inverser progressivement sa contribution au réchauffement, il faut retirer plus de CO₂ qu'on n'en émet.</p>
+  <div class="tbl-wrap"><table class="t">
+    <thead><tr><th>Exigence ou constat</th><th>Chiffre</th><th>Horizon</th></tr></thead>
+    <tbody>
+      <tr><td class="cle">Baisse des émissions mondiales</td><td>−18 % · −45 % · −69 % par rapport à 2025</td><td>2030 · 2035 · 2040</td></tr>
+      <tr><td class="cle">Baisse des émissions de méthane d'origine humaine</td><td>au moins −25 % puis −40 % par rapport à 2025, toutes sources confondues : fuites des filières gaz, pétrole et charbon, élevage, déchets et effluents</td><td>2035 · 2040</td></tr>
+      <tr><td class="cle">Retrait et stockage permanent</td><td>~320 Gt de CO₂, environ huit années d'émissions mondiales de 2024</td><td>d'ici 2100</td></tr>
+      <tr><td class="cle">Pic de réchauffement visé</td><td>1,7 à 1,8 °C, puis retour sous 1,5 °C</td><td>milieu de siècle, puis 2100</td></tr>
+      <tr><td class="cle">Trajectoire des politiques actuelles</td><td>~2,8 °C ; ~2,6 °C si tous les engagements sont tenus</td><td>2100</td></tr>
+      <tr><td class="cle">Coût du retard</td><td>~+0,1 °C de pic par période de cinq ans d'émissions au niveau actuel</td><td>—</td></tr>
+    </tbody>
+  </table></div>
+  <p class="src">Source : <a href="https://www.unep.org/en/news-and-stories/press-release/new-unep-report-lays-out-emission-cuts-needed-return-15degc" target="_blank" rel="noopener">PNUE, Emissions Gap Report 2026 « The Point of Return », 21 octobre 2026</a>.</p>
+  <p class="intro" style="margin:0 0 1rem;padding:0;max-width:none;font-size:.95rem;line-height:1.7;">
+    <strong>La COP31</strong> se tient à Antalya du 9 au 20 novembre 2026, sous une présidence partagée : la Turquie accueille et porte l'agenda d'action, l'Australie conduit les négociations. Elle se présente comme une « COP de la mise en œuvre » : transformer les engagements existants en résultats. C'est aussi la première depuis que le retrait des États-Unis de l'accord de Paris a pris effet, en janvier 2026.
+  </p>
+  <p class="src">Sources : <a href="https://unfccc.int/fr/cop31/the-road-to-antalya" target="_blank" rel="noopener">CCNUCC, En route pour Antalya</a> · <a href="https://enb.iisd.org/fr/antalya-un-climate-change-conference-cop31" target="_blank" rel="noopener">IISD, Bulletin des négociations de la Terre</a> · <a href="https://www.dailysabah.com/turkiye/cop31-opens-in-turkiye-with-push-to-turn-climate-pledges-into-action/news/amp" target="_blank" rel="noopener">Daily Sabah, ouverture de la COP31</a>.</p>
+
+  <h2 class="groupe-titre" id="europe" style="color:#1566A8;">2 — L'Europe : un objectif 2040, et un premier acheteur de retraits</h2>
+  <p class="retenir" style="--c:#1566A8;"><strong>À retenir :</strong> l'Union s'est fixé −90 % d'émissions nettes en 2040. La Commission propose que le marché carbone européen finance l'achat de retraits permanents à partir de 2031, mais seulement le captage et stockage de CO₂ biogénique et le captage dans l'air : le biochar n'y figure pas encore. Les normes des véhicules commencent, de leur côté, à reconnaître les carburants renouvelables.</p>
+  <div class="tbl-wrap"><table class="t">
+    <thead><tr><th>Texte</th><th>Contenu</th><th>Statut</th></tr></thead>
+    <tbody>
+      <tr><td class="cle">Loi européenne sur le climat — objectif 2040</td><td>−90 % d'émissions nettes par rapport à 1990, dont ~85 % de réduction intérieure et jusqu'à 5 % de crédits internationaux à partir de 2036. Les retraits permanents réalisés dans l'Union peuvent compenser des émissions résiduelles.</td><td>Adopté (Parlement le 10 février 2026, Conseil le 5 mars 2026)</td></tr>
+      <tr><td class="cle">Révision du marché carbone (SEQE)</td><td>250 millions de quotas supplémentaires vendus entre 2031 et 2040 ; leurs recettes serviraient à acheter des retraits permanents certifiés, d'abord le captage et stockage de CO₂ biogénique (BioCCS) et le captage dans l'air (DACCS).</td><td>Proposition de la Commission du 17 juillet 2026, en discussion</td></tr>
+      <tr><td class="cle">Certification des retraits (CRCF)</td><td>Méthodes pour le BioCCS et le biochar, en vigueur depuis mai 2026. Certification volontaire : elle dit comment compter une tonne, pas qui la paie.</td><td>En vigueur</td></tr>
+      <tr><td class="cle">Normes CO₂ des voitures et utilitaires</td><td>Nouvelle catégorie « zéro émission » pour les véhicules roulant exclusivement aux carburants renouvelables ; objectif 2035 ramené à −87,5 % pour les voitures.</td><td>Position de la commission ENVI du 4 novembre 2026 ; plénière attendue en décembre</td></tr>
+      <tr><td class="cle">Normes CO₂ des poids lourds</td><td>−45 % en 2030, −65 % en 2035, −90 % en 2040 ; évaluation d'un facteur de correction carbone pour les carburants renouvelables.</td><td>Révision prévue en 2027</td></tr>
+    </tbody>
+  </table></div>
+  <p class="src">Sources : <a href="https://oeil.europarl.europa.eu/oeil/fr/document-summary?id=1887235" target="_blank" rel="noopener">Parlement européen, Observatoire législatif</a> · <a href="https://icapcarbonaction.com/en/news/eu-commission-publishes-eu-ets-review-proposal" target="_blank" rel="noopener">ICAP, proposition de révision du SEQE</a> · <a href="https://bioenergyeurope.org/eu-ets-review-opens-new-opportunities-for-the-energy-transition/" target="_blank" rel="noopener">Bioenergy Europe, 20 juillet 2026</a> · <a href="https://climate.ec.europa.eu/news-other-reads/news/eu-sets-worlds-first-voluntary-standard-permanent-carbon-removals-2026-02-03_en" target="_blank" rel="noopener">Commission européenne, CRCF</a> · <a href="https://journalauto.com/industrie/industrie-automobile-le-parlement-europeen-assouplit-les-objectifs-de-co2-pour-2035/" target="_blank" rel="noopener">Journal de l'Automobile</a>.</p>
+
+  <h2 class="groupe-titre" id="france" style="color:#2D6A4F;">3 — La France : neutralité en 2050, avec un puits naturel affaibli</h2>
+  <p class="retenir" style="--c:#2D6A4F;"><strong>À retenir :</strong> la troisième stratégie nationale bas-carbone fixe la neutralité en 2050 et compte, cette année-là, sur ~60 Mt de CO₂ d'émissions négatives par an. Or le puits forestier, qui en porte la plus grande part, a fortement diminué. Les puits technologiques prévus restent modestes, et la biomasse disponible est un point de tension reconnu.</p>
+  <div class="tbl-wrap"><table class="t">
+    <thead><tr><th>Texte ou constat</th><th>Contenu</th><th>Statut</th></tr></thead>
+    <tbody>
+      <tr><td class="cle">SNBC 3</td><td>−50 % d'émissions brutes en 2030 par rapport à 1990 ; neutralité carbone en 2050 ; sortie des énergies fossiles accélérée.</td><td>Décret n° 2026-636 du 16 juillet 2026</td></tr>
+      <tr><td class="cle">Émissions négatives prévues en 2050</td><td>~60 Mt de CO₂ par an : ~37 Mt par les puits naturels, ~15 Mt par la bioénergie avec captage et stockage, ~6 Mt par le captage dans l'air.</td><td>SNBC 3</td></tr>
+      <tr><td class="cle">Secteur de l'énergie</td><td>8,5 à 16 Mt de capacités de captage de CO₂ en 2050, à ~80 % d'origine biogénique, pour faire du secteur un puits net.</td><td>SNBC 3</td></tr>
+      <tr><td class="cle">PPE 3</td><td>Programmation de l'énergie pour les années à venir.</td><td>Publiée au Journal officiel le 13 février 2026</td></tr>
+      <tr><td class="cle">Puits forestier</td><td>~39 Mt de CO₂ par an sur 2016–2024, contre ~63 Mt sur 2005–2013.</td><td>IGN, inventaire forestier publié le 7 octobre 2026</td></tr>
+    </tbody>
+  </table></div>
+  <p class="src">Sources : <a href="https://www.vie-publique.fr/eclairage/19383-snbc-ppe-pnacc-la-politique-climatique-de-la-france" target="_blank" rel="noopener">Vie publique</a> · <a href="https://www.ecologie.gouv.fr/sites/default/files/publications/thema_essentiel_46_missions_ne%CC%81gatives_de_dioxyde_de_carbone_juillet2026.pdf" target="_blank" rel="noopener">CGDD, Théma Essentiel « Les émissions négatives », juillet 2026</a> · <a href="https://www.ecologie.gouv.fr/snbc-energie" target="_blank" rel="noopener">Ministère, SNBC 3 — énergie</a> · <a href="https://www.hellio.com/actualites/reglementation/snbc-3-consultation-publique-orientations-sectorielles" target="_blank" rel="noopener">PPE 3 au JO</a> · <a href="https://www.vie-publique.fr/en-bref/304999-les-forets-francaises-setendent-malgre-un-etat-sanitaire-degrade" target="_blank" rel="noopener">Vie publique, inventaire forestier 2026</a>.</p>
+
+  <h2 class="groupe-titre" id="ecarts" style="color:#A32D2D;">Les écarts qui subsistent</h2>
+  <div class="ecart">
+    <strong>Les trois échelons convergent sur le principe — il faudra retirer du carbone — mais pas encore sur les moyens.</strong>
+    <ol>
+      <li><strong>L'échelle.</strong> L'ONU parle de ~320 Gt sur le siècle ; le marché carbone européen propose d'acheter 250 millions de tonnes sur dix ans, soit ~25 Mt par an pour toute l'Union ; la France prévoit ~21 Mt par an de puits technologiques en 2050. Si l'Union prenait sa part des ~320 Gt à proportion de ses émissions (~6 % du total mondial, hypothèse), elle devrait retirer de l'ordre de 250 Mt par an : environ dix fois le volume proposé. Ce premier mécanisme est utile, mais il n'est pas encore à l'échelle du problème.</li>
+      <li><strong>Le biochar est absent des achats européens proposés</strong>, alors que le même cadre européen sait déjà le certifier.</li>
+      <li><strong>Le carburant et le carbone retiré restent séparés.</strong> Les normes des véhicules reconnaissent un carburant renouvelable comme neutre ; aucune règle ne valorise une filière qui, en le produisant, retire aussi du carbone.</li>
+      <li><strong>La biomasse est un point de tension.</strong> La SNBC 3 compte à la fois sur le puits forestier et sur la biomasse pour l'énergie, alors que les prélèvements pèsent sur ce puits.</li>
+    </ol>
+    <p style="margin-top:.7rem;">La certification permet de reconnaître une tonne de carbone retirée ; elle ne garantit pas son financement. L'enjeu est désormais de créer un marché durable, adossé à des engagements de long terme, capable de rémunérer les retraits et de déclencher les investissements industriels.</p>
+  </div>
+
+  <h2 class="groupe-titre" id="concilier" style="color:#0F6E56;">4 — Concilier : ce que Résilience peut apporter</h2>
+  <p class="retenir" style="--c:#0F6E56;"><strong>À retenir :</strong> la méthanisation produit du biométhane, un digestat et du CO₂ biogénique séparé lors de l'épuration du gaz ; la pyrogazéification des résidus secs produit du biométhane, du biochar et du CO₂ biogénique concentré. Dans les deux cas, ce CO₂ est prêt à être stocké. Le CO₂ biogénique stocké correspond exactement à la catégorie que l'Europe propose d'acheter ; le biochar, déjà certifiable, pourrait la rejoindre. La filière utilise des déchets et des résidus, et des cultures comme le miscanthus sur des terres délaissées, plutôt que du bois prélevé sur des forêts déjà affaiblies.</p>
+  <div class="tbl-wrap"><table class="t">
+    <thead><tr><th>Exigence</th><th>Où en est-on</th><th>Apport de Résilience</th><th>Règle suggérée</th></tr></thead>
+    <tbody>
+      <tr><td class="cle">Retirer ~320 Gt (ONU)</td><td>Retrait durable mondial de l'ordre de 2 Mt par an aujourd'hui</td><td class="res">Au niveau mondial, ~5,9 Gt par an une fois la filière déployée, dont ~4,9 Gt de stockage permanent (biochar, CO₂ biogénique stocké, carbonatation) ; si ce niveau est atteint vers 2045 et maintenu, ~270 Gt de stockage permanent d'ici 2100</td><td>Lancer la montée en puissance dès maintenant : chaque année de retard réduit le volume retiré</td></tr>
+      <tr><td class="cle">Retraits permanents dans le SEQE (UE)</td><td>Achat proposé de BioCCS et DACCS à partir de 2031</td><td class="res">CO₂ biogénique déjà concentré par l'épuration du biogaz et la pyrogazéification, moins coûteux à stocker que le CO₂ dilué de l'air</td><td>Ajouter le biochar certifié CRCF aux retraits achetés</td></tr>
+      <tr><td class="cle">Neutralité 2050 (France)</td><td>~60 Mt d'émissions négatives prévues, dont ~37 Mt de puits naturels en baisse</td><td class="res">~−60 à −80 Mt de CO₂ par an vers 2045, du même ordre que l'ensemble des émissions négatives prévues par la SNBC 3 en 2050</td><td>Adapter l'article R.446-105 du code de l'énergie, qui réserve aujourd'hui les certificats de production de biogaz (CPB) à la méthanisation et aux sites de stockage de déchets, pour y faire entrer la pyrogazéification (modification déjà à l'étude selon la réponse ministérielle du 11 juin 2026 au sénateur Piednoir), et engager deux sites pilotes de pyrogazéification de 100 à 200 t de biomasse par jour</td></tr>
+      <tr><td class="cle">Biomasse limitée</td><td>Tension entre puits forestier et bois-énergie</td><td class="res">Résidus agricoles et forestiers, bois de débroussaillage et digestats, sans prélever davantage sur la forêt sur pied ; cultures pérennes comme le miscanthus sur des terres délaissées ou peu productives, sans concurrence avec l'alimentation (potentiel étudié : ~0,5 à 1,5 Mha en France, ~18 à 58 TWh/an de biométhane, sous réserve des conditions agronomiques et foncières)</td><td>Rémunérer l'entretien et le débroussaillage qui réduisent aussi le risque d'incendie</td></tr>
+      <tr><td class="cle">Décarboner les transports (UE)</td><td>Reconnaissance binaire des carburants renouvelables ; poids lourds en 2027</td><td class="res">Véhicules ÉREV au biométhane, camions, aviation et maritime au bio-GNL ; montée progressive du fossile vers le bio</td><td>Facteur de correction carbone proportionnel pour les poids lourds, en plus de la catégorie binaire</td></tr>
+      <tr><td class="cle">Méthane −25 % d'ici 2035 (ONU)</td><td>Le méthane vient des fuites des filières fossiles, de l'élevage, des déchets et des effluents</td><td class="res">La méthanisation capte le méthane que dégageraient de toute façon effluents et déchets en se décomposant, et le valorise ; limite contractuelle de fuites à 1 % au plus sur toute la chaîne de la filière, mesurée et vérifiée</td><td>Un recueil de conformité commun à toutes les installations</td></tr>
+      <tr><td class="cle">Financer sur la durée</td><td>Soutiens publics annuels, visibilité limitée pour les investisseurs</td><td class="res">Un système qui s'autofinance sur 15 à 40 ans, avec des prêts longs et un minimum de subventions</td><td>Payer la tonne retirée par des contrats à long terme à prix plancher</td></tr>
+    </tbody>
+  </table></div>
+  <p class="retenir" style="--c:#0F6E56;"><strong>Quatre contributions à ne pas confondre :</strong> la filière agit de quatre façons. Deux réduisent les émissions : le méthane des déchets et effluents capté au lieu de se dégager, et le gaz fossile remplacé par le biométhane. Deux retirent du carbone : le CO₂ biogénique capté et stocké en géologie, et le carbone immobilisé dans le biochar — à condition d'en démontrer le bilan complet et la permanence, comme l'exige la certification européenne.</p>
+  <p class="src">Chiffres Résilience : objectifs de conception, marqués « ~ », détaillés dans les notes ci-dessous. Retrait durable mondial actuel : Synthèse « Du bilan historique du carbone à la nécessité d'un retrait durable ».</p>
+
+  <div class="mini-grid">
+    <a class="mini-card" href="Note_Payer_Carbone_Retire_V1.pdf" target="_blank" rel="noopener" style="border-left-color:#0F6E56;">
+      <div class="mini-tag" style="color:#0F6E56;">Note de position</div>
+      <div class="mini-titre">Payer le carbone retiré</div>
+      <div class="mini-txt">Comment rémunérer chaque tonne retirée et passer d'une économie de pollution à une économie de nettoyage.</div>
+      <span class="mini-pdf" style="color:#0F6E56;">PDF →</span>
+    </a>
+    <a class="mini-card" href="Note_Equilibre_Economique_Systeme_V1.pdf" target="_blank" rel="noopener" style="border-left-color:#0F6E56;">
+      <div class="mini-tag" style="color:#0F6E56;">Note · V1</div>
+      <div class="mini-titre">L'équilibre économique du système</div>
+      <div class="mini-txt">Qui paie quoi, sur quelle durée : un système énergétique qui s'autofinance.</div>
+      <span class="mini-pdf" style="color:#0F6E56;">PDF →</span>
+    </a>
+    <a class="mini-card" href="notes-position-sequestration-droit.html" style="border-left-color:#0F6E56;">
+      <div class="mini-tag" style="color:#0F6E56;">Page · notes de position</div>
+      <div class="mini-titre">Les règles à changer</div>
+      <div class="mini-txt">Payer ce que les sites produisent, autoriser et construire, mobiliser la biomasse.</div>
+      <span class="mini-pdf" style="color:#0F6E56;">Page →</span>
+    </a>
+    <a class="mini-card" href="carbone-mondial.html" style="border-left-color:#0F6E56;">
+      <div class="mini-tag" style="color:#0F6E56;">Page</div>
+      <div class="mini-titre">Retrait du CO₂ à l'échelle mondiale</div>
+      <div class="mini-txt">La comparaison avec les ~320 Gt du PNUE, et le potentiel de la filière dans le monde.</div>
+      <span class="mini-pdf" style="color:#0F6E56;">Page →</span>
+    </a>
+    <a class="mini-card" href="co2-climat-enchainement.html" style="border-left-color:#0F6E56;">
+      <div class="mini-tag" style="color:#0F6E56;">Page</div>
+      <div class="mini-titre">Le CO₂ et le climat : l'enchaînement des phénomènes</div>
+      <div class="mini-txt">La physique derrière ces décisions : bilan, puits, boucles, trajectoires.</div>
+      <span class="mini-pdf" style="color:#0F6E56;">Page →</span>
+    </a>
+    <a class="mini-card" href="hydrogene-ou-biomethane.html" style="border-left-color:#0F6E56;">
+      <div class="mini-tag" style="color:#0F6E56;">Page</div>
+      <div class="mini-titre">Hydrogène ou biométhane ?</div>
+      <div class="mini-txt">La comparaison chiffrée des deux vecteurs, usage par usage.</div>
+      <span class="mini-pdf" style="color:#0F6E56;">Page →</span>
+    </a>
+  </div>
+</div>
+
+<footer>
+  <strong>Programme Résilience 2045</strong> · Cadre politique du climat · État au 11 novembre 2026<br>
+  <a href="https://resilience2045.fr">resilience2045.fr</a> ·
+  <a href="documents-liste.html">Catalogue de documents</a>
+</footer>
+
+</body>
+</html>
