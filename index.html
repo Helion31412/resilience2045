@@ -48,6 +48,9 @@
   .topbar nav a.hi{color:#F6BD6A;}
   .topbar nav a.hi:hover{background:rgba(246,189,106,.15);color:#F6BD6A;}
 
+  /* ===== TITRE PRINCIPAL (H1) — lu par les moteurs et les lecteurs d'écran, non affiché ===== */
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+
   /* ===== HERO IMAGE — zoom in place (x1 à x2) ===== */
   .hero-img{
     width:100%;background:var(--navy);
@@ -302,6 +305,7 @@
 
 <!-- ===== INFOGRAPHIE PLEINE LARGEUR — zoom in place (x1 à x2) ===== -->
 <div class="hero-img">
+  <h1 class="sr-only">Résilience 2045 — biométhane, biochar et CO₂ biogénique stocké : un système énergétique sobre, résilient et carbone-négatif pour la France</h1>
   <div class="hero-frame" id="hero-frame">
     <img id="hero-schema" src="schema_resilience_web.jpg"
          alt="Infographie Résilience 2045 — système énergétique sobre, résilient et carbone-négatif"
