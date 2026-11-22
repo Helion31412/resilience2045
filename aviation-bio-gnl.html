@@ -103,11 +103,11 @@ footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;li
 </section>
 
 <div class="warning-bar"><div class="container">
-  <p><strong>Avertissement important :</strong> les chiffres de cette page sont des estimations théoriques et calculs d'ingénierie. Aucun avion Bio-GNL n'a encore volé. La validation industrielle reste entièrement à construire. Les avantages présentés sont cohérents sur le plan physique mais <strong>ne constituent pas des performances démontrées</strong>. Horizon de déploiement réaliste : 2032–2040 si programme de R&D engagé avant 2028.</p>
+  <p><strong>Ce qui est démontré, ce qui reste à valider :</strong> le vol au méthane liquide est démontré — le Tupolev Tu-155 a effectué une centaine de vols d'essai, en grande majorité au GNL, de 1988 au début des années 1990, sur une cellule de transport existante (le méthane biogénique est la même molécule que le méthane fossile). Les propriétés physiques du méthane sont établies. Les performances des architectures Résilience présentées ici — turbofan méthane, groupes ÉREV Atkinson, réservoirs dans l'aile — sont des évaluations d'ingénierie cohérentes sur le plan physique, qui <strong>restent à confirmer sur banc puis en vol</strong>. Horizon de déploiement réaliste : 2032–2040 si un programme de R&D est engagé avant 2028.</p>
 </div></div>
 
 <div class="box box-vert" style="margin:0;border-left-width:4px;padding:1rem 2rem"><div class="container">
-  <p style="font-size:.85rem;color:rgba(240,244,241,.8);line-height:1.6"><strong>Nouveau · novembre 2026 —</strong> Boeing conclut à son tour que le biométhane tire de la biomasse environ 1,8 fois plus de carburant que le SAF, pour un coût plus faible. <a href="#boeing" style="color:var(--vert-vif)">Voir la convergence avec Résilience ↓</a></p>
+  <p style="font-size:.85rem;color:rgba(240,244,241,.8);line-height:1.6"><strong>Juillet 2026 —</strong> Boeing compare le méthane à l'hydrogène et au SAF : le biométhane conserve 54 % de l'énergie de départ dans le carburant final, contre 38 % pour l'hydrogène et 30 % pour le bio-SAF ; même par la voie électrique, l'e-méthane devance l'hydrogène une fois comptés la liquéfaction, le stockage et le transport ; et son coût attendu est plus faible que celui des deux autres. Avec le biochar et le CO₂ biogénique concentré stocké, la filière Résilience ajoute ce que Boeing ne compte pas : un bilan carbone négatif. <a href="#boeing" style="color:var(--vert-vif)">Voir la convergence avec Résilience ↓</a><br><strong>Novembre 2026 —</strong> Airbus relance un avion régional à hydrogène : <a href="#airbus-h2" style="color:var(--vert-vif)">comparaison avec la gamme Résilience ↓</a></p>
 </div></div>
 
 <div class="metho-bar"><div class="container">
@@ -323,10 +323,10 @@ footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;li
         <thead><tr><th>Verrou</th><th>Nature</th><th>Segments</th><th>Horizon</th></tr></thead>
         <tbody>
           <tr>
-            <td><strong>Dessication GNL avant injection</strong> (tamis moléculaires 3Å — CRITIQUE)</td>
-            <td class="td-r">Sécurité</td>
+            <td>Maîtrise de l'humidité dans le circuit carburant (inertage, purges, filtre de garde)</td>
+            <td>Sécurité · procédures</td>
             <td>Toute la gamme</td>
-            <td class="td-a">Phase 1 · 2025–2027</td>
+            <td>Phase 1 · procédures à qualifier</td>
           </tr>
           <tr>
             <td>Certification EASA moteur Atkinson piston propulsion aéronautique</td>
@@ -380,8 +380,8 @@ footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;li
       </table>
     </div>
 
-    <div class="box box-rouge reveal">
-      <strong>Verrou critique commun à toute la gamme — dessication méthane :</strong> le méthane vaporisé depuis GNL −162°C contient de l'humidité résiduelle → formation de glace dans les injecteurs, blocage des soupapes, délaminage MLI. Solution : tamis moléculaires 3Å (2 lits, régénération cyclique). Point de rosée garanti < −60°C. Masse : 15–25 kg. Technologie GNL maritime existante à qualifier en aviation. Identifié et documenté Programme Résilience V11 — juillet 2026.
+    <div class="box box-ambre reveal">
+      <strong>Humidité dans le circuit carburant — une question de procédures :</strong> le GNL est sec par construction : l'eau, le CO₂ et l'azote sont retirés avant liquéfaction, sans quoi ils geleraient dans les échangeurs de l'usine. Le carburant chargé dans l'avion ne demande donc pas de nouveau séchage. Le seul risque est une entrée d'humidité dans le circuit de l'appareil (réservoir réchauffé et remis à l'air lors de la maintenance, purges, raccords) : il se traite par l'inertage, des procédures de purge et, par sécurité, un petit filtre de garde avant les injecteurs — pratiques déjà maîtrisées dans le GNL maritime, à qualifier en aviation.
     </div>
 
     <div class="tbl-wrap reveal" style="margin-top:1.5rem">
@@ -518,11 +518,44 @@ footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;li
   </div>
 </section>
 
+<!-- AIRBUS HYDROGÈNE — novembre 2026 -->
+<section id="airbus-h2" class="alt" style="scroll-margin-top:60px">
+  <div class="container">
+    <div class="stag reveal">Actualité · Airbus · novembre 2026</div>
+    <h2 class="reveal">Le projet hydrogène d'Airbus —<br><em>et ce que propose Résilience pour le même segment</em></h2>
+    <p class="lead reveal">En novembre 2026, Airbus a relancé son projet d'avion à hydrogène : une coentreprise avec le motoriste allemand MTU Aero Engines, créée en 2027, doit développer d'ici 2030 un démonstrateur de vingt places à moteurs électriques alimentés par des piles à combustible. L'objectif final est un avion régional d'environ 80 places, pour des étapes d'environ 1 000 nautiques (~1 850 km), dont l'entrée en service est visée au mieux à la fin des années 2030. Ce projet concerne donc l'aviation régionale, et non le moyen ou le long-courrier. Or, selon le directeur du développement durable de Boeing, environ la moitié des vols font moins de 1 000 km, mais la moitié du carburant est consommée sur les vols de plus de 2 800 km, qui ne représentent qu'environ 20 % des vols (Aviation Week).</p>
+
+    <div class="tbl-wrap reveal">
+      <table>
+        <thead><tr><th>Critère</th><th>Airbus ZEROe (hydrogène)</th><th>Résilience — segments ② et ③ (méthane ÉREV)</th><th>Résilience — moyen-courrier (turbofan méthane)</th></tr></thead>
+        <tbody>
+          <tr><td>Segment</td><td>Démonstrateur 20 places vers 2030, puis régional ~80 places, ~1 850 km</td><td>② régional 15 places jusqu'à 1 500 km · ③ ATR-72 ÉREV 70 places, 400–700 km</td><td>Monocouloir 180–220 places (classe A321neo), 2 000–4 000 km</td></tr>
+          <tr><td>Propulsion</td><td>Hélices électriques alimentées par des piles à combustible</td><td>Hélices électriques alimentées par des groupes Atkinson au méthane à régime fixe + turbogénérateur de montée</td><td>Turbofans méthane (moteurs de la classe LEAP ou PW1000G adaptés au CH₄)</td></tr>
+          <tr><td>Carburant à bord</td><td class="td-r">Hydrogène liquide −253 °C · ~2,3 kWh/L</td><td class="td-g">Méthane : GNV 250 bar jusqu'à ~400–500 km, GNL −162 °C au-delà · ~5,86 kWh/L en GNL <span class="bq b-ok">✅ Physique</span></td><td class="td-g">Bio-GNL −162 °C dans les caissons d'aile redessinés (mini-réservoir en soute au-delà de ~2 000 km)</td></tr>
+          <tr><td>Énergie de liquéfaction</td><td class="td-r">30 à 40 % de l'énergie de l'hydrogène</td><td class="td-g">~2 % de l'énergie du méthane <span class="bq b-ok">✅ Physique</span></td><td class="td-g">~2 % de l'énergie du méthane</td></tr>
+          <tr><td>Avion</td><td>Avion entièrement nouveau</td><td>Avion neuf ou retrofit d'une cellule existante (ATR-72 : turbopropulseurs remplacés, cellule conservée)</td><td>Voilure redessinée, cabine commerciale inchangée ; ~28 % de masse de carburant en moins sur 3 000 km <span class="bq b-est">🔬</span></td></tr>
+          <tr><td>Carburant et infrastructure</td><td>Filière hydrogène liquide à créer dans les aéroports</td><td>Même molécule que les camions, tracteurs et réseau de gaz ; montée 0 → 100 % bio sans changer d'avion</td><td>Même filière ; même réseau cryogénique que le long-courrier</td></tr>
+          <tr><td>Extension aux autres segments</td><td>Aucune annoncée au-delà du régional</td><td class="td-g">Moyen- et long-courrier en turbofan méthane bio-GNL (segments moyen-courrier et ④)</td><td class="td-g">Base du long-courrier ④ (mêmes turbofans méthane, plus de 8 000 km)</td></tr>
+                  <tr><td>Principales difficultés</td><td class="td-r">Piles à combustible de ~8 à 10 MW (le démonstrateur le plus puissant d'Airbus a atteint 1,2 MW en 2023) ; chaleur à basse température (~80 °C) difficile à évacuer en vol ; masse des systèmes de piles ; stockage à −253 °C ; filière hydrogène liquide à créer dans les aéroports</td><td class="td-a">Masse réelle des moteurs Atkinson à mesurer sur banc (priorité 1) ; vibrations ; méthane imbrûlé à l'échappement ; suralimentation en altitude ; certification d'un moteur à pistons de cette puissance</td><td class="td-a">Réservoirs cryogéniques dans l'aile (sans précédent en certification CS-25) ; gain de rendement du turbofan méthane à confirmer sur démonstrateur ; fatigue thermique de l'échangeur d'intercooling ; avitaillement GNL à installer dans les aéroports</td></tr>
+</tbody>
+      </table>
+    </div>
+
+    <div class="box box-vert reveal">
+      <strong>Lecture :</strong> les deux projets partagent la même idée — une traction électrique par hélices. Ils diffèrent par la source d'électricité à bord. Les études Résilience indiquent qu'un prolongateur au méthane atteindrait le même service de façon plus simple et plus économique, avec un carburant stocké à −162 °C au lieu de −253 °C et environ 2,5 fois plus d'énergie par litre, et qu'une filière unique peut ensuite couvrir le moyen et le long-courrier, que l'hydrogène ne traite pas.
+    </div>
+    <div class="box box-ambre reveal">
+      <strong>Prudence :</strong> comme le projet d'Airbus, la gamme Résilience reste à démontrer. Le vol au méthane liquide est déjà prouvé : le Tupolev Tu-155, un Tu-154 dont un réacteur sur trois recevait le carburant cryogénique, a effectué une centaine de vols d'essai de 1988 au début des années 1990, en grande majorité au GNL, jusqu'à 13 000 m d'altitude et sans incident majeur rapporté, avec des démonstrations publiques à Nice, Hanovre et Berlin. La cellule existante a accepté le GNL sans refonte, ce que l'hydrogène liquide n'a pas permis, et le programme s'est arrêté avec la chute de l'URSS, non pour des raisons techniques. Le méthane biogénique est la même molécule que le méthane fossile (<a href="Tu155_et_Annexe_Securite_V4.pdf" style="color:var(--ambre)" download>note Tu-155 V4</a>). En revanche, aucun avion de ligne au méthane n'est en service, l'architecture ÉREV n'a pas encore volé, et la masse réelle des moteurs Atkinson est la première incertitude à lever sur banc. La comparaison porte sur des principes physiques et des évaluations d'ingénierie, non sur des performances mesurées.
+    </div>
+    <p class="reveal" style="font-size:.75rem;color:var(--gris);margin-top:.6rem">Sources : La Dépêche du Midi (novembre 2026) ; Airbus, présentations ZEROe (Airbus Summit 2025) ; notes Résilience Segment ② 15 places V3, Segment ③ ATR-72 ÉREV V3, Avion moyen-courrier bio-GNL V3.1, Segment ④ Long-courrier V8.2.</p>
+  </div>
+</section>
+
 <!-- CONVERGENCE BOEING -->
 <section id="boeing" style="scroll-margin-top:60px">
   <div class="container">
     <div class="stag reveal">Convergence · Boeing Cascade · juillet 2026</div>
-    <h2 class="reveal">Boeing arrive aux mêmes conclusions —<br><em>le méthane, juste milieu entre SAF et hydrogène</em></h2>
+    <h2 class="reveal">Boeing arrive aux mêmes conclusions —<br><em>le méthane, plus efficace et moins cher que le SAF et l'hydrogène</em></h2>
     <p class="lead reveal">Le 14 juillet 2026, l'équipe Cascade de Boeing, son outil de modélisation de la décarbonation aérienne, a publié une analyse du méthane comme carburant d'avenir pour l'aviation. Boeing a comparé plus de cinquante carburants selon la sécurité, les performances avion, le potentiel de montée en échelle et l'infrastructure. Trois options alternatives au SAF en ressortent : la batterie, écartée pour l'aviation à grande échelle faute d'autonomie, l'hydrogène et le méthane. Ses conclusions recoupent point par point celles du Programme Résilience, établies de façon indépendante.</p>
 
     <h3 class="reveal">Part de l'énergie de départ conservée dans le carburant final (Boeing)</h3>
@@ -701,7 +734,7 @@ footer p{font-size:.76rem;color:var(--gris);max-width:600px;margin:.3rem auto;li
 
     <div class="conclusion-box-warn reveal">
       <h3>Ce qui reste entièrement à démontrer</h3>
-      <p style="font-size:.9rem;color:rgba(240,244,241,.75);line-height:1.85">Le gain de rendement (+5 à +8 points) sur moteur réel, les émissions NOx en vol, le comportement des réservoirs cryogéniques en conditions de vol (vibrations, pressions, certification EASA), le coût réel de l'infrastructure GNL aéroportuaire, et surtout l'économie réelle du vol Bio-GNL pour les compagnies. <strong>Ces points nécessitent un programme d'essais de plusieurs années — aucun avion Bio-GNL n'a volé à ce jour.</strong> Les affirmations définitives sur les performances sont prématurées.</p>
+      <p style="font-size:.9rem;color:rgba(240,244,241,.75);line-height:1.85">Le gain de rendement (+5 à +8 points) sur moteur réel, les émissions NOx en vol, le comportement des réservoirs cryogéniques en conditions de vol (vibrations, pressions, certification EASA), le coût réel de l'infrastructure GNL aéroportuaire, et surtout l'économie réelle du vol Bio-GNL pour les compagnies. <strong>Ces points nécessitent un programme d'essais de plusieurs années : le Tu-155 a démontré le vol au GNL, mais aucun avion de ligne conçu pour le méthane n'a encore été développé.</strong> Les affirmations définitives sur les performances sont prématurées.</p>
     </div>
 
     <div style="margin-top:2rem" class="reveal">
