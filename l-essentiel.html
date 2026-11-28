@@ -108,6 +108,27 @@
     .message-box p + p { margin-top: .7rem; }
     .message-box strong { color: var(--orange); }
 
+
+    /* ── Image de la baignoire ────────────────────────────────────── */
+    .baignoire { max-width: 860px; margin: 2rem auto 0; padding: 0 2rem; }
+    .baignoire-box {
+      background: #F4F8FC; border: 1px solid #D3E2F0; border-radius: var(--radius-l);
+      padding: 1.4rem 1.6rem; display: flex; gap: 1.6rem; align-items: center;
+    }
+    .baignoire-box svg { flex: 0 0 320px; width: 320px; height: auto; }
+    .baignoire-txt h2 {
+      font-family: 'Source Serif 4', Georgia, serif; font-weight: 600;
+      font-size: 1.15rem; color: #1F4E79; margin-bottom: .5rem;
+    }
+    .baignoire-txt p { font-size: .93rem; line-height: 1.7; color: var(--gris-700); }
+    .baignoire-txt p + p { margin-top: .6rem; }
+    .baignoire-txt strong { color: var(--gris-900); }
+    .baignoire-note { font-size: .84rem !important; color: var(--gris-500) !important; }
+    @media (max-width: 700px) {
+      .baignoire-box { flex-direction: column; align-items: stretch; }
+      .baignoire-box svg { flex-basis: auto; width: 100%; max-width: 320px; margin: 0 auto; }
+    }
+
     /* ── Chaîne des quatre étapes ─────────────────────────────────── */
     .chaine { max-width: 860px; margin: 2.5rem auto 0; padding: 0 2rem; }
     .chaine-grid { display: flex; gap: .5rem; align-items: stretch; }
@@ -273,6 +294,54 @@
       Payer la tonne retirée, avec la participation active des acteurs des énergies fossiles appelés à se convertir
       à cette économie du nettoyage, change l'équation <strong>sans dépense publique nette</strong>.
     </p>
+  </div>
+</div>
+
+
+<!-- ── Image de la baignoire ─────────────────────────────────────────────── -->
+<div class="baignoire">
+  <div class="baignoire-box">
+      <svg viewBox="0 0 340 212" role="img" aria-label="Schéma : le robinet des émissions, la baignoire de l'atmosphère, la bonde des puits naturels et le seau du retrait durable" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif">
+        <!-- robinet -->
+        <path d="M40 30 h40 v14 h-10 v10 h-20 v-10 h-10 z" fill="#718096"/>
+        <rect x="52" y="54" width="6" height="34" fill="#9CC3E6" opacity=".9"/>
+        <text x="20" y="20" font-size="12" fill="#4A5568" font-weight="600">Émissions</text>
+        <text x="66" y="80" font-size="10.5" fill="#718096">robinet à fermer</text>
+        <!-- baignoire -->
+        <path d="M30 105 h200 v45 a25 25 0 0 1 -25 25 h-150 a25 25 0 0 1 -25 -25 z" fill="#fff" stroke="#4A5568" stroke-width="2"/>
+        <path d="M32 115 h196 v35 a23 23 0 0 1 -23 23 h-150 a23 23 0 0 1 -23 -23 z" fill="#9CC3E6"/>
+        <text x="130" y="142" font-size="12" fill="#1F4E79" font-weight="600" text-anchor="middle">CO₂ dans l'air</text>
+        <text x="130" y="156" font-size="9.5" fill="#1F4E79" text-anchor="middle">~420 ppm</text>
+        <!-- bonde -->
+        <rect x="190" y="175" width="8" height="12" fill="#718096"/>
+        <circle cx="194" cy="191" r="3" fill="#9CC3E6"/>
+        <text x="208" y="207" font-size="10.5" fill="#718096">bonde qui se bouche</text>
+        <text x="208" y="194" font-size="12" fill="#4A5568" font-weight="600">Puits naturels</text>
+        <!-- seau / retrait -->
+        <path d="M250 70 l6 32 h26 l6 -32 z" fill="#40916C"/>
+        <path d="M250 70 q19 -16 38 0" fill="none" stroke="#2D6A4F" stroke-width="2"/>
+        <path d="M232 112 q10 -30 20 -38" fill="none" stroke="#2D6A4F" stroke-width="2" stroke-dasharray="3 3"/>
+        <polygon points="250,70 246,80 256,77" fill="#2D6A4F"/>
+        <text x="336" y="40" font-size="12" fill="#2D6A4F" font-weight="600" text-anchor="end">Retrait durable</text>
+        <text x="336" y="55" font-size="10.5" fill="#2D6A4F" text-anchor="end">écoper</text>
+      </svg>
+    <div class="baignoire-txt">
+      <h2>Une image : la baignoire qui déborde</h2>
+      <p>
+        L'atmosphère est une baignoire qui déborde. Le robinet, ce sont nos émissions :
+        électrifier et réduire nos consommations sert à le fermer, et c'est indispensable.
+        <strong>Mais fermer le robinet ne vide pas la baignoire.</strong>
+      </p>
+      <p>
+        La bonde — forêts, sols, océan — est petite, et elle commence à se boucher avec le réchauffement.
+        Pour faire baisser le niveau, il faut <strong>écoper</strong> : retirer du CO₂ et le stocker durablement,
+        par le biochar et le CO₂ biogénique concentré.
+      </p>
+      <p class="baignoire-note">
+        Si l'on cessait d'émettre demain, la température cesserait à peu près de monter, mais ne redescendrait pas :
+        une part importante du CO₂ excédentaire reste dans l'air pendant des siècles.
+      </p>
+    </div>
   </div>
 </div>
 
